@@ -117,7 +117,7 @@ a{
     background-color: #252525;
 }
 </style>
-@include('layouts\head')
+@include('layouts.head')
 
 <div data-elementor-type="wp-page" data-elementor-id="1173" class="elementor elementor-1173">
     <section class="elementor-section elementor-top-section elementor-element elementor-element-1fc04b3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="1fc04b3" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -353,4 +353,4 @@ a{
         </div>
     </section>
 </div>
-@include('layouts\footer')
+@include('layouts.footer')

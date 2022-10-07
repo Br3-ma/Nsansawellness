@@ -1,4 +1,4 @@
-@include('layouts\head')
+@include('layouts.head')
 <div style="padding-top:5%; text-align:center">
     <div data-elementor-type="wp-page" data-elementor-id="6" class="elementor elementor-6">
 <section class="elementor-section elementor-top-section elementor-element elementor-element-89845c3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="89845c3" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -645,7 +645,7 @@
 </section>
     </div>
 </div>
-@include('layouts\footer')
+@include('layouts.footer')
 <script>
 let year = document.getElementById("year");
 let month = document.getElementById("month");

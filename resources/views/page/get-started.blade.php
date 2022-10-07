@@ -1,4 +1,4 @@
-@include('layouts\head')
+@include('layouts.head')
 <div class="container" style="padding-top:10%; text-align:center">
     <div data-elementor-type="wp-page" data-elementor-id="6" class="elementor elementor-6">
         <section class="elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
@@ -186,7 +186,7 @@
     </div>
 </div>
 
-@include('layouts\footer')
+@include('layouts.footer')
 <script>
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab

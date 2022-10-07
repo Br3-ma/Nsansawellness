@@ -1,4 +1,4 @@
-@include('layouts\head')
+@include('layouts.head')
 		<div data-elementor-type="wp-page" data-elementor-id="6" class="elementor elementor-6">
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
@@ -1292,4 +1292,4 @@
 				</div>
 			</section> --}}
 </div>
-@include('layouts\footer')
+@include('layouts.footer')

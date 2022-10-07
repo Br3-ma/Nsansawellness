@@ -1,4 +1,4 @@
-@include('layouts\head')
+@include('layouts.head')
 <div data-elementor-type="wp-page" data-elementor-id="1118" class="elementor elementor-1118">
     <section class="elementor-section elementor-top-section elementor-element elementor-element-e59f23c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e59f23c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
         <div class="elementor-background-overlay"></div>
@@ -197,4 +197,4 @@
         </div>
     </section>
 </div>
-@include('layouts\footer')
+@include('layouts.footer')

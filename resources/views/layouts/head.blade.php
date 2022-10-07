@@ -929,7 +929,7 @@
 		</defs>
 	</svg>
 	<div id="page" class="jkit-template site">
-	@include('layouts\menu')
+	@include('layouts.menu')
 
 
 
