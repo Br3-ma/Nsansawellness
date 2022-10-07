@@ -14,7 +14,7 @@ class FaqPage extends Controller
     public function index()
     {
              $title = 'FAQ';
-        return view('page\faq', compact('title'));
+        return view('page.faq', compact('title'));
     }
 
     /**

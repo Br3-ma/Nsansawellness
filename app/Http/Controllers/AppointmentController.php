@@ -13,7 +13,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('page\common\appointment');
+        return view('page.common.appointment');
     }
 
     /**

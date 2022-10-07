@@ -14,7 +14,7 @@ class AboutPage extends Controller
     public function index()
     {
         $title = 'About Us';
-        return view('page\about', compact('title'));
+        return view('page.about', compact('title'));
     }
 
     /**
