@@ -14,7 +14,7 @@ class ReviewsPage extends Controller
     public function index()
     {
         $title = 'Reviews';
-        return view('page\reviews', compact('title'));
+        return view('page.reviews', compact('title'));
     }
 
     /**

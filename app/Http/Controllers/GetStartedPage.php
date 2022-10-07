@@ -13,7 +13,7 @@ class GetStartedPage extends Controller
      */
     public function index()
     {
-        return view('page\get-started');
+        return view('page.get-started');
     }
 
     /**

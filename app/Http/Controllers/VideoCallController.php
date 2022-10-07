@@ -13,7 +13,7 @@ class VideoCallController extends Controller
      */
     public function index()
     {
-        return view('page\common\video-call');
+        return view('page.common.video-call');
     }
 
     /**

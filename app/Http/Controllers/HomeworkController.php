@@ -13,12 +13,12 @@ class HomeworkController extends Controller
      */
     public function index()
     {
-        return view('page\patients\activities');
+        return view('page.patients.activities');
     }    
     
     public function actions()
     {
-        return view('page\patients\actions');
+        return view('page.patients.actions');
     }
 
     /**

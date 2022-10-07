@@ -13,7 +13,7 @@ class CareerPage extends Controller
      */
     public function index()
     {
-        return view('page\careers');
+        return view('page.careers');
     }
 
     /**

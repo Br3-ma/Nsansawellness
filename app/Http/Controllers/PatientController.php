@@ -23,12 +23,12 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return view('page\patients\home');
+        return view('page.patients.home');
     }
 
     public function patient_files()
     {
-        return view('page\common\patient_files');
+        return view('page.common.patient_files');
     }
 
     /**

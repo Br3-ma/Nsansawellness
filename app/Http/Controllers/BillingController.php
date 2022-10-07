@@ -13,7 +13,7 @@ class BillingController extends Controller
      */
     public function index()
     {
-        return view('page\patients\billing');
+        return view('page.patients.billing');
     }
 
     /**

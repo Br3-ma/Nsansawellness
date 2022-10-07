@@ -13,7 +13,7 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        return view('page\common\notifications');
+        return view('page.common.notifications');
     }
 
     /**

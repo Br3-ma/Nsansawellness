@@ -23,11 +23,11 @@ class CounsellorController extends Controller
      */
     public function index()
     {
-        return view('page\counsellors\index');
+        return view('page.counsellors.index');
     }
     public function patient_files()
     {
-        return view('page\common\patient_files');
+        return view('page.common.patient_files');
     }
 
     /**

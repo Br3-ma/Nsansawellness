@@ -14,7 +14,7 @@ class ContactPage extends Controller
     public function index()
     {
         $title = 'Contact Us';
-        return view('page\contact', compact('title'));
+        return view('page.contact', compact('title'));
     }
 
     /**
