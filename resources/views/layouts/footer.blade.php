@@ -11,7 +11,7 @@
 
     </div>
 </div>
-@include('layouts\foot')
+@include('layouts.foot')
 </div><!-- #page -->
 <link rel='stylesheet' id='elementor-post-10-css' href='uploads/sites/304/elementor/css/post-10177c.css?ver=1657011659' type='text/css' media='all' />
 <link rel='stylesheet' id='magnific-popup-css' href='plugins/jeg-elementor-kit/assets/js/magnific-popup/magnific-popupf488.css?ver=1.1.0' type='text/css' media='all' />
