@@ -254,7 +254,10 @@
     </div>
 </div>
 @include('layouts.footer')
+<script src="js/animatedModal.js"></script>
+
 <script>
+    $("#start-career-survey").animatedModal();
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
     

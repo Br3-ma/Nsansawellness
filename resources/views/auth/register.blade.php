@@ -23,20 +23,20 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
-    <body class="bg-white">
+    <body class="bg-white" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAyCv2ZVbPJi8ggRoCrAhuAq_zel55ppL3MA&usqp=CAU'); background-size:cover;">
         <div class="container sm:px-10">
             <div class="block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Register Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
                     <a href="/" class="-intro-x flex items-center pt-5">
-                        <img width="70" height="70" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                        <img width="70" height="70" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full rounded-full" alt="" loading="lazy" />
                         <span class="text-info text-lg ml-3"> Nsansa Wellness </span> 
                     </a>
                     <div class="my-auto">
-                        <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="dist/images/illustration.svg">
+                        {{-- <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="dist/images/illustration.svg">
                         <div class="-intro-x text-success font-medium text-4xl leading-tight mt-10">
                             Please create your account
-                        </div>
+                        </div> --}}
                         {{-- <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">therapist account so we can start processing your application.</div> --}}
                     </div>
                 </div>
@@ -44,8 +44,8 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- BEGIN: Register Form -->
                 <form method="POST" action="{{ route('register') }}" >
                     @csrf
-                    <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
-                        <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
+                    <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-4 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
+                        <h2 class="intro-x font-bold text-warning text-2xl xl:text-3xl text-center xl:text-left">
                             Create your account
                         </h2>
                         <div class="intro-x mt-2 text-slate-400 dark:text-slate-400 xl:hidden text-center">Thank you for your interest! Please create your <span class="text-success">{{ $role ?? 'therapist' }}</span> account so we can start processing your application.</div>
@@ -91,7 +91,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <button type="submit" class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">
                                 Register
                             </button>
-                            <a href="{{ route('login') }}" class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Sign in</a>
+                            <a href="{{ route('login') }}" class="btn btn-outline-secondary py-3 px-1 w-full xl:w-32 mt-3 xl:mt-0 align-top">Sign In</a>
                         </div>
                     </div>
                 </form>
