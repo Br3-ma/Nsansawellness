@@ -454,10 +454,11 @@
 	<link rel="alternate" type="application/json+oembed" href="wp-json/oembed/1.0/embed66fc.json?url=https%3A%2F%2Ftemplatekit.jegtheme.com%2Fcognitive%2F" />
 	<link rel="alternate" type="text/xml+oembed" href="wp-json/oembed/1.0/embed7737?url=https%3A%2F%2Ftemplatekit.jegtheme.com%2Fcognitive%2F&amp;format=xml" />
 	<style id="jeg_dynamic_css" type="text/css" data-type="jeg_custom-css"></style>
-
+	
 	{{-- Custom Fed  --}}
 	@vite(['resources/css/relaxed.css', 'resources/sass/relaxed.scss'])
-	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
+
+	{{-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css"> --}}
 	<style>
 					/* The Modal (background) */
 			.modal {
@@ -498,314 +499,313 @@
 				text-decoration: none;
 				cursor: pointer;
 			}
-#circle {
-  -webkit-transform-origin: center;
-  transform-origin: center;
-  -webkit-animation: rotate 3s infinite linear;
-  animation: rotate 3s infinite linear;
-  transform-box: fill-box;
-}
 
-@-webkit-keyframes rotate {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+	#circle {
+	-webkit-transform-origin: center;
+	transform-origin: center;
+	-webkit-animation: rotate 3s infinite linear;
+	animation: rotate 3s infinite linear;
+	transform-box: fill-box;
+	}
 
-@keyframes rotate {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
+	@-webkit-keyframes rotate {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+	}
 
-.form {
-  width: 780px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  border-radius: 10px;
-  display: flex;
-  background: #fff;
-}
+	@keyframes rotate {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+	}
 
-.form__left {
-  -ms-flex-preferred-size: 40%;
-  flex-basis: 40%;
-  text-align: center;
-}
+	.form {
+	width: 780px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	border-radius: 10px;
+	display: flex;
+	background: #fff;
+	}
 
-.form__right {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  padding: 10px;
-  font-family: "Lexend Deca";
-  color: #064b8d;
-}
+	.form__left {
+	-ms-flex-preferred-size: 40%;
+	flex-basis: 40%;
+	text-align: center;
+	}
 
-.form__right span {
-  display: block;
-}
+	.form__right {
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	padding: 10px;
+	font-family: "Lexend Deca";
+	color: #064b8d;
+	}
 
-.form__right__steps {
-  color: #064b8d75;
-  margin-bottom: 12px;
-}
+	.form__right span {
+	display: block;
+	}
 
-.form__right__title {
-  margin-bottom: 10px;
-}
+	.form__right__steps {
+	color: #064b8d75;
+	margin-bottom: 12px;
+	}
 
-.form__right__info {
-  font-size: 17px;
-  margin-bottom: 20px;
-}
+	.form__right__title {
+	margin-bottom: 10px;
+	}
 
-.form__right__check {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
+	.form__right__info {
+	font-size: 17px;
+	margin-bottom: 20px;
+	}
 
-.form__right__check input[type="radio"] {
-  display: none;
-}
+	.form__right__check {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	}
 
-.form__right__check--creditCard {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background: #fcfdfc;
-  margin-right: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 4px;
-  border: 1px solid #dfe5ec;
-  position: relative;
-}
+	.form__right__check input[type="radio"] {
+	display: none;
+	}
 
-.form__right__check--creditCard::after {
-  content: "";
-  border: 3px solid #dfe5ec;
-  height: 20px;
-  width: 20px;
-  display: block;
-  border-radius: 50%;
-}
+	.form__right__check--creditCard {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	background: #fcfdfc;
+	margin-right: 30px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: space-evenly;
+	-ms-flex-pack: space-evenly;
+	justify-content: space-evenly;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	border-radius: 4px;
+	border: 1px solid #dfe5ec;
+	position: relative;
+	}
 
-.form__right__check--creditCard__icon {
-  width: 46px;
-}
+	.form__right__check--creditCard::after {
+	content: "";
+	border: 3px solid #dfe5ec;
+	height: 20px;
+	width: 20px;
+	display: block;
+	border-radius: 50%;
+	}
 
-.form__right__check--creditCard,
-.form__right__check--payPal {
-  padding: 10px 0 10px 0;
-  cursor: pointer;
-}
+	.form__right__check--creditCard__icon {
+	width: 46px;
+	}
 
-.form__right__check--payPal {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background: #fcfdfc;
-  border: 1px solid #dfe5ec;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 4px;
-  position: relative;
-}
+	.form__right__check--creditCard,
+	.form__right__check--payPal {
+	padding: 10px 0 10px 0;
+	cursor: pointer;
+	}
 
-.form__right__check--payPal::after {
-  content: "";
-  border: 3px solid #dfe5ec;
-  height: 20px;
-  width: 20px;
-  display: block;
-  border-radius: 50%;
-}
+	.form__right__check--payPal {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	background: #fcfdfc;
+	border: 1px solid #dfe5ec;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: space-evenly;
+	-ms-flex-pack: space-evenly;
+	justify-content: space-evenly;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	border-radius: 4px;
+	position: relative;
+	}
 
-.form__right__check--payPal__icon {
-  width: 136px;
-}
+	.form__right__check--payPal::after {
+	content: "";
+	border: 3px solid #dfe5ec;
+	height: 20px;
+	width: 20px;
+	display: block;
+	border-radius: 50%;
+	}
 
-.form__right__form-control {
-  margin-top: 10px;
-}
+	.form__right__check--payPal__icon {
+	width: 136px;
+	}
 
-.form__right__form-control--name {
-  display: block;
-  margin-bottom: 5px;
-}
+	.form__right__form-control {
+	margin-top: 10px;
+	}
 
-.form__right__form-control--cardNumber {
-  height: 45px;
-  width: 100%;
-  background: #fffffc;
-  border: none;
-  font-size: 18px;
-  padding: 0 10px 0 10px;
-  border: 1px solid #dfe5ec;
-  border-radius: 2px;
-  color: #949393;
-}
+	.form__right__form-control--name {
+	display: block;
+	margin-bottom: 5px;
+	}
 
-.form__right__form-control--cardNumber:focus {
-  outline: none;
-  border-color: blue;
-}
+	.form__right__form-control--cardNumber {
+	height: 45px;
+	width: 100%;
+	background: #fffffc;
+	border: none;
+	font-size: 18px;
+	padding: 0 10px 0 10px;
+	border: 1px solid #dfe5ec;
+	border-radius: 2px;
+	color: #949393;
+	}
 
-.form__right__form-control--button {
-  width: 60%;
-  margin-top: 10px;
-  padding: 15px 10px;
-  border: none;
-  background: #064b8d;
-  color: #fff;
-  border-radius: 2px;
-  outline: none;
-  cursor: pointer;
-}
+	.form__right__form-control--cardNumber:focus {
+	outline: none;
+	border-color: blue;
+	}
 
-.form__right__form-control--button:hover {
-  background: #0c3a65;
-}
+	.form__right__form-control--button {
+	width: 60%;
+	margin-top: 10px;
+	padding: 15px 10px;
+	border: none;
+	background: #064b8d;
+	color: #fff;
+	border-radius: 2px;
+	outline: none;
+	cursor: pointer;
+	}
 
-#option1:checked ~ .form__right__check--creditCard {
-  border-color: blue;
-}
+	.form__right__form-control--button:hover {
+	background: #0c3a65;
+	}
 
-#option1:checked ~ .form__right__check--creditCard::after {
-  border-color: green;
-  outline: 2px solid green;
-  outline-offset: -10px;
-  outline-style: dotted;
-}
+	#option1:checked ~ .form__right__check--creditCard {
+	border-color: blue;
+	}
 
-#option2:checked ~ .form__right__check--payPal {
-  border-color: blue;
-}
+	#option1:checked ~ .form__right__check--creditCard::after {
+	border-color: green;
+	outline: 2px solid green;
+	outline-offset: -10px;
+	outline-style: dotted;
+	}
 
-#option2:checked ~ .form__right__check--payPal::after {
-  border-color: green;
-  outline: 2px solid green;
-  outline-offset: -10px;
-  outline-style: dotted;
-}
+	#option2:checked ~ .form__right__check--payPal {
+	border-color: blue;
+	}
 
-.form__right__expireDate {
-  -ms-flex-preferred-size: 60%;
-  flex-basis: 60%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
+	#option2:checked ~ .form__right__check--payPal::after {
+	border-color: green;
+	outline: 2px solid green;
+	outline-offset: -10px;
+	outline-style: dotted;
+	}
 
-.form__right__expireDate--month {
-  height: 45px;
-  background: #fffffc;
-  border: none;
-  font-size: 18px;
-  padding: 0 10px 0 10px;
-  border: 1px solid #dfe5ec;
-  border-radius: 2px;
-  color: #949393;
-  width: 48%;
-}
+	.form__right__expireDate {
+	-ms-flex-preferred-size: 60%;
+	flex-basis: 60%;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	}
 
-.form__right__expireDate--month:focus {
-  outline: none;
-  border-color: blue;
-}
+	.form__right__expireDate--month {
+	height: 45px;
+	background: #fffffc;
+	border: none;
+	font-size: 18px;
+	padding: 0 10px 0 10px;
+	border: 1px solid #dfe5ec;
+	border-radius: 2px;
+	color: #949393;
+	width: 48%;
+	}
 
-.form__right__expireDate--year {
-  width: 48%;
-  height: 45px;
-  background: #fffffc;
-  border: none;
-  font-size: 18px;
-  padding: 0 10px 0 10px;
-  border: 1px solid #dfe5ec;
-  border-radius: 2px;
-  color: #949393;
-}
+	.form__right__expireDate--month:focus {
+	outline: none;
+	border-color: blue;
+	}
 
-.form__right__expireDate--year:focus {
-  outline: none;
-  border-color: blue;
-}
+	.form__right__expireDate--year {
+	width: 48%;
+	height: 45px;
+	background: #fffffc;
+	border: none;
+	font-size: 18px;
+	padding: 0 10px 0 10px;
+	border: 1px solid #dfe5ec;
+	border-radius: 2px;
+	color: #949393;
+	}
 
-.form__right__expireDate__left {
-  margin-left: 5px;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
+	.form__right__expireDate--year:focus {
+	outline: none;
+	border-color: blue;
+	}
 
-.form__right__expireDate__left--cvc {
-  height: 45px;
-  width: 100%;
-  background: #fffffc;
-  border: none;
-  font-size: 18px;
-  padding: 0 10px 0 10px;
-  border: 1px solid #dfe5ec;
-  border-radius: 2px;
-  color: #949393;
-}
+	.form__right__expireDate__left {
+	margin-left: 5px;
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	}
 
-.form__right__expireDate__left--cvc:focus {
-  outline: none;
-  border-color: blue;
-}
+	.form__right__expireDate__left--cvc {
+	height: 45px;
+	width: 100%;
+	background: #fffffc;
+	border: none;
+	font-size: 18px;
+	padding: 0 10px 0 10px;
+	border: 1px solid #dfe5ec;
+	border-radius: 2px;
+	color: #949393;
+	}
 
-.expireDateForm {
-  -ms-flex-preferred-size: 60%;
-  flex-basis: 60%;
-}
-/*# sourceMappingURL=main.css.map */
-.logotype{background:#000;color:#fff;width:75px;height:75px;  line-height: 75px; text-align: center; font-size:11px;}
-.column-title{background:#eee;text-transform:uppercase;padding:15px 5px 15px 15px;font-size:11px}
-.column-detail{border-top:1px solid #eee;border-bottom:1px solid #eee;}
-.column-header{background:#eee;text-transform:uppercase;padding:15px;font-size:11px;border-right:1px solid #eee;}
-/* .row{padding:7px 14px;border-left:1px solid #eee;border-right:1px solid #eee;border-bottom:1px solid #eee;} */
-.alert{background: #ffd9e8;padding:20px;margin:20px 0;line-height:22px;color:#333}
-.socialmedia{background:#eee;padding:20px; display:inline-block}
+	.form__right__expireDate__left--cvc:focus {
+	outline: none;
+	border-color: blue;
+	}
+
+	.expireDateForm {
+	-ms-flex-preferred-size: 60%;
+	flex-basis: 60%;
+	}
+	/*# sourceMappingURL=main.css.map */
+	.logotype{background:#000;color:#fff;width:75px;height:75px;  line-height: 75px; text-align: center; font-size:11px;}
+	.column-title{background:#eee;text-transform:uppercase;padding:15px 5px 15px 15px;font-size:11px}
+	.column-detail{border-top:1px solid #eee;border-bottom:1px solid #eee;}
+	.column-header{background:#eee;text-transform:uppercase;padding:15px;font-size:11px;border-right:1px solid #eee;}
+	/* .row{padding:7px 14px;border-left:1px solid #eee;border-right:1px solid #eee;border-bottom:1px solid #eee;} */
+	.alert{background: #ffd9e8;padding:20px;margin:20px 0;line-height:22px;color:#333}
+	.socialmedia{background:#eee;padding:20px; display:inline-block}
 	</style>
-	
 	{{-- Custom Files --}}
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
-	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script
 </head>
 <body class="home page-template page-template-elementor_header_footer page page-id-6 jkit-color-scheme elementor-default elementor-template-full-width elementor-kit-3 elementor-page elementor-page-6">
 	
