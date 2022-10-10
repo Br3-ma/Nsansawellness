@@ -23,7 +23,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
-    <body class="bg-white" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAyCv2ZVbPJi8ggRoCrAhuAq_zel55ppL3MA&usqp=CAU'); background-size:cover;">
+    <body class="bg-white" style="background-image: url('https://media.istockphoto.com/vectors/abstract-white-gray-color-background-with-round-liquid-shape-vector-vector-id1253186607?k=20&m=1253186607&s=612x612&w=0&h=nfvx5Ji1gxHc8rHZBOMYrP9Z5WazlzvyydFV8NiKPJQ='); background-size:cover; background-repeat:none;">
         <div class="container sm:px-10">
             <div class="block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Register Info -->
@@ -33,22 +33,31 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="text-info text-lg ml-3"> Nsansa Wellness </span> 
                     </a>
                     <div class="my-auto">
-                        {{-- <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="dist/images/illustration.svg">
-                        <div class="-intro-x text-success font-medium text-4xl leading-tight mt-10">
-                            Please create your account
-                        </div> --}}
-                        {{-- <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">therapist account so we can start processing your application.</div> --}}
+                        {{-- <img class="-intro-x w-1/2 -mt-16" src="dist/images/illustration.svg"> --}}
+                        <div class="-intro-x text-primary font-bold text-5xl leading-tight mt-5">
+                            Create your account
+                        </div>
+                        @if(request()->get('type') == 'counsellor')
+                        <small class="-intro-x text-lg text-info text-opacity-70 dark:text-slate-400">
+                            Private practice with no doors & no overhead.
+                        </small>
+                        @else
+                        <small class="-intro-x text-lg text-success text-opacity-70 dark:text-slate-400">
+                            Online therapy with a licensed therapist
+                        </small>
+                        @endif
                     </div>
                 </div>
                 <!-- END: Register Info -->
                 <!-- BEGIN: Register Form -->
                 <form method="POST" action="{{ route('register') }}" >
                     @csrf
-                    <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-4 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
-                        <h2 class="intro-x font-bold text-warning text-2xl xl:text-3xl text-center xl:text-left">
-                            Create your account
-                        </h2>
-                        <div class="intro-x mt-2 text-slate-400 dark:text-slate-400 xl:hidden text-center">Thank you for your interest! Please create your <span class="text-success">{{ $role ?? 'therapist' }}</span> account so we can start processing your application.</div>
+                    <div style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;" class="lg:mt-5 mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 px-5 sm:px-8 py-8 xl:p-4 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
+                         <h6 class="intro-x text-default text-xs xl:text-sm text-center xl:text-left">
+                            Fill up all the required fields
+                        </h6> 
+                        {{--
+                        <div class="intro-x mt-2 text-slate-400 dark:text-slate-400 xl:hidden text-center">Thank you for your interest! Please create your <span class="text-success">{{ $role ?? 'therapist' }}</span> account so we can start processing your application.</div> --}}
                         <div class="intro-x mt-8">
                             <input type="text" id="fname" name="fname" class="intro-x login__input form-control py-3 px-4 block" placeholder="First Name">
                             <br>
