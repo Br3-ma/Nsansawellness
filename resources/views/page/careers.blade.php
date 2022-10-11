@@ -1,5 +1,5 @@
 @include('layouts.head')
-		<div data-elementor-type="wp-page" data-elementor-id="6" class="elementor elementor-6">
+		<div data-elementor-type="wp-page" data-elementor-id="6" class="elementor elementor-6 cd-section">
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
 		        <div class="elementor-background-overlay"></div>        
                 <div style="padding-top:10%; background-color:black; height:auto; background-repeat: no-repeat; background-attachment: fixed; background-image: url('https://coda.newjobs.com/api/imagesproxy/ms/niche/images/articles/Liz/research.jpg'); background-size:cover;" class="elementor-element-populated">
@@ -19,7 +19,7 @@
                                     <div class="elementor-widget-container">
                                         <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
                                             
-                                            <a id="start-career-survey" href="#animatedModal" class="jkit-button-wrapper">
+                                            <a id="startCareerSurvey" href="#animatedModal" class="jkit-button-wrapper">
                                                 {{-- <a href="{{ route('register', ['role' => 'Clinical Social Worker', 'type' => 'counsellor']) }}" class="jkit-button-wrapper"> --}}
                                                 Clinical Social Worker
                                                 <br>
@@ -94,7 +94,21 @@
                                     </div>
                                 </div>
 						</div>
-			</section>
+            
+      <!-- section content here -->
+      <div class="cd-modal-action">
+          <a href="#0" class="btn" data-type="modal-trigger">Fire Modal Window</a>
+          <span class="cd-modal-bg"></span>
+      </div>
+
+      <div class="cd-modal">
+          <div class="cd-modal-content">
+            <!-- modal content here -->
+          </div>
+      </div>
+
+      <a href="#0" class="cd-modal-close">Close</a>
+    </section>
 </div>
 <!--DEMO01-->
 <div id="animatedModal">
@@ -254,10 +268,8 @@
     </div>
 </div>
 @include('layouts.footer')
-<script src="js/animatedModal.js"></script>
 
 <script>
-    $("#start-career-survey").animatedModal();
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
     

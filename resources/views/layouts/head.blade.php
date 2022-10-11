@@ -11,7 +11,7 @@
 	<link rel='dns-prefetch' href='http://s.w.org/' />
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Feed" href="feed/index.html" />
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Comments Feed" href="comments/feed/index.html" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 	<script type="text/javascript">
 		window._wpemojiSettings = {
 			"baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/",
@@ -454,11 +454,10 @@
 	<link rel="alternate" type="application/json+oembed" href="wp-json/oembed/1.0/embed66fc.json?url=https%3A%2F%2Ftemplatekit.jegtheme.com%2Fcognitive%2F" />
 	<link rel="alternate" type="text/xml+oembed" href="wp-json/oembed/1.0/embed7737?url=https%3A%2F%2Ftemplatekit.jegtheme.com%2Fcognitive%2F&amp;format=xml" />
 	<style id="jeg_dynamic_css" type="text/css" data-type="jeg_custom-css"></style>
-	
 	{{-- Custom Fed  --}}
 	@vite(['resources/css/relaxed.css', 'resources/sass/relaxed.scss'])
 
-	{{-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css"> --}}
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
 	<style>
 					/* The Modal (background) */
 			.modal {
@@ -805,7 +804,7 @@
 	.socialmedia{background:#eee;padding:20px; display:inline-block}
 	</style>
 	{{-- Custom Files --}}
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script
+	{{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script --}}
 </head>
 <body class="home page-template page-template-elementor_header_footer page page-id-6 jkit-color-scheme elementor-default elementor-template-full-width elementor-kit-3 elementor-page elementor-page-6">
 	

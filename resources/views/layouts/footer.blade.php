@@ -205,51 +205,63 @@
     /* ]]> */
 </script>
 <script type='text/javascript' src='plugins/jeg-elementor-kit/assets/js/elements/post-pagination04c6.js?ver=2.4.4-dev-1' id='jkit-element-pagination-js'></script>
-<script type='text/javascript' src='plugins/jeg-elementor-kit/assets/js/elements/mailchimp04c6.js?ver=2.4.4-dev-1' id='jkit-element-mailchimp-js'></script>
 
-{{-- <script>    
+{{-- <script src="https://code.jquery.com/jquery-1.11.4.min.js"></script> --}}
+{{-- <script src="js/velocity.min.js"></script> --}}
+<script src="js/main.js"></script>
+<script> 
 
-// Get the modal
-var modal = document.getElementById("myModal");
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-var btn2 = document.getElementById("myBtn2");
-var btn3 = document.getElementById("myBtn3");
-var btn4 = document.getElementById("myBtn4");
-var btn5 = document.getElementById("myBtn5");
+    // var btnRadius = $('.cd-modal-bg').width()/2,
+    // left = $('.cd-modal-bg').offset().left + btnRadius,
+    // top = $('.cd-modal-bg').offset().top + btnRadius - $(window).scrollTop(),
+    // scale = scaleValue(top, left, btnRadius, $(window).height(), $(window).width());
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    // function scaleValue( topValue, leftValue, radiusValue, windowW, windowH) {
+    // var maxDistHor = ( leftValue > windowW/2) ? leftValue : (windowW - leftValue),
+    //     maxDistVert = ( topValue > windowH/2) ? topValue : (windowH - topValue);
+    // return Math.ceil(Math.sqrt( Math.pow(maxDistHor, 2) + Math.pow(maxDistVert, 2) )/radiusValue);
+    // }
+// // Get the modal
+// var modal = document.getElementById("myModal");
+// // Get the button that opens the modal
+// var btn = document.getElementById("myBtn");
+// var btn2 = document.getElementById("myBtn2");
+// var btn3 = document.getElementById("myBtn3");
+// var btn4 = document.getElementById("myBtn4");
+// var btn5 = document.getElementById("myBtn5");
 
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-modal.style.display = "block";
-}
-btn2.onclick = function() {
-modal.style.display = "block";
-}
-btn3.onclick = function() {
-modal.style.display = "block";
-}
-btn4.onclick = function() {
-modal.style.display = "block";
-}
-btn5.onclick = function() {
-modal.style.display = "block";
-}
+// // Get the <span> element that closes the modal
+// var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-modal.style.display = "none";
-}
+// // When the user clicks on the button, open the modal
+// btn.onclick = function() {
+// modal.style.display = "block";
+// }
+// btn2.onclick = function() {
+// modal.style.display = "block";
+// }
+// btn3.onclick = function() {
+// modal.style.display = "block";
+// }
+// btn4.onclick = function() {
+// modal.style.display = "block";
+// }
+// btn5.onclick = function() {
+// modal.style.display = "block";
+// }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-if (event.target == modal) {
-modal.style.display = "none";
-}
-}
-</script> --}}
+// // When the user clicks on <span> (x), close the modal
+// span.onclick = function() {
+// modal.style.display = "none";
+// }
+
+// // When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+// if (event.target == modal) {
+// modal.style.display = "none";
+// }
+// }
+</script>
 </body>
 
 </html>
