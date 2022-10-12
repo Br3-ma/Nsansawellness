@@ -870,20 +870,21 @@
                                                             </div>
                                                         </div>
                                                         <div class="jkit-menu-container">
+                                                            {{-- @dd(Request::route()->uri) --}}
                                                             <ul id="menu-menu" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top">
-                                                                <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-14"><a href="{{ route('home') }}" aria-current="page">Home</a></li>
+                                                                <li id="menu-item-14" class="@if(Request::route()->uri == 'home') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-6 current_page_item menu-item-14"><a href="{{ route('welcome') }}" aria-current="page">Home</a></li>
                                                                 {{-- <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-6 menu-item-13"><a href="index.php" aria-current="page">Business</a></li> --}}
-                                                                <li id="menu-item-1431" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1431"><a href="{{ route('about') }}">About</a></li>
-                                                                <li id="menu-item-16" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16"><a href="{{  route('faq')}}">FAQ</a>
+                                                                <li id="menu-item-1431" class=" @if(Request::route()->uri == 'about') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-1431"><a href="{{ route('about') }}">About</a></li>
+                                                                <li id="menu-item-16" class="@if(Request::route()->uri == 'frequently-asked-question') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-16"><a href="{{  route('faq')}}">FAQ</a>
 
                                                                 </li>
-                                                                <li id="menu-item-17" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a>
+                                                                <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a>
 
                                                                 </li>
-                                                                <li id="menu-item-24" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24"><a href="{{ route('careers')}}">Therapist Jobs</a>
+                                                                <li id="menu-item-24" class="@if(Request::route()->uri == 'start-your-career') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-24"><a href="{{ route('careers')}}">Therapist Jobs</a>
 
                                                                 </li>
-                                                                <li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1440"><a href="{{  route('contact')}}">Contact Us</a></li>
+                                                                <li id="menu-item-1440" class="@if(Request::route()->uri == 'contact') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-1440"><a href="{{  route('contact')}}">Contact Us</a></li>
                                                             </ul>
                                                         </div>
                                                         <div class="jkit-nav-identity-panel">
@@ -915,7 +916,7 @@
                                             <div class="elementor-element elementor-element-fb358db elementor-widget__width-auto elementor-widget elementor-widget-jkit_search" data-id="fb358db" data-element_type="widget" data-widget_type="jkit_search.default">
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-search jeg_module_6_1_632ca69743d73">
-                                                        <a href="{{ route('login') }}" id="myBtn" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 0px 0px;margin: 0.1rem;" class="btn btn-outline-warning "><i class="fa fa-user"></i> LOGIN</a>
+                                                        <a href="#" id="myBtn" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 0px 0px;margin: 0.1rem;" class="btn btn-outline-warning "><i class="fa fa-user"></i> LOGIN</a>
                                                         {{-- <a href="{{ route('login') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 0px 0px;margin: 0.1rem;" class="btn btn-outline-warning "><i class="fa fa-user"></i> LOGIN</a> --}}
                                                     </div>
                                                 </div>
@@ -923,8 +924,8 @@
                                             <div class="elementor-element elementor-element-f01c80f elementor-widget__width-auto e-transform elementor-widget elementor-widget-jkit_button" data-id="f01c80f" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_2_632ca6974641a">
-                                                        {{-- <a href="#" id="myBtn2" class="jkit-button-wrapper">Get Started</a> --}}
-                                                        <a href="{{ route('start') }}" class="jkit-button-wrapper">Get Started</a>
+                                                        <a href="#" id="myBtn2" class="jkit-button-wrapper">Get Started</a>
+                                                        {{-- <a href="{{ route('start') }}" class="jkit-button-wrapper">Get Started</a> --}}
                                                     </div>
                                                 </div>
                                             </div>
