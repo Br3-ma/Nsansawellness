@@ -37,12 +37,12 @@
             <div class="intro-y pr-1">
                 <div class="box p-2">
                     <ul class="nav nav-pills" role="tablist">
-                        <li id="chats-tab" class="nav-item flex-1" role="presentation">
+                        {{-- <li id="chats-tab" class="nav-item flex-1" role="presentation">
                             <button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="#chats" type="button" role="tab" aria-controls="chats" aria-selected="true" > Therapy Sessions </button>
-                        </li>
+                        </li> --}}
                         @if(Auth::User()->type == 'counsellor')
                         <li id="friends-tab" class="nav-item flex-1" role="presentation">
-                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > Patients </button>
+                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > My Patients </button>
                         </li>
                         @endif
                         <li id="profile-tab" class="nav-item flex-1" role="presentation">

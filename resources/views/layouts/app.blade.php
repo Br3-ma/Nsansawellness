@@ -3,14 +3,16 @@
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
-        <link href="dist/images/logo.svg" rel="shortcut icon">
+        <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Enigma admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
         <title> Nsansa Wellness - Dashboard</title>
         <!-- BEGIN: CSS Assets-->
-        <link rel="stylesheet" href="dist/css/app.css" />
+        {{-- <link rel="stylesheet" href="dist/css/app.css" /> --}}
+        <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
+        
         <!-- END: CSS Assets-->
         <style>
 .modal {
@@ -999,7 +1001,8 @@
                             <div class="side-menu__title"> Notifications </div>
                         </a>
                     </li>
-                    @if(AUth::User()->role == 'admin')
+                    
+                    @if(Auth::user()->role == 'admin')
                     <li>
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="trello"></i> </div>
@@ -1039,18 +1042,27 @@
                             </div>
                         </a>
                         <ul class="">
+                            {{-- @can('view', Auth::user(), App\User::class) --}}
                             <li>
-                                <a href="{{  route('users') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                <a href="{{  route('users.index') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="user-check"></i> </div>
                                     <div class="side-menu__title"> Registered Users </div>
                                 </a>
                             </li>
+                            
                             <li>
-                                <a href="side-menu-light-users-layout-3.html" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                <a href="{{ route('roles.index') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="user-plus"></i> </div>
                                     <div class="side-menu__title"> User Roles </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{ route('permissions.index') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="user-x"></i> </div>
+                                    <div class="side-menu__title"> Permissions </div>
+                                </a>
+                            </li>
+                            {{-- @endcan --}}
                         </ul>
                     </li>
 
@@ -1133,7 +1145,7 @@
     <!-- BEGIN: JS Assets-->
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
-    <script src="dist/js/app.js"></script>
+    <script src="{{ asset('dist/js/app.js') }}"></script>
     <!-- END: JS Assets-->
 
     <script>

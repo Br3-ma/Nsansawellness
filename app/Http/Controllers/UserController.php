@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -13,7 +18,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('page\user\index');
+        $userRole = Role::pluck('name')->toArray();
+        $permissions = Permission::get();
+        $roles = Role::orderBy('id','DESC')->paginate(5);
+        $users = User::latest()->paginate(10);
+        return view('page.user.index', compact('users','permissions','roles','userRole'));
     }
 
     /**
@@ -23,7 +32,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('page.user.create');
     }
 
     /**
@@ -32,9 +42,26 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(User $user, Request $request) 
     {
-        //
+        try {
+        //For demo purposes only. When creating user or inviting a user
+        // you should create a generated random password and email it to the user
+        $user->create(array_merge($request->all(), [
+            'password' => '1234breath',
+            'gender' => 'Male',
+            'active' => 1
+        ]));
+        
+        // $user->syncRoles($request->get('role'));
+        // $user->assignRole($request->get('role'));
+        // $user->assignRole('Counselor');
+        return redirect()->route('users.index')
+            ->withSuccess(__('User created successfully.'));
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+
     }
 
     /**
@@ -43,9 +70,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user) 
     {
-        //
+        return view('page.user.user-information', ['user' => $user]);
+    }
+
+    public function display(User $user) 
+    {
+        return view('page.user.user-information', ['user' => $user]);
     }
 
     /**
@@ -54,9 +86,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user) 
     {
-        //
+        
+        return View::make('page.user.user-edit', [
+            'user' => $user,
+            'userRole' => $user->roles->pluck('name')->toArray(),
+            'roles' => Role::latest()->get()
+        ]);
     }
 
     /**
@@ -66,9 +103,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user, UpdateUserRequest $request) 
     {
-        //
+        $user->update($request->validated());
+
+        $user->syncRoles($request->get('role'));
+
+        return redirect()->route('users.index')
+            ->withSuccess(__('User updated successfully.'));
     }
 
     /**
@@ -77,8 +119,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user) 
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users.index')
+            ->withSuccess(__('User deleted successfully.'));
     }
 }
