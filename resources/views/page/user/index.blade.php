@@ -7,7 +7,8 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <button class="btn btn-primary shadow-md mr-2">Add New User</button>
+
+            <a  href="javascript:;" data-tw-toggle="modal" data-tw-target="#create-user-modal" class="btn btn-primary shadow-md mr-2">Add New User</a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -15,16 +16,24 @@
                 <div class="dropdown-menu w-40">
                     <ul class="dropdown-content">
                         <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> Add User Role </a>
+                            <a  href="javascript:;" data-tw-toggle="modal" data-tw-target="#create-role-modal" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> Add User Role </a>
                         </li>
                         <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> Add Group </a>
+                            <a  href="javascript:;" data-tw-toggle="modal" data-tw-target="#create-permission-modal" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> Add Permissions </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="" class="dropdown-item"> <i data-lucide="message-circle" class="w-4 h-4 mr-2"></i> Send Message </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
+            </div>
+            <div class="flex w-full sm:w-auto">
+                <select class="form-select box ml-2">
+                    <option>All</option>
+                    @foreach($roles as $role)
+                    <option>{{  $role->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
@@ -35,6 +44,8 @@
             </div>
         </div>
         <!-- BEGIN: Users Layout -->
+        @forelse($users as $user)
+        {{-- @dd($user->roles) --}}
         <div class="intro-y col-span-12 md:col-span-6">
             <div class="box">
                 <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
@@ -42,8 +53,12 @@
                         <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-5.jpg">
                     </div>
                     <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Angelina Jolie</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Therapist</div>
+                        <a href="" class="font-medium">{{ $user->fname.' '.$user->lname }}</a> 
+                        <div class="text-slate-500 text-xs mt-0.5">
+                            @foreach($user->roles as $role)
+                                <span class="">{{ $role->name }}</span>
+                            @endforeach
+                        </div>
                     </div>
                     <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
                         <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
@@ -58,293 +73,29 @@
                             <div>20%</div>
                         </div>
                         <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar w-1/3 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
+                    {{-- <div class="w-20 h-10"> --}}
+                    <a href="{{ route('users.edit', $user->id) }}" class="p-2"><i data-lucide="edit"></i></a>
+                    {{-- </div> --}}
+                    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm  mr-2']) !!}
+                    {!! Form::close() !!}
                     <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
+                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-secondary py-1 px-2">Profile</a>
+                    
                 </div>
             </div>
         </div>
+        @empty
         <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-5.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Robert De Niro</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Enreprenuer</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Twitter"> <i class="w-3 h-3 fill-current" data-lucide="twitter"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Linked In"> <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
+            <div class="box text-center">
+                <p>No User Found</p>
             </div>
         </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Johnny Depp</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Account</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Twitter"> <i class="w-3 h-3 fill-current" data-lucide="twitter"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Linked In"> <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-14.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Russell Crowe</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Family & Marriage Counselor</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Twitter"> <i class="w-3 h-3 fill-current" data-lucide="twitter"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Linked In"> <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-11.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Sylvester Stallone</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Account</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Twitter"> <i class="w-3 h-3 fill-current" data-lucide="twitter"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Linked In"> <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-6.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Robert De Niro</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Family & Marriage Counselor</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Twitter"> <i class="w-3 h-3 fill-current" data-lucide="twitter"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Linked In"> <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-15.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Tom Cruise</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Therapist</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Twitter"> <i class="w-3 h-3 fill-current" data-lucide="twitter"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Linked In"> <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-1.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Robert De Niro</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Account</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Twitter"> <i class="w-3 h-3 fill-current" data-lucide="twitter"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Linked In"> <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-15.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Arnold Schwarzenegger</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Family & Marriage Counselor</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Twitter"> <i class="w-3 h-3 fill-current" data-lucide="twitter"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Linked In"> <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6">
-            <div class="box">
-                <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
-                        <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                    </div>
-                    <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">Brad Pitt</a> 
-                        <div class="text-slate-500 text-xs mt-0.5">Family & Marriage Counselor</div>
-                    </div>
-                    <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Facebook"> <i class="w-3 h-3 fill-current" data-lucide="facebook"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Twitter"> <i class="w-3 h-3 fill-current" data-lucide="twitter"></i> </a>
-                        <a href="" class="w-8 h-8 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="Linked In"> <i class="w-3 h-3 fill-current" data-lucide="linkedin"></i> </a>
-                    </div>
-                </div>
-                <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
-                    <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
-                        <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">Progress</div>
-                            <div>20%</div>
-                        </div>
-                        <div class="progress h-1 mt-2">
-                            <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
+        @endforelse
+        
         <!-- END: Users Layout -->
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
@@ -379,5 +130,19 @@
         <!-- END: Pagination -->
     </div>
 </div>
+<!-- BEGIN: Delete Confirmation Modal -->
+@include('page.modals.delete-confirmation')
+<!-- END: Delete Confirmation Modal -->
 
+<!-- BEGIN: Delete Confirmation Modal -->
+@include('page.modals.create-user-permission')
+<!-- END: Delete Confirmation Modal -->
+
+<!-- BEGIN: Delete Confirmation Modal -->
+@include('page.modals.create-user-role')
+<!-- END: Delete Confirmation Modal -->
+
+<!-- BEGIN: Delete Confirmation Modal -->
+@include('page.modals.create-user')
+<!-- END: Delete Confirmation Modal -->
 @endsection

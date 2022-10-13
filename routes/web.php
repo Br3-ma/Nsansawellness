@@ -15,8 +15,10 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewsPage;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoCallController;
+use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,23 +44,27 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// Route::group(['middleware' => ['auth', 'permission']], function() {
+    // ====================Dashboard
+    Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
+    Route::get('/counselling-center', [PatientController::class, 'index'])->name('patient');
+    Route::get('/patient-files', [PatientController::class, 'patient_files'])->name('patient-files');
+    Route::get('/schedule-appointments', [AppointmentController::class, 'index'])->name('appointment');
+    Route::get('/activies', [HomeworkController::class, 'index'])->name('activities');
+    Route::get('/actions', [HomeworkController::class, 'actions'])->name('actions');
+    Route::get('/billing-history', [BillingController::class, 'index'])->name('billing');
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notification');
+    Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/live-video-call', [VideoCallController::class, 'index'])->name('video-call');
 
-// Dashboard
-Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
-Route::get('/counselling-center', [PatientController::class, 'index'])->name('patient');
-Route::get('/patient-files', [PatientController::class, 'patient_files'])->name('patient-files');
-Route::get('/schedule-appointments', [AppointmentController::class, 'index'])->name('appointment');
-Route::get('/activies', [HomeworkController::class, 'index'])->name('activities');
-Route::get('/actions', [HomeworkController::class, 'actions'])->name('actions');
-Route::get('/billing-history', [BillingController::class, 'index'])->name('billing');
-Route::get('/notifications', [NotificationController::class, 'index'])->name('notification');
-Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/users', [UserController::class, 'index'])->name('users');
-Route::get('/live-video-call', [VideoCallController::class, 'index'])->name('video-call');
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionsController::class);
+    Route::resource('users', UserController::class);
+
+// });
 
 
-
-// Website
+// ================== Website
 Route::get('/about', [AboutPage::class, 'index'])->name('about');
 Route::get('/contact', [ContactPage::class, 'index'])->name('contact');
 Route::get('/frequently-asked-question', [FaqPage::class, 'index'])->name('faq');
