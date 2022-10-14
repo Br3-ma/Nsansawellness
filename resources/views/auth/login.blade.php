@@ -28,7 +28,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="container block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Login Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
-                    <a href="{{ route('home') }}" class="-intro-x flex items-center pt-5">
+                    <a href="{{ route('welcome') }}" class="-intro-x flex items-center pt-5">
                         <img width="70" height="70" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full rounded-full" alt="" loading="lazy" />
                         <span class="text-white font-bold text-lg ml-3"> Nsansa Wellness </span> 
                     </a>

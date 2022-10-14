@@ -32,7 +32,7 @@ class RegisterController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectToCounsellor = RouteServiceProvider::COUNSELLOR;
     protected $redirectToPatient = RouteServiceProvider::PATIENT;
-    // protected $redirectToPayments = RouteServiceProvider::PAY;
+    protected $redirectToPayments = RouteServiceProvider::PAY;
 
     /**
      * Create a new controller instance.
@@ -77,15 +77,18 @@ class RegisterController extends Controller
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'email' => $data['email'],
+            'username' => $data['email'],
             'gender' => $data['gender'],
             'role' => $data['role'],
             'type' => $data['type'],
+            'password' => bcrypt($data['password'])
             // 'liecense_number' => $data['role'],
             // 'country' => $data['country'],
             // 'mobile_no' => $data['mobile_no'],
             // 'state' => $data['state'],
             // 'active' => 0,
-            'password' => Hash::make($data['password']),
+            // 'password' => Hash::make($data['password']),
+            // 'password' => Hash::make($data['password']),
         ]);
     }
 }

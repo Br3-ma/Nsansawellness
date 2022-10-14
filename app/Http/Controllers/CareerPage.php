@@ -15,6 +15,15 @@ class CareerPage extends Controller
     {
         return view('page.careers');
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function careerSurveyQuestionaire(Request $request)
+    {
+        return view('page.career-survey');
+    }
 
     /**
      * Show the form for creating a new resource.
