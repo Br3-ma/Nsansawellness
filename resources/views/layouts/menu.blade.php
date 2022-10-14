@@ -925,7 +925,7 @@
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_2_632ca6974641a">
                                                         <a href="#" id="myBtn2" class="jkit-button-wrapper">Get Started</a>
-                                                        {{-- <a href="{{ route('start') }}" class="jkit-button-wrapper">Get Started</a> --}}
+                                                        <a href="{{ route('start') }}" class="jkit-button-wrapper">Get Started</a>
                                                     </div>
                                                 </div>
                                             </div>
