@@ -455,8 +455,8 @@
 	<link rel="alternate" type="text/xml+oembed" href="wp-json/oembed/1.0/embed7737?url=https%3A%2F%2Ftemplatekit.jegtheme.com%2Fcognitive%2F&amp;format=xml" />
 	<style id="jeg_dynamic_css" type="text/css" data-type="jeg_custom-css"></style>
 	{{-- Custom Fed  --}}
-	@vite(['resources/css/relaxed.css', 'resources/sass/relaxed.scss'])
-
+	{{-- @vite(['resources/css/relaxed.css', 'resources/sass/relaxed.scss']) --}}
+	<link rel="stylesheet" href="{{ asset('public/dist/relaxed.css') }}">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
 	<style>
 					/* The Modal (background) */
@@ -803,7 +803,8 @@
 	.alert{background: #ffd9e8;padding:20px;margin:20px 0;line-height:22px;color:#333}
 	.socialmedia{background:#eee;padding:20px; display:inline-block}
 	</style>
-	{{-- Custom Files --}}
+	
+	v{{-- Custom Files --}}
 	{{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script --}}
 </head>
 <body class="home page-template page-template-elementor_header_footer page page-id-6 jkit-color-scheme elementor-default elementor-template-full-width elementor-kit-3 elementor-page elementor-page-6">
