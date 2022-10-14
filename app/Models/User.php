@@ -29,7 +29,7 @@ class User extends Authenticatable
         'state',
         'email',
         'gender',
-        'active',
+        // 'active',
         'password',
         
     ];
