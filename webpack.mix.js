@@ -18,6 +18,7 @@ mix.js("src/js/app.js", "dist/js")
     .js("src/js/ckeditor-balloon-block.js", "dist/js")
     .js("src/js/ckeditor-document.js", "dist/js")
     .css("dist/css/_app.css", "dist/css/app.css")
+    .sass('resources/sass/relaxed.scss', 'dist/relaxed.css')
     .options({
         processCssUrls: false,
     })
