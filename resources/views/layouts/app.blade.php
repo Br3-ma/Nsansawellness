@@ -937,8 +937,6 @@
         <!-- END: Top Bar -->
 
 
-
-        
         <div class="flex overflow-hidden">
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
