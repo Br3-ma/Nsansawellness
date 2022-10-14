@@ -23,12 +23,12 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
-    <body class="bg-white" style="background-image: url('https://media.istockphoto.com/vectors/abstract-white-gray-color-background-with-round-liquid-shape-vector-vector-id1253186607?k=20&m=1253186607&s=612x612&w=0&h=nfvx5Ji1gxHc8rHZBOMYrP9Z5WazlzvyydFV8NiKPJQ='); background-size:cover; background-repeat:none;">
+    <body class="bg-white">
         <div class="container sm:px-10">
             <div class="block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Register Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
-                    <a href="/" class="-intro-x flex items-center pt-5">
+                    <a href="{{ route('welcome') }}" class="-intro-x flex items-center pt-5">
                         <img width="70" height="70" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full rounded-full" alt="" loading="lazy" />
                         <span class="text-info text-lg ml-3"> Nsansa Wellness </span> 
                     </a>
@@ -37,13 +37,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         <div class="-intro-x text-primary font-bold text-5xl leading-tight mt-5">
                             Create your account
                         </div>
-                        @if(request()->get('type') == 'counsellor')
+                        @if(request()->get('role') != 'patient')
                         <small class="-intro-x text-lg text-info text-opacity-70 dark:text-slate-400">
                             Private practice with no doors & no overhead.
                         </small>
                         @else
                         <small class="-intro-x text-lg text-success text-opacity-70 dark:text-slate-400">
-                            Online therapy with a licensed therapist
+                            Join online therapy with a licensed therapist
                         </small>
                         @endif
                     </div>
@@ -54,7 +54,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     @csrf
                     <div style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;" class="lg:mt-5 mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 px-5 sm:px-8 py-8 xl:p-4 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
                          <h6 class="intro-x text-default text-xs xl:text-sm text-center xl:text-left">
-                            Fill up all the required fields
+                            Fill up all the Application Form
                         </h6> 
                         {{--
                         <div class="intro-x mt-2 text-slate-400 dark:text-slate-400 xl:hidden text-center">Thank you for your interest! Please create your <span class="text-success">{{ $role ?? 'therapist' }}</span> account so we can start processing your application.</div> --}}
@@ -64,7 +64,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <input type="text" id="lname" name="lname" class="intro-x login__input form-control py-3 px-4 block" placeholder="Last Name">
                             <input type="hidden" id="type" name="type" value="{{ request()->get('type') }}">
                             <input type="hidden" id="role" name="role" value="{{ request()->get('role') }}">
-                            @if (request()->get('type') == 'counsellor')
+                            @if (request()->get('role') != 'patient')
                             <input type="text" id="liecense" name="liecense" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Liecense">
                             @endif
                             <input type="email" id="email" name="email" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Email Address">

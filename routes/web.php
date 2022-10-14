@@ -69,6 +69,7 @@ Route::get('/about', [AboutPage::class, 'index'])->name('about');
 Route::get('/contact', [ContactPage::class, 'index'])->name('contact');
 Route::get('/frequently-asked-question', [FaqPage::class, 'index'])->name('faq');
 Route::get('/start-your-career', [CareerPage::class, 'index'])->name('careers');
+Route::get('/quick-questionaire', [CareerPage::class, 'careerSurveyQuestionaire'])->name('career-survey');
 Route::get('/reviews', [ReviewsPage::class, 'index'])->name('reviews');
 Route::get('/get-started', [GetStartedPage::class, 'index'])->name('start');
 Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
