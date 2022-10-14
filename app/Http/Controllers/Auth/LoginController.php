@@ -35,13 +35,10 @@ class LoginController extends Controller
         if ( $user->type == 'counsellor' ) {
             return redirect()->route('counsellor');
         }
-        
         if ( $user->type == 'patient' ) {
             return redirect()->route('patient');
         }
-
         return redirect()->route('home');
-        // return redirect()->route('dashboard');
     }
 
     /**

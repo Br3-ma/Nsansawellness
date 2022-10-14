@@ -62,7 +62,11 @@ License: You must have a valid license purchased only from themeforest(the above
                             <input type="text" id="fname" name="fname" class="intro-x login__input form-control py-3 px-4 block" placeholder="First Name">
                             <br>
                             <input type="text" id="lname" name="lname" class="intro-x login__input form-control py-3 px-4 block" placeholder="Last Name">
-                            <input type="hidden" id="type" name="type" value="{{ request()->get('type') }}">
+                            @if(request()->get('role') != 'patient')
+                            <input type="hidden" id="type" name="type" value="counsellor">
+                            @else
+                            <input type="hidden" id="type" name="type" value="patient">
+                            @endif
                             <input type="hidden" id="role" name="role" value="{{ request()->get('role') }}">
                             @if (request()->get('role') != 'patient')
                             <input type="text" id="liecense" name="liecense" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Liecense">
