@@ -413,7 +413,8 @@
     <link rel='stylesheet' id='elementor-global-css' href='uploads/sites/304/elementor/css/global4515.css?ver=1657010625' type='text/css' media='all' />
     <link rel='stylesheet' id='elementor-post-1173-css' href='uploads/sites/304/elementor/css/post-117336eb.css?ver=1657014351' type='text/css' media='all' />
     <link rel='stylesheet' id='font-awesome-5-all-css' href='plugins/elementor/assets/lib/font-awesome/css/all.min3ab2.css?ver=3.6.5' type='text/css' media='all' />
-    <link rel='stylesheet' id='font-awesome-4-shim-css' href='plugins/elementor/assets/lib/font-awesome/css/v4-shims.min3ab2.css?ver=3.6.5' type='text/css' media='all' />
+    
+	<link rel='stylesheet' id='font-awesome-4-shim-css' href='plugins/elementor/assets/lib/font-awesome/css/v4-shims.min3ab2.css?ver=3.6.5' type='text/css' media='all' />
     <link rel='stylesheet' id='google-fonts-1-css' href='https://fonts.googleapis.com/css?family=Questrial%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&amp;display=auto&amp;ver=5.9.4'
         type='text/css' media='all' />
     <link rel='stylesheet' id='elementor-icons-jkiticon-css' href='plugins/jeg-elementor-kit/assets/fonts/jkiticon/jkiticon04c6.css?ver=2.4.4-dev-1' type='text/css' media='all' />
@@ -454,9 +455,8 @@
 	<link rel="alternate" type="application/json+oembed" href="wp-json/oembed/1.0/embed66fc.json?url=https%3A%2F%2Ftemplatekit.jegtheme.com%2Fcognitive%2F" />
 	<link rel="alternate" type="text/xml+oembed" href="wp-json/oembed/1.0/embed7737?url=https%3A%2F%2Ftemplatekit.jegtheme.com%2Fcognitive%2F&amp;format=xml" />
 	<style id="jeg_dynamic_css" type="text/css" data-type="jeg_custom-css"></style>
-	{{-- Custom Fed  --}}
-	{{-- @vite(['resources/css/relaxed.css', 'resources/sass/relaxed.scss']) --}}
-	<link rel="stylesheet" href="{{ asset('dist/relaxed.css') }}">
+
+	<link rel="stylesheet" href="{{ asset('public/dist/relaxed.css') }}">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css">
 	<style>
 					/* The Modal (background) */
