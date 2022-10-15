@@ -941,7 +941,7 @@
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
                 <ul>
-                    @if(Auth::user()->type == 'counsellor' || Auth::user()->role == 'admin')
+                    @if(Auth::user()->type != 'patient')
                     <li>
                         <a href="{{ route('home') }}" class="side-menu side-menu--active">
                             <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
@@ -955,7 +955,7 @@
                     <li>
                         <a href="{{ route('patient') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
-                            <div class="side-menu__title"> Counselling Sessions </div>
+                            <div class="side-menu__title"> Counseling Sessions </div>
                         </a>
                     </li>
                     <li>

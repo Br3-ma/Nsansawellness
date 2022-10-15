@@ -2,14 +2,24 @@
 <div data-elementor-type="wp-page" data-elementor-id="6" class="elementor elementor-6 cd-section">
   <section class="elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
   <div class="elementor-background-overlay"></div>        
-    <div style="padding-top:10%; background-color:black; height:auto; background-repeat: no-repeat; background-attachment: fixed; background-image: url('https://coda.newjobs.com/api/imagesproxy/ms/niche/images/articles/Liz/research.jpg'); background-size:cover;" class="elementor-element-populated">
+    {{-- <div style="padding-top:10%; background-color:black; height:auto; background-repeat: no-repeat; background-attachment: fixed; background-image: url('https://coda.newjobs.com/api/imagesproxy/ms/niche/images/articles/Liz/research.jpg'); background-size:cover;" class="elementor-element-populated"> --}}
+    <div style="padding-top:10%; padding-bottom:5%; background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(https://coda.newjobs.com/api/imagesproxy/ms/niche/images/articles/Liz/research.jpg) no-repeat fixed center;  
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;" class="elementor-element-populated">
 
       <div class="elementor-element elementor-element-5408d36 animated-slow elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="5408d36" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="jkit_heading.default">
           <div class="elementor-widget-container">
               <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
                   <div class="heading-section-title" style="text-align:center;">
-                      <h4 class="heading-description">Join <span class="style-gradient">27,000+</span> therapists who are earning more with <span class="style-gradient">Nsansa!</span></h4>
-                      <h6>Select your license type to get started</h6>
+                      <h4 class="heading-description text-white">Join <span class="style-gradient">27,000+</span> therapists who are earning more with <span class="style-gradient">Nsansa!</span></h4>
+                      <h6 class="text-white">Select your license type to get started</h6>
                       {{-- <h1 class="heading-title">An Emproved <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1> --}}
                   </div>
               </div>
