@@ -19,7 +19,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoCallController;
 use App\Http\Controllers\PermissionsController;
-use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\QuestionaireController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +60,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionsController::class);
     Route::resource('users', UserController::class);
+
+    Route::resource('questionaires', QuestionaireController::class);
 
 // });
 

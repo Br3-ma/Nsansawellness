@@ -2,33 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Questionaire;
 use Illuminate\Http\Request;
 
-class CounsellorController extends Controller
+class QuestionaireController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Display a listing of the resource.
      *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('page.home');
-    }
-
-    public function patient_files()
-    {
-        return view('page.common.patient_files');
+        return view('page.questionaires.index');
     }
 
     /**
@@ -38,7 +24,7 @@ class CounsellorController extends Controller
      */
     public function create()
     {
-        //
+        return view('page.questionaires.create');
     }
 
     /**
@@ -55,10 +41,10 @@ class CounsellorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Questionaire  $questionaire
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Questionaire $questionaire)
     {
         //
     }
@@ -66,10 +52,10 @@ class CounsellorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Questionaire  $questionaire
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Questionaire $questionaire)
     {
         //
     }
@@ -78,10 +64,10 @@ class CounsellorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Questionaire  $questionaire
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Questionaire $questionaire)
     {
         //
     }
@@ -89,10 +75,10 @@ class CounsellorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Questionaire  $questionaire
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Questionaire $questionaire)
     {
         //
     }

@@ -12,53 +12,54 @@
         <!-- BEGIN: CSS Assets-->
         {{-- <link rel="stylesheet" href="dist/css/app.css" /> --}}
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
-        
+        <link rel="stylesheet" href="{{ asset('dist/css/wizard.min.css') }}">
+
         <!-- END: CSS Assets-->
         <style>
-.modal {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-}
+        .modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);
+            transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+        }
 
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem 1.5rem;
-    width: 24rem;
-    border-radius: 0.5rem;
-}
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 1rem 1.5rem;
+            width: 24rem;
+            border-radius: 0.5rem;
+        }
 
-.close-button {
-    float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: lightgray;
-}
+        .close-button {
+            float: right;
+            width: 1.5rem;
+            line-height: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            background-color: lightgray;
+        }
 
-.close-button:hover {
-    background-color: darkgray;
-}
+        .close-button:hover {
+            background-color: darkgray;
+        }
 
-.show-modal {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-}
+        .show-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1.0);
+            transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+        }
         </style>
     </head>
     <!-- END: Head -->
@@ -753,7 +754,7 @@
                                     <div class="w-8 h-8 image-fit">
                                         <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-1.jpg">
                                     </div>
-                                    <div class="ml-3">{{ Auth::User()->name }}</div>
+                                    <div class="ml-3">{{ Auth::User()->fname }}</div>
                                     <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">alpacino@left4code.com</div>
                                 </a>
                                 <a href="" class="flex items-center mt-2">
@@ -936,14 +937,17 @@
         </div>
         <!-- END: Top Bar -->
 
-
+        
         <div class="flex overflow-hidden">
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
                 <ul>
                     @if(Auth::user()->type != 'patient')
                     <li>
-                        <a href="{{ route('home') }}" class="side-menu side-menu--active">
+                        <a href="{{ route('home') }}" class="side-menu 
+                        @if(Route::currentRouteName() == 'home')
+                            'side-menu--active'} 
+                        @endif">
                             <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                             <div class="side-menu__title">
                                 Dashboard 
@@ -1042,7 +1046,7 @@
                         <ul class="">
                             {{-- @can('view', Auth::user(), App\User::class) --}}
                             <li>
-                                <a href="{{  route('users.index') }}" class="side-menu">
+                                <a href="{{ route('users.index') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="user-check"></i> </div>
                                     <div class="side-menu__title"> Registered Users </div>
                                 </a>
@@ -1071,7 +1075,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:;" class="side-menu">
+                        <a href="javascript:;" class="side-menu 
+                        @if(Route::currentRouteName() == 'questionaires.index')
+                            side-menu--active
+                        @endif">
                             <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
                             <div class="side-menu__title">
                                 Survey Questionnaires 
@@ -1080,7 +1087,7 @@
                         </a>
                         <ul class="">
                             <li>
-                                <a href="side-menu-light-categories.html" class="side-menu">
+                                <a href="{{ route('questionaires.index') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> User Questions </div>
                                 </a>
@@ -1144,8 +1151,10 @@
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
     <script src="{{ asset('dist/js/app.js') }}"></script>
+    <script src="{{ asset('dist/jquery.js') }}"></script>
+    <script src="{{ asset('dist/jquery-wizard.min.js') }}"></script>
     <!-- END: JS Assets-->
-
+{{-- 
     <script>
         // $(document).ready(function(){
             const modal = document.querySelector(".modal");
@@ -1166,7 +1175,7 @@
             closeButton.addEventListener("click", toggleModal);
             window.addEventListener("click", windowOnClick);
         // });
-    </script>
+    </script> --}}
 
 </body>
 </html>
