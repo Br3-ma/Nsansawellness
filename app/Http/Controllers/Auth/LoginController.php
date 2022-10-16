@@ -32,9 +32,6 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        if ( $user->type == 'counsellor' ) {
-            return redirect()->route('counsellor');
-        }
         if ( $user->type == 'patient' ) {
             return redirect()->route('patient');
         }
