@@ -23,7 +23,7 @@ class CounsellorController extends Controller
      */
     public function index()
     {
-        return view('page.home');
+        return view('home');
     }
 
     public function patient_files()
