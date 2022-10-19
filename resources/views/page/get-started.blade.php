@@ -10,175 +10,31 @@
                       therapist who is best suited to help you.</p>                
                   </div>  
 
-                    <div style="padding:2%; margin-left: auto; margin-right: auto; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; width:80%" class="card-body">
-                      <form onsubmit="gotToRegister()" id="getStartedForm">
-                        <!-- One "tab" for each step in the form: -->
-                          <div class="tab">
-                            <h4>What type of therapy are you looking for?</h4>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span  onclick="nextPrev(1)">Individual (For myself)</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span  onclick="nextPrev(1)">Couples (For me and my partner)</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span  onclick="nextPrev(1)">Teen (For my child)</span>
-                            </label>
+                  <div style="padding:2%; margin-left: auto; margin-right: auto; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; width:80%" class="card-body">
+                    <form id="getStartedForm">
+                      @csrf
+                        @if(!empty($questionaires->questions))
+                          @foreach ($questionaires->questions as $key => $q)
+                            <div class="tab">
+                              <h2>{{ $q->question }}</h2>
 
-                          </div>
+                              @forelse($q->answers as $ans)
+                              <label>
+                                <input type="radio" name="radio"/>
+                                <span  onclick="nextPrev(1, '{{ $q->id }}', '{{ $ans->answer }}','{{ $session }}')">{{ $ans->answer }}</span>
+                              </label>
+                              @empty
 
-
-
-                          <div class="tab">
-                            <h4>What is your Gender?</h4>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">Male</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">Female</span>
-                            </label>                       
-                          </div>  
-
-                        
-                          <div class="tab">
-                            <h4>Have you ever been in therapy before?</h4>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">Yes</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">No</span>
-                            </label>
-                          </div>
-
-                        
-                          <div class="tab">
-                            <h4>What is your relationship status?</h4>
-                            <label>
-                              <input type="radio" name="radio" checked/>
-                              <span onclick="nextPrev(1)">Single</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">In a relationship</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">Married</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">Divorced</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">Widowed</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">Other</span>
-                            </label>
-                          </div>
-
-                        
-                          <div class="tab">
-                            <h4>Do you consider yourself religious?</h4>
-                            <label>
-                              <input type="radio" name="radio" checked/>
-                              <span onclick="nextPrev(1)">Yes</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">No</span>
-                            </label>
-                          </div>
-
-                        
-                          <div class="tab">
-                            <h4>Would you like to be matched with a therapist who provides Christian-based therapy?</h4>
-                            <label>
-                              <input type="radio" name="radio" checked/>
-                              <span onclick="nextPrev(1)">Yes</span>
-                            </label>
-                            <label>
-                              <input type="radio" name="radio"/>
-                              <span onclick="nextPrev(1)">No</span>
-                            </label>
-                          </div>
-                        
-                          <div class="tab">
-                            <h4>What led you to consider therapy today?</h4>
-                            <label>
-                              <input type="checkbox" name="radio" checked/>
-                              <span onclick="nextPrev(1)">I've been feeling depressed</span>
-                            </label>
-                            <label>
-                              <input type="checkbox" name="radio"/>
-                              <span>I am feeling anxious or overwhelmed</span>
-                            </label>
-                            <label>
-                              <input type="checkbox" name="radio"/>
-                              <span onclick="nextPrev(1)">My mood is interfering with my job/school performance</span>
-                            </label>
-                            <label>
-                              <input type="checkbox" name="radio"/>
-                              <span>I can't find purpose and meaning in my life</span>
-                            </label>
-                            <label>
-                              <input type="checkbox" name="radio"/>
-                              <span  onclick="nextPrev(1)">I am grieving</span>
-                            </label>
-                            <label>
-                              <input type="checkbox" name="radio"/>
-                              <span onclick="nextPrev(1)">I am experiencing trauma</span>
-                            </label>
-                            <label>
-                              <input type="checkbox" name="radio"/>
-                              <span onclick="nextPrev(1)">Just exploring</span>
-                            </label>
-                            <label>
-                              <input type="checkbox" name="radio"/>
-                              <span onclick="nextPrev(1)">Other</span>
-                            </label>
-                          </div>
-
-                        {{-- <div style="overflow:auto;">
-                          <div style="float:right;">
-                            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                          </div>
-                        </div> --}}
-                        <!-- Circles which indicates the steps of the form: -->
-                        <div style="text-align:center;margin-top:40px;display:none">
-                          <span class="step"></span>
-                          <span class="step"></span>
-                          <span class="step"></span>
-                          <span class="step"></span>
-                          <span class="step"></span>
-                          <span class="step"></span>
-                          <span class="step"></span>
-                          <span class="step"></span>
+                              @endforelse
+                            </div>
+                          @endforeach
+                        @else
+                        <div>
+                          <img width="50%" src="https://i.pinimg.com/originals/44/8b/70/448b7040d44cfc0a620c03c63df26680.png">
                         </div>
-
-
-                      </form>
-                      <div class="card text-primary flex" style="margin-top:4%; margin-left: auto;
-                      margin-right: auto; background:#FEE6BD; color: #FF7C00; max-width: 100%;">
-                        <span style="color: #FF7C00; font-size:13px">
-                          <span class="fa fa-info-circle"></span>
-                          Let's walk the process of finding the best therapist for you! We'll
-                          start off with some basic questions
-                        </span>
-                      </div>
-                    </div>
-                
-
+                        @endif
+                    </form>
+                  </div>
         </section>
         <section style="padding: 5%">
 
@@ -215,32 +71,41 @@
       fixStepIndicator(n)
     }
     
-    function nextPrev(n) {
-      // This function will figure out which tab to display
-      var x = document.getElementsByClassName("tab");
-      // Exit the function if any field in the current tab is invalid:
-      if (n == 1 && !validateForm()) return false;
-      // Hide the current tab:
-      x[currentTab].style.display = "none";
-      // Increase or decrease the current tab by 1:
-      currentTab = currentTab + n;
-      // if you have reached the end of the form...
-      if (currentTab >= x.length) {
-        // ... the form gets submitted:
-        let url = "{{ route('register', ['role' => 'patient', 'type' => 'patient'])}}";
-        document.location.href=url;
-        // document.getElementById("getStartedForm").submit(function(e){
-        //     alert('here');
-        //     e.preventDefault();
-        //     let url = "{{ route('register', ['role' => 'patient', 'type' => 'patient'])}}";
-        //     document.location.href=url;
-        // });
+    function nextPrev(n, q, a, u) {
 
-        return false;
+feedback.push({
+  'answer': a,
+  'question_id': q,
+  'user_id': u
+});
+// This function will figure out which tab to display
+var x = document.getElementsByClassName("tab");
+// Exit the function if any field in the current tab is invalid:
+if (n == 1 && !validateForm()) return false;
+// Hide the current tab:
+x[currentTab].style.display = "none";
+// Increase or decrease the current tab by 1:
+currentTab = currentTab + n;
+// if you have reached the end of the form...
+if (currentTab >= x.length) {
+  $.ajax({
+        type:'POST',
+        url:"{{ route('results.store') }}",
+        cache: false,
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(feedback),
+        processData: false,
+      success:function(data){
+          let url = "{{ route('register', ['role' => 'patient', 'type' => 'patient', 'guest_id' => $session])}}";
+          document.location.href= url.replace(/&amp;/g, '&');
       }
-      // Otherwise, display the correct tab:
-      showTab(currentTab);
-    }
+  });
+  return false;
+}
+// Otherwise, display the correct tab:
+showTab(currentTab);
+}
     
     function validateForm() {
       // This function deals with validation of the form fields

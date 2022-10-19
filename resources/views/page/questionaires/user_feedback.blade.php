@@ -3,11 +3,11 @@
 
 <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        Survey Questionaires
+        User Survey Feedback
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('questionaires.create') }}" class="btn btn-primary shadow-md mr-2">Add New Questionaire</a>
+        <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
+            <button class="btn btn-primary shadow-md mr-2">Create a Questionaire</button>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -26,46 +26,61 @@
                     </ul>
                 </div>
             </div>
-            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
-            <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
+            <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
+            <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
                 <div class="w-56 relative text-slate-500">
                     <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i> 
                 </div>
+                <select class="w-56 xl:w-auto form-select box ml-2">
+                    <option>Status</option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
             </div>
         </div>
         <!-- BEGIN: Data List -->
-        <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+        <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">QUESTIONAIRE</th>
-                        <th class="whitespace-nowrap">AUDIENCE</th>
-                        <th class="text-center whitespace-nowrap">QUESTIONS</th>
+                        <th class="whitespace-nowrap">
+                            <input class="form-check-input" type="checkbox">
+                        </th>
+                        <th class="whitespace-nowrap">NAMES</th>
+                        <th class="text-center whitespace-nowrap">GROUP</th>
+                        <th class="text-center whitespace-nowrap">GENDER</th>
                         <th class="text-center whitespace-nowrap">STATUS</th>
+                        <th class="text-center whitespace-nowrap">TOTAL QUESTIONS</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($questionaires as $q)
+                    @forelse ($users as $user)
                     <tr class="intro-x">
-                        <td class="w-40">
-                            <div class="flex">
-                                {{ $q->name }}
+                        <td class="w-10">
+                            <input class="form-check-input" type="checkbox">
+                        </td>
+                        <td class="!py-3.5">
+                            <div class="flex items-center">
+                                <div class="w-9 h-9 image-fit zoom-in">
+                                    <img alt="Midone - HTML Admin Template" class="rounded-lg border-white shadow-md tooltip" src="dist/images/profile-13.jpg" title="Uploaded at 26 July 2022">
+                                </div>
+                                <div class="ml-4">
+                                    <a href="" class="font-medium whitespace-nowrap">{{ $user->fname.' '.$user->lname }}</a> 
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $user->email }}</div>
+                                </div>
                             </div>
                         </td>
-                        <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{ $q->group_assigned }}</a> 
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Group</div>
-                        </td>
-                        <td class="text-center">{{ $q->questions->count() }}</td>
+                        <td class="text-center"> <a class="flex items-center justify-center underline decoration-dotted" href="javascript:;">{{  $user->role }}</a> </td>
+                        <td class="text-center capitalize">--</td>
                         <td class="w-40">
-                            <input type="checkbox" data-id="{{ $q->id }}" name="status" class="js-switch" {{ $q->status_id == 1 ? 'checked' : '' }}>
-                            {{-- <div id="item{{ $q->id }}" onclick="changeQuestionaireStatus('{{ $q->id }}')" class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Activate </div> --}}
+                            <div class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Inactive </div>
                         </td>
+                        <td class="text-center">115 Items</td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="{{ route('questionaires.show', $q->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit Answers </a>
+                                <a class="flex items-center mr-3" href="{{ route('user-survey-response', $user->guest_id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Response </a>
                                 <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
@@ -73,6 +88,35 @@
                     @empty
                         
                     @endforelse
+                    {{-- <tr class="intro-x">
+                        <td class="w-10">
+                            <input class="form-check-input" type="checkbox">
+                        </td>
+                        <td class="!py-3.5">
+                            <div class="flex items-center">
+                                <div class="w-9 h-9 image-fit zoom-in">
+                                    <img alt="Midone - HTML Admin Template" class="rounded-lg border-white shadow-md tooltip" src="dist/images/profile-11.jpg" title="Uploaded at 31 July 2021">
+                                </div>
+                                <div class="ml-4">
+                                    <a href="" class="font-medium whitespace-nowrap">Brad Pitt</a> 
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">bradpitt@left4code.com</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="text-center"> <a class="flex items-center justify-center underline decoration-dotted" href="javascript:;">Themeforest</a> </td>
+                        <td class="text-center capitalize">male</td>
+                        <td class="w-40">
+                            <div class="flex items-center justify-center text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Active </div>
+                        </td>
+                        <td class="text-center">43 Items</td>
+                        <td class="table-report__action w-56">
+                            <div class="flex justify-center items-center">
+                                <a class="flex items-center mr-3" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                                <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                            </div>
+                        </td>
+                    </tr> --}}
+                    
                 </tbody>
             </table>
         </div>
@@ -133,80 +177,4 @@
     </div>
     <!-- END: Delete Confirmation Modal -->
 </div>
-<style>
-    #toogle {
-    display: none;
-    }
-
-    .toogle-button {
-    font-weight: bold;
-    font-size: 10PX;
-    display: inline-block;
-    width: 75px;
-    height: 35px;
-    background-color: #E7E2CD;
-    border-radius: 30px;
-    position: relative;
-    cursor: pointer;
-    }
-
-    .toogle-button::after {
-    content: attr(data-label-off);
-    width: 40px;
-    height: 40px;
-    color: #E7E2CD;
-    background-color: #B4223C;
-    border: 2px solid #E7E2CD;
-    border-radius: 50%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, .25);
-    position: absolute;
-    top: -5px;
-    left: 0;
-    line-height: 0;
-    display: grid;
-    place-content: center;
-    transition: all .5s;
-    transform: 1s ease-in;
-    }
-
-    #toogle:checked + .toogle-button::after {
-    content: attr(data-label-on);
-    background-color: #2D4064;
-    transform: translateX(35px) rotate(360deg);
-    }
-</style>
 @endsection
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-// function changeQuestionaireStatus(qid){
-//     var route = '{{ route('questionaire.status', [':id']) }}';
-//     route = route.replace(':id', qid);
-//     $.ajax({
-//             type:'GET',
-//             url:route,
-//             cache: false,
-//             processData: false,
-//         success:function(data){
-//             alert('activated');
-//         }
-//     });
-// }
-$(document).ready(function(){
-    $('.js-switch').change(function () {
-        let status = $(this).prop('checked') === true ? 1 : 0;
-        let questionaire_id = $(this).data('id');
-
-        console.log(questionaire_id);
-        $.ajax({
-            type: "GET",
-            dataType: "json",
-            cache: false,
-            url: '{{ route('questionaire.status') }}',
-            data: {'status': status, 'user_id': questionaire_id},
-            success: function (data) {
-                console.log(data.message);
-            }
-        });
-    });
-});
-</script>

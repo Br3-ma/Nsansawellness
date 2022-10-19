@@ -398,6 +398,11 @@
 @endsection
 
 <script>
+$('.details').hide();
+$('.details').hide();
+$('.details').hide();
+$('.details').hide();
+
 $("img").error(function () {
     $(this).unbind("error").attr("src", "https://firstsiteguide.com/wp-content/uploads/2020/11/what-is-gravatar-1-1-700x313-1-1.jpg");
 });
