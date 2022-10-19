@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('questionaires', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('group_assigned')->nullable();
-            $table->string('status_id')->nullable();
-            $table->timestamps();
+        Schema::table('answers', function (Blueprint $table) {
+            $table->unsignedInteger('user_id')->nullable();
         });
     }
 
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questionaires');
+        Schema::dropIfExists('alter_answers');
     }
 };

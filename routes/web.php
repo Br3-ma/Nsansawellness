@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutPage;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CareerPage;
 use App\Http\Controllers\ContactPage;
@@ -20,6 +21,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoCallController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\QuestionaireController;
+use App\Http\Controllers\ResultsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -62,7 +64,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('users', UserController::class);
 
     Route::resource('questionaires', QuestionaireController::class);
-
+    Route::get('users-feedback', [QuestionaireController::class, 'feed'])->name('questionaire-user-feedback');
+    Route::get('user-survey-response/{id?}', [QuestionaireController::class, 'user_feed'])->name('user-survey-response');
+    Route::get('change-questionaire-status', [QuestionaireController::class, 'updateStatus'])->name('questionaire.status');
+    Route::resource('answers', AnswerController::class);
+    Route::resource('results', ResultsController::class);
 // });
 
 

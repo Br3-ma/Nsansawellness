@@ -68,17 +68,11 @@ License: You must have a valid license purchased only from themeforest(the above
                             <input type="hidden" id="type" name="type" value="patient">
                             @endif
                             <input type="hidden" id="role" name="role" value="{{ request()->get('role') }}">
+                            <input type="hidden" name="guest_id" value="{{ request()->get('guest_id') }}">
                             @if (request()->get('role') != 'patient')
                             <input type="text" id="liecense" name="liecense" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Liecense">
                             @endif
                             <input type="email" id="email" name="email" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Email Address">
-                            
-                            <select name="gender" id="gender" type="text" class="intro-x login__input form-control py-3 px-4 block mt-4">
-                                <option>-- Gender --</options>
-                                <option value="male">Male</options>
-                                <option value="female">Female</options>
-                                <option value="other">Other</options>
-                            </select>
 
                             <input type="password" id="password" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password">
                             @error('password')

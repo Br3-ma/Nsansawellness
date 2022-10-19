@@ -2,10 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
+use App\Models\Questionaire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CareerPage extends Controller
-{
+{    
+    public  $questionaire;
+    public  $questions;
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct(Questionaire $q, Question $qn)
+    {
+        $this->questionaire = $q;
+        $this->questions = $qn;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +37,17 @@ class CareerPage extends Controller
      */
     public function careerSurveyQuestionaire(Request $request)
     {
-        return view('page.career-survey');
+        // Create a session
+        $key = Str::random(30);
+        session(['guest_id' => $key]);
+
+        $session = $request->session()->get('guest_id');
+        // dd($session);
+        // Get the Counselor Questionaire
+        $questionaires = $this->questionaire->with(['questions.answers'])
+        ->where('status_id', 1)->where('group_assigned', 'counselor')->first();
+
+        return view('page.career-survey', compact('questionaires', 'session'));
     }
 
     /**

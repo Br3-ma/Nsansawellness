@@ -14,7 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->string('question');
+            $table->string('type');
+            $table->unsignedInteger('questionaire_id')->nullable();
             $table->timestamps();
         });
     }

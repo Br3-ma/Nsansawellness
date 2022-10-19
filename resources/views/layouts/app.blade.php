@@ -9,11 +9,15 @@
         <meta name="keywords" content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
         <title> Nsansa Wellness - Dashboard</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- BEGIN: CSS Assets-->
         {{-- <link rel="stylesheet" href="dist/css/app.css" /> --}}
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
         <link rel="stylesheet" href="{{ asset('dist/css/wizard.min.css') }}">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
         <!-- END: CSS Assets-->
         <style>
         .modal {
@@ -711,7 +715,6 @@
                 <!-- BEGIN: Logo -->
                 <a href="" class="logo -intro-x hidden md:flex xl:w-[180px] block">
                     <img style="border-radius: 100%" src="uploads/sites/304/2022/06/logos.svg" class="logo__image w-6" alt="" loading="lazy" />
-
                     {{-- <img alt="Midone - HTML Admin Template" class="logo__image w-6" src="dist/images/logo.svg"> --}}
                     <span class="logo__text text-white text-lg ml-3"> Nsansa </span> 
                 </a>
@@ -754,7 +757,7 @@
                                     <div class="w-8 h-8 image-fit">
                                         <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-1.jpg">
                                     </div>
-                                    <div class="ml-3">{{ Auth::User()->fname }}</div>
+                                    <div class="ml-3">{{ Auth::User()->lname }}</div>
                                     <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">alpacino@left4code.com</div>
                                 </a>
                                 <a href="" class="flex items-center mt-2">
@@ -1093,9 +1096,9 @@
                                 </a>
                             </li>
                             <li>    
-                                <a href="side-menu-light-add-product.html" class="side-menu">
+                                <a href="{{ route('questionaire-user-feedback') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title">User Feedback </div>
+                                    <div class="side-menu__title">User Feedback</div>
                                 </a>
                             </li>
                             <li>
@@ -1153,29 +1156,13 @@
     <script src="{{ asset('dist/js/app.js') }}"></script>
     <script src="{{ asset('dist/jquery.js') }}"></script>
     <script src="{{ asset('dist/jquery-wizard.min.js') }}"></script>
-    <!-- END: JS Assets-->
-{{-- 
     <script>
-        // $(document).ready(function(){
-            const modal = document.querySelector(".modal");
-            const trigger = document.querySelector(".trigger");
-            const closeButton = document.querySelector(".close-button");
+        let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
-            function toggleModal() {
-                modal.classList.toggle("show-modal");
-            }
-
-            function windowOnClick(event) {
-                if (event.target === modal) {
-                    toggleModal();
-                }
-            }
-
-            trigger.addEventListener("click", toggleModal);
-            closeButton.addEventListener("click", toggleModal);
-            window.addEventListener("click", windowOnClick);
-        // });
-    </script> --}}
+        elems.forEach(function(html) {
+            let switchery = new Switchery(html,  { size: 'small' });
+        });
+    </script>
 
 </body>
 </html>

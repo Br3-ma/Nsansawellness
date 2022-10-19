@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Result;
 use Illuminate\Http\Request;
 
-class FaqPage extends Controller
+class ResultsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +14,7 @@ class FaqPage extends Controller
      */
     public function index()
     {
-        $title = 'FAQ';
-        return view('page.faq', compact('title'));
+        return view('page.questionaires.user_feedback');
     }
 
     /**
@@ -35,7 +35,16 @@ class FaqPage extends Controller
      */
     public function store(Request $request)
     {
-        //
+        foreach ($request->request as $value) {
+            Result::create([
+                'user_answer' => $value['answer'],
+                'question_id' => $value['question_id'],
+                'guest_id' => $value['user_id'],
+                'published' => 1
+            ]);
+        }
+        // redirect()->route('register', ['role' => request()->get('role'), 'type' => request()->get('type'), 'guest_id' => $value['user_id']]);
+        return response()->json(['message' => 'Survey Completed']);
     }
 
     /**

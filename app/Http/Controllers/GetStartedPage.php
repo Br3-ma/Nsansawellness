@@ -2,18 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
+use App\Models\Questionaire;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class GetStartedPage extends Controller
-{
+{    
+    public  $questionaire;
+    public  $questions;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function __construct(Questionaire $q, Question $qn)
     {
-        return view('page.get-started');
+        $this->questionaire = $q;
+        $this->questions = $qn;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        // Create a session
+        $key = Str::random(30);
+        session(['guest_id' => $key]);
+
+        $session = $request->session()->get('guest_id');
+        // Get the Counselor Questionaire
+        $questionaires = $this->questionaire->with(['questions.answers'])
+        ->where('status_id', 1)->where('group_assigned', 'patient')->first();
+        return view('page.get-started', compact('questionaires', 'session'));
     }
 
     /**
