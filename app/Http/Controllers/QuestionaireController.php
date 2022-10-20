@@ -51,11 +51,11 @@ class QuestionaireController extends Controller
         $q->save();
 
         if($request->status == 1){
-            $others = $this->questionaire->where('group_assigned', $q->group_assigned)->first();
+            $others = $this->questionaire->where('group_assigned', $q->group_assigned)
+            ->where('id', '!=' , $q->id )->get();
             $others->status_id = 0;
             $others->save();
         }
-
         return response()->json(['message' => 'User status updated successfully.']);
     }
     /**
