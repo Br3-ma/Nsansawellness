@@ -36,13 +36,11 @@
                     </form>
                   </div>
         </section>
-        <section style="padding: 5%">
-
-        </section>
     </div>
 </div>
 
 @include('layouts.footer')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     var feedback = [];
     var currentTab = 0; // Current tab is set to be the first tab (0)
@@ -124,9 +122,9 @@ showTab(currentTab);
         }
       }
       // If the valid status is true, mark the step as finished and valid:
-      if (valid) {
-        document.getElementsByClassName("step")[currentTab].className += " finish";
-      }
+      // if (valid) {
+      //   document.getElementsByClassName("step")[currentTab].className += " finish";
+      // }
       return valid; // return the valid status
     }
     
