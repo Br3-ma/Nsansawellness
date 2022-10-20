@@ -119,9 +119,9 @@
         }
       }
       // If the valid status is true, mark the step as finished and valid:
-      if (valid) {
-        document.getElementsByClassName("step")[currentTab].className += " finish";
-      }
+      // if (valid) {
+      //   document.getElementsByClassName("step")[currentTab].className += " finish";
+      // }
       return valid; // return the valid status
     }
     
