@@ -44,6 +44,7 @@
 
 @include('layouts.footer')
 <script>
+    var feedback = [];
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
     var patientAnswer2 = document.getElementById("patientAnswer2");
