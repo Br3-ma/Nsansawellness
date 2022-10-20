@@ -910,7 +910,7 @@
                                                                 <i class="fa fa-life-saver"></i>
                                                                 <small>Counseling Center</small>
                                                             </a>
-                                                        @elseif(Auth::User()->type == 'counsellor' || Auth::User()->role != 'admin')
+                                                        @elseif(Auth::User()->role != 'admin' && Auth::User()->type != 'patient')
                                                             <a href="{{ route('home') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 1px 0px;margin: 0.1rem;" class="btn btn-outline-none ">
                                                                 <i class="fa fa-heartbeat"></i>
                                                                 <small>Therapy Center</small>
