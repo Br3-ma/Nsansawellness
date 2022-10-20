@@ -3,8 +3,9 @@
 
 <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        Add Answers
+        {{ $question->question  }}
     </h2>
+    <small>{{ $question->type }}</small>
     <div class="intro-y col-span-4 sm:col-span-2 md: mt-5">
         <a href="javascript:void(0)" class="add_ans_button btn btn-secondary w-15 text-xs">Add Answer</a>
     </div>

@@ -64,10 +64,12 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('users', UserController::class);
 
     Route::resource('questionaires', QuestionaireController::class);
+    Route::delete('question/delete/{id}/{qid}', [QuestionaireController::class, 'questionDestroy'])->name('question.remove');
     Route::get('users-feedback', [QuestionaireController::class, 'feed'])->name('questionaire-user-feedback');
     Route::get('user-survey-response/{id?}', [QuestionaireController::class, 'user_feed'])->name('user-survey-response');
     Route::get('change-questionaire-status', [QuestionaireController::class, 'updateStatus'])->name('questionaire.status');
     Route::resource('answers', AnswerController::class);
+    Route::delete('answers/delete/{id}/{qid}', [AnswerController::class, 'customDestroy'])->name('answers.remove');
     Route::resource('results', ResultsController::class);
 // });
 

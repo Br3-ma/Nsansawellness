@@ -139,4 +139,13 @@ class QuestionaireController extends Controller
         return redirect()->route('questionaires.index')
             ->withSuccess(__('Questionaire removed successfully.'));
     }
+
+    
+    public function questionDestroy($question, $questionnaire)
+    {
+        $del = $this->questions->findOrFail($question);
+        $del->delete();
+        return redirect()->route('questionaires.show', $questionnaire)
+            ->withSuccess(__('Questionaire removed successfully.'));
+    }
 }

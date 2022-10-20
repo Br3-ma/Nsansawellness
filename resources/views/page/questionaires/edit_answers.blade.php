@@ -30,7 +30,9 @@
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a href="{{ route('questionaires.edit', $q->id) }}" class="flex items-center mr-3"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Add Answers </a>
-                                <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                                {!! Form::open(['method' => 'DELETE','route' => ['question.remove', $q->id, $q->questionaire_id],'style'=>'display:inline']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm  mr-2']) !!}
+                                {!! Form::close() !!}
                             </div>
                         </td>
                     </tr>
@@ -41,7 +43,13 @@
                                         {{ $ans->answer }}
                                     </div>
                                 </td>
+                                <td class="w-20">
+                                    {!! Form::open(['method' => 'DELETE','route' => ['answers.remove', $ans->id, $q->questionaire_id],'style'=>'display:inline']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                    {!! Form::close() !!}                                
+                                </td>
                             </tr>
+                            
                             @empty
                                 
                             @endforelse
