@@ -723,7 +723,16 @@
                 <nav aria-label="breadcrumb" class="-intro-x h-[45px] mr-auto">
                     <ol class="breadcrumb breadcrumb-light">
                         <li class="breadcrumb-item"><a href="#">Nsansa Wellness</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                        @if(Auth::User()->type == 'patient')
+                            Patient
+                        @elseif(Auth::User()->role != 'admin' && Auth::User()->type != 'patient')
+                            Counselor
+                        @else
+                            Administration
+                        @endif
+                            Dashboard
+                        </li>
                     </ol>
                 </nav>
                 <!-- END: Breadcrumb -->

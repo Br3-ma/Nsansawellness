@@ -46,10 +46,10 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Route::group(['middleware' => ['auth', 'permission']], function() {
+Route::group(['middleware' => ['auth']], function() {
     // ====================Dashboard
     Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
-    Route::get('/counselling-center', [PatientController::class, 'index'])->name('patient');
+    Route::get('/counseling-center', [PatientController::class, 'index'])->name('patient');
     Route::get('/patient-files', [PatientController::class, 'patient_files'])->name('patient-files');
     Route::get('/schedule-appointments', [AppointmentController::class, 'index'])->name('appointment');
     Route::get('/activies', [HomeworkController::class, 'index'])->name('activities');
@@ -71,7 +71,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('answers', AnswerController::class);
     Route::delete('answers/delete/{id}/{qid}', [AnswerController::class, 'customDestroy'])->name('answers.remove');
     Route::resource('results', ResultsController::class);
-// });
+});
 
 
 // ================== Website
