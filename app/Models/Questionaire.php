@@ -23,4 +23,13 @@ class Questionaire extends Model
     public function results(){
         return $this->hasMany(Result::class);
     }
+
+    public static function boot() {
+        parent::boot();
+        self::deleting(function($questionaire) { // before delete() method call this
+             $questionaire->questions()->each(function($question) {
+                $question->delete(); // <-- direct deletion
+             });
+        });
+    }
 }
