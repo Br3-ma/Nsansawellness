@@ -5,10 +5,22 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateAnswerRequest;
 use App\Models\Answer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\LaravelIgnition\Solutions\SolutionProviders\IncorrectValetDbCredentialsSolutionProvider;
 
 class AnswerController extends Controller
 {
+    
+    public  $answers;
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct(Answer $answers)
+    {
+        $this->answers = $answers;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -38,13 +50,14 @@ class AnswerController extends Controller
     public function store(Request $request)
     {
         // $request->validated();
-        foreach ($request->request as $value) {
+        foreach ($request->all()['answer'] as $value) {
             Answer::create([
-                'answer' => $value->answer,
-                'question_id' => $value->question_id
+                'answer' => $value,
+                'question_id' => $request->question_id,
+                'user_id' => Auth::user()->id
             ]);
         }
-        return redirect()->route('questionaires.index')
+        return redirect()->route('questionaires.show', $request->all()['question'])
             ->withSuccess(__('Questionaire created successfully.'));
     }
 
@@ -90,6 +103,13 @@ class AnswerController extends Controller
      */
     public function destroy(Answer $answer)
     {
-        //
+
+    }
+    public function customDestroy($answer, $question)
+    {
+        $del = $this->answers->findOrFail($answer);
+        $del->delete();
+        return redirect()->route('questionaires.show', $question)
+            ->withSuccess(__('Questionaire removed successfully.'));
     }
 }
