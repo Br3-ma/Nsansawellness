@@ -37,7 +37,6 @@ class AnswerController extends Controller
      */
     public function store(Request $request)
     {
-        dd('here');
         // $request->validated();
         foreach ($request->request as $value) {
             Answer::create([
