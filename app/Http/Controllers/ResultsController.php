@@ -35,7 +35,9 @@ class ResultsController extends Controller
      */
     public function store(Request $request)
     {
+        
         foreach ($request->request as $value) {
+            
             Result::create([
                 'user_answer' => $value['answer'],
                 'question_id' => $value['question_id'],

@@ -3,7 +3,14 @@
 <div class="content">
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            @if(Auth::user()->role = 'admin')Manage @elseif(Auth::user()->type = 'patient') My @else Patient  @endif Therapy Sessions
+            @if(Auth::user()->role == 'admin')
+                Manage 
+            @elseif(Auth::user()->type == 'patient')
+                 My 
+            @else
+                Patient  
+            @endif 
+            Therapy Sessions
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             {{-- <div>

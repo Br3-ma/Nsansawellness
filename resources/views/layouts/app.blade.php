@@ -14,6 +14,7 @@
         {{-- <link rel="stylesheet" href="dist/css/app.css" /> --}}
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
         <link rel="stylesheet" href="{{ asset('dist/css/wizard.min.css') }}">
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -726,10 +727,10 @@
                         <li class="breadcrumb-item active" aria-current="page">
                         @if(Auth::User()->type == 'patient')
                             Patient
-                        @elseif(Auth::User()->role != 'admin' && Auth::User()->type != 'patient')
-                            Counselor
-                        @else
+                        @elseif(Auth::User()->role == 'admin')
                             Administration
+                        @else
+                            Counselor
                         @endif
                             Dashboard
                         </li>
@@ -910,6 +911,7 @@
                         <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                             <li class="p-2">
                                 <div class="font-medium">{{ Auth::User()->fname.' '.Auth::User()->lname }}</div>
+                                
                                 <div class="text-xs text-white/60 mt-0.5 dark:text-slate-500">{{ Auth::User()->role }}</div>
                             </li>
                             <li>
@@ -1136,6 +1138,10 @@
                     @endif                                           
                 </ul>
             </nav>
+            <div class="mt-5">
+
+                
+            </div>
             <!-- END: Side Menu -->
         @yield('content')
     </div>
@@ -1172,6 +1178,6 @@
             let switchery = new Switchery(html,  { size: 'small' });
         });
     </script>
-
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 </html>
