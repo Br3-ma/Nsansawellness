@@ -727,10 +727,10 @@
                         <li class="breadcrumb-item active" aria-current="page">
                         @if(Auth::User()->type == 'patient')
                             Patient
-                        @elseif(Auth::User()->role != 'admin' && Auth::User()->type != 'patient')
-                            Counselor
-                        @else
+                        @elseif(Auth::User()->role == 'admin')
                             Administration
+                        @else
+                            Counselor
                         @endif
                             Dashboard
                         </li>
@@ -911,6 +911,7 @@
                         <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                             <li class="p-2">
                                 <div class="font-medium">{{ Auth::User()->fname.' '.Auth::User()->lname }}</div>
+                                
                                 <div class="text-xs text-white/60 mt-0.5 dark:text-slate-500">{{ Auth::User()->role }}</div>
                             </li>
                             <li>
@@ -1137,6 +1138,10 @@
                     @endif                                           
                 </ul>
             </nav>
+            <div class="mt-5">
+
+                
+            </div>
             <!-- END: Side Menu -->
         @yield('content')
     </div>

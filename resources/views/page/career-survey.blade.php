@@ -20,19 +20,22 @@
                               @endforelse
                             </div>
                           @endforeach
+                          <div style="overflow:auto;">
+                            <div style="float:right;">
+                              <button type="button" class="btn btn-outline-warning" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                              {{-- <button type="button" id="nextBtn" onclick="nextPrev(1, '{{ $q->id }}','{{ $session }}')">Next</button> --}}
+                            </div>
+                          </div>
                         @else
                         <div>
                           <img width="50%" src="https://i.pinimg.com/originals/44/8b/70/448b7040d44cfc0a620c03c63df26680.png">
                         </div>
                         @endif
                       </form>
-
                     </div>
-                
-
-        </section>
-        <section style="padding: 5%">
-
+                    <div class="flex loading items-center">
+                      <p>Processing ...</p>
+                    </div>
         </section>
     </div>
 </div>
@@ -40,12 +43,12 @@
 @include('layouts.footer')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
+    $('.loading').hide();
     var feedback = [];
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
     var patientAnswer2 = document.getElementById("patientAnswer2");
     patientAnswer2.onclick = function() {
-        nextPrev();
         alert('am here');
     }
     function showTab(n) {
@@ -68,12 +71,15 @@
     }
     
     function nextPrev(n, q, a, u) {
-
-      feedback.push({
-        'answer': a,
-        'question_id': q,
-        'user_id': u
-      });
+      if(n == 1){
+          feedback.push({
+            'answer': a,
+            'question_id': q,
+            'user_id': u
+          });
+      }else{
+         feedback.pop();
+      }
       // This function will figure out which tab to display
       var x = document.getElementsByClassName("tab");
       // Exit the function if any field in the current tab is invalid:
@@ -84,6 +90,9 @@
       currentTab = currentTab + n;
       // if you have reached the end of the form...
       if (currentTab >= x.length) {
+        $('#patient-wizard').hide();
+        $('.loading').show();
+
         $.ajax({
               type:'POST',
               url:"{{ route('results.store') }}",
