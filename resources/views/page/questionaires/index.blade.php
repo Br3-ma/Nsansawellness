@@ -2,12 +2,14 @@
 @section('content')
 
 <div class="content">
-    <h2 class="intro-y text-lg font-medium mt-10">
-        Survey Questionnaires
-    </h2>
+    <div class="flex items-center mt-8">
+        <h2 class="intro-y text-lg font-medium mr-auto">
+            Survey Questionnaires
+        </h2>
+    </div>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('questionaires.create') }}" class="btn btn-primary shadow-md mr-2">Add New Questionnaire</a>
+            <a href="{{ route('questionaires.create') }}" class="btn btn-primary shadow-md mr-2">Create New Questionnaire</a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -55,7 +57,7 @@
                             </div>
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{ $q->group_assigned }}</a> 
+                            <a href="" class="capitalize font-medium whitespace-nowrap">{{ $q->group_assigned }}</a> 
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Group</div>
                         </td>
                         <td class="text-center">{{ $q->questions->count() }}</td>
@@ -65,9 +67,9 @@
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="{{ route('questionaires.show', $q->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit Answers </a>
+                                <a class="flex items-center text-sm mr-3" href="{{ route('questionaires.show', $q->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit Answers </a>
                                 {!! Form::open(['method' => 'DELETE','route' => ['questionaires.destroy', $q->id],'style'=>'display:inline']) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm  mr-2']) !!}
+                                {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2']) !!}
                                 {!! Form::close() !!}
                                 {{-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a> --}}
                             </div>

@@ -2,9 +2,12 @@
 @section('content')
 
 <div class="content">
-    <h2 class="intro-y text-lg font-medium mt-10">
-        Survey Questions
-    </h2>
+    <div class="flex items-center mt-8">
+        <h2 class="intro-y text-lg font-medium mr-auto">
+            Survey Questions
+        </h2>
+        <a href="{{ route('questionaires.index') }}" class="intro-x btn shadow-md mr-2">Back to Questionnaires</a>
+    </div>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
@@ -20,8 +23,8 @@
                     @forelse ($questionaires->questions as $q)
                     <tr class="intro-x">
                         <td class="w-40">
-                            <div class="flex">
-                                {{ $q->question }}
+                            <div class="flex font-bold text-primary">
+                                {{ $loop->iteration }}.  {{ $q->question }}
                             </div>
                         </td>
                         <td class="w-40">
@@ -38,12 +41,12 @@
                     </tr>
                             @forelse ($q->answers as $ans)
                             <tr class="intro-x">
-                                <td class="w-40">
+                                <td class="w-20">
                                     <div class="flex">
                                         {{ $ans->answer }}
                                     </div>
                                 </td>
-                                <td class="w-20">
+                                <td class="w-4">
                                     {!! Form::open(['method' => 'DELETE','route' => ['answers.remove', $ans->id, $q->questionaire_id],'style'=>'display:inline']) !!}
                                     {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                                     {!! Form::close() !!}                                
