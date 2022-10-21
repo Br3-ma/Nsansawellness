@@ -1,3 +1,102 @@
+<style>
+ul{
+    text-decoration: none;
+    list-style: none;
+}
+li{
+    list-style: none;
+    text-decoration: none;
+}
+.menu-inner ul li{
+    font-size: 18px;
+    line-height: 4;
+    font-weight:bold;
+}
+.menu-inner ul li:hover{
+    color:#fff;
+}
+.menu-icon {
+    position: relative;
+    padding: 0.3rem;
+    display: inline-flex;
+    cursor: pointer;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    overflow: visible;
+    z-index: 1040;
+}
+.menu-icon-box {
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    position: relative;
+}
+.menu-icon-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+.menu-icon-inner,
+.menu-icon-inner::before,
+.menu-icon-inner::after {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: black;
+}
+.menu-icon-inner::before,
+.menu-icon-inner::after {
+    content: "";
+    display: block;
+}
+.menu-icon-inner::before {
+    top: -8px;
+}
+.menu-icon-inner::after {
+    bottom: -8px;
+}
+
+
+.menu-active .menu {
+    transform: translateX(0);
+}
+.menu {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #667eea;
+    color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1030;
+    transform: translateX(-100%);
+    transition: transform 300ms cubic-bezier(.2, 0, .2, 1);
+    /* From https://css.glass */
+    background: rgba(83, 92, 151, 0.63);
+    border-radius: 0px 16px 16px 0px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
+}
+.menu-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    text-align: right;
+}
+</style>
 <header id="masthead" itemscope="itemscope" itemtype="https://schema.org/WPHeader">
     <style>
         .elementor-10 .elementor-element.elementor-element-bce9428:not(.elementor-motion-effects-element-type-background),
@@ -859,7 +958,8 @@
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div class="elementor-element elementor-element-cc1d5f2 elementor-widget elementor-widget-jkit_nav_menu" data-id="cc1d5f2" data-element_type="widget" data-widget_type="jkit_nav_menu.default">
                                             <div class="elementor-widget-container">
-                                                <div class="jeg-elementor-kit jkit-nav-menu break-point-tablet submenu-click-title jeg_module_6__632ca69737dea" data-item-indicator="&lt;i aria-hidden=&quot;true&quot; class=&quot;jki jki-angle-down-solid&quot;&gt;&lt;/i&gt;"><button class="jkit-hamburger-menu"><i aria-hidden="true" class="fas fa-bars"></i></button>
+                                                <div class="jeg-elementor-kit jkit-nav-menu break-point-tablet submenu-click-title jeg_module_6__632ca69737dea" data-item-indicator="&lt;i aria-hidden=&quot;true&quot; class=&quot;jki jki-angle-down-solid&quot;&gt;&lt;/i&gt;">
+                                                    <button class="jkit-hamburger-menu menu-icon" type="button"><i aria-hidden="true" class="fas fa-bars"></i></button>
                                                     {{-- <a style="padding: 0.7rem;font-family: var( --e-global-typography-751ec74-font-family), Sans-serif;font-size: var( --e-global-typography-751ec74-font-size);font-weight: var( --e-global-typography-751ec74-font-weight);line-height: var( --e-global-typography-751ec74-line-height);letter-spacing: var( --e-global-typography-751ec74-letter-spacing);word-spacing: var( --e-global-typography-751ec74-word-spacing);color: var( --e-global-color-61201e6);background-color: transparent;background-image: linear-gradient(170deg, var( --e-global-color-primary) 0%, var( --e-global-color-76b8ccf) 100%);border-radius: 0px 0px 0px 0px; position: absolute;right: 36px;bottom: -33px;" id="login_btn" href="./login" class="jkit-button-wrapper">
                                                         <p>LOGIN</p>
                                                     </a> --}}
@@ -953,5 +1053,73 @@
                 </div>
             </div>
         </section>
+        <div class="menu">
+            
+            <div class="menu-inner">
+                <a href="#" class="menu-close-icon jkit-close">X</a>
+                <ul id="menu-menu" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top">
+                    <li id="menu-item-14" class="@if(Request::route()->uri == 'home') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-6 current_page_item menu-item-14"><a href="{{ route('welcome') }}" aria-current="page">Home</a></li>
+                    {{-- <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-6 menu-item-13"><a href="index.php" aria-current="page">Business</a></li> --}}
+                    <li id="menu-item-1431" class=" @if(Request::route()->uri == 'about') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-1431"><a href="{{ route('about') }}">About</a></li>
+                    <li id="menu-item-16" class="@if(Request::route()->uri == 'frequently-asked-question') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-16"><a href="{{  route('faq')}}">FAQ</a>
+
+                    </li>
+                    <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a>
+
+                    </li>
+                    <li id="menu-item-24" class="@if(Request::route()->uri == 'start-your-career') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-24"><a href="{{ route('careers')}}">Therapist Jobs</a>
+
+                    </li>
+                    <li id="menu-item-1440" class="@if(Request::route()->uri == 'contact') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-1440"><a href="{{  route('contact')}}">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </header>
+
+<script>
+(function(){
+    
+    'use strict';
+    
+    
+    var menuIcon = document.querySelector('.menu-icon');
+    var menucloseIcon = document.querySelector('.menu-close-icon');
+    var menu = document.querySelector('.menu');
+    var body = document.body;
+    var bodyClass = 'menu-active';
+    var show = false;
+    var timeout = 300; // transition or animation duration
+    
+    // // Original
+    // menuIcon.addEventListener('click', function() {
+    //     show = !show;
+    //     if (show) return showMenu();
+    //     return closeMenu();
+    // }, false);      
+    menuIcon.addEventListener('click', function() {
+        return showMenu();
+    }, false);    
+
+    menucloseIcon.addEventListener('click', function() {
+        return closeMenu();
+    }, false);
+    
+    
+    function showMenu() {
+        menu.style.display = 'flex';
+
+        setTimeout(function() {
+            body.classList.add(bodyClass);
+        }, 0);
+    }
+    
+    function closeMenu() {
+        body.classList.remove(bodyClass);
+
+        setTimeout(function() {
+            menu.style.display = 'none';
+        }, timeout);
+    }
+}());
+</script>

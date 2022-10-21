@@ -14,6 +14,7 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewsPage;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
@@ -70,7 +71,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('change-questionaire-status', [QuestionaireController::class, 'updateStatus'])->name('questionaire.status');
     Route::resource('answers', AnswerController::class);
     Route::delete('answers/delete/{id}/{qid}', [AnswerController::class, 'customDestroy'])->name('answers.remove');
-    Route::resource('results', ResultsController::class);
+
+    Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
+    Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
 });
 
 
@@ -82,4 +85,5 @@ Route::get('/start-your-career', [CareerPage::class, 'index'])->name('careers');
 Route::get('/quick-questionaire', [CareerPage::class, 'careerSurveyQuestionaire'])->name('career-survey');
 Route::get('/reviews', [ReviewsPage::class, 'index'])->name('reviews');
 Route::get('/get-started', [GetStartedPage::class, 'index'])->name('start');
+Route::resource('results', ResultsController::class);
 Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
