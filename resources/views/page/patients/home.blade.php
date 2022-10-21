@@ -6,6 +6,14 @@
             @if(Auth::user()->role = 'admin')Manage @elseif(Auth::user()->type = 'patient') My @else Patient  @endif Therapy Sessions
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            {{-- <div>
+                <input type="text" name="meetingId" id="meetingId" class="focus:ring-indigo-500 focus:border-indigo-500 block rounded-none rounded-l-md  sm:text-sm border-gray-300" placeholder="Meeting ID">
+                <span class="text-xs uppercase font-bold text-gray-400 px-1">OR</span>
+                <form method="post" action="{{ route('createMeeting') }}">
+                    {{ csrf_field() }}
+                    <button type="submit" class="mt-1 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create New Meeting</button>
+                </form>
+            </div> --}}
             <a target="_blank" href="{{ route('video-call') }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a>
             {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
             <button class="btn btn-primary shadow-md mr-2">Phone Call</button>
