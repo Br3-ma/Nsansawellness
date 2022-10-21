@@ -3,7 +3,7 @@
 <div class="content">
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            Therapy Sessions
+            @if(Auth::user()->role = 'admin')Manage @elseif(Auth::user()->type = 'patient') My @else Patient  @endif Therapy Sessions
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <a target="_blank" href="{{ route('video-call') }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a>
