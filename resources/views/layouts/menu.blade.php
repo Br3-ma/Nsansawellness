@@ -8,11 +8,12 @@ li{
     text-decoration: none;
 }
 .menu-inner ul li{
-    font-size: 50%;
-    line-height: 2px;
+    font-size: 18px;
+    line-height: 4;
+    font-weight:bold;
 }
 .menu-inner ul li:hover{
-    color:#f7f7f7;
+    color:#fff;
 }
 .menu-icon {
     position: relative;
@@ -77,6 +78,12 @@ li{
     z-index: 1030;
     transform: translateX(-100%);
     transition: transform 300ms cubic-bezier(.2, 0, .2, 1);
+    /* From https://css.glass */
+    background: rgba(83, 92, 151, 0.63);
+    border-radius: 0px 16px 16px 0px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.7px);
+    -webkit-backdrop-filter: blur(7.7px);
 }
 .menu-inner {
     display: flex;
@@ -1047,7 +1054,9 @@ li{
             </div>
         </section>
         <div class="menu">
+            
             <div class="menu-inner">
+                <a href="#" class="menu-close-icon jkit-close">X</a>
                 <ul id="menu-menu" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top">
                     <li id="menu-item-14" class="@if(Request::route()->uri == 'home') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-6 current_page_item menu-item-14"><a href="{{ route('welcome') }}" aria-current="page">Home</a></li>
                     {{-- <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-6 menu-item-13"><a href="index.php" aria-current="page">Business</a></li> --}}
@@ -1075,16 +1084,24 @@ li{
     
     
     var menuIcon = document.querySelector('.menu-icon');
+    var menucloseIcon = document.querySelector('.menu-close-icon');
     var menu = document.querySelector('.menu');
     var body = document.body;
     var bodyClass = 'menu-active';
     var show = false;
     var timeout = 300; // transition or animation duration
     
-    
+    // // Original
+    // menuIcon.addEventListener('click', function() {
+    //     show = !show;
+    //     if (show) return showMenu();
+    //     return closeMenu();
+    // }, false);      
     menuIcon.addEventListener('click', function() {
-        show = !show;
-        if (show) return showMenu();
+        return showMenu();
+    }, false);    
+
+    menucloseIcon.addEventListener('click', function() {
         return closeMenu();
     }, false);
     
