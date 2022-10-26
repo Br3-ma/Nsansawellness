@@ -1,6 +1,6 @@
 <!-- BEGIN: Modal Content -->
-<div id="create-role-modal" style="padding-top:15%" class="modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
+<div id="create-role-modal" style="padding-top:25%" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">

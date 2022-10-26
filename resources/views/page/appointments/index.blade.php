@@ -28,43 +28,26 @@
         <!-- BEGIN: Calendar Side Menu -->
         <div class="col-span-12 xl:col-span-4 2xl:col-span-3">
             <div class="box p-5 intro-y">
-                <button type="button" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Add New Video Call Appointment </button>
+                <a href="{{ route('appointment.create') }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Add New Video Call Appointment </a>
                 <button type="button" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </button>
                 <div class="border-t border-b border-slate-200/60 dark:border-darkmode-400 mt-6 mb-5 py-3" id="calendar-events">
+                    @forelse ($appointments as $appointment)
                     <div class="relative">
                         <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                             <div class="pr-10">
-                                <div class="event__title truncate">Stress Management Therapy</div>
+                                <div class="event__title truncate">{{ $appointment->title }}</div>
                                 <div class="text-slate-500 text-xs mt-0.5"> <span class="event__days">2</span> Days to go <span class="mx-1">•</span> 10:00 AM </div>
                             </div>
                         </div>
                         <a class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a>
                     </div>
-                    <div class="relative">
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
-                            <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
-                            <div class="pr-10">
-                                <div class="event__title truncate">Marriage & Counselling 2022</div>
-                                <div class="text-slate-500 text-xs mt-0.5"> <span class="event__days">3</span> Days to go<span class="mx-1">•</span> 07:00 AM </div>
-                            </div>
-                        </div>
-                        <a class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a>
-                    </div>
-                    <div class="relative">
-                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
-                            <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
-                            <div class="pr-10">
-                                <div class="event__title truncate">Therapy</div>
-                                <div class="text-slate-500 text-xs mt-0.5"> <span class="event__days">4</span> Days to go<span class="mx-1">•</span> 11:00 AM </div>
-                            </div>
-                        </div>
-                        <a class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a>
-                    </div>
-                    <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No events yet</div>
+                    @empty
+                    <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
+                    @endforelse
                 </div>
                 <div class="form-check form-switch flex">
-                    <label class="form-check-label" for="checkbox-events">Remove after drop</label>
+                    <label class="form-check-label" for="checkbox-events">Notify me</label>
                     <input class="show-code form-check-input ml-auto" type="checkbox" id="checkbox-events">
                 </div>
             </div>
@@ -151,4 +134,5 @@
         <!-- END: Calendar Content -->
     </div>
 </div>
+{{-- @include('page.modals.create-appointment-modal') --}}
 @endsection

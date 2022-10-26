@@ -41,7 +41,7 @@ import listPlugin from "@fullcalendar/list";
             dayMaxEvents: true,
             events: [
                 {
-                    title: "Stress Management Therapy",
+                    title: "Anger Management Therapy",
                     start: "2021-01-05",
                     end: "2021-01-08",
                 },

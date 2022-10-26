@@ -29,7 +29,7 @@
           <div class="elementor-widget-container">
               <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
                   
-                  <a href="{{ route('career-survey', ['role' => 'Clinical Social Worker', 'type' => 'counsellor']) }}" class="jkit-button-wrapper">
+                  <a href="{{ route('career-survey', ['role' => 'Clinical Social Worker', 'type' => 'counselor']) }}" class="jkit-button-wrapper">
                       {{-- <a href="{{ route('register', ['role' => 'Clinical Social Worker', 'type' => 'counsellor']) }}" class="jkit-button-wrapper"> --}}
                       Clinical Social Worker
                       <br>
@@ -42,7 +42,7 @@
       <div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
           <div class="elementor-widget-container">
               <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-                  <a href="{{ route('career-survey', ['role' => 'Marriage Family Therapist', 'type' => 'counsellor']) }}" class="jkit-button-wrapper">
+                  <a href="{{ route('career-survey', ['role' => 'Marriage Family Therapist', 'type' => 'counselor']) }}" class="jkit-button-wrapper">
                       Marriage & Family Therapist
                       <br>
                       <small>(LCSW, LICSW, LISW, etc)</small>
@@ -54,7 +54,7 @@
       <div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
           <div class="elementor-widget-container">
               <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-                  <a href="{{ route('career-survey', ['role' => 'Mental Health Counselor', 'type' => 'counsellor']) }}" class="jkit-button-wrapper">
+                  <a href="{{ route('career-survey', ['role' => 'Mental Health Counselor', 'type' => 'counselor']) }}" class="jkit-button-wrapper">
                       Mental Health Counselor
                       <small>(LCSW, LICSW, LISW, etc)</small>
                   </a>
@@ -65,7 +65,7 @@
       <div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
           <div class="elementor-widget-container">
               <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-                  <a href="{{ route('career-survey', ['role' => 'Professional Counselor', 'type' => 'counsellor']) }}" class="jkit-button-wrapper">
+                  <a href="{{ route('career-survey', ['role' => 'Professional Counselor', 'type' => 'counselor']) }}" class="jkit-button-wrapper">
                       Professional Counselor
                       <small>(LCSW, LICSW, LISW, etc)</small>
                   </a>
@@ -77,7 +77,7 @@
       <div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
           <div class="elementor-widget-container">
               <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-                  <a href="{{ route('career-survey', ['role' => 'Psychologist', 'type' => 'counsellor']) }}" class="jkit-button-wrapper">
+                  <a href="{{ route('career-survey', ['role' => 'Psychologist', 'type' => 'counselor']) }}" class="jkit-button-wrapper">
                       Psychologist
                       <small>(LCSW, LICSW, LISW, etc)</small>
                   </a>

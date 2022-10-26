@@ -50,31 +50,82 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function() {
     // ====================Dashboard
     Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
-    Route::get('/counseling-center', [PatientController::class, 'index'])->name('patient');
-    Route::get('/patient-files', [PatientController::class, 'patient_files'])->name('patient-files');
-    Route::get('/schedule-appointments', [AppointmentController::class, 'index'])->name('appointment');
-    Route::get('/activies', [HomeworkController::class, 'index'])->name('activities');
-    Route::get('/actions', [HomeworkController::class, 'actions'])->name('actions');
-    Route::get('/billing-history', [BillingController::class, 'index'])->name('billing');
-    Route::get('/notifications', [NotificationController::class, 'index'])->name('notification');
+
     Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/live-video-call', [VideoCallController::class, 'index'])->name('video-call');
-
-    Route::resource('roles', RoleController::class);
-    Route::resource('permissions', PermissionsController::class);
-    Route::resource('users', UserController::class);
-
-    Route::resource('questionaires', QuestionaireController::class);
-    Route::delete('question/delete/{id}/{qid}', [QuestionaireController::class, 'questionDestroy'])->name('question.remove');
-    Route::get('users-feedback', [QuestionaireController::class, 'feed'])->name('questionaire-user-feedback');
-    Route::get('user-survey-response/{id?}', [QuestionaireController::class, 'user_feed'])->name('user-survey-response');
-    Route::get('change-questionaire-status', [QuestionaireController::class, 'updateStatus'])->name('questionaire.status');
-    Route::resource('answers', AnswerController::class);
-    Route::delete('answers/delete/{id}/{qid}', [AnswerController::class, 'customDestroy'])->name('answers.remove');
 
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
     Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
 });
+
+// Notifications
+Route::group(['middleware' => ['auth', 'permission:notification']], function() {
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('notification');
+});
+
+// Appointments
+Route::group(['middleware' => ['auth', 'permission:appointment']], function() {
+    Route::get('/schedule-appointments', [AppointmentController::class, 'index'])->name('appointment');
+});
+
+// Appointment
+Route::group(['middleware' => ['auth', 'permission:appointment.create']], function() {
+    Route::get('/create-appointment', [AppointmentController::class, 'create'])->name('appointment.create');
+});
+
+// Appointment
+Route::group(['middleware' => ['auth', 'permission:appointment.create']], function() {
+    Route::post('/save-appointment', [AppointmentController::class, 'store'])->name('appointment.store');
+});
+
+// Questionnaires
+Route::group(['middleware' => ['auth', 'permission:questionaires.index']], function() {
+    Route::get('change-questionaire-status', [QuestionaireController::class, 'updateStatus'])->name('questionaire.status');
+    Route::get('users-feedback', [QuestionaireController::class, 'feed'])->name('questionaire-user-feedback');
+    Route::delete('question/delete/{id}/{qid}', [QuestionaireController::class, 'questionDestroy'])->name('question.remove');
+    Route::get('user-survey-response/{id?}', [QuestionaireController::class, 'user_feed'])->name('user-survey-response');
+    Route::resource('questionaires', QuestionaireController::class);
+    Route::resource('answers', AnswerController::class);
+    Route::delete('answers/delete/{id}/{qid}', [AnswerController::class, 'customDestroy'])->name('answers.remove');
+});
+
+// Billing
+Route::group(['middleware' => ['auth', 'permission:billing']], function() {
+    Route::get('/billing-history', [BillingController::class, 'index'])->name('billing');
+});
+
+// Patient Dashboard
+Route::group(['middleware' => ['auth', 'permission:patient']], function() {
+    Route::get('/counseling-center', [PatientController::class, 'index'])->name('patient');
+});
+
+// Patient Files
+Route::group(['middleware' => ['auth', 'permission:patient-files']], function() {
+    Route::get('/patient-files', [PatientController::class, 'patient_files'])->name('patient-files');
+});
+
+// Action & Activities
+Route::group(['middleware' => ['auth', 'permission:actions']], function() {
+    Route::get('/activies', [HomeworkController::class, 'index'])->name('activities');
+    Route::get('/actions', [HomeworkController::class, 'actions'])->name('actions');
+});
+
+// Roles
+Route::group(['middleware' => ['auth', 'permission:roles.index']], function() {
+    Route::resource('roles', RoleController::class);
+});
+
+// Permissions
+Route::group(['middleware' => ['auth', 'permission:permissions.index']], function() {
+    Route::resource('permissions', PermissionsController::class);
+});
+
+// Users
+Route::group(['middleware' => ['auth', 'permission:users.index']], function() {
+    Route::resource('users', UserController::class);
+});
+
+
 
 
 // ================== Website

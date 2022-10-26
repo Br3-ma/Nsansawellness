@@ -12,11 +12,11 @@
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i> 
                 </div>
             </div>
-            <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div>
+            <div class="hidden xl:block mx-auto text-slate-500">Showing {{ $roles->count() }} entries</div>
             <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
-                @if(Auth::user()->role == 'admin' )
-                <a class="btn btn-primary shadow-md mr-2"  href="javascript:;" data-tw-toggle="modal" data-tw-target="#create-role-modal"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Add Role </a>
-                @endif
+                @can('roles.create')
+                <a class="btn btn-primary shadow-md mr-2"  href="{{ route('roles.create') }}"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Add Role </a>
+                @endcan
                 <div class="dropdown">
                     <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                         <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -60,7 +60,7 @@
                         </td>
                         {{-- <td class="w-40 !py-4"> <a href="" class="underline decoration-dotted whitespace-nowrap">#INV-25807556</a> </td> --}}
                         <td class="w-40">
-                            <a href="" class="font-medium whitespace-nowrap">{{ $role->name }}</a> 
+                            <a href="" class="capitalize font-medium whitespace-nowrap">{{ $role->name }}</a> 
                             {{-- <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div> --}}
                         </td>
                         <td class="text-center">
@@ -76,7 +76,7 @@
                         <td class="table-report__action">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center text-primary whitespace-nowrap mr-5" href="{{ route('roles.show', $role->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
-                                <a class="flex items-center text-primary whitespace-nowrap" href="j{{ route('roles.edit', $role->id) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i class="w-4 h-4 mr-1"></i> Edit </a>
+                                <a class="flex items-center text-primary whitespace-nowrap" href="{{ route('roles.edit', $role->id) }}"> <i class="w-4 h-4 mr-1"></i> Edit </a>
                             </div>
                         </td>
                         <td>

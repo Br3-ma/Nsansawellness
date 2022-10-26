@@ -66,4 +66,12 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = $value;
     }
+
+    public function userAppointments(){
+        $this->hasMany(UserAppointment::class);
+    }
+
+    public function appointments(){
+        $this->hasMany(Appointment::class);
+    }
 }

@@ -48,14 +48,10 @@ class UserController extends Controller
         //For demo purposes only. When creating user or inviting a user
         // you should create a generated random password and email it to the user
         $user->create(array_merge($request->all(), [
-            'password' => '1234breath',
-            'gender' => 'Male',
+            'password' => bcrypt('peace2u'),
+            // 'gender' => 'Male',
             'active' => 1
         ]));
-        
-        // $user->syncRoles($request->get('role'));
-        // $user->assignRole($request->get('role'));
-        // $user->assignRole('Counselor');
         return redirect()->route('users.index')
             ->withSuccess(__('User created successfully.'));
         } catch (\Throwable $th) {

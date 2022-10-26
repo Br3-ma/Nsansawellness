@@ -15,7 +15,9 @@ class PermissionMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle($request = null, Closure $next, $permission = null, $guard = null)
+    // $request, Closure $next, $permission = null, $guard = null
+    // $request = null, Closure $next, $permission = null, $guard = null
+    public function handle($request = null, Closure $next = null, $permission = null, $guard = null)
     {
         $authGuard = app('auth')->guard($guard);
 

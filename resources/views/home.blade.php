@@ -45,7 +45,7 @@
                                                 <div class="text-base">4.501</div>
                                                 <div class="text-danger flex text-xs font-medium tooltip cursor-pointer ml-2" title="2% Lower than last month"> 2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div>
-                                            @if(Auth::user()->role == 'admin')
+                                            @hasrole('admin')
                                             <div class="text-slate-500 text-xs mt-5">CANCELATION CASE</div>
                                             <div class="mt-1.5 flex items-center">
                                                 <div class="text-base">2</div>
@@ -67,7 +67,7 @@
                                                 <div class="text-base">35</div>
                                                 <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-2" title="52% Higher than last month"> 52% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div>
-                                            @endif
+                                            @endhasrole
                                             <div class="text-slate-500 text-xs mt-5">PATIENTS</div>
                                             <div class="mt-1.5 flex items-center">
                                                 <div class="text-base">19</div>
@@ -81,7 +81,7 @@
                             <!-- BEGIN: Visitors -->
                             <div class="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 mt-2">
                                 <div class="intro-y flex items-center h-10">
-                                    @if(Auth::user()->role == 'admin')
+                                    @hasrole('admin')
                                     <h2 class="text-lg font-medium truncate mr-5">
                                         {{ __('Counselors') }}
                                     </h2>
@@ -90,12 +90,18 @@
                                     <h2 class="text-lg font-medium truncate mr-5">
                                         {{ __('Patients') }}
                                     </h2> 
-                                    @endif
+                                    @endhasrole
                                 </div>
                                 <div class="report-box-2 intro-y mt-5">
                                     <div class="box p-5">
                                         <div class="flex items-center">
-                                            @if(Auth::user()->role == 'admin') Active @else My @endif @if(Auth::user()->role == 'admin') Counselors @else Patients @endif 
+                                            @hasrole('admin')
+                                                Active 
+                                            @else 
+                                                My 
+                                            @endhasrole
+                                            
+                                            @hasrole('admin') Counselors @else Patients @endhasrole 
                                             <div class="dropdown ml-auto">
                                                 <a class="dropdown-toggle w-5 h-5 block -mr-2" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-5 h-5 text-slate-500"></i> </a>
                                                 <div class="dropdown-menu w-40">

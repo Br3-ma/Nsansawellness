@@ -1005,22 +1005,26 @@ li{
                                             <div class="elementor-element elementor-element-fb358db elementor-widget__width-auto elementor-widget elementor-widget-jkit_search" data-id="fb358db" data-element_type="widget" data-widget_type="jkit_search.default">
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-search jeg_module_6_1_632ca69743d73">
-                                                        @if(Auth::User()->type == 'patient')
-                                                            <a href="{{ route('patient') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 1px 0px;margin: 0.1rem;" class="btn btn-outline-warning ">
-                                                                <i class="fa fa-life-saver"></i>
-                                                                <small>Counseling Center</small>
-                                                            </a>
-                                                        @elseif(Auth::User()->role != 'admin' && Auth::User()->type != 'patient')
-                                                            <a href="{{ route('home') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 1px 0px;margin: 0.1rem;" class="btn btn-outline-warning ">
-                                                                <i class="fa fa-heartbeat"></i>
-                                                                <small>Therapy Center</small>
-                                                            </a>
-                                                        @else
+                                                        @hasrole('admin')
                                                             <a href="{{ route('home') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 1px 0px;margin: 0.1rem;" class="btn btn-outline-warning ">
                                                                 <i class="fa fa-cog"></i>
                                                                 <small>Administration Center</small>
                                                             </a>
-                                                        @endif
+                                                        @endhasrole
+                                                        
+                                                        @hasrole('counselor')
+                                                            <a href="{{ route('home') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 1px 0px;margin: 0.1rem;" class="btn btn-outline-warning ">
+                                                                <i class="fa fa-heartbeat"></i>
+                                                                <small>Therapy Center</small>
+                                                            </a>
+                                                        @endhasrole
+
+                                                        @hasrole('patient')
+                                                            <a href="{{ route('patient') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 1px 0px;margin: 0.1rem;" class="btn btn-outline-warning ">
+                                                                <i class="fa fa-life-saver"></i>
+                                                                <small>Counseling Center</small>
+                                                            </a>
+                                                        @endhasrole
                                                     </div>
                                                 </div>
                                             </div>

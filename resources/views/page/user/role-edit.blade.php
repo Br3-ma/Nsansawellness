@@ -1,10 +1,8 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="dist/css/app.css" />
 @section('content')
-
 <div class="content">
-    <h2 class="intro-y text-lg font-medium mt-10">
-        Edit User Information 
+    <h2 class="captialize intro-y text-lg font-medium mt-10">
+        Edit {{ $role->name }} Role 
     </h2>
     <div class="container py-6 mx-auto">
     @if (count($errors) > 0)
@@ -60,3 +58,5 @@
         <a href="{{ route('roles.index') }}" class="btn btn-default">Back</a>
     </form>
 </div>
+
+@endsection

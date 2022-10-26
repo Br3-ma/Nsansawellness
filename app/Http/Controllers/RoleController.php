@@ -84,7 +84,7 @@ class RoleController extends Controller
         $rolePermissions = $role->permissions->pluck('name')->toArray();
         $permissions = Permission::get();
     
-        return view('page.user.roles.edit', compact('role', 'rolePermissions', 'permissions'));
+        return view('page.user.role-edit', compact('role', 'rolePermissions', 'permissions'));
     }
 
     /**
