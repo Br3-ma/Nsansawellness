@@ -29,6 +29,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="flex items-center justify-center lg:justify-start mt-2">
+                    <div class="mr-2 w-20 flex"> Role ID: <span class="ml-3 font-medium text-success">{{ $role->id }}</span> </div>
+                    <div class="w-3/4">
+                        <div class="h-[55px]">
+                            <canvas class="simple-line-chart-1 -mr-5"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
 
     </div>

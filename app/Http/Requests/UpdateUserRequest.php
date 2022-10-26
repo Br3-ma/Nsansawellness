@@ -29,7 +29,8 @@ class UpdateUserRequest extends FormRequest
         return [
             'fname' => 'required',
             'lname' => 'required',
-            'email' => 'required|email:rfc,dns|unique:users,email,'.$user->id,
+            'email' => 'required|unique:users,email,'.$user->id,
+            // 'email' => 'required|email:rfc,dns|unique:users,email,'.$user->id,
             // 'username' => 'required|unique:users,username,'.$user->id,
         ];
     }

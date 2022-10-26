@@ -55,7 +55,7 @@
                         {{-- <li id="chats-tab" class="nav-item flex-1" role="presentation">
                             <button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="#chats" type="button" role="tab" aria-controls="chats" aria-selected="true" > Therapy Sessions </button>
                         </li> --}}
-                        @if(Auth::User()->type == 'counsellor')
+                        @if(Auth::User()->type == 'counselor')
                         <li id="friends-tab" class="nav-item flex-1" role="presentation">
                             <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > My Patients </button>
                         </li>
@@ -110,7 +110,7 @@
                                     <a href="javascript:;" class="font-medium">Kate Winslet</a> 
                                     <div class="text-xs text-slate-400 ml-auto">05:09 AM</div>
                                 </div>
-                                <div class="w-full truncate text-slate-500 mt-0.5">Marriage & Family Counsellor</div>
+                                <div class="w-full truncate text-slate-500 mt-0.5">Marriage & Family counselor</div>
                             </div>
                             <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
 
@@ -154,7 +154,7 @@
                                     <a href="javascript:;" class="font-medium">Kate Winslet</a> 
                                     <div class="text-xs text-slate-400 ml-auto">05:09 AM</div>
                                 </div>
-                                <div class="w-full truncate text-slate-500 mt-0.5">Marriage & Family Counsellor</div>
+                                <div class="w-full truncate text-slate-500 mt-0.5">Marriage & Family counselor</div>
                             </div>
                             <img width="50" height="50" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
                         </div>
@@ -352,7 +352,7 @@
                             </div>
                             <div class="ml-3 mr-auto">
                                 <div class="font-medium text-base">Kate Winslet</div>
-                                <div class="text-slate-500 text-xs sm:text-sm">Marriage & Family Counsellor <span class="mx-1">•</span> Online</div>
+                                <div class="text-slate-500 text-xs sm:text-sm">Marriage & Family counselor <span class="mx-1">•</span> Online</div>
                             </div>
                         </div>
                         <div class="flex items-center sm:ml-auto mt-5 sm:mt-0 border-t sm:border-0 border-slate-200/60 pt-3 sm:pt-0 -mx-5 sm:mx-0 px-5 sm:px-0">

@@ -77,12 +77,7 @@
                         </div>
                     </div>
                     {{-- <div class="w-20 h-10"> --}}
-                    <a href="{{ route('users.edit', $user->id) }}" class="p-2"><i data-lucide="edit"></i></a>
-                    {{-- </div> --}}
-                    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm  mr-2']) !!}
-                    {!! Form::close() !!}
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
+                    {{-- <button class="btn btn-primary py-1 px-2 mr-2">Message</button> --}}
                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-secondary py-1 px-2">Profile</a>
                     
                 </div>

@@ -27,7 +27,7 @@
                 <div class="modal-body">
                         <div class="mb-3">
                             <label for="name" class="form-label">First Name</label>
-                            <input value="{{ old('name') }}" 
+                            <input value="{{ old('fname') }}" 
                                 type="text" 
                                 class="form-control" 
                                 name="fname" 
@@ -39,7 +39,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Last Name</label>
-                            <input value="{{ old('name') }}" 
+                            <input value="{{ old('lname') }}" 
                                 type="text" 
                                 class="form-control" 
                                 name="lname" 
@@ -70,23 +70,7 @@
                             @if ($errors->has('username'))
                                 <span class="text-danger text-left">{{ $errors->first('username') }}</span>
                             @endif
-                        </div>                
-                        <div class="mb-3">
-                            <label for="role" class="form-label">Assign Role</label>
-                            <select class="form-control text-warning" 
-                                name="role" required>
-                                <option value="">Select role</option>
-                                @foreach($roles as $role)
-                                    <option value="{{ $role->id }}"
-                                        {{ in_array($role->name, $userRole) 
-                                            ? 'selected'
-                                            : '' }}>{{ $role->name }}</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('role'))
-                                <span class="text-danger text-left">{{ $errors->first('role') }}</span>
-                            @endif
-                        </div>
+                        </div>    
                 </div> 
                 <!-- END: Modal Body -->
                 <!-- BEGIN: Modal Footer -->

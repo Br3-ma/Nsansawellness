@@ -7,7 +7,9 @@
     </h2>
     <small>{{ $question->type }}</small>
     <div class="intro-y col-span-4 sm:col-span-2 md: mt-5">
-        <a href="javascript:void(0)" class="add_ans_button btn btn-secondary w-15 text-xs">Add Answer</a>
+        <a href="javascript:void(0)" class="add_ans_button btn btn-secondary w-15 text-xs">
+          <i data-lucide="plus"></i>  Add Answer
+        </a>
     </div>
     <div class="w-full mt-3">
         {{-- Dynamic input field javascript --}}
@@ -22,7 +24,9 @@
 
             </div> 
             <hr>
-            <button type="submit" class="btn">Submit</button>
+            <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                <button type="submit" class="btn btn-primary w-24 ml-2">Submit</button>
+            </div>
         </form>
         {{-- End inputs --}}
     </div>

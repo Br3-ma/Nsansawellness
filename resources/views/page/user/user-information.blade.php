@@ -6,8 +6,32 @@
             User Profile 
         </h2>
     </div>
+    <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap mt-2">
+        <div class="flex w-full sm:w-auto">
+            <div class="w-48 relative text-slate-500">
+                {{-- <input type="text" class="form-control w-48 box pr-10" placeholder="Search Role">
+                <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>  --}}
+            </div>
+        </div>
+        <div class="hidden xl:block mx-auto text-slate-500"></div>
+        <div class="w-full xl:w-auto flex mt-3 xl:mt-0">
+            @can('users.destroy')
+            {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+            {!! Form::submit('Deactivate', ['class' => 'btn btn-danger btn-md  mr-2']) !!}
+            {!! Form::close() !!}
+            {{-- <a class="btn btn-primary shadow-md mr-2"  href="{{ route('roles.create') }}"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Add Role </a> --}}
+            @endcan
+                {{-- <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
+                    <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
+                </button> --}}
+            @can('users.edit')
+            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-md p-2 w-20"><i data-lucide="edit"></i>Assign Role</a>
+            @endcan
+        </div>
+    </div>
     <!-- BEGIN: Profile Info -->
     <div class="intro-y box px-5 pt-5 mt-5">
+                  
         <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
             <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
                 <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
@@ -55,6 +79,7 @@
             {{-- <li id="account-and-profile-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#account-and-profile" aria-selected="false" role="tab" > Account & Profile </a> </li>
             <li id="activities-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#activities" aria-selected="false" role="tab" > Activities </a> </li>
             <li id="tasks-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#tasks" aria-selected="false" role="tab" > Tasks </a> </li> --}}
+           
         </ul>
     </div>
     <!-- END: Profile Info -->

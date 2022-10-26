@@ -2,10 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateAppointmentRequest;
+use App\Models\Appointment;
+use App\Models\User;
+use App\Models\UserAppointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
-{
+{    
+    public  $appointment, $user_appointment, $user;
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct(Appointment $app, UserAppointment $ua, User $users)
+    {
+        $this->user_appointment = $ua;
+        $this->appointment = $app;
+        $this->user = $users;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +30,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('page.common.appointment');
+        $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
+        return view('page.appointments.index', compact('appointments'));
     }
 
     /**
@@ -23,7 +41,8 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        $users = $this->user->get();
+        return view('page.appointments.create', compact('users'));
     }
 
     /**
@@ -32,9 +51,19 @@ class AppointmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAppointmentRequest $request)
     {
-        //
+        $appointment = $this->appointment->create($request->validated());
+        foreach($request->guest_id as $guest){
+            $this->user_appointment->create([
+                'guest_id' => $guest,
+                'appointment_id' => $appointment->id,
+                'status' => 1
+            ]);
+        }
+
+        return redirect()->route('appointment')
+            ->withSuccess(__('Appointment created successfully.'));
     }
 
     /**
