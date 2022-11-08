@@ -546,7 +546,7 @@
                                 </div>
                                 <!-- END: Important Notes -->
                                 <!-- BEGIN: Recent Activities -->
-                                <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 mt-3">
+                                {{-- <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 mt-3">
                                     <div class="intro-x flex items-center h-10">
                                         <h2 class="text-lg font-medium truncate mr-5">
                                             Recent Activities
@@ -625,7 +625,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- END: Recent Activities -->
                                 <!-- BEGIN: Transactions -->
                                 {{-- <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 mt-3">
