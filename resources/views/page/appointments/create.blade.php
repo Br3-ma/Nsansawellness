@@ -89,6 +89,79 @@
                                 <div class="form-label xl:w-64 xl:!mr-10">
                                     <div class="text-left">
                                         <div class="flex items-center">
+                                            <div class="font-medium">Start Time</div>
+                                            {{-- <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full mt-3 xl:mt-0 flex-1">
+                                    <select name="start_time" id="start_time" class="tom-select w-full">
+                                        <option value="01:00 AM">01:00 AM</option>
+                                        <option value="02:00 AM">02:00 AM</option>
+                                        <option value="03:00 AM">03:00 AM</option>
+                                        <option value="04:00 AM">04:00 AM</option>
+                                        <option value="05:00 AM">05:00 AM</option>
+                                        <option value="06:00 AM">06:00 AM</option>
+                                        <option value="07:00 AM">07:00 AM</option>
+                                        <option value="09:00 AM">08:00 AM</option>
+                                        <option value="10:00 AM">09:00 AM</option>
+                                        <option value="11:00 AM">10:00 AM</option>
+                                        <option value="12:00 AM">12:00 AM</option>
+                                        <option value="1:00 PM">1:00 PM</option>
+                                        <option value="2:00 PM">2:00 PM</option>
+                                        <option value="3:00 PM">3:00 PM</option>
+                                        <option value="4:00 PM">4:00 PM</option>
+                                        <option value="5:00 PM">5:00 PM</option>
+                                        <option value="6:00 PM">6:00 PM</option>
+                                        <option value="7:00 PM">7:00 PM</option>
+                                        <option value="8:00 PM">8:00 PM</option>
+                                        <option value="9:00 PM">9:00 PM</option>
+                                        <option value="10:00 PM">10:00 PM</option>
+                                        <option value="11:00 PM">11:00 PM</option>
+                                        <option value="12:00 PM">12:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
+                                <div class="form-label xl:w-64 xl:!mr-10">
+                                    <div class="text-left">
+                                        <div class="flex items-center">
+                                            <div class="font-medium">End Time</div>
+                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full mt-3 xl:mt-0 flex-1">
+                                    <select name="end_time" id="end_time" class="tom-select w-full">
+                                        <option value="01:00 AM">01:00 AM</option>
+                                        <option value="02:00 AM">02:00 AM</option>
+                                        <option value="03:00 AM">03:00 AM</option>
+                                        <option value="04:00 AM">04:00 AM</option>
+                                        <option value="05:00 AM">05:00 AM</option>
+                                        <option value="06:00 AM">06:00 AM</option>
+                                        <option value="07:00 AM">07:00 AM</option>
+                                        <option value="09:00 AM">08:00 AM</option>
+                                        <option value="10:00 AM">09:00 AM</option>
+                                        <option value="11:00 AM">10:00 AM</option>
+                                        <option value="12:00 AM">12:00 AM</option>
+                                        <option value="1:00 PM">1:00 PM</option>
+                                        <option value="2:00 PM">2:00 PM</option>
+                                        <option value="3:00 PM">3:00 PM</option>
+                                        <option value="4:00 PM">4:00 PM</option>
+                                        <option value="5:00 PM">5:00 PM</option>
+                                        <option value="6:00 PM">6:00 PM</option>
+                                        <option value="7:00 PM">7:00 PM</option>
+                                        <option value="8:00 PM">8:00 PM</option>
+                                        <option value="9:00 PM">9:00 PM</option>
+                                        <option value="10:00 PM">10:00 PM</option>
+                                        <option value="11:00 PM">11:00 PM</option>
+                                        <option value="12:00 PM">12:00 PM</option>
+                                    </select>                                </div>
+                            </div>
+                            <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
+                                <div class="form-label xl:w-64 xl:!mr-10">
+                                    <div class="text-left">
+                                        <div class="flex items-center">
                                             <div class="font-medium">Start Date</div>
                                             <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
                                         </div>
@@ -111,6 +184,8 @@
                                     <input type="text" id="end_date" name="end_date" class="form-control"/>
                                 </div>
                                 <input type="hidden" id="user_id" value="{{ Auth::user()->id }}" name="user_id" class="form-control"/>
+                                <input type="hidden" id="type" value="{{ request()->get('type') }}" name="type" class="form-control"/>
+                                <input type="hidden" id="status" value="1" name="status" class="form-control"/>
 
                             </div>
                             {{-- <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
