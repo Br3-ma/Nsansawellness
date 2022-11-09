@@ -18,14 +18,16 @@ class Appointment extends Model
         'type',
         'status',
         'comments',
-        'user_id'
+        'user_id',
+        'start_time',
+        'end_time'
     ];
 
     public function userAppointment(){
-        $this->hasMany(UserAppointment::class);
+        return $this->hasMany(UserAppointment::class);
     }
 
     public function user(){
-        $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

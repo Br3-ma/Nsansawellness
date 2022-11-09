@@ -76,6 +76,8 @@ Route::group(['middleware' => ['auth', 'permission:appointment.create']], functi
 // Appointment
 Route::group(['middleware' => ['auth', 'permission:appointment.create']], function() {
     Route::post('/save-appointment', [AppointmentController::class, 'store'])->name('appointment.store');
+    Route::get('/deactivate-appointment/{id}', [AppointmentController::class, 'deactivate'])->name('appointment.deactivate');
+    Route::get('/activate-appointment/{id}', [AppointmentController::class, 'activate'])->name('appointment.activate');
 });
 
 // Questionnaires

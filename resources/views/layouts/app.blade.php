@@ -317,10 +317,10 @@
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Search -->
                 <div class="intro-x relative mr-3 sm:mr-6">
-                    <div class="search hidden sm:block">
+                    {{-- <div class="search hidden sm:block">
                         <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
                         <i data-lucide="search" class="search__icon dark:text-slate-500"></i> 
-                    </div>
+                    </div> --}}
                     <a class="notification notification--light sm:hidden" href=""> <i data-lucide="search" class="notification__icon dark:text-slate-500"></i> </a>
                     <div class="search-result">
                         <div class="search-result__content">
@@ -583,12 +583,12 @@
                     @endcan
 
                     @can('appointment')
-                    {{-- <li>
+                    <li>
                         <a href="{{  route('appointment') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                             <div class="side-menu__title"> Appointments </div>
                         </a>
-                    </li> --}}
+                    </li>
                     @endcan
 
                     @can('billing')

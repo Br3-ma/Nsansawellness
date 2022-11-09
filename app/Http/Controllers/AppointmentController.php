@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {    
-    public  $appointment, $user_appointment, $user;
+    public $appointment, $user_appointment, $user;
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +31,8 @@ class AppointmentController extends Controller
     public function index()
     {
         $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
-        return view('page.appointments.index', compact('appointments'));
+        $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
+        return view('page.appointments.index', compact('appointments','incoming_appointments'));
     }
 
     /**
@@ -53,6 +54,7 @@ class AppointmentController extends Controller
      */
     public function store(CreateAppointmentRequest $request)
     {
+        
         $appointment = $this->appointment->create($request->validated());
         foreach($request->guest_id as $guest){
             $this->user_appointment->create([
@@ -109,5 +111,35 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deactivate($id)
+    {
+        $update = $this->appointment->find($id);
+        $update->status = 0;
+        $update->save();
+        
+        return redirect()->route('appointment')
+            ->withSuccess(__('Appointment Deactivated successfully.'));
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function activate($id)
+    {
+        $update = $this->appointment->find($id);
+        $update->status = 1;
+        $update->save();
+        
+        return redirect()->route('appointment')
+            ->withSuccess(__('Appointment Activated successfully.'));
     }
 }

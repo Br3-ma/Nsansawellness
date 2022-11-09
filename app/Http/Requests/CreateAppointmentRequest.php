@@ -25,9 +25,12 @@ class CreateAppointmentRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'comments' => 'required'
+            'user_id' => 'required',
+            'type' => 'required'
         ];
     }
 }
