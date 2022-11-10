@@ -113,6 +113,7 @@ class AppointmentController extends Controller
                 'status' => 1
             ]);
         }
+        return redirect()->route('appointment.edit', ['id'=>$request->app_id]);
     }
 
     /**
