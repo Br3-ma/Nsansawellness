@@ -84,7 +84,6 @@ class UserController extends Controller
      */
     public function edit(User $user) 
     {
-        
         return View::make('page.user.user-edit', [
             'user' => $user,
             'userRole' => $user->roles->pluck('name')->toArray(),

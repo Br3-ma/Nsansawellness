@@ -6,8 +6,8 @@
             Appointments
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <button class="btn btn-primary shadow-md mr-2">Print Schedule</button>
-            <div class="dropdown ml-auto sm:ml-0">
+            {{-- <button class="btn btn-primary shadow-md mr-2">Print Schedule</button> --}}
+            {{-- <div class="dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
                 </button>
@@ -21,7 +21,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="grid grid-cols-12 gap-5 mt-5">
@@ -37,16 +37,19 @@
                             @if($appointment->status != 0)
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                             @endif
-                            <div class="pr-10">
-                                <div class="event__title">
-                                    {{ $appointment->title }}
-                                    @if($appointment->status == 0)
-                                    (<span class="text-danger">Cancelled</span>)
-                                    @endif
+                            <a href="{{ route('appointment.show', ['id' => $appointment->id ]) }}">
+                                <div class="pr-10">
+                                    <div class="event__title">
+                                        {{ $appointment->title }}
+                                        @if($appointment->status == 0)
+                                        (<span class="text-danger">Cancelled</span>)
+                                        @endif
+                                    </div>
+                                
+                                    <div class="text-slate-500 text-xs mt-0.5"> <!-- <span class="event__days">2</span>--> {{ $appointment->start_date }} <span class="mx-1">•</span>{{ $appointment->start_time ?? '' }}</div>
+                                    {{-- <a title="view" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="eye" class="w-4 h-4 text-slate-500"></i> </a> --}}
                                 </div>
-                               
-                                <div class="text-slate-500 text-xs mt-0.5"> <!-- <span class="event__days">2</span>--> {{ $appointment->start_date }} <span class="mx-1">•</span>{{ $appointment->start_time ?? '' }}</div>
-                            </div>
+                            </a>
                         </div>
                         {{-- <a class="flex items-center absolute top-0 bottom-0 right-2" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a> --}}
                         
@@ -66,7 +69,7 @@
                 </div>
             </div>
             <div class="box p-5 intro-y mt-5">
-                <div class="box p-5 intro-y">
+                {{-- <div class="box p-5 intro-y">
                     <h4>Incoming Appointments</h4>
                     <div class="border-t border-b border-slate-200/60 dark:border-darkmode-400 mt-6 mb-5 py-3" id="calendar-events">
                         @forelse ($incoming_appointments as $app)
@@ -74,8 +77,8 @@
                             <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                                 <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                                 <div class="pr-10">
-                                    <div class="event__title truncate">{{ $app->appointment->title }}</div>
-                                    <div class="text-slate-500 text-xs mt-0.5"> <!-- <span class="event__days">2</span>--> {{ $app->appointment->start_date }} <span class="mx-1">•</span>{{ $app->appointment->start_time ?? '' }}</div>
+                                    <div class="event__title truncate">{{ $app->appointment->title ?? '' }}</div>
+                                    <div class="text-slate-500 text-xs mt-0.5"> <!-- <span class="event__days">2</span>--> {{ $app->appointment->start_date ?? '' }} <span class="mx-1">•</span>{{ $app->appointment->start_time ?? '' }}</div>
                                 </div>
                             </div>
                             <a class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a>
@@ -88,7 +91,7 @@
                         <label class="form-check-label" for="checkbox-events">Notify me</label>
                         <input class="show-code form-check-input ml-auto" type="checkbox" id="checkbox-events">
                     </div>
-                </div>
+                </div> --}}
                 {{-- <div class="flex">
                     <i data-lucide="chevron-left" class="w-5 h-5 text-slate-500"></i> 
                     <div class="font-medium text-base mx-auto">April</div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAppointmentRequest;
+use App\Http\Requests\UpdateAppointmentRequest;
 use App\Models\Appointment;
 use App\Models\User;
 use App\Models\UserAppointment;
@@ -76,7 +77,9 @@ class AppointmentController extends Controller
      */
     public function show($id)
     {
-        //
+        $appointment = $this->appointment->where('id', $id)->get()->first();
+        $guests = $this->user_appointment->where('appointment_id', $id)->with('user')->get();
+        return view('page.appointments.show', ['appointment' => $appointment, 'guests'=> $guests]);
     }
 
     /**
@@ -87,7 +90,10 @@ class AppointmentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $appointment = $this->appointment->where('id', $id)->get()->first();
+        $guests = $this->user_appointment->where('appointment_id', $id)->with('user')->get();
+        $users = $this->user->get();
+        return view('page.appointments.edit', ['appointment' => $appointment, 'guests'=> $guests, 'users' => $users]);
     }
 
     /**
@@ -97,9 +103,16 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAppointmentRequest $request)
     {
-        //
+        $this->appointment->update($request->validated());
+        foreach($request->guest_id as $guest){
+            $this->user_appointment->create([
+                'guest_id' => $guest,
+                'appointment_id' => $request->app_id,
+                'status' => 1
+            ]);
+        }
     }
 
     /**
@@ -110,7 +123,10 @@ class AppointmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $a = $this->appointment->find($id);
+        $a->delete();
+        return redirect()->route('appointment')
+            ->withSuccess(__('Appointment deleted successfully.'));
     }
     /**
      * Remove the specified resource from storage.
@@ -141,5 +157,12 @@ class AppointmentController extends Controller
         
         return redirect()->route('appointment')
             ->withSuccess(__('Appointment Activated successfully.'));
+    }
+
+    public function removeGuest($id, $appointment_id){
+        $a = $this->user_appointment->where('guest_id', $id)->where('appointment_id', $appointment_id);
+        $a->delete();
+        return redirect()->route('appointment.edit', ['id'=>$appointment_id]);
+        // return view('page.appointments.edit', ['appointment' => $appointment, 'guests'=> $guests, 'users' => $users]);
     }
 }

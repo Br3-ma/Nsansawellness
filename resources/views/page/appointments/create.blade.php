@@ -127,7 +127,7 @@
                                     <div class="text-left">
                                         <div class="flex items-center">
                                             <div class="font-medium">End Time</div>
-                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
+                                            {{-- <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -163,12 +163,16 @@
                                     <div class="text-left">
                                         <div class="flex items-center">
                                             <div class="font-medium">Start Date</div>
-                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
+                                            {{-- <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div> --}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input type="text" id="start_date" name="start_date" class="form-control"/>
+                                    <div id="basic-datepicker">
+                                        <div class="preview">
+                                            <input type="text" name="start_date" id="start_date" class="datepicker form-control" data-single-mode="true">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
@@ -176,12 +180,16 @@
                                     <div class="text-left">
                                         <div class="flex items-center">
                                             <div class="font-medium">End Date</div>
-                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
+                                            {{-- <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div> --}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input type="text" id="end_date" name="end_date" class="form-control"/>
+                                    <div id="basic-datepicker">
+                                        <div class="preview">
+                                            <input type="text" name="end_date" id="end_date" class="datepicker form-control" data-single-mode="true">
+                                        </div>
+                                    </div>
                                 </div>
                                 <input type="hidden" id="user_id" value="{{ Auth::user()->id }}" name="user_id" class="form-control"/>
                                 <input type="hidden" id="type" value="{{ request()->get('type') }}" name="type" class="form-control"/>
