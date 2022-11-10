@@ -78,6 +78,11 @@ Route::group(['middleware' => ['auth', 'permission:appointment.create']], functi
     Route::post('/save-appointment', [AppointmentController::class, 'store'])->name('appointment.store');
     Route::get('/deactivate-appointment/{id}', [AppointmentController::class, 'deactivate'])->name('appointment.deactivate');
     Route::get('/activate-appointment/{id}', [AppointmentController::class, 'activate'])->name('appointment.activate');
+    Route::get('/view-appointment/{id}', [AppointmentController::class, 'show'])->name('appointment.show');
+    Route::get('/delete-appointment/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');
+    Route::get('/edit-appointment/{id}', [AppointmentController::class, 'edit'])->name('appointment.edit');
+    Route::post('/update-appointment', [AppointmentController::class, 'update'])->name('appointment.update');
+    Route::get('/remove-appointment-guest/{id}/{appointment_id}', [AppointmentController::class, 'removeGuest'])->name('appointment.remove_guest');
 });
 
 // Questionnaires
