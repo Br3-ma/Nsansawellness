@@ -34,16 +34,26 @@ class AppointmentController extends Controller
         $events = [];
         $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
-        foreach($appointments as $a){
-            $x = [
-                'title' => $a->title,
-                'start' =>$this->changeDate($a->start_date),
-                'end' => $this->changeDate($a->end_date),
-            ];
-            array_push($events, $x);
+        
+        try {
+            if($appointments != ''){
+                foreach($appointments as $a){
+                    $x = [
+                        'title' => $a->title,
+                        'start' =>$this->changeDate($a->start_date),
+                        'end' => $this->changeDate($a->end_date),
+                    ];
+                    array_push($events, $x);
+                }
+                $calendar = $events[0];
+            }
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar'));
+        } catch (\Throwable $th) {
+            $calendar = [];
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar'));
         }
-        $calendar = $events[0];
-        return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar'));
+
+
     }
 
     public function changeDate($d){
