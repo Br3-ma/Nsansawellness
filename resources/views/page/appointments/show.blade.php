@@ -5,10 +5,10 @@
         <h2 class="text-lg font-medium mr-auto">
             {{ $appointment->title }}                                         
             @if($appointment->status == 0)
-            (<span class="text-danger">Cancelled</span>)
+                (<span class="text-danger">Cancelled</span>)
             @endif
+            <small style="color: #4CE1AB">{{ $appointment->start_time }}</small>
         </h2>
-        <h6>{{ $appointment->start_time }}</h6>
         <a href="{{ route('appointment') }}" class="intro-x btn shadow-md mr-2">Back to Appointments</a>
     </div>
     <div class="intro-y flex flex-col sm:flex-row items-center mt-2">
