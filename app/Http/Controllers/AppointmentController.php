@@ -31,11 +31,63 @@ class AppointmentController extends Controller
      */
     public function index()
     {
+        $events = [];
         $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
-        return view('page.appointments.index', compact('appointments','incoming_appointments'));
+        foreach($appointments as $a){
+            $x = [
+                'title' => $a->title,
+                'start' =>$this->changeDate($a->start_date),
+                'end' => $this->changeDate($a->end_date),
+            ];
+            array_push($events, $x);
+        }
+        $calendar = $events[0];
+        return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar'));
     }
 
+    public function changeDate($d){
+        $ms = array(
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec'
+     );
+ 
+     $the_return = '';
+
+     $the_year = substr($d,8,9);
+     if ($the_year != ''){
+        //  if ($the_return != '') {
+        //      $the_return .= ', ';
+        //  }
+         $the_return .= $the_year.'-';
+     }
+
+     $the_month = substr($d,3,3);
+     if ($the_month != '') {
+        $key = array_search($the_month, $ms);
+        $the_return .= $key + 1;
+     }
+ 
+     $the_day = substr($d,0,2);
+     if ($the_day != ''){
+         $the_return .= '-'.$the_day;
+     }
+ 
+
+ 
+    //  return $the_month;
+     return $the_return;
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -55,7 +107,6 @@ class AppointmentController extends Controller
      */
     public function store(CreateAppointmentRequest $request)
     {
-        
         $appointment = $this->appointment->create($request->validated());
         foreach($request->guest_id as $guest){
             $this->user_appointment->create([
@@ -64,7 +115,6 @@ class AppointmentController extends Controller
                 'status' => 1
             ]);
         }
-
         return redirect()->route('appointment')
             ->withSuccess(__('Appointment created successfully.'));
     }

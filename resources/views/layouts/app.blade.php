@@ -601,12 +601,12 @@
                     @endcan
 
                     @can('notification')
-                    {{-- <li>
+                    <li>
                         <a href="{{ route('notification') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
                             <div class="side-menu__title"> Notifications </div>
                         </a>
-                    </li> --}}
+                    </li>
                     @endcan
                     
                     @can('settings')
@@ -779,5 +779,9 @@
         });
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        Echo.channel('events')
+            .listen('RealTimeNotificcation', (e) => console.log('RealTimeNotificcation: ' + e.message));
+    </script>
 </body>
 </html>
