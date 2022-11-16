@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RealTimeNotification;
+use App\Listeners\SendNewUserNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
+    // event(new RealTimeNotification($message));
         return view('home');
     }
 }

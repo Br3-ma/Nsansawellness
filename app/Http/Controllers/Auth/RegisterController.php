@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Notifications\NewUserNotification;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -69,7 +71,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+
+        $admin = User::first();
+        $user = User::create([
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'email' => $data['email'],
@@ -87,5 +91,23 @@ class RegisterController extends Controller
             // 'password' => Hash::make($data['password']),
             // 'password' => Hash::make($data['password']),
         ]);
+
+        if($data['type'] == 'patient'){
+            $user->assignRole('Patient');
+        }else{
+            $user->assignRole('Counselor');
+        }
+        
+        $data = [
+            'sender' => 'Nsansa Wellness Group',
+            'name' => $user->lname.' '.$user->lname,
+            'message' => 'Welcome '.$user->lname.' '.$user->lname.' Thank you for joining',
+            'type' => 'NewUser',
+            'ispopped' => 0
+        ];
+
+        Notification::send($admin, new NewUserNotification($data));
+        return $user;
+
     }
 }

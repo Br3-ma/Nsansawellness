@@ -2,10 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\RealTimeNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Pusher\Pusher;
 
 class NotificationController extends Controller
 {
+
+    public $pushConfs, $pusher;
+
+    public function __construct()
+    {
+        $this->pushConfs = array(
+            'cluster' => 'ap2',
+            'useTLS' => true
+        );
+        $this->pusher = new Pusher(
+            '033c1fdbd94861470759',
+            '779dcdbbdd308d0dd9e9',
+            '1507438',
+            $this->pushConfs
+        );
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +32,13 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        return view('page.common.notifications');
+        // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
+        // event(new RealTimeNotification($message));
+        // $this->pusher->trigger('popup-channel', 'user-register', $message);
+        $notifications = auth()->user()->unreadNotifications;
+
+        // dd($notifications);
+        return view('page.common.notifications', compact('notifications'));
     }
 
     /**
