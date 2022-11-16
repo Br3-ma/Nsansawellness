@@ -26,8 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $notifications = auth()->user()->unreadNotifications;
         // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
-    // event(new RealTimeNotification($message));
-        return view('home');
+        // event(new RealTimeNotification($message));
+        return view('home', compact('notifications'));
     }
 }
