@@ -34,7 +34,7 @@ class AppointmentController extends Controller
         $events = [];
         $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
-        
+        $notifications = auth()->user()->unreadNotifications;
         try {
             if($appointments != ''){
                 foreach($appointments as $a){
@@ -47,10 +47,10 @@ class AppointmentController extends Controller
                 }
                 $calendar = $events[0];
             }
-            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar'));
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications'));
         } catch (\Throwable $th) {
             $calendar = [];
-            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar'));
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications'));
         }
 
 

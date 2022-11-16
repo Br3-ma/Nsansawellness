@@ -12,6 +12,7 @@ const mix = require("laravel-mix");
  */
 
 mix.js("src/js/app.js", "dist/js")
+    .js("resources/js/app.js", "app.js")
     .js("src/js/ckeditor-classic.js", "dist/js")
     .js("src/js/ckeditor-inline.js", "dist/js")
     .js("src/js/ckeditor-balloon.js", "dist/js")

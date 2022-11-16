@@ -66,6 +66,39 @@
             transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
         }
         </style>
+        <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function(){
+                // Enable pusher logging - don't include this in production
+                Pusher.logToConsole = true;
+
+                var pusher = new Pusher('033c1fdbd94861470759', {
+                    cluster: 'ap2'
+                });
+
+    
+                setTimeout(function() {
+                    var channel = pusher.subscribe('popup-channel');
+                    channel.bind('user-register', function(data) {
+                        Toastify({ 
+                            node: $("#basic-non-sticky-notification-content").clone().removeClass("hidden")[0], 
+                            duration: 3000, 
+                            newWindow: true, 
+                            close: true,
+                            gravity: "top", 
+                            position: "right", 
+                            backgroundColor: "white", 
+                            stopOnFocus: true, 
+                        }).showToast(); 
+                    });
+
+                }, 10000);
+            });
+        </script>
     </head>
     <!-- END: Head -->
     <body class="py-5 md:py-0">
@@ -410,71 +443,23 @@
                     <div class="notification-content pt-2 dropdown-menu">
                         <div class="notification-content__box dropdown-content">
                             <div class="notification-content__title">Notifications</div>
-                            <div class="cursor-pointer relative flex items-center ">
+                            @forelse ($notifications as $note)
+                            <div class="cursor-pointer relative flex items-center py-2">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-1.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
+                                    <img alt="" class="rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ00PRm15u1lOv65dmayn_Y3UX2szglLK-3A&usqp=CAU">
+                                    {{-- <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div> --}}
                                 </div>
                                 <div class="ml-2 overflow-hidden">
                                     <div class="flex items-center">
                                         <a href="javascript:;" class="font-medium truncate mr-5">Al Pacino</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
+                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">{{ $note->created_at->toFormattedDateString() }}</div>
                                     </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">Can we have a chat?</div>
+                                    <div class="w-full truncate text-slate-500 mt-0.5">{{ $note->data['message'] }}</div>
                                 </div>
                             </div>
-                            <div class="cursor-pointer relative flex items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Robert De Niro</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
-                                    </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
-                                </div>
-                            </div>
-                            <div class="cursor-pointer relative flex items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Kevin Spacey</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
-                                    </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">Okay</div>
-                                </div>
-                            </div>
-                            <div class="cursor-pointer relative flex items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Kevin Spacey</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">06:05 AM</div>
-                                    </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">Noted Thanks.</div>
-                                </div>
-                            </div>
-                            <div class="cursor-pointer relative flex items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-14.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Arnold Schwarzenegger</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
-                                    </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomi</div>
-                                </div>
-                            </div>
+                            @empty
+                                
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -745,12 +730,13 @@
             <!-- END: Side Menu -->
         @yield('content')
     </div>
+
+    {{ 
+        App\Classes\Popups::DisplayPopUp('user-register');
+    }}
     <!-- The Modal -->
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-button">×</span>
-            <h1>Hello, I am a modal!</h1>
-        </div>
+    <div id="basic-non-sticky-notification-content" class="toastify-content hidden flex">
+        <div class="font-medium">{{ 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining' }}</div> <a class="font-medium text-primary dark:text-slate-400 mt-1 sm:mt-0 sm:ml-40" href="">Review Changes</a>
     </div>
     <!-- BEGIN: Dark Mode Switcher-->
     {{-- <div data-url="side-menu-dark-dashboard-overview-2.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
@@ -768,6 +754,7 @@
     <!-- BEGIN: JS Assets-->
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
+    <script src="{{ asset('public/app.js') }}"></script>
     <script src="{{ asset('dist/js/app.js') }}"></script>
     <script src="{{ asset('dist/jquery.js') }}"></script>
     <script src="{{ asset('dist/jquery-wizard.min.js') }}"></script>
@@ -779,9 +766,5 @@
         });
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script>
-        Echo.channel('events')
-            .listen('RealTimeNotificcation', (e) => console.log('RealTimeNotificcation: ' + e.message));
-    </script>
 </body>
 </html>

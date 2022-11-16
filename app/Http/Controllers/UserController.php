@@ -22,7 +22,8 @@ class UserController extends Controller
         $permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
         $users = User::latest()->paginate(10);
-        return view('page.user.index', compact('users','permissions','roles','userRole'));
+        $notifications = auth()->user()->unreadNotifications;
+        return view('page.user.index', compact('users','permissions','roles','userRole','notifications'));
     }
 
     /**

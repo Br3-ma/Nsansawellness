@@ -10,71 +10,25 @@
             </h1>
         </div>
     
-        <div class="cursor-pointer relative flex items-center ">
+        @forelse ($notifications as $note)
+        <div class="cursor-pointer relative flex items-center p-3">
             <div class="w-12 h-12 flex-none image-fit mr-1">
-                <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-1.jpg">
-                <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
+                <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ00PRm15u1lOv65dmayn_Y3UX2szglLK-3A&usqp=CAU">
+                {{-- <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div> --}}
             </div>
             <div class="ml-2 overflow-hidden">
                 <div class="flex items-center">
-                    <a href="javascript:;" class="font-medium truncate mr-5">Kate Winslet</a> 
-                    <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
+                    <a href="javascript:;" class="font-medium truncate mr-5">{{ $note->data['name'] }}</a> 
+                    <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">{{ $note->created_at->toFormattedDateString() }}</div>
                 </div>
-                <div class="w-full truncate text-slate-500 mt-0.5">Can we have a chat?</div>
+                <div class="w-full truncate text-slate-500 mt-0.5">{{ $note->data['message'] }}</div>
             </div>
-        </div>
-        <div class="cursor-pointer relative flex items-center mt-5">
-            <div class="w-12 h-12 flex-none image-fit mr-1">
-                <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-            </div>
-            <div class="ml-2 overflow-hidden">
-                <div class="flex items-center">
-                    <a href="javascript:;" class="font-medium truncate mr-5">Kate Winslet</a> 
-                    <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
-                </div>
-                <div class="w-full truncate text-slate-500 mt-0.5">Contrary to popular belief. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
-            </div>
-        </div>
-        <div class="cursor-pointer relative flex items-center mt-5">
-            <div class="w-12 h-12 flex-none image-fit mr-1">
-                <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-            </div>
-            <div class="ml-2 overflow-hidden">
-                <div class="flex items-center">
-                    <a href="javascript:;" class="font-medium truncate mr-5">Kate Winslet</a> 
-                    <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
-                </div>
-                <div class="w-full truncate text-slate-500 mt-0.5">Okay</div>
-            </div>
-        </div>
-        <div class="cursor-pointer relative flex items-center mt-5">
-            <div class="w-12 h-12 flex-none image-fit mr-1">
-                <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-            </div>
-            <div class="ml-2 overflow-hidden">
-                <div class="flex items-center">
-                    <a href="javascript:;" class="font-medium truncate mr-5">Kate Winslet</a> 
-                    <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">06:05 AM</div>
-                </div>
-                <div class="w-full truncate text-slate-500 mt-0.5">Noted Thanks.</div>
-            </div>
-        </div>
-        <div class="cursor-pointer relative flex items-center mt-5">
-            <div class="w-12 h-12 flex-none image-fit mr-1">
-                <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-14.jpg">
-                <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-            </div>
-            <div class="ml-2 overflow-hidden">
-                <div class="flex items-center">
-                    <a href="javascript:;" class="font-medium truncate mr-5">Billing</a> 
-                    <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
-                </div>
-                <div class="w-full truncate text-slate-500 mt-0.5">You have successfully paid for 1 week Family & Marriage counseling with Kate Winslet</div>
-            </div>
-        </div>
+        </div> 
+        @empty
+            
+        @endforelse
+
+        
     </div>
 
     @if(Auth::user()->role == 'admin' && Auth::user()->type == '_super')

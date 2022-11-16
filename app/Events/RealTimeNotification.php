@@ -29,9 +29,13 @@ class RealTimeNotification implements ShouldBroadcast
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
-    public function broadcastOn()
+    public function broadcastOn(): Channel
     {
         // return new PrivateChannel('channel-name');
-        return new Channel('events');
+        return new Channel('popup-channel');
+    }
+
+    public function broadcastAs(){
+        return 'user-register';
     }
 }
