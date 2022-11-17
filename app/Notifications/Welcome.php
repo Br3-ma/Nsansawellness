@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewUserNotification extends Notification
+class Welcome extends Notification
 {
     use Queueable;
     public $data;
@@ -41,9 +41,9 @@ class NewUserNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New Registered Patient.')
-                    ->action('View Patient', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Hi '.$this->data['name'].'. Welcome to Nsansawellness online therapy.')
+                    ->action('My Account', url('/counseling-center'))
+                    ->line('Thank you!');
     }
 
     /**
@@ -57,9 +57,9 @@ class NewUserNotification extends Notification
         return [
             'sender_id' => $this->data['sender_id'],
             'name' => $this->data['name'],
-            'message' => 'You have a new registered Patient.',
-            'sender' => $this->data['sender'],
-            'type' =>  'new-user',
+            'message' => 'Hi '.$this->data['name'].'. Welcome to Nsansawellness online therapy.',
+            'sender' => 'Nsansa Wellness',
+            'type' =>  'welcome',
             'ispopped' =>  0,
             'link' => ''
         ];

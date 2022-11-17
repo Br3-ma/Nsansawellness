@@ -7,6 +7,8 @@ use App\Http\Requests\UpdateAppointmentRequest;
 use App\Models\Appointment;
 use App\Models\User;
 use App\Models\UserAppointment;
+use App\Notifications\MyNewAppointment;
+use App\Notifications\NewAppointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -119,12 +121,25 @@ class AppointmentController extends Controller
     {
         $appointment = $this->appointment->create($request->validated());
         foreach($request->guest_id as $guest){
+            $user = $this->user->find($guest);
+
             $this->user_appointment->create([
                 'guest_id' => $guest,
                 'appointment_id' => $appointment->id,
                 'status' => 1
             ]);
+            $payload = [
+                'sender_id' => auth()->user()->id,
+                'name' => auth()->user()->fname.' '.auth()->user()->lname,
+                'type' => $request->type,
+                'title' => $request->title,
+                'appointment_id' => $appointment->id
+            ];
+            // Send a notification to Guest about the new Appointment
+            $user->notify(new NewAppointment($payload));
         }
+        // Send a notification to my self about the new Appointment
+        $user->notify(new MyNewAppointment($payload));
         return redirect()->route('appointment')
             ->withSuccess(__('Appointment created successfully.'));
     }

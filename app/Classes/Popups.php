@@ -15,7 +15,7 @@ Class Popups {
 
     // } 
 
-    public static function DisplayPopUp($event){
+    public static function DisplayPopUp(){
         $pushConfs = array(
             'cluster' => 'ap2',
             'useTLS' => true
@@ -27,11 +27,12 @@ Class Popups {
             '1507438',
             $pushConfs
         );
-
-        
-        if($event == 'user-register'){
-        $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
-        $pusher->trigger('popup-channel', 'user-register', $message);
-        }
+        dd('here');
+        $nots = auth()->user()->unreadNotifications;
+        dd($nots);
+        // if($event == 'user-register'){
+        //     $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
+        //     $pusher->trigger('popup-channel', 'user-register', $message);
+        // }
     }
 }

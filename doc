@@ -1,0 +1,13 @@
+Notification Types
+========================
+new-User
+new-appointment
+welcome-counselor
+welcome
+
+
+Some Code
+==========================
+{{ 
+    // App\Classes\Popups::DisplayPopUp('user-register');
+}}
