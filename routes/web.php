@@ -46,6 +46,7 @@ Auth::routes();
 // Route::get('/', [WelcomeController::class, 'index'])->name('index');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/pop-ups', [NotificationController::class, 'realTimePopUps'])->name('pop-notifications');
 
 Route::group(['middleware' => ['auth']], function() {
     // ====================Dashboard
@@ -61,6 +62,7 @@ Route::group(['middleware' => ['auth']], function() {
 // Notifications
 Route::group(['middleware' => ['auth', 'permission:notification']], function() {
     Route::get('/notifications', [NotificationController::class, 'index'])->name('notification');
+    Route::post('/deleting-notification', [NotificationController::class, 'destroy'])->name('delete-notification');
 });
 
 // Appointments
@@ -87,6 +89,7 @@ Route::group(['middleware' => ['auth', 'permission:appointment.create']], functi
 
 // Questionnaires
 Route::group(['middleware' => ['auth', 'permission:questionaires.index']], function() {
+    Route::post('/mark-as-read',[NotificationController::class, 'markNotification'])->name('markNotification');
     Route::get('change-questionaire-status', [QuestionaireController::class, 'updateStatus'])->name('questionaire.status');
     Route::get('users-feedback', [QuestionaireController::class, 'feed'])->name('questionaire-user-feedback');
     Route::delete('question/delete/{id}/{qid}', [QuestionaireController::class, 'questionDestroy'])->name('question.remove');

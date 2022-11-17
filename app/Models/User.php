@@ -67,6 +67,12 @@ class User extends Authenticatable
         $this->attributes['password'] = $value;
     }
 
+    
+    public function getIsAdminAttribute()
+    {
+        return $this->roles()->where('id', 1)->exists();
+    }
+    
     public function userAppointments(){
         $this->hasMany(UserAppointment::class);
     }

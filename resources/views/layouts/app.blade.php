@@ -73,30 +73,39 @@
 
         <script>
             $(document).ready(function(){
+                var user = {!! auth()->user()->toJson() !!};
+                console.log();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
                 // Enable pusher logging - don't include this in production
                 Pusher.logToConsole = true;
 
                 var pusher = new Pusher('033c1fdbd94861470759', {
                     cluster: 'ap2'
                 });
-
     
                 setTimeout(function() {
                     var channel = pusher.subscribe('popup-channel');
-                    channel.bind('user-register', function(data) {
-                        Toastify({ 
-                            node: $("#basic-non-sticky-notification-content").clone().removeClass("hidden")[0], 
-                            duration: 3000, 
-                            newWindow: true, 
-                            close: true,
-                            gravity: "top", 
-                            position: "right", 
-                            backgroundColor: "white", 
-                            stopOnFocus: true, 
-                        }).showToast(); 
-                    });
 
-                }, 10000);
+                    if(user['id'] === 1){
+                        channel.bind('user-register', function(data) {
+                            Toastify({ 
+                                node: $("#basic-non-sticky-notification-content").clone().removeClass("hidden")[0], 
+                                duration: 5000, 
+                                newWindow: true, 
+                                close: true,
+                                gravity: "top", 
+                                position: "right", 
+                                backgroundColor: "white", 
+                                stopOnFocus: true, 
+                            }).showToast(); 
+                        });
+                    }
+                    
+                }, 3000);
             });
         </script>
     </head>
@@ -443,23 +452,39 @@
                     <div class="notification-content pt-2 dropdown-menu">
                         <div class="notification-content__box dropdown-content">
                             <div class="notification-content__title">Notifications</div>
-                            @forelse ($notifications as $note)
-                            <div class="cursor-pointer relative flex items-center py-2">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="" class="rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ00PRm15u1lOv65dmayn_Y3UX2szglLK-3A&usqp=CAU">
-                                    {{-- <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div> --}}
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Al Pacino</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">{{ $note->created_at->toFormattedDateString() }}</div>
+                            @isset($notifications)
+                                @forelse ($notifications as $note)
+                                <div class="cursor-pointer relative flex items-center py-2">
+                                    <div class="w-12 h-12 flex-none image-fit mr-1">
+                                        @switch($note->data['type'])
+                                        @case('new-user')
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://t4.ftcdn.net/jpg/03/29/84/99/360_F_329849933_edMwOcbReWmPdo7VaB0nIgg4Wlyt0aDU.jpg">
+                                            @break
+                                        @case('welcome')
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://img.freepik.com/free-vector/hand-drawn-colorful-groovy-psychedelic-background_23-2149083917.jpg?w=2000">
+                                            @break
+                                        @case('welcome-counselor')
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://www.kindpng.com/picc/m/2-21158_euclidean-line-vector-rainbow-png-file-hd-clipart.png">
+                                            @break
+                                        @case('new-appointment')
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://thumbs.dreamstime.com/b/deadline-calendar-date-appointment-agenda-business-plan-schedule-events-month-online-meeting-symbol-reminder-187031403.jpg">
+                                            @break
+                                        @default
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ00PRm15u1lOv65dmayn_Y3UX2szglLK-3A&usqp=CAU">
+                
+                                    @endswitch                                        {{-- <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div> --}}
                                     </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">{{ $note->data['message'] }}</div>
+                                    <div class="ml-2 overflow-hidden">
+                                        <div class="flex items-center">
+                                            <a href="javascript:;" class="font-medium truncate mr-5">{{ $note->data['sender'] }}</a> 
+                                            <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">{{ $note->created_at->toFormattedDateString() }}</div>
+                                        </div>
+                                        <div class="w-full truncate text-slate-500 mt-0.5">{{ $note->data['message'] }}</div>
+                                    </div>
                                 </div>
-                            </div>
-                            @empty
-                                
-                            @endforelse
+                                @empty
+                                @endforelse
+                            @endisset
                         </div>
                     </div>
                 </div>
@@ -730,14 +755,15 @@
             <!-- END: Side Menu -->
         @yield('content')
     </div>
-
-    {{ 
-        App\Classes\Popups::DisplayPopUp('user-register');
-    }}
     <!-- The Modal -->
-    <div id="basic-non-sticky-notification-content" class="toastify-content hidden flex">
-        <div class="font-medium">{{ 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining' }}</div> <a class="font-medium text-primary dark:text-slate-400 mt-1 sm:mt-0 sm:ml-40" href="">Review Changes</a>
-    </div>
+    {{-- @if(auth()->user()->id == 1) --}}
+        <div id="basic-non-sticky-notification-content" class="toastify-content hidden">
+            <div class="font-medium">A new Patient has signed up.</div>
+            <div class="text-slate-500 mt-1">
+                Check your notifications
+            </div>
+        </div>
+    {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->
     {{-- <div data-url="side-menu-dark-dashboard-overview-2.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
         <a href="side-menu-light-chat.html">
@@ -766,5 +792,16 @@
         });
     </script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        function displayPusherNotifications() {
+            return $.ajax("{{ route('pop-notifications') }}", {
+                method: 'GET'
+            });
+        }
+        displayPusherNotifications();
+        // request.done(() => {
+        //     $(this).parents('div.alert').remove();
+        // });
+    </script>
 </body>
 </html>

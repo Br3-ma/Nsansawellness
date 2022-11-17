@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NewUserNotification extends Notification
+class MyNewAppointment extends Notification
 {
     use Queueable;
     public $data;
@@ -41,9 +41,9 @@ class NewUserNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New Registered Patient.')
-                    ->action('View Patient', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('You have sent a '.$this->data['title'].' '.$this->data['type'].' call appointment')
+                    ->action('Goto Appointment', url('view-appointment/'.$this->data['appointment_id']))
+                    ->line('Thank you!');
     }
 
     /**
@@ -57,11 +57,11 @@ class NewUserNotification extends Notification
         return [
             'sender_id' => $this->data['sender_id'],
             'name' => $this->data['name'],
-            'message' => 'You have a new registered Patient.',
-            'sender' => $this->data['sender'],
-            'type' =>  'new-user',
+            'message' => $this->data['title'].' '.$this->data['type'].' call appointment',
+            'sender' => $this->data['title'].' appointment',
+            'type' =>  'new-appointment',
             'ispopped' =>  0,
-            'link' => ''
+            'link' => 'view-appointment/'.$this->data['appointment_id']
         ];
     }
 }

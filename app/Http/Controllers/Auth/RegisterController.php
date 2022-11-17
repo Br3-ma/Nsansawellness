@@ -6,10 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Notifications\NewUserNotification;
+use App\Notifications\NsansaWellnessCounselor;
+use App\Notifications\Welcome;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
+use Pusher\Pusher;
 
 class RegisterController extends Controller
 {
@@ -25,7 +28,7 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
-
+    
     /**
      * Where to redirect users after registration.
      *
@@ -44,6 +47,7 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+
     }
 
     /**
@@ -71,6 +75,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $pushConfs = array(
+            'cluster' => 'ap2',
+            'useTLS' => true
+        );
+        $pusher = new Pusher(
+            '033c1fdbd94861470759',
+            '779dcdbbdd308d0dd9e9',
+            '1507438',
+            $pushConfs
+        );
 
         $admin = User::first();
         $user = User::create([
@@ -92,22 +106,30 @@ class RegisterController extends Controller
             // 'password' => Hash::make($data['password']),
         ]);
 
-        if($data['type'] == 'patient'){
-            $user->assignRole('Patient');
-        }else{
-            $user->assignRole('Counselor');
-        }
-        
-        $data = [
-            'sender' => 'Nsansa Wellness Group',
-            'name' => $user->lname.' '.$user->lname,
-            'message' => 'Welcome '.$user->lname.' '.$user->lname.' Thank you for joining',
-            'type' => 'NewUser',
-            'ispopped' => 0
+        $payload = [
+            'sender_id' => $user->id,
+            'name' => $user->fname.' '.$user->lname,
+            'sender' => 'Nsansa Wellness Group'
         ];
 
-        Notification::send($admin, new NewUserNotification($data));
-        return $user;
+        if($data['type'] == 'patient'){
+            $user->assignRole('Patient');
+             // Send a notification to Admin about the new patient
+            $user->notify(new Welcome($payload));
 
+            // Broadcast a notifications
+            $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
+            $pusher->trigger('popup-channel', 'user-register', $message);
+        }else{
+            $user->assignRole('Counselor');
+             // Send a notification to Admin about the new counselor
+            $user->notify(new NsansaWellnessCounselor($payload));
+            $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
+            $pusher->trigger('popup-channel', 'user-register', $message);
+        }
+    
+        // Send a notification to Admin about the new user
+        $admin->notify(new NewUserNotification($payload));
+        return $user;
     }
 }

@@ -222,11 +222,11 @@
                                 <div class="form-label xl:w-64 xl:!mr-10">
                                     <div class="text-left">
                                         <div class="flex items-center">
-                                            <div class="font-medium">Comments</div>
-                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
+                                            <div class="font-medium">Comments & Notes</div>
+                                            {{-- <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div> --}}
                                         </div>
                                         <div class="leading-relaxed text-slate-500 text-xs mt-3">
-                                            <div>Make sure the product description provides a detailed explanation of your product so that it is easy to understand and find your product.</div>
+                                            {{-- <div>Make sure the product description provides a detailed explanation of your product so that it is easy to understand and find your product.</div> --}}
                                             <div class="mt-2">It is recommended not to enter info on mobile numbers, e-mails, etc. into the product description to protect your personal data.</div>
                                         </div>
                                     </div>

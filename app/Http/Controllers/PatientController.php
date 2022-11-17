@@ -23,7 +23,8 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return view('page.patients.home');
+        $notifications = auth()->user()->unreadNotifications;
+        return view('page.patients.home', compact('notifications'));
     }
 
     public function patient_files()

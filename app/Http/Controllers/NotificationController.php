@@ -32,13 +32,39 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
-        // event(new RealTimeNotification($message));
-        // $this->pusher->trigger('popup-channel', 'user-register', $message);
-        $notifications = auth()->user()->unreadNotifications;
 
-        // dd($notifications);
+        // Get all notifications
+        // $notifications = auth()->user()->unreadNotifications;
+        $notifications = auth()->user()->notifications;
         return view('page.common.notifications', compact('notifications'));
+    }
+
+    public function markNotification(Request $request)
+    {
+        auth()->user()
+            ->unreadNotifications
+            ->when($request->input('id'), function ($query) use ($request) {
+                return $query->where('id', $request->input('id'));
+            })
+            ->markAsRead();
+    
+        return response()->noContent();
+    }
+
+    public function realTimePopUps(){
+        $pushConfs = array(
+            'cluster' => 'ap2',
+            'useTLS' => true
+        );
+        $pusher = new Pusher(
+            '033c1fdbd94861470759',
+            '779dcdbbdd308d0dd9e9',
+            '1507438',
+            $pushConfs
+        );
+        $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
+        $pusher->trigger('popup-channel', 'user-register', $message);
+        return response()->noContent();
     }
 
     /**
@@ -102,8 +128,13 @@ class NotificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request) 
     {
-        //
+        $id = $request->input('id'); 
+    
+        auth()->user()->notifications->where('id', $id)->first()->delete();
+    
+        return redirect('/notifications')
+            ->with('message', 'Notification deleted.');
     }
 }
