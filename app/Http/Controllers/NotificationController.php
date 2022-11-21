@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\RealTimeNotification;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Pusher\Pusher;
@@ -36,6 +37,7 @@ class NotificationController extends Controller
         // Get all notifications
         // $notifications = auth()->user()->unreadNotifications;
         $notifications = auth()->user()->notifications;
+        // dd($notifications);
         return view('page.common.notifications', compact('notifications'));
     }
 
@@ -63,7 +65,12 @@ class NotificationController extends Controller
             $pushConfs
         );
         $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
-        $pusher->trigger('popup-channel', 'user-register', $message);
+
+        if(auth()->user()->first_time){
+            User::where('id', auth()->user()->id)->update(['first_time'=>'false']);
+            $pusher->trigger('popup-channel', 'user-register', $message);
+        }
+
         return response()->noContent();
     }
 

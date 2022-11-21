@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
+use App\Mail\SendUserInfoEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -46,15 +48,22 @@ class UserController extends Controller
     public function store(User $user, Request $request) 
     {
         try {
-        //For demo purposes only. When creating user or inviting a user
-        // you should create a generated random password and email it to the user
-        $user->create(array_merge($request->all(), [
-            'password' => bcrypt('peace2u'),
-            // 'gender' => 'Male',
-            'active' => 1
-        ]));
-        return redirect()->route('users.index')
-            ->withSuccess(__('User created successfully.'));
+            //For demo purposes only. When creating user or inviting a user
+            // you should create a generated random password and email it to the user
+            $u = $user->create(array_merge($request->all(), [
+                'password' => bcrypt('peace2u'),
+                // 'gender' => 'Male',
+                'active' => 1
+            ]));
+
+            $details = [
+                'title' => 'Your has been created and is ready to use',
+                'body' => 'Hi '.$u->fname.' '.$u->lname.' your current password is peace2u'
+            ];
+        
+            Mail::to($u->email)->send(new SendUserInfoEmail($details));
+            return redirect()->route('users.index')
+                ->withSuccess(__('User created successfully.'));
         } catch (\Throwable $th) {
             dd($th);
         }

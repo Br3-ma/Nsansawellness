@@ -32,6 +32,7 @@ class User extends Authenticatable
         'username',
         'gender',
         'guest_id',
+        'first_login',
         // 'active',
         'password',
         
