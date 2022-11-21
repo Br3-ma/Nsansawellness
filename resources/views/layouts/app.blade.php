@@ -74,7 +74,7 @@
         <script>
             $(document).ready(function(){
                 var user = {!! auth()->user()->toJson() !!};
-                console.log();
+                // console.log();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -86,15 +86,31 @@
                 var pusher = new Pusher('033c1fdbd94861470759', {
                     cluster: 'ap2'
                 });
+                var channel = pusher.subscribe('popup-channel');
+
+                channel.bind('new-appointment', function(data) {
+                    if(data == user['id']){
+                        
+                        Toastify({ 
+                            node: $("#basic-non-sticky-notification-content-two").clone().removeClass("hidden")[0], 
+                            duration: 9000, 
+                            newWindow: true, 
+                            close: true,
+                            gravity: "top", 
+                            position: "right", 
+                            backgroundColor: "white", 
+                            stopOnFocus: true, 
+                        }).showToast(); 
+
+                    }
+                });
     
                 setTimeout(function() {
-                    var channel = pusher.subscribe('popup-channel');
-
-                    if(user['id'] === 1){
+                    if(user['id'] == 1){
                         channel.bind('user-register', function(data) {
                             Toastify({ 
                                 node: $("#basic-non-sticky-notification-content").clone().removeClass("hidden")[0], 
-                                duration: 5000, 
+                                duration: 9000, 
                                 newWindow: true, 
                                 close: true,
                                 gravity: "top", 
@@ -763,6 +779,12 @@
                 Check your notifications
             </div>
         </div>
+        <div id="basic-non-sticky-notification-content-two" class="toastify-content hidden">
+            <div class="font-medium">You have a new appointment.</div>
+            <div class="text-slate-500 mt-1">
+                Check your notifications
+            </div>
+        </div>
     {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->
     {{-- <div data-url="side-menu-dark-dashboard-overview-2.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
@@ -799,9 +821,6 @@
             });
         }
         displayPusherNotifications();
-        // request.done(() => {
-        //     $(this).parents('div.alert').remove();
-        // });
     </script>
 </body>
 </html>

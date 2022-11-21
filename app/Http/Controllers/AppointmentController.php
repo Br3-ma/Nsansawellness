@@ -11,10 +11,11 @@ use App\Notifications\MyNewAppointment;
 use App\Notifications\NewAppointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Pusher\Pusher;
 
 class AppointmentController extends Controller
 {    
-    public $appointment, $user_appointment, $user;
+    public $appointment, $user_appointment, $user, $pushConfs, $pusher;
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +26,17 @@ class AppointmentController extends Controller
         $this->user_appointment = $ua;
         $this->appointment = $app;
         $this->user = $users;
+
+        $this->pushConfs = array(
+            'cluster' => 'ap2',
+            'useTLS' => true
+        );
+        $this->pusher = new Pusher(
+            '033c1fdbd94861470759',
+            '779dcdbbdd308d0dd9e9',
+            '1507438',
+            $this->pushConfs
+        );
     }
     /**
      * Display a listing of the resource.
@@ -119,27 +131,29 @@ class AppointmentController extends Controller
      */
     public function store(CreateAppointmentRequest $request)
     {
-        $appointment = $this->appointment->create($request->validated());
+        // $appointment = $this->appointment->create($request->validated());
         foreach($request->guest_id as $guest){
-            $user = $this->user->find($guest);
+            // $user = $this->user->find($guest);
 
-            $this->user_appointment->create([
-                'guest_id' => $guest,
-                'appointment_id' => $appointment->id,
-                'status' => 1
-            ]);
-            $payload = [
-                'sender_id' => auth()->user()->id,
-                'name' => auth()->user()->fname.' '.auth()->user()->lname,
-                'type' => $request->type,
-                'title' => $request->title,
-                'appointment_id' => $appointment->id
-            ];
+            // $this->user_appointment->create([
+            //     'guest_id' => $guest,
+            //     'appointment_id' => $appointment->id,
+            //     'status' => 1
+            // ]);
+            // $payload = [
+            //     'sender_id' => auth()->user()->id,
+            //     'name' => auth()->user()->fname.' '.auth()->user()->lname,
+            //     'type' => $request->type,
+            //     'title' => $request->title,
+            //     'appointment_id' => $appointment->id
+            // ];
             // Send a notification to Guest about the new Appointment
-            $user->notify(new NewAppointment($payload));
+            // $message = 'You have a new appointment with'.auth()->user()->fname.' '.auth()->user()->lname;
+            // $user->notify(new NewAppointment($payload));
+            $this->pusher->trigger('popup-channel', 'new-appointment', $guest);
         }
         // Send a notification to my self about the new Appointment
-        $user->notify(new MyNewAppointment($payload));
+        // $user->notify(new MyNewAppointment($payload));
         return redirect()->route('appointment')
             ->withSuccess(__('Appointment created successfully.'));
     }
