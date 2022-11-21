@@ -174,19 +174,18 @@
                 <!-- END: Login Info -->
                 <!-- BEGIN: Login Form -->
                 <form style="box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-                margin:5%;
                 background: rgba(255, 255, 255, 0.55);
                 border-radius: 16px;
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
                 backdrop-filter: blur(8.9px);
                 -webkit-backdrop-filter: blur(8.9px);
-                border: 1px solid rgba(255, 255, 255, 0.3);" method="POST" action="{{ route('login') }}" class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
+                border: 1px solid rgba(255, 255, 255, 0.3);" class="my-10 p-10" method="POST" action="{{ route('login') }}">
                     @csrf
-                    <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-8 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
-                        <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
-                            Sign In
+                    <div class="mx-auto bg-white dark:bg-darkmode-600 xl:bg-transparent sm:px-8 p-10 rounded-md shadow-md xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto">
+                        <h2 style="text-align: center" class="intro-x font-bold text-xl xl:text-2xl text-center text-primary xl:text-left">
+                            Welcome come back!
                         </h2>
-                        <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>
+                        {{-- <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div> --}}
                         <div class="intro-x mt-8">
                             <input required id="email" type="email" name="email" class="form-control intro-x login__input py-3 px-4 block @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
 
@@ -211,11 +210,10 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                            <button type="submit" class="btn btn-warning py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
+                        <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left w-full">
+                            <button type="submit" class="btn btn-warning py-3 px-4 w-full xl:w-full xl:mr-3 align-top">Login</button>
                             {{-- <a href="{{ route('register') }}" class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Register</a> --}}
                         </div>
-                        <div class="intro-x mt-10 xl:mt-24 text-slate-600 dark:text-slate-500 text-center xl:text-left"> By signin up, you agree to our <a class="text-primary dark:text-slate-200" href="">Terms and Conditions</a> & <a class="text-primary dark:text-slate-200" href="">Privacy Policy</a> </div>
                     </div>
                 </form>
                 <!-- END: Login Form -->
