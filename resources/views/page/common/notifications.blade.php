@@ -59,7 +59,7 @@
         
     </div>
 
-    {{-- @if(Auth::user()->role == 'admin' && Auth::user()->type == '_super') --}}
+    @if(Auth::user()->role == 'admin' && Auth::user()->type == '_super')
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Basic Notification -->
@@ -319,7 +319,7 @@
             <!-- END: Notification With Buttons Below -->
         </div>
     </div>
-    {{-- @endif --}}
+    @endif
 </div>
 <script>
     function sendMarkRequest(id = null) {
