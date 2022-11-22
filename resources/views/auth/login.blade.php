@@ -173,18 +173,25 @@
                 </div>
                 <!-- END: Login Info -->
                 <!-- BEGIN: Login Form -->
+
                 <form style="box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
                 background: rgba(255, 255, 255, 0.55);
                 border-radius: 16px;
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
                 backdrop-filter: blur(8.9px);
-                -webkit-backdrop-filter: blur(8.9px);
-                border: 1px solid rgba(255, 255, 255, 0.3);" class="my-10 p-10" method="POST" action="{{ route('login') }}">
+                -webkit-backdrop-filter: blur(8.9px);" 
+                class="w-3/4 my-10 p-10" method="POST" action="{{ route('login') }}">
+
                     @csrf
                     <div class="mx-auto bg-white dark:bg-darkmode-600 xl:bg-transparent sm:px-8 p-10 rounded-md shadow-md xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto">
                         <h2 style="text-align: center" class="intro-x font-bold text-xl xl:text-2xl text-center text-primary xl:text-left">
                             Welcome come back!
                         </h2>
+                        @error('email')
+                            <div class="intro-x alert alert-danger show flex items-center mt-3 mb-2" role="alert"> 
+                                <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}
+                            </div>
+                        @enderror
                         {{-- <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div> --}}
                         <div class="intro-x mt-8">
                             <input required id="email" type="email" name="email" class="form-control intro-x login__input py-3 px-4 block @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
@@ -201,15 +208,11 @@
                                 <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
                                 <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                             </div>
-                            <a href="">Forgot Password?</a> 
+                            <a href="{{ route('password.request') }}">Forgot Password?</a> 
                         </div>
-                        <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4 w-full">
-                            @error('email')
-                                <div class="alert alert-danger show flex items-center mb-2" role="alert"> 
-                                    <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
+                        {{-- <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4 w-full">
+
+                        </div> --}}
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left w-full">
                             <button type="submit" class="btn btn-warning py-3 px-4 w-full xl:w-full xl:mr-3 align-top">Login</button>
                             {{-- <a href="{{ route('register') }}" class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Register</a> --}}
