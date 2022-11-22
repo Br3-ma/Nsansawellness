@@ -5,6 +5,7 @@
         <h2 class="text-lg font-medium mr-auto">
             New Activity
         </h2>
+        <a href="{{ route('activities.index') }}" class="intro-x btn shadow-md mr-2">Back to Activities</a>
     </div>
     @if (count($errors) > 0)
         <div class="w-full">
@@ -34,7 +35,7 @@
                                 <div class="form-label xl:w-64 xl:!mr-10">
                                     <div class="text-left">
                                         <div class="flex items-center">
-                                            <div class="font-medium">Activity Name</div>
+                                            <div class="font-medium">Activity Description</div>
                                             <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
                                         </div>
                                         <div class="leading-relaxed text-slate-500 text-xs mt-3"> 
@@ -42,7 +43,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input id="product-name" name="desc" type="text" class="form-control" placeholder="Name">
+                                    <input id="product-name" name="desc" type="text" class="form-control" placeholder="Description">
                                     <input id="user" name="user_id" type="hidden" class="form-control" value="{{ auth()->user()->id }}">
                                     <div class="form-help text-right">Maximum character 0/70</div>
                                 </div>
@@ -86,53 +87,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- END: Product Information -->
-                <!-- BEGIN: Product Detail -->
-                <div class="intro-y box p-5 mt-5">
-                    <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
-                        <div class="font-medium text-base flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5"> <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Product Detail </div>
-                        <div class="mt-5">
-                            {{-- <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
-                                <div class="form-label xl:w-64 xl:!mr-10">
-                                    <div class="text-left">
-                                        <div class="flex items-center">
-                                            <div class="font-medium">Condition</div>
-                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <div class="flex flex-col sm:flex-row">
-                                        <div class="form-check mr-4">
-                                            <input id="condition-new" class="form-check-input" type="radio" name="horizontal_radio_button" value="horizontal-radio-chris-evans">
-                                            <label class="form-check-label" for="condition-new">New</label>
-                                        </div>
-                                        <div class="form-check mr-4 mt-2 sm:mt-0">
-                                            <input id="condition-second" class="form-check-input" type="radio" name="horizontal_radio_button" value="horizontal-radio-liam-neeson">
-                                            <label class="form-check-label" for="condition-second">Second</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
-                                <div class="form-label xl:w-64 xl:!mr-10">
-                                    <div class="text-left">
-                                        <div class="flex items-center">
-                                            <div class="font-medium">Activity Description</div>
-                                            <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <div class="editor">
-                                        <p>Content of the editor.</p>
-                                    </div>
-                                    <div class="form-help text-right">Maximum character 0/2000</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <!-- END: Weight & Shipping -->
                 <div class="flex justify-end flex-col md:flex-row gap-2 mt-5">
                     {{-- <button type="button" class="btn py-3 border-slate-300 dark:border-darkmode-400 text-slate-500 w-full md:w-52">Cancel</button>

@@ -41,7 +41,8 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return view('page.activity.index');
+        $activities = $this->activity->with('patient_activities.users')->get();
+        return view('page.activity.index', compact('activities'));
     }
 
     /**
@@ -85,7 +86,8 @@ class ActivityController extends Controller
                 $user->notify(new NewActivity($payload));
                 $this->pusher->trigger('popup-channel', 'new-activity', $patient);
 
-                return redirect()->route('activities.create')
+                return redirect()->route('activities.create
+                ')
                 ->withSuccess(__('Activity created successfully.'));
             }
         } catch (\Throwable $th) {
@@ -100,9 +102,10 @@ class ActivityController extends Controller
      * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function show(Activity $activity)
+    public function show($id)
     {
-        //
+        $activity = $this->activity->where('id', $id)->with('patient_activities.users')->get()->first();
+        return view('page.activity.show', compact('activity'));
     }
 
     /**
@@ -134,8 +137,11 @@ class ActivityController extends Controller
      * @param  \App\Models\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Activity $activity)
+    public function destroy($id)
     {
-        //
+        $a = $this->activity->find($id);
+        $a->delete();
+        return redirect()->route('activities.index')
+            ->withSuccess(__('Activity deleted successfully.'));
     }
 }
