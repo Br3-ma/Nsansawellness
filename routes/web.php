@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutPage;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\CareerPage;
@@ -116,7 +117,7 @@ Route::group(['middleware' => ['auth', 'permission:patient-files']], function() 
 
 // Action & Activities
 Route::group(['middleware' => ['auth', 'permission:actions']], function() {
-    Route::get('/activies', [HomeworkController::class, 'index'])->name('activities');
+    Route::resource('activities', ActivityController::class);
     Route::get('/actions', [HomeworkController::class, 'actions'])->name('actions');
 });
 

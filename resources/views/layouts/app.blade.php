@@ -88,6 +88,22 @@
                 });
                 var channel = pusher.subscribe('popup-channel');
 
+                channel.bind('new-activity', function(data) {
+                    if(data == user['id']){
+                        
+                        Toastify({ 
+                            node: $("#basic-non-sticky-notification-content-three").clone().removeClass("hidden")[0], 
+                            duration: 9000, 
+                            newWindow: true, 
+                            close: true,
+                            gravity: "top", 
+                            position: "right", 
+                            backgroundColor: "white", 
+                            stopOnFocus: true, 
+                        }).showToast(); 
+
+                    }
+                });
                 channel.bind('new-appointment', function(data) {
                     if(data == user['id']){
                         
@@ -171,7 +187,7 @@
                         </a>
                         <ul class="">
                             <li>
-                                <a href="{{ route('activities')}}" class="side-menu">
+                                <a href="{{ route('activities.index')}}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
                                     <div class="side-menu__title"> Activities </div>
                                 </a>
@@ -593,7 +609,7 @@
                         </a>
                         <ul class="">
                             <li>
-                                <a href="{{ route('activities')}}" class="side-menu">
+                                <a href="{{ route('activities.index')}}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
                                     <div class="side-menu__title"> Activities </div>
                                 </a>
@@ -780,7 +796,13 @@
             </div>
         </div>
         <div id="basic-non-sticky-notification-content-two" class="toastify-content hidden">
-            <div class="font-medium">You have a new appointment.</div>
+            <div class="font-medium">You have a new Appointment.</div>
+            <div class="text-slate-500 mt-1">
+                Check your notifications
+            </div>
+        </div>
+        <div id="basic-non-sticky-notification-content-two" class="toastify-content hidden">
+            <div class="font-medium">You have a new Homework Activity.</div>
             <div class="text-slate-500 mt-1">
                 Check your notifications
             </div>

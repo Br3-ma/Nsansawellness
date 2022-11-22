@@ -131,29 +131,29 @@ class AppointmentController extends Controller
      */
     public function store(CreateAppointmentRequest $request)
     {
-        // $appointment = $this->appointment->create($request->validated());
+        $appointment = $this->appointment->create($request->validated());
         foreach($request->guest_id as $guest){
-            // $user = $this->user->find($guest);
+            $user = $this->user->find($guest);
 
-            // $this->user_appointment->create([
-            //     'guest_id' => $guest,
-            //     'appointment_id' => $appointment->id,
-            //     'status' => 1
-            // ]);
-            // $payload = [
-            //     'sender_id' => auth()->user()->id,
-            //     'name' => auth()->user()->fname.' '.auth()->user()->lname,
-            //     'type' => $request->type,
-            //     'title' => $request->title,
-            //     'appointment_id' => $appointment->id
-            // ];
+            $this->user_appointment->create([
+                'guest_id' => $guest,
+                'appointment_id' => $appointment->id,
+                'status' => 1
+            ]);
+            $payload = [
+                'sender_id' => auth()->user()->id,
+                'name' => auth()->user()->fname.' '.auth()->user()->lname,
+                'type' => $request->type,
+                'title' => $request->title,
+                'appointment_id' => $appointment->id
+            ];
             // Send a notification to Guest about the new Appointment
             // $message = 'You have a new appointment with'.auth()->user()->fname.' '.auth()->user()->lname;
-            // $user->notify(new NewAppointment($payload));
+            $user->notify(new NewAppointment($payload));
             $this->pusher->trigger('popup-channel', 'new-appointment', $guest);
         }
         // Send a notification to my self about the new Appointment
-        // $user->notify(new MyNewAppointment($payload));
+        $user->notify(new MyNewAppointment($payload));
         return redirect()->route('appointment')
             ->withSuccess(__('Appointment created successfully.'));
     }
