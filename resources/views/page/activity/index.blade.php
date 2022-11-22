@@ -21,7 +21,7 @@
             <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div>
             <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
                 {{-- @can() --}}
-                <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> New Activity </button>
+                <a href="{{ route('activities.create') }}" class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> New Activity </a>
                 {{-- <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Download PDF </button> --}}
                 {{-- @end   if --}}
                 <div class="dropdown">
