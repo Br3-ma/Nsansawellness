@@ -6,19 +6,18 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
-            <div class="flex w-full sm:w-auto">
+            {{-- <div class="flex w-full sm:w-auto">
                 <div class="w-48 relative text-slate-500">
                     <input type="text" class="form-control w-48 box pr-10" placeholder="Search Activity">
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i> 
                 </div>
                 <select class="form-select box ml-2">
-                    {{-- <option>Status</option> --}}
                     <option>Latest Activities</option>
                     <option>Incomplete</option>
                     <option>Completed</option>
                 </select>
-            </div>
-            <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div>
+            </div> --}}
+            {{-- <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div> --}}
             <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
                 {{-- @can() --}}
                 <a href="{{ route('activities.create') }}" class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> New Activity </a>
@@ -28,7 +27,7 @@
                     <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                         <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
                     </button>
-                    <div class="dropdown-menu w-40">
+                    {{-- <div class="dropdown-menu w-40">
                         <ul class="dropdown-content">
                             <li>
                                 <a href="" class="dropdown-item"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-2"></i> Change Status </a>
@@ -37,7 +36,7 @@
                                 <a href="" class="dropdown-item"> <i data-lucide="bookmark" class="w-4 h-4 mr-2"></i> New Activity </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -52,7 +51,7 @@
                         {{-- <th class="whitespace-nowrap">INVOICE</th> --}}
                         <th class="whitespace-nowrap">ACTIVITY</th>
                         <th class="text-center whitespace-nowrap">STATUS</th>
-                        {{-- <th class="whitespace-nowrap">PAYMENT</th> --}}
+                        <th class="whitespace-nowrap">PATIENTS</th>
                         {{-- <th class="text-right whitespace-nowrap">
                             <div class="pr-16">TOTAL TRANSACTION</div>
                         </th> --}}
@@ -60,58 +59,44 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="intro-x">
-                        <td class="w-10">
-                            <input class="form-check-input" type="checkbox">
-                        </td>
-                        {{-- <td class="w-40 !py-4"> <a href="" class="underline decoration-dotted whitespace-nowrap">#INV-25807556</a> </td> --}}
-                        <td class="w-40">
-                            <a href="" class="font-medium whitespace-nowrap">Eat dinner together as a family</a> 
-                            {{-- <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div> --}}
-                        </td>
-                        <td class="text-center">
-                            <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
-                        </td>
-                        {{-- <td>
-                            <div class="whitespace-nowrap">Direct bank transfer</div>
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
-                        </td>
-                        <td class="w-40 text-right">
-                            <div class="pr-16">$25,000,00</div>
-                        </td> --}}
-                        <td class="table-report__action">
-                            <div class="flex justify-center items-center">
-                                <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
-                                <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="intro-x">
-                        <td class="w-10">
-                            <input class="form-check-input" type="checkbox">
-                        </td>
-                        {{-- <td class="w-40 !py-4"> <a href="" class="underline decoration-dotted whitespace-nowrap">#INV-25807556</a> </td> --}}
-                        <td class="w-40">
-                            <a href="" class="font-medium whitespace-nowrap">Create a family bucket list</a> 
-                            {{-- <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div> --}}
-                        </td>
-                        <td class="text-center">
-                            <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
-                        </td>
-                        {{-- <td>
-                            <div class="whitespace-nowrap">Direct bank transfer</div>
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
-                        </td>
-                        <td class="w-40 text-right">
-                            <div class="pr-16">$25,000,00</div>
-                        </td> --}}
-                        <td class="table-report__action">
-                            <div class="flex justify-center items-center">
-                                <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
-                                <a class="flex items-center text-primary whitespace-nowrap" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-1"></i> Change Status </a>
-                            </div>
-                        </td>
-                    </tr>
+                    @forelse ($activities as $act)
+                    
+                        <tr class="intro-x">
+                            <td class="w-10">
+                                <input class="form-check-input" type="checkbox">
+                            </td>
+                            <td class="w-40">
+                                <a href="" class="font-medium whitespace-nowrap">{{ $act->desc}}</a> 
+                                {{-- <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div> --}}
+                            </td>
+                            <td class="text-center">
+                                <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> In Progress </div>
+                            </td>
+                            {{-- <td class="w-40 !py-4"> <a href="" class="underline decoration-dotted whitespace-nowrap">#INV-25807556</a> </td> --}}
+            
+                             <td>
+                                @forelse($act->patient_activities as $user)
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $user->users->fname.' '.$user->users->lname }}</div>
+                                @empty
+                                <div class="text-slate-400 text-xs whitespace-nowrap">No Patients Assigned</div>
+                                @endforelse
+                            </td>
+                            
+                            {{-- <td class="w-40 text-right">
+                                <div class="pr-16">$25,000,00</div>
+                            </td>  --}}
+                            <td class="table-report__action">
+                                <div class="flex justify-center items-center">
+                                    <a href="{{ route('activities.show', $act->id) }}" class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                    {!! Form::open(['method' => 'DELETE','route' => ['activities.destroy', $act->id],'style'=>'display:inline']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2']) !!}
+                                    {!! Form::close() !!}                                
+                                </div>
+                            </td>
+                        </tr>                        
+                    @empty
+                        
+                    @endforelse
                     
                 </tbody>
             </table>

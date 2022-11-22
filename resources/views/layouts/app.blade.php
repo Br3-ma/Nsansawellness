@@ -192,12 +192,12 @@
                                     <div class="side-menu__title"> Activities </div>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('actions')}}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Actions </div>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     @endcan
@@ -614,12 +614,12 @@
                                     <div class="side-menu__title"> Activities </div>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('actions')}}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Actions </div>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     @endcan
