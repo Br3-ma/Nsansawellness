@@ -114,18 +114,17 @@ class RegisterController extends Controller
 
         if($data['type'] == 'patient'){
             $user->assignRole('Patient');
-             // Send a notification to Admin about the new patient
-            $user->notify(new Welcome($payload));
-
             // Broadcast a notifications
             $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
             $pusher->trigger('popup-channel', 'user-register', $message);
+            // Send a notification to Admin about the new patient
+            $user->notify(new Welcome($payload));
         }else{
             $user->assignRole('Counselor');
-             // Send a notification to Admin about the new counselor
-            $user->notify(new NsansaWellnessCounselor($payload));
             $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
             $pusher->trigger('popup-channel', 'user-register', $message);
+             // Send a notification to Admin about the new counselor
+             $user->notify(new NsansaWellnessCounselor($payload));
         }
     
         // Send a notification to Admin about the new user
