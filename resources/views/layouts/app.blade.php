@@ -543,11 +543,11 @@
                             </li>
                             @can('users.create')
                             <li>
-                                <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
+                                <a href="{{ route('users.create')}}" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
                             </li>
                             @endcan
                             <li>
-                                <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
+                                <a disabled href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
                             </li>
                             <li>
                                 <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
@@ -752,7 +752,8 @@
                                     <div class="side-menu__title">User Feedback</div>
                                 </a>
                             </li>
-                            {{-- <li>
+                            {{-- 
+                            <li>
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
@@ -774,7 +775,8 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>                                                 --}}
+                            </li> 
+                            --}}
                         </ul>
                     </li>
                     @endcan

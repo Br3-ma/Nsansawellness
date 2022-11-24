@@ -31,14 +31,22 @@ class NotificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
         // Get all notifications
         // $notifications = auth()->user()->unreadNotifications;
         $notifications = auth()->user()->notifications;
-        // dd($notifications);
-        return view('page.common.notifications', compact('notifications'));
+        if($request->wantsJson()){
+            return response()->json([
+                "status" => 200, 
+                "success" => true, 
+                "message" => "Registration completed successfully", 
+                "data" => $notifications
+            ]);
+        }else{
+            return view('page.common.notifications', compact('notifications'));
+        }
+        
     }
 
     public function markNotification(Request $request)
