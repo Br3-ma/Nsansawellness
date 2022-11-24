@@ -57,26 +57,32 @@ class LoginController extends Controller
             'password' => $request->password
         ];
         $user = User::where('email',$request->email)->first();
-        if (!Auth::attempt($data)) {
-            if($request->wantsJson()){
-                return response()->json(['error' => 'Unauthorised'], 401);
-            }else{
-                if ($user->type == 'patient') {
-                    return '/make-payments';
+        if(!empty($user)){
+            if (!Auth::attempt($data)) {
+                if($request->wantsJson()){
+                    return response()->json(['error' => 'Unauthorised'], 401);
                 }else{
-                    return '/home';
+                    if ($user->role == 'patient') {
+                        return '/counseling-center';
+                    }else{
+                        return '/home';
+                    }
+                }
+            } else {
+                if($request->wantsJson()){
+                    auth()->login($user);
+                    $token = $user->createToken('LaravelAuthApp')->accessToken;
+                    return response()->json(['token' => $token], 200);
+                }else{
+                    return back()->withErrors([
+                        "email" => "Sorry we couldn't find an account with that username. Try again",
+                    ])->onlyInput('email');
                 }
             }
-        } else {
-            if($request->wantsJson()){
-                auth()->login($user);
-                $token = $user->createToken('LaravelAuthApp')->accessToken;
-                return response()->json(['token' => $token], 200);
-            }else{
-                return back()->withErrors([
-                    "email" => "Sorry we couldn't find an account with that username. Try again",
-                ])->onlyInput('email');
-            }
+        }else{
+            return back()->withErrors([
+                "email" => "Sorry we couldn't find an account with that username. Try again",
+            ])->onlyInput('email'); 
         }
     }
     /*
