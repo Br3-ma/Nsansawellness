@@ -64,6 +64,21 @@
                     @empty
                     <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
                     @endforelse
+
+                    @forelse ($incoming_appointments as $app)
+                    <div class="relative">
+                        <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                            <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
+                            <div class="pr-10">
+                                <div class="event__title truncate">{{ $app->appointment->title ?? '' }}</div>
+                                <div class="text-slate-500 text-xs mt-0.5"> <!-- <span class="event__days">2</span>--> {{ $app->appointment->start_date ?? '' }} <span class="mx-1">•</span>{{ $app->appointment->start_time ?? '' }}</div>
+                            </div>
+                        </div>
+                        <a class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a>
+                    </div>
+                    @empty
+                    <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
+                    @endforelse
                 </div>
                 <div class="form-check form-switch flex">
                     <label class="form-check-label" for="checkbox-events">Notify me</label>
@@ -180,5 +195,10 @@
 
 <script>
     var appointments = @json($calendar);
+    console.log(appointments);
+    if(appointments.length === 0){
+        console.log('its empty');
+        appointments = @json($calendar);
+    }
 </script>
 @endsection

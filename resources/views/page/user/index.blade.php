@@ -76,8 +76,8 @@
                             <div class="progress-bar w-1/3 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
-                    {{-- <div class="w-20 h-10"> --}}
-                    {{-- <button class="btn btn-primary py-1 px-2 mr-2">Message</button> --}}
+                    {{-- <div class="w-20 h-10"> --}} 
+                    <a href={{ url('auto-assign/'.$user->guest_id) }} class="btn btn-warning text-white py-1 px-2 mr-2">Auto Assign</a>
                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-secondary py-1 px-2">Profile</a>
                     
                 </div>

@@ -29,6 +29,9 @@ class HomeController extends Controller
         $notifications = auth()->user()->unreadNotifications;
         // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
         // event(new RealTimeNotification($message));
+        if(auth()->user()->type == 'patient'){
+            return view('page.patients.home', compact('notifications'));
+        }
         return view('home', compact('notifications'));
     }
 }
