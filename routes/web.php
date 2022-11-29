@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutPage;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AssignCounselorController;
 use App\Http\Controllers\CareerPage;
 use App\Http\Controllers\ContactPage;
 use App\Http\Controllers\CounsellorController;
@@ -58,6 +59,9 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
     Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
+
+    // Route::resource('assigner', AssignCounselorController::class);
+    Route::get('auto-assign/{id}', [AssignCounselorController::class, 'index']);
 });
 
 // Notifications

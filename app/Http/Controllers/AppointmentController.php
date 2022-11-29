@@ -50,7 +50,8 @@ class AppointmentController extends Controller
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         $notifications = auth()->user()->unreadNotifications;
         try {
-            if($appointments != ''){
+            // dd(!empty($appointments->toArray()));
+            if(!empty($appointments->toArray())){
                 foreach($appointments as $a){
                     $x = [
                         'title' => $a->title,
@@ -60,6 +61,17 @@ class AppointmentController extends Controller
                     array_push($events, $x);
                 }
                 $calendar = $events[0];
+            }else{
+                foreach($incoming_appointments as $a){
+                    // dd($a);
+                    $x = [
+                        'title' => $a->appointment->title,
+                        'start' =>$this->changeDate($a->appointment->start_date),
+                        'end' => $this->changeDate($a->appointment->end_date),
+                    ];
+                    array_push($events, $x);
+                }
+                $calendar = $events[0]; 
             }
             return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications'));
         } catch (\Throwable $th) {
@@ -131,31 +143,38 @@ class AppointmentController extends Controller
      */
     public function store(CreateAppointmentRequest $request)
     {
-        $appointment = $this->appointment->create($request->validated());
-        foreach($request->guest_id as $guest){
-            $user = $this->user->find($guest);
-
-            $this->user_appointment->create([
-                'guest_id' => $guest,
-                'appointment_id' => $appointment->id,
-                'status' => 1
+        try {
+            $appointment = $this->appointment->create($request->validated());
+            foreach($request->guest_id as $guest){
+                $user = $this->user->find($guest);
+    
+                $this->user_appointment->create([
+                    'guest_id' => $guest,
+                    'appointment_id' => $appointment->id,
+                    'status' => 1
+                ]);
+                $payload = [
+                    'sender_id' => auth()->user()->id,
+                    'name' => auth()->user()->fname.' '.auth()->user()->lname,
+                    'type' => $request->type,
+                    'title' => $request->title,
+                    'appointment_id' => $appointment->id
+                ];
+                // Send a notification to Guest about the new Appointment
+                // $message = 'You have a new appointment with'.auth()->user()->fname.' '.auth()->user()->lname;
+                $user->notify(new NewAppointment($payload));
+                $this->pusher->trigger('popup-channel', 'new-appointment', $guest);
+            }
+            // Send a notification to my self about the new Appointment
+            $user->notify(new MyNewAppointment($payload));
+            return redirect()->route('appointment')
+                ->withSuccess(__('Appointment created successfully.'));
+        } catch (\Throwable $th) {
+            return back()->withErrors([
+                "message" => "Sorry we couldn't find an account with that username. Try again",
+                "error" => "Sorry we couldn't find an account with that username. Try again",
             ]);
-            $payload = [
-                'sender_id' => auth()->user()->id,
-                'name' => auth()->user()->fname.' '.auth()->user()->lname,
-                'type' => $request->type,
-                'title' => $request->title,
-                'appointment_id' => $appointment->id
-            ];
-            // Send a notification to Guest about the new Appointment
-            // $message = 'You have a new appointment with'.auth()->user()->fname.' '.auth()->user()->lname;
-            $user->notify(new NewAppointment($payload));
-            $this->pusher->trigger('popup-channel', 'new-appointment', $guest);
         }
-        // Send a notification to my self about the new Appointment
-        $user->notify(new MyNewAppointment($payload));
-        return redirect()->route('appointment')
-            ->withSuccess(__('Appointment created successfully.'));
     }
 
     /**
