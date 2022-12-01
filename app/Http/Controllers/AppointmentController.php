@@ -144,6 +144,7 @@ class AppointmentController extends Controller
     public function store(CreateAppointmentRequest $request)
     {
         try {
+            $u = $this->user->find(1);
             $appointment = $this->appointment->create($request->validated());
             foreach($request->guest_id as $guest){
                 $user = $this->user->find($guest);
@@ -166,7 +167,7 @@ class AppointmentController extends Controller
                 $this->pusher->trigger('popup-channel', 'new-appointment', $guest);
             }
             // Send a notification to my self about the new Appointment
-            $user->notify(new MyNewAppointment($payload));
+            $u->notify(new MyNewAppointment($payload));
             return redirect()->route('appointment')
                 ->withSuccess(__('Appointment created successfully.'));
         } catch (\Throwable $th) {
