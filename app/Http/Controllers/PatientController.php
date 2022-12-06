@@ -8,6 +8,10 @@ use App\Models\Appointment;
 use App\Models\PatientFile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use PhpJunior\LaravelVideoChat\Facades\Chat;
+use PhpJunior\LaravelVideoChat\Models\File\File;
+use PhpJunior\LaravelVideoChat\Models\Conversation\Conversation;
+use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
 
 class PatientController extends Controller
 {
