@@ -365,7 +365,7 @@
             <div class="h-full flex items-center">
                 <!-- BEGIN: Logo -->
                 <a href="{{ route('welcome')}}" class="logo -intro-x hidden md:flex xl:w-[180px] block">
-                    <img style="border-radius: 100%" src="uploads/sites/304/2022/06/logos.svg" class="logo__image w-6" alt="" loading="lazy" />
+                    <img style="border-radius: 100%" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}" class="logo__image w-6" alt="" loading="lazy" />
                     {{-- <img alt="Midone - HTML Admin Template" class="logo__image w-6" src="dist/images/logo.svg"> --}}
                     <span class="logo__text text-white text-lg ml-3"> Nsansa </span> 
                 </a>
@@ -525,7 +525,7 @@
                 <!-- BEGIN: Account Menu -->
                 <div class="intro-x dropdown w-8 h-8">
                     <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                        <img alt="Midone - HTML Admin Template" src="dist/images/profile-9.jpg">
+                        <img alt="Profile" src="{{ asset('dist/images/profile-9.jpg') }}">
                     </div>
                     <div class="dropdown-menu w-56">
                         <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
@@ -683,52 +683,41 @@
                     </li> --}}
                     @endcan
 
-                    @can('users.index')
+
+
+                    @can('patient-files')
+                   
                     <li>
                         <a href="javascript:;" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                             <div class="side-menu__title">
-                                Users 
+                                Patient Files
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
                         <ul class="">
-                            {{-- @can('view', Auth::user(), App\User::class) --}}
-                            @can('users.index')
                             <li>
-                                <a href="{{ route('users.index') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="user-check"></i> </div>
-                                    <div class="side-menu__title"> Registered Users </div>
+                                <a href="{{ route('patient-files') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> All Patient Files </div>
                                 </a>
                             </li>
-                            @endcan
-                            @can('roles.index')
+                            @forelse(App\Models\User::role('patient')->get() as $my_patient)
                             <li>
-                                <a href="{{ route('roles.index') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="user-plus"></i> </div>
-                                    <div class="side-menu__title"> User Roles </div>
+                                <a href="{{ route('all-patient-files', $my_patient->id ) }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="user"></i> </div>
+                                    <div class="side-menu__title"> {{ $my_patient->fname.' '.$my_patient->lname }} </div>
                                 </a>
                             </li>
-                            @endcan
-                            @can('permissions.index')
+                            @empty
                             <li>
-                                <a href="{{ route('permissions.index') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="user-x"></i> </div>
-                                    <div class="side-menu__title"> Permissions </div>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__title"> No patients</div>
                                 </a>
                             </li>
-                            @endcan
+                            @endforelse
                         </ul>
                     </li>
-                    @endcan
-
-                    @can('patient-files')
-                    {{-- <li>
-                        <a href="{{ route('patient-files') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
-                            <div class="side-menu__title"> Patient Files </div>
-                        </a>
-                    </li> --}}
                     @endcan
                     @can('questionaires.index')
                     <li>
@@ -777,6 +766,44 @@
                                 </ul>
                             </li> 
                             --}}
+                        </ul>
+                    </li>
+                    @endcan
+                    @can('users.index')
+                    <li>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
+                            <div class="side-menu__title">
+                                Users 
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            {{-- @can('view', Auth::user(), App\User::class) --}}
+                            @can('users.index')
+                            <li>
+                                <a href="{{ route('users.index') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="user-check"></i> </div>
+                                    <div class="side-menu__title"> Registered Users </div>
+                                </a>
+                            </li>
+                            @endcan
+                            @can('roles.index')
+                            <li>
+                                <a href="{{ route('roles.index') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="user-plus"></i> </div>
+                                    <div class="side-menu__title"> User Roles </div>
+                                </a>
+                            </li>
+                            @endcan
+                            @can('permissions.index')
+                            <li>
+                                <a href="{{ route('permissions.index') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="user-x"></i> </div>
+                                    <div class="side-menu__title"> Permissions </div>
+                                </a>
+                            </li>
+                            @endcan
                         </ul>
                     </li>
                     @endcan
@@ -846,5 +873,7 @@
         }
         displayPusherNotifications();
     </script>
+    
+    <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
 </body>
 </html>

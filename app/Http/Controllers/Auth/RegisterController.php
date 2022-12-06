@@ -92,13 +92,11 @@ class RegisterController extends Controller
             'lname' => $data['lname'],
             'email' => $data['email'],
             'username' => $data['email'],
-            'section' => $data['role'],
-            'role' => 3,
             'type' => $data['type'],
             'guest_id' => $data['guest_id'],
-            'password' => bcrypt($data['password'])
-            // 'liecense_number' => $data['role'],
-            // 'country' => $data['country'],
+            'password' => bcrypt($data['password']),
+            'liecense_number' => $data['liecense'] ?? 000000,
+            'department' => $data['role']
             // 'mobile_no' => $data['mobile_no'],
             // 'state' => $data['state'],
             // 'active' => 0,
@@ -124,7 +122,7 @@ class RegisterController extends Controller
             $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
             $pusher->trigger('popup-channel', 'user-register', $message);
              // Send a notification to Admin about the new counselor
-             $user->notify(new NsansaWellnessCounselor($payload));
+            $user->notify(new NsansaWellnessCounselor($payload));
         }
     
         // Send a notification to Admin about the new user

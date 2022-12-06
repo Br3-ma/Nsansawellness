@@ -33,9 +33,14 @@ class User extends Authenticatable
         'gender',
         'guest_id',
         'first_login',
+        'department',
         // 'active',
         'password',
-        
+        'blood_group',
+        'date_of_birth',
+        'place_of_birth',
+        'address',
+        'occupation'
     ];
 
     /**
@@ -84,5 +89,9 @@ class User extends Authenticatable
 
     public function patient_activities(){
         return $this->hasMany(PatientActivity::class);
+    }
+
+    public function patient_files(){
+        return $this->hasMany(PatientFile::class);
     }
 }

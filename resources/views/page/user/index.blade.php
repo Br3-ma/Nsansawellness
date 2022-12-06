@@ -56,8 +56,10 @@
                         <a href="" class="font-medium">{{ $user->fname.' '.$user->lname }}</a> 
                         <div class="text-slate-500 text-xs mt-0.5">
                             @foreach($user->roles as $role)
-                                <span class="">{{ $role->name }}</span>
+                                <span class="capitalize">{{ $role->name }}</span>
                             @endforeach
+                            <br>
+                            <span class="">{{ $user->department ?? '' }}</span>
                         </div>
                     </div>
                     <div class="flex -ml-2 lg:ml-0 lg:justify-end mt-3 lg:mt-0">

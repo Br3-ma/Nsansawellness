@@ -117,6 +117,13 @@ Route::group(['middleware' => ['auth', 'permission:patient']], function() {
 // Patient Files
 Route::group(['middleware' => ['auth', 'permission:patient-files']], function() {
     Route::get('/patient-files', [PatientController::class, 'patient_files'])->name('patient-files');
+    Route::get('/create-patient-file/{id}', [PatientController::class, 'create'])->name('create-patient-file');
+    Route::get('/show-patient-file/{id}', [PatientController::class, 'show'])->name('show-patient-file');
+    Route::get('/edit-patient-file/{id}', [PatientController::class, 'edit'])->name('edit-patient-file');
+    Route::delete('/delete-patient-file/{id}', [PatientController::class, 'destroy'])->name('delete-patient-file');
+    Route::post('/add-patient-file', [PatientController::class, 'store'])->name('add-patient-file');
+    Route::post('/update-patient-file/{id}', [PatientController::class, 'update'])->name('update-patient-file');
+    Route::get('/patient-files/{id}', [PatientController::class, 'show_patient_files'])->name('all-patient-files');
 });
 
 // Action & Activities
