@@ -21,7 +21,11 @@
                     <button type="submit" class="mt-1 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create New Meeting</button>
                 </form>
             </div> --}}
-            <a target="_blank" href="{{ route('video-call') }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a>
+            <form method="POST" action="{{ route('meeting.store') }}">
+                @csrf
+                <button type="submit" class="btn btn-primary shadow-md mr-2">Create Meeting</button>
+            </form>
+            <a target="_blank" href="{{ route('video-call', ['id'=> 1]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a>
             {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
             <button class="btn btn-primary shadow-md mr-2">Phone Call</button>
             {{-- <button class="btn btn-primary shadow-md mr-2">Start New Chat</button> --}}
@@ -100,47 +104,52 @@
                     @endif
                     <div class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4">
                         @if(Auth::User()->role != 'patient')
-                        <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
-                            <div class="w-12 h-12 flex-none image-fit mr-1">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="https://photos.psychologytoday.com/49554841-d73a-4ef2-bc5d-94a090a40e69/3/320x400.jpeg">
-                                <div class="w-3 h-3 bg-warning absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
-                            </div>
-                            <div class="ml-2 overflow-hidden">
-                                <div class="flex items-center">
-                                    <a href="javascript:;" class="font-medium">Kate Winslet</a> 
-                                    <div class="text-xs text-slate-400 ml-auto">05:09 AM</div>
-                                </div>
-                                <div class="w-full truncate text-slate-500 mt-0.5">Marriage & Family counselor</div>
-                            </div>
-                            <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                            @foreach($threads as $inbox)
+                                @if($inbox->message->conversation->is_accepted)
+                                    <a href="{{ route('chat' , ['id' => $inbox->message->conversation->id ]) }}">
+                                        <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
+                                            <div class="w-12 h-12 flex-none image-fit mr-1">
+                                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="https://photos.psychologytoday.com/49554841-d73a-4ef2-bc5d-94a090a40e69/3/320x400.jpeg">
+                                                <div class="w-3 h-3 bg-warning absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
+                                            </div>
+                                            <div class="ml-2 overflow-hidden">
+                                                <div class="flex items-center">
+                                                    <a href="javascript:;" class="font-medium">{{ $inbox->user->name }}</a> 
+                                                    <div class="text-xs text-slate-400 ml-auto">05:09 AM</div>
+                                                </div>
+                                                <div class="w-full truncate text-slate-500 mt-0.5">Marriage & Family counselor</div>
+                                                <small>{{ substr($inbox->message->text, 0, 20) }}</small>
+                                            </div>
+                                            <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
 
-                        </div>
-                        <div class="intro-x cursor-pointer box relative flex items-center p-5 mt-5">
-                            <div class="w-12 h-12 flex-none image-fit mr-1">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="https://us.123rf.com/450wm/seita/seita2005/seita200500025/148031909-therapy-session-concept-young-man-sharing-his-problems-at-group-meeting-.jpg?ver=6">
-                                <div class="w-3 h-3 bg-warning absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
-                            </div>
-                            <div class="ml-2 overflow-hidden">
-                                <div class="flex items-center">
-                                    <a href="javascript:;" class="font-medium">Life Support Group</a> 
-                                    <div class="text-xs text-slate-400 ml-auto">03:20 PM</div>
-                                </div>
-                                <div class="w-full truncate text-slate-500 mt-0.5">Therapist</div>
-                            </div>
-                        </div>
-                        <div class="intro-x cursor-pointer box relative flex items-center p-5 mt-5">
-                            <div class="w-12 h-12 flex-none image-fit mr-1">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="https://therapyforblackmen.org/wp-content/uploads/2020/09/image1-06292018-300x300-1.jpeg">
-                                <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
-                            </div>
-                            <div class="ml-2 overflow-hidden">
-                                <div class="flex items-center">
-                                    <a href="javascript:;" class="font-medium">Bremah Nyeleti</a> 
-                                    <div class="text-xs text-slate-400 ml-auto">01:10 PM</div>
-                                </div>
-                                <div class="w-full truncate text-slate-500 mt-0.5">Medical Advisor</div>
-                            </div>
-                        </div>
+                                        </div>
+                                    </a>
+                                @else
+                                    <a href="{{ route('chat' , ['id' => $inbox->message->conversation->id ]) }}">
+                                        <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
+                                            <div class="w-12 h-12 flex-none image-fit mr-1">
+                                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="https://photos.psychologytoday.com/49554841-d73a-4ef2-bc5d-94a090a40e69/3/320x400.jpeg">
+                                                <div class="w-3 h-3 bg-warning absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
+                                            </div>
+                                            <div class="ml-2 overflow-hidden">
+                                                <div class="flex items-center">
+                                                    <a href="javascript:;" class="font-medium">{{ $inbox->user->name }}</a> 
+                                                    <div class="text-xs text-slate-400 ml-auto">05:09 AM</div>
+                                                </div>
+                                                <div class="w-full truncate text-slate-500 mt-0.5">Marriage & Family counselor</div>
+                                                <small>{{ substr($inbox->message->text, 0, 20) }}</small>
+                                                @if($inbox->message->conversation->second_user_id == auth()->user()->id)
+                                                <div class="w-full">
+                                                    <a class="btn btn-warining btn-sm" href="{{ route('accept.message' , ['id' => $inbox->message->conversation->id]) }}" class="btn btn-xs btn-success">Accept Message Request</a>
+                                                </div>
+                                                @endif
+                                            </div>
+                                            <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+
+                                        </div>
+                                    </a>
+                                @endif  
+                            @endforeach
                         @else
                         <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
                             <div class="w-12 h-12 flex-none image-fit mr-1">
@@ -159,6 +168,7 @@
                             <img width="50" height="50" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
                         </div>
                         @endif
+
                     </div>
                 </div>
                 <div id="friends" class="tab-pane" role="tabpanel" aria-labelledby="friends-tab">
@@ -1969,70 +1979,81 @@
         <!-- END: Chat Content -->
     </div>
 
-    <div id="start-video">
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                @foreach($threads as $inbox)
+                    {{--@if(!is_null($inbox->message))--}}
+                        {{--<li class="list-group-item">--}}
+                            {{--<a href="{{ route('chat' , [--}}
+                                {{--'id' => $inbox->message->conversation->id--}}
+                            {{--]) }}">--}}
+                                {{--<div class="about">--}}
+                                    {{--<div class="name">{{$inbox->user->name}}</div>--}}
+                                    {{--<div class="status">--}}
+                                        {{--@if(auth()->user()->id == $inbox->message->sender->id)--}}
+                                            {{--<span class="fa fa-reply"></span>--}}
+                                        {{--@endif--}}
+                                        {{--<span>{{ substr($inbox->message->text, 0, 20)}}</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
+                    {{--@endif--}}
 
-        <div class="call-view">
-            <div class="call-view__tracks">
-              <div class="remote-track--container">
-                <div style="width: 100%; height: 100%; background-image: url('https://avyannaattracttactic.review/wp-content/uploads/2017/08/1503266040_maxresdefault.jpg'); background-repeat: no-repeat; background-position: center; background-size: cover;"></div>
-              </div>
-          
-              <div class="remote-track--container">
-                <div class="remote-track--picture-placeholder--container">
-                  <div class="remote-track--picture-placeholder__background" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Hope_Sports.jpg/220px-Hope_Sports.jpg');"></div>
-                  <div class="remote-track--picture-placeholder" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Hope_Sports.jpg/220px-Hope_Sports.jpg');"></div>
-                </div>
-          
-                <div class="input-status-container">
-                  <div class="input-status">
-                    <i class="material-icons-round" style="color: #FAFAFA;">mic_off</i>
-                  </div>
-                  <div class="input-status">
-                    <i class="material-icons-round" style="color: #FAFAFA;">videocam_off</i>
-                  </div>
-                </div>
-              </div>
-          
-              <div class="remote-track--container">
-                <div class="remote-track--picture-placeholder--container">
-                  <div class="remote-track--picture-placeholder__background" style="background-image: url('https://www.nzaf.org.nz/assets/ee-uploads/cache/6e456c4c746cba65/Guy-sample_376_268_s_c1.jpg');"></div>
-                  <div class="remote-track--picture-placeholder speaking" style="background-image: url('https://www.nzaf.org.nz/assets/ee-uploads/cache/6e456c4c746cba65/Guy-sample_376_268_s_c1.jpg');"></div>
-                </div>
-          
-                <div class="input-status-container">
-                  <div class="input-status">
-                    <i class="material-icons-round" style="color: #FAFAFA;">videocam_off</i>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="call-view__tracks__local-track-container">
-                <div class="call-view__tracks__local-track">
-                  <video></video>
-                </div>
-              </div>
-            </div>
-          
-            <div class="call-view__controls-container">
-              <div class="call-view__controls">
-                <div id="btn--end-call" class="call-view__controls__icon-btn important">
-                  <i class="material-icons-round" style="color: #FAFAFA;">call_end</i>
-                </div>
-                <div id="btn--toggle-mic" class="call-view__controls__icon-btn">
-                  <i class="material-icons-round" style="color: #FF3346;">mic_off</i>
-                </div>
-                <div id="btn--toggle-cam" class="call-view__controls__icon-btn">
-                  <i class="material-icons-round" style="color: #FF3346;">videocam_off</i>
-                </div>
-                <div id="btn--toggle-screen-sharing" class="call-view__controls__icon-btn">
-                  <i class="material-icons-round" style="color: #27A4FD;">screen_share</i>
-                </div>
-                <div id="btn--settings" class="call-view__controls__icon-btn">
-                  <i class="material-icons-round" style="color: #27A4FD;">settings</i>
-                </div>
-              </div>
-            </div>
-          </div>
+                        @if($inbox->message->conversation->is_accepted)
+                            <a href="{{ route('chat' , [
+                                'id' => $inbox->message->conversation->id
+                            ]) }}">
+                                <div class="about">
+                                    <div class="text-primary text-3xl name">{{$inbox->user->name}}</div>
+                                    <div class="status">
+                                        @if(auth()->user()->id == $inbox->message->sender->id)
+                                            <span class="fa fa-reply">Reply</span>
+                                        @endif
+                                        <span class="text-danger">{{ substr($inbox->message->text, 0, 20)}}</span>
+
+                                    </div>
+                                </div>
+                            </a>
+                        @else
+                            <a href="#">
+                                <div class="about">
+                                    <div class="name">{{$inbox->user->name}}</div>
+                                    <div class="status">
+                                        @if(auth()->user()->id == $inbox->message->sender->id)
+                                            <span class="fa fa-reply"></span>
+                                        @endif
+                                        <span>{{ substr($inbox->message->text, 0, 20)}}</span>
+                                    </div>
+                                    @if($inbox->message->conversation->second_user_id == auth()->user()->id)
+                                        <div>
+                                            <a href="{{ route('accept.message' , [
+                                'id' => $inbox->message->conversation->id
+                            ]) }}" class="btn btn-xs btn-success">Accept Message Request</a>
+                                        </div>
+                                    @endif
+                                </div>
+                            </a>
+                        @endif
+
+                @endforeach
+
+                @foreach($groups as $group)
+                    <li class="list-group-item">
+                        <a href="{{ route('group.chat' , $group->id) }}">
+                            <div class="about">
+                                <div class="name">{{$group->name}}</div>
+                                <div class="status">
+                                    <span>{{ $group->users_count }} Member</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
+
 </div>
 @endsection

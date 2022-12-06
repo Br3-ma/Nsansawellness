@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PhpJunior\LaravelVideoChat\Facades\Chat;
+use PhpJunior\LaravelVideoChat\Models\File\File;
+use PhpJunior\LaravelVideoChat\Models\Conversation\Conversation;
+use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
 
 class PatientController extends Controller
 {
@@ -23,7 +27,16 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return view('page.patients.home');
+        $groups = Chat::getAllGroupConversations();
+        $threads = Chat::getAllConversations();
+
+        // dd($threads);
+        // dd($groups);
+        return view('page.patients.home')->with([
+            'threads' => $threads,
+            'groups'  => $groups
+        ]);
+        // return view('page.patients.home');
     }
 
     public function patient_files()

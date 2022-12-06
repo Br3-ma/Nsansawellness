@@ -25,6 +25,7 @@ use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ResultsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use PhpJunior\LaravelVideoChat\Facades\Chat;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +53,36 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
 
     Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile');
-    Route::get('/live-video-call', [VideoCallController::class, 'index'])->name('video-call');
+    Route::get('/joinning-conversation/{id}', [VideoCallController::class, 'startVideoCall'])->name('video-call');
+    Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
+    Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
+    Route::get('/api/fetch-session/{id}/{user}', [VideoCallController::class, 'getConversationDetails'])->name('conversation-details');
 
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
     Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
+
+
+    Route::get('/chat/{id}', [VideoCallController::class, 'chat'])->name('chat');
+    Route::get('/group/chat/{id}', [VideoCallController::class, 'groupChat'])->name('group.chat');
+    
+    Route::post('/chat-create', [VideoCallController::class, 'store'])->name('meeting.store');
+    Route::post('/chat/message/send', [VideoCallController::class, 'send'])->name('chat.send');
+    Route::post('/chat/message/send/file', [VideoCallController::class, 'sendFilesInConversation'])->name('chat.send.file');
+    Route::post('/group/chat/message/send', [VideoCallController::class, 'groupSend'])->name('group.send');
+    Route::post('/group/chat/message/send/file', [VideoCallController::class, 'sendFilesInGroupConversation'])->name('group.send.file');
+    
+    Route::get('/accept/message/request/{id}' , function ($id){
+        Chat::acceptMessageRequest($id);
+        return redirect()->back();
+    })->name('accept.message');
+    
+    // Route::get('/trigger/{id}' , [VideoCallController::class, 'startVideo'])->name('video-chat');
+    Route::post('/trigger/{id}' , function (\Illuminate\Http\Request $request , $id) {
+        Chat::startVideoCall($id , $request->all());
+    });
+    Route::post('/group/chat/leave/{id}' , function ($id) {
+        Chat::leaveFromGroupConversation($id);
+    });
 });
 
 // Notifications
