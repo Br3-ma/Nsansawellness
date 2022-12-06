@@ -64,22 +64,22 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
     Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
 
-<<<<<<< HEAD
+
 
     Route::get('/chat/{id}', [VideoCallController::class, 'chat'])->name('chat');
     Route::get('/group/chat/{id}', [VideoCallController::class, 'groupChat'])->name('group.chat');
-    
+
     Route::post('/chat-create', [VideoCallController::class, 'store'])->name('meeting.store');
     Route::post('/chat/message/send', [VideoCallController::class, 'send'])->name('chat.send');
     Route::post('/chat/message/send/file', [VideoCallController::class, 'sendFilesInConversation'])->name('chat.send.file');
     Route::post('/group/chat/message/send', [VideoCallController::class, 'groupSend'])->name('group.send');
     Route::post('/group/chat/message/send/file', [VideoCallController::class, 'sendFilesInGroupConversation'])->name('group.send.file');
-    
+
     Route::get('/accept/message/request/{id}' , function ($id){
         Chat::acceptMessageRequest($id);
         return redirect()->back();
     })->name('accept.message');
-    
+
     // Route::get('/trigger/{id}' , [VideoCallController::class, 'startVideo'])->name('video-chat');
     Route::post('/trigger/{id}' , function (\Illuminate\Http\Request $request , $id) {
         Chat::startVideoCall($id , $request->all());
@@ -87,10 +87,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/group/chat/leave/{id}' , function ($id) {
         Chat::leaveFromGroupConversation($id);
     });
-=======
+
     // Route::resource('assigner', AssignCounselorController::class);
     Route::get('auto-assign/{id}', [AssignCounselorController::class, 'index']);
->>>>>>> ce9882ba29db51f8256621f3b7b41b267f566f79
+
 });
 
 // Notifications
