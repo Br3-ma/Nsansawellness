@@ -208,4 +208,7 @@ nav ul li img:hover{
             </div>
         </div>
     </body>
+    <script>
+        
+    </script>
 </html>
