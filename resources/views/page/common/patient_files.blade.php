@@ -3,11 +3,11 @@
 
 <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        Patient Files
+        Manage Patient Files
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <button class="btn btn-primary shadow-md mr-2">Start therapy session</button>
+            {{-- <button class="btn btn-primary shadow-md mr-2">Record Patient File</button>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -22,8 +22,8 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 10 of 150 entries</div>
+            </div> --}}
+            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 3 of {{ sizeOf($my_patients) }} patients</div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
                     <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
@@ -32,6 +32,7 @@
             </div>
         </div>
         <!-- BEGIN: Users Layout -->
+        @forelse($my_patients as $file)
         <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
             <div class="box">
                 <div class="flex items-start px-5 pt-5">
@@ -40,295 +41,35 @@
                             <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-3.jpg">
                         </div>
                         <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">Morgan Freeman</a> 
-                            <div class="text-slate-500 text-xs mt-0.5">Account</div>
+                            <a href="" class="font-medium">{{$file['fname'].' '.$file['lname']}}</a> 
+                            <div class="text-slate-500 text-xs mt-0.5">Patient</div>
                         </div>
                     </div>
                     <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
                         <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
                         <div class="dropdown-menu w-40">
                             <div class="dropdown-content">
-                                <a href="" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
+                                <a href="{{ route('all-patient-files', $file['id']) }}" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
+                                <a href="" @disabled(true) class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="text-center lg:text-left p-5">
-                    <div>Anxiety, Depression and Bipola</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> morganfreeman@left4code.com </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> Morgan Freeman </div>
+                    {{-- <div>Condition</div> --}}
+                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file['email'] }}</div>
+                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class="w-3 h-3 mr-2"></i> {{ $file['created_at'] }} </div>
                 </div>
                 <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
+                    <a href="{{ route('all-patient-files', $file['id']) }}" class="btn btn-warning text-white py-1 px-2 mr-2">View All Files</a>
+                    {{-- <button class="btn btn-outline-secondary py-1 px-2">Profile</button> --}}
                 </div>
             </div>
         </div>
-        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
-            <div class="box">
-                <div class="flex items-start px-5 pt-5">
-                    <div class="w-full flex flex-col lg:flex-row items-center">
-                        <div class="w-16 h-16 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-15.jpg">
-                        </div>
-                        <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">Kate Winslet</a> 
-                            <div class="text-slate-500 text-xs mt-0.5">Engineer</div>
-                        </div>
-                    </div>
-                    <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
-                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                        <div class="dropdown-menu w-40">
-                            <div class="dropdown-content">
-                                <a href="" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center lg:text-left p-5">
-                    <div>Stress management</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> katewinslet@left4code.com </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> Kate Winslet </div>
-                </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
-            <div class="box">
-                <div class="flex items-start px-5 pt-5">
-                    <div class="w-full flex flex-col lg:flex-row items-center">
-                        <div class="w-16 h-16 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-14.jpg">
-                        </div>
-                        <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">Kevin Spacey</a> 
-                            <div class="text-slate-500 text-xs mt-0.5">Entreprenure</div>
-                        </div>
-                    </div>
-                    <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
-                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                        <div class="dropdown-menu w-40">
-                            <div class="dropdown-content">
-                                <a href="" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center lg:text-left p-5">
-                    <div>Mood disorder and Stress </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> kevinspacey@left4code.com </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> Kevin Spacey </div>
-                </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
-            <div class="box">
-                <div class="flex items-start px-5 pt-5">
-                    <div class="w-full flex flex-col lg:flex-row items-center">
-                        <div class="w-16 h-16 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-6.jpg">
-                        </div>
-                        <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">John Travolta</a> 
-                            <div class="text-slate-500 text-xs mt-0.5">Frontend Engineer</div>
-                        </div>
-                    </div>
-                    <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
-                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                        <div class="dropdown-menu w-40">
-                            <div class="dropdown-content">
-                                <a href="" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center lg:text-left p-5">
-                    <div>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> johntravolta@left4code.com </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> John Travolta </div>
-                </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
-            <div class="box">
-                <div class="flex items-start px-5 pt-5">
-                    <div class="w-full flex flex-col lg:flex-row items-center">
-                        <div class="w-16 h-16 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-2.jpg">
-                        </div>
-                        <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">Johnny Depp</a> 
-                            <div class="text-slate-500 text-xs mt-0.5">Software Engineer</div>
-                        </div>
-                    </div>
-                    <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
-                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                        <div class="dropdown-menu w-40">
-                            <div class="dropdown-content">
-                                <a href="" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center lg:text-left p-5">
-                    <div>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> johnnydepp@left4code.com </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> Johnny Depp </div>
-                </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
-            <div class="box">
-                <div class="flex items-start px-5 pt-5">
-                    <div class="w-full flex flex-col lg:flex-row items-center">
-                        <div class="w-16 h-16 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-7.jpg">
-                        </div>
-                        <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">Leonardo DiCaprio</a> 
-                            <div class="text-slate-500 text-xs mt-0.5">Software Engineer</div>
-                        </div>
-                    </div>
-                    <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
-                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                        <div class="dropdown-menu w-40">
-                            <div class="dropdown-content">
-                                <a href="" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center lg:text-left p-5">
-                    <div>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> leonardodicaprio@left4code.com </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> Leonardo DiCaprio </div>
-                </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
-            <div class="box">
-                <div class="flex items-start px-5 pt-5">
-                    <div class="w-full flex flex-col lg:flex-row items-center">
-                        <div class="w-16 h-16 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-7.jpg">
-                        </div>
-                        <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">Johnny Depp</a> 
-                            <div class="text-slate-500 text-xs mt-0.5">Backend Engineer</div>
-                        </div>
-                    </div>
-                    <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
-                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                        <div class="dropdown-menu w-40">
-                            <div class="dropdown-content">
-                                <a href="" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center lg:text-left p-5">
-                    <div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> johnnydepp@left4code.com </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> Johnny Depp </div>
-                </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
-            <div class="box">
-                <div class="flex items-start px-5 pt-5">
-                    <div class="w-full flex flex-col lg:flex-row items-center">
-                        <div class="w-16 h-16 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-15.jpg">
-                        </div>
-                        <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">Kevin Spacey</a> 
-                            <div class="text-slate-500 text-xs mt-0.5">Frontend Engineer</div>
-                        </div>
-                    </div>
-                    <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
-                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                        <div class="dropdown-menu w-40">
-                            <div class="dropdown-content">
-                                <a href="" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center lg:text-left p-5">
-                    <div>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> kevinspacey@left4code.com </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> Kevin Spacey </div>
-                </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
-        <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
-            <div class="box">
-                <div class="flex items-start px-5 pt-5">
-                    <div class="w-full flex flex-col lg:flex-row items-center">
-                        <div class="w-16 h-16 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-8.jpg">
-                        </div>
-                        <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">Al Pacino</a> 
-                            <div class="text-slate-500 text-xs mt-0.5">DevOps Engineer</div>
-                        </div>
-                    </div>
-                    <div class="absolute right-0 top-0 mr-5 mt-3 dropdown">
-                        <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                        <div class="dropdown-menu w-40">
-                            <div class="dropdown-content">
-                                <a href="" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center lg:text-left p-5">
-                    <div>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomi</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> alpacino@left4code.com </div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="instagram" class="w-3 h-3 mr-2"></i> Al Pacino </div>
-                </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <button class="btn btn-primary py-1 px-2 mr-2">Message</button>
-                    <button class="btn btn-outline-secondary py-1 px-2">Profile</button>
-                </div>
-            </div>
-        </div>
+        @empty
+        @endforelse
+
+        
         <!-- END: Users Layout -->
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">

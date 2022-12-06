@@ -27,7 +27,6 @@ class AssignCounselorController extends Controller
      */
     public function index($id)
     {
-        
         //Get the patient survey Answers to Array
         $patient_survey_arr = $this->res->with('question')->where('guest_id', $id)->get()->toArray();
 
@@ -41,11 +40,13 @@ class AssignCounselorController extends Controller
     }
 
     public function findMyCounselorByAttributes($patient_survey_arr){
+        $total_charge = rand(10.90, 70.89);
         // Get all Counselors with Survey answers
         $counselors = $this->user->role('counselor')->get('id')->toArray();
         // dd($counselors);
         foreach($counselors as $key => $counselor){
             $user_info = $this->user->where('id', $counselor['id'])->get()->toArray();
+            // dd($user_info[0]['patient_limit']);
             // $get_counselor_survey = $this->res->with('question')
             //                             ->where('guest_id', $user_info[$key]['guest_id'])
             //                             ->get()->toArray();
@@ -55,26 +56,32 @@ class AssignCounselorController extends Controller
             $count = $this->assignPatients->where('counselor_id', $counselor['id'])->get()->count();
 
             // Counselor patient limit exceeds?
-            if($user_info[$key]['patient_limit'] > $count){
-                
+            if($user_info[0]['patient_limit'] > $count){
+                // dd('No Limit');
                 // Counselor ready for more work?
-                if($user_info[$key]['work_status'] == 1){
-                     
+                if($user_info[0]['work_status'] == 1){
+                    //  dd('Ready for More work');
                     // Counselor qualified for this type of therapy
-                    if($user_info[$key]['type']){
-                        
+                    // if($user_info[0]['role']){
+                        // dd('Qualified for this kind of therapy');
                         // Counselor charge is in range with patient invoice
-                        if($user_info[$key]['work_status']){
-                            
+                        // if($user_info[0]['hourly_charge'] <= $total_charge){
                             // Counselor charge is in range with patient invoice
-                        }
-                    }
+                            AssignCounselor::create([
+                                'patient_id' => 8 ,
+                                'counselor_id' => $user_info[0]['id'],
+                                // 'status_id' => 1, // 1 / 2
+                                'status' => 1, // paid / unpaid
+                                // 'rate' => $total_charge, //ammount
+                                // 'end_date' => '2023-01-03'
+                            ]);
+
+                            // increment patient limit
+                            
+                        // }
+                    // }
                 }
             }
-            
-
-           
-
             
         }
     }

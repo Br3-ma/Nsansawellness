@@ -27,7 +27,6 @@ use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ResultsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use PhpJunior\LaravelVideoChat\Facades\Chat;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,32 +64,29 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
 
 
-
     Route::get('/chat/{id}', [VideoCallController::class, 'chat'])->name('chat');
     Route::get('/group/chat/{id}', [VideoCallController::class, 'groupChat'])->name('group.chat');
-
+    
     Route::post('/chat-create', [VideoCallController::class, 'store'])->name('meeting.store');
     Route::post('/chat/message/send', [VideoCallController::class, 'send'])->name('chat.send');
     Route::post('/chat/message/send/file', [VideoCallController::class, 'sendFilesInConversation'])->name('chat.send.file');
     Route::post('/group/chat/message/send', [VideoCallController::class, 'groupSend'])->name('group.send');
     Route::post('/group/chat/message/send/file', [VideoCallController::class, 'sendFilesInGroupConversation'])->name('group.send.file');
-
-    Route::get('/accept/message/request/{id}' , function ($id){
-        Chat::acceptMessageRequest($id);
-        return redirect()->back();
-    })->name('accept.message');
-
-    // Route::get('/trigger/{id}' , [VideoCallController::class, 'startVideo'])->name('video-chat');
-    Route::post('/trigger/{id}' , function (\Illuminate\Http\Request $request , $id) {
-        Chat::startVideoCall($id , $request->all());
-    });
-    Route::post('/group/chat/leave/{id}' , function ($id) {
-        Chat::leaveFromGroupConversation($id);
-    });
-
+    
+    // Route::get('/accept/message/request/{id}' , function ($id){
+    //     Chat::acceptMessageRequest($id);
+    //     return redirect()->back();
+    // })->name('accept.message');
+    
+    // // Route::get('/trigger/{id}' , [VideoCallController::class, 'startVideo'])->name('video-chat');
+    // Route::post('/trigger/{id}' , function (\Illuminate\Http\Request $request , $id) {
+    //     Chat::startVideoCall($id , $request->all());
+    // });
+    // Route::post('/group/chat/leave/{id}' , function ($id) {
+    //     Chat::leaveFromGroupConversation($id);
+    // });
     // Route::resource('assigner', AssignCounselorController::class);
     Route::get('auto-assign/{id}', [AssignCounselorController::class, 'index']);
-
 });
 
 // Notifications
@@ -146,6 +142,13 @@ Route::group(['middleware' => ['auth', 'permission:patient']], function() {
 // Patient Files
 Route::group(['middleware' => ['auth', 'permission:patient-files']], function() {
     Route::get('/patient-files', [PatientController::class, 'patient_files'])->name('patient-files');
+    Route::get('/create-patient-file/{id}', [PatientController::class, 'create'])->name('create-patient-file');
+    Route::get('/show-patient-file/{id}', [PatientController::class, 'show'])->name('show-patient-file');
+    Route::get('/edit-patient-file/{id}', [PatientController::class, 'edit'])->name('edit-patient-file');
+    Route::delete('/delete-patient-file/{id}', [PatientController::class, 'destroy'])->name('delete-patient-file');
+    Route::post('/add-patient-file', [PatientController::class, 'store'])->name('add-patient-file');
+    Route::post('/update-patient-file/{id}', [PatientController::class, 'update'])->name('update-patient-file');
+    Route::get('/patient-files/{id}', [PatientController::class, 'show_patient_files'])->name('all-patient-files');
 });
 
 // Action & Activities

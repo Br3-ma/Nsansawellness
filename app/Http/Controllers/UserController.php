@@ -52,7 +52,6 @@ class UserController extends Controller
             // you should create a generated random password and email it to the user
             $u = $user->create(array_merge($request->all(), [
                 'password' => bcrypt('peace2u'),
-                // 'gender' => 'Male',
                 'active' => 1
             ]));
 
@@ -61,7 +60,7 @@ class UserController extends Controller
                 'body' => 'Hi '.$u->fname.' '.$u->lname.' your current password is peace2u'
             ];
         
-            Mail::to($u->email)->send(new SendUserInfoEmail($details));
+            // Mail::to($u->email)->send(new SendUserInfoEmail($details));
             return redirect()->route('users.index')
                 ->withSuccess(__('User created successfully.'));
         } catch (\Throwable $th) {
