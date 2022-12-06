@@ -41,6 +41,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * allows your team to easily build robust real-time web applications.
  */
 
+<<<<<<< HEAD
 require('webrtc-adapter');
 window.Cookies = require('js-cookie');
 
@@ -54,3 +55,21 @@ window.Echo = new Echo({
     reconnectionAttempts: 5
     // csrfToken: token
 });
+=======
+//  import Echo from 'laravel-echo';
+
+//  window.Pusher = require('pusher-js');
+ 
+//  window.Echo = new Echo({
+//      broadcaster: 'pusher',
+//      key: 'eIqgf7Il0ThPnAxcGMbRqPaHik-eh4E3A1FHQkyElpw',
+//      cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//      forceTLS: false,
+//      wsHost: window.location.hostname,
+//      wsPort: 6001,
+//  });
+
+
+//  Echo.channel('events')
+//  .listen('RealTimeNotification', (e) => console.log('RealTimeNotification: ' + e.message));
+>>>>>>> ce9882ba29db51f8256621f3b7b41b267f566f79

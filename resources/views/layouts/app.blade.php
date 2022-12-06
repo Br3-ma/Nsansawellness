@@ -67,6 +67,80 @@
             transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
         }
         </style>
+        <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function(){
+                var user = {!! auth()->user()->toJson() !!};
+                // console.log();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                // Enable pusher logging - don't include this in production
+                Pusher.logToConsole = true;
+
+                var pusher = new Pusher('033c1fdbd94861470759', {
+                    cluster: 'ap2'
+                });
+                var channel = pusher.subscribe('popup-channel');
+
+                channel.bind('new-activity', function(data) {
+                    if(data == user['id']){
+                        
+                        Toastify({ 
+                            node: $("#basic-non-sticky-notification-content-three").clone().removeClass("hidden")[0], 
+                            duration: 9000, 
+                            newWindow: true, 
+                            close: true,
+                            gravity: "top", 
+                            position: "right", 
+                            backgroundColor: "white", 
+                            stopOnFocus: true, 
+                        }).showToast(); 
+
+                    }
+                });
+                channel.bind('new-appointment', function(data) {
+                    if(data == user['id']){
+                        
+                        Toastify({ 
+                            node: $("#basic-non-sticky-notification-content-two").clone().removeClass("hidden")[0], 
+                            duration: 9000, 
+                            newWindow: true, 
+                            close: true,
+                            gravity: "top", 
+                            position: "right", 
+                            backgroundColor: "white", 
+                            stopOnFocus: true, 
+                        }).showToast(); 
+
+                    }
+                });
+    
+                setTimeout(function() {
+                    if(user['id'] == 1){
+                        channel.bind('user-register', function(data) {
+                            Toastify({ 
+                                node: $("#basic-non-sticky-notification-content").clone().removeClass("hidden")[0], 
+                                duration: 9000, 
+                                newWindow: true, 
+                                close: true,
+                                gravity: "top", 
+                                position: "right", 
+                                backgroundColor: "white", 
+                                stopOnFocus: true, 
+                            }).showToast(); 
+                        });
+                    }
+                    
+                }, 3000);
+            });
+        </script>
     </head>
     <!-- END: Head -->
     <body class="py-5 md:py-0">
@@ -114,17 +188,17 @@
                         </a>
                         <ul class="">
                             <li>
-                                <a href="{{ route('activities')}}" class="side-menu">
+                                <a href="{{ route('activities.index')}}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
                                     <div class="side-menu__title"> Activities </div>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('actions')}}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Actions </div>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     @endcan
@@ -318,10 +392,10 @@
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Search -->
                 <div class="intro-x relative mr-3 sm:mr-6">
-                    <div class="search hidden sm:block">
+                    {{-- <div class="search hidden sm:block">
                         <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
                         <i data-lucide="search" class="search__icon dark:text-slate-500"></i> 
-                    </div>
+                    </div> --}}
                     <a class="notification notification--light sm:hidden" href=""> <i data-lucide="search" class="notification__icon dark:text-slate-500"></i> </a>
                     <div class="search-result">
                         <div class="search-result__content">
@@ -411,71 +485,39 @@
                     <div class="notification-content pt-2 dropdown-menu">
                         <div class="notification-content__box dropdown-content">
                             <div class="notification-content__title">Notifications</div>
-                            <div class="cursor-pointer relative flex items-center ">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-1.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Al Pacino</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
+                            @isset($notifications)
+                                @forelse ($notifications as $note)
+                                <div class="cursor-pointer relative flex items-center py-2">
+                                    <div class="w-12 h-12 flex-none image-fit mr-1">
+                                        @switch($note->data['type'])
+                                        @case('new-user')
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://t4.ftcdn.net/jpg/03/29/84/99/360_F_329849933_edMwOcbReWmPdo7VaB0nIgg4Wlyt0aDU.jpg">
+                                            @break
+                                        @case('welcome')
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://img.freepik.com/free-vector/hand-drawn-colorful-groovy-psychedelic-background_23-2149083917.jpg?w=2000">
+                                            @break
+                                        @case('welcome-counselor')
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://www.kindpng.com/picc/m/2-21158_euclidean-line-vector-rainbow-png-file-hd-clipart.png">
+                                            @break
+                                        @case('new-appointment')
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://thumbs.dreamstime.com/b/deadline-calendar-date-appointment-agenda-business-plan-schedule-events-month-online-meeting-symbol-reminder-187031403.jpg">
+                                            @break
+                                        @default
+                                            <img alt="{{ $note->data['name'] }}" class="rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ00PRm15u1lOv65dmayn_Y3UX2szglLK-3A&usqp=CAU">
+                
+                                    @endswitch                                        {{-- <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div> --}}
                                     </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">Can we have a chat?</div>
-                                </div>
-                            </div>
-                            <div class="cursor-pointer relative flex items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Robert De Niro</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
+                                    <div class="ml-2 overflow-hidden">
+                                        <div class="flex items-center">
+                                            <a href="javascript:;" class="font-medium truncate mr-5">{{ $note->data['sender'] }}</a> 
+                                            <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">{{ $note->created_at->toFormattedDateString() }}</div>
+                                        </div>
+                                        <div class="w-full truncate text-slate-500 mt-0.5">{{ $note->data['message'] }}</div>
                                     </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
                                 </div>
-                            </div>
-                            <div class="cursor-pointer relative flex items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Kevin Spacey</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
-                                    </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">Okay</div>
-                                </div>
-                            </div>
-                            <div class="cursor-pointer relative flex items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-4.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Kevin Spacey</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">06:05 AM</div>
-                                    </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">Noted Thanks.</div>
-                                </div>
-                            </div>
-                            <div class="cursor-pointer relative flex items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-14.jpg">
-                                    <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">Arnold Schwarzenegger</a> 
-                                        <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
-                                    </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomi</div>
-                                </div>
-                            </div>
+                                @empty
+                                @endforelse
+                            @endisset
                         </div>
                     </div>
                 </div>
@@ -502,11 +544,11 @@
                             </li>
                             @can('users.create')
                             <li>
-                                <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
+                                <a href="{{ route('users.create')}}" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
                             </li>
                             @endcan
                             <li>
-                                <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
+                                <a disabled href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
                             </li>
                             <li>
                                 <a href="" class="dropdown-item hover:bg-white/5"> <i data-lucide="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
@@ -536,7 +578,7 @@
             <nav class="side-nav">
                 <ul>
                     @can('home')
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('home') }}" class="side-menu side-menu--active">
                             <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                             <div class="side-menu__title">
@@ -544,16 +586,16 @@
                                 <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
-                    </li>
+                    </li> --}}
                     @endcan
 
                     @can('patient')
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('patient') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
                             <div class="side-menu__title"> Counseling Sessions </div>
                         </a>
-                    </li>
+                    </li> --}}
                     @endcan
                     
 
@@ -568,17 +610,17 @@
                         </a>
                         <ul class="">
                             <li>
-                                <a href="{{ route('activities')}}" class="side-menu">
+                                <a href="{{ route('activities.index')}}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
                                     <div class="side-menu__title"> Activities </div>
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="{{ route('actions')}}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Actions </div>
                                 </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                     @endcan
@@ -593,12 +635,12 @@
                     @endcan
 
                     @can('billing')
-                    <li>
+                    {{-- <li>
                         <a href="{{  route('billing') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                             <div class="side-menu__title"> Billings </div>
                         </a>
-                    </li>
+                    </li> --}}
                     @endcan
 
                     @can('notification')
@@ -611,7 +653,7 @@
                     @endcan
                     
                     @can('settings')
-                    <li>
+                    {{-- <li>
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="trello"></i> </div>
                             <div class="side-menu__title">
@@ -639,7 +681,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     @endcan
 
                     @can('users.index')
@@ -682,12 +724,12 @@
                     @endcan
 
                     @can('patient-files')
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('patient-files') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                             <div class="side-menu__title"> Patient Files </div>
                         </a>
-                    </li>
+                    </li> --}}
                     @endcan
                     @can('questionaires.index')
                     <li>
@@ -711,7 +753,8 @@
                                     <div class="side-menu__title">User Feedback</div>
                                 </a>
                             </li>
-                            {{-- <li>
+                            {{-- 
+                            <li>
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
@@ -733,7 +776,8 @@
                                         </a>
                                     </li>
                                 </ul>
-                            </li>                                                 --}}
+                            </li> 
+                            --}}
                         </ul>
                     </li>
                     @endcan
@@ -750,12 +794,26 @@
 
     </div>
     <!-- The Modal -->
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-button">×</span>
-            <h1>Hello, I am a modal!</h1>
+    {{-- @if(auth()->user()->id == 1) --}}
+        <div id="basic-non-sticky-notification-content" class="toastify-content hidden">
+            <div class="font-medium">A new Patient has signed up.</div>
+            <div class="text-slate-500 mt-1">
+                Check your notifications
+            </div>
         </div>
-    </div>
+        <div id="basic-non-sticky-notification-content-two" class="toastify-content hidden">
+            <div class="font-medium">You have a new Appointment.</div>
+            <div class="text-slate-500 mt-1">
+                Check your notifications
+            </div>
+        </div>
+        <div id="basic-non-sticky-notification-content-two" class="toastify-content hidden">
+            <div class="font-medium">You have a new Homework Activity.</div>
+            <div class="text-slate-500 mt-1">
+                Check your notifications
+            </div>
+        </div>
+    {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->
     {{-- <div data-url="side-menu-dark-dashboard-overview-2.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
         <a href="side-menu-light-chat.html">
@@ -772,6 +830,7 @@
     <!-- BEGIN: JS Assets-->
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
+    <script src="{{ asset('public/app.js') }}"></script>
     <script src="{{ asset('dist/js/app.js') }}"></script>
     <script src="{{ asset('dist/jquery.js') }}"></script>
     <script src="{{ asset('dist/jquery-wizard.min.js') }}"></script>
@@ -784,8 +843,19 @@
     </script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<<<<<<< HEAD
 
     {{-- <script type="module" src="{{ asset('public/js/app.js') }}"></script> --}}
     
+=======
+    <script>
+        function displayPusherNotifications() {
+            return $.ajax("{{ route('pop-notifications') }}", {
+                method: 'GET'
+            });
+        }
+        displayPusherNotifications();
+    </script>
+>>>>>>> ce9882ba29db51f8256621f3b7b41b267f566f79
 </body>
 </html>

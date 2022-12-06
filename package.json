@@ -59,14 +59,21 @@
         "browser-sync": "^2.27.7",
         "browser-sync-webpack-plugin": "^2.3.0",
         "concurrently": "^7.0.0",
+<<<<<<< HEAD
         "js-cookie": "^2.2.1",
         "laravel-echo": "^1.3.2",
         "laravel-mix": "^6.0.49",
+=======
+        "laravel-echo": "^1.14.1",
+        "laravel-mix": "^6.0.39",
+        "laravel-vite-plugin": "^0.6.0",
+>>>>>>> ce9882ba29db51f8256621f3b7b41b267f566f79
         "lodash": "^4.17.19",
         "postcss": "^8.4.18",
         "postcss-advanced-variables": "^3.0.1",
         "postcss-cli": "^9.1.0",
         "postcss-import": "^14.0.2",
+        "pusher-js": "^7.4.1",
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.55.0",
         "sass-loader": "^12.1.0",

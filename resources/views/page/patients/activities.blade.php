@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-<div class="content content--top-nav">
+<div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        Transaction List
+        Activities
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
@@ -20,10 +20,10 @@
             </div>
             <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div>
             <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
-                @if(Auth::user()->role == 'counselor' || Auth::user()->role == 'counselor' )
-                <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Download Excel </button>
-                <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Download PDF </button>
-                @endif
+                {{-- @can() --}}
+                <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> New Activity </button>
+                {{-- <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Download PDF </button> --}}
+                {{-- @end   if --}}
                 <div class="dropdown">
                     <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                         <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>

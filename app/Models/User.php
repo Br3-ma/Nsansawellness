@@ -32,6 +32,7 @@ class User extends Authenticatable
         'username',
         'gender',
         'guest_id',
+        'first_login',
         // 'active',
         'password',
         
@@ -67,11 +68,21 @@ class User extends Authenticatable
         $this->attributes['password'] = $value;
     }
 
+    
+    public function getIsAdminAttribute()
+    {
+        return $this->roles()->where('id', 1)->exists();
+    }
+    
     public function userAppointments(){
         $this->hasMany(UserAppointment::class);
     }
 
     public function appointments(){
         $this->hasMany(Appointment::class);
+    }
+
+    public function patient_activities(){
+        return $this->hasMany(PatientActivity::class);
     }
 }

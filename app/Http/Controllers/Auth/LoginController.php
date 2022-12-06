@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 
 class LoginController extends Controller
 {
@@ -48,6 +50,45 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function login(Request $request)
+    {
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+        $user = User::where('email',$request->email)->first();
+        if(!empty($user)){
+            if (!Auth::attempt($data)) {
+                if($request->wantsJson()){
+                    return response()->json(['error' => 'Unauthorised'], 401);
+                }else{
+                    return back()->withErrors([
+                        "email" => "Sorry we couldn't find an account with that username. Try again",
+                    ])->onlyInput('email');
+                }
+
+            } else {
+                if($request->wantsJson()){
+                    auth()->login($user);
+                    $token = $user->createToken('LaravelAuthApp')->accessToken;
+                    return response()->json(['token' => $token], 200);
+                }else{
+                    if ($user->role == 'patient') {
+                        return redirect('/counseling-center');
+                    }else{
+                        return redirect('/home');
+                    }
+                    // return back()->withErrors([
+                    //     "email" => "Sorry we couldn't find an account with that username. Try again",
+                    // ])->onlyInput('email');
+                }
+            }
+        }else{
+            return back()->withErrors([
+                "email" => "Sorry we couldn't find an account with that username. Try again",
+            ])->onlyInput('email'); 
+        }
+    }
     /*
      *  Login with Username or Email
      * */

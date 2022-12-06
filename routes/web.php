@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AboutPage;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AssignCounselorController;
 use App\Http\Controllers\CareerPage;
 use App\Http\Controllers\ContactPage;
 use App\Http\Controllers\CounsellorController;
@@ -47,6 +49,7 @@ Auth::routes();
 // Route::get('/', [WelcomeController::class, 'index'])->name('index');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/pop-ups', [NotificationController::class, 'realTimePopUps'])->name('pop-notifications');
 
 Route::group(['middleware' => ['auth']], function() {
     // ====================Dashboard
@@ -61,6 +64,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
     Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
 
+<<<<<<< HEAD
 
     Route::get('/chat/{id}', [VideoCallController::class, 'chat'])->name('chat');
     Route::get('/group/chat/{id}', [VideoCallController::class, 'groupChat'])->name('group.chat');
@@ -83,11 +87,16 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/group/chat/leave/{id}' , function ($id) {
         Chat::leaveFromGroupConversation($id);
     });
+=======
+    // Route::resource('assigner', AssignCounselorController::class);
+    Route::get('auto-assign/{id}', [AssignCounselorController::class, 'index']);
+>>>>>>> ce9882ba29db51f8256621f3b7b41b267f566f79
 });
 
 // Notifications
 Route::group(['middleware' => ['auth', 'permission:notification']], function() {
     Route::get('/notifications', [NotificationController::class, 'index'])->name('notification');
+    Route::post('/deleting-notification', [NotificationController::class, 'destroy'])->name('delete-notification');
 });
 
 // Appointments
@@ -103,10 +112,18 @@ Route::group(['middleware' => ['auth', 'permission:appointment.create']], functi
 // Appointment
 Route::group(['middleware' => ['auth', 'permission:appointment.create']], function() {
     Route::post('/save-appointment', [AppointmentController::class, 'store'])->name('appointment.store');
+    Route::get('/deactivate-appointment/{id}', [AppointmentController::class, 'deactivate'])->name('appointment.deactivate');
+    Route::get('/activate-appointment/{id}', [AppointmentController::class, 'activate'])->name('appointment.activate');
+    Route::get('/view-appointment/{id}', [AppointmentController::class, 'show'])->name('appointment.show');
+    Route::get('/delete-appointment/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');
+    Route::get('/edit-appointment/{id}', [AppointmentController::class, 'edit'])->name('appointment.edit');
+    Route::post('/update-appointment', [AppointmentController::class, 'update'])->name('appointment.update');
+    Route::get('/remove-appointment-guest/{id}/{appointment_id}', [AppointmentController::class, 'removeGuest'])->name('appointment.remove_guest');
 });
 
 // Questionnaires
 Route::group(['middleware' => ['auth', 'permission:questionaires.index']], function() {
+    Route::post('/mark-as-read',[NotificationController::class, 'markNotification'])->name('markNotification');
     Route::get('change-questionaire-status', [QuestionaireController::class, 'updateStatus'])->name('questionaire.status');
     Route::get('users-feedback', [QuestionaireController::class, 'feed'])->name('questionaire-user-feedback');
     Route::delete('question/delete/{id}/{qid}', [QuestionaireController::class, 'questionDestroy'])->name('question.remove');
@@ -133,7 +150,7 @@ Route::group(['middleware' => ['auth', 'permission:patient-files']], function() 
 
 // Action & Activities
 Route::group(['middleware' => ['auth', 'permission:actions']], function() {
-    Route::get('/activies', [HomeworkController::class, 'index'])->name('activities');
+    Route::resource('activities', ActivityController::class);
     Route::get('/actions', [HomeworkController::class, 'actions'])->name('actions');
 });
 

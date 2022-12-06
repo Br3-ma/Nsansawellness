@@ -1,5 +1,6 @@
 {
     "/dist/js/app.js": "/dist/js/app.js",
+    "/app.js": "/app.js",
     "/dist/js/ckeditor-classic.js": "/dist/js/ckeditor-classic.js",
     "/dist/js/ckeditor-inline.js": "/dist/js/ckeditor-inline.js",
     "/dist/js/ckeditor-balloon.js": "/dist/js/ckeditor-balloon.js",

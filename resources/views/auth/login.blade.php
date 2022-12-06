@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<!--
-Template Name: Enigma - HTML Admin Dashboard Template
-Author: Left4code
-Website: http://www.left4code.com/
-Contact: muhammadrizki@left4code.com
-Purchase: https://themeforest.net/user/left4code/portfolio
-Renew Support: https://themeforest.net/user/left4code/portfolio
-License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
--->
 <html lang="en" class="light">
     <!-- BEGIN: Head -->
     <head>
@@ -22,6 +13,146 @@ License: You must have a valid license purchased only from themeforest(the above
         <link rel="stylesheet" href="dist/css/app.css" />
         <!-- END: CSS Assets-->
     </head>
+    <style>
+        /* Code By Webdevtrick ( https://webdevtrick.com ) */
+        @import "https://fonts.googleapis.com/css?family=Lato";
+        body {
+            background-color: #788b9c;
+        }
+        .center {
+            position: absolute;
+            margin: auto;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 570px;
+            height: 40px;
+        }
+        .input {
+            height: 40px;
+            width: 400px;
+            background-color: white;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        .textZone {
+            position: absolute;
+            top: 5px;
+            padding-left: 8px;
+            width: 392px;
+            height: 30px;
+            outline: none;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            cursor: text;
+        }
+        .cursor {
+            width: 1px;
+            height: 100%;
+            background-color: #222222;
+            display: inline-block;
+            animation-name: blink;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+        .hidden {
+            visibility: hidden;
+        }
+        .character, .placeholder {
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 24px;
+            color: #555555;
+        }
+        .placeholder {
+            color: #BFBFBF;
+        }
+        .space {
+            display: inline-block;
+            width: 7.2px;
+            height: 100%;
+        }
+        @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        }
+        @keyframes colorTransition {
+        0% {
+            color: #555555;
+        }
+        50% {
+            color: #F54E4E;
+        }
+        75% {
+            color: #444444;
+        }
+        100% {
+            color: #555555;
+        }
+        }
+        .selector {
+            width: 150px;
+            margin-right: 10px;
+            height: 40px;
+            border: 1px white solid;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            border-radius: 5px;
+            font-family: 'Lato', sans-serif;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            cursor: ns-resize;
+        }
+        .selection {
+            animation-duration: 100ms;
+        }
+        .upArrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 5px 10px 5px;
+            position: absolute;
+            top: -20px;
+            left: 72.5px;
+            cursor: pointer;
+        }
+        .downArrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 5px;
+            position: absolute;
+            bottom: -22px;
+            left: 72.5px;
+            cursor: pointer;
+        }
+        .upWhiteArrow {
+            border-color: transparent transparent #ffffff transparent;
+        }
+        .upGreyArrow {
+            border-color: transparent transparent #777777 transparent;
+        }
+        .downWhiteArrow {
+            border-color: #ffffff transparent transparent transparent;
+        }
+        .downGreyArrow {
+            border-color: #777777 transparent transparent transparent;
+        }
+    </style>
     <!-- END: Head -->
     <body>
         <div style="background-size:cover; background-image:url('https://a9p9n2x2.stackpathcdn.com/wp-content/blogs.dir/1/files/2016/06/iStock_67536037_MEDIUM-2.jpg')">
@@ -42,48 +173,50 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!-- END: Login Info -->
                 <!-- BEGIN: Login Form -->
+
                 <form style="box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-                margin:5%;
                 background: rgba(255, 255, 255, 0.55);
                 border-radius: 16px;
                 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
                 backdrop-filter: blur(8.9px);
-                -webkit-backdrop-filter: blur(8.9px);
-                border: 1px solid rgba(255, 255, 255, 0.3);" method="POST" action="{{ route('login') }}" class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
+                -webkit-backdrop-filter: blur(8.9px);" 
+                class="w-3/4 my-10 p-10" method="POST" action="{{ route('login') }}">
+
                     @csrf
-                    <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
-                        <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
-                            Sign In
+                    <div class="mx-auto bg-white dark:bg-darkmode-600 xl:bg-transparent sm:px-8 p-10 rounded-md shadow-md xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto">
+                        <h2 style="text-align: center" class="intro-x font-bold text-xl xl:text-2xl text-center text-primary xl:text-left">
+                            Welcome come back!
                         </h2>
-                        <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>
-                        <div class="intro-x mt-8">
-                            <input id="email" type="email" name="email" class="intro-x login__input form-control py-3 px-4 block" placeholder="Email">
-                            
-                            <input id="password" type="password" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password">
-                        </div>
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                            <div class="intro-x alert alert-danger show flex items-center mt-3 mb-2" role="alert"> 
+                                <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}
+                            </div>
                         @enderror
-                        
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        {{-- <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div> --}}
+                        <div class="intro-x mt-8">
+                            <input required id="email" type="email" name="email" class="form-control intro-x login__input py-3 px-4 block @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+
+                            <input required id="password" type="password" name="password" class="form-control intro-x login__input py-3 px-4 block mt-4 @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
+                            @error('password')
+                                <small class="invalid-feedback text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </small>
+                            @enderror
+                        </div>
                         <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4">
                             <div class="flex items-center mr-auto">
                                 <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
                                 <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
                             </div>
-                            <a href="">Forgot Password?</a> 
+                            <a href="{{ route('password.request') }}">Forgot Password?</a> 
                         </div>
-                        <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                            <button type="submit" class="btn btn-warning py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
+                        {{-- <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4 w-full">
+
+                        </div> --}}
+                        <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left w-full">
+                            <button type="submit" class="btn btn-warning py-3 px-4 w-full xl:w-full xl:mr-3 align-top">Login</button>
                             {{-- <a href="{{ route('register') }}" class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Register</a> --}}
                         </div>
-                        <div class="intro-x mt-10 xl:mt-24 text-slate-600 dark:text-slate-500 text-center xl:text-left"> By signin up, you agree to our <a class="text-primary dark:text-slate-200" href="">Terms and Conditions</a> & <a class="text-primary dark:text-slate-200" href="">Privacy Policy</a> </div>
                     </div>
                 </form>
                 <!-- END: Login Form -->
@@ -93,6 +226,8 @@ License: You must have a valid license purchased only from themeforest(the above
         
         <!-- BEGIN: JS Assets-->
         <script src="dist/js/app.js"></script>
+        <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+        <script src="{{ asset('public/dist/js/inputstyle.js') }}"></script>
         <!-- END: JS Assets-->
     </body>
 </html>

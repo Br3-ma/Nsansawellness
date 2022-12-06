@@ -4,10 +4,12 @@
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
             Appointments
+
+            {{-- {{ $events }} --}}
         </h2>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <button class="btn btn-primary shadow-md mr-2">Print Schedule</button>
-            <div class="dropdown ml-auto sm:ml-0">
+            {{-- <button class="btn btn-primary shadow-md mr-2">Print Schedule</button> --}}
+            {{-- <div class="dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
                 </button>
@@ -21,23 +23,55 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div class="grid grid-cols-12 gap-5 mt-5">
         <!-- BEGIN: Calendar Side Menu -->
         <div class="col-span-12 xl:col-span-4 2xl:col-span-3">
             <div class="box p-5 intro-y">
-                <a href="{{ route('appointment.create') }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Add New Video Call Appointment </a>
-                <button type="button" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </button>
+                <a href="{{ route('appointment.create', ['type' => 'video']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Add New Video Call Appointment </a>
+                <a href="{{ route('appointment.create', ['type' => 'phone']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </a>
                 <div class="border-t border-b border-slate-200/60 dark:border-darkmode-400 mt-6 mb-5 py-3" id="calendar-events">
                     @forelse ($appointments as $appointment)
+                    <div class="relative">
+                        <div class="event p-3 -mx-3 {{  $appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                            @if($appointment->status != 0)
+                            <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
+                            @endif
+                            <a href="{{ route('appointment.show', ['id' => $appointment->id ]) }}">
+                                <div class="pr-10">
+                                    <div class="event__title">
+                                        {{ $appointment->title }}
+                                        @if($appointment->status == 0)
+                                        (<span class="text-danger">Cancelled</span>)
+                                        @endif
+                                    </div>
+                                
+                                    <div class="text-slate-500 text-xs mt-0.5"> <!-- <span class="event__days">2</span>--> {{ $appointment->start_date }} <span class="mx-1">•</span>{{ $appointment->start_time ?? '' }}</div>
+                                    {{-- <a title="view" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="eye" class="w-4 h-4 text-slate-500"></i> </a> --}}
+                                </div>
+                            </a>
+                        </div>
+                        {{-- <a class="flex items-center absolute top-0 bottom-0 right-2" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a> --}}
+                        
+                        @if($appointment->status == 0)
+                        <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
+                        @else
+                        <a title="Cancel" href="{{ route('appointment.deactivate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> </a>
+                        @endif
+                    </div>
+                    @empty
+                    <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
+                    @endforelse
+
+                    @forelse ($incoming_appointments as $app)
                     <div class="relative">
                         <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                             <div class="pr-10">
-                                <div class="event__title truncate">{{ $appointment->title }}</div>
-                                <div class="text-slate-500 text-xs mt-0.5"> <span class="event__days">2</span> Days to go <span class="mx-1">•</span> 10:00 AM </div>
+                                <div class="event__title truncate">{{ $app->appointment->title ?? '' }}</div>
+                                <div class="text-slate-500 text-xs mt-0.5"> <!-- <span class="event__days">2</span>--> {{ $app->appointment->start_date ?? '' }} <span class="mx-1">•</span>{{ $app->appointment->start_time ?? '' }}</div>
                             </div>
                         </div>
                         <a class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a>
@@ -52,7 +86,30 @@
                 </div>
             </div>
             <div class="box p-5 intro-y mt-5">
-                <div class="flex">
+                {{-- <div class="box p-5 intro-y">
+                    <h4>Incoming Appointments</h4>
+                    <div class="border-t border-b border-slate-200/60 dark:border-darkmode-400 mt-6 mb-5 py-3" id="calendar-events">
+                        @forelse ($incoming_appointments as $app)
+                        <div class="relative">
+                            <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                                <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
+                                <div class="pr-10">
+                                    <div class="event__title truncate">{{ $app->appointment->title ?? '' }}</div>
+                                    <div class="text-slate-500 text-xs mt-0.5"> <!-- <span class="event__days">2</span>--> {{ $app->appointment->start_date ?? '' }} <span class="mx-1">•</span>{{ $app->appointment->start_time ?? '' }}</div>
+                                </div>
+                            </div>
+                            <a class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a>
+                        </div>
+                        @empty
+                        <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
+                        @endforelse
+                    </div>
+                    <div class="form-check form-switch flex">
+                        <label class="form-check-label" for="checkbox-events">Notify me</label>
+                        <input class="show-code form-check-input ml-auto" type="checkbox" id="checkbox-events">
+                    </div>
+                </div> --}}
+                {{-- <div class="flex">
                     <i data-lucide="chevron-left" class="w-5 h-5 text-slate-500"></i> 
                     <div class="font-medium text-base mx-auto">April</div>
                     <i data-lucide="chevron-right" class="w-5 h-5 text-slate-500"></i> 
@@ -121,7 +178,7 @@
                         <div class="h-px flex-1 border border-r border-dashed border-slate-200 mx-3 xl:hidden"></div>
                         <span class="font-medium xl:ml-auto">10th</span> 
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <!-- END: Calendar Side Menu -->
@@ -135,4 +192,13 @@
     </div>
 </div>
 {{-- @include('page.modals.create-appointment-modal') --}}
+
+<script>
+    var appointments = @json($calendar);
+    console.log(appointments);
+    if(appointments.length === 0){
+        console.log('its empty');
+        appointments = @json($calendar);
+    }
+</script>
 @endsection

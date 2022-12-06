@@ -27,6 +27,7 @@ class PatientController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $groups = Chat::getAllGroupConversations();
         $threads = Chat::getAllConversations();
 
@@ -37,6 +38,10 @@ class PatientController extends Controller
             'groups'  => $groups
         ]);
         // return view('page.patients.home');
+=======
+        $notifications = auth()->user()->unreadNotifications;
+        return view('page.patients.home', compact('notifications'));
+>>>>>>> ce9882ba29db51f8256621f3b7b41b267f566f79
     }
 
     public function patient_files()

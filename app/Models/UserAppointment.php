@@ -16,10 +16,10 @@ class UserAppointment extends Model
     ];
 
     public function appointment(){
-        $this->belongsTo(Appointment::class, 'appointment_id');
+        return $this->belongsTo(Appointment::class, 'appointment_id');
     }
 
     public function user(){
-        $this->belongsTo(User::class, 'guest_id');
+        return $this->belongsTo(User::class, 'guest_id');
     }
 }
