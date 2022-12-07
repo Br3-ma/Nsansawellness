@@ -56,6 +56,7 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
+                        <th class="whitespace-nowrap">THERAPY NOTE</th>
                         <th class="whitespace-nowrap">CONDITION(s)</th>
                         <th class="whitespace-nowrap">TREATMENT</th>
                         <th class="text-center whitespace-nowrap">SYMPTOM(s)</th>
@@ -67,7 +68,12 @@
                     @forelse ($patient_files->patient_files as $pf)
                     <tr class="intro-x">
                         <td class="w-40">
-                            <div class="flex">
+                            <div class="capitalize flex">
+                                {{ $pf->name }}
+                            </div>
+                        </td>
+                        <td class="w-40">
+                            <div class="capitalize flex">
                                 {{ $pf->condition }}
                             </div>
                         </td>
