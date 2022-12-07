@@ -21,7 +21,10 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             @can('create-patient-file')
-            <a href="{{ route('create-patient-file', $p->id) }}" class="btn btn-primary shadow-md mr-2">Create New Record</a>
+            <a href="{{ route('create-patient-file', $p->id) }}" class="btn btn-primary shadow-md mr-2">
+                <i data-lucide="plus" class="w-6 h-6 mr-2"></i>
+                Create New Record
+            </a>
             @endcan
             {{-- <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
@@ -91,10 +94,10 @@
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center text-sm mr-3" href="{{ route('show-patient-file', $pf->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Show </a>
-                                <a class="flex items-center text-sm mr-3" href="{{ route('edit-patient-file', $pf->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                                <a title="Open in new tab" target="_blank" class="flex items-center text-sm mr-3" href="{{ route('show-patient-file', $pf->id) }}"> <i data-lucide="eye" class="w-5 h-5 mr-1"></i> </a>
+                                <a title="Edit" class="flex items-center text-sm mr-3" href="{{ route('edit-patient-file', $pf->id) }}"> <i data-lucide="edit-3" class="w-5 h-5 mr-1"></i> </a>
                                 {!! Form::open(['method' => 'DELETE','route' => ['delete-patient-file', $pf->id],'style'=>'display:inline']) !!}
-                                {!! Form::submit('Delete', ['class' => 'flex items-center mt-3 text-danger', 'data-lucide'=>'trash-2']) !!}
+                                {!! Form::submit('Delete', ['class' => 'flex pointer items-center mt-3 text-danger', 'data-lucide'=>'trash-2']) !!}
                                 {{-- {!! Form::submit('Delete', ['class' => 'flex items-center mr-2 text-danger data-lucide="trash-2', 'data-tw-toggle'=>"modal", 'data-tw-target'=>"#delete-confirmation-modal"]) !!} --}}
                                 {!! Form::close() !!}
                                 {{-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a> --}}

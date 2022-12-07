@@ -4,6 +4,8 @@
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
             Edit Patient Record
+
+            <p class="font-large text-lg">{{ $p->name }}</p>
         </h2>
         <a href="{{ route('all-patient-files', $p->user_id ) }}" class="intro-x btn shadow-md mr-2">Back</a>
     </div>
