@@ -62,27 +62,57 @@
                             <div class="grid grid-cols-12 gap-x-5">
                                 <div class="col-span-12 2xl:col-span-6">
                                     <div>
+                                        <label for="update-profile-form-1" class="form-label">File Name</label>
+                                        <input name="name" id="update-profile-form-1" type="text" class="form-control" placeholder="Therapy Initial Assessment, Therapy Progress Note, or Therapy Discharge Summary">
+                                    </div>
+                                    <div class="mt-3">
                                         <label for="update-profile-form-1" class="form-label">Condition</label>
-                                        <select name="condition" id="update-profile-form-2" data-search="true" class="tom-select w-full">
+                                        <select name="condition" id="update-profile-form-2" data-search="true" class="tom-select w-full" required>
                                             <option value="None">None</option>
-                                            <option value="Anxiety">Anxiety</option>
-                                            <option value="Fobia">Fobia</option>
-                                            <option value="Stress">Stress</option>
-                                            <option value="Depression">Depression</option>
-                                            <option value="Suicidal">Suicidal</option>
-                                            <option value="Anger Management">Anger Management</option>
+                                            <option value="anxiety">Anxiety</option>
+                                            <option value="fobia">Fobia</option>
+                                            <option value="substance use disorder">Substance Use Disorder</option>
+                                            <option value="attention deficit hyperactivity disorder">Attention Deficit Hyperactivity Disorder</option>
+                                            <option value="obsessive compulsive disorder (OCD)">Obsessive Compulsive Disorder (OCD)</option>
+                                            <option value="oppositional and defiant behavior">Oppositional and Defiant Behavior</option>
+                                            <option value="stress management">Stress Management</option>
+                                            <option value="paranoid personality (PPD)">Paranoid personality (PPD)</option>
+                                            <option value="paranoia">Paranoia</option>
+                                            <option value="Grief, Loss, and Bereavement">Grief, Loss, and Bereavement</option>
+                                            <option value="depression">Depression</option>
+                                            <option value="Pregnancy and Childbirthing">Pregnancy and Childbirthing</option>
+                                            <option value="Agoraphobia">Agoraphobia (crowded place, confined spaces)</option>
+                                            <option value="antisocial personality disorder (ASPD)">antisocial personality disorder (ASPD)</option>
+                                            <option value="Academic concerns">Academic concerns (learning difficulties, bulling)</option>
+                                            <option value="obsessive compulsive disorder">Obsessive Compulsive Disorder</option>
+                                            <option value="post-Traumatic stress disorder">Post-Traumatic Stress Disorder</option>
+                                            <option value="career confusion">Career Confusion</option>
+                                            <option value="Sex Addiction Therapy">Sex Addiction</option>
+                                            <option value="anger management">Anger Management</option>
                                         </select>                                    
                                     </div>
                                     <div class="mt-3">
                                         <label for="update-profile-form-2" class="form-label">Treatment Method</label>
                                         <select name="treatment" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
                                             <option value="None">None</option>
-                                            <option value="Water Pancture">Water Pancture</option>
+                                            <option value="Existential therapy">Existential therapy</option>
                                             <option value="Kimo Therapy">Kimo Therapy</option>
-                                            <option value="Group Therapy">Group Therapy</option>
-                                            <option value="Couples Therapy">Couples Therapy</option>
-                                            <option value="Individuals Therapy">Individuals Therapy</option>
-                                            <option value="Child Therapy">Child Therapy</option>
+                                            <option value="Person-centered therapy">Person-centered therapy</option>
+                                            <option value="Gestalt therapy">Gestalt therapy</option>
+                                            <option value="Dialectical behavioral therapy">Dialectical behavioral therapy</option>
+                                            <option value="Rational emotive therapy">Rational emotive therapy</option>
+                                            <option value="Systematic desensitization">Systematic desensitization</option>
+                                            <option value="Aversion therapy">Aversion therapyy</option>
+                                            <option value="Psychodynamic therapy">Psychodynamic therapy</option>
+                                            <option value="Family therapy">Family therapy</option>
+                                            <option value="Flooding">Mindfulness-based therapy</option>
+                                            <option value="Play therapy">Play therapy</option>
+                                            <option value="creative arts therapy">Creative arts therapy</option>
+                                            <option value="emotion-focused therapy">Emotion-focused therapy</option>
+                                            <option value="exposure therapy">Exposure therapy</option>
+                                            <option value="sex addiction therapy">Sex Addiction Therapy</option>
+                                            <option value="Co-dependency">Co-dependency</option>
+                                            <option value="Flooding">Flooding</option>
                                         </select>
                                     </div>
                                 </div>
@@ -95,44 +125,46 @@
                                         <label for="update-profile-form-1" class="form-label">Mother's Names</label>
                                         <input name="mother_names" id="update-profile-form-1" type="text" class="form-control" placeholder="Input text" value="Kevin Spacey" disabled>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                         <div class="w-1/2 mx-auto xl:mr-0 xl:ml-6">
                             <div class="col-span-12 2xl:col-span-6">
                                 <div class="">
-                                    <label for="update-profile-form-2" class="form-label">Blood Pressure</label>
+                                    <label for="update-profile-form-2" class="form-label">Blood Pressure Level</label>
                                     <select name="bp_level" id="update-profile-form-2" data-search="true" class="tom-select w-full">
                                         <option value="None">None</option>
                                         <option value="Low"> Low</option>
                                         <option value="Normal">Normal</option>
-                                        <option value="High">High</option>
-                                        <option value="Abnormal">Abnormal</option>
-                                        <option value="Critical">Critical</option>
+                                        <option value="Elevated">Elevated</option>
+                                        <option value="High (Stage 1)">High (Stage 1)</option>
+                                        <option value="High (Stage 2)">High (Stage 2)</option>
+                                        <option value="High (Stage 3)">High (Crisis)</option>
                                     </select>
                                 </div>
                                 <div class="mt-3">
                                     <label for="update-profile-form-2" class="form-label">Infections <small>(If any)</small></label>
                                     <select name="infection" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
                                         <option value="none">None</option>
-                                        <option value="STDs">STDs</option>
-                                        <option value="Eye">Eye</option>
-                                        <option value="Head">Head</option>
-                                        <option value="Chest">Chest</option>
+                                        <option value="Viral infection">Viral infection</option>
+                                        <option value="Eye infection">Eye infection</option>
+                                        <option value="Fungal infection">Fungal infection</option>
+                                        <option value="Skin contacthest">Skin contact</option>
                                         <option value="Stomach">Stomach</option>
-                                        <option value="Leg">Leg</option>
+                                        <option value="Other infections">Other infections</option>
                                     </select>
                                 </div>
                                 <div class="mt-3 2xl:mt-0">
                                     <label for="update-profile-form-3" class="form-label">Blood Group</label>
                                     <select value="{{ $p->blood_group ?? 'None' }}" name="blood_group" id="update-profile-form-3" data-search="true" class="tom-select w-full">
-                                        <option value="A">A</option>
+                                        <option value="O-">O-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="A-">A</option>
                                         <option value="A+">A+</option>
-                                        <option value="B">B</option>
+                                        <option value="B-">B-</option>
                                         <option value="B+">B+</option>
-                                        <option value="AB">AB</option>
-                                        <option value="O">O</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="AB+">AB+</option>
                                     </select>
                                 </div>
                                 <div class="mt-3">

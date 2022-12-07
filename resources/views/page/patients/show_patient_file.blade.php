@@ -7,7 +7,8 @@
         </div>
         <div class="ml-4 mr-auto">
             <h3 style="color:#F65B08">{{ $p->user->fname.' '.$p->user->lname }}</h3>
-            <div style="color:#F65B08" class="text-slate-500">{{ $p->condition ?? 'Condition' }}</div>
+            <div style="color:#F65B08" class="font-bolder text-slate-500 capitalize"><strong>{{ $p->name ?? '' }}</strong> ({{ $p->created_at->toFormattedDateString() }})</div>
+            <div style="color:#F65B08" class="text-slate-500 capitalize">{{ $p->condition ?? 'Condition' }}</div>
         </div>
         <button disabled style="color:#F65B08" class="btn btn-outline-secondary hidden sm:flex mr-2"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download </button>
         <a href="{{ route('all-patient-files', $p->user_id ) }}" class="btn btn-outline-secondary hidden sm:flex"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> Back </a>
@@ -114,17 +115,17 @@
                     </div>
                     <div class="p-5 flex">
                         <div class="p-5 col-span-6 rounded-md">
-                            <div class="flex items-center"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i> Age: <a href="" class="underline decoration-dotted ml-1">26</a> </div>
-                            <div class="flex items-center mt-3"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i> Date of Birth: <a href="" class="underline decoration-dotted ml-1">{{ $p->user->date_of_birth }}</a> </div>
-                            <div class="flex items-center mt-3"> <i data-lucide="user" class="w-4 h-4 text-slate-500 mr-2"></i> Place of Birth: <a href="" class="underline decoration-dotted ml-1">{{ $p->user->place_of_birth }}</a> </div>
+                            <div class="flex items-center"> <i data-lucide="user" class="w-4 h-4 text-slate-500 mr-2"></i> Age: <a href="" class="underline decoration-dotted ml-1">26</a> </div>
+                            <div class="flex items-center mt-3"> <i data-lucide="calendar" class="w-4 h-4 text-slate-500 mr-2"></i> Date of Birth: <a href="" class="underline decoration-dotted ml-1">{{ $p->user->date_of_birth }}</a> </div>
+                            <div class="flex items-center mt-3"> <i data-lucide="map-pin" class="w-4 h-4 text-slate-500 mr-2"></i> Place of Birth: <a href="" class="underline decoration-dotted ml-1">{{ $p->user->place_of_birth }}</a> </div>
                             <div class="flex items-center mt-3"> <i data-lucide="calendar" class="w-4 h-4 text-slate-500 mr-2"></i> Blood Group: {{ $p->user->blood_group }} </div>
                             <div class="flex items-center mt-3"> <i data-lucide="map-pin" class="w-4 h-4 text-slate-500 mr-2"></i> Race: African </div>
                         </div>
                         <div class="p-5 col-span-6 rounded-md">
-                            <div class="flex items-center"> <i data-lucide="clipboard" class="w-4 h-4 text-slate-500 mr-2"></i> Blood Pressure Level: <a href="" class="underline decoration-dotted ml-1">{{ $p->bp_level }}</a> </div>
-                            <div class="flex items-center mt-3"> <i data-lucide="user" class="w-4 h-4 text-slate-500 mr-2"></i> Infections: <a href="" class="underline decoration-dotted ml-1">{{ $p->infection }}</a> </div>
-                            <div class="flex items-center mt-3"> <i data-lucide="calendar" class="w-4 h-4 text-slate-500 mr-2"></i> Allegy: None </div>
-                            <div class="flex items-center mt-3"> <i data-lucide="map-pin" class="w-4 h-4 text-slate-500 mr-2"></i> Diseases: None. </div>
+                            <div class="flex items-center"> <i data-lucide="thermometer" class="w-4 h-4 text-slate-500 mr-2"></i> Blood Pressure Level: <a href="" class="underline decoration-dotted ml-1">{{ $p->bp_level }}</a> </div>
+                            <div class="flex items-center mt-3"> <i data-lucide="bug" class="w-4 h-4 text-slate-500 mr-2"></i> Infections: <a href="" class="underline decoration-dotted ml-1">{{ $p->infection }}</a> </div>
+                            <div class="flex items-center mt-3"> <i data-lucide="bug" class="w-4 h-4 text-slate-500 mr-2"></i> Allegy: None </div>
+                            <div class="flex items-center mt-3"> <i data-lucide="bug" class="w-4 h-4 text-slate-500 mr-2"></i> Diseases: None. </div>
                         </div>
                     </div>
                 </div>
@@ -142,9 +143,9 @@
                         <div class="px-5">
                             <div class="font-medium text-lg">Condition</div>
                             <div class="text-slate-600 dark:text-slate-500 mt-2">
-                                <h2>{{ $p->condition }}</h2>
+                                <h2 class="capitalize">{{ $p->condition }}</h2>
                                 <br>
-                                <p>{{ $p->symptom }}</p>
+                                <p class="capitalize">{{ $p->symptom }}</p>
                             </div>
                             <div class="flex items-center">
                                 {{-- <div class="px-3 py-2 text-primary bg-primary/10 dark:bg-darkmode-400 dark:text-slate-300 rounded font-medium">02 June 2021</div> --}}
@@ -168,7 +169,15 @@
                     <div class="p-5">
                         <div style="color:#F65B08" class="font-small text-lg">Notes</div>
                         <div class="text-slate-600 dark:text-slate-500 mt-2">
-                            {{ $p->comments ?? 'No notes' }}
+                            {!! $p->comments ?? 'No notes' !!}
+                            <br>
+                            <br>
+                            <div class="flex items-center"> 
+                                <i data-lucide="history" class="w-4 h-4 mr-2"></i> {{ $p->created_at->subDays(1)->diffForHumans() }}
+                            </div>
+                            <div class="flex items-center mt-2"> 
+                                <i data-lucide="calendar" class="w-4 h-4 mr-2"></i> {{ $p->created_at->toTimeString() }}
+                            </div>
                         </div>
                     </div>
                 </div>
