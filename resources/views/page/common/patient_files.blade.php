@@ -61,7 +61,10 @@
                     <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class="w-3 h-3 mr-2"></i> {{ $file['created_at'] }} </div>
                 </div>
                 <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <a href="{{ route('all-patient-files', $file['id']) }}" class="btn btn-warning text-white py-1 px-2 mr-2">View All Files</a>
+                    <a href="{{ route('all-patient-files', $file['id']) }}" class="btn btn-warning text-white py-1 px-2 mr-2">
+                        <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
+                        View All Files
+                    </a>
                     {{-- <button class="btn btn-outline-secondary py-1 px-2">Profile</button> --}}
                 </div>
             </div>

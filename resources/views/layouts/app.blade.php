@@ -628,7 +628,7 @@
                     @can('appointment')
                     <li>
                         <a href="{{  route('appointment') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
                             <div class="side-menu__title"> Appointments </div>
                         </a>
                     </li>
@@ -641,15 +641,6 @@
                             <div class="side-menu__title"> Billings </div>
                         </a>
                     </li> --}}
-                    @endcan
-
-                    @can('notification')
-                    <li>
-                        <a href="{{ route('notification') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
-                            <div class="side-menu__title"> Notifications </div>
-                        </a>
-                    </li>
                     @endcan
                     
                     @can('settings')
@@ -690,7 +681,7 @@
                    
                     <li>
                         <a href="javascript:;" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="files"></i> </div>
                             <div class="side-menu__title">
                                 Patient Files
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
@@ -723,7 +714,7 @@
                     @can('questionaires.index')
                     <li>
                         <a href="javascript:;" class="side-menu ">
-                            <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="clipboard-list"></i> </div>
                             <div class="side-menu__title">
                                 Survey Questionnaires 
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
@@ -768,6 +759,15 @@
                             </li> 
                             --}}
                         </ul>
+                    </li>
+                    @endcan
+
+                    @can('notification')
+                    <li>
+                        <a href="{{ route('notification') }}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="bell"></i> </div>
+                            <div class="side-menu__title"> Notifications </div>
+                        </a>
                     </li>
                     @endcan
                     @can('users.index')

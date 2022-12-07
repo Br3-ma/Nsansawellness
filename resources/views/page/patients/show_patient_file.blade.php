@@ -155,9 +155,9 @@
                         <div class="px-5">
                             <div class="font-medium text-lg">Treatment Method</div>
                             <div class="text-slate-600 dark:text-slate-500 mt-2">
-                                <h2>{{ $p->treatment }}</strong>
+                                <h2 class="capitalize">{{ $p->treatment }}</strong>
                                 <br>
-                                <p>{{ $p->symptom }}</p>
+                                <p class="capitalize">{{ $p->symptom }}</p>
                             </div>
                             <div class="flex items-center">
                                 {{-- <div class="px-3 py-2 text-primary bg-primary/10 dark:bg-darkmode-400 dark:text-slate-300 rounded font-medium">02 June 2021</div> --}}
@@ -173,7 +173,7 @@
                             <br>
                             <br>
                             <div class="flex items-center"> 
-                                <i data-lucide="history" class="w-4 h-4 mr-2"></i> {{ $p->created_at->subDays(1)->diffForHumans() }}
+                                <i data-lucide="history" class="w-4 h-4 mr-2"></i> {{ $p->created_at->subDays()->diffForHumans() }}
                             </div>
                             <div class="flex items-center mt-2"> 
                                 <i data-lucide="calendar" class="w-4 h-4 mr-2"></i> {{ $p->created_at->toTimeString() }}

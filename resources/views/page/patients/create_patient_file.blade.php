@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="mt-3">
                                         <label for="update-profile-form-2" class="form-label">Treatment Method</label>
-                                        <select name="treatment" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
+                                        <select name="treatment" id="update-profile-form-2" data-search="true" class="tom-select w-full" multiple>
                                             <option value="None">None</option>
                                             <option value="Existential therapy">Existential therapy</option>
                                             <option value="Kimo Therapy">Kimo Therapy</option>
@@ -119,11 +119,11 @@
                                 <div class="col-span-12 mt-2 2xl:col-span-6">
                                     <div>
                                         <label for="update-profile-form-1" class="form-label">Father's Names</label>
-                                        <input name="father_names" id="update-profile-form-1" type="text" class="form-control" placeholder="Input text" value="Kevin Spacey" disabled>
+                                        <input name="father_names" id="update-profile-form-1" type="text" class="form-control" placeholder="" value="Kevin Spacey" disabled>
                                     </div>
                                     <div class="mt-2">
                                         <label for="update-profile-form-1" class="form-label">Mother's Names</label>
-                                        <input name="mother_names" id="update-profile-form-1" type="text" class="form-control" placeholder="Input text" value="Kevin Spacey" disabled>
+                                        <input name="mother_names" id="update-profile-form-1" type="text" class="form-control" placeholder="" value="Kevin Spacey" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -169,13 +169,13 @@
                                 </div>
                                 <div class="mt-3">
                                     <label for="update-profile-form-4" class="form-label">Date of Birth</label>
-                                    <input disabled  value="{{ $p->date_of_birth }}" id="update-profile-form-4" type="text" class="form-control date" placeholder="Input text">
-                                    <input name="user_id" value="{{ $p->id ?? 'None' }}" id="update-profile-form-4" type="hidden" class="form-control date" placeholder="Input text">
+                                    <input disabled  value="{{ $p->date_of_birth }}" id="update-profile-form-4" type="text" class="form-control date" placeholder="1999-01-01">
+                                    <input name="user_id" value="{{ $p->id ?? 'None' }}" id="update-profile-form-4" type="hidden" class="form-control date" placeholder="">
                                     <input name="status_id" value="1" id="update-profile-form-4" type="hidden" class="form-control date" placeholder="Input text">
                                 </div>
                                 <div class="mt-3">
                                     <label for="update-profile-form-5" class="form-label">Place of Birth</label>
-                                    <textarea disabled value="{{ $p->place_of_birth ?? 'None' }}" id="update-profile-form-5" class="form-control" placeholder="Adress"></textarea>
+                                    <textarea disabled value="{{ $p->place_of_birth ?? 'None' }}" id="update-profile-form-5" class="form-control" placeholder=""></textarea>
                                 </div>
                             </div>
                             
