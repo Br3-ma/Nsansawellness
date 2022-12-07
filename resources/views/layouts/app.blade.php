@@ -815,7 +815,7 @@
                 
             </div>
             <!-- END: Side Menu -->
-            <div>
+            <div class="w-full">
                 @yield('content')
             </div>
 
