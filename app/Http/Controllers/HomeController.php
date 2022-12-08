@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\RealTimeNotification;
 use App\Listeners\SendNewUserNotification;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,9 +30,22 @@ class HomeController extends Controller
         $notifications = auth()->user()->unreadNotifications;
         // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
         // event(new RealTimeNotification($message));
-        if(auth()->user()->type == 'patient'){
-            return view('page.patients.home', compact('notifications'));
+        // check if its first time login
+        if(auth()->user()->first_time){
+            $x = User::find(auth()->user()->id);
+            $x->first_time = false;
+            $x->save();
+
+            if(auth()->user()->type == 'patient'){
+                return redirect()->route('pay');
+            }
+            return view('home', compact('notifications'));
+        }else{
+            if(auth()->user()->type == 'patient'){
+                return view('page.patients.home', compact('notifications'));
+            }
+            return view('home', compact('notifications'));
         }
-        return view('home', compact('notifications'));
+
     }
 }
