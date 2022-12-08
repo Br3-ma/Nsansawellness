@@ -19,10 +19,10 @@
             </div> --}}
             {{-- <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div> --}}
             <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
-                {{-- @can() --}}
+                @can('activities.create')
                 <a href="{{ route('activities.create') }}" class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> New Activity </a>
                 {{-- <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Download PDF </button> --}}
-                {{-- @end   if --}}
+                @endcan
                 <div class="dropdown">
                     <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                         <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -88,9 +88,12 @@
                             <td class="table-report__action">
                                 <div class="flex justify-center items-center">
                                     <a href="{{ route('activities.show', $act->id) }}" class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                    
+                                    @can('activities.destroy')
                                     {!! Form::open(['method' => 'DELETE','route' => ['activities.destroy', $act->id],'style'=>'display:inline']) !!}
                                     {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2']) !!}
-                                    {!! Form::close() !!}                                
+                                    {!! Form::close() !!}    
+                                    @endcan                            
                                 </div>
                             </td>
                         </tr>                        
