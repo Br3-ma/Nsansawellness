@@ -1984,6 +1984,7 @@
     <div class="row">
         <div class="col-md-4">
             <ul class="list-group">
+                @isset($threads)
                 @foreach($threads as $inbox)
                     {{--@if(!is_null($inbox->message))--}}
                         {{--<li class="list-group-item">--}}
@@ -2053,6 +2054,8 @@
                         </a>
                     </li>
                 @endforeach
+
+                @endisset
             </ul>
         </div>
     </div>
