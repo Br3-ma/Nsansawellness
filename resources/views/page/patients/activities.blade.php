@@ -20,10 +20,10 @@
             </div>
             <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div>
             <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
-                {{-- @can() --}}
+                @can('actions')
                 <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> New Activity </button>
                 {{-- <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Download PDF </button> --}}
-                {{-- @end   if --}}
+                @endcan
                 <div class="dropdown">
                     <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                         <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
