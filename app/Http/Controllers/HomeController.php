@@ -31,7 +31,7 @@ class HomeController extends Controller
         // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
         // event(new RealTimeNotification($message));
         // check if its first time login
-        if(auth()->user()->first_time){
+        if(auth()->user()->first_time == 'true'){
             $x = User::find(auth()->user()->id);
             $x->first_time = false;
             $x->save();
