@@ -6,7 +6,7 @@
         <h6 class="intro-y text-sm font-medium mr-auto">
             Patient Records
         </h6>
-        <h1 style="color:#F65B08" class="intro-y text-lg font-medium mr-auto">
+        <h1 style="color:#F65B08" class="capitalize intro-y text-lg font-medium mr-auto">
             {{ $p->fname.' '.$p->lname }}
         </h1>
         <a href="{{ route('patient-files') }}" class="intro-x btn shadow-md mr-2">Back to Patient Files</a>

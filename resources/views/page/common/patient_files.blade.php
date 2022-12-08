@@ -41,7 +41,7 @@
                             <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-3.jpg">
                         </div>
                         <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="font-medium">{{$file['fname'].' '.$file['lname']}}</a> 
+                            <a href="" class="capitalize font-medium">{{$file['fname'].' '.$file['lname']}}</a> 
                             <div class="text-slate-500 text-xs mt-0.5">Patient</div>
                         </div>
                     </div>
