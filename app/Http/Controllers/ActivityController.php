@@ -72,7 +72,8 @@ class ActivityController extends Controller
     
                 $this->assigned_patients->create([
                     'activity_id' => $activity->id,
-                    'user_id' => $patient,
+                    'user_id' => 
+                    $patient,
                 ]);
     
                 $payload = [
