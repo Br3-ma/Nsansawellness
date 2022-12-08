@@ -86,8 +86,7 @@ class ActivityController extends Controller
                 $user->notify(new NewActivity($payload));
                 $this->pusher->trigger('popup-channel', 'new-activity', $patient);
 
-                return redirect()->route('activities.create
-                ')
+                return redirect()->route('activities.index')
                 ->withSuccess(__('Activity created successfully.'));
             }
         } catch (\Throwable $th) {
