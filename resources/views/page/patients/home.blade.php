@@ -104,6 +104,7 @@
                     @endif
                     <div class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4">
                         @if(Auth::User()->role != 'patient')
+                            @isset($threads)
                             @foreach($threads as $inbox)
                                 @if($inbox->message->conversation->is_accepted)
                                     <a href="{{ route('chat' , ['id' => $inbox->message->conversation->id ]) }}">
@@ -150,6 +151,7 @@
                                     </a>
                                 @endif  
                             @endforeach
+                            @endisset
                         @else
                         <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
                             <div class="w-12 h-12 flex-none image-fit mr-1">

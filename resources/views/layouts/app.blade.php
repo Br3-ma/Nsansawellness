@@ -714,7 +714,7 @@
                     @can('questionaires.index')
                     <li>
                         <a href="javascript:;" class="side-menu ">
-                            <div class="side-menu__icon"> <i data-lucide="clipboard-list"></i> </div>
+                            <div {{ Route::currentRouteName() == 'questionaires.index' ? 'style="color:#F65B08"' : '' }}  class="side-menu__icon"> <i data-lucide="clipboard-list"></i> </div>
                             <div class="side-menu__title">
                                 Survey Questionnaires 
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
