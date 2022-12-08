@@ -44,6 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if(!empty($activities->toArray))
                     @forelse ($activities as $act)
                     
                         <tr class="intro-x">
@@ -85,7 +86,7 @@
                     @empty
                         
                     @endforelse
-                    
+                    @endif
                 </tbody>
             </table>
         </div>
