@@ -227,7 +227,7 @@
                                         </div>
                                         <div class="leading-relaxed text-slate-500 text-xs mt-3">
                                             {{-- <div>Make sure the product description provides a detailed explanation of your product so that it is easy to understand and find your product.</div> --}}
-                                            <div class="mt-2">It is recommended not to enter info on mobile numbers, e-mails, etc. into the product description to protect your personal data.</div>
+                                            {{-- <div class="mt-2">It is recommended not to enter info on mobile numbers, e-mails, etc. into the product description to protect your personal data.</div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +235,7 @@
                                     <textarea name="comments" class="form-control" cols="100" rows="10">
 
                                     </textarea>
-                                    <div class="form-help text-right">Maximum character 0/2000</div>
+                                    {{-- <div class="form-help text-right">Maximum character 0/2000</div> --}}
                                 </div>
                             </div>
                             {{-- <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">

@@ -145,7 +145,7 @@ class AppointmentController extends Controller
     {
         try {
             $u = $this->user->find(1);
-            $appointment = $this->appointment->create($request->validated());
+            $appointment = $this->appointment->create($request->toArray());
             foreach($request->guest_id as $guest){
                 $user = $this->user->find($guest);
     
