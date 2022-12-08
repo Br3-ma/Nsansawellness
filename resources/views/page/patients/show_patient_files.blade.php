@@ -97,7 +97,7 @@
                                 <a title="Open in new tab" target="_blank" class="flex items-center text-sm mr-3" href="{{ route('show-patient-file', $pf->id) }}"> <i data-lucide="eye" class="w-5 h-5 mr-1"></i> </a>
                                 <a title="Edit" class="flex items-center text-sm mr-3" href="{{ route('edit-patient-file', $pf->id) }}"> <i data-lucide="edit-3" class="w-5 h-5 mr-1"></i> </a>
                                 {!! Form::open(['method' => 'DELETE','route' => ['delete-patient-file', $pf->id],'style'=>'display:inline']) !!}
-                                {!! Form::submit('Delete', ['class' => 'flex pointer items-center mt-3 text-danger', 'data-lucide'=>'trash-2']) !!}
+                                {!! Form::submit('Delete', ['class' => 'flex text-sm items-center mt-3 text-danger']) !!}
                                 {{-- {!! Form::submit('Delete', ['class' => 'flex items-center mr-2 text-danger data-lucide="trash-2', 'data-tw-toggle'=>"modal", 'data-tw-target'=>"#delete-confirmation-modal"]) !!} --}}
                                 {!! Form::close() !!}
                                 {{-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a> --}}
