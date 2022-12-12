@@ -683,7 +683,7 @@
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="files"></i> </div>
                             <div class="side-menu__title">
-                                Patient Files
+                                Patient Profiles
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -691,7 +691,7 @@
                             <li>
                                 <a href="{{ route('patient-files') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> All Patient Files </div>
+                                    <div class="side-menu__title"> All Profiles </div>
                                 </a>
                             </li>
                             @forelse(App\Models\User::role('patient')->get() as $my_patient)
@@ -704,7 +704,7 @@
                             @empty
                             <li>
                                 <a href="#" class="side-menu">
-                                    <div class="side-menu__title"> No patients</div>
+                                    <div class="side-menu__title text-xs"> No Assigned Patients</div>
                                 </a>
                             </li>
                             @endforelse

@@ -6,6 +6,7 @@
         <h2 class="text-lg font-medium mr-auto">
             My Profile 
         </h2>
+        <a style="background-color:#F65B08" href="{{ route('users.edit', Auth::user()->id) }}" class="intro-x text-white btn shadow-md mr-2">Edit Profile</a>
     </div>
     <!-- BEGIN: Profile Info -->
     <div class="intro-y box px-5 pt-5 mt-5">
@@ -17,18 +18,21 @@
                 </div>
                 <div class="ml-5">
                     <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{ Auth::user()->fname.' '.Auth::user()->lname}}</div>
-                    <div class="text-slate-500">{{ Auth::user()->role }}</div>
+                    <div class="text-slate-500">{{ Auth::user()->mobile_no ?? '' }}</div>
+                    <div class="text-slate-500">{{ Auth::user()->address ?? ''}}</div>
                 </div>
             </div>
             <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
-                <div class="font-medium text-center lg:text-left lg:mt-3">Contact Details</div>
+                <div class="font-medium text-center lg:text-left lg:mt-3">Personal Details</div>
                 <div class="flex flex-col justify-center items-center lg:items-start mt-4">
                     <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{ Auth::user()->email }} </div>
-                    <div class="truncate sm:whitespace-normal flex items-center mt-3"> <i data-lucide="instagram" class="w-4 h-4 mr-2"></i> Instagram {{ Auth::user()->fname.' '.Auth::user()->lname}} </div>
-                    <div class="truncate sm:whitespace-normal flex items-center mt-3"> <i data-lucide="twitter" class="w-4 h-4 mr-2"></i> Twitter {{ Auth::user()->fname.' '.Auth::user()->lname}} </div>
+                    <div class="truncate sm:whitespace-normal flex items-center mt-3"><i data-lucide="hash" class="w-4 h-4 mr-2"></i>  {{ Auth::user()->nrc_id ?? ''}} </div>
+                    <div class="truncate sm:whitespace-normal flex items-center mt-3"> <svg xmlns="http://www.w3.org/2000/svg"class="w-4 h-4 mr-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4"></path><path d="m17 7 3-3"></path><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"></path><path d="m9 11 4 4"></path><path d="m5 19-3 3"></path><path d="m14 4 6 6"></path></svg> Blood Group  {{ Auth::user()->blood_group ?? ''}} </div>
+                    <div class="truncate sm:whitespace-normal flex items-center mt-3"> <i data-lucide="gift" class="w-4 h-4 mr-2"></i>  {{ Auth::user()->date_of_birth ?? ''}} </div>
+                    <div class="truncate sm:whitespace-normal flex items-center mt-3"> <i data-lucide="map-pin" class="w-4 h-4 mr-2"></i>  {{ Auth::user()->place_of_birth ?? ''}} </div>
                 </div>
             </div>
-            <div class="mt-6 lg:mt-0 flex-1 px-5 border-t lg:border-0 border-slate-200/60 dark:border-darkmode-400 pt-5 lg:pt-0">
+            {{-- <div class="mt-6 lg:mt-0 flex-1 px-5 border-t lg:border-0 border-slate-200/60 dark:border-darkmode-400 pt-5 lg:pt-0">
                 <div class="font-medium text-center lg:text-left lg:mt-5">Service Growth</div>
                 <div class="flex items-center justify-center lg:justify-start mt-2">
                     <div class="mr-2 w-20 flex"> Counseling: <span class="ml-3 font-medium text-success">+23%</span> </div>
@@ -46,14 +50,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
-        <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist" >
+        {{-- <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist" >
             <li id="dashboard-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#dashboard" aria-controls="dashboard" aria-selected="true" role="tab" > Dashboard </a> </li>
-            <li id="account-and-profile-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#account-and-profile" aria-selected="false" role="tab" > Account & Profile </a> </li>
+            <li id="account-and-profile-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#account-and-profile" aria-selected="false" role="tab" > My Patients </a> </li>
             <li id="activities-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#activities" aria-selected="false" role="tab" > Activities </a> </li>
             <li id="tasks-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#tasks" aria-selected="false" role="tab" > Tasks </a> </li>
-        </ul>
+        </ul> --}}
     </div>
     <!-- END: Profile Info -->
     <div class="intro-y tab-content mt-5">
@@ -79,11 +83,12 @@
                             </div>
                         </div>
                     </div>
+                    @forelse($incoming_appointments as $session)
                     <div class="p-5">
                         <div class="flex flex-col sm:flex-row">
                             <div class="mr-auto">
-                                <a href="" class="font-medium">Stress Management Therapy</a> 
-                                <div class="text-slate-500 mt-1">Individual Patients</div>
+                                <a href="" class="font-medium">{{ $session->appointment->title ?? '' }}</a> 
+                                <div class="text-slate-500 mt-1">{{ $session->appointment->start_date ?? '' }}</div>
                             </div>
                             <div class="flex">
                                 <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
@@ -91,47 +96,15 @@
                                         <canvas class="simple-line-chart-1" data-random="true"></canvas>
                                     </div>
                                 </div>
-                                <div class="text-center">
+                                {{-- <div class="text-center">
                                     <div class="font-medium">6.5k</div>
                                     <div class="bg-success/20 text-success rounded px-2 mt-1.5">+150</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col sm:flex-row mt-5">
-                            <div class="mr-auto">
-                                <a href="" class="font-medium">Anger Mangement</a> 
-                                <div class="text-slate-500 mt-1">Group Counseling</div>
-                            </div>
-                            <div class="flex">
-                                <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
-                                    <div class="h-[30px]">
-                                        <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-medium">2.5k</div>
-                                    <div class="bg-pending/10 text-pending rounded px-2 mt-1.5">+150</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col sm:flex-row mt-5">
-                            <div class="mr-auto">
-                                <a href="" class="font-medium">Family & Marriage Counseling</a> 
-                                <div class="text-slate-500 mt-1">Couples</div>
-                            </div>
-                            <div class="flex">
-                                <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
-                                    <div class="h-[30px]">
-                                        <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-medium">3.4k</div>
-                                    <div class="bg-primary/10 text-primary rounded px-2 mt-1.5">+150</div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
+                    @empty
+                    @endforelse
                 </div>
                 <!-- END: Top Categories -->
                 <!-- BEGIN: Work In Progress -->
@@ -184,14 +157,14 @@
                                         <div class="progress-bar w-3/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                                <a href="" class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a> 
+                                <a href="" disabled class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a> 
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- END: Work In Progress -->
                 <!-- BEGIN: Daily Sales -->
-                <div class="intro-y box col-span-12 lg:col-span-6">
+                {{-- <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">
                             Daily Chat Sessions
@@ -382,7 +355,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: General Statistic -->
             </div>
         </div>

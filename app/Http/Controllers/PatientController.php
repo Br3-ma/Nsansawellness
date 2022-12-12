@@ -42,7 +42,7 @@ class PatientController extends Controller
 
     public function patient_files()
     {
-        $my_patients = $this->user->role('patient')->get()->toArray();
+        $my_patients = $this->user->role('patient')->paginate(6);
         return view('page.common.patient_files', compact('my_patients'));
     }
 
