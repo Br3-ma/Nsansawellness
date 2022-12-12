@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\UserAppointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -13,7 +16,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('page.user.profile');
+        $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
+        return view('page.user.profile', compact('incoming_appointments'));
     }
 
     /**

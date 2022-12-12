@@ -27,6 +27,7 @@
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+            @if(!empty($activities->toArray))
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
@@ -44,7 +45,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(!empty($activities->toArray))
+                    
                     @forelse ($activities as $act)
                     
                         <tr class="intro-x">
@@ -86,11 +87,18 @@
                     @empty
                         
                     @endforelse
-                    @endif
+                    
                 </tbody>
             </table>
+            @else 
+            <div class="items-center justify-center centered" style="text-align: center">
+                <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
+                <h3>No Notifications Yet</h3>
+            </div>
+            @endif
         </div>
         <!-- END: Data List -->
+        @if(!empty($activities->toArray))
         <!-- BEGIN: Pagination -->
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
@@ -122,6 +130,7 @@
             </select>
         </div>
         <!-- END: Pagination -->
+        @endif
     </div>
     <!-- BEGIN: Delete Confirmation Modal -->
     <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">

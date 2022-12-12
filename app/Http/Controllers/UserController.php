@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateUserRequest;
 use App\Mail\SendUserInfoEmail;
 use App\Models\User;
+use App\Models\UserAppointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Spatie\Permission\Models\Permission;
@@ -109,6 +111,7 @@ class UserController extends Controller
      */
     public function update(User $user, UpdateUserRequest $request) 
     {
+        // dd($request->validated());
         $user->update($request->validated());
 
         $user->syncRoles($request->get('role'));

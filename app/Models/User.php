@@ -22,6 +22,8 @@ class User extends Authenticatable
     protected $fillable = [
         'fname',
         'lname',
+        'father_name',
+        'mother_name',
         'type',
         'role',
         'liecense_number',
@@ -34,7 +36,7 @@ class User extends Authenticatable
         'guest_id',
         'first_login',
         'department',
-        // 'active',
+        'nrc_id',
         'password',
         'blood_group',
         'date_of_birth',

@@ -29,9 +29,21 @@ class UpdateUserRequest extends FormRequest
         return [
             'fname' => 'required',
             'lname' => 'required',
+            'father_name' => 'required',
+            'mother_name' => 'required',
             'email' => 'required|unique:users,email,'.$user->id,
-            // 'email' => 'required|email:rfc,dns|unique:users,email,'.$user->id,
-            // 'username' => 'required|unique:users,username,'.$user->id,
+            // 'liecense_number',
+            'country' => 'required',
+            'mobile_no' => 'required',
+            'state' => 'required',
+            // 'gender',
+            'department' => 'required',
+            'nrc_id' => 'required',
+            'blood_group' => 'required',
+            'date_of_birth' => 'required',
+            'place_of_birth' => 'required',
+            'address' => 'required',
+            'occupation' => 'required'
         ];
     }
 }
