@@ -25,9 +25,10 @@
                 @endcan
             </div>
         </div>
+        {{-- @dd($activities  == []) --}}
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
-            @if(!empty($activities->toArray))
+            @if($activities  != [])
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
@@ -85,7 +86,10 @@
                             </td>
                         </tr>                        
                     @empty
-                        
+                    <div class="items-center justify-center centered" style="text-align: center">
+                        <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
+                        <h3>No Activies Yet</h3>
+                    </div>
                     @endforelse
                     
                 </tbody>
@@ -98,12 +102,13 @@
             @endif
         </div>
         <!-- END: Data List -->
-        @if(!empty($activities->toArray))
+        @if($activities  != [])
         <!-- BEGIN: Pagination -->
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
-            <nav class="w-full sm:w-auto sm:mr-auto">
+        <div class="intro-y col-span-12 block">
+            <nav class="w-full sm:w-auto sm:mr-auto block">
                 <ul class="pagination">
-                    <li class="page-item">
+                    {!! $activities->links('pagination::tailwind') !!}
+                    {{-- <li class="page-item">
                         <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>
                     </li>
                     <li class="page-item">
@@ -119,15 +124,15 @@
                     </li>
                     <li class="page-item">
                         <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-right"></i> </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
-            <select class="w-20 form-select box mt-3 sm:mt-0">
+            {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
                 <option>10</option>
                 <option>25</option>
                 <option>35</option>
                 <option>50</option>
-            </select>
+            </select> --}}
         </div>
         <!-- END: Pagination -->
         @endif

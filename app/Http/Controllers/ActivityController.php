@@ -41,7 +41,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $activities = $this->activity->with('patient_activities.users')->get();
+        $activities = $this->activity->with('patient_activities.users')->paginate(7);;
         return view('page.activity.index', compact('activities'));
     }
 
@@ -66,7 +66,9 @@ class ActivityController extends Controller
     {
 
         try {
+            // dd('here');
             $activity = $this->activity->create($request->validated());
+            // dd($activity);
             foreach($request->patient_ids as $patient){
                 $user = $this->user->find($patient);
     
@@ -91,7 +93,8 @@ class ActivityController extends Controller
                 ->withSuccess(__('Activity created successfully.'));
             }
         } catch (\Throwable $th) {
-            dd($th);
+            return redirect()->back()
+            ->withSuccess(__('Oops something went wront.'));
         }
 
     }

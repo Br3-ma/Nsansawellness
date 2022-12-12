@@ -23,7 +23,7 @@
                     </ul>
                 </div>
             </div> --}}
-            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 3 of {{ sizeOf($my_patients) }} patients</div>
+            {{-- <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 3 of {{ sizeOf($my_patients) }} patients</div> --}}
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
                     <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
@@ -41,7 +41,7 @@
                             <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-3.jpg">
                         </div>
                         <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="capitalize font-medium">{{$file['fname'].' '.$file['lname']}}</a> 
+                            <a href="" class="capitalize font-medium">{{$file->fname.' '.$file->lname}}</a> 
                             <div class="text-slate-500 text-xs mt-0.5">Patient</div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
                         <div class="dropdown-menu w-40">
                             <div class="dropdown-content">
-                                <a href="{{ route('all-patient-files', $file['id']) }}" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
+                                <a href="{{ route('all-patient-files', $file->id) }}" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
                                 <a href="" @disabled(true) class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
                             </div>
                         </div>
@@ -57,11 +57,11 @@
                 </div>
                 <div class="text-center lg:text-left p-5">
                     {{-- <div>Condition</div> --}}
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file['email'] }}</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class="w-3 h-3 mr-2"></i> {{ $file['created_at'] }} </div>
+                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file->email }}</div>
+                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class="w-3 h-3 mr-2"></i> {{ $file->created_at }} </div>
                 </div>
                 <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <a href="{{ route('all-patient-files', $file['id']) }}" class="btn btn-warning text-white py-1 px-2 mr-2">
+                    <a href="{{ route('all-patient-files', $file->id) }}" class="btn btn-warning text-white py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
                         View All Files
                     </a>
@@ -70,7 +70,13 @@
             </div>
         </div>
         @empty
-        @endforelse
+        <div class="intro-y col-span-12 md:col-span-12 lg:col-span-12">
+            <div class="items-center justify-center centered" style="text-align: center">
+                <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
+                <h3>No Profiles Yet</h3>
+            </div>
+        </div>
+        @endforelse 
 
         
         <!-- END: Users Layout -->
@@ -78,31 +84,15 @@
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
                 <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-left"></i> </a>
-                    </li>
-                    <li class="page-item"> <a class="page-link" href="#">...</a> </li>
-                    <li class="page-item"> <a class="page-link" href="#">1</a> </li>
-                    <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
-                    <li class="page-item"> <a class="page-link" href="#">3</a> </li>
-                    <li class="page-item"> <a class="page-link" href="#">...</a> </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-right"></i> </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-right"></i> </a>
-                    </li>
+                    {!! $my_patients->links('pagination::tailwind') !!}
                 </ul>
             </nav>
-            <select class="w-20 form-select box mt-3 sm:mt-0">
+            {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
                 <option>10</option>
                 <option>25</option>
                 <option>35</option>
                 <option>50</option>
-            </select>
+            </select> --}}
         </div>
         <!-- END: Pagination -->
     </div>
