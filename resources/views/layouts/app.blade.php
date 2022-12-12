@@ -74,7 +74,7 @@
 
         <script>
             $(document).ready(function(){
-                var user = {!! auth()->user()->toJson() !!};
+                var user = {!! auth()->user()->toJson() ?? '' !!};
                 // console.log();
                 $.ajaxSetup({
                     headers: {
