@@ -43,7 +43,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Route::get('/', [WelcomeController::class, 'index'])->name('index');
 
