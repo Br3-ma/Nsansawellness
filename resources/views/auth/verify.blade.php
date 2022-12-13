@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta name="description" content="Enigma admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
-        <title>Reset Password - Nsansa Wellness</title>
+        <title>Verify Account - Nsansa Wellness</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
         <!-- END: CSS Assets-->
@@ -48,26 +48,25 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
-                <div class="card-body">
+            <div class="card lg:mt-6 lx:mt-6 mt-6 w-3/4 my-10 p-10">
+                <div class="-intro-x text-primary font-bold text-5xl mb-4 leading-tight mt-5">
+                    {{ __('Verify Your Email Address') }}
+                </div>
+                <div class="card-body py-4">
                     @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success py-4" role="alert">
                             {{ __('A fresh verification link has been sent to your email address.') }}
                         </div>
                     @endif
 
                     {{ __('Before proceeding, please check your email for a verification link.') }}
                     {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                    <form class="d-inline py-2" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        <button type="submit" class="btn btn-primary shadow-md btn-link text-white">{{ __('click here to request another') }}</button>.
                     </form>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 </div>
