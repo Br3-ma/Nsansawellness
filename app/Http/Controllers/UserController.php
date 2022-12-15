@@ -58,7 +58,7 @@ class UserController extends Controller
             ]));
 
             $details = [
-                'title' => 'Your has been created and is ready to use',
+                'title' => 'Your account has been created successfully, please visit the site to login',
                 'body' => 'Hi '.$u->fname.' '.$u->lname.' your current password is peace2u'
             ];
         
