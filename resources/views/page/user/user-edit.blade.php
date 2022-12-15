@@ -4,11 +4,17 @@
 
 <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        Edit User Information 
+        Edit 
+        @hasanyrole('admin')
+            User 
+        @else
+            Your 
+        @endhasanyrole
+        Information 
     </h2>
     <div class="container py-6 mx-auto">
 
-        <form method="post" class="w-full" action="{{ route('users.update', $user->id) }}">
+        <form method="post" class="w-full" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
             @method('patch')
             @csrf
             <div class="grid grid-cols-12 gap-2 mt-5">
@@ -17,6 +23,24 @@
                     <div class="w-full">
                         <h1 class="text-lg ">Personal Information</h1>
                         <small>Carefully edit your persnoal information details</small>
+                    </div>
+                    <div class="w-60">
+                        <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                            <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
+                                <img class="rounded-md" alt="Midone - HTML Admin Template" id="preview-image-before-upload" src="{{ asset('dist/images/profile-10.jpg') }}">
+                                <div title="Remove this profile photo?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2"> <i data-lucide="x" class="w-4 h-4"></i> </div>
+                            </div>
+                            <div class="mx-auto cursor-pointer relative mt-5">
+                               <button type="button" class="btn btn-primary w-full">Change Photo</button>
+                                <input type="file" id="prof_image" name="image_path" class="w-full h-full top-0 left-0 absolute opacity-0"> 
+                                {{-- <input type="file" name="image_path" class="w-full h-full"> --}}
+                            </div>
+                            <small>
+                                @if ($errors->has('image_path'))
+                                    <span class="text-danger text-left">{{ $errors->first('image_path') }}</span>
+                                @endif
+                            </small>
+                        </div>
                     </div>
                 </div>
 
@@ -185,7 +209,7 @@
                     </div>
                 </div>
 
-                {{-- @hasanyrole('counselor') --}}
+                @hasanyrole(['counselor', 'admin'])
                 <div class="intro-y col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4">
                     <div class="w-full">
                         <h1 class="text-lg ">Professional Information</h1>
@@ -232,7 +256,7 @@
                         @endif
                     </div>
                 </div>
-                {{-- @endhasanyrole --}}
+                @endhasanyrole
                 @endif
 
                 @hasanyrole('admin')
@@ -272,3 +296,19 @@
 </div>
 <!-- END: Delete Confirmation Modal -->
 @endsection
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+<script type="text/javascript">
+     
+$(document).ready(function (e) {
+   $('#prof_image').change(function(){
+    let reader = new FileReader();
+    reader.onload = (e) => { 
+
+      $('#preview-image-before-upload').attr('src', e.target.result); 
+    }
+    reader.readAsDataURL(this.files[0]); 
+   });
+});
+
+</script>

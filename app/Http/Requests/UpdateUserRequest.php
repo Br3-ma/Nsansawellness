@@ -43,7 +43,8 @@ class UpdateUserRequest extends FormRequest
             'date_of_birth' => 'required',
             'place_of_birth' => 'required',
             'address' => 'required',
-            'occupation' => 'required'
+            'occupation' => 'required',
+            // 'image_path' => 'max:2048',
         ];
     }
 }

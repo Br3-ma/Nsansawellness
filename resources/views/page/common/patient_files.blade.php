@@ -38,7 +38,7 @@
                 <div class="flex items-start px-5 pt-5">
                     <div class="w-full flex flex-col lg:flex-row items-center">
                         <div class="w-16 h-16 image-fit">
-                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-3.jpg">
+                            <img alt="{{$file->fname.' '.$file->lname}}" class="rounded-full" src="{{ asset('public/storage/'.$file->image_path) }}">
                         </div>
                         <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
                             <a href="" class="capitalize font-medium">{{$file->fname.' '.$file->lname}}</a> 
