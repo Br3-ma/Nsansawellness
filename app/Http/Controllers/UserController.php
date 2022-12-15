@@ -118,7 +118,12 @@ class UserController extends Controller
             'image_path' => $image_path
         ]);
         $user->syncRoles($request->get('role'));
-        return redirect()->route('users.index')
+
+        if( Auth::user()->type == 'admin' ){
+            return redirect()->route('users.index')
+                ->withSuccess(__('User updated successfully.'));
+        }
+        return redirect()->route('profile')
             ->withSuccess(__('User updated successfully.'));
     }
 
