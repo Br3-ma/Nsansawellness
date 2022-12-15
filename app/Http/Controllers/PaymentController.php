@@ -34,7 +34,15 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Create a Payment
+        $payload = [
+            'name' => $request->fname.' '.$request->lname,
+            'invoice_id' => $request->invoice_id,
+            'total' => $request->total,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            ''
+        ];
     }
 
     /**
