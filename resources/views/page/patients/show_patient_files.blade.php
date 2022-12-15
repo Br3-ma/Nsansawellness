@@ -2,13 +2,17 @@
 @section('content')
 
 <div class="content">
-    <div class="mt-8 flex">
+    <div class="w-16 h-16 image-fit mt-8">
+        <img alt="{{$p->fname.' '.$p->lname}}" class="rounded-full" src="{{ asset('public/storage/'.$p->image_path) }}">
+    </div>
+    <h1 style="color:#F65B08" class="capitalize intro-y text-lg font-medium mr-auto">
+        {{ $p->fname.' '.$p->lname }}
+    </h1>
+    <div class="flex">
         <h6 class="intro-y text-sm font-medium mr-auto">
             Patient Records
         </h6>
-        <h1 style="color:#F65B08" class="capitalize intro-y text-lg font-medium mr-auto">
-            {{ $p->fname.' '.$p->lname }}
-        </h1>
+
         <a href="{{ route('patient-files') }}" class="intro-x btn shadow-md mr-2">Back to Patient Files</a>
     </div>
     @isset($message)

@@ -2,7 +2,7 @@
 @section('content')
 <div class="content">
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">
+        {{-- <h2 class="text-lg font-medium mr-auto">
             @if(Auth::user()->role == 'admin')
                 Manage 
             @elseif(Auth::user()->type == 'patient')
@@ -11,7 +11,7 @@
                 Patient  
             @endif 
             Therapy Sessions
-        </h2>
+        </h2> --}}
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             {{-- <div>
                 <input type="text" name="meetingId" id="meetingId" class="focus:ring-indigo-500 focus:border-indigo-500 block rounded-none rounded-l-md  sm:text-sm border-gray-300" placeholder="Meeting ID">
@@ -53,26 +53,32 @@
     <div class="intro-y chat grid grid-cols-12 gap-5 mt-5">
         <!-- BEGIN: Chat Side Menu -->
         <div class="col-span-12 lg:col-span-4 2xl:col-span-3">
+            
+            @hasanyrole(['patient', 'counselor'])
             <div class="intro-y pr-1">
                 <div class="box p-2">
                     <ul class="nav nav-pills" role="tablist">
                         {{-- <li id="chats-tab" class="nav-item flex-1" role="presentation">
                             <button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="#chats" type="button" role="tab" aria-controls="chats" aria-selected="true" > Therapy Sessions </button>
                         </li> --}}
-                        @if(Auth::User()->type == 'counselor')
+                        @hasanyrole('counselor')
                         <li id="friends-tab" class="nav-item flex-1" role="presentation">
                             <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > My Patients </button>
                         </li>
-                        @endif
+                        @endhasanyrole
+                        @hasanyrole('patient')
                         <li id="profile-tab" class="nav-item flex-1" role="presentation">
-                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" > Profile </button>
+                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" > Conversations </button>
                         </li>
+                        @endhasanyrole
                     </ul>
                 </div>
             </div>
+            @endhasanyrole
             <div class="tab-content">
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
-                    @if(Auth::User()->role != 'patient')
+                
+                    @hasanyrole(['counselor','admin','administrator'])
                     <div class="pr-1">
                         <div class="box px-5 pt-5 pb-5 lg:pb-0 mt-5">
                             
@@ -85,13 +91,6 @@
                                 <div class="flex mt-5">
                                     <a href="" class="w-10 mr-4 cursor-pointer">
                                         <div class="w-10 h-10 flex-none image-fit rounded-full">
-                                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_517194189_373099.jpg">
-                                            <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
-                                        </div>
-                                        <div class="text-xs text-slate-500 truncate text-center mt-2">{{ Auth::User()->fname.' '.Auth::User()->lname }}</div>
-                                    </a>
-                                    <a href="" class="w-10 mr-4 cursor-pointer">
-                                        <div class="w-10 h-10 flex-none image-fit rounded-full">
                                             <img alt="Midone - HTML Admin Template" class="rounded-full" src="https://photos.psychologytoday.com/244e1dc2-beb5-464c-bef7-fbab1924829c/3/320x400.jpeg">
                                             <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                                         </div>
@@ -101,9 +100,23 @@
                             </div>
                         </div>
                     </div>
-                    @endif
+                    @endhasanyrole
+
                     <div class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4">
-                        @if(Auth::User()->role != 'patient')
+                        <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
+                            <div class="w-12 h-12 flex-none image-fit mr-1">
+                                <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                            </div>
+                            <div class="ml-2 overflow-hidden">
+                                <div class="flex items-center">
+                                    <a href="javascript:;" class="font-medium">No Chat Available</a> 
+                                </div>
+                                <div class="w-full truncate text-slate-500 mt-0.5">Please wait while we process your files</div>
+                                {{-- <small>yyy</small> --}}
+                            </div>
+                            {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
+                        </div>
+                        @if(Auth::User()->role != 'patientx')
                             @isset($threads)
                             @foreach($threads as $inbox)
                                 @if($inbox->message->conversation->is_accepted)
@@ -1967,7 +1980,7 @@
                 <div class="h-full flex items-center">
                     <div class="mx-auto text-center">
                         <div class="w-16 h-16 flex-none image-fit rounded-full overflow-hidden mx-auto">
-                            <img alt="Midone - HTML Admin Template" src="https://cdn.hswstatic.com/gif/play/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg">
+                            <img alt="{{ Auth::User()->fname.' '.Auth::User()->lname }}" src="{{ asset('public/storage/'.Auth::user()->image_path) }}">
                         </div>
                         <div class="mt-3">
                             <div class="font-medium">Hey, {{ Auth::User()->fname.' '.Auth::User()->lname }}</div>

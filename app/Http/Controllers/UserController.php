@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\File;
 
 class UserController extends Controller
 {
@@ -111,11 +112,12 @@ class UserController extends Controller
      */
     public function update(User $user, UpdateUserRequest $request) 
     {
-        // dd($request->validated());
+        $image_path = $request->file('image_path')->store('image_path', 'public');
         $user->update($request->validated());
-
+        $user->update([
+            'image_path' => $image_path
+        ]);
         $user->syncRoles($request->get('role'));
-
         return redirect()->route('users.index')
             ->withSuccess(__('User updated successfully.'));
     }
