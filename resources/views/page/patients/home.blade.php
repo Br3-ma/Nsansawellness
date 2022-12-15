@@ -1971,7 +1971,15 @@
                         </div>
                         <div class="mt-3">
                             <div class="font-medium">Hey, {{ Auth::User()->fname.' '.Auth::User()->lname }}</div>
-                            <div class="text-slate-500 mt-1">Please select a patient to start to start session.</div>
+                            @hasanyrole('patient')
+                            <div class="text-slate-500 mt-1">Welcome back.</div>
+                            @endhasanyrole
+                            @hasanyrole('counselor')
+                            <div class="text-slate-500 mt-1">{{ date("D M d, Y G:i") }}</div>
+                            @endhasanyrole
+                            @hasanyrole('admin')
+                            <div class="text-slate-500 mt-1">{{ date("D M d, Y G:i") }}</div>
+                            @endhasanyrole
                         </div>
                     </div>
                 </div>
