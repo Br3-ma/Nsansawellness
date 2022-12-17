@@ -169,11 +169,36 @@ Route::group(['middleware' => ['auth', 'permission:permissions.index']], functio
 
 // Users
 Route::group(['middleware' => ['auth', 'permission:users.index']], function() {
-    Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class, [
+        'names' => [
+            'users.index' => 'users.index',
+            'users.edit' => 'users.edit',
+            'users.update' => 'users.update',
+            'users.destroy' => 'users.destroy'
+        ]
+    ]);
 });
 
+Route::group(['middleware' => ['auth', 'permission:users.edit']], function() {
+    Route::resource('users', UserController::class, [
+        'names' => [
+            'users.update' => 'users.update',
+            'users.edit' => 'users.edit'
+        ]
+    ]);
+});
 
+// Route::group(['middleware' => ['auth', 'permission:users.update']], function() {
+//     Route::resource('users', UserController::class)->name('users.update');
+// });
 
+// Route::group(['middleware' => ['auth', 'permission:users.destroy']], function() {
+//     Route::resource('users', UserController::class)->name('users.destroy');
+// });
+
+// Route::group(['middleware' => ['auth', 'permission:users.store']], function() {
+//     Route::resource('users', UserController::class)->name('users.store');
+// });
 
 // ================== Website
 Route::get('/about', [AboutPage::class, 'index'])->name('about');

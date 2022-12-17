@@ -16,10 +16,10 @@
                 @csrf
                 <!-- BEGIN: Modal Header -->
                 <div class="modal-header">
-                    <h2 class="font-medium text-base mr-auto">Add User</h2> 
+                    <h2 class="font-medium text-base mr-auto">Add Counselor</h2> 
                     <br>
                     <p class="lead">
-                        Add a new user.
+                        Add a New Counselor
                     </p>
                 </div> 
                 <!-- END: Modal Header -->
@@ -34,7 +34,6 @@
                                     class="form-control" 
                                     name="fname" 
                                     placeholder="First Name" required>
-            
                                 @if ($errors->has('fname'))
                                     <span class="text-danger text-left">{{ $errors->first('fname') }}</span>
                                 @endif
@@ -123,7 +122,6 @@
                                     <option value="OB">OB</option>
                                     <option value="OA">OA</option>
                                 </select>
-            
                                 @if ($errors->has('blood_group'))
                                     <span class="text-danger text-left">{{ $errors->first('blood_group') }}</span>
                                 @endif
