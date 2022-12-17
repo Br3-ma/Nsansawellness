@@ -526,7 +526,13 @@
                 <!-- BEGIN: Account Menu -->
                 <div class="intro-x dropdown w-8 h-8">
                     <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
+                        @if(Auth::user()->image_path == null)
+                        <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="{{ $user->fname.' '.$user->lname  }}">
+                            {{ Auth::user()->fname[0].' '.Auth::user()->lname[0] }}
+                        </div>
+                        @else
                         <img alt="Profile" src="{{ asset('public/storage/'.Auth::user()->image_path) }}">
+                        @endif
                     </div>
                     <div class="dropdown-menu w-56">
                         <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">

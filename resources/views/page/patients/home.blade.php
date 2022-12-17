@@ -1980,7 +1980,13 @@
                 <div class="h-full flex items-center">
                     <div class="mx-auto text-center">
                         <div class="w-16 h-16 flex-none image-fit rounded-full overflow-hidden mx-auto">
+                            @if($user->image_path == null)
+                            <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="{{ $user->fname.' '.$user->lname  }}">
+                                {{ Auth::User()->fname[0].' '.Auth::User()->lname[0] }}
+                            </div>
+                            @else
                             <img alt="{{ Auth::User()->fname.' '.Auth::User()->lname }}" src="{{ asset('public/storage/'.Auth::user()->image_path) }}">
+                            @enif
                         </div>
                         <div class="mt-3">
                             <div class="font-medium">Hey, {{ Auth::User()->fname.' '.Auth::User()->lname }}</div>
