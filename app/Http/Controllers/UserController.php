@@ -116,11 +116,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(User $user, UpdateUserRequest $request) 
+    public function update(User $user, Request $request) 
     {
         try {
             $image_path = $request->file('image_path')->store('image_path', 'public');
-            $user->update($request->validated());
+            $user->update($request->toArray());
             $user->update([
                 'image_path' => $image_path
             ]);

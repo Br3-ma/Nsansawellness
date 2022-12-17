@@ -164,7 +164,7 @@
                             class="form-control datepicker" 
                             data-single-mode="true" 
                             name="date_of_birth" 
-                            placeholder="" required>
+                            placeholder="">
         
                         @if ($errors->has('date_of_birth'))
                             <span class="text-danger text-left">{{ $errors->first('date_of_birth') }}</span>
@@ -176,7 +176,7 @@
                             type="text" 
                             class="form-control" 
                             name="place_of_birth" 
-                            placeholder="" required>
+                            placeholder="">
                         @if ($errors->has('place_of_birth'))
                             <span class="text-danger text-left">{{ $errors->first('place_of_birth') }}</span>
                         @endif
@@ -187,7 +187,7 @@
                             type="text" 
                             class="form-control" 
                             name="father_name" 
-                            placeholder="" required>
+                            placeholder="">
                         @if ($errors->has('father_name'))
                             <span class="text-danger text-left">{{ $errors->first('father_name') }}</span>
                         @endif
@@ -198,7 +198,7 @@
                             type="text" 
                             class="form-control" 
                             name="mother_name" 
-                            placeholder="" required>
+                            placeholder="">
                         @if ($errors->has('mother_name'))
                             <span class="text-danger text-left">{{ $errors->first('mother_name') }}</span>
                         @endif
@@ -206,7 +206,7 @@
                     <div class="mb-3">
                         <label for="blood_group" class="form-label">Blood Group</label>
                         <select class="form-control" 
-                            name="blood_group" required>
+                            name="blood_group">
                             <option selected>{{ $user->blood_group ?? '' }}</option>
                             <option value="A">A</option>
                             <option value="A+">A+</option>
@@ -235,7 +235,7 @@
                             type="text" 
                             class="form-control" 
                             name="occupation" 
-                            placeholder="Current Occupation" required>
+                            placeholder="Current Occupation">
         
                         @if ($errors->has('occupation'))
                             <span class="text-danger text-left">{{ $errors->first('occupation') }}</span>
@@ -245,7 +245,7 @@
                     <div class="mb-3">
                         <label for="department" class="form-label">Area of Expertise</label>
                         <select class="form-control" 
-                            name="department" required>
+                            name="department">
                             <option value="None">None</option>
                             <option value="Clinical Social Worker">Clinical Social Worker</option>
                             <option value="Marriage & Family Therapist">Marriage & Family Therapist</option>
@@ -261,7 +261,7 @@
                             type="text" 
                             class="form-control" 
                             name="hourly_charge" 
-                            placeholder="Hourly Charge Amount (ZMK)" required>
+                            placeholder="Hourly Charge Amount (ZMK)">
     
                         @if ($errors->has('hourly_charge'))
                             <span class="text-danger text-left">{{ $errors->first('hourly_charge') }}</span>
@@ -307,7 +307,7 @@
                     <div class="mb-3">
                         <label for="role" class="form-label">Role</label>
                         <select class="form-control" 
-                            name="role" required>
+                            name="role">
                             <option value="">Select role</option>
                             @foreach($roles as $role)
                                 <option value="{{ $role->id }}"
