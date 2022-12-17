@@ -694,7 +694,7 @@
                                     <div class="side-menu__title"> All Profiles </div>
                                 </a>
                             </li>
-                            @forelse(App\Models\User::role('patient')->get() as $my_patient)
+                            {{-- @forelse(App\Models\User::role('patient')->get() as $my_patient)
                             <li>
                                 <a href="{{ route('all-patient-files', $my_patient->id ) }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="user"></i> </div>
@@ -707,7 +707,7 @@
                                     <div class="side-menu__title text-xs"> No Assigned Patients</div>
                                 </a>
                             </li>
-                            @endforelse
+                            @endforelse --}}
                         </ul>
                     </li>
                     @endcan
