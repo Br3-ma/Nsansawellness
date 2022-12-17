@@ -81,7 +81,7 @@
                             <span class="text-danger text-left">{{ $errors->first('gender') }}</span>
                         @endif
                     </div> 
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input value="{{ $user->email }}"
                             type="email" 
@@ -91,7 +91,7 @@
                         @if ($errors->has('email'))
                             <span class="text-danger text-left">{{ $errors->first('email') }}</span>
                         @endif
-                    </div>
+                    </div> --}}
                     <div class="mb-3">
                         <label for="nrc_id" class="form-label">ID No</label>
                         <input value="{{ $user->nrc_id }}"
