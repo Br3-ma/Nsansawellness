@@ -28,7 +28,7 @@
                         <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
                             <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
                                 <img class="rounded-md" alt="Midone - HTML Admin Template" id="preview-image-before-upload" src="{{ asset('dist/images/profile-10.jpg') }}">
-                                <div title="Remove this profile photo?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2"> <i data-lucide="x" class="w-4 h-4"></i> </div>
+                                {{-- <div title="Remove this profile photo?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2"> <i data-lucide="x" class="w-4 h-4"></i> </div> --}}
                             </div>
                             <div class="mx-auto cursor-pointer relative mt-5">
                                <button type="button" class="btn btn-primary w-full">Change Photo</button>
@@ -54,12 +54,12 @@
                             name="fname" 
                             placeholder="First Name" required>
         
-                        @if ($errors->has('name'))
-                            <span class="text-danger text-left">{{ $errors->first('name') }}</span>
+                        @if ($errors->has('fname'))
+                            <span class="text-danger text-left">{{ $errors->first('fname') }}</span>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="name" class="form-label">Last Name</label>
+                        <label for="lname" class="form-label">Last Name</label>
                         <input value="{{ $user->lname }}" 
                             type="text" 
                             class="form-control" 
@@ -70,6 +70,17 @@
                             <span class="text-danger text-left">{{ $errors->first('lname') }}</span>
                         @endif
                     </div>
+                    <div class="mb-3">
+                        <label for="patient_limit" class="form-label">Gender</label>
+                        <select name="gender" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
+                            <option value="">-- select --</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        @if ($errors->has('gender'))
+                            <span class="text-danger text-left">{{ $errors->first('gender') }}</span>
+                        @endif
+                    </div> 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input value="{{ $user->email }}"
@@ -87,7 +98,7 @@
                             type="text" 
                             class="form-control" 
                             name="nrc_id" 
-                            placeholder="NRC ID" required>
+                            placeholder="NRC ID">
                             @if ($errors->has('nrc_id'))
                                 <span class="text-danger text-left">{{ $errors->first('nrc_id') }}</span>
                             @endif
@@ -98,7 +109,7 @@
                             type="text" 
                             class="form-control" 
                             name="mobile_no" 
-                            placeholder="+260 888 8888 88" required>
+                            placeholder="+260 888 8888 88">
                             @if ($errors->has('mobile_no'))
                                 <span class="text-danger text-left">{{ $errors->first('mobile_no') }}</span>
                             @endif
@@ -109,18 +120,18 @@
                             type="text" 
                             class="form-control" 
                             name="address" 
-                            placeholder="Address" required>
+                            placeholder="Address">
                             @if ($errors->has('address'))
                                 <span class="text-danger text-left">{{ $errors->first('address') }}</span>
                             @endif
                     </div>
                     <div class="mb-3">
                         <label for="country" class="form-label">Country</label>
-                        <input value="{{ $user->email }}"
+                        <input value="{{ $user->country }}"
                             type="text" 
                             class="form-control" 
                             name="country" 
-                            placeholder="Country" required>
+                            placeholder="Country">
                         @if ($errors->has('country'))
                             <span class="text-danger text-left">{{ $errors->first('country') }}</span>
                         @endif
@@ -131,20 +142,20 @@
                             type="text" 
                             class="form-control" 
                             name="state" 
-                            placeholder="Sate" required>
+                            placeholder="Sate">
                         @if ($errors->has('state'))
                             <span class="text-danger text-left">{{ $errors->first('state') }}</span>
                         @endif
                     </div>
                 </div>
 
+                @hasanyrole('patient')
                 <div class="intro-y col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4">
                     <div class="w-full">
                         <h1 class="text-lg ">Medical Information</h1>
                         <small>Carefully edit your medical information details for better therapy diagnosis</small>
                     </div>
                 </div>
-
                 <div class="intro-y col-span-8 md:col-span-8 lg:col-span-8 xl:col-span-8">
                     <div class="mb-3">
                         <label for="date_of_birth" class="form-label">Date of Birth</label>
@@ -208,6 +219,7 @@
                         </select>
                     </div>
                 </div>
+                @endhasanyrole
 
                 @hasanyrole(['counselor', 'admin'])
                 <div class="intro-y col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4">
@@ -223,7 +235,7 @@
                             type="text" 
                             class="form-control" 
                             name="occupation" 
-                            placeholder="First Name" required>
+                            placeholder="Current Occupation" required>
         
                         @if ($errors->has('occupation'))
                             <span class="text-danger text-left">{{ $errors->first('occupation') }}</span>
@@ -253,6 +265,31 @@
     
                         @if ($errors->has('hourly_charge'))
                             <span class="text-danger text-left">{{ $errors->first('hourly_charge') }}</span>
+                        @endif
+                    </div>                       
+                    <div class="mb-3">
+                        <label for="patient_limit" class="form-label">Patient Limit</label>
+                        <select name="patient_limit" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="10">6 - 10</option>
+                            <option value="15">10 - 15</option>
+                        </select>
+                        @if ($errors->has('patient_limit'))
+                            <span class="text-danger text-left">{{ $errors->first('patient_limit') }}</span>
+                        @endif
+                    </div>
+                    <div class="mb-3">
+                        <label for="work_status" class="form-label">Work Status</label>
+                        <select name="work_status" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
+                            <option class="text-danger" value="0">Unavailable</option>
+                            <option class="text-success" value="1">Available</option>
+                        </select>
+                        @if ($errors->has('work_status'))
+                            <span class="text-danger text-left">{{ $errors->first('work_status') }}</span>
                         @endif
                     </div>
                 </div>
@@ -288,8 +325,8 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary">Update user</button>
-            <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</button>
+            <button type="submit" class="btn btn-primary fl-right">Update user</button>
+            {{-- <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</a> --}}
         </form>
 
     </div>

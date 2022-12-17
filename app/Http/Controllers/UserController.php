@@ -26,7 +26,7 @@ class UserController extends Controller
         $userRole = Role::pluck('name')->toArray();
         $permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = User::latest()->paginate(10);
+        $users = User::latest()->paginate(4);
         $notifications = auth()->user()->unreadNotifications;
         return view('page.user.index', compact('users','permissions','roles','userRole','notifications'));
     }
@@ -39,7 +39,7 @@ class UserController extends Controller
     public function create()
     {
 
-        return view('page.user.create');
+        return view('page.user.user-create');
     }
 
     /**
@@ -53,16 +53,22 @@ class UserController extends Controller
         try {
             //For demo purposes only. When creating user or inviting a user
             // you should create a generated random password and email it to the user
+            if($request->file('image_path') != null){
+                $image_path = $request->file('image_path')->store('image_path', 'public');
+            }
+
             $u = $user->create(array_merge($request->all(), [
                 'password' => bcrypt('peace2u'),
-                'active' => 1
+                'active' => 1,
+                'image_path' => $image_path ?? ''
             ]));
 
             $details = [
                 'title' => 'Your account has been created successfully, please visit the site to login',
                 'body' => 'Hi '.$u->fname.' '.$u->lname.' your current password is peace2u'
             ];
-        
+
+            $u->syncRoles($request->user_group);
             Mail::to($u->email)->send(new SendUserInfoEmail($details));
             return redirect()->route('users.index')
                 ->withSuccess(__('User created successfully.'));
@@ -112,19 +118,24 @@ class UserController extends Controller
      */
     public function update(User $user, UpdateUserRequest $request) 
     {
-        $image_path = $request->file('image_path')->store('image_path', 'public');
-        $user->update($request->validated());
-        $user->update([
-            'image_path' => $image_path
-        ]);
-        $user->syncRoles($request->get('role'));
-
-        if( Auth::user()->type == 'admin' ){
-            return redirect()->route('users.index')
+        try {
+            $image_path = $request->file('image_path')->store('image_path', 'public');
+            $user->update($request->validated());
+            $user->update([
+                'image_path' => $image_path
+            ]);
+            $user->syncRoles($request->get('role'));
+    
+            if( Auth::user()->type == 'admin' ){
+                return redirect()->route('users.index')
+                    ->withSuccess(__('User updated successfully.'));
+            }
+            
+            return redirect()->route('profile')
                 ->withSuccess(__('User updated successfully.'));
+        } catch (\Throwable $th) {
+            dd($th);
         }
-        return redirect()->route('profile')
-            ->withSuccess(__('User updated successfully.'));
     }
 
     /**
