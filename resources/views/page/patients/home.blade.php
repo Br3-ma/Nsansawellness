@@ -1986,7 +1986,7 @@
                             </div>
                             @else
                             <img alt="{{ Auth::User()->fname.' '.Auth::User()->lname }}" src="{{ asset('public/storage/'.Auth::user()->image_path) }}">
-                            @enif
+                            @endif
                         </div>
                         <div class="mt-3">
                             <div class="font-medium">Hey, {{ Auth::User()->fname.' '.Auth::User()->lname }}</div>
