@@ -31,7 +31,7 @@ class UpdateUserRequest extends FormRequest
             'lname' => 'required',
             'father_name' => 'required',
             'mother_name' => 'required',
-            'email' => 'required|email,'.$user->id,
+            // 'email' => 'required|email,'.$user->id,
             // 'liecense_number',
             // 'country' => 'required',
             // 'mobile_no' => 'required',
