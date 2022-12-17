@@ -38,7 +38,13 @@
                 <div class="flex items-start px-5 pt-5">
                     <div class="w-full flex flex-col lg:flex-row items-center">
                         <div class="w-16 h-16 image-fit">
+                            @if($file->image_path == null)
+                            <div class="font-bolder text-xs text-white w-4 h-4 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-slate-400 zoom-in tooltip" title="{{ $file->fname.' '.$file->lname  }}">
+                                {{ $file->fname[0].' '.$file->lname[0] }}
+                            </div>
+                            @else
                             <img alt="{{$file->fname.' '.$file->lname}}" class="rounded-full" src="{{ asset('public/storage/'.$file->image_path) }}">
+                            @endif
                         </div>
                         <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
                             <a href="" class="capitalize font-medium">{{$file->fname.' '.$file->lname}}</a> 
