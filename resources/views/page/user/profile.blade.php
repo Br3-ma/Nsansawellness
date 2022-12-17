@@ -13,7 +13,13 @@
         <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
             <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
                 <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
+                    @if(Auth::user()->image_path == null)
+                    <div style="font-size:20px" class="border h-32 w-32 mb-1 mr-1 flex items-center justify-center bottom-0 right-0 rounded-full p-2 text-slate-400 zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                        {{ Auth::user()->fname[0].' '.Auth::user()->lname[0] }}
+                    </div>
+                    @else
                     <img alt="{{ Auth::user()->fname.' '.Auth::user()->lname }}" class="rounded-full" src="{{ asset('public/storage/'.Auth::user()->image_path) }}">
+                    @endif
                     <div class="absolute mb-1 mr-1 flex items-center justify-center bottom-0 right-0 bg-primary rounded-full p-2"> <i class="w-4 h-4 text-white" data-lucide="camera"></i> </div>
                 </div>
                 <div class="ml-5">
