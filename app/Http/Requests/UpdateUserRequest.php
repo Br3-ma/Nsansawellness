@@ -31,6 +31,7 @@ class UpdateUserRequest extends FormRequest
             'lname' => 'required',
             'father_name' => 'required',
             'mother_name' => 'required',
+            'email' => 'required',
             // 'email' => 'required|email,'.$user->id,
             // 'liecense_number',
             // 'country' => 'required',
@@ -44,7 +45,7 @@ class UpdateUserRequest extends FormRequest
             // 'place_of_birth' => 'required',
             'address' => 'required',
             // 'occupation' => 'required',
-            'image_path' => 'max:2048',
+            // 'image_path' => 'max:2048',
         ];
     }
 }
