@@ -75,11 +75,11 @@
                             </td>  --}}
                             <td class="table-report__action">
                                 <div class="flex justify-center items-center">
-                                    <a href="{{ route('activities.show', $act->id) }}" class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                    <a href="{{ route('activities.show', $act->id) }}" title="View details" class="flex tooltip zoom-out items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
                                     
                                     @can('activities.destroy')
                                     {!! Form::open(['method' => 'DELETE','route' => ['activities.destroy', $act->id],'style'=>'display:inline']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2 tooltip zoom-out', 'title' => 'Delete Activity']) !!}
                                     {!! Form::close() !!}    
                                     @endcan                            
                                 </div>

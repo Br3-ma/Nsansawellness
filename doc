@@ -18,3 +18,7 @@ Some Code
 {{ 
     // App\Classes\Popups::DisplayPopUp('user-register');
 }}
+
+<div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+    <button type="submit" class="btn btn-primary w-24 ml-2">Submit</button>
+</div>

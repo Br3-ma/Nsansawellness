@@ -5,6 +5,7 @@
         <h2 class="text-lg font-medium mr-auto">
             Add Appointment
         </h2>
+        <a href="{{ route('appointment') }}" class="intro-x btn shadow-md mr-2">Back to Appointments</a>
     </div>
     <div class="intro-y flex flex-col sm:flex-row items-center mt-2">
         <div class="col-span-12 w-full">
@@ -66,10 +67,12 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <select name="guest_id[]" id="subcategory" data-placeholder="Etalase" class="tom-select w-full" multiple>
+                                    <select name="guest_id[]" id="subcategory" data-placeholder="Guest" class="tom-select w-full" multiple>
                                         {{-- <option value="Fashion &amp; Make Up">Fashion &amp; Make Up</option> --}}
                                         @forelse ($users as $u)
-                                        <option value="{{ $u->id }}">{{ $u->fname.' '.$u->lname }}</option>
+                                            @if($u->id != auth()->user()->id)
+                                                <option value="{{ $u->id }}">{{ $u->fname.' '.$u->lname }}</option>
+                                            @endif
                                         @empty
                                             
                                         @endforelse
@@ -232,9 +235,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <textarea name="comments" class="form-control" cols="100" rows="10">
-
-                                    </textarea>
+                                    <textarea name="comments" class="editor"></textarea>
                                     {{-- <div class="form-help text-right">Maximum character 0/2000</div> --}}
                                 </div>
                             </div>

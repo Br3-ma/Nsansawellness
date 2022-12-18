@@ -41,8 +41,9 @@ class ActivityController extends Controller
      */
     public function index()
     {
+        $notifications = auth()->user()->notifications;
         $activities = $this->activity->with('patient_activities.users')->paginate(7);;
-        return view('page.activity.index', compact('activities'));
+        return view('page.activity.index', compact('activities', 'notifications'));
     }
 
     /**

@@ -5,6 +5,7 @@
         <h2 class="text-lg font-medium mr-auto">
             Enter Patient Record
         </h2>
+        <a href="{{ route('all-patient-files', $p->id)  }}" class="intro-x btn shadow-md mr-2">Back to Records</a>
     </div>
     <div class="grid grid-cols-12 gap-6">
         <!-- BEGIN: Profile Menu -->
@@ -119,11 +120,11 @@
                                 <div class="col-span-12 mt-2 2xl:col-span-6">
                                     <div>
                                         <label for="update-profile-form-1" class="form-label">Father's Names</label>
-                                        <input name="father_names" id="update-profile-form-1" type="text" class="form-control" placeholder="" value="Kevin Spacey" disabled>
+                                        <input name="father_names" id="update-profile-form-1" type="text" class="form-control" placeholder="" value="{{ $p->father_name ?? 'None' }}" disabled>
                                     </div>
                                     <div class="mt-2">
                                         <label for="update-profile-form-1" class="form-label">Mother's Names</label>
-                                        <input name="mother_names" id="update-profile-form-1" type="text" class="form-control" placeholder="" value="Kevin Spacey" disabled>
+                                        <input name="mother_names" id="update-profile-form-1" type="text" class="form-control" placeholder="" value="{{ $p->mother_name ?? 'None' }}" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -171,11 +172,11 @@
                                     <label for="update-profile-form-4" class="form-label">Date of Birth</label>
                                     <input disabled  value="{{ $p->date_of_birth }}" id="update-profile-form-4" type="text" class="form-control date" placeholder="1999-01-01">
                                     <input name="user_id" value="{{ $p->id ?? 'None' }}" id="update-profile-form-4" type="hidden" class="form-control date" placeholder="">
-                                    <input name="status_id" value="1" id="update-profile-form-4" type="hidden" class="form-control date" placeholder="Input text">
+                                    <input name="status_id" value="1" id="update-profile-form-4" type="hidden" class="form-control date" placeholder="National ID">
                                 </div>
                                 <div class="mt-3">
                                     <label for="update-profile-form-5" class="form-label">Place of Birth</label>
-                                    <textarea disabled value="{{ $p->place_of_birth ?? 'None' }}" id="update-profile-form-5" class="form-control" placeholder=""></textarea>
+                                    <input disabled value="{{ $p->place_of_birth ?? 'None' }}" id="update-profile-form-5" class="form-control" placeholder=""/>
                                 </div>
                             </div>
                             
@@ -217,7 +218,7 @@
                             </div> --}}
                             <div class="mt-3">
                                 <label for="update-profile-form-9" class="form-label">ID/NRC Number</label>
-                                <input disabled value="{{ $p->id_num }}" id="update-profile-form-9" type="text" class="form-control" placeholder="Input text" >
+                                <input disabled value="{{ $p->nrc_id }}" id="update-profile-form-9" type="text" class="form-control" placeholder="Input text" >
                             </div>
                         </div>
                         <div class="col-span-12 xl:col-span-6">
@@ -258,7 +259,7 @@
                         <div class="form-help text-right">Maximum character 0/2000</div>
                     </div>
                 </div>
-                <div class="col-span-12 flex">
+                <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end p-4">
                     <a href="#personal_information" class="prev-final btn btn-default w-1/3">Previous</a>
                     <button type="submit" style="float: right" class="ml-6 btn btn-primary w-1/3">Save</button>
                 </div>

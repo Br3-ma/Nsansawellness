@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($questionaires->questions as $q)
+                    @forelse ($questionaires->questions  as $q)
                     <tr class="intro-x">
                         <td class="w-40">
                             <div class="flex font-bold text-primary">
@@ -97,7 +97,8 @@
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
                 <ul class="pagination">
-                    <li class="page-item">
+                    {{-- {{  $questionaires->questions->links()  }} --}}
+                    {{-- <li class="page-item">
                         <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>
                     </li>
                     <li class="page-item">
@@ -113,15 +114,15 @@
                     </li>
                     <li class="page-item">
                         <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-right"></i> </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
-            <select class="w-20 form-select box mt-3 sm:mt-0">
+            {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
                 <option>10</option>
                 <option>25</option>
                 <option>35</option>
                 <option>50</option>
-            </select>
+            </select> --}}
         </div>
         <!-- END: Pagination -->
     </div>

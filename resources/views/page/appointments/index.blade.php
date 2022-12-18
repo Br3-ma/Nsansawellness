@@ -34,8 +34,8 @@
                 <a href="{{ route('appointment.create', ['type' => 'phone']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </a>
                 <div class="border-t border-b border-slate-200/60 dark:border-darkmode-400 mt-6 mb-5 py-3" id="calendar-events">
                     @forelse ($appointments as $appointment)
-                    <div class="relative">
-                        <div class="event p-3 -mx-3 {{  $appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} transition duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400 rounded-md flex items-center">
+                    <div class="relative items-center flex transition rounded-md p-2 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400">
+                        <div class="event p-3 -mx-3 {{  $appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} flex items-center">
                             @if($appointment->status != 0)
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                             @endif
@@ -55,11 +55,21 @@
                         </div>
                         {{-- <a class="flex items-center absolute top-0 bottom-0 right-2" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a> --}}
                         
-                        @if($appointment->status == 0)
-                        <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
-                        @else
-                        <a title="Cancel" href="{{ route('appointment.deactivate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> </a>
-                        @endif
+                        <div class="flex items-center justify-end">
+                            @if($appointment->status == 0)
+                            <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
+                            @else
+                            <a title="Cancel" class="zoom-in tooltip" href="{{ route('appointment.deactivate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> 
+                                <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> 
+                            </a>
+                            @endif
+                            <a title="Delete Permanently" class="mx-4 zoom-in tooltip" href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href="">
+                                <i data-lucide="trash" class="w-4 h-4 text-slate-500"></i> 
+                            </a>
+                            <a title="Edit" class="zoom-in tooltip" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href="">
+                                <i data-lucide="edit-2" class="w-4 h-4 text-slate-500"></i> 
+                            </a>
+                        </div>
                     </div>
                     @empty
                     <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
@@ -80,10 +90,10 @@
                     <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
                     @endforelse
                 </div>
-                <div class="form-check form-switch flex">
+                {{-- <div class="form-check form-switch flex">
                     <label class="form-check-label" for="checkbox-events">Notify me</label>
                     <input class="show-code form-check-input ml-auto" type="checkbox" id="checkbox-events">
-                </div>
+                </div> --}}
             </div>
             <div class="box p-5 intro-y mt-5">
                 {{-- <div class="box p-5 intro-y">
