@@ -60,7 +60,7 @@
                         {{-- <img alt="User" class="rounded-full" src="{{ asset('public/storage/'.$user->image_path) }}"> --}}
                     </div>
                     <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-                        <a href="" class="font-medium">{{ $user->fname.' '.$user->lname }}</a> 
+                        <a href="{{ route('users.show', $user->id) }}" class="capitalize font-medium">{{ $user->fname.' '.$user->lname }}</a> 
                         <div class="text-slate-500 text-xs mt-0.5">
                             @foreach($user->roles as $role)
                                 <span class="capitalize">{{ $role->name }}</span>

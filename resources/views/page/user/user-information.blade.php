@@ -34,13 +34,19 @@
                   
         <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
             <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
-                <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
-                    <img alt="{{ $user->lname.' '.$user->lname }}" class="rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeHw4dCREbdfesISVlmMqiQeBqB4kAsL67JFfiN09p&s">
-                    <div class="absolute mb-1 mr-1 flex items-center justify-center bottom-0 right-0 bg-primary rounded-full p-2"> <i class="w-4 h-4 text-white" data-lucide="camera"></i> </div>
+                <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">  
+                    @if($user->image_path == null)
+                        <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="{{ $user->fname.' '.$user->lname  }}">
+                            {{ $user->fname[0].' '.$user->lname[0] }}
+                        </div>
+                    @else
+                    <img alt="{{ $user->lname.' '.$user->lname }}" class="rounded-full" src="{{ asset('public/storage/'.$user->image_path) }}">
+                    @endif
+                    {{-- <div class="absolute mb-1 mr-1 flex items-center justify-center bottom-0 right-0 bg-primary rounded-full p-2"> <i class="w-4 h-4 text-white" data-lucide="camera"></i> </div> --}}
                 </div>
                 <div class="ml-5">
-                    <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{ $user->fname.' '.$user->lname}}</div>
-                    <div class="text-slate-500"> {{ $user->lname.' '.$user->lname }}</div>
+                    <div class="capitalize w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{ $user->fname.' '.$user->lname}}</div>
+                    <div class="capitalize text-slate-500"> {{ $user->lname.' '.$user->lname }}</div>
                 </div>
             </div>
             <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
@@ -97,10 +103,10 @@
                             <div class="dropdown-menu w-40">
                                 <ul class="dropdown-content">
                                     <li>
-                                        <a href="" class="dropdown-item"> <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Schedule Session </a>
+                                        <a href="#" class="dropdown-item"> <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Schedule Session </a>
                                     </li>
                                     <li>
-                                        <a href="" class="dropdown-item"> <i data-lucide="settings" class="w-4 h-4 mr-2"></i> Settings </a>
+                                        <a href="#" class="dropdown-item"> <i data-lucide="settings" class="w-4 h-4 mr-2"></i> Settings </a>
                                     </li>
                                 </ul>
                             </div>
@@ -109,7 +115,7 @@
                     <div class="p-5">
                         <div class="flex flex-col sm:flex-row">
                             <div class="mr-auto">
-                                <a href="" class="font-medium">Stress Management Therapy</a> 
+                                <a href="#" class="font-medium">Stress Management Therapy</a> 
                                 <div class="text-slate-500 mt-1">Individual Patients</div>
                             </div>
                             <div class="flex">
@@ -126,7 +132,7 @@
                         </div>
                         <div class="flex flex-col sm:flex-row mt-5">
                             <div class="mr-auto">
-                                <a href="" class="font-medium">Anger Mangement</a> 
+                                <a href="#" class="font-medium">Anger Mangement</a> 
                                 <div class="text-slate-500 mt-1">Group Counseling</div>
                             </div>
                             <div class="flex">

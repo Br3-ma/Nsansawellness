@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<div class="content content--top-nav">
+<div class="content mt-8">
     <h2 class="intro-y text-lg font-medium mt-10">
         Billing History
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
+        {{-- <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
             <div class="flex w-full sm:w-auto">
                 <div class="w-48 relative text-slate-500">
                     <input type="text" class="form-control w-48 box pr-10" placeholder="Search">
@@ -30,9 +30,9 @@
                     </button>
                     <div class="dropdown-menu w-40">
                         <ul class="dropdown-content">
-                            {{-- <li>
+                            <li>
                                 <a href="" class="dropdown-item"> <i data-lucide="arrow-left-right" class="w-4 h-4 mr-2"></i> Change Status </a>
-                            </li> --}}
+                            </li>
                             <li>
                                 <a href="" class="dropdown-item"> <i data-lucide="bookmark" class="w-4 h-4 mr-2"></i> Print Receipt </a>
                             </li>
@@ -43,10 +43,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
-            <table class="table table-report -mt-2">
+            {{-- <table class="table table-report -mt-2">
                 <thead>
                     <tr>
                         <th class="whitespace-nowrap">
@@ -123,11 +123,15 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
+            </table> --}}
+            <div class="items-center justify-center centered" style="text-align: center">
+                <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
+                <h3>No Transactions</h3>
+            </div>
         </div>
         <!-- END: Data List -->
         <!-- BEGIN: Pagination -->
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
+        {{-- <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
                 <ul class="pagination">
                     <li class="page-item">
@@ -155,7 +159,7 @@
                 <option>35</option>
                 <option>50</option>
             </select>
-        </div>
+        </div> --}}
         <!-- END: Pagination -->
     </div>
     <!-- BEGIN: Delete Confirmation Modal -->
