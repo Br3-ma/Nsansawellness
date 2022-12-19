@@ -119,14 +119,17 @@ class UserController extends Controller
     public function update(User $user, Request $request) 
     {
         try {
-            $image_path = $request->file('image_path')->store('image_path', 'public');
+
+            if($request->file('image_path') != null){
+                $image_path = $request->file('image_path')->store('image_path', 'public');
+            }
             $user->update($request->toArray());
             $user->update([
                 'image_path' => $image_path
             ]);
-            $user->syncRoles($request->get('role'));
-    
-            if( Auth::user()->type == 'admin' ){
+
+            if( Auth::user()->type == 'admin' || $user->hasRole('admin')){
+                $user->syncRoles($request->get('role'));
                 return redirect()->route('users.index')
                     ->withSuccess(__('User updated successfully.'));
             }
