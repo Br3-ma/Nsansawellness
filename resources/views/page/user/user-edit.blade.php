@@ -325,7 +325,9 @@
 
             </div>
 
-            <button type="submit" class="btn btn-primary fl-right">Update user</button>
+            <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                <button type="submit" class="btn btn-primary w-24 ml-2">Update Profile</button>
+            </div>
             {{-- <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</a> --}}
         </form>
 

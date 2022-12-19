@@ -56,17 +56,17 @@
                         {{-- <a class="flex items-center absolute top-0 bottom-0 right-2" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a> --}}
                         
                         <div class="flex items-center justify-end">
-                            @if($appointment->status == 0)
-                            <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
+                            {{-- @if($appointment->status == 0)
+                            <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
                             @else
-                            <a title="Cancel" class="zoom-in tooltip" href="{{ route('appointment.deactivate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> 
+                            <a title="Cancel"  href="{{ route('appointment.deactivate', ['id' => $appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> 
                                 <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> 
                             </a>
-                            @endif
-                            <a title="Delete Permanently" class="mx-4 zoom-in tooltip" href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href="">
+                            @endif --}}
+                            <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="flex mx-4 zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href="">
                                 <i data-lucide="trash" class="w-4 h-4 text-slate-500"></i> 
                             </a>
-                            <a title="Edit" class="zoom-in tooltip" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href="">
+                            <a title="Edit" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href="">
                                 <i data-lucide="edit-2" class="w-4 h-4 text-slate-500"></i> 
                             </a>
                         </div>
@@ -76,7 +76,7 @@
                     @endforelse
 
                     @forelse ($incoming_appointments as $app)
-                    <div class="relative items-center flex transition rounded-md p-2 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400">
+                    <div class="relative items-center flex transition rounded-md p-2">
                         <div class="event p-3 -mx-3 {{  $app->appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} flex items-center">
                             @if($app->appointment->status != 0)
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
@@ -97,17 +97,17 @@
                         </div>
                         
                         <div class="flex items-center justify-end">
-                            @if($app->appointment->status == 0)
-                            <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $app->appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
+                            {{-- @if($app->appointment->status == 0)
+                            <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $app->appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
                             @else
-                            <a title="Cancel" class="zoom-in tooltip" href="{{ route('appointment.deactivate', ['id' => $app->appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> 
+                            <a title="Cancel" href="{{ route('appointment.deactivate', ['id' => $app->appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> 
                                 <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> 
                             </a>
-                            @endif
-                            <a title="Delete Permanently" class="mx-4 zoom-in tooltip" href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href="">
+                            @endif --}}
+                            <a title="Delete Permanently" href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="flex items-center zoom-in tooltip absolute top-0 bottom-0 my-auto right-0" href="">
                                 <i data-lucide="trash" class="w-4 h-4 text-slate-500"></i> 
                             </a>
-                            <a title="Edit" class="zoom-in tooltip" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href="">
+                            <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href="">
                                 <i data-lucide="edit-2" class="w-4 h-4 text-slate-500"></i> 
                             </a>
                         </div>
