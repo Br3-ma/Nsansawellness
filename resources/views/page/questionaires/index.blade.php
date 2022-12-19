@@ -10,7 +10,7 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <a href="{{ route('questionaires.create') }}" class="btn btn-primary shadow-md mr-2">Create New Questionnaire</a>
-            <div class="dropdown">
+            {{-- <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
                 </button>
@@ -34,7 +34,7 @@
                     <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i> 
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
@@ -67,7 +67,7 @@
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center text-sm mr-3" href="{{ route('questionaires.show', $q->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit Answers </a>
+                                <a class="flex items-center text-sm mr-3" href="{{ route('questionaires.show', $q->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit Questions </a>
                                 {!! Form::open(['method' => 'DELETE','route' => ['questionaires.destroy', $q->id],'style'=>'display:inline']) !!}
                                 {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2']) !!}
                                 {!! Form::close() !!}
@@ -86,7 +86,8 @@
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
                 <ul class="pagination">
-                    <li class="page-item">
+                    {!! $questionaires->links() !!}
+                    {{-- <li class="page-item">
                         <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>
                     </li>
                     <li class="page-item">
@@ -102,15 +103,15 @@
                     </li>
                     <li class="page-item">
                         <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-right"></i> </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
-            <select class="w-20 form-select box mt-3 sm:mt-0">
+            {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
                 <option>10</option>
                 <option>25</option>
                 <option>35</option>
                 <option>50</option>
-            </select>
+            </select> --}}
         </div>
         <!-- END: Pagination -->
     </div>

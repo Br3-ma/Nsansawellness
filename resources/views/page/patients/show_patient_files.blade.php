@@ -9,7 +9,7 @@
         </div>
         @else
         <img alt="{{$p->fname.' '.$p->lname}}" class="rounded-full" src="{{ asset('public/storage/'.$p->image_path) }}">
-        @enif
+        @endif
     </div>
     <h1 style="color:#F65B08" class="capitalize intro-y text-lg font-medium mr-auto">
         {{ $p->fname.' '.$p->lname }}
@@ -91,7 +91,7 @@
                             </div>
                         </td>
                         <td>
-                            <a href="" class="capitalize font-medium whitespace-nowrap">{{ $pf->treatment }}</a> 
+                            <a href="#" class="capitalize font-medium whitespace-nowrap">{{ $pf->treatment }}</a> 
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $pf->bp_level}}</div>
                         </td>
                         <td class="text-center">{{ $pf->symptom ?? 'Not recorded' }}</td>
@@ -104,10 +104,10 @@
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a title="Open in new tab" target="_blank" class="flex items-center text-sm mr-3" href="{{ route('show-patient-file', $pf->id) }}"> <i data-lucide="eye" class="w-5 h-5 mr-1"></i> </a>
-                                <a title="Edit" class="flex items-center text-sm mr-3" href="{{ route('edit-patient-file', $pf->id) }}"> <i data-lucide="edit-3" class="w-5 h-5 mr-1"></i> </a>
+                                <a title="Open in new tab" target="_blank" class="tooltip zoom-out flex items-center text-sm mr-3" href="{{ route('show-patient-file', $pf->id) }}"> <i data-lucide="eye" class="w-5 h-5 mr-1"></i> </a>
+                                <a title="Edit" class="tooltip zoom-out flex items-center text-sm mr-3" href="{{ route('edit-patient-file', $pf->id) }}"> <i data-lucide="edit-3" class="w-5 h-5 mr-1"></i> </a>
                                 {!! Form::open(['method' => 'DELETE','route' => ['delete-patient-file', $pf->id],'style'=>'display:inline']) !!}
-                                {!! Form::submit('Delete', ['class' => 'flex text-sm items-center mt-3 text-danger']) !!}
+                                {!! Form::submit('Delete', ['class' => 'flex tooltip zoom-out text-sm items-center mt-3 text-danger', 'title' => 'Delete record']) !!}
                                 {{-- {!! Form::submit('Delete', ['class' => 'flex items-center mr-2 text-danger data-lucide="trash-2', 'data-tw-toggle'=>"modal", 'data-tw-target'=>"#delete-confirmation-modal"]) !!} --}}
                                 {!! Form::close() !!}
                                 {{-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a> --}}

@@ -25,14 +25,14 @@ class QuestionaireController extends Controller
     }
     public function index()
     {
-        $questionaires = $this->questionaire->with('questions')->get();
+        $questionaires = $this->questionaire->with('questions')->paginate(7);
         return view('page.questionaires.index', compact('questionaires'));
     }
     public function feed()
     {
         // get the active survey
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = User::latest()->paginate(10);
+        $users = User::latest()->paginate(7);
         return view('page.questionaires.user_feedback', compact('roles', 'users'));
     }
     public function user_feed($id)
@@ -99,7 +99,9 @@ class QuestionaireController extends Controller
      */
     public function show($id)
     {
-        $questionaires = $this->questionaire->with(['questions.answers'])->where('id', $id)->first();
+        $questionaires = $this->questionaire->with(['questions.answers'=> function($query) {
+            $query->latest()->paginate(2);
+        }])->where('id', $id)->first();
         return view('page.questionaires.edit_answers', compact('questionaires'));
     }
 

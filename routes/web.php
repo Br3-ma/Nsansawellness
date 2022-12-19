@@ -208,5 +208,7 @@ Route::get('/start-your-career', [CareerPage::class, 'index'])->name('careers');
 Route::get('/quick-questionaire', [CareerPage::class, 'careerSurveyQuestionaire'])->name('career-survey');
 Route::get('/reviews', [ReviewsPage::class, 'index'])->name('reviews');
 Route::get('/get-started', [GetStartedPage::class, 'index'])->name('start');
+Route::get('/get-couples-started', [GetStartedPage::class, 'couples'])->name('couples-start');
+Route::get('/get-child-started', [GetStartedPage::class, 'child'])->name('child-start');
 Route::resource('results', ResultsController::class);
 Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');

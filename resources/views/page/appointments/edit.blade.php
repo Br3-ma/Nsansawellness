@@ -5,6 +5,7 @@
         <h2 class="text-lg font-medium mr-auto">
             Edit Appointment
         </h2>
+        <a href="{{ route('appointment') }}" class="intro-x btn shadow-md mr-2">Back to Appointments</a>
     </div>
     <div class="intro-y flex flex-col sm:flex-row items-center mt-2">
         <div class="col-span-12 w-full">
@@ -36,7 +37,7 @@
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
                                     <input id="appointment-name" value="{{ $appointment->title }}" name="title" type="text" class="form-control" placeholder="Appointment Title">
-                                    <div class="form-help text-right">Maximum character 0/70</div>
+                                    {{-- <div class="form-help text-right">Maximum character 0/70</div> --}}
                                 </div>
                             </div>
                             {{-- <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
@@ -74,18 +75,24 @@
                                             @endforelse
                                         </select>
                                     <br>
-                                    <hr>
+                                    <br>
                                         @forelse ($guests as $u)
-                                        <div class="flex items-center">
+                                        <div class="flex items-center w-full py-2">
                                             <div class="w-9 h-9 image-fit zoom-in">
-                                                <img alt="" class="rounded-lg border-white shadow-md tooltip" src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png" title="Uploaded at {{ $u->user->created_at->toFormattedDateString() }}">
+                                                @if($u->user->image_path == null)
+                                                <div class="font-bolder border text-xs text-white w-4 h-4 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-slate-400 zoom-in tooltip" title="{{ $u->user->fname.' '.$u->user->lname  }}">
+                                                    {{ $u->user->fname[0].' '.$u->user->lname[0] }}
+                                                </div>
+                                                @else
+                                                <img src="{{ asset('public/storage/'.$u->user->image_path) }}" alt="{{ $u->user->lname.' '.$u->user->fname }}" class="rounded-full border-white shadow-md tooltip" title="Uploaded at {{ $u->user->created_at->toFormattedDateString() }}">
+                                                @endif
                                             </div>
                                             <div class="ml-4">
-                                                <a href="" class="font-medium whitespace-nowrap">{{ $u->user->lname.' '.$u->user->fname }}</a> 
+                                                <a href="#" class="font-medium whitespace-nowrap">{{ $u->user->lname.' '.$u->user->fname }}</a> 
                                                 <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $u->user->email }}</div>
                                             </div>
                                             <div class="ml-4">
-                                                <a href="{{ route('appointment.remove_guest', ['id'=>$u->user->id, 'appointment_id' => $appointment->id]) }}">X</a>
+                                                <a class="justify-end text-danger zoom-in tooltip" title="Remove guest" href="{{ route('appointment.remove_guest', ['id'=>$u->user->id, 'appointment_id' => $appointment->id]) }}">Remove</a>
                                             </div>
                                         </div>
                                         @empty
@@ -243,15 +250,15 @@
                                             <div class="font-medium">Comments</div>
                                             <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div>
                                         </div>
-                                        <div class="leading-relaxed text-slate-500 text-xs mt-3">
+                                        {{-- <div class="leading-relaxed text-slate-500 text-xs mt-3">
                                             <div>Make sure the product description provides a detailed explanation of your product so that it is easy to understand and find your product.</div>
                                             <div class="mt-2">It is recommended not to enter info on mobile numbers, e-mails, etc. into the product description to protect your personal data.</div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <textarea name="comments" class="form-control" cols="100" rows="10">
-                                        {{ $appointment->comment }}
+                                    <textarea name="comments" class="editor">
+                                        {{ $appointment->comments }}
                                     </textarea>
                                     <div class="form-help text-right">Maximum character 0/2000</div>
                                 </div>

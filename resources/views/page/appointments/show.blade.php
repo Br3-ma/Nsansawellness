@@ -41,9 +41,15 @@
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
                                         {{-- <option value="Fashion &amp; Make Up">Fashion &amp; Make Up</option> --}}
                                         @forelse ($guests as $u)
-                                        <div class="flex items-center">
+                                        <div class="flex items-center py-2">
                                             <div class="w-9 h-9 image-fit zoom-in">
-                                                <img alt="" class="rounded-lg border-white shadow-md tooltip" src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png" title="Uploaded at {{ $u->user->created_at->toFormattedDateString() }}">
+                                                @if($u->user->image_path == null)
+                                                <div class="font-bolder border text-xs text-white w-4 h-4 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-slate-400 zoom-in tooltip" title="{{ $u->user->fname.' '.$u->user->lname  }}">
+                                                    {{ $u->user->fname[0].' '.$u->user->lname[0] }}
+                                                </div>
+                                                @else
+                                                <img src="{{ asset('public/storage/'.$u->user->image_path) }}" alt="{{ $u->user->lname.' '.$u->user->fname }}" class="rounded-lg border-white shadow-md tooltip" title="Uploaded at {{ $u->user->created_at->toFormattedDateString() }}">
+                                                @endif
                                             </div>
                                             <div class="ml-4">
                                                 <a href="" class="font-medium whitespace-nowrap">{{ $u->user->lname.' '.$u->user->fname }}</a> 
@@ -99,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input type="text" id="start_date" value="{{ $appointment->start_date }}" disabled name="start_date" class="form-control"/>
+                                    <p>{{ $appointment->start_date }}</p>
                                 </div>
                             </div>
                             <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
@@ -112,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input type="text" disabled value="{{ $appointment->end_date }}" id="end_date" name="end_date" class="form-control"/>
+                                    <p>{{ $appointment->end_date }}</p>
                                 </div>
                                 <input type="hidden" id="user_id" value="{{ Auth::user()->id }}" name="user_id" class="form-control"/>
                                 <input type="hidden" id="type" value="{{ request()->get('type') }}" name="type" class="form-control"/>
@@ -151,7 +157,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                        {{ $appointment->comments }}
+                                        {!! $appointment->comments !!}
                                 </div>
                             </div>
                             {{-- <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
@@ -170,7 +176,7 @@
                         </div>
                     </div>
                 </div>
-
+                @if($appointment->user_id == auth()->user()->id)
                 <div class="flex justify-end flex-col md:flex-row gap-2 mt-5">
                     @if($appointment->status == 0) 
                     <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="btn py-3 btn-primary w-full md:w-52">Reactivate Appointment</a>
@@ -180,6 +186,7 @@
                     <a title="Delete permanently" href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="btn py-3 btn-danger w-full md:w-52">Delete Appointment</a>
                     <a  title="Cancel" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="btn py-3 btn-warning w-full md:w-52">Edit Appointment</a>
                 </div>
+                @endif
             </form>
         </div>
     </div>

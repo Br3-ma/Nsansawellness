@@ -29,14 +29,44 @@ class GetStartedPage extends Controller
     public function index(Request $request)
     {
         // Create a session
-        $key = Str::random(30);
-        session(['guest_id' => $key]);
-
+        if($request->session()->get('guest_id') == null){
+            $key = Str::random(30);
+            session(['guest_id' => $key]);
+        }
         $session = $request->session()->get('guest_id');
         // Get the Counselor Questionaire
         $questionaires = $this->questionaire->with(['questions.answers'])
         ->where('status_id', 1)->where('group_assigned', 'patient')->first();
         return view('page.get-started', compact('questionaires', 'session'));
+    }
+
+    public function couples(Request $request)
+    {
+        // Create a session
+        if($request->session()->get('guest_id') == null){
+            $key = Str::random(30);
+            session(['guest_id' => $key]);
+        }
+        $session = $request->session()->get('guest_id');
+        // Get the Counselor Questionaire
+        $questionaires = $this->questionaire->with(['questions.answers'])
+        ->where('status_id', 1)->where('group_assigned', 'patient')->first();
+        return view('page.get-couples-started', compact('questionaires', 'session'));
+    }
+
+    
+    public function child(Request $request)
+    {
+        // Create a session
+        if($request->session()->get('guest_id') == null){
+            $key = Str::random(30);
+            session(['guest_id' => $key]);
+        }
+        $session = $request->session()->get('guest_id');
+        // Get the Counselor Questionaire
+        $questionaires = $this->questionaire->with(['questions.answers'])
+        ->where('status_id', 1)->where('group_assigned', 'patient')->first();
+        return view('page.get-child-started', compact('questionaires', 'session'));
     }
 
     /**

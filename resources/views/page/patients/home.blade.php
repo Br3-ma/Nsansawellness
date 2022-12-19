@@ -89,13 +89,13 @@
                             
                             <div class="overflow-x-auto scrollbar-hidden">
                                 <div class="flex mt-5">
-                                    <a href="" class="w-10 mr-4 cursor-pointer">
+                                    {{-- <a href="" class="w-10 mr-4 cursor-pointer">
                                         <div class="w-10 h-10 flex-none image-fit rounded-full">
-                                            <img alt="Midone - HTML Admin Template" class="rounded-full" src="https://photos.psychologytoday.com/244e1dc2-beb5-464c-bef7-fbab1924829c/3/320x400.jpeg">
+                                            <img alt="Profile" class="rounded-full" src="">
                                             <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
                                         </div>
                                         <div class="text-xs text-slate-500 truncate text-center mt-2">Denzel Washington</div>
-                                    </a>
+                                    </a> --}}
                                 </div>
                             </div>
                         </div>
