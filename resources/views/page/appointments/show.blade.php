@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input type="text" id="start_date" value="{{ $appointment->start_date }}" disabled name="start_date" class="form-control"/>
+                                    <p>{{ $appointment->start_date }}</p>
                                 </div>
                             </div>
                             <div class="form-inline items-start flex-col xl:flex-row mt-5 pt-5 first:mt-0 first:pt-0">
@@ -118,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <input type="text" disabled value="{{ $appointment->end_date }}" id="end_date" name="end_date" class="form-control"/>
+                                    <p>{{ $appointment->end_date }}</p>
                                 </div>
                                 <input type="hidden" id="user_id" value="{{ Auth::user()->id }}" name="user_id" class="form-control"/>
                                 <input type="hidden" id="type" value="{{ request()->get('type') }}" name="type" class="form-control"/>
@@ -176,7 +176,7 @@
                         </div>
                     </div>
                 </div>
-
+                @if($appointment->user_id == auth()->user()->id)
                 <div class="flex justify-end flex-col md:flex-row gap-2 mt-5">
                     @if($appointment->status == 0) 
                     <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="btn py-3 btn-primary w-full md:w-52">Reactivate Appointment</a>
@@ -186,6 +186,7 @@
                     <a title="Delete permanently" href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="btn py-3 btn-danger w-full md:w-52">Delete Appointment</a>
                     <a  title="Cancel" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="btn py-3 btn-warning w-full md:w-52">Edit Appointment</a>
                 </div>
+                @endif
             </form>
         </div>
     </div>

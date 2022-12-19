@@ -35,7 +35,8 @@ class NotificationController extends Controller
     {
         // Get all notifications
         // $notifications = auth()->user()->unreadNotifications;
-        $notifications = auth()->user()->notifications;
+        $notifications = auth()->user()->notifications()->paginate(5);
+        // dd($notifications);
         if($request->wantsJson()){
             return response()->json([
                 "status" => 200, 

@@ -7,8 +7,8 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
-            <button class="btn btn-primary shadow-md mr-2">Create a Questionaire</button>
-            <div class="dropdown">
+            <a href="{{ route('questionaires.create') }}" class="btn btn-primary shadow-md mr-2">Create a Questionaire</a>
+            {{-- <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
                 </button>
@@ -37,34 +37,40 @@
                     <option>Active</option>
                     <option>Inactive</option>
                 </select>
-            </div>
+            </div> --}}
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">
+                        {{-- <th class="whitespace-nowrap">
                             <input class="form-check-input" type="checkbox">
-                        </th>
+                        </th> --}}
                         <th class="whitespace-nowrap">NAMES</th>
                         <th class="text-center whitespace-nowrap">GROUP</th>
-                        <th class="text-center whitespace-nowrap">GENDER</th>
+                        {{-- <th class="text-center whitespace-nowrap">GENDER</th> --}}
                         <th class="text-center whitespace-nowrap">STATUS</th>
-                        <th class="text-center whitespace-nowrap">TOTAL QUESTIONS</th>
+                        {{-- <th class="text-center whitespace-nowrap">TOTAL QUESTIONS</th> --}}
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($users as $user)
                     <tr class="intro-x">
-                        <td class="w-10">
+                        {{-- <td class="w-10">
                             <input class="form-check-input" type="checkbox">
-                        </td>
+                        </td> --}}
                         <td class="!py-3.5">
                             <div class="flex items-center">
                                 <div class="w-9 h-9 image-fit zoom-in">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-lg border-white shadow-md tooltip" src="dist/images/profile-13.jpg" title="Uploaded at 26 July 2022">
+                                    @if($user->image_path == null)
+                                    <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center border dark:border-darkmode-400 text-slate-400 zoom-in tooltip" title="{{ $user->fname.' '.$user->lname  }}">
+                                        {{ $user->fname[0].' '.$user->lname[0] }}
+                                    </div>
+                                    @else
+                                    <img alt="{{ $user->fname.' '.$user->lname  }}" class="rounded-lg border-white shadow-md tooltip" src="{{ asset('public/storage/'.$user->image_path) }}" title="{{ $user->fname.' '.$user->lname  }}">
+                                    @endif
                                 </div>
                                 <div class="ml-4">
                                     <a href="" class="font-medium whitespace-nowrap">{{ $user->fname.' '.$user->lname }}</a> 
@@ -72,16 +78,28 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="text-center"> <a class="flex items-center justify-center underline decoration-dotted" href="javascript:;">{{  $user->role }}</a> </td>
-                        <td class="text-center capitalize">--</td>
-                        <td class="w-40">
-                            <div class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Inactive </div>
+                        <td class="text-center"> 
+                            @foreach($user->roles as $role)
+                                <span class="capitalize">{{ $role->name }}</span>
+                            @endforeach 
                         </td>
-                        <td class="text-center">115 Items</td>
+                        {{-- <td class="text-center capitalize">--</td> --}}
+                        <td class="w-40">
+                            <div class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> 
+                                {{ $user->email_verified_at == null ? 'Unverified Account' : 'Verified Account'}}
+                            </div>
+                        </td>
+                        {{-- <td class="text-center">115 Items</td> --}}
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
+                                @if($user->guest_id != null)
                                 <a class="flex items-center mr-3" href="{{ route('user-survey-response', $user->guest_id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Response </a>
-                                <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                                @else
+                                <p class="flex items-center mr-3"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Not Surveyed </p>
+                                @endif
+
+
+                                {{-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a> --}}
                             </div>
                         </td>
                     </tr>
@@ -125,31 +143,15 @@
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
                 <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-left"></i> </a>
-                    </li>
-                    <li class="page-item"> <a class="page-link" href="#">...</a> </li>
-                    <li class="page-item"> <a class="page-link" href="#">1</a> </li>
-                    <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
-                    <li class="page-item"> <a class="page-link" href="#">3</a> </li>
-                    <li class="page-item"> <a class="page-link" href="#">...</a> </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-right"></i> </a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-right"></i> </a>
-                    </li>
+                    {!! $users->links() !!}
                 </ul>
             </nav>
-            <select class="w-20 form-select box mt-3 sm:mt-0">
+            {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
                 <option>10</option>
                 <option>25</option>
                 <option>35</option>
                 <option>50</option>
-            </select>
+            </select> --}}
         </div>
         <!-- END: Pagination -->
     </div>

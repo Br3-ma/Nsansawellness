@@ -32,7 +32,7 @@ class QuestionaireController extends Controller
     {
         // get the active survey
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = User::latest()->paginate(10);
+        $users = User::latest()->paginate(7);
         return view('page.questionaires.user_feedback', compact('roles', 'users'));
     }
     public function user_feed($id)

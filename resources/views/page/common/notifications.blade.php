@@ -34,7 +34,7 @@
                 </div>
                 <div class="w-full ml-2 overflow-hidden">
                     <div class="flex items-center">
-                        <a href="javascript:;" class="font-medium truncate mr-5">{{ $note->data['sender'] }}</a> 
+                        <p href="javascript:;" class="font-medium truncate mr-5">{{ $note->data['sender'] }}</p> 
                         <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">{{ $note->created_at->toFormattedDateString() }}</div>
                     </div>
                     <div class="w-full truncate text-slate-500 mt-0.5">{{ $note->data['message'] }}</div>
@@ -59,6 +59,13 @@
                 <h3>No Notifications Yet</h3>
             </div>
         @endforelse
+        <div class="intro-y col-span-12flex-wrap sm:flex-row sm:flex-nowrap items-center">
+            <nav class="w-full sm:w-auto sm:mr-auto">
+                <ul class="pagination block  justify-end ">
+                    {!! $notifications->links() !!}
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
 <script>
