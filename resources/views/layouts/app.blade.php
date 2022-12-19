@@ -641,12 +641,12 @@
                     @endcan
 
                     @can('billing')
-                    {{-- <li>
+                    <li>
                         <a href="{{  route('billing') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="wallet"></i> </div>
                             <div class="side-menu__title"> Billings </div>
                         </a>
-                    </li> --}}
+                    </li>
                     @endcan
                     
                     @can('settings')
