@@ -96,21 +96,21 @@
                             </a>
                         </div>
                         
-                        <div class="flex items-center justify-end">
-                            {{-- @if($app->appointment->status == 0)
+                        {{-- <div class="flex items-center justify-end">
+                             @if($app->appointment->status == 0)
                             <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $app->appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
                             @else
                             <a title="Cancel" href="{{ route('appointment.deactivate', ['id' => $app->appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> 
                                 <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> 
                             </a>
-                            @endif --}}
-                            <a title="Delete Permanently" href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="flex items-center zoom-in tooltip absolute top-0 bottom-0 my-auto right-0" href="">
+                            @endif 
+                            <a title="Delete Permanently" href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="flex mx-4 items-center zoom-in tooltip absolute top-0 bottom-0 my-auto right-0" href="">
                                 <i data-lucide="trash" class="w-4 h-4 text-slate-500"></i> 
                             </a>
                             <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href="">
                                 <i data-lucide="edit-2" class="w-4 h-4 text-slate-500"></i> 
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                     @empty
                     <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
