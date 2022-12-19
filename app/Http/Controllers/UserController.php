@@ -120,13 +120,15 @@ class UserController extends Controller
     {
         try {
 
+
+            $user->update($request->toArray());
             if($request->file('image_path') != null){
                 $image_path = $request->file('image_path')->store('image_path', 'public');
+                $user->update([
+                    'image_path' => $image_path
+                ]);
             }
-            $user->update($request->toArray());
-            $user->update([
-                'image_path' => $image_path
-            ]);
+
 
             if( Auth::user()->type == 'admin' || $user->hasRole('admin')){
                 $user->syncRoles($request->get('role'));
