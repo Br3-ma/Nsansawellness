@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePatientRecord;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Appointment;
+use App\Models\Chat as ModelsChat;
 use App\Models\PatientFile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,18 +16,19 @@ use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
 
 class PatientController extends Controller
 {
-    public $users, $pf, $appointment;
+    public $users, $pf, $appointment, $chat;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(User $users, PatientFile $pf, Appointment $app)
+    public function __construct(User $users, PatientFile $pf, Appointment $app, ModelsChat $chat)
     {
         $this->middleware('auth');
         $this->appointment = $app;
         $this->user = $users;
         $this->pf = $pf;
+        $this->chat = $chat;
     }
 
     /**
@@ -36,8 +38,14 @@ class PatientController extends Controller
      */
     public function index()
     {
+        // Get all chats am invited in
+        $chats = $this->chat->where('sender_id', auth()->user()->id)
+        ->orWhere('receiver_id', auth()->user()->id)
+        ->with(['sender', 'receiver'])->get();
+
+        // dd($chats);
         $notifications = auth()->user()->unreadNotifications;
-        return view('page.patients.home', compact('notifications'));
+        return view('page.patients.home', compact('notifications', 'chats'));
     }
 
     public function patient_files()

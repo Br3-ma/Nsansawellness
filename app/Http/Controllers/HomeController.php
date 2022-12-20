@@ -28,10 +28,11 @@ class HomeController extends Controller
     public function index()
     {
         $notifications = auth()->user()->unreadNotifications;
+        $users = User::get();
         // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
         // event(new RealTimeNotification($message));
         // check if its first time login
-        if(auth()->user()->first_login == 'true' || auth()->user()->first_time == null){
+        if(auth()->user()->first_login == 'true' || auth()->user()->first_login == null){
             $x = User::find(auth()->user()->id);
             $x->first_login = false;
             $x->save();
@@ -39,13 +40,18 @@ class HomeController extends Controller
             if(auth()->user()->type == 'patient'){
                 return redirect()->route('pay');
             }
-            return view('home', compact('notifications'));
+            return view('home', compact('notifications','users'));
         }else{
             if(auth()->user()->type == 'patient'){
-                return view('page.patients.home', compact('notifications'));
+                
+                return view('page.patients.home', compact('notifications','users'));
             }
-            return view('home', compact('notifications'));
+            return view('home', compact('notifications','users'));
         }
+
+    }
+
+    public function getMyChats(){
 
     }
 }
