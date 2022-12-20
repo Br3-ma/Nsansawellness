@@ -216,7 +216,7 @@
                     <li>
                         <a href="{{  route('billing') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
-                            <div class="side-menu__title"> Billings </div>
+                            <div class="side-menu__title"> Billing </div>
                         </a>
                     </li>
                     @endcan
@@ -596,12 +596,12 @@
                     @endcan
 
                     @can('patient')
-                    {{-- <li>
+                    <li>
                         <a href="{{ route('patient') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
                             <div class="side-menu__title"> Counseling Sessions </div>
                         </a>
-                    </li> --}}
+                    </li>
                     @endcan
                     
 
@@ -644,7 +644,7 @@
                     <li>
                         <a href="{{  route('billing') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="wallet"></i> </div>
-                            <div class="side-menu__title"> Billings </div>
+                            <div class="side-menu__title"> Billing </div>
                         </a>
                     </li>
                     @endcan

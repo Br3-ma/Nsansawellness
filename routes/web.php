@@ -13,6 +13,7 @@ use App\Http\Controllers\GetStartedPage;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeworkController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewsPage;
@@ -186,6 +187,23 @@ Route::group(['middleware' => ['auth', 'permission:users.edit']], function() {
             'users.edit' => 'users.edit'
         ]
     ]);
+});
+
+// Chat
+Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
+    Route::resource('chat', ChatController::class, [
+        'names' => [
+            'chat.index' => 'chat.index',
+            'chat.update' => 'chat.update',
+            'chat.edit' => 'chat.edit',
+            'chat.store' => 'chat.store',
+            'chat.update' => 'chat.update',
+            'chat.destory' => 'chat.destory'
+        ]
+    ]);
+});
+Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
+    Route::get('/streaming', [ChatController::class, 'stream'])->name('chat.stream');
 });
 
 // Route::group(['middleware' => ['auth', 'permission:users.update']], function() {
