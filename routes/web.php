@@ -26,6 +26,7 @@ use App\Http\Controllers\VideoCallController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ResultsController;
+use App\Models\AssignCounselor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -205,6 +206,10 @@ Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
 Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
     Route::get('/streaming', [ChatController::class, 'stream'])->name('chat.stream');
 });
+// Route::group(['middleware' => ['auth', 'permission:getCounselorByDept']], function() {
+    Route::get('/get-counselors-by-dept', [AssignCounselorController::class, 'getCounselorByDept'])->name('counselors-by-dept');
+    Route::post('/manual-assign', [AssignCounselorController::class, 'store'])->name('manual.assign.counselor');
+// });
 
 // Route::group(['middleware' => ['auth', 'permission:users.update']], function() {
 //     Route::resource('users', UserController::class)->name('users.update');

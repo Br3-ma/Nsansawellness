@@ -50,8 +50,9 @@ class PatientController extends Controller
 
     public function patient_files()
     {
+        $counselors = $this->user->role('counselor')->get();
         $my_patients = $this->user->role('patient')->paginate(6);
-        return view('page.common.patient_files', compact('my_patients'));
+        return view('page.patients.patient_files', compact('my_patients', 'counselors'));
     }
 
     public function show_patient_files($id)

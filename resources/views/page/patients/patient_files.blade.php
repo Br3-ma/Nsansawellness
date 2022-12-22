@@ -1,6 +1,52 @@
 @extends('layouts.app')
 @section('content')
+<!-- BEGIN: Modal Content -->
+<div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" style="margin-top:20%">
+        <div class="modal-content">
+            <!-- BEGIN: Modal Header -->
+            <div class="modal-header">
+                <h2 class="font-medium text-base mr-auto">Assign Counselor</h2> 
+                {{-- <button class="btn btn-outline-secondary hidden sm:flex"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download Docs </button> --}}
+                
+            </div> <!-- END: Modal Header -->
+            <!-- BEGIN: Modal Body -->
+            <form method="POST" action="{{ route('manual.assign.counselor') }}">
+                @csrf
+            <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                {{-- <div class="col-span-12 sm:col-span-6"> <label for="modal-form-1" class="form-label">From</label> <input id="modal-form-1" type="text" class="form-control" placeholder="example@gmail.com"> </div>
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-2" class="form-label">To</label> <input id="modal-form-2" type="text" class="form-control" placeholder="example@gmail.com"> </div>
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-3" class="form-label">Subject</label> <input id="modal-form-3" type="text" class="form-control" placeholder="Important Meeting"> </div>
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-4" class="form-label">Has the Words</label> <input id="modal-form-4" type="text" class="form-control" placeholder="Job, Work, Documentation"> </div> --}}
+                <div class="col-span-12 sm:col-span-6"> 
+                    <label for="modal-form-6" class="form-label">Profession</label> 
+                    <select onchange="getval(this);" id="personel" class="form-select">
+                        <option value="None">None</option>
+                        <option value="Clinical Social Worker">Clinical Social Worker</option>
+                        <option value="Marriage & Family Therapist">Marriage & Family Therapist</option>
+                        <option value="Mental Health Counselor">Mental Health Counselor</option>
+                        <option value="Professional Counselor">Professional Counselor</option>
+                        <option value="Psychologist">Psychologist</option>
+                    </select>
+                </div>
+                <div class="col-span-12 sm:col-span-6"> 
+                    <label for="modal-form-5" class="form-label">Counselor/ Therapist</label> 
+                    <select name="counselor_id" id="these_counselors" class="form-select">
+                    </select>               
+                    <input id="inputID" name="patient_id" type="hidden" /> 
+                </div>
 
+            </div> <!-- END: Modal Body -->
+            <!-- BEGIN: Modal Footer -->
+            <div class="modal-footer"> 
+                {{-- <div id="this_patient"></div> --}}
+                <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Cancel</button> 
+                <button type="submit" class="btn btn-primary w-20">Assign</button> 
+            </div> <!-- END: Modal Footer -->
+        
+        </div></form>
+    </div>
+</div> <!-- END: Modal Content -->
 <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
         Manage Patient Files
@@ -71,7 +117,12 @@
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
                         View All Files
                     </a>
-                    {{-- <button class="btn btn-outline-secondary py-1 px-2">Profile</button> --}}
+                    @hasanyrole('admin')
+                    <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-secondary py-1 px-2">
+                        <i data-lucide="shield-check" class="w-3 h-3 mr-2"></i>
+                        Assign Counselor
+                    </button>
+                    @endhasanyrole
                 </div>
             </div>
         </div>
@@ -102,6 +153,49 @@
         </div>
         <!-- END: Pagination -->
     </div>
-</div>
+
+        
+    </div>
 
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    var counselor_id = 0;
+    var patient_id = 0;
+    function getId(id){
+        // alert(id);
+        $('#inputID').val(id);
+        $('#this_patient').empty();
+        $('#these_counselors').empty();
+        $('#this_patient').append('<p>'+id+'</p>');
+    }
+
+    function getval(sel)
+    {
+        $('#these_counselors').empty();
+        counselor_id = sel.value;
+        // Get counselor with this specialty
+        $.ajax({
+            type:'GET',
+            url:'{{ route("counselors-by-dept") }}',
+            data: {
+                counselor_id
+            },
+            success:function(data) {    
+                console.log(data.result);
+                if(Object.keys(data.result).length > 0){
+                    for (const counselor of data.result){
+                        console.log(counselor)
+                        $('#these_counselors').append('<option value="'+counselor.id+'">'+counselor.fname+' '+counselor.lname+'</option>')
+                    }
+                }
+                
+            },
+            
+            error: function (msg) {
+                console.log(msg);
+                var errors = msg.responseJSON;
+            }
+        });
+    }
+</script>

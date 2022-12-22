@@ -1985,7 +1985,7 @@
                 status,
             },
             success:function(data) {  
-                alert('sent');         
+                console.log('sent');         
             },
             
             error: function (msg) {
