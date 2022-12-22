@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignCounselor;
+use App\Models\Chat;
 use App\Models\Question;
 use App\Models\Result;
 use App\Models\User;
@@ -40,6 +41,11 @@ class AssignCounselorController extends Controller
         $this->findMyCounselor();
     }
 
+    public function getCounselorByDept(Request $request){
+        $res = User::where('department', $request->toArray()['counselor_id'])->get()->toArray();
+        return response()->json(['result' => $res], 200);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -59,7 +65,14 @@ class AssignCounselorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Save the new message
+        AssignCounselor::create($request->toArray());
+        Chat::create([
+            'sender_id' => $request->toArray()['counselor_id'],
+            'receiver_id' => $request->toArray()['patient_id'],
+        ]);
+        return redirect()->route('patient-files')
+            ->withSuccess(__('Counselor has been assign successfully.'));
     }
 
     /**
