@@ -8,6 +8,7 @@ use App\Models\Questionaire;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Session;
 
 class QuestionaireController extends Controller
 {
@@ -76,19 +77,23 @@ class QuestionaireController extends Controller
      */
     public function store(Question $question, CreateQuestionaireRequest $request)
     {
+        try{
+            $survey = $this->questionaire->create($request->validated());
         
-        $survey = $this->questionaire->create($request->validated());
-        
-        foreach ($request->question as $key => $value) {
-           
-            $question->create([
-                'question' => $value,
-                'type' => $request->type[$key],
-                'questionaire_id' => $survey->id
-            ]);
+            foreach ($request->question as $key => $value) {
+               
+                $question->create([
+                    'question' => $value,
+                    'type' => $request->type[$key],
+                    'questionaire_id' => $survey->id
+                ]);
+            }
+            Session::flash('attention', "Questionnaire created successfully.");
+            return redirect()->route('questionaires.index');
+        }catch (\Throwable $th) {
+            Session::flash('error_msg', "Oops something went wrong again.");
+            return redirect()->route('appointment');
         }
-        return redirect()->route('questionaires.index')
-            ->withSuccess(__('Questionaire created successfully.'));
     }
 
     /**
@@ -138,8 +143,8 @@ class QuestionaireController extends Controller
     public function destroy(Questionaire $questionaire)
     {
         $questionaire->delete();
-        return redirect()->route('questionaires.index')
-            ->withSuccess(__('Questionaire removed successfully.'));
+        Session::flash('attention', "Questionnaire removed successfully.");
+        return redirect()->route('questionaires.index');
     }
 
     
@@ -147,7 +152,7 @@ class QuestionaireController extends Controller
     {
         $del = $this->questions->findOrFail($question);
         $del->delete();
-        return redirect()->route('questionaires.show', $questionnaire)
-            ->withSuccess(__('Questionaire removed successfully.'));
+        Session::flash('attention', "Questionnaire removed successfully.");
+        return redirect()->route('questionaires.show', $questionnaire);
     }
 }

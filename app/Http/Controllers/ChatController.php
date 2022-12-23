@@ -6,6 +6,7 @@ use App\Models\Chat;
 use App\Models\ChatMessages;
 use App\Traits\ChatTrait;
 use Illuminate\Http\Request;
+use Session;
 
 class ChatController extends Controller
 {
@@ -20,7 +21,6 @@ class ChatController extends Controller
         //get my thread for chat
         $id = $req->toArray()['id'];
         $owner = $req->toArray()['owner'];
-
         $chat_session = Chat::with('chat_messages.user')->where('id', $id)->get()->toArray()[0];
         if($owner == 'sender'){
             // The sender has seen the message
@@ -57,7 +57,7 @@ class ChatController extends Controller
     public function store(Request $request)
     {
         // Save the new message
-        ChatMessages::create($request->toArray());
+        ChatMessages::firstOrCreate($request->toArray());
     }
 
     /**
@@ -175,6 +175,6 @@ class ChatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 }

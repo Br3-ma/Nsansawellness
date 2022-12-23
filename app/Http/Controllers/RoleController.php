@@ -7,6 +7,7 @@ use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Models\Permission;
+use Session;
 
 class RoleController extends Controller
 {
@@ -54,8 +55,8 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->get('name')]);
         $role->syncPermissions($request->get('permission'));
     
-        return redirect()->route('roles.index')
-                        ->with('success','Role created successfully');
+        Session::flash('attention', "New role created successfully.");
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -105,8 +106,8 @@ class RoleController extends Controller
     
         $role->syncPermissions($request->get('permission'));
     
-        return redirect()->route('roles.index')
-                        ->with('success','Role updated successfully');
+        Session::flash('attention', "Role updated successfully.");
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -118,8 +119,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         $role->delete();
-
-        return redirect()->route('roles.index')
-                        ->with('success','Role deleted successfully');
+        Session::flash('attention', "Role deleted successfully.");
+        return redirect()->route('roles.index');
     }
 }

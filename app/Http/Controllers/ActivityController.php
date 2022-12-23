@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Notifications\NewActivity;
 use Illuminate\Http\Request;
 use Pusher\Pusher;
+use Session;
 
 class ActivityController extends Controller
 {    
@@ -89,13 +90,12 @@ class ActivityController extends Controller
                 // $message = 'You have a new homework with'.auth()->user()->fname.' '.auth()->user()->lname;
                 $user->notify(new NewActivity($payload));
                 $this->pusher->trigger('popup-channel', 'new-activity', $patient);
-
-                return redirect()->route('activities.index')
-                ->withSuccess(__('Activity created successfully.'));
+                Session::flash('attention', "Failed to create user, Email could not be found");
+                return redirect()->route('activities.index');
             }
         } catch (\Throwable $th) {
-            return redirect()->back()
-            ->withSuccess(__('Oops something went wront.'));
+            Session::flash('error_msg', "Oops something went wrong. #line 96.");
+            return redirect()->route('activities.index');
         }
 
     }
@@ -145,7 +145,7 @@ class ActivityController extends Controller
     {
         $a = $this->activity->find($id);
         $a->delete();
-        return redirect()->route('activities.index')
-            ->withSuccess(__('Activity deleted successfully.'));
+        Session::flash('attention', "Activity #".$id." has been removed");
+        return redirect()->route('activities.index');
     }
 }

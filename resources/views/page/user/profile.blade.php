@@ -6,6 +6,23 @@
         <h2 class="text-lg font-medium mr-auto">
             My Profile 
         </h2>
+        @if (Session::has('attention'))
+        <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
+            {{ Session::get('attention') }}
+            <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
+                <i data-lucide="x" class="w-4 h-4"></i> 
+            </button> 
+        </div>
+        @elseif (Session::has('error_msg'))
+        <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
+            {{ Session::get('error_msg') }}
+            <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
+                <i data-lucide="x" class="w-4 h-4"></i> 
+            </button> 
+        </div>
+        @endif
         <a style="background-color:#F65B08" href="{{ route('users.edit', Auth::user()->id) }}" class="intro-x text-white btn shadow-md mr-2">Edit Profile</a>
     </div>
     <!-- BEGIN: Profile Info -->

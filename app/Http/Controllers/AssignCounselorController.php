@@ -11,6 +11,7 @@ use App\Notifications\CounselorAssigned;
 use App\Notifications\NewPatientAssigned;
 use App\Traits\MatchMakerTrait;
 use Illuminate\Http\Request;
+use Session;
 
 class AssignCounselorController extends Controller
 {
@@ -31,6 +32,8 @@ class AssignCounselorController extends Controller
      */
     public function index($id)
     {
+        
+        $notifications = auth()->user()->notifications;
         //Get the patient survey Answers to Array
         $patient_survey_arr = $this->res->with('question')->where('guest_id', $id)->get()->toArray();
 
@@ -80,16 +83,18 @@ class AssignCounselorController extends Controller
             'name' => 'Nsansa wellness',
             'sender' => 'Nsansa Wellness Group'
         ];
-        //Notify counselor
-        User::find($request->toArray()['counselor_id'])
-        ->notify(new NewPatientAssigned($payload));
+        // //Notify counselor
+        // User::find($request->toArray()['counselor_id'])
+        // ->notify(new NewPatientAssigned($payload));
         
-        // Notify patient
-        User::find($request->toArray()['patient_id'])
-        ->notify(new CounselorAssigned($payload));
+        // // Notify patient
+        // User::find($request->toArray()['patient_id'])
+        // ->notify(new CounselorAssigned($payload));
 
-        return redirect()->route('patient-files')
-            ->withSuccess(__('Counselor has been assign successfully.'));
+        Session::flash('attention', "Counselor has been assign successfully");
+        return redirect()->back();
+        // return redirect()->route('patient-files')
+        //     ->withSuccess(__('Counselor has been assign successfully.'));
     }
 
     /**
@@ -132,8 +137,12 @@ class AssignCounselorController extends Controller
      * @param  \App\Models\AssignCounselor  $assignCounselor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AssignCounselor $assignCounselor)
+    public function remove_counselor(AssignCounselor $assignCounselor, $id)
     {
-        //
+
+        $data = $assignCounselor->find($id);
+        $data->delete();
+
+
     }
 }
