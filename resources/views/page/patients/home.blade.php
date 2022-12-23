@@ -108,7 +108,7 @@
                             @if($chat->sender_id == auth()->user()->id)
                                 <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')" class="intro-x cursor-pointer box relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                                        <img width="56" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full size-full" alt="" loading="lazy" />
+                                        <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full size-full" alt="" loading="lazy" />
                                     </div>
                                     <div class="ml-2 overflow-hidden">
                                         <div class="flex items-center">
@@ -123,7 +123,7 @@
                             {{-- If They Started the Chat --}}
                                 <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" class="intro-x cursor-pointer box relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                                        <img width="56" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full size-full" alt="" loading="lazy" />
+                                        <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="rounded-full attachment-full size-full" alt="" loading="lazy" />
                                     </div>
                                     <div class="ml-2 overflow-hidden">
                                         <div class="flex items-center">
@@ -138,7 +138,7 @@
                         @empty
                         <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
                             <div class="w-12 h-12 flex-none image-fit mr-1">
-                                <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                                <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
                             </div>
                             <div class="ml-2 overflow-hidden">
                                 <div class="flex items-center">
@@ -1987,7 +1987,9 @@
                 status,
             },
             success:function(data) {  
-                console.log('sent');         
+                console.log('sent');  
+                scrollToBottom();   
+                $('#message_textbox').val('')    
             },
             
             error: function (msg) {
@@ -1995,32 +1997,57 @@
                 var errors = msg.responseJSON;
             }
         });
+
+
     }
 
     function update(){
         let user_id = user['id'];
-        $.ajax({    
-            type:'GET',
-            url:'{{ route("chat.stream") }}',
-            data: { 
-                chat_id,owner
-            },
-            success:function(data) {
-                let messages = data.chat_messages;
-                console.log('Messages Thread Below');
+        if(chat_id !== null){
+            $.ajax({    
+                type:'GET',
+                url:'{{ route("chat.stream") }}',
+                data: { 
+                    chat_id,owner
+                },
+                success:function(data) {
+                    let messages = data.chat_messages;
+                    console.log('Messages Thread Below');
 
-                try {
-                    // console.log(Object.keys(messages).length);
-                    // console.log(messages);
-                    if(Object.keys(messages).length > 0){
-                        for (const message of messages){
-                            console.log(message);
-                            if(user['id'] != message.user_id){
-                                $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
-                                    <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                            <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="'+site_url+message.user.image_path+'">\
+                    try {
+                        // console.log(Object.keys(messages).length);
+                        // console.log(messages);
+                        if(Object.keys(messages).length > 0){
+                            for (const message of messages){
+                                console.log(message);
+                                if(user['id'] != message.user_id){
+                                    $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
+                                        <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                                <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="'+site_url+message.user.image_path+'">\
+                                            </div>\
+                                        <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                                                        '+ message.message +'\
+                                            <div class="mt-1 text-xs text-slate-500">'+ message.created_at +'</div>\
+                                                    </div>\
+                                                    <div class="hidden sm:block dropdown ml-3 my-auto">\
+                                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                                <div class="dropdown-menu w-40">\
+                                                    <ul class="dropdown-content">\
+                                                        <li>\
+                                                            <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
+                                                        </li>\
+                                                        <li>\
+                                                            <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
+                                                        </li>\
+                                                    </ul>\
+                                                </div>\
+                                            </div>\
                                         </div>\
-                                    <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                                        <div class="clear-both"></div>\
+                                    ');
+                                }else{
+                                    $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
+                                    <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
                                                     '+ message.message +'\
                                         <div class="mt-1 text-xs text-slate-500">'+ message.created_at +'</div>\
                                                 </div>\
@@ -2037,47 +2064,26 @@
                                                 </ul>\
                                             </div>\
                                         </div>\
-                                    </div>\
-                                    <div class="clear-both"></div>\
-                                ');
-                            }else{
-                                $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
-                                <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
-                                                '+ message.message +'\
-                                    <div class="mt-1 text-xs text-slate-500">'+ message.created_at +'</div>\
-                                            </div>\
-                                            <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                        <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
-                                        <div class="dropdown-menu w-40">\
-                                            <ul class="dropdown-content">\
-                                                <li>\
-                                                    <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
-                                                </li>\
-                                                <li>\
-                                                    <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
-                                                </li>\
-                                            </ul>\
+                                        <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                            <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="'+site_url+message.user.image_path+'">\
                                         </div>\
                                     </div>\
-                                    <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                        <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="'+site_url+message.user.image_path+'">\
-                                    </div>\
-                                </div>\
-                                <div class="clear-both"></div>\
-                                ');
-                            }
-                            }
-                    } 
-                }catch(err){
-                    console.log('Not updates yet');
-                }         
-            },
-            
-            error: function (msg) {
-                console.log(msg);
-                var errors = msg.responseJSON;
-            }
-        });
+                                    <div class="clear-both"></div>\
+                                    ');
+                                }
+                                }
+                        } 
+                    }catch(err){
+                        console.log('Not updates yet');
+                    }         
+                },
+                
+                error: function (msg) {
+                    console.log(msg);
+                    var errors = msg.responseJSON;
+                }
+            });
+        }
     }
 
     function init(){
@@ -2089,6 +2095,12 @@
     function handleError(image) {
         image.src = default_avatar;
     }
+
+    function scrollToBottom() {
+        $('#message_thread').scrollTop = $('#message_thread').scrollHeight;
+    }
+
+    
 
     var intervalId = window.setInterval(function(){
         update();
