@@ -12,6 +12,7 @@ use App\Notifications\NewAppointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Pusher\Pusher;
+use Session;
 
 class AppointmentController extends Controller
 {    
@@ -168,13 +169,11 @@ class AppointmentController extends Controller
             }
             // Send a notification to my self about the new Appointment
             $u->notify(new MyNewAppointment($payload));
-            return redirect()->route('appointment')
-                ->withSuccess(__('Appointment created successfully.'));
+            Session::flash('attention', "Appointment has been scheduled successfully.");
+            return redirect()->route('appointment');
         } catch (\Throwable $th) {
-            return back()->withErrors([
-                "message" => "Sorry we couldn't find an account with that username. Try again",
-                "error" => "Sorry we couldn't find an account with that username. Try again",
-            ]);
+            Session::flash('error_msg', "Oops something went wrong. Email(s) not sent");
+            return redirect()->route('appointment');
         }
     }
 
@@ -222,7 +221,9 @@ class AppointmentController extends Controller
                 'status' => 1
             ]);
         }
-        return redirect()->route('appointment.edit', ['id'=>$request->app_id]);
+        // return redirect()->route('appointment.edit', ['id'=>$request->app_id]);
+        Session::flash('attention', "Appointment updated successfully.");
+        return redirect()->route('appointment');
     }
 
     /**
@@ -235,8 +236,8 @@ class AppointmentController extends Controller
     {
         $a = $this->appointment->find($id);
         $a->delete();
-        return redirect()->route('appointment')
-            ->withSuccess(__('Appointment deleted successfully.'));
+        Session::flash('attention', "Appointment deleted successfully.");
+        return redirect()->route('appointment');
     }
     /**
      * Remove the specified resource from storage.

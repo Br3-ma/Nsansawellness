@@ -7,7 +7,7 @@ use App\Models\Answer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\LaravelIgnition\Solutions\SolutionProviders\IncorrectValetDbCredentialsSolutionProvider;
-
+use Session;
 class AnswerController extends Controller
 {
     

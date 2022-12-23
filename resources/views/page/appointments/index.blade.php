@@ -7,6 +7,23 @@
 
             {{-- {{ $events }} --}}
         </h2>
+        @if (Session::has('attention'))
+        <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
+            {{ Session::get('attention') }}
+            <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
+                <i data-lucide="x" class="w-4 h-4"></i> 
+            </button> 
+        </div>
+        @elseif (Session::has('error_msg'))
+        <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
+            {{ Session::get('error_msg') }}
+            <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
+                <i data-lucide="x" class="w-4 h-4"></i> 
+            </button> 
+        </div>
+        @endif
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             {{-- <button class="btn btn-primary shadow-md mr-2">Print Schedule</button> --}}
             {{-- <div class="dropdown ml-auto sm:ml-0">

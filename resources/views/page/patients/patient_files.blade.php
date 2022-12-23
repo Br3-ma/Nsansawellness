@@ -51,6 +51,15 @@
     <h2 class="intro-y text-lg font-medium mt-10">
         Manage Patient Files
     </h2>
+    @if (Session::has('attention'))
+    <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+        <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
+        {{ Session::get('attention') }}
+        <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
+            <i data-lucide="x" class="w-4 h-4"></i> 
+        </button> 
+    </div>
+    @endif
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             {{-- <button class="btn btn-primary shadow-md mr-2">Record Patient File</button>
@@ -101,8 +110,8 @@
                         <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
                         <div class="dropdown-menu w-40">
                             <div class="dropdown-content">
-                                <a href="{{ route('all-patient-files', $file->id) }}" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Edit </a>
-                                <a href="" @disabled(true) class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>
+                                <a href="{{ route('all-patient-files', $file->id) }}" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Manage Records </a>
+                                <a href="{{ route('manual.remove.counselor', $file->id) }}" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Remove Counselor </a>
                             </div>
                         </div>
                     </div>

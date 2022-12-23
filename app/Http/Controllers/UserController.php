@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\File;
+use Session;
 
 class UserController extends Controller
 {
@@ -70,10 +71,12 @@ class UserController extends Controller
 
             $u->syncRoles($request->user_group);
             Mail::to($u->email)->send(new SendUserInfoEmail($details));
+            Session::flash('attention', "User created successfully.");
             return redirect()->route('users.index')
                 ->withSuccess(__('User created successfully.'));
         } catch (\Throwable $th) {
-            dd($th);
+            Session::flash('error_msg', "Failed to create user, Email could not be found");
+            return redirect()->route('users.index');
         }
 
     }
@@ -119,8 +122,6 @@ class UserController extends Controller
     public function update(User $user, Request $request) 
     {
         try {
-
-
             $user->update($request->toArray());
             if($request->file('image_path') != null){
                 $image_path = $request->file('image_path')->store('image_path', 'public');
@@ -129,17 +130,16 @@ class UserController extends Controller
                 ]);
             }
 
-
             if( Auth::user()->type == 'admin' || $user->hasRole('admin')){
                 $user->syncRoles($request->get('role'));
-                return redirect()->route('users.index')
-                    ->withSuccess(__('User updated successfully.'));
+                Session::flash('attention', "User details updated successfully");
+                return redirect()->route('users.index');
             }
-            
-            return redirect()->route('profile')
-                ->withSuccess(__('User updated successfully.'));
+            Session::flash('attention', "Profile updated successfully");
+            return redirect()->route('profile');
         } catch (\Throwable $th) {
-            dd($th);
+            Session::flash('error_msg', $th);
+            return redirect()->route('profile');
         }
     }
 
