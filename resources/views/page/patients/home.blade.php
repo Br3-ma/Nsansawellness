@@ -108,7 +108,7 @@
                             @if($chat->sender_id == auth()->user()->id)
                                 <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')" class="intro-x cursor-pointer box relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                                        <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                                        <img width="56" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full size-full" alt="" loading="lazy" />
                                     </div>
                                     <div class="ml-2 overflow-hidden">
                                         <div class="flex items-center">
@@ -123,7 +123,7 @@
                             {{-- If They Started the Chat --}}
                                 <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" class="intro-x cursor-pointer box relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                                        <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                                        <img width="56" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full size-full" alt="" loading="lazy" />
                                     </div>
                                     <div class="ml-2 overflow-hidden">
                                         <div class="flex items-center">
@@ -392,7 +392,7 @@
         <textarea id="message_textbox" class="chat__box__input form-control dark:bg-darkmode-600 h-16 resize-none border-transparent px-5 py-3 shadow-none focus:border-transparent focus:ring-0" rows="1" placeholder="Type your message..."></textarea>
         <div class="flex absolute sm:static left-0 bottom-0 ml-5 sm:ml-0 mb-5 sm:mb-0">
             <div class="dropdown mr-3 sm:mr-5">
-                <a href="javascript:;" class="dropdown-toggle w-4 h-4 sm:w-5 sm:h-5 block text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="smile" class="w-full h-full"></i> </a>
+                {{-- <a href="javascript:;" class="dropdown-toggle w-4 h-4 sm:w-5 sm:h-5 block text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="smile" class="w-full h-full"></i> </a> --}}
                 <div class="chat-dropdown dropdown-menu">
                     <div class="dropdown-content">
                         <div class="chat-dropdown__box flex flex-col">
@@ -1821,10 +1821,10 @@
                     </div>
                 </div>
             </div>
-            <div class="w-4 h-4 sm:w-5 sm:h-5 relative text-slate-500 mr-3 sm:mr-5">
+            {{-- <div class="w-4 h-4 sm:w-5 sm:h-5 relative text-slate-500 mr-3 sm:mr-5">
                 <i data-lucide="paperclip" class="w-full h-full"></i> 
                 <input type="file" class="w-full h-full top-0 left-0 absolute opacity-0">
-            </div>
+            </div> --}}
         </div>
         <a onclick="send()" href="javascript:;" class="w-8 h-8 sm:w-10 sm:h-10 block bg-primary text-white rounded-full flex-none flex items-center justify-center mr-5"> 
             <i data-lucide="send" class="w-4 h-4"></i> 

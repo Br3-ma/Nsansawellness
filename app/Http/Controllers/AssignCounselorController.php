@@ -7,6 +7,8 @@ use App\Models\Chat;
 use App\Models\Question;
 use App\Models\Result;
 use App\Models\User;
+use App\Notifications\CounselorAssigned;
+use App\Notifications\NewPatientAssigned;
 use App\Traits\MatchMakerTrait;
 use Illuminate\Http\Request;
 
@@ -71,6 +73,21 @@ class AssignCounselorController extends Controller
             'sender_id' => $request->toArray()['counselor_id'],
             'receiver_id' => $request->toArray()['patient_id'],
         ]);
+
+        $payload = [
+            'sender_id' => $request->toArray()['counselor_id'],
+            'patient_id' => $request->toArray()['patient_id'],
+            'name' => 'Nsansa wellness',
+            'sender' => 'Nsansa Wellness Group'
+        ];
+        //Notify counselor
+        User::find($request->toArray()['counselor_id'])
+        ->notify(new NewPatientAssigned($payload));
+        
+        // Notify patient
+        User::find($request->toArray()['patient_id'])
+        ->notify(new CounselorAssigned($payload));
+
         return redirect()->route('patient-files')
             ->withSuccess(__('Counselor has been assign successfully.'));
     }
