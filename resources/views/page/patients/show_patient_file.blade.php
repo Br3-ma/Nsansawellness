@@ -3,12 +3,12 @@
 <div class="content">
     <div class="intro-y flex items-center mt-8">
         <div class="w-12 h-12 image-fit">
-            @if($p->image_path == null)
-            <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="{{ $p->fname.' '.$p->lname  }}">
-                {{ $p->fname[0].' '.$p->lname[0] }}
+            @if($p->user->image_path == null)
+            <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="{{ $p->user->fname.' '.$p->user->lname  }}">
+                {{ $p->user->fname[0].' '.$p->user->lname[0] }}
             </div>
             @else
-            <img alt="Photo" class="rounded-full" src="{{  asset('public/storage/'.$p->image_path)  }}">
+            <img alt="Photo" class="rounded-full" src="{{  asset('public/storage/'.$p->user->image_path)  }}">
             @endif
         </div>
         <div class="ml-4 mr-auto">
