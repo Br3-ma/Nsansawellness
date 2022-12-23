@@ -23,13 +23,13 @@
             </div> --}}
             <form method="POST" action="{{ route('meeting.store') }}">
                 @csrf
-                <button type="submit" class="btn btn-primary shadow-md mr-2">Create Meeting</button>
+                @can('admin')
+                    <button type="submit" class="btn btn-primary shadow-md mr-2">Create Meeting</button>
+                @endcan
             </form>
-            <a target="_blank" href="{{ route('video-call', ['id'=> 1]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">Video Call</a>
-            {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
-            <button class="btn btn-success shadow-md mr-2">Phone Call</button>
+
             {{-- <button class="btn btn-primary shadow-md mr-2">Start New Chat</button> --}}
-            <div class="dropdown ml-auto sm:ml-0">
+            {{-- <div class="dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
                 </button>
@@ -46,7 +46,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -249,10 +249,13 @@
                             </div>
                             <div class="ml-3 mr-auto">
                                 <div id="chat_receiver_name" class="font-medium text-base"></div>
-                                <div id="chat_receiver_role" class="text-slate-500 text-xs sm:text-sm"><span class="mx-1">•</span> Online</div>
+                                <small id="chat_receiver_role" class="text-slate-500 text-xs sm:text-sm"><span class="mx-1">•</span> Online</small>
                             </div>
                         </div>
                         <div class="flex items-center sm:ml-auto mt-5 sm:mt-0 border-t sm:border-0 border-slate-200/60 pt-3 sm:pt-0 -mx-5 sm:mx-0 px-5 sm:px-0">
+                            <a target="_blank" href="{{ route('video-call', ['id'=> 1]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">Video Call</a>
+                            {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
+                            <button class="btn btn-success shadow-md text-white mr-2">Phone Call</button>
                             <a href="javascript:;" class="w-5 h-5 text-slate-500"> <i data-lucide="search" class="w-5 h-5"></i> </a>
                             <a href="javascript:;" class="w-5 h-5 text-slate-500 ml-5"> <i data-lucide="user-plus" class="w-5 h-5"></i> </a>
                             <div class="dropdown ml-auto sm:ml-3">
@@ -1866,16 +1869,15 @@
 <script>
     var user = {!! auth()->user()->toJson() ?? '' !!};
     var site_url = "{{ url('/public/storage/') }}";
-    var chat_id = null; 
+    var chat_id; 
     var owner = null; 
 
     function startChat(id, who, names, role){
-        
-        // alert(id);
-        // alert(role.toString());
+        chat_id = id;
+        // alert(chat_id);
         owner = who;
         $('#chat_receiver_name').text(names);
-        $('#chat_receiver_role').text(role.toString());
+        $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
         $('#message_thread').empty();
         // $('#message_thread div').empty();
         // {{-- Get chat message thread --}}
@@ -1888,7 +1890,7 @@
             success:function(data) {
 
                 // sender
-                chat_id = data.chat_session.chat_messages[0].chat_id;
+                // let chat_id = data.chat_session.chat_messages[0].chat_id;
                 // message
                 // console.log(data.chat_session.chat_messages[0].message);
                 // message attributes
@@ -1968,7 +1970,7 @@
 
     function send(){
         var message = $('#message_textbox').val();
-        // alert(message);
+        // alert(chat_id);
         // alert(message_id);
         let user_id = user['id'];
         let status = 1;
@@ -2090,5 +2092,5 @@
 
     var intervalId = window.setInterval(function(){
         update();
-    }, 5000);
+    }, 3000);
 </script>
