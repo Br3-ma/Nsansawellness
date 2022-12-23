@@ -28,7 +28,10 @@ class HomeController extends Controller
     public function index()
     {
         $notifications = auth()->user()->unreadNotifications;
-        $users = User::get();
+        // Get all chats am invited in
+        $chats = $this->chat->where('sender_id', auth()->user()->id)
+        ->orWhere('receiver_id', auth()->user()->id)
+        ->with(['sender', 'receiver'])->get();
         // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
         // event(new RealTimeNotification($message));
         // check if its first time login
@@ -44,7 +47,7 @@ class HomeController extends Controller
         }else{
             if(auth()->user()->type == 'patient'){
                 
-                return view('page.patients.home', compact('notifications','users'));
+                return view('page.patients.home', compact('notifications','chats'));
             }
             return view('home', compact('notifications','users'));
         }
