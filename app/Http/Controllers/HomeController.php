@@ -52,13 +52,13 @@ class HomeController extends Controller
             if(auth()->user()->type == 'patient'){
                 return redirect()->route('pay');
             }
-            return view('home', compact('notifications','users'));
+            return view('home', compact('notifications'));
         }else{
             if(auth()->user()->type == 'patient'){
                 
                 return view('page.patients.home', compact('notifications','chats'));
             }
-            return view('home', compact('notifications','users'));
+            return view('home', compact('notifications'));
         }
 
     }
