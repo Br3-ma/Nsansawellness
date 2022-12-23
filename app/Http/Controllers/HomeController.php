@@ -4,19 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Events\RealTimeNotification;
 use App\Listeners\SendNewUserNotification;
+use App\Models\Appointment;
+use App\Models\Chat;
+use App\Models\PatientFile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    public $users, $pf, $appointment, $chat;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $users, PatientFile $pf, Appointment $app, Chat $chat)
     {
+        $this->middleware('auth');
+        $this->appointment = $app;
+        $this->user = $users;
+        $this->pf = $pf;
+        $this->chat = $chat;
         $this->middleware(['auth', 'verified']);
     }
 
