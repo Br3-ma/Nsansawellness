@@ -23,13 +23,13 @@
             </div> --}}
             <form method="POST" action="{{ route('meeting.store') }}">
                 @csrf
-                <button type="submit" class="btn btn-primary shadow-md mr-2">Create Meeting</button>
+                @can('admin')
+                    <button type="submit" class="btn btn-primary shadow-md mr-2">Create Meeting</button>
+                @endcan
             </form>
-            <a target="_blank" href="{{ route('video-call', ['id'=> 1]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">Video Call</a>
-            {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
-            <button class="btn btn-success shadow-md mr-2">Phone Call</button>
+
             {{-- <button class="btn btn-primary shadow-md mr-2">Start New Chat</button> --}}
-            <div class="dropdown ml-auto sm:ml-0">
+            {{-- <div class="dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
                 </button>
@@ -46,7 +46,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -108,7 +108,7 @@
                             @if($chat->sender_id == auth()->user()->id)
                                 <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')" class="intro-x cursor-pointer box relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                                        <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                                        <img width="56" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full size-full" alt="" loading="lazy" />
                                     </div>
                                     <div class="ml-2 overflow-hidden">
                                         <div class="flex items-center">
@@ -123,7 +123,7 @@
                             {{-- If They Started the Chat --}}
                                 <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" class="intro-x cursor-pointer box relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
-                                        <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                                        <img width="56" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full size-full" alt="" loading="lazy" />
                                     </div>
                                     <div class="ml-2 overflow-hidden">
                                         <div class="flex items-center">
@@ -249,10 +249,13 @@
                             </div>
                             <div class="ml-3 mr-auto">
                                 <div id="chat_receiver_name" class="font-medium text-base"></div>
-                                <div id="chat_receiver_role" class="text-slate-500 text-xs sm:text-sm"><span class="mx-1">•</span> Online</div>
+                                <small id="chat_receiver_role" class="text-slate-500 text-xs sm:text-sm"><span class="mx-1">•</span> Online</small>
                             </div>
                         </div>
                         <div class="flex items-center sm:ml-auto mt-5 sm:mt-0 border-t sm:border-0 border-slate-200/60 pt-3 sm:pt-0 -mx-5 sm:mx-0 px-5 sm:px-0">
+                            <a target="_blank" href="{{ route('video-call', ['id'=> 1]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">Video Call</a>
+                            {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
+                            <button class="btn btn-success shadow-md text-white mr-2">Phone Call</button>
                             <a href="javascript:;" class="w-5 h-5 text-slate-500"> <i data-lucide="search" class="w-5 h-5"></i> </a>
                             <a href="javascript:;" class="w-5 h-5 text-slate-500 ml-5"> <i data-lucide="user-plus" class="w-5 h-5"></i> </a>
                             <div class="dropdown ml-auto sm:ml-3">
@@ -389,7 +392,7 @@
         <textarea id="message_textbox" class="chat__box__input form-control dark:bg-darkmode-600 h-16 resize-none border-transparent px-5 py-3 shadow-none focus:border-transparent focus:ring-0" rows="1" placeholder="Type your message..."></textarea>
         <div class="flex absolute sm:static left-0 bottom-0 ml-5 sm:ml-0 mb-5 sm:mb-0">
             <div class="dropdown mr-3 sm:mr-5">
-                <a href="javascript:;" class="dropdown-toggle w-4 h-4 sm:w-5 sm:h-5 block text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="smile" class="w-full h-full"></i> </a>
+                {{-- <a href="javascript:;" class="dropdown-toggle w-4 h-4 sm:w-5 sm:h-5 block text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="smile" class="w-full h-full"></i> </a> --}}
                 <div class="chat-dropdown dropdown-menu">
                     <div class="dropdown-content">
                         <div class="chat-dropdown__box flex flex-col">
@@ -1818,10 +1821,10 @@
                     </div>
                 </div>
             </div>
-            <div class="w-4 h-4 sm:w-5 sm:h-5 relative text-slate-500 mr-3 sm:mr-5">
+            {{-- <div class="w-4 h-4 sm:w-5 sm:h-5 relative text-slate-500 mr-3 sm:mr-5">
                 <i data-lucide="paperclip" class="w-full h-full"></i> 
                 <input type="file" class="w-full h-full top-0 left-0 absolute opacity-0">
-            </div>
+            </div> --}}
         </div>
         <a onclick="send()" href="javascript:;" class="w-8 h-8 sm:w-10 sm:h-10 block bg-primary text-white rounded-full flex-none flex items-center justify-center mr-5"> 
             <i data-lucide="send" class="w-4 h-4"></i> 
@@ -1866,16 +1869,15 @@
 <script>
     var user = {!! auth()->user()->toJson() ?? '' !!};
     var site_url = "{{ url('/public/storage/') }}";
-    var chat_id = null; 
+    var chat_id; 
     var owner = null; 
 
     function startChat(id, who, names, role){
-        
-        // alert(id);
-        // alert(role.toString());
+        chat_id = id;
+        // alert(chat_id);
         owner = who;
         $('#chat_receiver_name').text(names);
-        $('#chat_receiver_role').text(role.toString());
+        $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
         $('#message_thread').empty();
         // $('#message_thread div').empty();
         // {{-- Get chat message thread --}}
@@ -1888,7 +1890,7 @@
             success:function(data) {
 
                 // sender
-                chat_id = data.chat_session.chat_messages[0].chat_id;
+                // let chat_id = data.chat_session.chat_messages[0].chat_id;
                 // message
                 // console.log(data.chat_session.chat_messages[0].message);
                 // message attributes
@@ -1968,7 +1970,7 @@
 
     function send(){
         var message = $('#message_textbox').val();
-        // alert(message);
+        // alert(chat_id);
         // alert(message_id);
         let user_id = user['id'];
         let status = 1;
@@ -2090,5 +2092,5 @@
 
     var intervalId = window.setInterval(function(){
         update();
-    }, 5000);
+    }, 3000);
 </script>

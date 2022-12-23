@@ -82,7 +82,7 @@
                     }
                 });
                 // Enable pusher logging - don't include this in production
-                Pusher.logToConsole = true;
+                Pusher.logToConsole = false;
 
                 var pusher = new Pusher('033c1fdbd94861470759', {
                     cluster: 'ap2'
