@@ -1,7 +1,7 @@
 @include('layouts.head')
 <div class="container" style="padding-top:10%; text-align:center">
     <div data-elementor-type="wp-page" data-elementor-id="6" class="elementor elementor-6">
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
+        <section class="getStartedSurvey elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
                     <div style="padding:2%; margin-left: auto; margin-right: auto; box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px; width:80%" class="card-body">
                       <form onsubmit="gotToRegister()" id="getStartedForm">
                         @csrf

@@ -1,7 +1,7 @@
 @include('layouts.head')
 <div class="container" style="padding-top:10%; text-align:center">
     <div data-elementor-type="wp-page" data-elementor-id="6" class="elementor elementor-6">
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
+        <section class="getStartedSurvey elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
            
                   <div style="padding-bottom: 5%">
                     <h2>Find your personalized Child therapist match</h2>
