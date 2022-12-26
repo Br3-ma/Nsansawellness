@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" style="background-color: #ffffff">
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
@@ -17,7 +17,7 @@
         /* Code By Webdevtrick ( https://webdevtrick.com ) */
         @import "https://fonts.googleapis.com/css?family=Lato";
         body {
-            background-color: #788b9c;
+            background-color: #ffffff;
         }
         .center {
             position: absolute;
@@ -152,10 +152,48 @@
         .downGreyArrow {
             border-color: #777777 transparent transparent transparent;
         }
+
+        #loginFrm{
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.9px);
+            -webkit-backdrop-filter: blur(8.9px);
+        }
+        #loginCover{
+            background-size:cover; 
+            background-image:url('https://a9p9n2x2.stackpathcdn.com/wp-content/blogs.dir/1/files/2016/06/iStock_67536037_MEDIUM-2.jpg');
+        }
+        #loginLogo{
+                display:none;
+        }
+        @media only screen and (max-width: 600px) {        
+            #loginFrm{
+                margin-top:0;
+                width: 100%;
+                border-radius: 0px;
+                padding: 0;
+                box-shadow:none;
+                box-shadow:none;
+            }
+
+            #loginCover{
+                background-image:none;
+            }
+            #loginLogo{
+                display:block;
+                width: 50px;
+                height: 50px;
+                margin-left: 40%;
+            }
+        }
+
+
     </style>
     <!-- END: Head -->
     <body>
-        <div style="background-size:cover; background-image:url('https://a9p9n2x2.stackpathcdn.com/wp-content/blogs.dir/1/files/2016/06/iStock_67536037_MEDIUM-2.jpg')">
+        <div id="loginCover">
             <div class="container block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Login Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
@@ -173,15 +211,9 @@
                 </div>
                 <!-- END: Login Info -->
                 <!-- BEGIN: Login Form -->
+                <img id="loginLogo" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
 
-                <form style="box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-                background: rgba(255, 255, 255, 0.55);
-                border-radius: 16px;
-                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-                backdrop-filter: blur(8.9px);
-                -webkit-backdrop-filter: blur(8.9px);" 
-                class="w-3/4 my-10 p-10" method="POST" action="{{ route('login') }}">
-
+                <form id="loginFrm" class="w-3/4 my-10 p-10" method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mx-auto bg-white dark:bg-darkmode-600 xl:bg-transparent sm:px-8 p-10 rounded-md shadow-md xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto">
                         <h2 style="text-align: center" class="intro-x font-bold text-xl xl:text-2xl text-center text-primary xl:text-left">
