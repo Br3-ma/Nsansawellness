@@ -909,12 +909,12 @@ li{
         }
     </style>
     <div data-elementor-type="page" data-elementor-id="10" class="elementor elementor-10">
-        <section style="background-color: #fff;" class="elementor-section elementor-top-section elementor-element elementor-element-bce9428 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="bce9428" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;} ">
+        <section style="background-color: #fff;" class="elementor-section elementor-top-section elementor-element elementor-element-bce9428 elementor-section-full_width elementor-section-height-default " data-id="bce9428" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;} ">
             <div class="elementor-container elementor-column-gap-no">
                 <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-d18512e" data-id="d18512e" data-element_type="column">
                     <div class="elementor-widget-wrap elementor-element-populated">
                         <div class="elementor-element elementor-element-7a38183 elementor-widget elementor-widget-image" data-id="7a38183" data-element_type="widget" data-widget_type="image.default">
-                            <div class="elementor-widget-container">
+                            {{-- <div class="elementor-widget-container"> --}}
                                 <style>
                                     /*! elementor - v3.6.5 - 27-04-2022 */
                                     .elementor-widget-image {
@@ -945,8 +945,8 @@ li{
                                         }
                                     }
                                 </style> 
-                                <img width="1920" height="322" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
-                            </div>
+                                <img style="width:50%" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                            {{-- </div> --}}
                         </div>
                     </div>
                 </div>
@@ -959,10 +959,16 @@ li{
                                         <div class="elementor-element elementor-element-cc1d5f2 elementor-widget elementor-widget-jkit_nav_menu" data-id="cc1d5f2" data-element_type="widget" data-widget_type="jkit_nav_menu.default">
                                             <div class="elementor-widget-container">
                                                 <div class="jeg-elementor-kit jkit-nav-menu break-point-tablet submenu-click-title jeg_module_6__632ca69737dea" data-item-indicator="&lt;i aria-hidden=&quot;true&quot; class=&quot;jki jki-angle-down-solid&quot;&gt;&lt;/i&gt;">
-                                                    <button class="jkit-hamburger-menu menu-icon" type="button"><i aria-hidden="true" class="fas fa-bars"></i></button>
-                                                    {{-- <a style="padding: 0.7rem;font-family: var( --e-global-typography-751ec74-font-family), Sans-serif;font-size: var( --e-global-typography-751ec74-font-size);font-weight: var( --e-global-typography-751ec74-font-weight);line-height: var( --e-global-typography-751ec74-line-height);letter-spacing: var( --e-global-typography-751ec74-letter-spacing);word-spacing: var( --e-global-typography-751ec74-word-spacing);color: var( --e-global-color-61201e6);background-color: transparent;background-image: linear-gradient(170deg, var( --e-global-color-primary) 0%, var( --e-global-color-76b8ccf) 100%);border-radius: 0px 0px 0px 0px; position: absolute;right: 36px;bottom: -33px;" id="login_btn" href="./login" class="jkit-button-wrapper">
-                                                        <p>LOGIN</p>
-                                                    </a> --}}
+                                                    <div class="flex justify-center items-center">
+                                                        <button class="jkit-hamburger-menu menu-icon" style="padding-top: 4%" type="button"><i aria-hidden="true" class="fas fa-bars"></i></button>
+
+                                                        <a id="login_btn" href="{{ route('login') }}" class="text-xs btn btn-sm btn-outline-warning">
+                                                            Login
+                                                        </a>
+                                                        <a id="login_btn" href="{{ route('start') }}" class="text-xs text-primary btn btn-sm btn-warning">
+                                                            SignUp
+                                                        </a>
+                                                    </div>
                                                     <div style="background-color: #fff;" class="jkit-menu-wrapper">
                                                         <div id="hidder" class="elementor-element elementor-element-f01c80f elementor-widget__width-auto e-transform elementor-widget elementor-widget-jkit_button" data-id="f01c80f" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
                                                             <div class="elementor-widget-container">
@@ -1033,7 +1039,7 @@ li{
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-search jeg_module_6_1_632ca69743d73">
                                                         {{-- <a href="#" id="myBtn" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 0px 0px;margin: 0.1rem;" class="btn btn-outline-warning "><i class="fa fa-user"></i> LOGIN</a> --}}
-                                                        <a href="{{ route('login') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 0px 0px;margin: 0.1rem;" class="btn btn-outline-warning "><i class="fa fa-user"></i> LOGIN</a>
+                                                        <a href="{{ route('login') }}" class="btn btn-outline-warning">LOGIN</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1041,7 +1047,7 @@ li{
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_2_632ca6974641a">
                                                         {{-- <a href="#" id="myBtn2" class="jkit-button-wrapper">Get Started</a> --}}
-                                                        <a href="{{ route('start') }}" class="jkit-button-wrapper">Get Started</a>
+                                                        <a href="{{ route('start') }}" class="btn btn-warning text-primary">Get Started</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1057,6 +1063,8 @@ li{
                 </div>
             </div>
         </section>
+        
+        {{-- Slide in Menu --}}
         <div class="menu">
             
             <div class="menu-inner">
