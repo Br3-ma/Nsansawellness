@@ -961,13 +961,30 @@ li{
                                                 <div class="jeg-elementor-kit jkit-nav-menu break-point-tablet submenu-click-title jeg_module_6__632ca69737dea" data-item-indicator="&lt;i aria-hidden=&quot;true&quot; class=&quot;jki jki-angle-down-solid&quot;&gt;&lt;/i&gt;">
                                                     <div class="flex justify-center items-center">
                                                         <button class="jkit-hamburger-menu menu-icon" style="padding-top: 4%" type="button"><i aria-hidden="true" class="fas fa-bars"></i></button>
-
-                                                        <a id="login_btn" href="{{ route('login') }}" class="text-xs btn btn-sm btn-outline-warning">
-                                                            Login
-                                                        </a>
-                                                        <a id="login_btn" href="{{ route('start') }}" class="text-xs text-primary btn btn-sm btn-warning">
-                                                            SignUp
-                                                        </a>
+                                                        @auth
+                                                            @hasanyrole('admin')
+                                                            <a id="login_btn" href="{{ route('home') }}" class="text-xs btn btn-sm btn-outline-warning">
+                                                                <i class="fa fa-cog"></i>&nbsp;Administration
+                                                            </a>
+                                                            @endhasanyrole
+                                                            @hasanyrole(['counselor', 'staff'])
+                                                            <a id="login_btn" href="{{ route('home') }}" class="text-xs text-primary btn btn-sm btn-warning">
+                                                                <i class="fa fa-heartbeat"></i>&nbsp;Therapy Center
+                                                            </a>
+                                                            @endhasanyrole
+                                                            @hasanyrole(['patient'])
+                                                            <a id="login_btn" href="{{ route('counseling-center') }}" class="text-xs text-primary btn btn-sm btn-warning">
+                                                                <i class="fa fa-life-saver"></i>&nbsp;Counseling Center
+                                                            </a>
+                                                            @endhasanyrole
+                                                        @else
+                                                            <a id="login_btn" href="{{ route('login') }}" class="text-xs btn btn-sm btn-outline-warning">
+                                                                Login
+                                                            </a>
+                                                            <a id="login_btn" href="{{ route('start') }}" class="text-xs text-primary btn btn-sm btn-warning">
+                                                                SignUp
+                                                            </a>
+                                                        @endauth
                                                     </div>
                                                     <div style="background-color: #fff;" class="jkit-menu-wrapper">
                                                         <div id="hidder" class="elementor-element elementor-element-f01c80f elementor-widget__width-auto e-transform elementor-widget elementor-widget-jkit_button" data-id="f01c80f" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
