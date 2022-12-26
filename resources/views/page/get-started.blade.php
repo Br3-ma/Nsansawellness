@@ -1,11 +1,11 @@
 @include('layouts.head')
 <div class="container" style="padding-top:10%; text-align:center">
     <div data-elementor-type="wp-page" data-elementor-id="6" class="elementor elementor-6">
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
+        <section class="getStartedSurvey elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
            
                   <div style="padding-bottom: 5%">
-                    <h2>Find your personalized therapist match</h2>
-                    <p style="font-size: 16px">We know how important it is to have the right therapist who understands you. 
+                    <h2 >Find your personalized therapist match</h2>
+                    <p class="psurvey">We know how important it is to have the right therapist who understands you. 
                       By answering questions about yourself, we’ll provide you with a tailored match to a 
                       therapist who is best suited to help you.</p>                
                   </div>  

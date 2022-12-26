@@ -802,6 +802,65 @@
 	/* .row{padding:7px 14px;border-left:1px solid #eee;border-right:1px solid #eee;border-bottom:1px solid #eee;} */
 	.alert{background: #ffd9e8;padding:20px;margin:20px 0;line-height:22px;color:#333}
 	.socialmedia{background:#eee;padding:20px; display:inline-block}
+
+	
+	/*# Careers Page */
+	#careerSelection{
+		padding-top:10%; padding-bottom:5%; background: linear-gradient(
+		rgba(0, 0, 0, 0.7), 
+		rgba(0, 0, 0, 0.7)
+		),
+		url(https://coda.newjobs.com/api/imagesproxy/ms/niche/images/articles/Liz/research.jpg) no-repeat fixed center;  
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+	.psurvey{
+		font-size: 16px
+	}
+
+	@media only screen and (max-width:600px){
+		#careerSelection{
+			padding:2%; 
+			padding-top:40%; 
+			padding-bottom:5%; 
+			background: linear-gradient(
+				rgba(0, 0, 0, 0.7), 
+				rgba(0, 0, 0, 0.7)
+			),
+			url(https://coda.newjobs.com/api/imagesproxy/ms/niche/images/articles/Liz/research.jpg) no-repeat fixed center;  
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			align-items: center;
+			justify-content: center;
+			font-size:5px;
+		}
+
+		#joinSubText, #joinText{
+			font-size:10px;
+			margin-left: -55%;
+		}
+
+		.mobile-btn {
+			font-size:5px;
+			/* Center horizontally*/
+			margin: 0 auto;
+		}
+
+		.getStartedSurvey{
+			padding-top:20%;
+		}
+		.getStartedSurvey h2{
+			font-size:14px;
+		}
+		.psurvey{
+			font-size:12px;
+		}
+	}
+
 	</style>
 	
 	{{-- Custom Files --}}

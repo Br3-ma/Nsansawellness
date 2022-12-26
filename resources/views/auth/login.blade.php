@@ -181,6 +181,7 @@
             #loginCover{
                 background-image:none;
             }
+            
             #loginLogo{
                 display:block;
                 width: 50px;
