@@ -101,4 +101,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function patient_files(){
         return $this->hasMany(PatientFile::class);
     }
+
+    public function assignedCounselor(){
+        return $this->hasOne(PatientFile::class);
+    }
 }

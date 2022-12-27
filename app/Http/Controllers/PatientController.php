@@ -8,6 +8,7 @@ use App\Models\Appointment;
 use App\Models\Chat as ModelsChat;
 use App\Models\PatientFile;
 use App\Models\User;
+use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
 use PhpJunior\LaravelVideoChat\Facades\Chat;
 use PhpJunior\LaravelVideoChat\Models\File\File;
@@ -16,6 +17,7 @@ use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
 
 class PatientController extends Controller
 {
+    use PatientTrait;
     public $users, $pf, $appointment, $chat;
     /**
      * Create a new controller instance.
@@ -50,6 +52,7 @@ class PatientController extends Controller
 
     public function patient_files()
     {
+        $this->getMyPatients(auth()->user()->id);
         $counselors = $this->user->role('counselor')->get();
         $my_patients = $this->user->role('patient')->paginate(6);
         return view('page.patients.patient_files', compact('my_patients', 'counselors'));

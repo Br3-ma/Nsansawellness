@@ -19,8 +19,12 @@ class AssignCounselor extends Model
         'end_date'
     ];
 
-    public function user(){
-        return $this->hasMany(User::class);
+    public function counselor(){
+        return $this->belongsTo(User::class, 'counselor_id');
+    }
+
+    public function patient(){
+        return $this->belongsTo(User::class, 'patient_id');
     }
 
 }
