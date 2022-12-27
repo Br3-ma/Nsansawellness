@@ -50,17 +50,17 @@
         </div>
     </div>
 
-    <div class="intro-y chat grid grid-cols-12 gap-5 mt-5">
+    <div class="intro-y chat grid grid-cols-12 gap-5">
         <!-- BEGIN: Chat Side Menu -->
-        <div class="col-span-12 lg:col-span-4 2xl:col-span-3">
+        <div class="col-span-12 lg:col-span-4 2xl:col-span-3 xl:h-full h-28" style="margin-bottom:4px; padding-bottom:0px;">
             
             @hasanyrole(['patient', 'counselor'])
-            <div class="intro-y pr-1">
+            {{-- <div class="intro-y pr-1">
                 <div class="box p-2">
                     <ul class="nav nav-pills" role="tablist">
-                        {{-- <li id="chats-tab" class="nav-item flex-1" role="presentation">
+                        <li id="chats-tab" class="nav-item flex-1" role="presentation">
                             <button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="#chats" type="button" role="tab" aria-controls="chats" aria-selected="true" > Therapy Sessions </button>
-                        </li> --}}
+                        </li>
                         @hasanyrole('counselor')
                         <li id="friends-tab" class="nav-item flex-1" role="presentation">
                             <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > My Patients </button>
@@ -73,36 +73,11 @@
                         @endhasanyrole
                     </ul>
                 </div>
-            </div>
+            </div> --}}
             @endhasanyrole
             <div class="tab-content">
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
-                
-                    @hasanyrole(['counselor','admin','administrator'])
-                    <div class="pr-1">
-                        <div class="box px-5 pt-5 pb-5 lg:pb-0 mt-5">
-                            
-                            <div class="relative text-slate-500">
-                                <input type="text" class="form-control py-3 px-4 border-transparent bg-slate-100 pr-10" placeholder="Search for messages or users...">
-                                <i class="w-4 h-4 hidden sm:absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i> 
-                            </div>
-                            
-                            <div class="overflow-x-auto scrollbar-hidden">
-                                <div class="flex mt-5">
-                                    {{-- <a href="" class="w-10 mr-4 cursor-pointer">
-                                        <div class="w-10 h-10 flex-none image-fit rounded-full">
-                                            <img alt="Profile" class="rounded-full" src="">
-                                            <div class="w-3 h-3 bg-success absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
-                                        </div>
-                                        <div class="text-xs text-slate-500 truncate text-center mt-2">Denzel Washington</div>
-                                    </a> --}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endhasanyrole
-
-                    <div class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4">
+                    <div style="margin-bottom:0px; padding-bottom:0px;"class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4 ">
                         @forelse($chats as $chat)
                             {{-- If I Started the Chat --}}
                             @if($chat->sender_id == auth()->user()->id)
@@ -150,94 +125,14 @@
                             {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
                         </div>
                         @endforelse
-                        {{-- <a href="#">
-                            <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Midone - HTML Admin Template" class="rounded-full" src="https://photos.psychologytoday.com/49554841-d73a-4ef2-bc5d-94a090a40e69/3/320x400.jpeg">
-                                    <div class="w-3 h-3 bg-warning absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium">xxxxxxx</a> 
-                                        <div class="text-xs text-slate-400 ml-auto">05:09 AM</div>
-                                    </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">Marriage & Family counselor</div>
-                                    <small>xxxx</small>
-                                </div>
-                                <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
-
-                            </div>
-                        </a> --}}
-                        {{-- <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
-                            <div class="w-12 h-12 flex-none image-fit mr-1">
-                                <img alt="{{ Auth::User()->fname }}" class="rounded-full" src="https://photos.psychologytoday.com/49554841-d73a-4ef2-bc5d-94a090a40e69/3/320x400.jpeg">
-                                <div class="w-3 h-3 bg-warning absolute right-0 bottom-0 rounded-full border-2 border-white dark:border-darkmode-600">
-                                    <span class="fa fa-user"></span>
-                                </div>
-                            </div>
-                            <div class="ml-2 overflow-hidden">
-                                <div class="flex items-center">
-                                    <a href="javascript:;" class="font-medium">Kate Winslet</a> 
-                                    <div class="text-xs text-slate-400 ml-auto">05:09 AM</div>
-                                </div>
-                                <div class="w-full truncate text-slate-500 mt-0.5">Marriage & Family counselor</div>
-                            </div>
-                            <img width="50" height="50" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
-                        </div> --}}
-
                     </div>
-                </div>
-                
-                
-                
-                <div id="profile" class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
-                    <div class="pr-1">
-                        <div class="box px-5 py-10 mt-5">
-                            <div class="w-20 h-20 flex-none image-fit rounded-full overflow-hidden mx-auto">
-                                <img alt="Midone - HTML Admin Template" src="https://photos.psychologytoday.com/49554841-d73a-4ef2-bc5d-94a090a40e69/3/320x400.jpeg">
-                            </div>
-                            <div class="text-center mt-3">
-                                <div class="font-medium text-lg">Kate Winslet</div>
-                                <div class="text-slate-500 mt-1">Counselor</div>
-                            </div>
-                        </div>
-                        <div class="box p-5 mt-5">
-                            <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
-                                <div>
-                                    <div class="text-slate-500">Country</div>
-                                    <div class="mt-1">New York City, USA</div>
-                                </div>
-                                <i data-lucide="globe" class="w-4 h-4 text-slate-500 ml-auto"></i> 
-                            </div>
-                            <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 py-5">
-                                <div>
-                                    <div class="text-slate-500">Phone</div>
-                                    <div class="mt-1">+32 19 23 62 24 34</div>
-                                </div>
-                                <i data-lucide="mic" class="w-4 h-4 text-slate-500 ml-auto"></i> 
-                            </div>
-                            <div class="flex items-center border-b border-slate-200/60 dark:border-darkmode-400 py-5">
-                                <div>
-                                    <div class="text-slate-500">Email</div>
-                                    <div class="mt-1">katewinslet@left4code.com</div>
-                                </div>
-                                <i data-lucide="mail" class="w-4 h-4 text-slate-500 ml-auto"></i> 
-                            </div>
-                            <div class="flex items-center pt-5">
-                                <div>
-                                    <div class="text-slate-500">Joined Date</div>
-                                    <div class="mt-1">26 February 2021</div>
-                                </div>
-                                <i data-lucide="clock" class="w-4 h-4 text-slate-500 ml-auto"></i> 
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
         <!-- END: Chat Side Menu -->
         <!-- BEGIN: Chat Content -->
-        <div class="intro-y col-span-12 lg:col-span-8 2xl:col-span-9" style="height: 60%">
+        <div class="intro-y col-span-12 lg:col-span-8 2xl:col-span-9">
             <div class="chat__box box">
                 <!-- BEGIN: Chat Active -->
                 {{-- @include('page.patients._partials.chat.chat_body') --}}
@@ -283,7 +178,7 @@
                         </div>
                     </div>
 
-                    <div id="message_thread" style="height: 50%" class="overflow-y-scroll scrollbar-hidden px-5 pt-5 flex-1">
+                    <div id="message_thread" style="height: 40%" class="overflow-y-scroll scrollbar-hidden px-5 pt-5 flex-1">
 
                         {{-- <div class="chat__box__text-box flex items-end float-right mb-4">
                             <div class="hidden sm:block dropdown mr-3 my-auto">
@@ -1871,6 +1766,7 @@
     var site_url = "{{ url('/public/storage/') }}";
     var chat_id; 
     var owner = null; 
+    var aDay = 24*60*60*1000;
 
     function startChat(id, who, names, role){
         chat_id = id;
@@ -1913,7 +1809,7 @@
                                 </div>\
                             <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
                                             '+ message.message +'\
-                                <div class="mt-1 text-xs text-slate-500">'+ message.created_at +'</div>\
+                                <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                         </div>\
                                         <div class="hidden sm:block dropdown ml-3 my-auto">\
                                     <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
@@ -1935,7 +1831,7 @@
                         $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
                         <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
                                         '+ message.message +'\
-                            <div class="mt-1 text-xs text-slate-500">'+ message.created_at +'</div>\
+                            <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                     </div>\
                                     <div class="hidden sm:block dropdown ml-3 my-auto">\
                                 <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
@@ -1958,7 +1854,7 @@
                         ');
                     }
                 } 
-           
+                $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
             },
             
             error: function (msg) {
@@ -1986,10 +1882,11 @@
                 chat_id,
                 status,
             },
-            success:function(data) {  
-                console.log('sent');  
-                scrollToBottom();   
-                $('#message_textbox').val('')    
+            success:function(data) {    
+                update();
+                $('#message_textbox').val(''); 
+                $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+                
             },
             
             error: function (msg) {
@@ -2027,7 +1924,7 @@
                                             </div>\
                                         <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
                                                         '+ message.message +'\
-                                            <div class="mt-1 text-xs text-slate-500">'+ message.created_at +'</div>\
+                                            <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                                     </div>\
                                                     <div class="hidden sm:block dropdown ml-3 my-auto">\
                                                 <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
@@ -2045,11 +1942,12 @@
                                         </div>\
                                         <div class="clear-both"></div>\
                                     ');
+                                    $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
                                 }else{
                                     $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
                                     <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
                                                     '+ message.message +'\
-                                        <div class="mt-1 text-xs text-slate-500">'+ message.created_at +'</div>\
+                                        <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                                 </div>\
                                                 <div class="hidden sm:block dropdown ml-3 my-auto">\
                                             <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
@@ -2070,8 +1968,10 @@
                                     </div>\
                                     <div class="clear-both"></div>\
                                     ');
+
+                                    $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
                                 }
-                                }
+                            }
                         } 
                     }catch(err){
                         console.log('Not updates yet');
@@ -2096,13 +1996,29 @@
         image.src = default_avatar;
     }
 
-    function scrollToBottom() {
-        $('#message_thread').scrollTop = $('#message_thread').scrollHeight;
+    function timeSince(timeStamp) {
+        var now = new Date(), secondsPast = (now.getTime() - timeStamp) / 1000;
+        if (secondsPast < 60) {
+            return parseInt(secondsPast) + 's ago';
+        }
+        if (secondsPast < 3600) {
+            return parseInt(secondsPast / 60) + 'min ago';
+        }
+        if (secondsPast <= 86400) {
+            return parseInt(secondsPast / 3600) + 'h ago';
+        }
+        if (secondsPast > 86400) {
+            day = timeStamp.getDate();
+            month = timeStamp.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ", "");
+            year = timeStamp.getFullYear() == now.getFullYear() ? "" : " " + timeStamp.getFullYear();
+            return day + " " + month + year;
+        }
     }
 
-    
+    // const currentTimeStamp = new Date().getTime();
+    // console.log(timeSince(currentTimeStamp));
 
     var intervalId = window.setInterval(function(){
         update();
-    }, 3000);
+    }, 1000);
 </script>
