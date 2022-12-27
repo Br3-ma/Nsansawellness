@@ -78,40 +78,43 @@ class ChatController extends Controller
     }
 
     public function stream(Request $req){
-        $chat_id = $req->toArray()['chat_id'];
-        $owner = $req->toArray()['owner'];
-        
-        if($owner == 'sender'){
+        if ($req->toArray()['chat_id']) {
+            $chat_id = $req->toArray()['chat_id'];
+            $owner = $req->toArray()['owner'];
             
-            $chat_session = ChatMessages::with('user')->where('chat_id', $chat_id)->where('status', 1)->get();
-            
-            if($chat_session->isNotEmpty()){
+            if($owner == 'sender'){
                 
-                // The sender has seen the message
-                ChatMessages::where('chat_id', $chat_id)
-                ->update([
-                    'status' => 0
-                ]);
-                return response()->json(['chat_messages' => $chat_session->toArray()], 200);
-            }
-            return response()->json(['chat_messages' => 0], 200);
-
-        }elseif($owner == 'receiver'){
-            
-            $chat_session = ChatMessages::with('user')->where('chat_id', $chat_id)->where('status_received', 0)->get();
-            
-            if($chat_session->isNotEmpty()){
-                // The receiver has seen the message
-                ChatMessages::where('chat_id', $chat_id)
-                ->update([
-                    'status_received' => 1
-                ]);
-
-                return response()->json(['chat_messages' => $chat_session->toArray()], 200);
-            }
-            return response()->json(['chat_messages' => 0], 200);
-
-        }       
+                $chat_session = ChatMessages::with('user')->where('chat_id', $chat_id)->where('status', 1)->get();
+                
+                if($chat_session->isNotEmpty()){
+                    
+                    // The sender has seen the message
+                    ChatMessages::where('chat_id', $chat_id)
+                    ->update([
+                        'status' => 0
+                    ]);
+                    return response()->json(['chat_messages' => $chat_session->toArray()], 200);
+                }
+                return response()->json(['chat_messages' => 0], 200);
+    
+            }elseif($owner == 'receiver'){
+                
+                $chat_session = ChatMessages::with('user')->where('chat_id', $chat_id)->where('status_received', 0)->get();
+                
+                if($chat_session->isNotEmpty()){
+                    // The receiver has seen the message
+                    ChatMessages::where('chat_id', $chat_id)
+                    ->update([
+                        'status_received' => 1
+                    ]);
+    
+                    return response()->json(['chat_messages' => $chat_session->toArray()], 200);
+                }
+                return response()->json(['chat_messages' => 0], 200);
+    
+            }  
+        }
+        return response()->json(['chat_messages' => 0], 200);
     }
 
     // public function stream(Request $req){

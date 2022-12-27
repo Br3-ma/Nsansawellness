@@ -93,8 +93,6 @@ class AssignCounselorController extends Controller
 
         Session::flash('attention', "Counselor has been assign successfully");
         return redirect()->back();
-        // return redirect()->route('patient-files')
-        //     ->withSuccess(__('Counselor has been assign successfully.'));
     }
 
     /**
