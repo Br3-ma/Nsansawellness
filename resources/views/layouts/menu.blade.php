@@ -973,7 +973,7 @@ li{
                                                             </a>
                                                             @endhasanyrole
                                                             @hasanyrole(['patient'])
-                                                            <a id="login_btn" href="{{ route('counseling-center') }}" class="text-xs text-primary btn btn-sm btn-warning">
+                                                            <a id="login_btn" href="{{ route('patient') }}" class="text-xs text-primary btn btn-sm btn-warning">
                                                                 <i class="fa fa-life-saver"></i>&nbsp;Counseling Center
                                                             </a>
                                                             @endhasanyrole
