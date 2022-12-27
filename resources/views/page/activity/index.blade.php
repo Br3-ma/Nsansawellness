@@ -81,7 +81,9 @@
             
                              <td>
                                 @forelse($act->patient_activities as $user)
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $user->users->fname.' '.$user->users->lname }}</div>
+                                    @if($user->users != null)
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $user->users->fname ?? ''.' '.$user->users->lname ?? '' }}</div>
+                                    @endif
                                 @empty
                                 <div class="text-slate-400 text-xs whitespace-nowrap">No Patients Assigned</div>
                                 @endforelse
