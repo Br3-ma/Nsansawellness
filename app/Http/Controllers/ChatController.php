@@ -78,7 +78,7 @@ class ChatController extends Controller
     }
 
     public function stream(Request $req){
-        if ($req->toArray()['chat_id']) {
+        if (!empty($req->toArray())) {
             $chat_id = $req->toArray()['chat_id'];
             $owner = $req->toArray()['owner'];
             
