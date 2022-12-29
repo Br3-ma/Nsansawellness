@@ -79,8 +79,7 @@ li{
     transform: translateX(-100%);
     transition: transform 300ms cubic-bezier(.2, 0, .2, 1);
     /* From https://css.glass */
-    background: rgba(83, 92, 151, 0.63);
-    border-radius: 0px 16px 16px 0px;
+    background: #FFF;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.7px);
     -webkit-backdrop-filter: blur(7.7px);
@@ -978,11 +977,34 @@ li{
                                                             </a>
                                                             @endhasanyrole
                                                         @else
-                                                            <a id="login_btn" href="{{ route('login') }}" class="text-xs btn btn-sm btn-outline-warning">
+                                                            <a id="login_btn" href="{{ route('login') }}" style="
+                                                                border: 1px solid #FA8C1E;
+                                                                background-color:#FFF;
+                                                                height:50px;
+                                                                width:50px;
+                                                                cursor:pointer;
+                                                                padding:5%;
+                                                                margin-top:5%;
+                                                                margin:2%;
+                                                                color:black;
+                                                                font-weight:bold;
+                                                                font-size:12px;"
+                                                                >
                                                                 Login
                                                             </a>
-                                                            <a id="login_btn" href="{{ route('start') }}" class="text-xs text-primary btn btn-sm btn-warning">
-                                                                SignUp
+                                                            <a id="login_btn" href="{{ route('start') }}" style="
+                                                                border: 1px solid #FA8C1E;
+                                                                background-color:#FA8C1E;
+                                                                height:50px;
+                                                                width:50px;
+                                                                cursor:pointer;
+                                                                padding:5%;
+                                                                margin-top:5%;
+                                                                margin:2%;
+                                                                color:black;
+                                                                font-weight:bold;
+                                                                font-size:12px">
+                                                                Sign Up
                                                             </a>
                                                         @endauth
                                                     </div>
@@ -1011,7 +1033,7 @@ li{
                                                             </ul>
                                                         </div>
                                                         <div class="jkit-nav-identity-panel">
-                                                            <div class="jkit-nav-site-title"><a href="#" class="jkit-nav-logo"><img src="uploads/sites/304/2022/06/logos.svg"></a></div>
+                                                            <div class="jkit-nav-site-title"><a href="{{ route('welcome') }}" class="jkit-nav-logo"><img src="uploads/sites/304/2022/06/logos.svg"></a></div>
                                                             <button class="jkit-close-menu"><i aria-hidden="true" class="fas fa-times"></i></button>
                                                         </div>
                                                     </div>
@@ -1055,8 +1077,8 @@ li{
                                             <div class="elementor-element elementor-element-fb358db elementor-widget__width-auto elementor-widget elementor-widget-jkit_search" data-id="fb358db" data-element_type="widget" data-widget_type="jkit_search.default">
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-search jeg_module_6_1_632ca69743d73">
-                                                        {{-- <a href="#" id="myBtn" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 0px 0px;margin: 0.1rem;" class="btn btn-outline-warning "><i class="fa fa-user"></i> LOGIN</a> --}}
-                                                        <a href="{{ route('login') }}" class="btn btn-outline-warning">LOGIN</a>
+                                                        <a href="{{ route('login') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 0px 0px;margin: 0.1rem;" class="btn btn-outline-warning "><i class="fa fa-user"></i> LOGIN</a>
+                                                        {{-- <a href="{{ route('login') }}" class="jkit-button">LOGIN</a> --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -1064,7 +1086,7 @@ li{
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_2_632ca6974641a">
                                                         {{-- <a href="#" id="myBtn2" class="jkit-button-wrapper">Get Started</a> --}}
-                                                        <a href="{{ route('start') }}" class="btn btn-warning text-primary">Get Started</a>
+                                                        <a href="{{ route('start') }}" class="jkit-button-wrapper">Get Started</a>
                                                     </div>
                                                 </div>
                                             </div>
