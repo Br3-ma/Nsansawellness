@@ -79,7 +79,7 @@
             #desktopchat{
                 display: none;
             } 
-            #onChatMenu{
+            #onChatMenu,#usersIndexControls{
                 display: none;
             }
         }
