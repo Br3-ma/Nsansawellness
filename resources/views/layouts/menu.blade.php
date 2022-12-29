@@ -944,7 +944,9 @@ li{
                                         }
                                     }
                                 </style> 
-                                <img style="width:50%" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                                <a href="{{ route('welcome') }}" style="padding-left:2%" class="items-start items-left justify-start justify-begining mr-2">
+                                    <img style="float:left; width:50%" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
+                                </a>
                             {{-- </div> --}}
                         </div>
                     </div>
@@ -959,7 +961,7 @@ li{
                                             <div class="elementor-widget-container">
                                                 <div class="jeg-elementor-kit jkit-nav-menu break-point-tablet submenu-click-title jeg_module_6__632ca69737dea" data-item-indicator="&lt;i aria-hidden=&quot;true&quot; class=&quot;jki jki-angle-down-solid&quot;&gt;&lt;/i&gt;">
                                                     <div class="flex justify-center items-center">
-                                                        <button class="jkit-hamburger-menu menu-icon" style="padding-top: 4%" type="button"><i aria-hidden="true" class="fas fa-bars"></i></button>
+                                                        <button class="jkit-hamburger-menu menu-icon" style="padding-top: 2%" type="button"><i aria-hidden="true" class="fas fa-bars"></i></button>
                                                         @auth
                                                             @hasanyrole('admin')
                                                             <a id="login_btn" href="{{ route('home') }}" class="text-xs btn btn-sm btn-outline-warning">
