@@ -75,7 +75,8 @@ class UserController extends Controller
             return redirect()->route('users.index')
                 ->withSuccess(__('User created successfully.'));
         } catch (\Throwable $th) {
-            Session::flash('error_msg', "Failed to create user, Email could not be found");
+            Session::flash('attention', "User created successfully.");
+            Session::flash('error_msg', "Looks like the email was not sent.");
             return redirect()->route('users.index');
         }
 
