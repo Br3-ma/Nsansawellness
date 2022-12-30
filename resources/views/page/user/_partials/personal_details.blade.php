@@ -1,6 +1,6 @@
 
 <div id="mobilePersonalDetails" class="flex col-span-12">
-    <div class="w-20 lg:w-52">
+    <div class="w-full">
         <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
             <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
                 <img class="rounded-md" alt="Midone - HTML Admin Template" id="preview-image-before-upload_create" src="{{ asset('dist/images/profile-10.jpg') }}">
@@ -18,8 +18,8 @@
             </small>
         </div>
     </div>
-    <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2">
-        <div class="mb-3 w-span-12">
+    <div class="col-span-12">
+        <div class="mb-3 w-full">
             <label for="name" class="form-label">First Name</label>
             <input value="{{ old('fname') }}" 
                 type="text" 
@@ -30,7 +30,30 @@
                 <span class="text-danger  text-left">{{ $errors->first('fname') }}</span>
             @endif
         </div>
-        <div class="mb-3">
+        <div class="mb-3 w-full">
+            <label for="name" class="form-label">Last Name</label>
+            <input value="{{ old('lname') }}" 
+                type="text" 
+                class="form-control" 
+                name="lname" 
+                placeholder="Last Name" required>
+
+            @if ($errors->has('name'))
+                <span class="text-danger text-left">{{ $errors->first('lname') }}</span>
+            @endif
+        </div>
+        <div class="mb-3 w-full">
+            <label for="email" class="form-label">Email</label>
+            <input value="{{ old('email') }}"
+                type="email" 
+                class="form-control" 
+                name="email" 
+                placeholder="Email address" required>
+            @if ($errors->has('email'))
+                <span class="text-danger text-left">{{ $errors->first('email') }}</span>
+            @endif
+        </div>
+        <div class="mb-3 w-full">
             <label for="patient_limit" class="form-label">Gender</label>
             <select name="gender" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
                 <option value="">-- select --</option>
@@ -41,7 +64,7 @@
                 <span class="text-danger text-left">{{ $errors->first('gender') }}</span>
             @endif
         </div> 
-        <div class="mb-3">
+        <div class="mb-3 w-full">
             <label for="date_of_birth" class="form-label">Date of Birth</label>
             <input value="{{ old('date_of_birth') }}"
                 type="text" 
@@ -55,20 +78,9 @@
         </div>
     </div>
 
-    <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2 ml-2">                 
-        <div class="mb-3">
-            <label for="name" class="form-label">Last Name</label>
-            <input value="{{ old('lname') }}" 
-                type="text" 
-                class="form-control" 
-                name="lname" 
-                placeholder="Last Name" required>
+    <div class="col-span-12">                 
 
-            @if ($errors->has('name'))
-                <span class="text-danger text-left">{{ $errors->first('lname') }}</span>
-            @endif
-        </div>
-        <div class="mb-3">
+        <div class="mb-3 w-full">
             <label for="address" class="form-label">Address</label>
             <input value="{{ old('address') }}" 
                 type="text" 
@@ -80,7 +92,7 @@
                 <span class="text-danger text-left">{{ $errors->first('address') }}</span>
             @endif
         </div>
-        <div class="mb-3">
+        <div class="mb-3 w-full">
             <label for="place_of_birth" class="form-label">Place of Birth</label>
             <input value="{{ old('place_of_birth') }}"
                 type="text" 
@@ -94,19 +106,9 @@
         </div>
     </div>
 
-    <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2 ml-2">        
-        <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input value="{{ old('email') }}"
-                type="email" 
-                class="form-control" 
-                name="email" 
-                placeholder="Email address" required>
-            @if ($errors->has('email'))
-                <span class="text-danger text-left">{{ $errors->first('email') }}</span>
-            @endif
-        </div>
-        <div class="mb-3">
+    <div class="col-span-12">        
+
+        <div class="mb-3 w-full">
             <label for="username" class="form-label">Username</label>
             <input value="{{ old('username') }}"
                 type="text" 
@@ -117,7 +119,7 @@
                 <span class="text-danger text-left">{{ $errors->first('username') }}</span>
             @endif
         </div>
-        <div class="mb-3">
+        <div class="mb-3 w-full">
             <label for="nrc_id" class="form-label">National ID</label>
             <input value="{{ old('nrc_id') }}"
                 type="text" 

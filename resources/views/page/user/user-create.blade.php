@@ -17,7 +17,7 @@
             <form method="POST" class="w-full" action="{{ route('users.store') }}" enctype="multipart/form-data">
                 @csrf
                 <!-- BEGIN: Modal Header -->
-                <div class="w-1/4 intro-y ">
+                <div class="w-full lg:w-1/4 xl:w-1/4 intro-y ">
                     <div class="px-2 header">
                         <h2 class="font-medium text-base mr-auto">Add New User</h2> 
                         <small class="lead">
@@ -40,6 +40,7 @@
                     <small>Carefully edit your persnoal information details</small>
                 </div>
                 <br>
+                @include('page\user\_partials\personal_details')
                 <div id="deskPersonalDetails">
                     <div class="flex col-span-12">
                         <div class="w-52">
@@ -180,7 +181,7 @@
                     <small>Carefully edit your persnoal information details</small>
                 </div>
                 <br>
-                <div class="flex col-span-12">
+                <div class="lg:flex col-span-12">
                     <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2">
                     
                         <div class="mb-3">
@@ -249,78 +250,78 @@
                 </div>
                 <!-- BEGIN: Modal Body -->
                 <div id="professional_details">
-                <div class="px-2 col-span-12 mt-5">
-                    <h1 class="text-lg ">Professional Information</h1>
-                    <small>Carefully edit your persnoal information details</small>
-                </div>
-                <br>
-                <div class="flex col-span-12">
-                    <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2">
-                        
-                        <div class="mb-3">
-                            <label for="department" class="form-label">Department</label>
-                            <select name="department" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
-                                <option value="None">None</option>
-                                <option value="Clinical Social Worker">Clinical Social Worker</option>
-                                <option value="Marriage & Family Therapist">Marriage & Family Therapist</option>
-                                <option value="Mental Health Counselor">Mental Health Counselor</option>
-                                <option value="Professional Counselor">Professional Counselor</option>
-                                <option value="Psychologist">Psychologist</option>
-                            </select>
-        
-                            @if ($errors->has('department'))
-                                <span class="text-danger text-left">{{ $errors->first('department') }}</span>
-                            @endif
-                        </div>                    
-                        <div class="mb-3">
-                            <label for="occupation" class="form-label">Liecense</label>
-                            <input value="{{ old('liecense_number') }}" 
-                                type="text" 
-                                class="form-control" 
-                                name="liecense_number" 
-                                placeholder="Professional Liecense #">
+                    <div class="px-2 col-span-12 mt-5">
+                        <h1 class="text-lg ">Professional Information</h1>
+                        <small>Carefully edit your persnoal information details</small>
+                    </div>
+                    <br>
+                    <div class="flex col-span-12">
+                        <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2">
+                            
+                            <div class="mb-3">
+                                <label for="department" class="form-label">Department</label>
+                                <select name="department" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
+                                    <option value="None">None</option>
+                                    <option value="Clinical Social Worker">Clinical Social Worker</option>
+                                    <option value="Marriage & Family Therapist">Marriage & Family Therapist</option>
+                                    <option value="Mental Health Counselor">Mental Health Counselor</option>
+                                    <option value="Professional Counselor">Professional Counselor</option>
+                                    <option value="Psychologist">Psychologist</option>
+                                </select>
             
-                            @if ($errors->has('liecense_number'))
-                                <span class="text-danger text-left">{{ $errors->first('liecense_number') }}</span>
-                            @endif
+                                @if ($errors->has('department'))
+                                    <span class="text-danger text-left">{{ $errors->first('department') }}</span>
+                                @endif
+                            </div>                    
+                            <div class="mb-3">
+                                <label for="occupation" class="form-label">Liecense</label>
+                                <input value="{{ old('liecense_number') }}" 
+                                    type="text" 
+                                    class="form-control" 
+                                    name="liecense_number" 
+                                    placeholder="Professional Liecense #">
+                
+                                @if ($errors->has('liecense_number'))
+                                    <span class="text-danger text-left">{{ $errors->first('liecense_number') }}</span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2 ml-2">                 
-                        
-                        <div class="mb-3">
-                            <label for="hourly_charge" class="form-label">Hourly Charge</label>
-                            <input value="{{ old('hourly_charge') }}" 
-                                type="text" 
-                                class="form-control" 
-                                name="hourly_charge" 
-                                placeholder="Hourly Charge Amount (ZMK)">
-        
-                            @if ($errors->has('hourly_charge'))
-                                <span class="text-danger text-left">{{ $errors->first('hourly_charge') }}</span>
-                            @endif
+                        <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2 ml-2">                 
+                            
+                            <div class="mb-3">
+                                <label for="hourly_charge" class="form-label">Hourly Charge</label>
+                                <input value="{{ old('hourly_charge') }}" 
+                                    type="text" 
+                                    class="form-control" 
+                                    name="hourly_charge" 
+                                    placeholder="Hourly Charge Amount (ZMK)">
+            
+                                @if ($errors->has('hourly_charge'))
+                                    <span class="text-danger text-left">{{ $errors->first('hourly_charge') }}</span>
+                                @endif
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2 ml-2">        
-                        
-                        <div class="mb-3">
-                            <label for="patient_limit" class="form-label">Patient Limit</label>
-                            <select name="patient_limit" id="update-profile-form-2" data-search="true" class="tom-select w-full" multiple>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="10">6 - 10</option>
-                                <option value="15">10 - 15</option>
-                            </select>
-                            @if ($errors->has('patient_limit'))
-                                <span class="text-danger text-left">{{ $errors->first('patient_limit') }}</span>
-                            @endif
+                        <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2 ml-2">        
+                            
+                            <div class="mb-3">
+                                <label for="patient_limit" class="form-label">Patient Limit</label>
+                                <select name="patient_limit" id="update-profile-form-2" data-search="true" class="tom-select w-full" multiple>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="10">6 - 10</option>
+                                    <option value="15">10 - 15</option>
+                                </select>
+                                @if ($errors->has('patient_limit'))
+                                    <span class="text-danger text-left">{{ $errors->first('patient_limit') }}</span>
+                                @endif
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
                 <!-- END: Modal Body -->
                 <!-- BEGIN: Modal Footer -->

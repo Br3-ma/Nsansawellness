@@ -69,11 +69,13 @@
         #desktopchat, #deskPersonalDetails{
                 display: block;
         } 
-        #mobilechat, #mobilePersonalDetails{
+        #mobilechat,
+        #mobilePersonalDetails{
             display: none;
         }
         @media only screen and (max-width:600px){
-            #mobilechat, #mobilePersonalDetails{
+            #mobilechat, 
+            #mobilePersonalDetails{
                 display: block;
             }        
             #desktopchat{
