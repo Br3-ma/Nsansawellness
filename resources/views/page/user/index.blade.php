@@ -109,7 +109,11 @@
                     <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
                         <div class="flex text-slate-500 text-xs">
                             <div class="mr-auto">
-                                {{ $user->email_verified_at == null ? 'Unverified Account' : 'Verified Account'}}
+                                @if($user->email_verified_at == null)
+                                    <span class="text-light">Never Loggedin</span>
+                                @else
+                                    <span class="text-success"><i class="w-4 h-4" data-lucide="verified"></i>&nbsp;Verified Account</span>
+                                @endif
                             </div>
                             {{-- <div>20%</div> --}}
                         </div>

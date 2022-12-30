@@ -54,7 +54,8 @@ class PatientController extends Controller
     {
         // $this->getMyPatients(auth()->user()->id);
         $counselors = $this->user->role('counselor')->get();
-        $my_patients = $this->user->role('patient')->paginate(6);
+        $my_patients = $this->user->role('patient')->with('assignedCounselor')->paginate(6);
+        // dd($my_patients);
         return view('page.patients.patient_files', compact('my_patients', 'counselors'));
     }
 

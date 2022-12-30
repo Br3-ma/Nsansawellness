@@ -2,7 +2,7 @@
 @section('content')
 <!-- BEGIN: Modal Content -->
 <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog" style="margin-top:20%">
+    <div class="modal-dialog" id="modalMobile" style="margin-top:20%">
         <div class="modal-content">
             <!-- BEGIN: Modal Header -->
             <div class="modal-header">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-span-12 sm:col-span-6"> 
                     <label for="modal-form-5" class="form-label">Counselor/ Therapist</label> 
-                    <select name="counselor_id" id="these_counselors" class="form-select">
+                    <select name="counselor_id" id="these_counselors" data-search="true" class="form-select w-full">
                     </select>               
                     <input id="inputID" name="patient_id" type="hidden" /> 
                 </div>
@@ -55,6 +55,14 @@
     <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('attention') }}
+        <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
+            <i data-lucide="x" class="w-4 h-4"></i> 
+        </button> 
+    </div>
+    @elseif (Session::has('err_msg'))
+    <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+        <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
+        {{ Session::get('err_msg') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
             <i data-lucide="x" class="w-4 h-4"></i> 
         </button> 
@@ -111,7 +119,11 @@
                         <div class="dropdown-menu w-40">
                             <div class="dropdown-content">
                                 <a href="{{ route('all-patient-files', $file->id) }}" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Manage Records </a>
-                                <a href="{{ route('manual.remove.counselor', $file->id) }}" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Remove Counselor </a>
+                                @hasanyrole('admin')
+                                    @if($file->assignedCounselor != null)
+                                    <a href="{{ route('manual.remove.counselor', $file->id) }}" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Remove Counselor </a>
+                                    @endif
+                                @endhasanyrole
                             </div>
                         </div>
                     </div>
@@ -127,10 +139,17 @@
                         View All Files
                     </a>
                     @hasanyrole('admin')
-                    <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-secondary py-1 px-2">
-                        <i data-lucide="shield-check" class="w-3 h-3 mr-2"></i>
-                        Assign Counselor
-                    </button>
+                        @if($file->assignedCounselor == null)
+                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-secondary py-1 px-2">
+                            <i data-lucide="shield-check" class="w-3 h-3 mr-2"></i>
+                            Assign Counselor
+                        </button>
+                        @else
+                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-secondary py-1 px-2">
+                            <i data-lucide="refresh-cw" class="w-3 h-3 mr-2"></i>
+                            Re-assign
+                        </button>
+                        @endif
                     @endhasanyrole
                 </div>
             </div>
