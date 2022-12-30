@@ -55,7 +55,7 @@
         <div class="col-span-12 lg:col-span-4 2xl:col-span-3 xl:h-full h-28" style="margin-bottom:4px; padding-bottom:0px;">
             
             @hasanyrole(['patient', 'counselor'])
-            {{-- <div class="intro-y pr-1">
+            <div class="intro-y pr-1">
                 <div class="box p-2">
                     <ul class="nav nav-pills" role="tablist">
                         <li id="chats-tab" class="nav-item flex-1" role="presentation">
@@ -63,17 +63,17 @@
                         </li>
                         @hasanyrole('counselor')
                         <li id="friends-tab" class="nav-item flex-1" role="presentation">
-                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > My Patients </button>
+                            {{-- <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > My Patients </button> --}}
                         </li>
                         @endhasanyrole
                         @hasanyrole('patient')
                         <li id="profile-tab" class="nav-item flex-1" role="presentation">
-                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" > Conversations </button>
+                            {{-- <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" >  </button> --}}
                         </li>
                         @endhasanyrole
                     </ul>
                 </div>
-            </div> --}}
+            </div>
             @endhasanyrole
             <div class="tab-content">
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
@@ -282,6 +282,7 @@
                                 <span class="typing-dots ml-1"> <span>.</span> <span>.</span> <span>.</span> </span>
                             </div>
                         </div> --}}
+                        {{-- <span>No internet connection</span> --}}
                     </div>  
     <div class="pt-4 pb-10 sm:py-4 flex items-center border-t border-slate-200/60 dark:border-darkmode-400">
         <textarea id="message_textbox" class="chat__box__input form-control dark:bg-darkmode-600 h-16 resize-none border-transparent px-5 py-3 shadow-none focus:border-transparent focus:ring-0" rows="1" placeholder="Type your message..."></textarea>
@@ -1767,6 +1768,7 @@
     var chat_id; 
     var owner = null; 
     var aDay = 24*60*60*1000;
+    var msgFeild = document.getElementById("message_textbox");
 
     function startChat(id, who, names, role){
         chat_id = id;
@@ -1807,7 +1809,7 @@
                             <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
                                 <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="'+site_url+message.user.image_path+'">\
                                 </div>\
-                            <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                            <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
                                             '+ message.message +'\
                                 <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                         </div>\
@@ -1834,7 +1836,7 @@
                             <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                     </div>\
                                     <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-dark" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
                                 <div class="dropdown-menu w-40">\
                                     <ul class="dropdown-content">\
                                         <li>\
@@ -1898,6 +1900,17 @@
 
     }
 
+    // // Execute a function when the user presses a key on the keyboard
+    // msgFeild.addEventListener("keypress", function(event) {
+    // // If the user presses the "Enter" key on the keyboard
+    //     if (event.key === "Enter") {
+    //         // Cancel the default action, if needed
+    //         event.preventDefault();
+    //         // Trigger the button element with a click
+    //         send();
+    //     }
+    // });
+
     function update(){
         let user_id = user['id'];
         if(chat_id !== null){
@@ -1922,7 +1935,7 @@
                                         <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
                                                 <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="'+site_url+message.user.image_path+'">\
                                             </div>\
-                                        <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                                        <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
                                                         '+ message.message +'\
                                             <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                                     </div>\
@@ -1945,7 +1958,7 @@
                                     $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
                                 }else{
                                     $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
-                                    <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                                    <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
                                                     '+ message.message +'\
                                         <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                                 </div>\
