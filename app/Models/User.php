@@ -103,6 +103,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function assignedCounselor(){
-        return $this->hasOne(PatientFile::class);
+        return $this->hasOne(AssignCounselor::class, 'patient_id');
     }
 }

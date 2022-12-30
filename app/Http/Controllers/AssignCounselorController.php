@@ -71,28 +71,41 @@ class AssignCounselorController extends Controller
     public function store(Request $request)
     {
         // Save the new message
-        AssignCounselor::create($request->toArray());
-        Chat::create([
-            'sender_id' => $request->toArray()['counselor_id'],
-            'receiver_id' => $request->toArray()['patient_id'],
-        ]);
+            $check = AssignCounselor::where('patient_id', $request->toArray()['patient_id'])->first();
+            // dd($check);
+            if($check != null){
+                AssignCounselor::where('patient_id', $request->toArray()['patient_id'])->delete();
+            }
+            AssignCounselor::create($request->toArray());
+            Chat::create([
+                'sender_id' => $request->toArray()['counselor_id'],
+                'receiver_id' => $request->toArray()['patient_id'],
+            ]);
 
-        $payload = [
-            'sender_id' => $request->toArray()['counselor_id'],
-            'patient_id' => $request->toArray()['patient_id'],
-            'name' => 'Nsansa wellness',
-            'sender' => 'Nsansa Wellness Group'
-        ];
-        // //Notify counselor
-        // User::find($request->toArray()['counselor_id'])
-        // ->notify(new NewPatientAssigned($payload));
-        
-        // // Notify patient
-        // User::find($request->toArray()['patient_id'])
-        // ->notify(new CounselorAssigned($payload));
+            $payload = [
+                'sender_id' => $request->toArray()['counselor_id'],
+                'patient_id' => $request->toArray()['patient_id'],
+                'name' => 'Nsansa wellness',
+                'sender' => 'Nsansa Wellness Group'
+            ];
 
-        Session::flash('attention', "Counselor has been assign successfully");
-        return redirect()->back();
+            try {
+                                // //Notify counselor
+                User::find($request->toArray()['counselor_id'])
+                ->notify(new NewPatientAssigned($payload));
+                
+                // // Notify patient
+                User::find($request->toArray()['patient_id'])
+                ->notify(new CounselorAssigned($payload));
+
+                Session::flash('attention', "Counselor has been assign successfully");
+                return redirect()->back();
+            } catch (\Throwable $th) {
+                Session::flash('attention', "Counselor has been assign successfully");
+                Session::flash('err_msg', "Email notification was not sent.");
+                return redirect()->back();
+            }
+
     }
 
     /**
@@ -137,10 +150,15 @@ class AssignCounselorController extends Controller
      */
     public function remove_counselor(AssignCounselor $assignCounselor, $id)
     {
-
-        $data = $assignCounselor->find($id);
-        $data->delete();
-
+        try {
+            $data = $assignCounselor->find($id);
+            $data->delete();
+            Session::flash('attention', "Counselor has been removed");
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            Session::flash('err_msg', "Oops. Something went wrong, failed to removed counselor");
+            return redirect()->back();
+        }
 
     }
 }

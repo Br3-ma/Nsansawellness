@@ -66,21 +66,24 @@
             transform: scale(1.0);
             transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
         }
-        #desktopchat{
+        #desktopchat, #deskPersonalDetails{
                 display: block;
         } 
-        #mobilechat{
+        #mobilechat, #mobilePersonalDetails{
             display: none;
         }
         @media only screen and (max-width:600px){
-            #mobilechat{
+            #mobilechat, #mobilePersonalDetails{
                 display: block;
             }        
             #desktopchat{
                 display: none;
             } 
-            #onChatMenu,#usersIndexControls{
+            #onChatMenu,#usersIndexControls, #deskPersonalDetails{
                 display: none;
+            }
+            #modalMobile{
+                margin-top:50%;
             }
         }
         </style>
