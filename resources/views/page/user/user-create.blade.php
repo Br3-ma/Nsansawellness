@@ -40,7 +40,7 @@
                     <small>Carefully edit your persnoal information details</small>
                 </div>
                 <br>
-                @include('page\user\_partials\personal_details')
+                @include('page.user._partials.personal_details')
                 <div id="deskPersonalDetails">
                     <div class="flex col-span-12">
                         <div class="w-52">
