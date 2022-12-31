@@ -835,24 +835,24 @@
                                             <div class="elementor-widget-container">
                                                 <ul class="elementor-icon-list-items">
                                                     <li class="elementor-icon-list-item">
-                                                        <a href="#">
+                                                        <a href="{{ route('faq') }}">
 
                                                             <span class="elementor-icon-list-text">FAQ</span>
                                                         </a>
                                                     </li>
                                                     <li class="elementor-icon-list-item">
-                                                        <a href="#">
+                                                        <a href="{{ route('careers') }}">
 
-                                                            <span class="elementor-icon-list-text">Blog</span>
+                                                            <span class="elementor-icon-list-text">Therapist Job</span>
                                                         </a>
                                                     </li>
                                                     <li class="elementor-icon-list-item">
-                                                        <a href="#">
+                                                        <a href="{{ route('contact') }}">
 
                                                             <span class="elementor-icon-list-text">Contact</span>
                                                         </a>
                                                     </li>
-                                                    <li class="elementor-icon-list-item">
+                                                    {{-- <li class="elementor-icon-list-item">
                                                         <a href="#">
 
                                                             <span class="elementor-icon-list-text">Privacy Policy</span>
@@ -863,7 +863,7 @@
 
                                                             <span class="elementor-icon-list-text">Terms & Conditions</span>
                                                         </a>
-                                                    </li>
+                                                    </li> --}}
                                                 </ul>
                                             </div>
                                         </div>

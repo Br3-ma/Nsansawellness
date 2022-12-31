@@ -24,7 +24,7 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
         $this->appointment = $app;
-        $this->user = $users;
+        $this->users = $users;
         $this->pf = $pf;
         $this->chat = $chat;
         $this->middleware(['auth', 'verified']);
@@ -45,21 +45,22 @@ class HomeController extends Controller
         // $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
         // event(new RealTimeNotification($message));
         // check if its first time login
-        if(auth()->user()->first_login == 'true' || auth()->user()->first_login == null){
+        $counselors =  $this->users->role('counselor')->get();
+        $patients =  $this->users->role('patient')->get();
+        if(auth()->user()->first_login == 'true' || auth()->user()->first_login != 0){
             $x = User::find(auth()->user()->id);
-            $x->first_login = false;
+            $x->first_login = 0;
             $x->save();
-
             if(auth()->user()->type == 'patient'){
                 return redirect()->route('pay');
             }
-            return view('home', compact('notifications'));
+            return view('home', compact('notifications', 'counselors', 'patients'));
+
         }else{
             if(auth()->user()->type == 'patient'){
-                
-                return view('page.patients.home', compact('notifications','chats'));
+                return view('page.patients.home', compact('notifications','chats', 'counselors', 'patients'));
             }
-            return view('home', compact('notifications'));
+            return view('home', compact('notifications', 'counselors', 'patients'));
         }
 
     }

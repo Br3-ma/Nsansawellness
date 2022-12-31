@@ -155,7 +155,14 @@ Route::group(['middleware' => ['auth', 'permission:patient-files']], function() 
 
 // Action & Activities
 Route::group(['middleware' => ['auth', 'permission:actions']], function() {
-    Route::resource('activities', ActivityController::class);
+    Route::resource('activities', ActivityController::class, [
+        'names' => [
+            'activities.index' => 'activities',
+            'activities.edit' => 'edit-activities',
+            'activities.update' => 'update-activities',
+            'activities.destroy' => 'delete-activities'
+        ]
+    ]);
     Route::get('/actions', [HomeworkController::class, 'actions'])->name('actions');
 });
 
