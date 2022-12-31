@@ -75,7 +75,7 @@ class NotificationController extends Controller
         );
         $message = 'Welcome '.Auth::user()->fname.' '.Auth::user()->lname.' Thank you for joining';
 
-        if(auth()->user()->first_time){
+        if(auth()->user()->first_login){
             User::where('id', auth()->user()->id)->update(['first_time'=>'false']);
             $pusher->trigger('popup-channel', 'user-register', $message);
         }

@@ -45,7 +45,7 @@
         {{-- @dd($activities  == []) --}}
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
-            @if($activities  != [])
+            @if($activities->toArray()['data'] != [])
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
@@ -105,10 +105,7 @@
                             </td>
                         </tr>                        
                     @empty
-                    <div class="items-center justify-center centered" style="text-align: center">
-                        <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
-                        <h3>No Activies Yet</h3>
-                    </div>
+                 
                     @endforelse
                     
                 </tbody>
@@ -116,7 +113,7 @@
             @else 
             <div class="items-center justify-center centered" style="text-align: center">
                 <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
-                <h3>No Activies Yet</h3>
+                <h3>No Activties Yet</h3>
             </div>
             @endif
         </div>

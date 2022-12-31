@@ -31,8 +31,8 @@
                                     <div class="box sm:flex">
                                         <div class="px-8 py-12 flex flex-col justify-center flex-1">
                                             <i data-lucide="shopping-bag" class="w-10 h-10 text-warning"></i> 
-                                            <div class="relative text-3xl font-medium mt-12 pl-4 ml-0.5"> <span class="absolute text-2xl font-medium top-0 left-0 -ml-0.5">K</span> 54.143 </div>
-                                            <div class="report-box-2__indicator bg-success tooltip cursor-pointer" title="47% Higher than last month"> 47% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
+                                            <div class="relative text-3xl font-medium mt-12 pl-4 ml-0.5"> <span class="absolute text-2xl font-medium top-0 left-0 -ml-0.5">K</span> 0.00 </div>
+                                            <div class="report-box-2__indicator bg-success tooltip cursor-pointer" title="47% Higher than last month"> 0% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             <div class="mt-4 text-slate-500">Therapy earnings this month after associated author fees, & before taxes.</div>
                                             <button class="btn btn-outline-secondary relative justify-start rounded-full mt-12">
                                                 Download Reports 
@@ -40,39 +40,43 @@
                                             </button>
                                         </div>
                                         <div class="px-8 py-12 flex flex-col justify-center flex-1 border-t sm:border-t-0 sm:border-l border-slate-200 dark:border-darkmode-300 border-dashed">
+                                            @hasanyrole(['admin','counselor'])
                                             <div class="text-slate-500 text-xs">TOTAL TRANSACTION</div>
                                             <div class="mt-1.5 flex items-center">
-                                                <div class="text-base">4.501</div>
-                                                <div class="text-danger flex text-xs font-medium tooltip cursor-pointer ml-2" title="2% Lower than last month"> 2% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
+                                                <div class="text-base">0</div>
+                                                <div class="text-danger flex text-xs font-medium tooltip cursor-pointer ml-2" title="2% Lower than last month"> 0% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div>
-                                            @hasrole('admin')
+                                            @endhasanyrole
+                                            @hasanyrole('admin')
                                             <div class="text-slate-500 text-xs mt-5">CANCELATION CASE</div>
                                             <div class="mt-1.5 flex items-center">
                                                 <div class="text-base">2</div>
-                                                <div class="text-danger flex text-xs font-medium tooltip cursor-pointer ml-2" title="0.1% Lower than last month"> 0.1% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
+                                                <div class="text-danger flex text-xs font-medium tooltip cursor-pointer ml-2" title="0.1% Lower than last month"> 0% <i data-lucide="chevron-down" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div>
-                                            <div class="text-slate-500 text-xs mt-5">GROSS RENTAL VALUE</div>
+                                            <div class="text-slate-500 text-xs mt-5">GROSS COUNSELOR WAGES</div>
                                             <div class="mt-1.5 flex items-center">
-                                                <div class="text-base">K72.000</div>
-                                                <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-2" title="49% Higher than last month"> 49% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
+                                                <div class="text-base">K0.00</div>
+                                                <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-2" title="49% Higher than last month"> 0% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div>
-                                            <div class="text-slate-500 text-xs mt-5">GROSS RENTAL PROFIT</div>
+                                            <div class="text-slate-500 text-xs mt-5">GROSS PROFIT (Nsansa wellness)</div>
                                             <div class="mt-1.5 flex items-center">
-                                                <div class="text-base">K54.000</div>
-                                                <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-2" title="52% Higher than last month"> 52% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
+                                                <div class="text-base">K0.00</div>
+                                                <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-2" title="52% Higher than last month"> 0% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div>
                                             
                                             <div class="text-slate-500 text-xs mt-5">THERAPISTS/ COUNSELORS</div>
                                             <div class="mt-1.5 flex items-center">
-                                                <div class="text-base">35</div>
-                                                <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-2" title="52% Higher than last month"> 52% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
+                                                <div class="text-base">{{ $counselors->count() }}</div>
+                                                <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-2" title="52% Higher than last month"> 0% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div>
-                                            @endhasrole
+                                            @endhasanyrole
+                                            @hasanyrole(['admin','patient'])
                                             <div class="text-slate-500 text-xs mt-5">PATIENTS</div>
                                             <div class="mt-1.5 flex items-center">
-                                                <div class="text-base">19</div>
+                                                <div class="text-base">{{ $patients->count() }}</div>
                                                 <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-2" title="52% Higher than last month"> 52% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div>
+                                            @endhasanyrole
                                         </div>
                                     </div>
                                 </div>
@@ -83,25 +87,21 @@
                                 <div class="intro-y flex items-center h-10">
                                     @hasrole('admin')
                                     <h2 class="text-lg font-medium truncate mr-5">
-                                        {{ __('Counselors') }}
+                                        {{ __('Users') }}
                                     </h2>
-                                    <a href="" class="ml-auto text-primary truncate">View on Map</a> 
+                                    <a href="{{ route('users.index') }}" class="ml-auto text-primary truncate">See more</a> 
                                     @else
                                     <h2 class="text-lg font-medium truncate mr-5">
                                         {{ __('Patients') }}
                                     </h2> 
+                                    <a href="{{ route('users.index') }}" class="ml-auto text-primary truncate">View patient profiles</a> 
                                     @endhasrole
                                 </div>
                                 <div class="report-box-2 intro-y mt-5">
+                                    @hasanyrole('admin')
                                     <div class="box p-5">
                                         <div class="flex items-center">
-                                            @hasrole('admin')
-                                                Active 
-                                            @else 
-                                                My 
-                                            @endhasrole
-                                            
-                                            @hasrole('admin') Counselors @else Patients @endhasrole 
+                                            Active Counselors
                                             <div class="dropdown ml-auto">
                                                 <a class="dropdown-toggle w-5 h-5 block -mr-2" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-5 h-5 text-slate-500"></i> </a>
                                                 <div class="dropdown-menu w-40">
@@ -116,42 +116,35 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="text-2xl font-medium mt-2">214</div>
-                                        @if(Auth::user()->role == 'admin')
-                                        <div class="border-b border-slate-200 flex pb-2 mt-4">
-                                            <div class="text-slate-500 text-xs">Page views per second</div>
-                                            <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-auto" title="49% Lower than last month"> 49% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
+                                        <div class="text-2xl font-medium mt-2">
+                                            {{ $counselors->count() }}
                                         </div>
-                                        <div class="mt-2 border-b broder-slate-200">
-                                            <div class="-mb-1.5 -ml-2.5">
-                                                <div class="h-[79px]">
-                                                    <canvas id="report-bar-chart"></canvas>
+                                    </div>
+                                    @endhasanyrole
+                                    <br>
+                                    @hasanyrole(['counselor','admin'])
+                                    <div class="box p-5">
+                                        <div class="flex items-center">
+                                            Active Patients
+                                            <div class="dropdown ml-auto">
+                                                <a class="dropdown-toggle w-5 h-5 block -mr-2" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-5 h-5 text-slate-500"></i> </a>
+                                                <div class="dropdown-menu w-40">
+                                                    <ul class="dropdown-content">
+                                                        <li>
+                                                            <a href="" class="dropdown-item"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="" class="dropdown-item"> <i data-lucide="settings" class="w-4 h-4 mr-2"></i> Settings </a>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="text-slate-500 text-xs border-b border-slate-200 flex mb-2 pb-2 mt-4">
-                                            <div>Counselors</div>
-                                            <div class="ml-auto">Number of Patients</div>
+                                        <div class="text-2xl font-medium mt-2">
+                                            {{ $patients->count() }}
                                         </div>
-                                        <div class="flex">
-                                            <div>Kate Winslet</div>
-                                            <div class="ml-auto">472</div>
-                                        </div>
-                                        <div class="flex mt-1.5">
-                                            <div>Issac Banda</div>
-                                            <div class="ml-auto">294</div>
-                                        </div>
-                                        <div class="flex mt-1.5">
-                                            <div>Gabriel Hamoonga</div>
-                                            <div class="ml-auto">83</div>
-                                        </div>
-                                        <div class="flex mt-1.5">
-                                            <div>Magret Mwale</div>
-                                            <div class="ml-auto">21</div>
-                                        </div>
-                                        <button class="btn btn-outline-secondary border-dashed w-full py-1 px-2 mt-4">View Report</button>
-                                        @endif 
                                     </div>
+                                    @endhasanyrole
                                 </div>
                             </div>
                             <!-- END: Visitors -->
@@ -161,7 +154,7 @@
                                     <h2 class="text-lg font-medium mr-5">
                                         @if(Auth::user()->role == 'admin') Counselors @else Patients @endif  By @if(Auth::user()->role == 'admin') Roles @else Age @endif 
                                     </h2>
-                                    <a href="" class="ml-auto text-primary truncate">Show More</a> 
+                                    <a href="{{ route('patient-files') }}" class="ml-auto text-primary truncate">Show More</a> 
                                 </div>
                                 <div class="report-box-2 intro-y mt-5">
                                     <div class="box p-5">
@@ -180,12 +173,12 @@
                                                         <canvas class="mt-3" id="report-donut-chart"></canvas>
                                                     </div>
                                                     <div class="flex flex-col justify-center items-center absolute w-full h-full top-0 left-0">
-                                                        <div class="text-2xl font-medium">390</div>
+                                                        <div class="text-2xl font-medium">{{ $patients->count() }}</div>
                                                         <div class="text-slate-500 mt-0.5">Total @if(Auth::user()->role == 'admin') Counselors @else Patients @endif </div>
                                                     </div>
                                                 </div>
                                                 @if(Auth::user()->role != 'admin')
-                                                <div class="w-52 sm:w-auto mx-auto mt-5">
+                                                {{-- <div class="w-52 sm:w-auto mx-auto mt-5">
                                                     <div class="flex items-center">
                                                         <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
                                                         <span class="truncate">17 - 30 Years old</span> <span class="font-medium ml-auto">62%</span> 
@@ -198,7 +191,7 @@
                                                         <div class="w-2 h-2 bg-warning rounded-full mr-3"></div>
                                                         <span class="truncate">>= 50 Years old</span> <span class="font-medium ml-auto">10%</span> 
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 @else 
                                                 <div class="w-52 sm:w-auto mx-auto mt-5">
                                                     <div class="flex items-center">
@@ -503,7 +496,7 @@
                                 <div class="col-span-12 md:col-span-6 xl:col-span-12 mt-3 2xl:mt-8">
                                     <div class="intro-x flex items-center h-10">
                                         <h2 class="text-lg font-medium truncate mr-auto">
-                                            Important Notes
+                                            Upcoming Meetings
                                         </h2>
                                         <button data-carousel="important-notes" data-target="prev" class="tiny-slider-navigator btn px-2 border-slate-300 text-slate-600 dark:text-slate-300 mr-2"> <i data-lucide="chevron-left" class="w-4 h-4"></i> </button>
                                         <button data-carousel="important-notes" data-target="next" class="tiny-slider-navigator btn px-2 border-slate-300 text-slate-600 dark:text-slate-300 mr-2"> <i data-lucide="chevron-right" class="w-4 h-4"></i> </button>

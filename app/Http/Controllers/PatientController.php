@@ -10,6 +10,7 @@ use App\Models\PatientFile;
 use App\Models\User;
 use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpJunior\LaravelVideoChat\Facades\Chat;
 use PhpJunior\LaravelVideoChat\Models\File\File;
 use PhpJunior\LaravelVideoChat\Models\Conversation\Conversation;
@@ -18,7 +19,7 @@ use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
 class PatientController extends Controller
 {
     use PatientTrait;
-    public $users, $pf, $appointment, $chat;
+    public $users, $u, $pf, $appointment, $chat;
     /**
      * Create a new controller instance.
      *
@@ -52,9 +53,16 @@ class PatientController extends Controller
 
     public function patient_files()
     {
-        // $this->getMyPatients(auth()->user()->id);
+        $u = auth()->user();
         $counselors = $this->user->role('counselor')->get();
-        $my_patients = $this->user->role('patient')->with('assignedCounselor')->paginate(6);
+        if($u->hasAnyRole(['admin','administrator'])){
+            // dd('no');
+            $my_patients = $this->user->role('patient')->with('assignedCounselor')->paginate(6);
+        }else{
+            $my_patients = $this->user->role('patient')->with(['assignedCounselor' => function ($query) use ($u) {
+                $query->where('counselor_id', $u->id);
+            }])->paginate(6);
+        }
         // dd($my_patients);
         return view('page.patients.patient_files', compact('my_patients', 'counselors'));
     }

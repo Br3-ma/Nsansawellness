@@ -13,17 +13,8 @@
         <nav aria-label="breadcrumb" class="-intro-x h-[45px] mr-auto">
             <ol class="breadcrumb breadcrumb-light">
                 <li class="breadcrumb-item"><a href="#">Nsansa Wellness</a></li>
-                <li class="breadcrumb-item active" aria-current="page">
-                @hasanyrole('admin')
-                    Administration
-                @endhasanyrole
-                @hasanyrole('counselor')
-                    Counselor
-                @endhasanyrole
-                @hasanyrole('patient')
-                    Patient
-                @endhasanyrole
-                    Dashboard
+                <li class="capitalize breadcrumb-item active" aria-current="page">
+                    {{ str_replace('-', ' ', Request::route()->uri)  }}
                 </li>
             </ol>
         </nav>
