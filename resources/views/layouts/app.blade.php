@@ -296,7 +296,7 @@
         </div>
         <!-- END: Mobile Menu -->
         <!-- BEGIN: Top Bar -->
-        @include('layouts\_partials\dash_menu')
+        @include('layouts._partials.dash_menu')
         <!-- END: Top Bar -->
 
         

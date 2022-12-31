@@ -54,9 +54,10 @@ class VideoCallController extends Controller
     }
 
     public function startVideoCall($id){
-        $conversation = Chat::getConversationMessageById($id);
+        // $conversation = Chat::getConversationMessageById($id);
+        return view('page.chat.video_');
         // dd($conversation['conversationId']);
-        return redirect()->route('video-call-runner', ['conversation'=> $conversation['conversationId'], 'id'=> auth()->user()]);
+        // return redirect()->route('video-call-runner', ['conversation'=> $conversation['conversationId'], 'id'=> auth()->user()]);
     }
 
     public function activeVideoCall(){
