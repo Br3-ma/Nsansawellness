@@ -9,11 +9,13 @@ use App\Models\Chat;
 use App\Models\PatientFile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Traits\PatientTrait;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
 class HomeController extends Controller
 {
+    use PatientTrait;
     public $users, $pf, $appointment, $chat;
     /**
      * Create a new controller instance.
@@ -46,7 +48,7 @@ class HomeController extends Controller
         // event(new RealTimeNotification($message));
         // check if its first time login
         $counselors =  $this->users->role('counselor')->get();
-        $patients =  $this->users->role('patient')->get();
+        $total_patients =  $this->getMyTotalPatients(auth()->user());
         if(auth()->user()->first_login == 'true' || auth()->user()->first_login != 0){
             $x = User::find(auth()->user()->id);
             $x->first_login = 0;
@@ -54,13 +56,13 @@ class HomeController extends Controller
             if(auth()->user()->type == 'patient'){
                 return redirect()->route('pay');
             }
-            return view('home', compact('notifications', 'counselors', 'patients'));
+            return view('home', compact('notifications', 'counselors', 'total_patients'));
 
         }else{
             if(auth()->user()->type == 'patient'){
-                return view('page.patients.home', compact('notifications','chats', 'counselors', 'patients'));
+                return view('page.patients.home', compact('notifications','chats', 'counselors', 'total_patients'));
             }
-            return view('home', compact('notifications', 'counselors', 'patients'));
+            return view('home', compact('notifications', 'counselors', 'total_patients'));
         }
 
     }

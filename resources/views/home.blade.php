@@ -73,7 +73,7 @@
                                             @hasanyrole(['admin','patient'])
                                             <div class="text-slate-500 text-xs mt-5">PATIENTS</div>
                                             <div class="mt-1.5 flex items-center">
-                                                <div class="text-base">{{ $patients->count() }}</div>
+                                                <div class="text-base">{{ $total_patients }}</div>
                                                 <div class="text-success flex text-xs font-medium tooltip cursor-pointer ml-2" title="52% Higher than last month"> 52% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div>
                                             @endhasanyrole
@@ -141,7 +141,7 @@
                                             </div>
                                         </div>
                                         <div class="text-2xl font-medium mt-2">
-                                            {{ $patients->count() }}
+                                            {{ $total_patients }}
                                         </div>
                                     </div>
                                     @endhasanyrole
@@ -173,7 +173,7 @@
                                                         <canvas class="mt-3" id="report-donut-chart"></canvas>
                                                     </div>
                                                     <div class="flex flex-col justify-center items-center absolute w-full h-full top-0 left-0">
-                                                        <div class="text-2xl font-medium">{{ $patients->count() }}</div>
+                                                        <div class="text-2xl font-medium">{{ $total_patients }}</div>
                                                         <div class="text-slate-500 mt-0.5">Total @if(Auth::user()->role == 'admin') Counselors @else Patients @endif </div>
                                                     </div>
                                                 </div>

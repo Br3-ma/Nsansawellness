@@ -4,17 +4,47 @@ namespace App\Traits;
 
 use App\Models\AssignCounselor;
 use Illuminate\Http\Request;
+use App\Models\Appointment;
+use App\Models\PatientFile;
+use App\Models\User;
 
 trait PatientTrait {
-
-    public function getPatients(){
-        
+    public $users, $u, $pf, $ac, $appointment;
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(User $users, PatientFile $pf, Appointment $app, AssignCounselor $ac)
+    {
+        $this->middleware('auth');
+        $this->appointment = $app;
+        $this->user = $users;
+        $this->pf = $pf;
+        $this->ac = $ac;
     }
 
     // Return all your patients with their user info, file records
-    public function getMyPatients($counselor_user_id){
-        $data = AssignCounselor::with('patient')->where('counselor_id', $counselor_user_id)->get();
-        dd($data);
+    public function getMyPatients($u){
+        if($u->hasAnyRole(['admin','administrator'])){
+            $my_patients = $this->user->role('patient')->with('assignedCounselor')->paginate(6);
+        }else{
+            $my_patients = $this->user->role('patient')->whereHas('assignedCounselor', function ($query) use ($u) {
+                $query->where('counselor_id', $u->id);
+            })->paginate(6);
+        }
+        return $my_patients;
     }
+    // Return all your patients with their user info, file records
+    public function getMyTotalPatients($u){
+        if($u->hasAnyRole(['admin','administrator'])){
+            $total = User::role('patient')->get()->count();
+        }else{
+            $total = AssignCounselor::where('counselor_id', $u->id)->get()->count();
+        }
+        return $total;
+    }
+
+
 
 }
