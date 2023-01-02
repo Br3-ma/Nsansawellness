@@ -12,4 +12,8 @@ trait CoreTrait {
     // public function isEmailReal($email){
     //     Mail::to($u->email)->send(new SendUserInfoEmail($details));
     // }
+
+    public function counselorPatients($u){
+
+    }
 }

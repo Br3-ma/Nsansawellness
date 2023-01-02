@@ -63,7 +63,7 @@ class LoginController extends Controller
                     return response()->json(['error' => 'Unauthorised'], 401);
                 }else{
                     return back()->withErrors([
-                        "email" => "Sorry we couldn't find an account with that username. Try again",
+                        "email" => "Sorry, incorrect password or username. Try again",
                     ])->onlyInput('email');
                 }
 

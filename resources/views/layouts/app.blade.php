@@ -304,17 +304,16 @@
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
                 <ul>
-                    @can('home')
-                    {{-- <li>
+                    @hasanyrole(['admin', 'counselor'])
+                    <li>
                         <a href="{{ route('home') }}" class="side-menu side-menu--active">
                             <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                             <div class="side-menu__title">
                                 Dashboard 
-                                <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
-                    </li> --}}
-                    @endcan
+                    </li>
+                    @endhasanyrole
 
                     @can('patient')
                     <li>

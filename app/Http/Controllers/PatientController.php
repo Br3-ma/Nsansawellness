@@ -53,17 +53,8 @@ class PatientController extends Controller
 
     public function patient_files()
     {
-        $u = auth()->user();
         $counselors = $this->user->role('counselor')->get();
-        if($u->hasAnyRole(['admin','administrator'])){
-            // dd('no');
-            $my_patients = $this->user->role('patient')->with('assignedCounselor')->paginate(6);
-        }else{
-            $my_patients = $this->user->role('patient')->with(['assignedCounselor' => function ($query) use ($u) {
-                $query->where('counselor_id', $u->id);
-            }])->paginate(6);
-        }
-        // dd($my_patients);
+        $my_patients = $this->getMyPatients(auth()->user());
         return view('page.patients.patient_files', compact('my_patients', 'counselors'));
     }
 
