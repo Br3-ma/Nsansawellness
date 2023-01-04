@@ -94,8 +94,8 @@
                     @endforelse
                     @endif
 
-                    @if(!empty($incoming_appointments->toArray()))
                     @forelse ($incoming_appointments as $app)
+                    @if(!empty($app->appointment->toArray()))
                     <div class="relative items-center flex transition rounded-md p-2">
                         <div class="event p-3 -mx-3 {{  $app->appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} flex items-center">
                             @if($app->appointment->status != 0)
@@ -110,32 +110,21 @@
                                         @endif
                                     </div>
                                 
-                                    <div class="text-slate-500 text-xs mt-0.5"> <!-- <span class="event__days">2</span>--> {{ $app->appointment->start_date }} <span class="mx-1">•</span>{{ $app->appointment->start_time ?? '' }}</div>
+                                    <div class="text-slate-500 text-xs mt-0.5"> 
+                                        <!-- <span class="event__days">2</span>--> 
+                                        {{ $app->appointment->start_date }} <span class="mx-1">•</span>{{ $app->appointment->start_time ?? '' }}
+                                    </div>
                                     {{-- <a title="view" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="eye" class="w-4 h-4 text-slate-500"></i> </a> --}}
                                 </div>
                             </a>
                         </div>
-                        
-                        {{-- <div class="flex items-center justify-end">
-                             @if($app->appointment->status == 0)
-                            <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $app->appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
-                            @else
-                            <a title="Cancel" href="{{ route('appointment.deactivate', ['id' => $app->appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> 
-                                <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> 
-                            </a>
-                            @endif 
-                            <a title="Delete Permanently" href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="flex mx-4 items-center zoom-in tooltip absolute top-0 bottom-0 my-auto right-0" href="">
-                                <i data-lucide="trash" class="w-4 h-4 text-slate-500"></i> 
-                            </a>
-                            <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href="">
-                                <i data-lucide="edit-2" class="w-4 h-4 text-slate-500"></i> 
-                            </a>
-                        </div> --}}
                     </div>
+                    @endif
                     @empty
                     <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
+                    
                     @endforelse
-                    @endif
+                    
                 </div>
                 {{-- <div class="form-check form-switch flex">
                     <label class="form-check-label" for="checkbox-events">Notify me</label>
