@@ -66,19 +66,27 @@
             transform: scale(1.0);
             transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
         }
-        #desktopchat, #deskPersonalDetails{
+        #desktopchat, 
+        #deskPersonalDetails,
+        #btnback{
                 display: block;
         } 
         #mobilechat,
-        #mobilePersonalDetails{
+        #mobilePersonalDetails,
+        #btnback2{
             display: none;
+        }
+        #chatContent{
+            margin-top:8%;
         }
         @media only screen and (max-width:600px){
             #mobilechat, 
-            #mobilePersonalDetails{
+            #mobilePersonalDetails,
+            #btnback2{
                 display: block;
             }        
-            #desktopchat{
+            #desktopchat,
+            #btnback{
                 display: none;
             } 
             #onChatMenu,#usersIndexControls, #deskPersonalDetails{
@@ -87,6 +95,10 @@
             #modalMobile{
                 margin-top:50%;
             }
+            #chatContent{
+                margin-top:12%;
+            }
+          
         }
         </style>
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
@@ -177,6 +189,39 @@
             <div class="scrollable">
                 <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="x-circle" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
                 <ul class="scrollable__content py-2">
+                    <li class="flex py-4 text-white">
+                        <div class="ml-6 p-4 w-12 h-12 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
+                            @if(Auth::user()->image_path == null)
+                            <div class="font-bolder text-lg text-white ml-4 w-4 h-4 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-slate-400 zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                                {{ Auth::user()->fname[0].'-'.Auth::user()->lname[0] }}
+                            </div>
+                            @else
+                            <img alt="Profile" src="{{ asset('public/storage/'.Auth::user()->image_path) }}">
+                            @endif
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="font-medium">{{ Auth::User()->fname.' '.Auth::User()->lname }}</div>
+                            @hasanyrole(['admin', 'administrator', 'manager', 'staff'])
+                            <div class="capitalize flex justify-start space-x-4 text-xs text-white/60 mt-0.5 dark:text-slate-500">
+                                <i class="w-4 w-4" data-lucide="shield"></i>
+                                <span class="mt-1 ml-1">{{ preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name'))}}</span>
+                            </div>
+                            @endhasanyrole
+                            @hasanyrole(['patient', 'user', 'users'])
+                            <div class="capitalize flex space-xart text-xs text-white/60 mt-0.5 dark:text-slate-500">
+                                <i class="w-4 w-4" data-lucide="user"></i>
+                                <span class="mt-1 ml-1">{{ preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name'))}}</span>
+                            </div>
+                            @endhasanyrole
+                            @hasanyrole(['counselor', 'therapist'])
+                            <div class="capitalize flex space-x-2 justify-start text-xs text-white/60 mt-0.5 dark:text-slate-500">
+                                <i class="w-4 w-4" data-lucide="verified"></i>
+                                <span class="mt-1 ml-1">{{ preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name'))}}</span>
+                            </div>
+                            @endhasanyrole
+                        </div>
+                    </li>
                     <li>
                         <a href="{{ route('home') }}" class="menu">
                             <div class="menu__icon"> <i data-lucide="home"></i> </div>
@@ -291,6 +336,19 @@
                         </ul>
                     </li>
                     @endcan
+                    <li class="py-4"></li>
+                    <li>
+                        <a class="menu" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();" 
+                            class="dropdown-item hover:bg-white/5"> 
+                            <div class="menu__icon"> <i data-lucide="toggle-right"></i> </div>
+                            <div class="menu__title"> Logout</div>
+                        </a>
+                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -541,7 +599,7 @@
                 
             </div>
             <!-- END: Side Menu -->
-            <div class="w-full sm:pt-3 pt-2">
+            <div class="w-full sm:pt-3 pt-2" style="">
                 @yield('content')
             </div>
 

@@ -227,114 +227,32 @@
         </div>
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script> --}}
-        <script src="{{ asset('/dist/js/openvidu-browser-2.25.0.js') }}"></script>
+        <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
         <script th:inline="javascript">
-            // OpenVidu objects
-            var OV
-            var session;
-            var videosContainer = document.getElementById('cameras');
-        
-            // Get all the attributes from the template in Thymeleaf style
-            // var error = [[${error}]];
-            // var token = [[${token}]];
-        
-            if (!!error) {
-                alert(error);
-            } else if (!!token) {
-                // Subscribe to OpenVidu session only when token is available
-                subscribe(token);
-            }
-        
-            function subscribe() {
-        
-                // Initialize OpenVidu and Session objects
-                OV = new OpenVidu();
-                session = OV.initSession();
-        
-                // On every new Stream received...
-                session.on('streamCreated', event => {
-        
-                    // Subscribe to the Stream to receive it
-                    // HTML video will be appended to a new element created inside <div id='cameras'>
-                    var videoDiv = document.createElement('div');
-                    var stream = event.stream;
-                    videoDiv.classList.add('video-container');
-                    videoDiv.id = stream.streamId;
-                    videosContainer.appendChild(videoDiv);
-                    // Append video inside our brand new <div> element
-                    var subscriber = session.subscribe(stream, videoDiv);
-        
-                    // When the HTML video has been appended to DOM...
-                    subscriber.on('videoElementCreated', ev => {
-                        // ...append camera name on top of video
-                        var cameraName = document.createElement('div');
-                        cameraName.innerText = stream.connection.data;
-                        cameraName.classList.add('camera-name');
-                        ev.element.parentNode.insertBefore(cameraName, ev.element);
-                        // ...start loader
-                        var loader = document.createElement('div');
-                        loader.classList.add('loader');
-                        ev.element.parentNode.insertBefore(loader, ev.element.nextSibling);
-                    });
-        
-                    // When the HTML video starts playing...
-                    subscriber.on('streamPlaying', ev => {
-                        // ...remove loader
-                        var cameraVideoElement = subscriber.videos[0].video;
-                        cameraVideoElement.parentNode.removeChild(cameraVideoElement.nextSibling);
-                        // ... mute video if browser blocked autoplay
-                        autoplayMutedVideoIfBlocked(cameraVideoElement);
-                    });
-        
-                    // When the HTML video has been removed from DOM...
-                    subscriber.on('videoElementDestroyed', ev => {
-                        // ...remove the HTML elements related to the destroyed video
-                        var videoContainer = document.getElementById(stream.streamId);
-                        videoContainer.parentNode.removeChild(videoContainer);
-                    });
+            var peer = new Peer();
+
+            var conn = peer.connect('another-peers-id');
+                // on open will be launch when you successfully connect to PeerServer
+                conn.on('open', function(){
+                // here you have conn.id
+                conn.send('hi!');
+            });
+
+            peer.on('connection', function(conn) {
+                conn.on('data', function(data){
+                    // Will print 'hi!'
+                    console.log(data);
                 });
-        
-                // On every asynchronous exception...
-                session.on('exception', (exception) => {
-                    console.warn(exception);
+            });
+
+            var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+            getUserMedia({video: true, audio: true}, function(stream) {
+                var call = peer.call('another-peers-id', stream);
+                call.on('stream', function(remoteStream) {
+                    // Show stream in some video/canvas element.
                 });
-        
-                // Connect to session. We will receive all necessary events when success
-                session.connect(token)
-                    .catch(error => {
-                        var msg = 'There was an error connecting to the session. Code: ' + error.code + '. Message: ' + error
-                            .message;
-                        console.error(msg);
-                        alert(msg);
-                    });
-            }
-        
-            function unsubscribe() {
-                if (!!session) {
-                    // Leave OpenVidu Session
-                    session.disconnect();
-                }
-            }
-        
-            function autoplayMutedVideoIfBlocked(video) {
-                // Browser can block video playback if it is auto played without user interaction
-                // One solution is to mute the video and let the user know
-                video.controls = true;
-                var promise = video.play();
-                if (promise !== undefined) {
-                    promise.then(() => {
-                        // Autoplay started
-                    }).catch(error => {
-                        // The video must play muted until user hits play button
-                        video.muted = true;
-                        video.play();
-                    });
-                }
-            }
-        
-            // Unsubscribe from OpenVidu session when leaving the page
-            window.addEventListener("beforeunload", () => {
-                unsubscribe();
+                }, function(err) {
+                console.log('Failed to get local stream' ,err);
             });
         </script>
 
