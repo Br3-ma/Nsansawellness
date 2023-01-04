@@ -48,8 +48,10 @@
     </div>
 </div> <!-- END: Modal Content -->
 <div class="content">
-    <h2 class="intro-y text-lg font-medium mt-10">
-        Manage Patient Files
+    <h2 class="text-lg font-medium mr-auto flex space-x-6 mt-8">
+        <i data-lucide="files" class="w-6 h-6"></i>
+        &nbsp;
+        <span>Manage Patient Profiles</span>
     </h2>
     @if (Session::has('attention'))
     <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
@@ -69,8 +71,8 @@
     </div>
     @endif
     <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            {{-- <button class="btn btn-primary shadow-md mr-2">Record Patient File</button>
+        {{-- <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
+            <button class="btn btn-primary shadow-md mr-2">Record Patient File</button>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -85,15 +87,15 @@
                         </li>
                     </ul>
                 </div>
-            </div> --}}
-            {{-- <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 3 of {{ sizeOf($my_patients) }} patients</div> --}}
+            </div>
+            <div class="hidden md:block mx-auto text-slate-500">Showing 1 to 3 of {{ sizeOf($my_patients) }} patients</div>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="w-56 relative text-slate-500">
                     <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
                     <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i> 
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- BEGIN: Users Layout -->
         @forelse($my_patients as $file)
         <div class="intro-y col-span-12 md:col-span-6 lg:col-span-4">
