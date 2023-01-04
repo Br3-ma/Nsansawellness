@@ -4,10 +4,10 @@
     <div class="intro-y">
         <!-- BEGIN: Chat Side Menu -->
         <div id="chatList" class="chatList col-span-12 w-full" style="margin-bottom:4px; padding-bottom:0px;">
-            {{-- @hasanyrole(['patient', 'counselor'])
-            <div class="intro-y pr-1">
-                <div class="box p-2">
-                    <ul class="nav nav-pills" role="tablist">
+            {{-- @hasanyrole(['patient', 'counselor']) --}}
+            <div class="py-6 lg:py-8">
+                <div class="">
+                    {{-- <ul class="nav nav-pills" role="tablist">
                         <li id="chats-tab" class="nav-item flex-1" role="presentation">
                             <button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="#chats" type="button" role="tab" aria-controls="chats" aria-selected="true" > Therapy Sessions </button>
                         </li>
@@ -21,10 +21,10 @@
                             <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" >  </button>
                         </li>
                         @endhasanyrole
-                    </ul>
+                    </ul> --}}
                 </div>
             </div>
-            @endhasanyrole --}}
+            {{-- @endhasanyrole --}}
             <div class="tab-content">
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
                     <div style="margin-bottom:0px; padding-bottom:0px;"class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4 ">
