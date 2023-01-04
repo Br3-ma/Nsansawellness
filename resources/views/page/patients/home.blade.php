@@ -1,60 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <div class="chatPage" style="">
-    <div class="intro-y flex flex-col sm:flex-row items-center mt-2 lg:mt-8">
-        {{-- <h2 class="text-lg font-medium mr-auto">
-            @if(Auth::user()->role == 'admin')
-                Manage 
-            @elseif(Auth::user()->type == 'patient')
-                 My 
-            @else
-                Patient  
-            @endif 
-            Therapy Sessions
-        </h2> --}}
-        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            {{-- <div>
-                <input type="text" name="meetingId" id="meetingId" class="focus:ring-indigo-500 focus:border-indigo-500 block rounded-none rounded-l-md  sm:text-sm border-gray-300" placeholder="Meeting ID">
-                <span class="text-xs uppercase font-bold text-gray-400 px-1">OR</span>
-                <form method="post" action="{{ route('createMeeting') }}">
-                    {{ csrf_field() }}
-                    <button type="submit" class="mt-1 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Create New Meeting</button>
-                </form>
-            </div> --}}
-            <form method="POST" action="{{ route('meeting.store') }}">
-                @csrf
-                @can('admin')
-                    <button type="submit" class="btn btn-primary shadow-md mr-2">Create Meeting</button>
-                @endcan
-            </form>
-
-            {{-- <button class="btn btn-primary shadow-md mr-2">Start New Chat</button> --}}
-            {{-- <div class="dropdown ml-auto sm:ml-0">
-                <button class="dropdown-toggle btn px-2 box text-slate-500" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
-                </button>
-                <div class="dropdown-menu w-40">
-                    <ul class="dropdown-content">
-                        <li>
-                            <a href="#" id="myBtnX" class="trigger dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> Invite Someone </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="users" class="w-4 h-4 mr-2"></i> Create Group </a>
-                        </li>
-                        <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="settings" class="w-4 h-4 mr-2"></i> Settings </a>
-                        </li>
-                    </ul>
-                </div>
-            </div> --}}
-        </div>
-    </div>
-
     <div class="intro-y">
         <!-- BEGIN: Chat Side Menu -->
         <div id="chatList" class="chatList col-span-12 w-full" style="margin-bottom:4px; padding-bottom:0px;">
-            
-            @hasanyrole(['patient', 'counselor'])
+            {{-- @hasanyrole(['patient', 'counselor'])
             <div class="intro-y pr-1">
                 <div class="box p-2">
                     <ul class="nav nav-pills" role="tablist">
@@ -63,18 +13,18 @@
                         </li>
                         @hasanyrole('counselor')
                         <li id="friends-tab" class="nav-item flex-1" role="presentation">
-                            {{-- <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > My Patients </button> --}}
+                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > My Patients </button>
                         </li>
                         @endhasanyrole
                         @hasanyrole('patient')
                         <li id="profile-tab" class="nav-item flex-1" role="presentation">
-                            {{-- <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" >  </button> --}}
+                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" >  </button>
                         </li>
                         @endhasanyrole
                     </ul>
                 </div>
             </div>
-            @endhasanyrole
+            @endhasanyrole --}}
             <div class="tab-content">
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
                     <div style="margin-bottom:0px; padding-bottom:0px;"class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4 ">
@@ -136,7 +86,7 @@
         </div>
         <!-- END: Chat Side Menu -->
         <!-- BEGIN: Chat Content -->
-        <div class="convoBody invisible intro-y col-span-12 w-full">
+        <div id="chatContent" class="convoBody invisible intro-y col-span-12 w-full">
             <div class="chat__box box">
                 <!-- BEGIN: Chat Active -->
                 {{-- @include('page.patients._partials.chat.chat_body') --}}
@@ -150,11 +100,21 @@
                                 <div id="chat_receiver_name" class="font-medium text-base"></div>
                                 <small id="chat_receiver_role" class="text-slate-500 text-xs sm:text-sm"><span class="mx-1">•</span> Online</small>
                             </div>
+
+                            <button id="btnback2" onclick="back()">
+                                <i data-lucide="undo" class="w-5 h-5"></i>
+                            </button>
                         </div>
                         <div class="flex items-center sm:ml-auto mt-5 sm:mt-0 border-t sm:border-0 border-slate-200/60 pt-3 sm:pt-0 -mx-5 sm:mx-0 px-5 sm:px-0">
-                            <a target="_blank" href="{{ route('video-call', ['id'=> 1]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">Video Call</a>
+                            
+                            <button id="btnback" onclick="back()">
+                                <i data-lucide="undo" class="w-5 h-5"></i>
+                            </button>
+                            <a target="_blank" href="{{ route('video-call', ['id'=> 1]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">
+                                <i data-lucide="video" class="w-5 h-5"></i>
+                            </a>
                             {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
-                            <button class="btn btn-success shadow-md text-white mr-2">Phone Call</button>
+                            <button class="btn btn-success shadow-md text-white mr-2"><i data-lucide="phone" class="w-5 h-5"></i></button>
                             <a href="javascript:;" class="w-5 h-5 text-slate-500"> <i data-lucide="search" class="w-5 h-5"></i> </a>
                             <a href="javascript:;" class="w-5 h-5 text-slate-500 ml-5"> <i data-lucide="user-plus" class="w-5 h-5"></i> </a>
                             <div class="dropdown ml-auto sm:ml-3">
@@ -182,7 +142,7 @@
                         </div>
                     </div>
 
-                    <div id="message_thread" style="height: 40%" class="overflow-y-scroll scrollbar-hidden px-5 pt-5 flex-1">
+                    <div id="message_thread" style="height: 45%" class="overflow-y-scroll scrollbar-hidden px-5 pt-5 flex-1">
 
                         {{-- <div class="chat__box__text-box flex items-end float-right mb-4">
                             <div class="hidden sm:block dropdown mr-3 my-auto">
@@ -1773,7 +1733,9 @@
         // alert(h);
         const chatPage = document.querySelector('.chatPage');
         if(h > 427){
-            chatPage.style.cssText += "height: "+h+"px; min-height:"+h+"px; device-height:"+h+"px; padding-top:6px; padding-left:0px;; padding-right:0px;; padding-bottom:0px; margin:0px;"
+            chatPage.style.cssText += "height: "+h+"px; min-height:"+h+"px; device-height:"+h+"px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
+        }else{
+            chatPage.style.cssText += "height:500px; min-height:500px; device-height: 500px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
         }
 
     });

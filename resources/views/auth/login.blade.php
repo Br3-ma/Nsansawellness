@@ -226,7 +226,7 @@
                             </div>
                         @enderror
                         {{-- <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div> --}}
-                        <div class="intro-x mt-8">
+                        <div class="lg:intro-x mt-8">
                             <input placeholder="Your email" required id="email" type="email" name="email" class="form-control intro-x login__input py-3 px-4 block @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
 
                             <input placeholder="Your password" required id="password" type="password" name="password" class="form-control intro-x login__input py-3 px-4 block mt-4 @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
@@ -236,7 +236,7 @@
                                 </small>
                             @enderror
                         </div>
-                        <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4">
+                        <div class="lg:intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4">
                             <div class="flex items-center mr-auto">
                                 <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
                                 <label class="cursor-pointer select-none" for="remember-me">Remember me</label>
@@ -246,7 +246,7 @@
                         {{-- <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4 w-full">
 
                         </div> --}}
-                        <div class="intro-x mt-5 xl:mt-8 text-center text-md xl:text-left w-full">
+                        <div class="lg:intro-x mt-5 xl:mt-8 text-center text-md xl:text-left w-full">
                             <button type="submit" class="btn btn-warning py-3 px-4 w-full xl:w-full xl:mr-3 align-top">Login</button>
                             <a href="{{ route('start') }}" class="btn text-warning btn-outline-warning py-3 px-4 mt-2 w-full xl:w-full xl:mr-3">Sign up as Patient</a><br>
                             <a href="{{ route('careers') }}" class="btn btn-outline-success py-3 mt-2 px-4 w-full xl:w-full xl:mr-3">Find a Therapist Job</a>
