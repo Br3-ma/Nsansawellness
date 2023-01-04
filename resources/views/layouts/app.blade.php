@@ -165,7 +165,7 @@
         </script>
     </head>
     <!-- END: Head -->
-    <body class="py-5 md:py-0">
+    <body style="height: 629px; min-height:629px; device-height:629px;" class="lg:py-5 py-0 md:py-0">
         <!-- BEGIN: Mobile Menu -->
         <div class="mobile-menu md:hidden">
             <div class="mobile-menu-bar">

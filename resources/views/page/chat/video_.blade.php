@@ -165,7 +165,7 @@
                     <li title="Quick Settings"><img src="https://i.postimg.cc/v84Fqkyz/setting.png"></li>
                 </ul>
             </nav>
-            <template>
+            <div>
                 <div class="container">
                     <div class="top-icons">
                         <img src="https://i.postimg.cc/cCpcXrSV/search.png">
@@ -174,14 +174,21 @@
                     <div class="row">
                         
                         <div class="col-1">
-                            <div class="top-icons">
+                            <h1>openvidu-ipcameras</h1>
+                            <form class="form-group" action="/" method="get">
+                                <input type="text" name="credentials" placeholder="credentials" required="true" value="PASSWORD"></input>
+                                <button type="submit">Subscribe to cameras</button>
+                            </form>
+                            <button onclick="unsubscribe()">Unsubscribe from cameras</button>
+                            <div id="cameras"></div>
+                            {{-- <div class="top-icons">
                                 <video height="75%" width="50px"  class="img-responsive" id='localVideo'>
                                     Your browser does not support the video tag.
                                 </video>
                                 <video  class="img-responsive" id='remoteVideo'>
                                     Your browser does not support the video tag.
                                 </video>
-                            </div>
+                            </div> --}}
                             <!-- <img height="75%" width="50px" src="https://media1.popsugar-assets.com/files/thumbor/YPjaz8052B7wAJ_dZl99jxVL0zg/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2020/02/10/627/n/1922729/330be6f43c47a571_chantablue/i/Chanta-Blue.jpg" class="host-img"> -->
                             <div class="contarols">
                                 <img src="https://i.postimg.cc/3NVtVtgf/chat.png">
@@ -216,13 +223,119 @@
                         </div>
                     </div>
                 </div>
-            </template>
+            </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> 
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-    <script>
-         
-    </script>
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script> --}}
+        <script src="{{ asset('/dist/js/openvidu-browser-2.25.0.js') }}"></script>
+        <script th:inline="javascript">
+            // OpenVidu objects
+            var OV
+            var session;
+            var videosContainer = document.getElementById('cameras');
+        
+            // Get all the attributes from the template in Thymeleaf style
+            // var error = [[${error}]];
+            // var token = [[${token}]];
+        
+            if (!!error) {
+                alert(error);
+            } else if (!!token) {
+                // Subscribe to OpenVidu session only when token is available
+                subscribe(token);
+            }
+        
+            function subscribe() {
+        
+                // Initialize OpenVidu and Session objects
+                OV = new OpenVidu();
+                session = OV.initSession();
+        
+                // On every new Stream received...
+                session.on('streamCreated', event => {
+        
+                    // Subscribe to the Stream to receive it
+                    // HTML video will be appended to a new element created inside <div id='cameras'>
+                    var videoDiv = document.createElement('div');
+                    var stream = event.stream;
+                    videoDiv.classList.add('video-container');
+                    videoDiv.id = stream.streamId;
+                    videosContainer.appendChild(videoDiv);
+                    // Append video inside our brand new <div> element
+                    var subscriber = session.subscribe(stream, videoDiv);
+        
+                    // When the HTML video has been appended to DOM...
+                    subscriber.on('videoElementCreated', ev => {
+                        // ...append camera name on top of video
+                        var cameraName = document.createElement('div');
+                        cameraName.innerText = stream.connection.data;
+                        cameraName.classList.add('camera-name');
+                        ev.element.parentNode.insertBefore(cameraName, ev.element);
+                        // ...start loader
+                        var loader = document.createElement('div');
+                        loader.classList.add('loader');
+                        ev.element.parentNode.insertBefore(loader, ev.element.nextSibling);
+                    });
+        
+                    // When the HTML video starts playing...
+                    subscriber.on('streamPlaying', ev => {
+                        // ...remove loader
+                        var cameraVideoElement = subscriber.videos[0].video;
+                        cameraVideoElement.parentNode.removeChild(cameraVideoElement.nextSibling);
+                        // ... mute video if browser blocked autoplay
+                        autoplayMutedVideoIfBlocked(cameraVideoElement);
+                    });
+        
+                    // When the HTML video has been removed from DOM...
+                    subscriber.on('videoElementDestroyed', ev => {
+                        // ...remove the HTML elements related to the destroyed video
+                        var videoContainer = document.getElementById(stream.streamId);
+                        videoContainer.parentNode.removeChild(videoContainer);
+                    });
+                });
+        
+                // On every asynchronous exception...
+                session.on('exception', (exception) => {
+                    console.warn(exception);
+                });
+        
+                // Connect to session. We will receive all necessary events when success
+                session.connect(token)
+                    .catch(error => {
+                        var msg = 'There was an error connecting to the session. Code: ' + error.code + '. Message: ' + error
+                            .message;
+                        console.error(msg);
+                        alert(msg);
+                    });
+            }
+        
+            function unsubscribe() {
+                if (!!session) {
+                    // Leave OpenVidu Session
+                    session.disconnect();
+                }
+            }
+        
+            function autoplayMutedVideoIfBlocked(video) {
+                // Browser can block video playback if it is auto played without user interaction
+                // One solution is to mute the video and let the user know
+                video.controls = true;
+                var promise = video.play();
+                if (promise !== undefined) {
+                    promise.then(() => {
+                        // Autoplay started
+                    }).catch(error => {
+                        // The video must play muted until user hits play button
+                        video.muted = true;
+                        video.play();
+                    });
+                }
+            }
+        
+            // Unsubscribe from OpenVidu session when leaving the page
+            window.addEventListener("beforeunload", () => {
+                unsubscribe();
+            });
+        </script>
 
 </html> 
