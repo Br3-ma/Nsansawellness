@@ -94,6 +94,7 @@
                     @endforelse
                     @endif
 
+                    @if (!empty($incoming_appointments))
                     @forelse ($incoming_appointments as $app)
                     <div class="relative items-center flex transition rounded-md p-2">
                         <div class="event p-3 -mx-3 {{  $app->appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} flex items-center">
@@ -134,6 +135,7 @@
                     @empty
                     <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
                     @endforelse
+                    @endif
                 </div>
                 {{-- <div class="form-check form-switch flex">
                     <label class="form-check-label" for="checkbox-events">Notify me</label>
