@@ -95,8 +95,8 @@
                     @endif
 
                     @forelse ($incoming_appointments as $app)
-                    @dd($app->appointment->toArray())
-                    @if(!empty($app->appointment->toArray()))
+                    @dd($app->appointment != null)
+                    @if($app->appointment != null)
                     <div class="relative items-center flex transition rounded-md p-2">
                         <div class="event p-3 -mx-3 {{  $app->appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} flex items-center">
                             @if($app->appointment->status != 0)
