@@ -203,7 +203,7 @@
                         <ul class="">
                             <li>
                                 <a href="{{ route('activities.index')}}"  class="menu">
-                                    <div class="menu__icon"> <i data-lucide="box"></i> </div>
+                                    <div class="menu__icon"> <i data-lucide="person-standing"></i> </div>
                                     <div class="menu__title"> Activities & Actions </div>
                                 </a>
                             </li>
@@ -337,7 +337,7 @@
                         <ul class="">
                             <li>
                                 <a href="{{ route('activities.index')}}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
+                                    <div class="side-menu__icon"> <i data-lucide="person-standing"></i> </div>
                                     <div class="side-menu__title"> Activities </div>
                                 </a>
                             </li>

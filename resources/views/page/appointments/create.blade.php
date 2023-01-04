@@ -2,11 +2,19 @@
 @section('content')
 <div class="content">
     <div class="intro-y flex items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">
-            Add Appointment
-        </h2>
+        <div class="text-lg font-medium flex mr-auto">
+            <i data-lucide="calendar" class="w-6 h-6"></i>
+            &nbsp;
+            <span class="bloack">
+                <p>Appointments</p>
+                <p class="text-sm font-medium mr-auto">
+                    Make an Appointment
+                </p>
+            </span>
+        </div>
         <a href="{{ route('appointment') }}" class="intro-x btn shadow-md mr-2">Back to Appointments</a>
     </div>
+
     <div class="intro-y flex flex-col sm:flex-row items-center mt-2">
         <div class="col-span-12 w-full">
             @if (count($errors) > 0)

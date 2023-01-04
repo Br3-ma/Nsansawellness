@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\UserAppointment;
 use App\Notifications\MyNewAppointment;
 use App\Notifications\NewAppointment;
+use App\Traits\CounselorTrait;
+use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Pusher\Pusher;
@@ -16,6 +18,7 @@ use Session;
 
 class AppointmentController extends Controller
 {    
+    use PatientTrait, CounselorTrait;
     public $appointment, $user_appointment, $user, $pushConfs, $pusher;
     /**
      * Display a listing of the resource.
@@ -132,7 +135,17 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        $users = $this->user->get();
+
+        if(auth()->user()->hasRole('counselor')){
+            $users = $this->allMyPatients(auth()->user());
+        }else if(auth()->user()->hasRole('patient')){
+            $users = $this->getMyCounselor(auth()->user());
+        }else{
+            $users = $this->users->get();
+        }
+        
+        
+        
         return view('page.appointments.create', compact('users'));
     }
 

@@ -7,12 +7,15 @@ use App\Models\Activity;
 use App\Models\PatientActivity;
 use App\Models\User;
 use App\Notifications\NewActivity;
+use App\Traits\CounselorTrait;
+use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
 use Pusher\Pusher;
 use Session;
 
 class ActivityController extends Controller
 {    
+    use PatientTrait, CounselorTrait;
     public $activity, $user, $pushConfs, $pusher, $assigned_patients;
     /**
      * Display a listing of the resource.
@@ -54,7 +57,13 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        $users = $this->user->get();
+        if(auth()->user()->hasRole('counselor')){
+            $users = $this->allMyPatients(auth()->user());
+        }else if(auth()->user()->hasRole('patient')){
+            $users = $this->getMyCounselor(auth()->user());
+        }else{
+            $users = $this->users->get();
+        }
         return view('page.activity.create', compact('users'));
     }
 

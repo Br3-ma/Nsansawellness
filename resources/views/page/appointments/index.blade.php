@@ -2,10 +2,10 @@
 @section('content')
 <div class="content">
     <div class="intro-y flex flex-col sm:flex-row items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">
-            Appointments
-
-            {{-- {{ $events }} --}}
+        <h2 class="text-lg font-medium mr-auto flex space-x-6">
+            <i data-lucide="calendar" class="w-6 h-6"></i>
+            &nbsp;
+            <span>Appointments</span>
         </h2>
         @if (Session::has('attention'))
         <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 

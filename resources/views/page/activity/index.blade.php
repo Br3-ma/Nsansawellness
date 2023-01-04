@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <div class="content">
-    <h2 class="intro-y text-lg font-medium mt-10">
-        Activities
+    <h2 class="text-lg font-medium mr-auto flex space-x-6 mt-8">
+        <i data-lucide="person-standing" class="w-6 h-6"></i>
+        &nbsp;
+        <span>Activities</span>
     </h2>
     @if (Session::has('attention'))
     <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
@@ -37,7 +39,7 @@
             {{-- <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div> --}}
             <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
                 @can('activities.create')
-                <a href="{{ route('activities.create') }}" class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> New Activity </a>
+                <a href="{{ route('activities.create') }}" class="btn btn-primary shadow-md mr-2"> <i data-lucide="plus" class="w-4 h-4 mr-2"></i> New Activity </a>
                 {{-- <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Download PDF </button> --}}
                 @endcan
             </div>

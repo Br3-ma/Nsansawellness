@@ -2,10 +2,20 @@
 @section('content')
 <div class="content">
     <div class="intro-y flex items-center mt-8">
-        <h2 class="text-lg font-medium mr-auto">
-            New Activity
-        </h2>
-        <a href="{{ route('activities.index') }}" class="intro-x btn shadow-md mr-2">Back to Activities</a>
+        <div class="text-lg font-medium flex mr-auto">
+            <i data-lucide="person-standing" class="w-6 h-6"></i>
+            &nbsp;
+            <span class="block">
+                <p>Activities</p>
+                <p class="text-sm text-primary font-medium mr-auto">
+                    Create & assign a new activity
+                </p>
+            </span>
+        </div>
+        <a href="{{ route('appointment') }}" class="intro-x flex space-x-2 btn shadow-md mr-2">
+            <i data-lucide="undo" class="w-4 h-4"></i>
+            <span>Back</span>
+        </a>
     </div>
     @if (count($errors) > 0)
         <div class="w-full">
@@ -59,10 +69,27 @@
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
                                     <select id="category" name="type" class="form-select">
-                                        <option value="Anxiety">Anxiety</option>
-                                        <option value="Depression">Depression</option>
-                                        <option value="Stress">Stress Therapy</option>
-                                        <option value="Fobia">Fobia</option>
+                                        <option value="None">None</option>
+                                        <option value="anxiety">Anxiety</option>
+                                        <option value="fobia">Fobia</option>
+                                        <option value="substance use disorder">Substance Use Disorder</option>
+                                        <option value="attention deficit hyperactivity disorder">Attention Deficit Hyperactivity Disorder</option>
+                                        <option value="obsessive compulsive disorder (OCD)">Obsessive Compulsive Disorder (OCD)</option>
+                                        <option value="oppositional and defiant behavior">Oppositional and Defiant Behavior</option>
+                                        <option value="stress management">Stress Management</option>
+                                        <option value="paranoid personality (PPD)">Paranoid personality (PPD)</option>
+                                        <option value="paranoia">Paranoia</option>
+                                        <option value="Grief, Loss, and Bereavement">Grief, Loss, and Bereavement</option>
+                                        <option value="depression">Depression</option>
+                                        <option value="Pregnancy and Childbirthing">Pregnancy and Childbirthing</option>
+                                        <option value="Agoraphobia">Agoraphobia (crowded place, confined spaces)</option>
+                                        <option value="antisocial personality disorder (ASPD)">antisocial personality disorder (ASPD)</option>
+                                        <option value="Academic concerns">Academic concerns (learning difficulties, bulling)</option>
+                                        <option value="obsessive compulsive disorder">Obsessive Compulsive Disorder</option>
+                                        <option value="post-Traumatic stress disorder">Post-Traumatic Stress Disorder</option>
+                                        <option value="career confusion">Career Confusion</option>
+                                        <option value="Sex Addiction Therapy">Sex Addiction</option>
+                                        <option value="anger management">Anger Management</option>
                                     </select>
                                 </div>
                             </div>
