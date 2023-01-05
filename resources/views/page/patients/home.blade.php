@@ -27,14 +27,14 @@
             {{-- @endhasanyrole --}}
             <div class="tab-content">
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
-                    <div style="margin-bottom:0px; padding-bottom:0px;"class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4 ">
+                    <div style="margin-bottom:0px; padding-bottom:0px;" class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4 px-4">
                         @forelse($chats as $chat)
                             {{-- If I Started the Chat --}}
                             @if($chat->sender_id == auth()->user()->id)
-                                <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')" class="intro-x cursor-pointer box relative flex items-center p-5 mt-3">
+                                <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')" class="intro-x chat-list-item cursor-pointer relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
                                         @if($chat->sender->image_path != null) 
-                                        <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full size-full" alt="" loading="lazy" />
+                                        <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
                                         @endif
                                     </div>
                                     <div class="ml-2 overflow-hidden">
@@ -48,7 +48,7 @@
                                 </div>
                             @else 
                             {{-- If They Started the Chat --}}
-                                <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" class="intro-x cursor-pointer box relative flex items-center p-5 mt-3">
+                                <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" class="intro-x cursor-pointer chat-list-item relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
                                         @if($chat->sender->image_path != null)
                                         <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="rounded-full attachment-full size-full" alt="" loading="lazy" />
@@ -1693,9 +1693,9 @@
                 </div>
                 <!-- END: Chat Active -->
                 <!-- BEGIN: Chat Default -->
-                <div class="h-full flex items-center">
+                <div class="h-full flex items-center hidden">
                     <div class="mx-auto text-center">
-                        <div class="w-16 h-16 flex-none image-fit rounded-full overflow-hidden mx-auto">
+                        {{-- <div class="w-16 h-16 flex-none image-fit rounded-full overflow-hidden mx-auto">
                             @if(Auth::User()->image_path == null)
                             <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="{{ Auth::User()->fname.' '.Auth::User()->lname  }}">
                                 {{ Auth::User()->fname[0].' '.Auth::User()->lname[0] }}
@@ -1703,8 +1703,8 @@
                             @else
                             <img alt="{{ Auth::User()->fname.' '.Auth::User()->lname }}" src="{{ asset('public/storage/'.Auth::user()->image_path) }}">
                             @endif
-                        </div>
-                        <div class="mt-3">
+                        </div> --}}
+                        {{-- <div class="mt-3">
                             <div class="font-medium">Hey, {{ Auth::User()->fname.' '.Auth::User()->lname }}</div>
                             @hasanyrole('patient')
                             <div class="text-slate-500 mt-1">Welcome back.</div>
@@ -1715,7 +1715,7 @@
                             @hasanyrole('admin')
                             <div class="text-slate-500 mt-1">{{ date("D M d, Y G:i") }}</div>
                             @endhasanyrole
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <!-- END: Chat Default -->
@@ -1725,15 +1725,22 @@
     </div>
 </div>
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
 <script>
     $(document).ready(function() {
         $('.convoBody').hide();
         const h = window.innerHeight;
-        // alert(h);
+        if (window.matchMedia("(max-width: 767px)").matches)
+        {
+            // The viewport is less than 768 pixels wide
+            alert("This is a mobile device.");
+        }
         const chatPage = document.querySelector('.chatPage');
+        
         if(h > 427){
             chatPage.style.cssText += "height: "+h+"px; min-height:"+h+"px; device-height:"+h+"px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
+       
         }else{
             chatPage.style.cssText += "height:500px; min-height:500px; device-height: 500px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
         }

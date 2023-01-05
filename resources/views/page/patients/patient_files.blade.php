@@ -47,7 +47,7 @@
         </div></form>
     </div>
 </div> <!-- END: Modal Content -->
-<div class="content">
+<div class="content contentCanvas">
     <h2 class="text-lg font-medium mr-auto flex space-x-6 mt-8">
         <i data-lucide="files" class="w-6 h-6"></i>
         &nbsp;
