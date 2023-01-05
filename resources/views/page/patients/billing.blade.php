@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div class="content mt-8">
-    <h2 class="intro-y text-lg font-medium mt-10">
-        Billing History
+<div class="content mt-8 contentCanvas">
+    <h2 class="text-lg font-medium mr-auto flex space-x-6 mt-8">
+        <i data-lucide="wallet" class="w-6 h-6"></i>
+        &nbsp;
+        <span>Billing History</span>
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         {{-- <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">

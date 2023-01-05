@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="en" class="light">
+<html lang="en" id="rootApp" style="" class="light overflow-hidden">
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
@@ -78,6 +78,10 @@
         }
         #chatContent{
             margin-top:8%;
+        }            
+        .chat-list-tiem{
+            border: 1px solid #024A64;
+            border-radius:2%;
         }
         @media only screen and (max-width:600px){
             #mobilechat, 
@@ -98,7 +102,17 @@
             #chatContent{
                 margin-top:12%;
             }
-          
+            #rootApp{
+                background-color:#fff;
+            }
+            .contentCanvas{
+                background-color:rgb(255, 255, 255);
+                border-radius: 0%; 
+            
+            }
+            .chat-list-tiem{
+                border: 1px solid #024A64;
+            }
         }
         </style>
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
