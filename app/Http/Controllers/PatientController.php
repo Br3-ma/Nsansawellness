@@ -19,7 +19,7 @@ use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
 class PatientController extends Controller
 {
     use PatientTrait;
-    public $users, $u, $pf, $appointment, $chat;
+    public $user, $users, $u, $pf, $appointment, $chat;
     /**
      * Create a new controller instance.
      *

@@ -142,7 +142,7 @@
                         </div>
                     </div>
 
-                    <div id="message_thread" style="height: 45%" class="overflow-y-scroll scrollbar-hidden px-5 pt-5 flex-1">
+                    <div id="message_thread" style="height: 45%" class="overflow-y-scroll scrollbar-hidden px-0 lg:px-5 pt-5 flex-1">
 
                         {{-- <div class="chat__box__text-box flex items-end float-right mb-4">
                             <div class="hidden sm:block dropdown mr-3 my-auto">
@@ -1730,21 +1730,15 @@
 <script>
     $(document).ready(function() {
         $('.convoBody').hide();
-        const h = window.innerHeight;
+        const chatPage = document.querySelector('.chatPage');
         if (window.matchMedia("(max-width: 767px)").matches)
         {
             // The viewport is less than 768 pixels wide
-            alert("This is a mobile device.");
-        }
-        const chatPage = document.querySelector('.chatPage');
-        
-        if(h > 427){
+            console.log("This is a mobile device.");
             chatPage.style.cssText += "height: "+h+"px; min-height:"+h+"px; device-height:"+h+"px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
-       
         }else{
             chatPage.style.cssText += "height:500px; min-height:500px; device-height: 500px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
         }
-
     });
     var user = {!! auth()->user()->toJson() ?? '' !!};
     var chat_id; 

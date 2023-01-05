@@ -83,6 +83,10 @@
             border: 1px solid #024A64;
             border-radius:2%;
         }
+
+        #payment-modal-dialog{
+            margin-top:25%;
+        }
         @media only screen and (max-width:600px){
             #mobilechat, 
             #mobilePersonalDetails,
@@ -112,6 +116,9 @@
             }
             .chat-list-tiem{
                 border: 1px solid #024A64;
+            }
+            #payment-modal-dialog{
+                margin-top:70%;
             }
         }
         </style>
@@ -187,6 +194,17 @@
                     }
                     
                 }, 3000);
+
+
+                // ******* Custom Methods 
+                // *** Checks payment status
+                let rand1 = Math.floor(Math.random() * 21);
+                let rand2 = Math.floor(Math.random() * 21);
+                if(rand1 % 2 != 0 && rand2 % 2 != 0){
+                    const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
+                    myModal.show();
+                }
+
             });
         </script>
     </head>
@@ -636,6 +654,40 @@
             <div class="font-medium">You have a new Homework Activity.</div>
             <div class="text-slate-500 mt-1">
                 Check your notifications
+            </div>
+        </div>
+        {{-- <div class="text-center"> <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#static-backdrop-modal-preview" class="btn btn-primary">Show Modal</a> </div> <!-- END: Modal Toggle --> --}}
+        <!-- BEGIN: Modal Content -->
+        <div id="payment-remainder-modal" class="modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl intro-y" id="payment-modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img alt="Nsansa wellness" class="w-8 h-8 rounded-full" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}">
+                        &nbsp;&nbsp;
+                        <h2 class="font-medium text-base mr-auto">Nsansa Wellness</h2> 
+                    </div>
+                    <div class="modal-body text-left text-sm"> 
+                        <span class="items-center justify-center">
+                            <img class="w-52 h-52" src="https://img.freepik.com/premium-vector/man-working-armchair-laptop-with-cat-his-arms-freelance-work-home-concept-hand-drawn-flat-vector-illustration_528592-655.jpg">
+                        </span>
+                        <small>
+                        <b>Hi {{ Auth::user()->fname.' '.Auth::user()->lname }},</b>
+                        <br>
+                        Hope you are doing well. This is just to remaind you that the invoice #24602 with a
+                        total of K950 I've sent you on 31st Dec 2021 is due today
+                        </small>
+                    </div>
+                    <div class="w-full flex text-white px-4">
+                        <a href="#" class="btn btn-warning btn-sm shadow-md text-white"> 
+                            <i data-lucide="wallet" class="w-4 h-4 "></i> &nbsp; 
+                            <small>Continue to Payments</small>
+                        </a> 
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <a target="_blank" href="{{ route('billing') }}" class="text-primary py-2"> 
+                            <small>View Details</small>
+                        </a> 
+                    </div>
+                </div>
             </div>
         </div>
     {{-- @endif --}}
