@@ -1,8 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <div class="content">
-    <h2 class="intro-y text-lg font-medium mt-10">
-        Users 
+    <h2 class="text-lg font-medium mr-auto flex space-x-6 mt-8">
+        <i data-lucide="users" class="w-6 h-6"></i>
+        &nbsp;
+        <span>Registered Users</span>
     </h2>
     @if (Session::has('attention'))
     <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
@@ -108,11 +110,11 @@
                 <div id="usersIndexControls" class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
                     <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
                         <div class="flex text-slate-500 text-xs">
-                            <div class="mr-auto">
+                            <div class="mr-auto flex">
                                 @if($user->email_verified_at == null)
                                     <span class="text-light">Never Loggedin</span>
                                 @else
-                                    <span class="text-success"><i class="w-4 h-4" data-lucide="verified"></i>&nbsp;Verified Account</span>
+                                    <i class="w-4 h-4" data-lucide="verified"></i>&nbsp;<span class="text-success">Verified Account</span>
                                 @endif
                             </div>
                             {{-- <div>20%</div> --}}

@@ -130,6 +130,7 @@
         <script>
             $(document).ready(function(){
                 var user = {!! auth()->user()->toJson() ?? '' !!};
+                var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
                 // console.log();
                 $.ajaxSetup({
                     headers: {
@@ -200,9 +201,11 @@
                 // *** Checks payment status
                 let rand1 = Math.floor(Math.random() * 21);
                 let rand2 = Math.floor(Math.random() * 21);
-                if(rand1 % 2 != 0 && rand2 % 2 != 0){
-                    const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
-                    myModal.show();
+                if(user_role == 'patient'){
+                    if(rand1 % 2 != 0 && rand2 % 2 != 0){
+                        const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
+                        myModal.show();
+                    }
                 }
 
             });
@@ -609,15 +612,7 @@
                             <li>
                                 <a href="{{ route('roles.index') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="user-plus"></i> </div>
-                                    <div class="side-menu__title"> User Roles </div>
-                                </a>
-                            </li>
-                            @endcan
-                            @can('permissions.index')
-                            <li>
-                                <a href="{{ route('permissions.index') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="user-x"></i> </div>
-                                    <div class="side-menu__title"> Permissions </div>
+                                    <div class="side-menu__title">  Roles and Permissions </div>
                                 </a>
                             </li>
                             @endcan
