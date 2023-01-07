@@ -1726,9 +1726,6 @@
         const h = window.innerHeight;
         const ht = window.screen.availHeight;
         const dh = window.screen.height;
-        alert(h);
-        alert(ht);
-        alert(dh);
         if (window.matchMedia("(max-width: 767px)").matches)
         {
             // The viewport is less than 768 pixels wide
