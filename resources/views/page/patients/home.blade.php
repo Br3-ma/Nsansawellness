@@ -7,31 +7,23 @@
             {{-- @hasanyrole(['patient', 'counselor']) --}}
             <div class="py-6 lg:py-8">
                 <div class="">
-                    {{-- <ul class="nav nav-pills" role="tablist">
-                        <li id="chats-tab" class="nav-item flex-1" role="presentation">
-                            <button class="nav-link w-full py-2 active" data-tw-toggle="pill" data-tw-target="#chats" type="button" role="tab" aria-controls="chats" aria-selected="true" > Therapy Sessions </button>
-                        </li>
-                        @hasanyrole('counselor')
-                        <li id="friends-tab" class="nav-item flex-1" role="presentation">
-                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#friends" type="button" role="tab" aria-controls="friends" aria-selected="false" > My Patients </button>
-                        </li>
-                        @endhasanyrole
-                        @hasanyrole('patient')
-                        <li id="profile-tab" class="nav-item flex-1" role="presentation">
-                            <button class="nav-link w-full py-2" data-tw-toggle="pill" data-tw-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false" >  </button>
-                        </li>
-                        @endhasanyrole
-                    </ul> --}}
                 </div>
             </div>
             {{-- @endhasanyrole --}}
             <div class="tab-content">
+
                 <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
                     <div style="margin-bottom:0px; padding-bottom:0px;" class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4 px-4">
+                       
+                        <h2 class="text-lg font-medium mr-auto flex space-x-6 mt-10 py-autox">
+                            <i data-lucide="message-square" class="mt-1 w-6 h-6"></i>
+                            &nbsp;
+                            <span>Therapy Sessions</span>
+                        </h2>
                         @forelse($chats as $chat)
                             {{-- If I Started the Chat --}}
                             @if($chat->sender_id == auth()->user()->id)
-                                <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')" class="intro-x chat-list-item cursor-pointer relative flex items-center p-5 mt-3">
+                                <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')" class="intro-x chat-list-item cursor-pointer relative flex items-center p-5">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
                                         @if($chat->sender->image_path != null) 
                                         <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
@@ -1731,6 +1723,9 @@
     $(document).ready(function() {
         $('.convoBody').hide();
         const chatPage = document.querySelector('.chatPage');
+        const h = window.innerHeight;
+        const ht = window.screen.availHeight;
+        const dh = window.screen.height;
         if (window.matchMedia("(max-width: 767px)").matches)
         {
             // The viewport is less than 768 pixels wide
