@@ -1902,7 +1902,7 @@
                             for (const message of messages){
                                 console.log(message);
                                 if(user['id'] != message.user_id){
-                                    $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
+                                    $('#message_thread').append('<div class="chat__box__text-box flex justify-start float-left mb-4">\
                                         <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
                                                 <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
                                             </div>\
@@ -1928,7 +1928,7 @@
                                     ');
                                     $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
                                 }else{
-                                    $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
+                                    $('#message_thread').append('<div class="chat__box__text-box flex items-end float-right mb-4">\
                                     <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
                                                     '+ message.message +'\
                                         <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
