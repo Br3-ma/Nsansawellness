@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VideoCall App UI - Navid Dev</title>
+    <title>Nsansa Wellness | Video Session</title>
 
     <!-- Add Google Font -->
     <link
@@ -18,7 +18,7 @@
       <button class="mode-switch">
         <!-- sun icon -->
 
-        <img alt="Nsansa wellness" width="120%" class="w-6 rounded-full" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}">
+        <img alt="Nsansa wellness" width="110%" class="w-6 rounded-full" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}">
         <!-- sun icon -->
 
         <!-- moon icon -->
@@ -38,7 +38,7 @@
         <!-- moon icon -->
       </button>
       <div class="left-side">
-        <div class="navigation">
+        {{-- <div class="navigation">
           <a href="#" class="nav-link icon">
             <!-- Home icon -->
             <svg
@@ -176,7 +176,7 @@
             </svg>
             <!-- Setting icon -->
           </a>
-        </div>
+        </div> --}}
       </div>
       <div class="app-main">
         <div class="video-call-wrapper">
@@ -190,7 +190,7 @@
               <button class="btn-camera"></button>
             </div>
             <a href="#" class="name-tag">You</a>
-            <video height="100%" width="100%" style="border:1px solid black"  class="img-responsive" id='localVideo'>
+            <video poster="https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public" height="100%" width="100%" style="background-position: cover; background-size:cover" class="img-responsive" id='localVideo'>
                 Your browser does not support the video tag.
             </video>
             {{-- <img
@@ -222,7 +222,7 @@
               alt="participant"
             /> --}}
                     
-            <video height="100%" width="100%" style="border:1px solid black" class="img-responsive" id='remoteVideo'>
+            <video height="100%" width="100%" class="img-responsive" id='remoteVideo'>
                 Your browser does not support the video tag.
             </video>
           </div>
@@ -265,11 +265,11 @@
         </div>
 
         <div class="video-call-actions">
-          <button class="video-action-button mic"></button>
-          <button class="video-action-button camera"></button>
+          <button onclick="toggleAudioMute()" class="video-action-button mic"></button>
+          <button onclick="toggleVideo()" class="video-action-button camera"></button>
           <button class="video-action-button maximize"></button>
-          <button class="video-action-button endcall">Leave</button>
-          <button class="video-action-button magnifier">
+          <button onclick="endCall()" class="video-action-button endcall">Leave</button>
+          {{-- <button class="video-action-button magnifier">
             <!-- ZoomIn icon -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -299,13 +299,14 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               class="feather feather-zoom-out"
+              title="Zoom In"
             >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
               <line x1="8" y1="11" x2="14" y2="11" />
             </svg>
             <!-- ZoomOut Icon -->
-          </button>
+          </button> --}}
         </div>
       </div>
 
@@ -331,7 +332,9 @@
           </svg>
           <!-- Close Icon -->
         </button>
-        <div class="chat-container">
+
+        {{-- Chat --}}
+        {{-- <div class="chat-container">
           <div class="chat-header">
             <button class="chat-header-button">Live Chat</button>
           </div>
@@ -485,8 +488,11 @@
               </button>
             </div>
           </div>
-        </div>
-        <div class="participants">
+        </div> --}}
+
+
+        {{-- Paticipants --}}
+        {{-- <div class="participants">
           <!-- Participant pic 1 -->
           <div class="participant profile-picture">
             <img
@@ -516,9 +522,9 @@
             />
           </div>
           <div class="participant-more">2+</div>
-        </div>
+        </div> --}}
       </div>
-      <button class="expand-btn">
+      <button title="Expand" class="expand-btn">
         <!-- expand icon -->
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -582,6 +588,28 @@
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
           })
       })
-  
+
+
+
+      function toggleVideo(){      
+        // stop only video
+        console.log(localStream);
+        localStream.getVideoTracks()[0].stop();
+        document.getElementById('localVideo').setAttribute('poster','https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public');
+        
+      }
+
+      function toggleAudioMute(){
+        // stop only audio
+        localStream.getAudioTracks()[0].stop();
+      }
+
+      // function endCall(){
+      //   navigator.mediaDevices.getUserMedia({ audio: false});
+      // }
+      // localStream.getTracks().forEach( (track) => {
+      //   track.stop();
+      // });
+
   </script>
 </html>
