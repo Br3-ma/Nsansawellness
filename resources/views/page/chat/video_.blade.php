@@ -180,26 +180,22 @@
       </div>
       <div class="app-main">
         <div class="video-call-wrapper">
-            <input type="text" name="localPeerId" id="localPeerId" readonly>
+            {{-- <input type="text" name="localPeerId" id="localPeerId" readonly>
             <input type="text" name="remotePeerId" id="remotePeerId">
-            <button onclick="join()" id="btn-call">Join (Call)</button>
+            <button onclick="join()" id="btn-call">Join (Call)</button> --}}
           <!-- Video Participant 1 -->
-          <div class="video-participant">
+          <div id="local-screen" class="video-participant">
             <div class="participant-action">
               <button class="btn-mute"></button>
               <button class="btn-camera"></button>
             </div>
             <a href="#" class="name-tag">You</a>
-            <video poster="https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public" height="100%" width="100%" style="background-position: cover; background-size:cover" class="img-responsive" id='localVideo'>
+            <video poster="https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public" height="100%" width="100%" style=" object-fit: cover; background-position: cover; background-size:cover" class="img-responsive" id='localVideo'>
                 Your browser does not support the video tag.
             </video>
-            {{-- <img
-              src="https://images.unsplash.com/photo-1566821582776-92b13ab46bb4?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-              alt="participant"
-            /> --}}
           </div>
           <!-- Video Participant 2 -->
-          {{-- <div class="video-participant">
+          {{-- <div class="remote-screen video-participant">
             <div class="participant-action">
               <button class="btn-mute"></button>
               <button class="btn-camera"></button>
@@ -211,21 +207,27 @@
             />
           </div> --}}
           <!-- Video Participant 3 -->
-          <div class="video-participant">
+          <div style="" class="remote-screen video-participant">
             <div class="participant-action">
               <button class="btn-mute"></button>
               <button class="btn-camera"></button>
             </div>
             <a href="#" class="name-tag">Tim Russel</a>
-            {{-- <img
-              src="https://images.unsplash.com/photo-1576110397661-64a019d88a98?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80"
-              alt="participant"
-            /> --}}
-                    
             <video height="100%" width="100%" class="img-responsive" id='remoteVideo'>
                 Your browser does not support the video tag.
             </video>
           </div>
+
+          {{-- <div class="remote-screen video-participant">
+            <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div>
+            <a href="#" class="name-tag">Tim Russel</a>
+            <video height="100%" width="100%" class="img-responsive" id='remoteVideo'>
+                Your browser does not support the video tag.
+            </video>
+          </div> --}}
           <!-- Video Participant 4 -->
           {{-- <div class="video-participant">
             <div class="participant-action">
@@ -267,7 +269,7 @@
         <div class="video-call-actions">
           <button onclick="toggleAudioMute()" class="video-action-button mic"></button>
           <button onclick="toggleVideo()" class="video-action-button camera"></button>
-          <button class="video-action-button maximize"></button>
+          {{-- <button class="video-action-button maximize"></button> --}}
           <button onclick="endCall()" class="video-action-button endcall">Leave</button>
           {{-- <button class="video-action-button magnifier">
             <!-- ZoomIn icon -->
@@ -334,11 +336,11 @@
         </button>
 
         {{-- Chat --}}
-        {{-- <div class="chat-container">
+        <div class="chat-container"> 
           <div class="chat-header">
             <button class="chat-header-button">Live Chat</button>
           </div>
-          <div class="chat-area">
+          <div class="convoBody chat-area">
             <!-- Message 1 -->
             <div class="message-wrapper">
               <div class="profile-picture">
@@ -488,7 +490,7 @@
               </button>
             </div>
           </div>
-        </div> --}}
+        </div> 
 
 
         {{-- Paticipants --}}
@@ -550,16 +552,26 @@
   {{-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>  --}}
   <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
   <script th:inline="javascript">
+      $(document).ready(function() {
+          $('.remote-screen').hide();
+          document.getElementById("local-screen").style.width = "100%"
+          document.getElementById("local-screen").style.height = "100%"
+          if (window.matchMedia("(max-width: 767px)").matches){}else{}
+      });
       const btnCall = document.getElementById('btn-call');
       const myId = document.getElementById('localPeerId');
       const peerId = document.getElementById('remotePeerId');
+      // const localScreen = document.getElementById('local-screen');
+      // const remoteScreen = document.getElementByClassName('remote-screen');
+
       var localVideo = document.getElementById('localVideo');
       var remoteVideo = document.getElementById('remoteVideo');
       var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
       var myID = '';
       var peer = new Peer();
+
       let localStream;
-  
+
       navigator.mediaDevices.getUserMedia({ video: true, audio: true})
           .then(stream =>{
               localStream = stream;
@@ -567,9 +579,9 @@
               localVideo.onloadedmetadata = () => localVideo.play();
           });
   
-      peer.on('open', id => {
-          myId.value = id;
-      });
+      // peer.on('open', id => {
+      //     myId.value = id;
+      // });
   
       function join(){
           const remotePeerId = peerId.value;
@@ -579,6 +591,8 @@
               remoteVideo.srcObject = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
           })
+
+          $('.remote-screen').show();
       }
   
       peer.on('call', call => {
@@ -590,26 +604,401 @@
       })
 
 
-
+      var videoStatus = 1;
+      var audioStatus = 1;
       function toggleVideo(){      
-        // stop only video
-        console.log(localStream);
-        localStream.getVideoTracks()[0].stop();
-        document.getElementById('localVideo').setAttribute('poster','https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public');
-        
+        // Only Video
+        console.log('In Video');
+        console.log(videoStatus);
+        console.log(audioStatus);
+        if(videoStatus == 0){
+          // Turn On Video, & check the sound status
+          if(audioStatus == 0){
+              navigator.mediaDevices.getUserMedia({ video: true, audio: false})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }else{
+              navigator.mediaDevices.getUserMedia({ video: true, audio: true})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }
+          videoStatus = 1;
+        }else{
+          // Turn Off Video
+          // Turn off Video, & check the sound status
+          if(audioStatus == 0){
+              navigator.mediaDevices.getUserMedia({ video: false, audio: false})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }else{
+              navigator.mediaDevices.getUserMedia({ video: false, audio: true})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }// localStream.getVideoTracks()[0].stop();
+          videoStatus = 0;
+        }
       }
+
 
       function toggleAudioMute(){
-        // stop only audio
-        localStream.getAudioTracks()[0].stop();
+        // Only Audio
+        console.log('In audio');
+        console.log(videoStatus);
+        console.log(audioStatus);
+        if(audioStatus == 0){
+          // If the video is OFF - turn it OFF here as well
+          if(videoStatus == 0){
+              navigator.mediaDevices.getUserMedia({ video: false, audio: true})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }else{
+              // Leave it ON
+              navigator.mediaDevices.getUserMedia({ video: true, audio: true})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }
+          audioStatus = 1;
+        }else{
+          navigator.permissions.query({ name:'microphone'});
+          // localStream.getAudioTracks()[0].stop();
+          // If the video is OFF - turn it OFF here as well
+          if(videoStatus == 0){       
+              localStream.getTracks().forEach( (track) => {
+                track.stop();
+              });
+          }else{
+
+              navigator.mediaDevices.getUserMedia({ video: true, audio: false})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }
+          audioStatus = 0;
+        }
       }
 
-      // function endCall(){
-      //   navigator.mediaDevices.getUserMedia({ audio: false});
-      // }
+      function endCall(){
+        peer.destroy();
+        $('.remote-screen').hide();
+        $('#local-screen').css = "width:100%; height:100%; margin:0 auto;"
+      }
       // localStream.getTracks().forEach( (track) => {
       //   track.stop();
       // });
 
   </script>
+
+
+<script>
+  $(document).ready(function() {
+      $('.convoBody').hide();
+      const chatPage = document.querySelector('.chatPage');
+      const h = window.innerHeight;
+      const ht = window.screen.availHeight;
+      const dh = window.screen.height;
+      if (window.matchMedia("(max-width: 767px)").matches)
+      {
+          // The viewport is less than 768 pixels wide
+          console.log("This is a mobile device.");
+          chatPage.style.cssText += "height: "+h+"px; min-height:"+h+"px; device-height:"+h+"px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
+      }else{
+          chatPage.style.cssText += "height:500px; min-height:500px; device-height: 500px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
+      }
+  });
+  var user = {!! auth()->user()->toJson() ?? '' !!};
+  var chat_id; 
+  var owner = null; 
+  var aDay = 24*60*60*1000;
+  var msgFeild = document.getElementById("message_textbox");
+  function startChat(id, who, names, role){
+      chat_id = id;
+      // alert(chat_id);
+      owner = who;
+      $('#chat_receiver_name').text(names);
+      $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
+      $('#message_thread').empty();
+      // $('#message_thread div').empty();
+      // {{-- Get chat message thread --}}
+      $.ajax({
+          type:'GET',
+          url:'{{ route("chat.index") }}',
+          data: {
+              id,owner
+          },
+          success:function(data) {
+              $('.convoBody').show();
+              $('#chatList').hide();
+              // sender
+              // let chat_id = data.chat_session.chat_messages[0].chat_id;
+              // message
+              // console.log(data.chat_session.chat_messages[0].message);
+              // message attributes
+              // console.log(data.chat_session.chat_messages[0]);
+              // all the messages
+              // console.log(data.chat_session.chat_messages);
+              // console.log(data);
+              // $("#fetched_data").html(data.msg);
+
+              let messages = data.chat_session.chat_messages;
+              
+              // UPDATED
+
+              for (const message of messages){
+
+                  if(user['id'] != message.user_id){
+                      $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
+                          <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                              <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
+                              </div>\
+                          <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
+                                          '+ message.message +'\
+                              <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
+                                      </div>\
+                                      <div class="hidden sm:block dropdown ml-3 my-auto">\
+                                  <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                  <div class="dropdown-menu w-40">\
+                                      <ul class="dropdown-content">\
+                                          <li>\
+                                              <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
+                                          </li>\
+                                          <li>\
+                                              <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
+                                          </li>\
+                                      </ul>\
+                                  </div>\
+                              </div>\
+                          </div>\
+                          <div class="clear-both"></div>\
+                      ');
+                  }else{
+                      $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
+                      <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                                      '+ message.message +'\
+                          <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
+                                  </div>\
+                                  <div class="hidden sm:block dropdown ml-3 my-auto">\
+                              <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-dark" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                              <div class="dropdown-menu w-40">\
+                                  <ul class="dropdown-content">\
+                                      <li>\
+                                          <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
+                                      </li>\
+                                      <li>\
+                                          <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
+                                      </li>\
+                                  </ul>\
+                              </div>\
+                          </div>\
+                          <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                              <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
+                          </div>\
+                      </div>\
+                      <div class="clear-both"></div>\
+                      ');
+                  }
+              } 
+              $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+          },
+          
+          error: function (msg) {
+              console.log(msg);
+              var errors = msg.responseJSON;
+          }
+      });
+  }
+
+  function send(){
+      var message = $('#message_textbox').val();
+      // alert(chat_id);
+      // alert(message_id);
+      let user_id = user['id'];
+      let status = 1;
+      // $('#message_thread').empty();
+      // $('#message_thread div').empty();
+      // {{-- Get chat message thread --}}
+      $.ajax({
+          type:'POST',
+          url:'{{ route("chat.store") }}',
+          data: {
+              user_id,
+              message,
+              chat_id,
+              status,
+          },
+          success:function(data) {    
+              update();
+              $('#message_textbox').val(''); 
+              $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+              
+          },
+          
+          error: function (msg) {
+              console.log(msg);
+              var errors = msg.responseJSON;
+          }
+      });
+
+
+  }
+
+  // // Execute a function when the user presses a key on the keyboard
+  // msgFeild.addEventListener("keypress", function(event) {
+  // // If the user presses the "Enter" key on the keyboard
+  //     if (event.key === "Enter") {
+  //         // Cancel the default action, if needed
+  //         event.preventDefault();
+  //         // Trigger the button element with a click
+  //         send();
+  //     }
+  // });
+
+  function update(){
+      let user_id = user['id'];
+      if(chat_id !== undefined){
+          $.ajax({    
+              type:'GET',
+              url:'{{ route("chat.stream") }}',
+              data: { 
+                  chat_id,owner
+              },
+              success:function(data) {
+                  let messages = data.chat_messages;
+                  console.log('Messages Thread Below');
+
+                  try {
+                      // console.log(Object.keys(messages).length);
+                      // console.log(messages);
+                      if(Object.keys(messages).length > 0){
+                          for (const message of messages){
+                              console.log(message);
+                              if(user['id'] != message.user_id){
+                                  $('#message_thread').append('<div class="chat__box__text-box flex justify-start float-left mb-4">\
+                                      <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                              <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
+                                          </div>\
+                                      <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
+                                                      '+ message.message +'\
+                                          <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
+                                                  </div>\
+                                                  <div class="hidden sm:block dropdown ml-3 my-auto">\
+                                              <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                              <div class="dropdown-menu w-40">\
+                                                  <ul class="dropdown-content">\
+                                                      <li>\
+                                                          <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
+                                                      </li>\
+                                                      <li>\
+                                                          <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
+                                                      </li>\
+                                                  </ul>\
+                                              </div>\
+                                          </div>\
+                                      </div>\
+                                      <div class="clear-both"></div>\
+                                  ');
+                                  $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+                              }else{
+                                  $('#message_thread').append('<div class="chat__box__text-box flex items-end float-right mb-4">\
+                                  <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
+                                                  '+ message.message +'\
+                                      <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
+                                              </div>\
+                                              <div class="hidden sm:block dropdown ml-3 my-auto">\
+                                          <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                          <div class="dropdown-menu w-40">\
+                                              <ul class="dropdown-content">\
+                                                  <li>\
+                                                      <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
+                                                  </li>\
+                                                  <li>\
+                                                      <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
+                                                  </li>\
+                                              </ul>\
+                                          </div>\
+                                      </div>\
+                                      <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                          <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
+                                      </div>\
+                                  </div>\
+                                  <div class="clear-both"></div>\
+                                  ');
+
+                                  $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+                              }
+                          }
+                      } 
+                  }catch(err){
+                      console.log('Not updates yet');
+                  }         
+              },
+              
+              error: function (msg) {
+                  console.log(msg);
+                  var errors = msg.responseJSON;
+              }
+          });
+      }
+  }
+
+  function init(){
+      $('#message_thread').empty();
+  }
+
+  var default_avatar = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4n4D5jth4fm4GE7ut7lWW-04lnDO2OkD-sg&usqp=CAU';
+  
+  function handleError(image) {
+      image.src = default_avatar;
+  }
+
+  function back(){
+      $('.convoBody').hide();
+      $('.chatList').show();
+  }
+  function timeSince(timeStamp) {
+      var now = new Date(), secondsPast = (now.getTime() - timeStamp) / 1000;
+      if (secondsPast < 60) {
+          return parseInt(secondsPast) + 's ago';
+      }
+      if (secondsPast < 3600) {
+          return parseInt(secondsPast / 60) + 'min ago';
+      }
+      if (secondsPast <= 86400) {
+          return parseInt(secondsPast / 3600) + 'h ago';
+      }
+      if (secondsPast > 86400) {
+          day = timeStamp.getDate();
+          month = timeStamp.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ", "");
+          year = timeStamp.getFullYear() == now.getFullYear() ? "" : " " + timeStamp.getFullYear();
+          return day + " " + month + year;
+      }
+  }
+
+  // const currentTimeStamp = new Date().getTime();
+  // console.log(timeSince(currentTimeStamp));
+
+  var intervalId = window.setInterval(function(){
+      update();
+  }, 1000);
+
+</script>
 </html>
