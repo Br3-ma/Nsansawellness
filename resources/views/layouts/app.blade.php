@@ -256,6 +256,12 @@
                             </div>
                             @endhasanyrole
                         </div>
+                        <div>
+                            <div class="flex justify-start space-x-4 text-xs text-white/60 mt-0.5 dark:text-slate-500">
+                                <i class="w-4 w-4" data-lucide="at-sign"></i>
+                                <span class="mt-1 ml-1">{{ Auth::user()->email }}</span>
+                            </div>
+                        </div>
                     </li>
                     <li>
                         <a href="{{ route('home') }}" class="menu">

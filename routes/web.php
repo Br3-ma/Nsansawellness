@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
 
     Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile');
-    Route::get('/joinning-conversation/{id}', [VideoCallController::class, 'startVideoCall'])->name('video-call');
+    Route::get('/video-session/{id}/{chat_id}/{receiver}/{role}', [VideoCallController::class, 'startVideoCall'])->name('video-call');
     Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
     Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
     Route::get('/api/fetch-session/{id}/{user}', [VideoCallController::class, 'getConversationDetails'])->name('conversation-details');

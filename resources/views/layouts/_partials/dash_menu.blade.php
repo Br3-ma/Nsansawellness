@@ -185,6 +185,10 @@
                             <span class="mt-1 ml-1">{{ preg_replace('/[^A-Za-z0-9. -]/', '',  Auth::user()->roles->pluck('name'))}}</span>
                         </div>
                         @endhasanyrole
+                        <div class="capitalize flex justify-start space-x-4 text-xs text-white/60 mt-0.5 dark:text-slate-500">
+                            <i class="w-4 w-4" data-lucide="at-sign"></i>
+                            <span class="mt-1 ml-1">{{ Auth::user()->email }}</span>
+                        </div>
                     </li>
                     <li>
                         <hr class="dropdown-divider border-white/[0.08]">
