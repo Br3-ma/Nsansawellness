@@ -336,41 +336,14 @@
         </button>
 
         {{-- Chat --}}
-        <div class="chat-container"> 
+        <div class="convoBody chat-container"> 
           <div class="chat-header">
             <button class="chat-header-button">Live Chat</button>
           </div>
-          <div class="convoBody chat-area">
-            <!-- Message 1 -->
-            <div class="message-wrapper">
-              <div class="profile-picture">
-                <img
-                  src="https://images.unsplash.com/photo-1581824283135-0666cf353f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="message-content">
-                <p class="name">Ryan Patrick</p>
-                <div class="message">Helloo team!😍</div>
-              </div>
-            </div>
-            <!-- Message 2 -->
-            <div class="message-wrapper">
-              <div class="profile-picture">
-                <img
-                  src="https://images.unsplash.com/photo-1566821582776-92b13ab46bb4?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-                  alt=""
-                />
-              </div>
-              <div class="message-content">
-                <p class="name">Andy Will</p>
-                <div class="message">
-                  Hello! Can you hear me?🤯 <a class="mention">@ryanpatrick</a>
-                </div>
-              </div>
-            </div>
-            <!-- Message 3 -->
-            <div class="message-wrapper">
+          {{-- convoBody message_thread  --}}
+          <div class="message_thread chat-area">
+            
+            {{-- <div class="message-wrapper">
               <div class="profile-picture">
                 <img
                   src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
@@ -382,7 +355,7 @@
                 <div class="message">Hi team! Let's get started it.</div>
               </div>
             </div>
-            <!-- Message 4 -->
+            
             <div class="message-wrapper reverse">
               <div class="profile-picture">
                 <img
@@ -394,76 +367,9 @@
                 <p class="name">Emmy Lou</p>
                 <div class="message">Good morning!🌈</div>
               </div>
-            </div>
+            </div> --}}
             <!-- Message 5 -->
-            <div class="message-wrapper">
-              <div class="profile-picture">
-                <img
-                  src="https://images.unsplash.com/photo-1576110397661-64a019d88a98?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="message-content">
-                <p class="name">Tim Russel</p>
-                <div class="message">New design document⬇️</div>
-                <div class="message-file">
-                  <div class="icon sketch">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                    >
-                      <path
-                        fill="#ffd54f"
-                        d="M96 191.02v-144l160-30.04 160 30.04v144z"
-                      />
-                      <path
-                        fill="#ffecb3"
-                        d="M96 191.02L256 16.98l160 174.04z"
-                      />
-                      <path fill="#ffa000" d="M0 191.02l256 304 256-304z" />
-                      <path fill="#ffca28" d="M96 191.02l160 304 160-304z" />
-                      <g fill="#ffc107">
-                        <path d="M0 191.02l96-144v144zM416 47.02v144h96z" />
-                      </g>
-                    </svg>
-                  </div>
-                  <div class="file-info">
-                    <div class="file-name">NewYear.sketch</div>
-                    <div class="file-size">120 MB</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Message 6 -->
-            <div class="message-wrapper">
-              <div class="profile-picture">
-                <img
-                  src="https://images.unsplash.com/photo-1581824283135-0666cf353f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="message-content">
-                <p class="name">Ryan Patrick</p>
-                <div class="message">Hi team!❤️</div>
-                <div class="message">
-                  I downloaded the file <a class="mention">@timrussel</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Message 7 -->
-            <div class="message-wrapper reverse">
-              <div class="profile-picture">
-                <img
-                  src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="message-content">
-                <p class="name">Emmy Lou</p>
-                <div class="message">Woooww! Awesome❤️</div>
-              </div>
-            </div>
+            
           </div>
           <div class="chat-typing-area-wrapper">
             <div class="chat-typing-area">
@@ -711,25 +617,15 @@
 
 <script>
   $(document).ready(function() {
-      $('.convoBody').hide();
-      const chatPage = document.querySelector('.chatPage');
-      const h = window.innerHeight;
-      const ht = window.screen.availHeight;
-      const dh = window.screen.height;
-      if (window.matchMedia("(max-width: 767px)").matches)
-      {
-          // The viewport is less than 768 pixels wide
-          console.log("This is a mobile device.");
-          chatPage.style.cssText += "height: "+h+"px; min-height:"+h+"px; device-height:"+h+"px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
-      }else{
-          chatPage.style.cssText += "height:500px; min-height:500px; device-height: 500px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
-      }
+    var user = {!! auth()->user()->toJson() ?? '' !!};
+    var chat_id; 
+    var owner = null; 
+    var aDay = 24*60*60*1000;
+    var msgFeild = document.getElementById("message_textbox");
+    startChat(id, who, names, role);
   });
-  var user = {!! auth()->user()->toJson() ?? '' !!};
-  var chat_id; 
-  var owner = null; 
-  var aDay = 24*60*60*1000;
-  var msgFeild = document.getElementById("message_textbox");
+
+
   function startChat(id, who, names, role){
       chat_id = id;
       // alert(chat_id);
@@ -748,17 +644,6 @@
           success:function(data) {
               $('.convoBody').show();
               $('#chatList').hide();
-              // sender
-              // let chat_id = data.chat_session.chat_messages[0].chat_id;
-              // message
-              // console.log(data.chat_session.chat_messages[0].message);
-              // message attributes
-              // console.log(data.chat_session.chat_messages[0]);
-              // all the messages
-              // console.log(data.chat_session.chat_messages);
-              // console.log(data);
-              // $("#fetched_data").html(data.msg);
-
               let messages = data.chat_session.chat_messages;
               
               // UPDATED
@@ -766,55 +651,31 @@
               for (const message of messages){
 
                   if(user['id'] != message.user_id){
-                      $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
-                          <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                              <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
-                              </div>\
-                          <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
-                                          '+ message.message +'\
-                              <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
-                                      </div>\
-                                      <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                  <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
-                                  <div class="dropdown-menu w-40">\
-                                      <ul class="dropdown-content">\
-                                          <li>\
-                                              <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
-                                          </li>\
-                                          <li>\
-                                              <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
-                                          </li>\
-                                      </ul>\
-                                  </div>\
-                              </div>\
-                          </div>\
-                          <div class="clear-both"></div>\
-                      ');
+                      $('#message_thread').append('<div class="message-wrapper">\
+                        <div class="profile-picture">\
+                          <img\
+                            src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"\
+                            alt=""\
+                          />\
+                        </div>\
+                        <div class="message-content">\
+                          <p class="name">Jessica Bell</p>\
+                          <div class="message">Hi team! Lets get started it</div>\
+                        </div>\
+                      </div>');
                   }else{
-                      $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
-                      <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
-                                      '+ message.message +'\
-                          <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
-                                  </div>\
-                                  <div class="hidden sm:block dropdown ml-3 my-auto">\
-                              <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-dark" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
-                              <div class="dropdown-menu w-40">\
-                                  <ul class="dropdown-content">\
-                                      <li>\
-                                          <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
-                                      </li>\
-                                      <li>\
-                                          <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
-                                      </li>\
-                                  </ul>\
-                              </div>\
+                      $('#message_thread').append('<div class="message-wrapper reverse">\
+                          <div class="profile-picture">\
+                            <img\
+                              src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"\
+                              alt=""\
+                            />\
                           </div>\
-                          <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                              <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
+                          <div class="message-content">\
+                            <p class="name">Emmy Lou</p>\
+                            <div class="message">Good morning!🌈</div>\
                           </div>\
-                      </div>\
-                      <div class="clear-both"></div>\
-                      ');
+                        </div>');
                   }
               } 
               $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
@@ -892,57 +753,35 @@
                           for (const message of messages){
                               console.log(message);
                               if(user['id'] != message.user_id){
-                                  $('#message_thread').append('<div class="chat__box__text-box flex justify-start float-left mb-4">\
-                                      <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                              <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
-                                          </div>\
-                                      <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
-                                                      '+ message.message +'\
-                                          <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
-                                                  </div>\
-                                                  <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                              <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
-                                              <div class="dropdown-menu w-40">\
-                                                  <ul class="dropdown-content">\
-                                                      <li>\
-                                                          <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
-                                                      </li>\
-                                                      <li>\
-                                                          <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
-                                                      </li>\
-                                                  </ul>\
-                                              </div>\
-                                          </div>\
+                                  $('#message_thread').append('<div class="message-wrapper">\
+                                    <div class="profile-picture">\
+                                        <img\
+                                          src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"\
+                                          alt=""\
+                                        />\
                                       </div>\
-                                      <div class="clear-both"></div>\
+                                      <div class="message-content">\
+                                        <p class="name">Jessica Bell</p>\
+                                        <div class="message">Hi team! Lets get started it</div>\
+                                      </div>\
+                                    </div>\
                                   ');
                                   $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
-                              }else{
-                                  $('#message_thread').append('<div class="chat__box__text-box flex items-end float-right mb-4">\
-                                  <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
-                                                  '+ message.message +'\
-                                      <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
-                                              </div>\
-                                              <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                          <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
-                                          <div class="dropdown-menu w-40">\
-                                              <ul class="dropdown-content">\
-                                                  <li>\
-                                                      <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
-                                                  </li>\
-                                                  <li>\
-                                                      <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
-                                                  </li>\
-                                              </ul>\
-                                          </div>\
-                                      </div>\
-                                      <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                          <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
-                                      </div>\
-                                  </div>\
-                                  <div class="clear-both"></div>\
-                                  ');
 
+                              }else{
+                                  $('#message_thread').append('<div class="message-wrapper reverse">\
+                                    <div class="profile-picture">\
+                                        <img\
+                                          src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"\
+                                          alt=""\
+                                        />\
+                                      </div>\
+                                      <div class="message-content">\
+                                        <p class="name">Emmy Lou</p>\
+                                        <div class="message">Good morning!🌈</div>\
+                                      </div>\
+                                    </div>\
+                                  ');
                                   $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
                               }
                           }

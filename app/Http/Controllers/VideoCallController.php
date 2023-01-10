@@ -53,7 +53,7 @@ class VideoCallController extends Controller
         ]);
     }
 
-    public function startVideoCall($id){
+    public function startVideoCall($id, $chat_id, $receiver, $role){
         // $conversation = Chat::getConversationMessageById($id);
         return view('page.chat.video_');
         // dd($conversation['conversationId']);

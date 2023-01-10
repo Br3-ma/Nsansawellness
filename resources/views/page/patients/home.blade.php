@@ -57,19 +57,65 @@
                                 </div>
                             @endif
                         @empty
-                        <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
-                            <div class="w-12 h-12 flex-none image-fit mr-1">
-                                <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
-                            </div>
-                            <div class="ml-2 overflow-hidden">
-                                <div class="flex items-center">
-                                    <a href="javascript:;" class="font-medium">No Chat Available</a> 
+
+                        @hasrole('patient')
+                            <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
+                                <div class="ml-2 overflow-hidden">
+                                    <div class="flex items-center">
+                                        <a href="javascript:;" class="font-medium">No Chat Available</a> 
+                                    </div>
+                                    <div class="w-full truncate text-slate-500 mt-0.5">
+                                        
+                                        Please wait while we process your files
+                                    
+                                    </div>
+                                    {{-- <small>yyy</small> --}}
                                 </div>
-                                <div class="w-full truncate text-slate-500 mt-0.5">Please wait while we process your files</div>
-                                {{-- <small>yyy</small> --}}
+                                {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
                             </div>
-                            {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
-                        </div>
+                        @endhasrole
+
+                        @hasrole('counselor')
+                            <div class="intro-x px-6">
+                                <div class="my-6">
+                                    <h2 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
+                                        <span>Get Help. Get Better</span>
+                                    </h2>
+                                    <div class="w-full">Get the Guidance you need from top Exprts right away.</div>
+                                </div>
+                                
+
+                                
+                                <div class="box p-4 h-full" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/Screenshot 2023-01-10 225800.png") }}'); background-size:cover; background-color:#9374AD;background-size: 100% 100%;">
+                                    <h4 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
+                                        Anxiety Test
+                                    </h4>
+
+                                    <p>
+                                        Have you been feeling particulary anxious? why not
+                                        check it.
+                                    </p>
+
+                                    <button class="btn btn-default btn-sm">Take a Quiz</button>
+                                </div>
+                            </div>
+                        @endhasrole
+                        
+                        @hasanyrole(['admin', 'administrator'])
+                            <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
+                                <div class="w-12 h-12 flex-none image-fit mr-1">
+                                    <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
+                                </div>
+                                <div class="ml-2 overflow-hidden">
+                                    <div class="flex items-center">
+                                        <a href="javascript:;" class="font-medium">No Chat Available</a> 
+                                    </div>
+                                    <div class="w-full truncate text-slate-500 mt-0.5">Please wait while we process your files</div>
+                                    {{-- <small>yyy</small> --}}
+                                </div>
+                                {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
+                            </div>
+                        @endhasanyrole
                         @endforelse
                     </div>
                     
@@ -102,9 +148,12 @@
                             <button id="btnback" onclick="back()">
                                 <i data-lucide="undo" class="w-5 h-5"></i>
                             </button>
-                            <a target="_blank" href="{{ route('video-call', ['id'=> 1]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">
-                                <i data-lucide="video" class="w-5 h-5"></i>
-                            </a>
+                            {{-- startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}' --}}
+                            @if(!empty($chats->toArray()))
+                                <a target="_blank" href="{{ route('video-call', ['id'=> 1, 'chat_id' => $chats->first()->id, 'receiver' => $chats->first()->receiver->fname.' '.$chats->first()->receiver->lname, 'role' => $chats->first()->receiver->roles->pluck('name')]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">
+                                    <i data-lucide="video" class="w-5 h-5"></i>
+                                </h2>
+                            @endif
                             {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
                             <button class="btn btn-success shadow-md text-white mr-2"><i data-lucide="phone" class="w-5 h-5"></i></button>
                             <a href="javascript:;" class="w-5 h-5 text-slate-500"> <i data-lucide="search" class="w-5 h-5"></i> </a>
