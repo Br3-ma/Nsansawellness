@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="{{ asset('public/dist/css/meet.css ')}}" />
   </head>
+
   <body>
     <div class="app-container">
       <button class="mode-switch">
@@ -184,6 +185,7 @@
             <input type="text" name="remotePeerId" id="remotePeerId">
             <button onclick="join()" id="btn-call">Join (Call)</button> --}}
           <!-- Video Participant 1 -->
+        
           <div id="local-screen" class="video-participant">
             <div class="participant-action">
               <button class="btn-mute"></button>
@@ -341,44 +343,17 @@
             <button class="chat-header-button">Live Chat</button>
           </div>
           {{-- convoBody message_thread  --}}
-          <div class="message_thread chat-area">
-            
-            {{-- <div class="message-wrapper">
-              <div class="profile-picture">
-                <img
-                  src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="message-content">
-                <p class="name">Jessica Bell</p>
-                <div class="message">Hi team! Let's get started it.</div>
-              </div>
-            </div>
-            
-            <div class="message-wrapper reverse">
-              <div class="profile-picture">
-                <img
-                  src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
-                  alt=""
-                />
-              </div>
-              <div class="message-content">
-                <p class="name">Emmy Lou</p>
-                <div class="message">Good morning!🌈</div>
-              </div>
-            </div> --}}
-            <!-- Message 5 -->
-            
+          <div id="message_thread" class="chat-area">
           </div>
           <div class="chat-typing-area-wrapper">
             <div class="chat-typing-area">
               <input
+                id="message_textbox"
                 type="text"
                 placeholder="Type your message..."
                 class="chat-input"
               />
-              <button class="send-button">
+              <button onclick="send()" class="send-button">
                 <!-- Send icon -->
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -455,7 +430,16 @@
     </div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  {{-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>  --}}
+  <script>
+    $(document).ready(function(){
+      var info = @json($data);
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': info['token']
+          }
+      });
+    });
+  </script>  
   <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
   <script th:inline="javascript">
       $(document).ready(function() {
@@ -469,11 +453,12 @@
       const peerId = document.getElementById('remotePeerId');
       // const localScreen = document.getElementById('local-screen');
       // const remoteScreen = document.getElementByClassName('remote-screen');
+      var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
 
       var localVideo = document.getElementById('localVideo');
       var remoteVideo = document.getElementById('remoteVideo');
       var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-      var myID = '';
+      // var myID = '';
       var peer = new Peer();
 
       let localStream;
@@ -485,12 +470,33 @@
               localVideo.onloadedmetadata = () => localVideo.play();
           });
   
-      // peer.on('open', id => {
-      //     myId.value = id;
-      // });
+        if(user_role == 'counselor'){
+          peer.on('open', id => {
+              let det = @json($data);
+              shareIdToPeer(id, det);
+          });
+        }else{
+          var peer = @json($data);
+          join(peer['peer_id']);
+        }
   
-      function join(){
-          const remotePeerId = peerId.value;
+      function shareIdToPeer(peer_id, info){
+        $.ajax({
+            type:'POST',
+            url:'{{ route("send.remote_id") }}',
+            data: {
+                peer_id,
+                info
+            },
+            success:function(data) {
+              console.log(data);
+            }
+        });
+      }
+
+      function join(peer_id){
+          // const remotePeerId = peerId.value;
+          const remotePeerId = peer_id;
           const call = peer.call(remotePeerId, localStream);
   
           call.on('stream', stream => {
@@ -612,20 +618,23 @@
       //   track.stop();
       // });
 
-  </script>
+</script>
 
 
 <script>
-  $(document).ready(function() {
-    var user = {!! auth()->user()->toJson() ?? '' !!};
+  // $(document).ready(function() {
+    const user = {!! auth()->user()->toJson() ?? '' !!};
+    var data = @json($data);
     var chat_id; 
     var owner = null; 
     var aDay = 24*60*60*1000;
     var msgFeild = document.getElementById("message_textbox");
-    startChat(id, who, names, role);
-  });
 
+    console.log(data);
+    startChat(data['chat_id'], 'sender', data['receiver'], data['role']);
+  // });
 
+  
   function startChat(id, who, names, role){
       chat_id = id;
       // alert(chat_id);
@@ -642,38 +651,37 @@
               id,owner
           },
           success:function(data) {
-              $('.convoBody').show();
-              $('#chatList').hide();
               let messages = data.chat_session.chat_messages;
               
               // UPDATED
-
+              console.log(messages);
               for (const message of messages){
-
+                    console.log(user['id'] != message.user_id);
                   if(user['id'] != message.user_id){
+
                       $('#message_thread').append('<div class="message-wrapper">\
                         <div class="profile-picture">\
                           <img\
-                            src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"\
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAKwLNQorSghh-caEq8UwWJmd60z4trnBNqbJujqDuq3rWxEJwU7QsdwpFzAWl1J6sijE&usqp=CAU"\
                             alt=""\
                           />\
                         </div>\
                         <div class="message-content">\
-                          <p class="name">Jessica Bell</p>\
-                          <div class="message">Hi team! Lets get started it</div>\
+                          <p class="name">'+ message.user.fname +' '+ message.user.lname +'</p>\
+                          <div class="message">'+ message.message +'</div>\
                         </div>\
                       </div>');
                   }else{
                       $('#message_thread').append('<div class="message-wrapper reverse">\
                           <div class="profile-picture">\
                             <img\
-                              src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"\
+                              src="https://png.pngtree.com/background/20211217/original/pngtree-traditional-african-color-pattern-picture-image_1590972.jpg"\
                               alt=""\
                             />\
                           </div>\
                           <div class="message-content">\
-                            <p class="name">Emmy Lou</p>\
-                            <div class="message">Good morning!🌈</div>\
+                            <p class="name">'+ message.user.fname +' '+ message.user.lname +'</p>\
+                            <div class="message">'+ message.message +'</div>\
                           </div>\
                         </div>');
                   }
@@ -756,13 +764,13 @@
                                   $('#message_thread').append('<div class="message-wrapper">\
                                     <div class="profile-picture">\
                                         <img\
-                                          src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"\
+                                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAKwLNQorSghh-caEq8UwWJmd60z4trnBNqbJujqDuq3rWxEJwU7QsdwpFzAWl1J6sijE&usqp=CAU"\
                                           alt=""\
                                         />\
                                       </div>\
                                       <div class="message-content">\
-                                        <p class="name">Jessica Bell</p>\
-                                        <div class="message">Hi team! Lets get started it</div>\
+                                        <p class="name">'+ message.user.fname +' '+ message.user.lname +'</p>\
+                                        <div class="message">'+ message.message +'</div>\
                                       </div>\
                                     </div>\
                                   ');
@@ -772,13 +780,13 @@
                                   $('#message_thread').append('<div class="message-wrapper reverse">\
                                     <div class="profile-picture">\
                                         <img\
-                                          src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"\
+                                          src="https://png.pngtree.com/background/20211217/original/pngtree-traditional-african-color-pattern-picture-image_1590972.jpg"\
                                           alt=""\
                                         />\
                                       </div>\
                                       <div class="message-content">\
-                                        <p class="name">Emmy Lou</p>\
-                                        <div class="message">Good morning!🌈</div>\
+                                        <p class="name">'+ message.user.fname +' '+ message.user.lname +'</p>\
+                                        <div class="message">'+ message.message +'</div>\
                                       </div>\
                                     </div>\
                                   ');

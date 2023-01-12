@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Async;
 use Illuminate\Http\Request;
 use PhpJunior\LaravelVideoChat\Facades\Chat;
 use PhpJunior\LaravelVideoChat\Models\File\File;
@@ -54,10 +55,52 @@ class VideoCallController extends Controller
     }
 
     public function startVideoCall($id, $chat_id, $receiver, $role){
-        // $conversation = Chat::getConversationMessageById($id);
-        return view('page.chat.video_');
-        // dd($conversation['conversationId']);
-        // return redirect()->route('video-call-runner', ['conversation'=> $conversation['conversationId'], 'id'=> auth()->user()]);
+        try {
+            $data = [
+                'id' => $id,
+                'chat_id' => $chat_id,
+                'receiver' => $receiver,
+                'role' => $role,
+                'token' =>  csrf_token()
+            ];
+            return view('page.chat.video_', compact('data'));
+        } catch (\Throwable $th) {
+            dd('Refresh the Page');
+        }
+    }
+
+    public function sharePeerId(Request $req){
+        // echo $req->toArray()['info']['id'];
+        $async = Async::where('chat_id', $req->toArray()['info']['id']);
+        $async->delete();
+        Async::create([
+            'name' => 'Activate Video Call Button',
+            'value' => $req->toArray()['peer_id'],
+            'chat_id' => $req->toArray()['info']['chat_id'],
+            'user_id' => auth()->user()->id,
+            'status' => 1
+        ]);
+    }
+
+    public function getVideoLink(Request $req){
+        $data = Async::where('chat_id', $req->toArray()['chat_id'])->get()->first();
+        return response()->json(['data' => $data], 200);
+    }
+
+    public function startVideoCallPeer($id, $chat_id, $receiver, $role, $peer_id){
+        try {
+            $data = [
+                'id' => $id,
+                'chat_id' => $chat_id,
+                'receiver' => $receiver,
+                'role' => $role,
+                'token' =>  csrf_token(),
+                'peer_id' => $peer_id
+            ];
+            return view('page.chat.video_', compact('data'));
+        } catch (\Throwable $th) {
+            dd('Refresh the Page');
+        }
     }
 
     public function activeVideoCall(){
