@@ -71,7 +71,7 @@ class VideoCallController extends Controller
 
     public function sharePeerId(Request $req){
         // echo $req->toArray()['info']['id'];
-        $async = Async::where('chat_id', $req->toArray()['info']['id']);
+        $async = Async::where('chat_id', $req->toArray()['info']['chat_id']);
         $async->delete();
         Async::create([
             'name' => 'Activate Video Call Button',

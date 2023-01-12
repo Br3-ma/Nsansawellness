@@ -1805,7 +1805,7 @@
         // alert(chat_id);
         owner = who;
         $('#chat_receiver_name').text(names);
-    $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
+        $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
         $('#message_thread').empty();
         // $('#message_thread div').empty();
         // {{-- Get chat message thread --}}
@@ -1818,21 +1818,10 @@
             success:function(data) {
                 $('.convoBody').show();
                 $('#chatList').hide();
-                // sender
-                // let chat_id = data.chat_session.chat_messages[0].chat_id;
-                // message
-                // console.log(data.chat_session.chat_messages[0].message);
-                // message attributes
-                // console.log(data.chat_session.chat_messages[0]);
-                // all the messages
-                // console.log(data.chat_session.chat_messages);
-                // console.log(data);
-                // $("#fetched_data").html(data.msg);
 
                 let messages = data.chat_session.chat_messages;
                 
                 // UPDATED
-
                 for (const message of messages){
 
                     if(user['id'] != message.user_id){
@@ -2065,7 +2054,7 @@
 
     
     function getVideoCallLink(){
-        count = 1;
+        
         $.ajax({
             type:'GET',
             url:'{{ route("get.remote_id") }}',
@@ -2074,12 +2063,15 @@
             },
             success:function(data) {
               console.log("======== VIDEO LiNk  =========");
-              console.log(APP_URL);
               console.log(data.data);
-              $('#patient_video_btn').append('\
-                <a target="_blank" href="'+APP_URL+'/therapy-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-danger shadow-md mr-2">\
-                    <i data-lucide="video" class="w-5 h-5"></i>\
-                </a>');
+              if(data.data !== null){
+                count = 1;
+                $('#patient_video_btn').empty();
+                $('#patient_video_btn').append('\
+                    <a target="_blank" href="'+APP_URL+'/therapy-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-danger shadow-md mr-2">\
+                        <i data-lucide="video" class="w-5 h-5"></i>\
+                    </a>');
+              }
             }
         });
     }
