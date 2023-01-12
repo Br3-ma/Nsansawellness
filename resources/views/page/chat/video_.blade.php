@@ -14,7 +14,11 @@
     <link rel="stylesheet" href="{{ asset('public/dist/css/meet.css ')}}" />
   </head>
 
+  @hasrole('patient')
+  <body onload="join();">
+  @else
   <body>
+  @endhasrole
     <div class="app-container">
       <button class="mode-switch">
         <!-- sun icon -->
@@ -181,9 +185,11 @@
       </div>
       <div class="app-main">
         <div class="video-call-wrapper">
-            {{-- <input type="text" name="localPeerId" id="localPeerId" readonly>
-            <input type="text" name="remotePeerId" id="remotePeerId">
-            <button onclick="join()" id="btn-call">Join (Call)</button> --}}
+            <input type="hidden" name="localPeerId" id="localPeerId" readonly>
+            @hasrole('patient')
+            <input type="hidden" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+            @endhasrole
+            {{-- <button id="btn-call">Join (Call)</button> --}}
           <!-- Video Participant 1 -->
         
           <div id="local-screen" class="video-participant">
@@ -209,13 +215,17 @@
             />
           </div> --}}
           <!-- Video Participant 3 -->
-          <div style="" class="remote-screen video-participant">
+          <div class="remote-screen video-participant">
             <div class="participant-action">
               <button class="btn-mute"></button>
               <button class="btn-camera"></button>
             </div>
-            <a href="#" class="name-tag">Tim Russel</a>
-            <video height="100%" width="100%" class="img-responsive" id='remoteVideo'>
+            @if($data['role'] == 'patient')
+            <a href="#" class="name-tag">Therapist</a>
+            @else
+            <a href="#" class="name-tag">Patient</a>
+            @endif
+            <video height="100%" width="100%"height="100%" width="100%" style=" object-fit: cover; background-position: cover; background-size:cover" class="img-responsive" id='remoteVideo'>
                 Your browser does not support the video tag.
             </video>
           </div>
@@ -443,10 +453,10 @@
   <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
   <script th:inline="javascript">
       $(document).ready(function() {
-          $('.remote-screen').hide();
-          document.getElementById("local-screen").style.width = "100%"
-          document.getElementById("local-screen").style.height = "100%"
-          if (window.matchMedia("(max-width: 767px)").matches){}else{}
+          $('.remote-screen').show();
+          // document.getElementById("local-screen").style.width = "100%"
+          // document.getElementById("local-screen").style.height = "100%"
+          // if (window.matchMedia("(max-width: 767px)").matches){}else{}
       });
       const btnCall = document.getElementById('btn-call');
       const myId = document.getElementById('localPeerId');
@@ -470,15 +480,17 @@
               localVideo.onloadedmetadata = () => localVideo.play();
           });
   
-        if(user_role == 'counselor'){
+        
           peer.on('open', id => {
               let det = @json($data);
-              shareIdToPeer(id, det);
+              myId.value = id;
+              if(user_role == 'counselor'){
+                shareIdToPeer(id, det);
+              }else{
+                // join();
+              }
           });
-        }else{
-          var peer = @json($data);
-          join(peer['peer_id']);
-        }
+       
   
       function shareIdToPeer(peer_id, info){
         $.ajax({
@@ -494,17 +506,17 @@
         });
       }
 
-      function join(peer_id){
-          // const remotePeerId = peerId.value;
-          const remotePeerId = peer_id;
+      function join(){
+      // function join(peer_id){
+          const remotePeerId = peerId.value;
+          // const remotePeerId = peer_id;
           const call = peer.call(remotePeerId, localStream);
   
           call.on('stream', stream => {
               remoteVideo.srcObject = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
+              $('.remote-screen').show();
           })
-
-          $('.remote-screen').show();
       }
   
       peer.on('call', call => {
@@ -614,6 +626,8 @@
         $('.remote-screen').hide();
         $('#local-screen').css = "width:100%; height:100%; margin:0 auto;"
       }
+
+  
       // localStream.getTracks().forEach( (track) => {
       //   track.stop();
       // });
@@ -847,5 +861,22 @@
       update();
   }, 1000);
 
+  var myclose = false;
+  function ConfirmClose(){
+      if (event.clientY < 0)
+      {
+          event.returnValue = 'You have closed the browser. Do you want to logout from your application?';
+          setTimeout('myclose=false',10);
+          myclose=true;
+      }
+  }
+
+  function HandleOnClose(){
+      if (myclose==true) 
+      {
+          //the url of your logout page which invalidate session on logout 
+          location.replace('/contextpath/j_spring_security_logout') ;
+      }   
+  }
 </script>
 </html>
