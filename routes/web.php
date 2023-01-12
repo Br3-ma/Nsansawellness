@@ -55,9 +55,12 @@ Route::get('/pop-ups', [NotificationController::class, 'realTimePopUps'])->name(
 Route::group(['middleware' => ['auth']], function() {
     // ====================Dashboard
     Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
-
+    
     Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/video-session/{id}/{chat_id}/{receiver}/{role}', [VideoCallController::class, 'startVideoCall'])->name('video-call');
+    Route::get('/therapy-session/{id}/{chat_id}/{receiver}/{role}/{peer_id}', [VideoCallController::class, 'startVideoCallPeer'])->name('video-call-peer');
+    Route::post('/share-peer-id', [VideoCallController::class, 'sharePeerId'])->name('send.remote_id');
+    Route::get('/get-video-link', [VideoCallController::class, 'getVideoLink'])->name('get.remote_id');
     Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
     Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
     Route::get('/api/fetch-session/{id}/{user}', [VideoCallController::class, 'getConversationDetails'])->name('conversation-details');

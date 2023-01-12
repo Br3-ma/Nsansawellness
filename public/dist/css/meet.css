@@ -163,9 +163,9 @@
     padding: 16px;
   }
   .profile-picture {
-    border-radius: 8px;
-    width: 32px;
-    height: 32px;
+    border-radius: 100px;
+    width: 20px;
+    height: 20px;
     overflow: hidden;
     margin-right: 12px;
     flex-shrink: 0;

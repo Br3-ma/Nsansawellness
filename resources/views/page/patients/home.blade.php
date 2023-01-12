@@ -58,7 +58,7 @@
                             @endif
                         @empty
 
-                        @hasrole('patient')
+                        @hasrole('counselor')
                             <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
                                 <div class="ml-2 overflow-hidden">
                                     <div class="flex items-center">
@@ -66,7 +66,7 @@
                                     </div>
                                     <div class="w-full truncate text-slate-500 mt-0.5">
                                         
-                                        Please wait while we process your files
+                                        No Patients Assigned Yet.
                                     
                                     </div>
                                     {{-- <small>yyy</small> --}}
@@ -75,7 +75,7 @@
                             </div>
                         @endhasrole
 
-                        @hasrole('counselor')
+                        @hasrole('patient')
                             <div class="intro-x px-6">
                                 <div class="my-6">
                                     <h2 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
@@ -145,17 +145,23 @@
                         </div>
                         <div class="flex items-center sm:ml-auto mt-5 sm:mt-0 border-t sm:border-0 border-slate-200/60 pt-3 sm:pt-0 -mx-5 sm:mx-0 px-5 sm:px-0">
                             
-                            <button id="btnback" onclick="back()">
+                            <button class="mr-2" id="btnback" onclick="back()">
                                 <i data-lucide="undo" class="w-5 h-5"></i>
                             </button>
                             {{-- startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}' --}}
-                            @if(!empty($chats->toArray()))
-                                <a target="_blank" href="{{ route('video-call', ['id'=> 1, 'chat_id' => $chats->first()->id, 'receiver' => $chats->first()->receiver->fname.' '.$chats->first()->receiver->lname, 'role' => $chats->first()->receiver->roles->pluck('name')]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">
-                                    <i data-lucide="video" class="w-5 h-5"></i>
-                                </h2>
-                            @endif
+                            @hasanyrole(['admin', 'counselor'])
+                                @if(!empty($chats->toArray()))
+                                    <a target="_blank" href="{{ route('video-call', ['id'=> auth()->user()->id, 'chat_id' => $chats->first()->id, 'receiver' => $chats->first()->receiver->fname.' '.$chats->first()->receiver->lname, 'role' => preg_replace('/[^A-Za-z0-9. -]/', '', $chats->first()->receiver->roles->pluck('name')) ]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">
+                                        <i data-lucide="video" class="w-5 h-5"></i>
+                                    </a>
+                                @endif
+                            @else
+                                <span id="patient_video_btn">
+
+                                </span>
+                            @endhasanyrole
                             {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
-                            <button class="btn btn-success shadow-md text-white mr-2"><i data-lucide="phone" class="w-5 h-5"></i></button>
+                            {{-- <button class="btn btn-success shadow-md text-white mr-2"><i data-lucide="phone" class="w-5 h-5"></i></button> --}}
                             <a href="javascript:;" class="w-5 h-5 text-slate-500"> <i data-lucide="search" class="w-5 h-5"></i> </a>
                             <a href="javascript:;" class="w-5 h-5 text-slate-500 ml-5"> <i data-lucide="user-plus" class="w-5 h-5"></i> </a>
                             <div class="dropdown ml-auto sm:ml-3">
@@ -1784,8 +1790,13 @@
             chatPage.style.cssText += "height:500px; min-height:500px; device-height: 500px; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
         }
     });
+
+    var APP_URL = {!! json_encode(url('/')) !!}
     var user = {!! auth()->user()->toJson() ?? '' !!};
+    var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
+
     var chat_id; 
+    var count = 0; 
     var owner = null; 
     var aDay = 24*60*60*1000;
     var msgFeild = document.getElementById("message_textbox");
@@ -1794,7 +1805,7 @@
         // alert(chat_id);
         owner = who;
         $('#chat_receiver_name').text(names);
-        $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
+    $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
         $('#message_thread').empty();
         // $('#message_thread div').empty();
         // {{-- Get chat message thread --}}
@@ -2052,11 +2063,37 @@
         }
     }
 
-    // const currentTimeStamp = new Date().getTime();
-    // console.log(timeSince(currentTimeStamp));
+    
+    function getVideoCallLink(){
+        count = 1;
+        $.ajax({
+            type:'GET',
+            url:'{{ route("get.remote_id") }}',
+            data: {
+                chat_id
+            },
+            success:function(data) {
+              console.log("======== VIDEO LiNk  =========");
+              console.log(APP_URL);
+              console.log(data.data);
+              $('#patient_video_btn').append('\
+                <a target="_blank" href="'+APP_URL+'/therapy-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-danger shadow-md mr-2">\
+                    <i data-lucide="video" class="w-5 h-5"></i>\
+                </a>');
+            }
+        });
+    }
 
     var intervalId = window.setInterval(function(){
         update();
+        console.log(chat_id !== undefined);
+        console.log(count == 1);
+        if(chat_id !== undefined){
+
+            if(count == 0 && user_role == 'patient'){
+                getVideoCallLink();
+            }
+        }
     }, 1000);
 
 </script>
