@@ -62,7 +62,7 @@
 
                         <div class="intro-x px-6 w-full mb-2">
                             <div class="lg:flex ">
-                                <div class="box w-full lg:mb-0 mb-2 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/no-patients.jpg") }}'); background-size:cover; background-color:#9374AD;">
+                                <div class="box w-full lg:mb-0 mb-2 lg:pb-4 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/no-patients.jpg") }}'); background-size:cover; background-color:#9374AD;">
                                     <h4 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
                                         No Patients Assigned to You
                                     </h4>
@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="lg:w-1/2 lg:px-2 sm:px-2">
                                     <div class="w-full">
-                                        <div class="flex box w-full py-6 p-3 lg:m-3 text-white" style="background-color:#9374AD">
+                                        <div class="flex box w-full py-8 p-3 lg:m-3 text-white" style="background-color:#9374AD">
                                             <span class="mr-2">
                                                 <img width="30px" src="https://cdn.iconscout.com/icon/free/png-256/ecosystem-2871958-2383613.png">
                                             </span>
@@ -86,7 +86,7 @@
                                             </span>
                                             <i data-lucide="chevron-right"></i>
                                         </div>
-                                        <div class="box flex mt-2 py-6 p-3 m-3 text-white" style="background-color:#22A89C">
+                                        <div class="box flex mt-2 py-8 p-3 m-3 text-white" style="background-color:#22A89C">
                                             <span class="mr-2">
                                                 <img width="30px" class="rounded-full" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/files-1433950-1211984.png?f=avif">
                                             </span>
@@ -99,7 +99,7 @@
                                             </span>
                                             <i data-lucide="chevron-right"></i>
                                         </div>
-                                        <div class="box flex mt-2 py-6 p-3 m-3" style="background-color:#e9f7ff">
+                                        <div class="box flex mt-2 py-8 p-3 m-3" style="background-color:#e9f7ff">
                                             <span class="mr-2">
                                                 <img width="30px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/activity-4-185786.png?f=avif">
                                             </span>
