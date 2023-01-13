@@ -58,24 +58,67 @@
                             @endif
                         @empty
 
-                        @hasrole('counselor')
-                            <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium">No Chat Available</a> 
-                                    </div>
-                                    <div class="w-full truncate text-slate-500 mt-0.5">
-                                        
-                                        No Patients Assigned Yet.
+                        @hasrole('patient')
+
+                        <div class="intro-x px-6 w-full mb-2">
+                            <div class="lg:flex ">
+                                <div class="box w-full lg:mb-0 mb-2 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/no-patients.jpg") }}'); background-size:cover; background-color:#9374AD;">
+                                    <h4 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
+                                        No Patients Assigned to You
+                                    </h4>
                                     
-                                    </div>
-                                    {{-- <small>yyy</small> --}}
+                                    <p>Make Online and Live Consultation Easily Easily with Nsansa Wellness</p>
+    
+                                    <button class="mt-10 btn btn-primary btn-sm">Request for a Patient</button>
                                 </div>
-                                {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
+                                <div class="lg:w-1/2 lg:px-2 sm:px-2">
+                                    <div class="w-full">
+                                        <div class="flex box w-full py-6 p-3 lg:m-3 text-white" style="background-color:#9374AD">
+                                            <span class="mr-2">
+                                                <img width="30px" src="https://cdn.iconscout.com/icon/free/png-256/ecosystem-2871958-2383613.png">
+                                            </span>
+                                            <span>
+                                                A Complete mental health ecosystem
+                                                <br>
+                                                <small>
+                                                    Earn ZMW 3000 as an online therapist
+                                                </small>
+                                            </span>
+                                            <i data-lucide="chevron-right"></i>
+                                        </div>
+                                        <div class="box flex mt-2 py-6 p-3 m-3 text-white" style="background-color:#22A89C">
+                                            <span class="mr-2">
+                                                <img width="30px" class="rounded-full" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/files-1433950-1211984.png?f=avif">
+                                            </span>
+                                            <span>
+                                                Patient Record Management
+                                                <br>
+                                                <small>
+                                                    Manage your patient medical information
+                                                </small>
+                                            </span>
+                                            <i data-lucide="chevron-right"></i>
+                                        </div>
+                                        <div class="box flex mt-2 py-6 p-3 m-3" style="background-color:#e9f7ff">
+                                            <span class="mr-2">
+                                                <img width="30px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/activity-4-185786.png?f=avif">
+                                            </span>
+                                            <span>
+                                                Assign Homework Activities and Actions
+                                                <br>
+                                                <small>
+                                                    Create and assign homework activities for your patients.s
+                                                </small>
+                                            </span>
+                                            <i data-lucide="chevron-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
                         @endhasrole
 
-                        @hasrole('patient')
+                        @hasrole('counselor')
                             <div class="intro-x px-6">
                                 <div class="my-6">
                                     <h2 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
@@ -83,20 +126,57 @@
                                     </h2>
                                     <div class="w-full">Get the Guidance you need from top Exprts right away.</div>
                                 </div>
-                                
+                                <div class="lg:flex ">
+                                    <div class="lg:w-1/2 lg:px-2 sm:px-2">
+                                        <div class="w-full">
+                                            <div class="flex box w-full py-6 p-3 lg:m-3 text-white" style="background-color:#9374AD">
+                                                <span class="mr-2">
+                                                    <img width="30px" src="https://cdn.iconscout.com/icon/free/png-256/chatting-418-530377.png?f=avif">
+                                                </span>
+                                                <span>
+                                                    Online Chat Sessions
+                                                    <br>
+                                                    <small>
+                                                        Chat anonymously with an expert 
+                                                    </small>
+                                                </span>
+                                                <i data-lucide="chevron-right"></i>
+                                            </div>
+                                            <div class="box flex mt-2 py-6 p-3 m-3 text-white" style="background-color:#AE04B4">
+                                                <span class="mr-2">
+                                                    <img width="30px" class="rounded-full" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/video-call-103-772229.png?f=avif">
+                                                </span>
+                                                <span>
+                                                    Voice and Video Calls
+                                                    <br>
+                                                    <small>
+                                                        Speak to an expert or get on a call with them
+                                                    </small>
+                                                </span>
+                                                <i data-lucide="chevron-right"></i>
+                                            </div>
+                                            <div class="box flex mt-2 py-6 p-3 m-3" style="background-color:#05C3E5">
+                                                <span class="mr-2">
+                                                    <img width="30px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/doctor-615-1178523.png?f=avif">
+                                                </span>
+                                                <span>
+                                                    Face to Face Sessions
+                                                    <br>    
+                                                    <small>
+                                                        Connect to 1-on-1 in-person with an expert.
+                                                    </small>
+                                                </span>
+                                                <i data-lucide="chevron-right"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-white box w-full lg:mb-0 mb-2 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/remote.jpg") }}'); background-size:cover; background-color:#9374AD;">
 
-                                
-                                <div class="box p-4 h-full" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/Screenshot 2023-01-10 225800.png") }}'); background-size:cover; background-color:#9374AD;background-size: 100% 100%;">
-                                    <h4 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
-                                        Anxiety Test
-                                    </h4>
-
-                                    <p>
-                                        Have you been feeling particulary anxious? why not
-                                        check it.
-                                    </p>
-
-                                    <button class="btn btn-default btn-sm">Take a Quiz</button>
+                                        
+                                        <h3>Making through life's toughest times. Together.</h3>
+        
+                                        <button class="mt-20 btn btn-warning btn-sm">Take a Quiz</button>
+                                    </div>
                                 </div>
                             </div>
                         @endhasrole
