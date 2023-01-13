@@ -58,7 +58,7 @@
                             @endif
                         @empty
 
-                        @hasrole('patient')
+                        @hasrole('counselor')
 
                         <div class="intro-x px-6 w-full mb-2">
                             <div class="lg:flex ">
@@ -118,7 +118,7 @@
                         </div>
                         @endhasrole
 
-                        @hasrole('counselor')
+                        @hasrole('patient')
                             <div class="intro-x px-6">
                                 <div class="my-6">
                                     <h2 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
