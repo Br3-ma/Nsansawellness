@@ -10,9 +10,9 @@
                 </div>
             </div>
             {{-- @endhasanyrole --}}
-            <div class="tab-content">
+            <div class="tab-content h-full">
 
-                <div id="chats" class="tab-pane active" role="tabpanel" aria-labelledby="chats-tab">
+                <div id="chats" class="tab-pane active h-full" role="tabpanel" aria-labelledby="chats-tab">
                     <div style="margin-bottom:0px; padding-bottom:0px;" class="chat__chat-list overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4 px-4">
                        
                         <h2 class="text-lg font-medium mr-auto flex space-x-6 mt-10 py-autox">

@@ -46,13 +46,21 @@
         
         </div></form>
     </div>
-</div> <!-- END: Modal Content -->
+</div> 
+<!-- END: Modal Content -->
+
 <div class="content contentCanvas">
     <h2 class="text-lg font-medium mr-auto flex space-x-6 mt-8">
         <i data-lucide="files" class="w-6 h-6"></i>
         &nbsp;
         <span>Manage Patient Profiles</span>
     </h2>
+    <div id="callback-message" class="toastify-content hidden">
+        <div class="font-medium">A new Patient has signed up.</div>
+        <div class="text-slate-500 mt-1">
+            Check your notifications
+        </div>
+    </div>
     @if (Session::has('attention'))
     <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
@@ -122,8 +130,10 @@
                             <div class="dropdown-content">
                                 <a href="{{ route('all-patient-files', $file->id) }}" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Manage Records </a>
                                 @hasanyrole('admin')
-                                    @if($file->assignedCounselor != null)
-                                    <a href="{{ route('manual.remove.counselor', $file->id) }}" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Remove Counselor </a>
+                                    @if($file->assignedCounselor != null && $file->assignedCounselor->status == 1)
+                                    <a href="{{ route('manual.remove.counselor', $file->assignedCounselor->id) }}" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Disable Counselor </a>
+                                    @elseif($file->assignedCounselor != null && $file->assignedCounselor->status == 0)
+                                    <a href="{{ route('manual.remove.counselor', $file->assignedCounselor->id) }}" class="dropdown-item"> <i data-lucide="recycle" class="w-4 h-4 mr-2"></i> Recover Counselor </a>
                                     @endif
                                 @endhasanyrole
                             </div>
@@ -190,8 +200,21 @@
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
+    // callback-message
+    // Toastify({ 
+    //     node: $("#callback-message").clone().removeClass("hidden")[0], 
+    //     duration: 9000, 
+    //     newWindow: true, 
+    //     close: true,
+    //     gravity: "top", 
+    //     position: "right", 
+    //     backgroundColor: "white", 
+    //     stopOnFocus: true, 
+    // }).showToast(); 
+
     var counselor_id = 0;
     var patient_id = 0;
+
     function getId(id){
         // alert(id);
         $('#inputID').val(id);

@@ -16,14 +16,15 @@ use Session;
 class AssignCounselorController extends Controller
 {
     use MatchMakerTrait;
-    public $user, $qn, $res, $assignPatients;
-    public function __construct(User $user, Question $qn, Result $res, AssignCounselor $ac)
+    public $user, $qn, $res, $assignPatients, $chat;
+    public function __construct(User $user, Question $qn, Result $res, AssignCounselor $ac, Chat $chat)
     {
         
         $this->user = $user;
         $this->qn = $qn;
         $this->res = $res;
         $this->assignPatients = $ac;
+        $this->chat = $chat;
     }
     /**
      * Display a listing of the resource.
@@ -80,6 +81,7 @@ class AssignCounselorController extends Controller
             Chat::create([
                 'sender_id' => $request->toArray()['counselor_id'],
                 'receiver_id' => $request->toArray()['patient_id'],
+                'status' => 1
             ]);
 
             $payload = [
@@ -151,12 +153,22 @@ class AssignCounselorController extends Controller
     public function remove_counselor(AssignCounselor $assignCounselor, $id)
     {
         try {
-            $data = $assignCounselor->find($id);
-            $data->delete();
-            Session::flash('attention', "Counselor has been removed");
+            $update = $assignCounselor->find($id);
+            $update->status == 1 ? $update->status = 0 : $update->status = 1;
+            $update->save();
+
+            // Disable the Chat
+            $update->status == 0 ? 
+            $this->chat->where('receiver_id', $update->patient_id)->update(['status' => 0]) : 
+            $this->chat->where('receiver_id', $update->patient_id)->update(['status' => 1]);
+
+            
+            $update->status == 0 ? 
+            Session::flash('attention', "Counselor has been disabled successfully"):
+            Session::flash('attention', "Counselor Recovered!");
             return redirect()->back();
         } catch (\Throwable $th) {
-            Session::flash('err_msg', "Oops. Something went wrong, failed to removed counselor");
+            Session::flash('err_msg', "Oops. Something went wrong, task failed.");
             return redirect()->back();
         }
 

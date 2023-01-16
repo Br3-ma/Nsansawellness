@@ -8,6 +8,7 @@ use App\Models\Appointment;
 use App\Models\Chat as ModelsChat;
 use App\Models\PatientFile;
 use App\Models\User;
+use App\Traits\CoreTrait;
 use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
 
 class PatientController extends Controller
 {
-    use PatientTrait;
+    use CoreTrait, PatientTrait;
     public $user, $users, $u, $pf, $appointment, $chat;
     /**
      * Create a new controller instance.
@@ -42,11 +43,7 @@ class PatientController extends Controller
     public function index()
     {
         // Get all chats am invited in
-        $chats = $this->chat->where('sender_id', auth()->user()->id)
-        ->orWhere('receiver_id', auth()->user()->id)
-        ->with(['sender', 'receiver'])->get();
-
-        // dd($chats);
+        $chats = $this->get_my_chats();
         $notifications = auth()->user()->unreadNotifications;
         return view('page.patients.home', compact('notifications', 'chats'));
     }
