@@ -28,14 +28,15 @@ trait CoreTrait {
 
         public function get_my_chats(){
             if($this->my_role() == 'patient'){
-                $chats = $this->chat->where('sender_id', auth()->user()->id)
-                ->where('status', 1)
-                ->with(['sender', 'receiver'])->get();
-            }else{
                 $chats = $this->chat->where('receiver_id', auth()->user()->id)
                 ->where('status', 1)
                 ->with(['sender', 'receiver'])->get();
+            }else{
+                $chats = $this->chat->where('sender_id', auth()->user()->id)
+                ->where('status', 1)
+                ->with(['sender', 'receiver'])->get();
             }
+
             return $chats;
         }
 }

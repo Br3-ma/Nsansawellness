@@ -26,7 +26,7 @@
                                 <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')" class="intro-x chat-list-item cursor-pointer relative flex items-center p-5">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
                                         @if($chat->sender->image_path != null) 
-                                        <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
+                                        <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->receiver->image_path) }}" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
                                         @endif
                                     </div>
                                     <div class="ml-2 overflow-hidden">
