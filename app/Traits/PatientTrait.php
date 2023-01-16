@@ -31,10 +31,14 @@ trait PatientTrait {
         }else{
             $my_patients = $this->user->role('patient')->whereHas('assignedCounselor', function ($query) use ($u) {
                 $query->where('counselor_id', $u->id);
+                $query->where('status', 1);
             })->paginate(6);
         }
         return $my_patients;
     }
+
+
+
     public function allMyPatients($u){
         if($u->hasAnyRole(['admin','administrator'])){
             $my_patients = $this->user->role('patient')->with('assignedCounselor')->get();
@@ -45,6 +49,9 @@ trait PatientTrait {
         }
         return $my_patients;
     }
+
+
+
     // Return all your patients with their user info, file records
     public function getMyTotalPatients($u){
         if($u->hasAnyRole(['admin','administrator'])){

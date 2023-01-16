@@ -117,36 +117,6 @@ class ChatController extends Controller
         return response()->json(['chat_messages' => 0], 200);
     }
 
-    // public function stream(Request $req){
-    //     //get my thread for chat
-    //     $chat_id = $req->toArray()['chat_id'];
-    //     $owner = $req->toArray()['owner'];
-
-    //     $chat_session = ChatMessages::with('user')->where('chat_id', $chat_id)->orWhere('status', 1)->orWhere('status_received', 0)->get();
-
-    //     if($chat_session->isNotEmpty()){
-
-    //         if($owner == 'sender'){
-    //             // The sender has seen the message
-    //             ChatMessages::where('chat_id', $chat_id)
-    //             ->update([
-    //                 'status' => 0
-    //             ]);
-    //         }elseif($owner == 'receiver'){
-    //             // The receiver has seen the message
-    //             ChatMessages::where('chat_id', $chat_id)
-    //             ->update([
-    //                 'status_received' => 1
-    //             ]);
-    //         }
-
-    //         return response()->json(['chat_messages' => $chat_session->toArray()], 200);
-    //     }else{
-    //         return response()->json(['chat_messages' => 0], 200);
-    //     }
-        
-    // }
-
     /**
      * Show the form for editing the specified resource.
      *
