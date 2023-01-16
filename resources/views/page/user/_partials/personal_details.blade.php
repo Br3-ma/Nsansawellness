@@ -25,7 +25,7 @@
                 type="text" 
                 class="form-control w-full" 
                 name="fname" 
-                placeholder="First Name" required>
+                placeholder="First Name">
             @if ($errors->has('fname'))
                 <span class="text-danger  text-left">{{ $errors->first('fname') }}</span>
             @endif
@@ -36,7 +36,7 @@
                 type="text" 
                 class="form-control" 
                 name="lname" 
-                placeholder="Last Name" required>
+                placeholder="Last Name">
 
             @if ($errors->has('name'))
                 <span class="text-danger text-left">{{ $errors->first('lname') }}</span>
@@ -48,7 +48,7 @@
                 type="email" 
                 class="form-control" 
                 name="email" 
-                placeholder="Email address" required>
+                placeholder="Email address">
             @if ($errors->has('email'))
                 <span class="text-danger text-left">{{ $errors->first('email') }}</span>
             @endif
@@ -71,7 +71,7 @@
                 class="form-control datepicker" 
                 data-single-mode="true"
                 name="date_of_birth" 
-                placeholder="Date of Birth" required>
+                placeholder="Date of Birth">
             @if ($errors->has('date_of_birth'))
                 <span class="text-danger text-left">{{ $errors->first('date_of_birth') }}</span>
             @endif
@@ -86,7 +86,7 @@
                 type="text" 
                 class="form-control" 
                 name="address" 
-                placeholder="Address" required>
+                placeholder="Address">
 
             @if ($errors->has('address'))
                 <span class="text-danger text-left">{{ $errors->first('address') }}</span>
@@ -99,7 +99,7 @@
                 data-single-mode="true"
                 class="form-control" 
                 name="place_of_birth" 
-                placeholder="Place of Birth" required>
+                placeholder="Place of Birth">
             @if ($errors->has('place_of_birth'))
                 <span class="text-danger text-left">{{ $errors->first('place_of_birth') }}</span>
             @endif
@@ -114,7 +114,7 @@
                 type="text" 
                 class="form-control" 
                 name="username" 
-                placeholder="Username" required>
+                placeholder="Username">
             @if ($errors->has('username'))
                 <span class="text-danger text-left">{{ $errors->first('username') }}</span>
             @endif
@@ -125,7 +125,7 @@
                 type="text" 
                 class="form-control" 
                 name="nrc_id" 
-                placeholder="NRC , PASSPORT, ID" required>
+                placeholder="NRC , PASSPORT, ID">
             @if ($errors->has('nrc_id'))
                 <span class="text-danger text-left">{{ $errors->first('nrc_id') }}</span>
             @endif
