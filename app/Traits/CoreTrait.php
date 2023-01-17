@@ -39,4 +39,6 @@ trait CoreTrait {
 
             return $chats;
         }
+
+        
 }

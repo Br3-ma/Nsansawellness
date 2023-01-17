@@ -26,6 +26,7 @@ use App\Http\Controllers\VideoCallController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ResultsController;
+use App\Http\Controllers\SettingsController;
 use App\Models\AssignCounselor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -92,6 +93,14 @@ Route::group(['middleware' => ['auth']], function() {
     // });
     // Route::resource('assigner', AssignCounselorController::class);
     Route::get('auto-assign/{id}', [AssignCounselorController::class, 'index']);
+
+    // ==== settings
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/set-commission-setting', [SettingsController::class, 'store'])->name('set-commission');
+    Route::get('/settings/commissions', [SettingsController::class, 'commissions'])->name('settings.commissions');
+    Route::get('/settings/departments', [SettingsController::class, 'departments'])->name('settings.departments');
+    Route::post('/add-department', [SettingsController::class, 'storeDept'])->name('settings.departments.store');
+    Route::get('/add-department/{id}', [SettingsController::class, 'destroyDept'])->name('settings.departments.delete');
 });
 
 // Notifications
@@ -233,6 +242,7 @@ Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
 // Route::group(['middleware' => ['auth', 'permission:users.store']], function() {
 //     Route::resource('users', UserController::class)->name('users.store');
 // });
+
 
 // ================== Website
 Route::get('/about', [AboutPage::class, 'index'])->name('about');
