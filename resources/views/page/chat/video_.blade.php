@@ -14,11 +14,8 @@
     <link rel="stylesheet" href="{{ asset('public/dist/css/meet.css ')}}" />
   </head>
 
-  @hasrole('patient')
-  <body onload="join();">
-  @else
+  
   <body>
-  @endhasrole
     <div class="app-container">
       <button class="mode-switch">
         <!-- sun icon -->
@@ -183,13 +180,14 @@
           </a>
         </div> --}}
       </div>
-      <div class="app-main">
+      <div class="app-main">            
+        <input type="text" name="localPeerId" id="localPeerId" readonly>
+        @hasrole('patient')
+        <input type="text" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+        {{-- <input type="text" name="remotePeerId" id="remotePeerId"> --}}
+        <button onclick="join()" id="btn-call">Join (Call)</button>
+        @endhasrole
         <div class="video-call-wrapper">
-            <input type="hidden" name="localPeerId" id="localPeerId" readonly>
-            @hasrole('patient')
-            <input type="hidden" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
-            @endhasrole
-            {{-- <button id="btn-call">Join (Call)</button> --}}
           <!-- Video Participant 1 -->
         
           <div id="local-screen" class="video-participant">
@@ -507,15 +505,16 @@
       }
 
       function join(){
-      // function join(peer_id){
+
           const remotePeerId = peerId.value;
-          // const remotePeerId = peer_id;
           const call = peer.call(remotePeerId, localStream);
-  
+          alert('joining');
+          alert(remotePeerId);
+
           call.on('stream', stream => {
               remoteVideo.srcObject = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
-              $('.remote-screen').show();
+              // $('.remote-screen').show();
           })
       }
   
@@ -570,7 +569,8 @@
                   localVideo.srcObject = localStream;
                   localVideo.onloadedmetadata = () => localVideo.play();
               });
-          }// localStream.getVideoTracks()[0].stop();
+              localStream.getVideoTracks()[0].enabled = false;
+          }
           videoStatus = 0;
         }
       }
@@ -857,9 +857,9 @@
   // const currentTimeStamp = new Date().getTime();
   // console.log(timeSince(currentTimeStamp));
 
-  var intervalId = window.setInterval(function(){
-      update();
-  }, 1000);
+  // var intervalId = window.setInterval(function(){
+  //     update();
+  // }, 1000);
 
   var myclose = false;
   function ConfirmClose(){

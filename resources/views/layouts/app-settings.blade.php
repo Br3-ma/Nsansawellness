@@ -403,228 +403,34 @@
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
                 <ul>
-                    @hasanyrole(['admin', 'counselor'])
+                    @hasanyrole(['admin', 'administrator'])
                     <li>
-                        <a href="{{ route('home') }}" class="side-menu side-menu--active">
-                            <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+                        <a href="{{ route('settings.index') }}" class="side-menu side-menu--active">
+                            <div class="side-menu__icon"> <i data-lucide="settings"></i> </div>
                             <div class="side-menu__title">
-                                Dashboard 
+                                General Settings 
                             </div>
                         </a>
                     </li>
                     @endhasanyrole
 
-                    @can('patient')
+                    @hasanyrole(['admin', 'administrator'])
                     <li>
-                        <a href="{{ route('patient') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
-                            <div class="side-menu__title"> Counseling Sessions </div>
+                        <a href="{{ route('settings.commissions') }}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="piggy-bank"></i> </div>
+                            <div class="side-menu__title"> Commissions </div>
                         </a>
                     </li>
-                    @endcan
-                    
+                    @endhasanyrole
 
-                    @can('actions')
+                    @hasanyrole(['admin', 'administrator'])
                     <li>
-                        <a href="javascript:;" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
-                            <div class="side-menu__title">
-                                    Homework
-                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                            </div>
-                        </a>
-                        <ul class="">
-                            <li>
-                                <a href="{{ route('activities.index')}}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="person-standing"></i> </div>
-                                    <div class="side-menu__title"> Activities </div>
-                                </a>
-                            </li>
-                            {{-- <li>
-                                <a href="{{ route('actions')}}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> Actions </div>
-                                </a>
-                            </li> --}}
-                        </ul>
-                    </li>
-                    @endcan
-
-                    @can('appointment')
-                    <li>
-                        <a href="{{  route('appointment') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
-                            <div class="side-menu__title"> Appointments </div>
+                        <a href="{{ route('settings.departments') }}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="shield-check"></i> </div>
+                            <div class="side-menu__title"> Medical Departments </div>
                         </a>
                     </li>
-                    @endcan
-
-                    @can('billing')
-                    <li>
-                        <a href="{{  route('billing') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="wallet"></i> </div>
-                            <div class="side-menu__title"> Billing </div>
-                        </a>
-                    </li>
-                    @endcan
-                    
-                    @can('settings')
-                    <li>
-                        <a href="javascript:;" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="trello"></i> </div>
-                            <div class="side-menu__title">
-                                Settings
-                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                            </div>
-                        </a>
-                        <ul class="">
-                            <li>
-                                <a href="{{  route('settings.index') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> General Settings </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="side-menu-light-profile-overview-2.html" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> Commissions & Profits </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="side-menu-light-profile-overview-3.html" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> Departments </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> 
-                    @endcan
-
-
-
-                    @can('patient-files')
-                   
-                    <li>
-                        <a href="javascript:;" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="files"></i> </div>
-                            <div class="side-menu__title">
-                                Patient Profiles
-                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                            </div>
-                        </a>
-                        <ul class="">
-                            <li>
-                                <a href="{{ route('patient-files') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> All Profiles </div>
-                                </a>
-                            </li>
-                            {{-- @forelse(App\Models\User::role('patient')->get() as $my_patient)
-                            <li>
-                                <a href="{{ route('all-patient-files', $my_patient->id ) }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="user"></i> </div>
-                                    <div class="side-menu__title"> {{ $my_patient->fname.' '.$my_patient->lname }} </div>
-                                </a>
-                            </li>
-                            @empty
-                            <li>
-                                <a href="#" class="side-menu">
-                                    <div class="side-menu__title text-xs"> No Assigned Patients</div>
-                                </a>
-                            </li>
-                            @endforelse --}}
-                        </ul>
-                    </li>
-                    @endcan
-                    @can('questionaires.index')
-                    <li>
-                        <a href="javascript:;" class="side-menu ">
-                            <div {{ Route::currentRouteName() == 'questionaires.index' ? 'style="color:#F65B08"' : '' }}  class="side-menu__icon"> <i data-lucide="clipboard-list"></i> </div>
-                            <div class="side-menu__title">
-                                Survey Questionnaires 
-                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                            </div>
-                        </a>
-                        <ul class="">
-                            <li>
-                                <a href="{{ route('questionaires.index') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> Questionnaires </div>
-                                </a>
-                            </li>
-                            <li>    
-                                <a href="{{ route('questionaire-user-feedback') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title">User Feedback</div>
-                                </a>
-                            </li>
-                            {{-- 
-                            <li>
-                                <a href="javascript:;" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title">
-                                        Transactions 
-                                        <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                                    </div>
-                                </a>
-                                <ul class="">
-                                    <li>
-                                        <a href="side-menu-light-transaction-list.html" class="side-menu">
-                                            <div class="side-menu__icon"> <i data-lucide="zap"></i> </div>
-                                            <div class="side-menu__title">Transaction List</div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="side-menu-light-transaction-detail.html" class="side-menu">
-                                            <div class="side-menu__icon"> <i data-lucide="zap"></i> </div>
-                                            <div class="side-menu__title">Transaction Detail</div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li> 
-                            --}}
-                        </ul>
-                    </li>
-                    @endcan
-
-                    @can('notification')
-                    <li>
-                        <a href="{{ route('notification') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="bell"></i> </div>
-                            <div class="side-menu__title"> Notifications </div>
-                        </a>
-                    </li>
-                    @endcan
-                    @can('users.index')
-                    <li>
-                        <a href="javascript:;" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
-                            <div class="side-menu__title">
-                                Users 
-                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                            </div>
-                        </a>
-                        <ul class="">
-                            {{-- @can('view', Auth::user(), App\User::class) --}}
-                            @can('users.index')
-                            <li>
-                                <a href="{{ route('users.index') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="user-check"></i> </div>
-                                    <div class="side-menu__title"> Registered Users </div>
-                                </a>
-                            </li>
-                            @endcan
-                            @can('roles.index')
-                            <li>
-                                <a href="{{ route('roles.index') }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="user-plus"></i> </div>
-                                    <div class="side-menu__title">  Roles and Permissions </div>
-                                </a>
-                            </li>
-                            @endcan
-                        </ul>
-                    </li>
-                    @endcan
+                    @endhasanyrole
                 </ul>
             </nav>
             <div class="mt-5">

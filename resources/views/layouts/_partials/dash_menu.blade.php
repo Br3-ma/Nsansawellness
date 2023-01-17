@@ -197,6 +197,13 @@
                     <li>
                         <a href="{{ route('profile') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="user" class="w-4 h-4 mr-2"></i>Profile</a>
                     </li>
+                    
+                    @hasanyrole(['counselor', 'therapist', 'admin', 'administrator'])
+                    <li>
+                        <a href="{{ route('settings.index') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="wrench" class="w-4 h-4 mr-2"></i>Settings</a>
+                    </li>
+                    @endhasanyrole
+
                     @can('users.create')
                     <li>
                         <a href="{{ route('users.create')}}" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
