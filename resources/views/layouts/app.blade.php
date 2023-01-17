@@ -216,7 +216,7 @@
         <!-- BEGIN: Mobile Menu -->
         <div class="mobile-menu md:hidden">
             <div class="mobile-menu-bar">
-                <a href="" class="flex mr-auto">
+                <a href="{{ route('home') }}" class="flex mr-auto">
                     <img alt="Nsansa wellness" class="w-6 rounded-full" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}">
                 </a>
                 <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
@@ -662,11 +662,11 @@
         <div id="payment-remainder-modal" class="modal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-xl intro-y" id="payment-modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <a href="{{ route('home') }}" class="modal-header">
                         <img alt="Nsansa wellness" class="w-8 h-8 rounded-full" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}">
                         &nbsp;&nbsp;
                         <h2 class="font-medium text-base mr-auto">Nsansa Wellness</h2> 
-                    </div>
+                    </a>
                     <div class="modal-body text-left text-sm"> 
                         <span class="items-center justify-center">
                             <img class="w-52 h-52" src="https://img.freepik.com/premium-vector/man-working-armchair-laptop-with-cat-his-arms-freelance-work-home-concept-hand-drawn-flat-vector-illustration_528592-655.jpg">
