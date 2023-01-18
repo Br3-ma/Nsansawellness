@@ -50,8 +50,14 @@ class AppointmentController extends Controller
     public function index()
     {
         $events = [];
+
+        // $x = $this->get_my_appointments();
+        // dd($x);
+
         $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
+        
+        
         $notifications = auth()->user()->unreadNotifications;
         try {
             // dd(!empty($appointments->toArray()));
@@ -141,7 +147,7 @@ class AppointmentController extends Controller
         }else if(auth()->user()->hasRole('patient')){
             $users = $this->getMyCounselor(auth()->user());
         }else{
-            $users = $this->users->get();
+            $users = $this->user->get();
         }
         
         

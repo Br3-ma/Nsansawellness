@@ -187,19 +187,11 @@
         {{-- <input type="text" name="remotePeerId" id="remotePeerId"> --}}
         <button onclick="join()" id="btn-call">Join (Call)</button>
         @endhasrole
-        <div class="video-call-wrapper">
+
+        <div class="video-call-wrapper" style="position: relative">
           <!-- Video Participant 1 -->
         
-          <div id="local-screen" class="video-participant">
-            <div class="participant-action">
-              <button class="btn-mute"></button>
-              <button class="btn-camera"></button>
-            </div>
-            <a href="#" class="name-tag">You</a>
-            <video poster="https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public" height="100%" width="100%" style=" object-fit: cover; background-position: cover; background-size:cover" class="img-responsive" id='localVideo'>
-                Your browser does not support the video tag.
-            </video>
-          </div>
+
           <!-- Video Participant 2 -->
           {{-- <div class="remote-screen video-participant">
             <div class="participant-action">
@@ -213,16 +205,16 @@
             />
           </div> --}}
           <!-- Video Participant 3 -->
-          <div class="remote-screen video-participant">
+          <div style="width:100%; height:100%" class="remote-screen video-participant">
             <div class="participant-action">
               <button class="btn-mute"></button>
               <button class="btn-camera"></button>
             </div>
-            @if($data['role'] == 'patient')
+            @hasrole('patient')
             <a href="#" class="name-tag">Therapist</a>
             @else
             <a href="#" class="name-tag">Patient</a>
-            @endif
+            @endhasrole
             <video height="100%" width="100%"height="100%" width="100%" style=" object-fit: cover; background-position: cover; background-size:cover" class="img-responsive" id='remoteVideo'>
                 Your browser does not support the video tag.
             </video>
@@ -274,6 +266,18 @@
               alt="participant"
             />
           </div> --}}
+
+          <div id="local-screen" style="bottom:0; right:0; position:absolute; width:20%; height:20%; float:left" class="video-participant">
+            {{-- <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div> --}}
+            <a href="#" class="name-tag">You</a>
+            <video  muted="muted" poster="https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public" height="100%" width="100%" style=" object-fit: cover; background-position: cover; background-size:cover" class="img-responsive" id='localVideo'>
+                Your browser does not support the video tag.
+            </video>
+          </div>
+
         </div>
 
         <div class="video-call-actions">
@@ -531,11 +535,14 @@
       var audioStatus = 1;
       function toggleVideo(){      
         // Only Video
+        mediaStream.getVideoTracks()[0].enabled =
+         !(mediaStream.getVideoTracks()[0].enabled);
         console.log('In Video');
         console.log(videoStatus);
         console.log(audioStatus);
         if(videoStatus == 0){
           // Turn On Video, & check the sound status
+              alert('enabling video only on remote stream....');
           if(audioStatus == 0){
               navigator.mediaDevices.getUserMedia({ video: true, audio: false})
               .then(stream =>{
@@ -543,18 +550,26 @@
                   localVideo.srcObject = localStream;
                   localVideo.onloadedmetadata = () => localVideo.play();
               });
+              // localStream.getVideoTracks()[0].enabled = true;
+              // localStream.getAudioTracks()[0].enabled = false;
+
           }else{
+              alert('enabling video and audio on remote stream....');
               navigator.mediaDevices.getUserMedia({ video: true, audio: true})
               .then(stream =>{
                   localStream = stream;
                   localVideo.srcObject = localStream;
                   localVideo.onloadedmetadata = () => localVideo.play();
               });
+              // localStream.getVideoTracks()[0].enabled = true;
+              // localStream.getAudioTracks()[0].enabled = true;
+
           }
           videoStatus = 1;
         }else{
           // Turn Off Video
           // Turn off Video, & check the sound status
+          alert('hidding video and audio on remote stream....');
           if(audioStatus == 0){
               navigator.mediaDevices.getUserMedia({ video: false, audio: false})
               .then(stream =>{
@@ -562,14 +577,19 @@
                   localVideo.srcObject = localStream;
                   localVideo.onloadedmetadata = () => localVideo.play();
               });
-          }else{
+              // localStream.getVideoTracks()[0].enabled = false;
+              // localStream.getAudioTracks()[0].enabled = false;
+          
+            }else{
+              alert('hidding video only on remote stream....');
               navigator.mediaDevices.getUserMedia({ video: false, audio: true})
               .then(stream =>{
                   localStream = stream;
                   localVideo.srcObject = localStream;
                   localVideo.onloadedmetadata = () => localVideo.play();
               });
-              localStream.getVideoTracks()[0].enabled = false;
+              // localStream.getVideoTracks()[0].enabled = false;
+              // localStream.getAudioTracks()[0].enabled = true;
           }
           videoStatus = 0;
         }

@@ -202,6 +202,10 @@
                     <li>
                         <a href="{{ route('settings.index') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="wrench" class="w-4 h-4 mr-2"></i>Settings</a>
                     </li>
+                    @else
+                    <li>
+                        <a href="{{ route('settings.index') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="wrench" class="w-4 h-4 mr-2"></i>Preferences</a>
+                    </li>
                     @endhasanyrole
 
                     @can('users.create')

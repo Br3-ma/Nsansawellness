@@ -1,712 +1,886 @@
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Video Call | Nsansa Wellness</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="">
-        <style>
-            *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'poppins', sans-serif;
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nsansa Wellness | Video Session</title>
 
-            }
-            .header{
-                width: 100%;
-                height: 100vh;
-                background: #00122e;
-                position: relative;
+    <!-- Add Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ asset('public/dist/css/meet.css ')}}" />
+  </head>
 
-            }
-            nav{
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                background: #182842;
-                width: 120px;
-                padding: 10px 0;
+  
+  <body>
+    <div class="app-container">
+      <button class="mode-switch">
+        <!-- sun icon -->
 
-            }
-            nav .logo{
-                width: 56px;
-                display: block;
-                margin: auto;
-                cursor: pointer;
-            }
-            nav ul{
-                margin-top: 160px;
+        <img alt="Nsansa wellness" width="110%" class="w-6 rounded-full" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}">
+        <!-- sun icon -->
 
-            }
-            nav ul li{
-                list-style: none;
+        <!-- moon icon -->
+        <svg
+          class="moon"
+          fill="none"
+          stroke="#ffffff"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          class="feather feather-moon"
+          viewBox="0 0 24 24"
+        >
+          <defs />
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+        <!-- moon icon -->
+      </button>
+      <div class="left-side">
+        {{-- <div class="navigation">
+          <a href="#" class="nav-link icon">
+            <!-- Home icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-home"
+              viewBox="0 0 24 24"
+            >
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+              <path d="M9 22V12h6v10" />
+            </svg>
+            <!-- Home icon -->
+          </a>
 
-            }
-            nav ul li img{
-                width: 50px;
-                display: block;
-                margin: 10px auto;
-                padding: 10px;
-                cursor: pointer;
-                opacity: 0.5;
-                border-radius: 10px;
-                transition: opacity 0.5s, background 0.5s;
-            }
-            nav ul li img:hover{
-                opacity: 1;
-                background: #4d6181;
+          <a href="#" class="nav-link icon">
+            <!-- comment icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-message-square"
+            >
+              <path
+                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+              />
+            </svg>
+            <!-- comment icon -->
+          </a>
+          <a href="#" class="nav-link icon">
+            <!-- ringing phone icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-phone-call"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.05 5A5 5 0 0119 8.95M15.05 1A9 9 0 0123 8.94m-1 7.98v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+              />
+            </svg>
+            <!-- ringing phone icon -->
+          </a>
+          <a href="#" class="nav-link icon">
+            <!-- disk icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-hard-drive"
+            >
+              <line x1="22" y1="12" x2="2" y2="12" />
+              <path
+                d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+              />
+              <line x1="6" y1="16" x2="6.01" y2="16" />
+              <line x1="10" y1="16" x2="10.01" y2="16" />
+            </svg>
+            <!-- disk icon -->
+          </a>
+          <a href="#" class="nav-link icon">
+            <!-- people icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-users"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <!-- people icon -->
+          </a>
+          <a href="#" class="nav-link icon">
+            <!-- Folder icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-folder"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"
+              />
+            </svg>
+            <!-- Folder icon -->
+          </a>
+          <a href="#" class="nav-link icon">
+            <!-- Setting icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-settings"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"
+              />
+            </svg>
+            <!-- Setting icon -->
+          </a>
+        </div> --}}
+      </div>
+      <div class="app-main">            
+        <input type="text" name="localPeerId" id="localPeerId" readonly>
+        @hasrole('patient')
+        <input type="text" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+        {{-- <input type="text" name="remotePeerId" id="remotePeerId"> --}}
+        <button onclick="join()" id="btn-call">Join (Call)</button>
+        @endhasrole
 
-            }
-            .active{
-                opacity: 1;
-                background: #4d6181;
-            }
-            .container{
-                margin-left: 120px;
-                padding: 0 2.5%;
+        <div class="video-call-wrapper" style="position: relative">
+          <!-- Video Participant 1 -->
+        
 
-            }
-            .top-icons{
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-                padding: 25px 0;
+          <!-- Video Participant 2 -->
+          {{-- <div class="remote-screen video-participant">
+            <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div>
+            <a href="#" class="name-tag">Emmy Lou</a>
+            <img
+              src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"
+              alt="participant"
+            />
+          </div> --}}
+          <!-- Video Participant 3 -->
+          <div style="border: 1px solid white; width:100%; height:100%" class="remote-screen video-participant">
+            <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div>
+            @hasrole('patient')
+            <a href="#" class="name-tag">Therapist</a>
+            @else
+            <a href="#" class="name-tag">Patient</a>
+            @endhasrole
+            <video height="100%" width="100%"height="100%" width="100%" style=" object-fit: cover; background-position: cover; background-size:cover" class="img-responsive" id='remoteVideo'>
+                Your browser does not support the video tag.
+            </video>
+          </div>
 
-            }
-            .top-icons img{
-                width: 25px;
-                margin-left: 40px;
-                cursor: pointer;
+          {{-- <div class="remote-screen video-participant">
+            <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div>
+            <a href="#" class="name-tag">Tim Russel</a>
+            <video height="100%" width="100%" class="img-responsive" id='remoteVideo'>
+                Your browser does not support the video tag.
+            </video>
+          </div> --}}
+          <!-- Video Participant 4 -->
+          {{-- <div class="video-participant">
+            <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div>
+            <a href="#" class="name-tag">Jessica Bell</a>
+            <img
+              src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
+              alt="participant"
+            />
+          </div> --}}
+          <!-- Video Participant 5 -->
+          {{-- <div class="video-participant">
+            <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div>
+            <a href="#" class="name-tag">Ryan Patrick</a>
+            <img
+              src="https://images.unsplash.com/photo-1581824283135-0666cf353f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80"
+              alt="participant"
+            />
+          </div> --}}
+          <!-- Video Participant 6 -->
+          {{-- <div class="video-participant">
+            <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div>
+            <a href="#" class="name-tag">Tina Cate</a>
+            <img
+              src="https://images.unsplash.com/photo-1542596594-649edbc13630?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80"
+              alt="participant"
+            />
+          </div> --}}
 
-            }
-            .row{
-                margin-top: 15px;
-                display: flex;
-                justify-content: space-between;
+          <div id="local-screen" style="border: 1px solid white; bottom:2; right:2; position:absolute; width:20%; height:20%; float:left" class="video-participant">
+            {{-- <div class="participant-action">
+              <button class="btn-mute"></button>
+              <button class="btn-camera"></button>
+            </div> --}}
+            <a href="#" class="name-tag">You</a>
+            <video  muted="muted" poster="https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public" height="100%" width="100%" style=" object-fit: cover; background-position: cover; background-size:cover" class="img-responsive" id='localVideo'>
+                Your browser does not support the video tag.
+            </video>
+          </div>
 
-            }
-            .col-1{
-                flex-basis: 65%;
-
-            }
-            .col-2{
-                flex-basis: 33%;
-            }
-            .host-img{
-                width: 100%;
-                border-radius: 15px;
-            }
-            .contarols{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .contarols img{
-                width: 40px;
-                margin: 20px 10px;
-                cursor: pointer;
-                transition: transform 0.5s;
-            }
-            .contarols .call-icon{
-                width: 70px;
-
-            }
-            .contarols img:hover{
-                transform: translateY(-10px);
-
-            }
-            .joined{
-                background: #182842;
-                border-radius: 15px;
-                padding: 30px 40px 50px;
-                color: #fff;
-
-            }
-            .joined div{
-                margin-top: 20px;
-                display: grid;
-                grid-template-columns: auto auto auto;
-                grid-gap: 20px;
-
-            }
-            .joined img{
-                width: 100%;
-                border-radius: 10px;
-                cursor: pointer;
-
-            }
-            .invite{
-                background: #182842;
-                border-radius: 15px;
-                padding: 30px 40px 50px;
-                color: #fff;
-                margin-top: 20px;
-
-            }
-            .invite img{
-                margin-top: 20px;
-                width: 50px;
-                margin-left: 5px;
-                border-radius: 50%;
-                cursor: pointer;
-            }
-        </style>
-        <script src="//localhost:6001/socket.io/socket.io.js"></script>
-    </head>
-        <div id="app" class="header">
-            
-            <nav>
-                <img width="20%" src="uploads/sites/304/2022/06/logos.svg" class="rounded logo">
-                <ul>
-                    <li><img src="https://i.postimg.cc/L8zxQBhv/live.png" class="active"></li>
-                    <li title="Video"><img src="https://i.postimg.cc/JnggC78Q/video.png"></li>
-                    <li title="Invite Someone"><img src="https://i.postimg.cc/k4DZH604/users.png"></li>
-                    <li title="Quick Settings"><img src="https://i.postimg.cc/v84Fqkyz/setting.png"></li>
-                </ul>
-            </nav>
-            <template>
-                <div class="container">
-                    <div class="top-icons">
-                        <!-- <a href="#">{{ channel }}</a> -->
-                        <img src="https://i.postimg.cc/Pqy2TXWw/menu.png">
-                    </div>
-                    <div class="row">
-                        
-                        <div class="col-12">
-                            <div style="padding:5px">
-                                <video style="border: 1px solid white;" autoplay height="300vh" width="100%" class="img-responsive" id='remoteVideo'>
-                                    Your browser does not support the video tag.
-                                </video>
-                                <video style="border: 1px solid white;" autoplay id='localVideo' class="img-responsive">
-                                    Your browser does not support the video tag.
-                                </video>
-
-                            </div>
-                            <!-- <img height="75%" width="50px" src="https://media1.popsugar-assets.com/files/thumbor/YPjaz8052B7wAJ_dZl99jxVL0zg/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2020/02/10/627/n/1922729/330be6f43c47a571_chantablue/i/Chanta-Blue.jpg" class="host-img"> -->
-                            <div class="contarols">
-                                <img src="https://i.postimg.cc/3NVtVtgf/chat.png">
-                                <img src="https://i.postimg.cc/BQPYHG0r/disconnect.png">
-                                <img src="https://i.postimg.cc/BQPYHG0r/record.png">
-                                <img src="https://i.postimg.cc/fyJH8G00/call.png" class="call-icon">
-                                <img src="https://i.postimg.cc/bJFgSmFY/mic.png">
-                                <img src="https://i.postimg.cc/Y2sDvCJN/cast.png">
-                            </div>
-                        </div>
-                        <!-- <div class="col-2">
-                            <div class="joined">
-                                <p>People Joined</p>
-                                <div>
-                                    <img src="https://i.postimg.cc/WzFnG0QG/people-1.png">
-                                    <img src="https://i.postimg.cc/fRhGbb92/people-2.png">
-                                    <img src="https://i.postimg.cc/02mgxSbK/people-3.png">
-                                    <img src="https://i.postimg.cc/K8rd3y7Z/people-4.png">
-                                    <img src="https://i.postimg.cc/HWFGfzsC/people-5.png">
-                                </div>
-                            </div>
-                            <div class="invite">
-                                <p>Invite More People</p>
-                                <div>
-                                    <img src="https://i.postimg.cc/7LHjgQXS/user-1.png">
-                                    <img src="https://i.postimg.cc/q71SQXZS/user-2.png">
-                                    <img src="https://i.postimg.cc/h4kwCGpD/user-3.png">
-                                    <img src="https://i.postimg.cc/GtyfL0hn/user-4.png">
-                                    <img src="https://i.postimg.cc/FFd8gSbC/user-5.png">
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-            </template>
         </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js" integrity="sha512-0qU9M9jfqPw6FKkPafM3gy2CBAvUWnYVOfNPDYKVuRTel1PrciTj+a9P3loJB+j0QmN2Y0JYQmkBBS8W+mbezg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-    <!-- <script type="module" src="./node_modules/webrtc-adapter/src/js/adapter_factory.js"></script> -->
-    <script src="public/js/vix.js"></script>
-    <!-- <script type="module" src="resources/js/bootstrap.js"></script> -->
-    <!-- <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/laravel-echo/1.12.0/echo.min.js"></script> -->
-    <script type="module">
-        import Echo from "https://cdnjs.cloudflare.com/ajax/libs/laravel-echo/1.12.0/echo.min.js";
-        // import './node_modules/webrtc-adapter/src/js/adapter_core.js';
 
-        $(function () {
-            var localVideo = document.getElementById('localVideo');
-            var remoteVideo = document.getElementById('remoteVideo');
-            var answerButton = document.getElementById('answerCallButton');
-            var my_id = "<?php echo $_GET['id']; ?>";
-            // answerButton.onclick = answerCall;
-            // console.log(localVideo);
-            $('input[type=file]').on('change', prepareUpload);
-        });
+        <div class="video-call-actions">
+          <button onclick="toggleAudioMute()" class="video-action-button mic"></button>
+          <button onclick="toggleVideo()" class="video-action-button camera"></button>
+          {{-- <button class="video-action-button maximize"></button> --}}
+          <button onclick="endCall()" class="video-action-button endcall">Leave</button>
+          {{-- <button class="video-action-button magnifier">
+            <!-- ZoomIn icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-zoom-in"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="M21 21l-4.35-4.35M11 8v6M8 11h6" />
+            </svg>
 
-        var files;
-        var conversationID;
-        var luid;
-        var ruid;
-        var startTime;
-        var localStream;
-        var pc;
-        var offerOptions = {
-            offerToReceiveAudio: 1,
-            offerToReceiveVideo: 1
-        };
-        var isCaller = false;
-        var peerConnectionDidCreate = false;
-        var candidateDidReceived = false;
-        var localConnection, remoteConnection;
-        // import Echo from "https://cdnjs.cloudflare.com/ajax/libs/laravel-echo/1.12.0/echo.min.js";
-        new Vue({
-            el: "#app",
-            data:{
-                conversationId : 1,
-                channel : 'chat-room-1',
-                messages : 'Hello',
-                withUser : '',
-                text : '',
-                constraints : {
-                    audio: false,
-                    video: true
-                },
-            },
-            beforeMount () {
-                var convID = "<?php echo $_GET['conversation']; ?>";
-                var user = "<?php echo $_GET['id']; ?>";
-                axios.get('/nsawellness/api/fetch-session/'+convID+'/'+user,{
-                
-                }).then(response => {
-                    this.handleResponse(response)
-                })
-                .catch(e => {
-                    this.handleErrors(e)
-                })
-            },
-            mounted() { 
-                this.listenForNewMessage();
-                this.startVideoCallToUser (1);
-            },
-            methods: {
-                handleResponse(response){
-                    this.conversationId = response.data.messages[0]['conversation_id'];
-                    this.channel = response.data.channel_name;
-                    this.withUser = response.data.messages[0]['sender']['id'];
+            <!-- ZoomIn icon -->
+            <span>100%</span>
+            <!-- ZoomOut Icon -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-zoom-out"
+              title="Zoom In"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg>
+            <!-- ZoomOut Icon -->
+          </button> --}}
+        </div>
+      </div>
 
-                    console.log(this.withUser);
-                    console.log(this.conversationId);
-                    console.log(this.channel);
+      <!-- Right Side -->
+      <div class="right-side">
+        <button class="btn-close-right">
+          <!-- Close Icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="feather feather-x-circle"
+            viewBox="0 0 24 24"
+          >
+            <defs></defs>
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M15 9l-6 6M9 9l6 6"></path>
+          </svg>
+          <!-- Close Icon -->
+        </button>
 
-                    Cookies.set('uuid', response.data.messages[0]['sender']['id']);
-                    Cookies.set('conversationID', response.data.messages[0]['conversation_id']);
-                },
-                startVideoCallToUser (id) {
-                    alert(this.withUser);
-                    Cookies.set('remoteUUID', id);
-                    window.remoteUUID = id;
-                    luid = Cookies.get('uuid');
-                    ruid = Cookies.get('remoteUUID');
-                    isCaller = true;
-                    start()
-                },
-                check(id) {
-                        return id === this.currentUser.id;
-                },
-                send() {
-                    axios.post('/nsawellness/chat/message/send',{
-                        conversationId : this.conversationId,
-                        text: this.text,
-                    }).then((response) => {
-                        this.text = '';
-                    });
-                },
-                sendFiles() {
-                    var data = new FormData();
+        {{-- Chat --}}
+        <div class="convoBody chat-container"> 
+          <div class="chat-header">
+            <button class="chat-header-button">Live Chat</button>
+          </div>
+          {{-- convoBody message_thread  --}}
+          <div id="message_thread" class="chat-area">
+          </div>
+          <div class="chat-typing-area-wrapper">
+            <div class="chat-typing-area">
+              <input
+                id="message_textbox"
+                type="text"
+                placeholder="Type your message..."
+                class="chat-input"
+              />
+              <button onclick="send()" class="send-button">
+                <!-- Send icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-send"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                </svg>
+                <!-- Send icon -->
+              </button>
+            </div>
+          </div>
+        </div> 
 
-                    $.each(files, function(key, value)
-                    {
-                        data.append('files[]', value);
-                    });
 
-                    data.append('conversationId' , this.conversationId);
+        {{-- Paticipants --}}
+        {{-- <div class="participants">
+          <!-- Participant pic 1 -->
+          <div class="participant profile-picture">
+            <img
+              src="https://images.unsplash.com/photo-1576110397661-64a019d88a98?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80"
+              alt=""
+            />
+          </div>
+          <!-- Participant pic 2 -->
+          <div class="participant profile-picture">
+            <img
+              src="https://images.unsplash.com/photo-1566821582776-92b13ab46bb4?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
+              alt=""
+            />
+          </div>
+          <!-- Participant pic 3 -->
+          <div class="participant profile-picture">
+            <img
+              src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
+              alt=""
+            />
+          </div>
+          <!-- Participant pic 4 -->
+          <div class="participant profile-picture">
+            <img
+              src="https://images.unsplash.com/photo-1581824283135-0666cf353f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80"
+              alt=""
+            />
+          </div>
+          <div class="participant-more">2+</div>
+        </div> --}}
+      </div>
+      <button title="Expand" class="expand-btn">
+        <!-- expand icon -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-message-circle"
+        >
+          <path
+            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+          />
+        </svg>
+        <!-- expand icon -->
+      </button>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $(document).ready(function(){
+      var info = @json($data);
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': info['token']
+          }
+      });
+    });
+  </script>  
+  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <script th:inline="javascript">
+      $(document).ready(function() {
+          $('.remote-screen').show();
+          // document.getElementById("local-screen").style.width = "100%"
+          // document.getElementById("local-screen").style.height = "100%"
+          // if (window.matchMedia("(max-width: 767px)").matches){}else{}
+      });
+      const btnCall = document.getElementById('btn-call');
+      const myId = document.getElementById('localPeerId');
+      const peerId = document.getElementById('remotePeerId');
+      // const localScreen = document.getElementById('local-screen');
+      // const remoteScreen = document.getElementByClassName('remote-screen');
+      var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
 
-                    axios.post('/chat/message/send/file', data);
-                },
-                listenForNewMessage: function () {
-                    // alert(this.channel);
-                    window.Echo.join(this.channel)
-                        .here((users) => {
-                            console.log(users)
-                        })
-                        .listen('\\PhpJunior\\LaravelVideoChat\\Events\\NewConversationMessage', (data) => {
-                            var self = this;
-                            if ( data.files.length > 0 ){
-                                $.each( data.files , function( key, value ) {
-                                    self.conversation.files.push(value);
-                                });
-                            }
-                            this.messages.push(data);
-                        })
-                        .listen('\\PhpJunior\\LaravelVideoChat\\Events\\VideoChatStart', (data) => {
+      var localVideo = document.getElementById('localVideo');
+      var remoteVideo = document.getElementById('remoteVideo');
+      var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+      // var myID = '';
+      var peer = new Peer();
 
-                            if(data.to != this.currentUser.id){
-                                return;
-                            }
+      let localStream;
 
-                            if(data.type === 'signal'){
-                                onSignalMessage(data);
-                            }else if(data.type === 'text'){
-                                console.log('received text message from ' + data.from + ', content: ' + data.content);
-                            }else{
-                                console.log('received unknown message type ' + data.type + ' from ' + data.from);
-                            }
-                        });
-                },
-            }
-        });
-
-    function onSignalMessage(m){
-        console.log(m.subtype);
-        if(m.subtype === 'offer'){
-            console.log('got remote offer from ' + m.from + ', content ' + m.content);
-            Cookies.set('remoteUUID', m.from);
-            onSignalOffer(m.content);
-        }else if(m.subtype === 'answer'){
-            onSignalAnswer(m.content);
-        }else if(m.subtype === 'candidate'){
-            onSignalCandidate(m.content);
-        }else if(m.subtype === 'close'){
-            onSignalClose();
-        }else{
-            console.log('unknown signal type ' + m.subtype);
-        }
-    }
-    
-    function onSignalClose() {
-        trace('Ending call');
-        pc.close();
-        pc = null;
-
-        closeMedia();
-        clearView();
-    }
-
-    function closeMedia(){
-        localStream.getTracks().forEach(function(track){track.stop();});
-    }
-
-    function clearView(){
-        localVideo.srcObject = null;
-        remoteVideo.srcObject = null;
-    }
-
-    function onSignalCandidate(candidate){
-        onRemoteIceCandidate(candidate);
-    }
-
-    function onRemoteIceCandidate(candidate){
-        trace('onRemoteIceCandidate : ' + candidate);
-        if(peerConnectionDidCreate){
-            addRemoteCandidate(candidate);
-        }else{
-            //remoteCandidates.push(candidate);
-            var candidates = Cookies.getJSON('candidate');
-            if(candidateDidReceived){
-                candidates.push(candidate);
-            }else{
-                candidates = [candidate];
-                candidateDidReceived = true;
-            }
-            Cookies.set('candidate', candidates);
-        }
-    }
-
-    function onSignalAnswer(answer){
-        onRemoteAnswer(answer);
-    }
-
-    function onRemoteAnswer(answer){
-        trace('onRemoteAnswer : ' + answer);
-        pc.setRemoteDescription(answer).then(function(){onSetRemoteSuccess(pc)}, onSetSessionDescriptionError);
-    }
-
-    function onSignalOffer(offer){
-        Cookies.set('offer', offer);
-        $('#incomingVideoCallModal').modal('show');
-    }
-
-    function answerCall() {
-        isCaller = false;
-        luid = Cookies.get('uuid');
-        ruid = Cookies.get('remoteUUID');
-        $('#incomingVideoCallModal').modal('hide');
-        start()
-    }
-
-    function gotStream(stream) {
-        trace('Received local stream');
-        localVideo.srcObject = stream;
-        localStream = stream;
-        call();
-    }
-
-    function start() {
-
-        trace('Requesting local stream');
-
-        navigator.mediaDevices.getUserMedia({
-            audio: true,
-            video: true
-        })
-        .then(gotStream)
-        .catch(function(e) {
-            alert('getUserMedia() error: ' + e.name);
-        });
-        // navigator.getUserMedia({video: true, audio: true}, function (stream) {
-        //     localVideo.srcObject = stream;
-        //     alert(localVideo.srcObject);
-        //     startPeerConnection(stream);
-        // }, function (error) {
-        //     alert("Camera capture failed!")
-        // });
-    }
-
-    function startPeerConnection(stream) {
-        var configuration = {
-            offerToReceiveAudio: true,
-            offerToReceiveVideo: true
-        }
-        localConnection = new RTCPeerConnection({configuration: configuration, iceServers: []});
-        remoteConnection = new RTCPeerConnection(configuration);
-        stream.getTracks().forEach(
-            function (track) {
-                localConnection.addTrack(
-                    track,
-                    stream
-                );
-            }
-        );
-
-        remoteConnection.ontrack = function (e) {
-            remoteVideo.srcObject = e.streams[0];
-        };
-
-        alert(remoteVideo.srcObject);
-        // Set up the ICE candidates for the two peers
-        localConnection.onicecandidate = e => !e.candidate
-            || remoteConnection.addIceCandidate(e.candidate)
-                .catch(e => {
-                    console.error(e)
-                });
-
-        remoteConnection.onicecandidate = e => !e.candidate
-            || localConnection.addIceCandidate(e.candidate)
-                .catch(e => {
-                    console.error(e)
-                });
-
-        localConnection.createOffer()
-            .then(offer => localConnection.setLocalDescription(offer))
-            .then(() => remoteConnection.setRemoteDescription(localConnection.localDescription))
-            .then(() => remoteConnection.createAnswer())
-            .then(answer => remoteConnection.setLocalDescription(answer))
-            .then(() => localConnection.setRemoteDescription(remoteConnection.localDescription))
-            .catch(e => {
-                console.error(e)
-            });
-    }
-    function call() {
-        conversationID = Cookies.get('conversationID');
-        trace('Starting call');
-        startTime = window.performance.now();
-
-        var videoTracks = localStream.getVideoTracks();
-        var audioTracks = localStream.getAudioTracks();
-
-        if (videoTracks.length > 0) {
-            trace('Using video device: ' + videoTracks[0].label);
-        }
-
-        if (audioTracks.length > 0) {
-            trace('Using audio device: ' + audioTracks[0].label);
-        }
-
-        var configuration = { "iceServers": [{ "urls": "stun:stun.ideasip.com" }] };
-        pc = new RTCPeerConnection(configuration);
-
-        trace('Created local peer connection object pc');
-        // Once remote track media arrives, show it in remote video element.
-        try {
-            pc.ontrack = function (e) {
-                remoteVideo.srcObject = e.streams[0];
-            };
-            pc.addEventListener('ontrack', async (event) => {
-                const [remoteStream] = event.streams;
-                remoteVideo.srcObject = remoteStream;
-            });
-        } catch (error) {
-            alert(error);
-        }
-
-        pc.onicecandidate = function(e) {
-            onIceCandidate(pc, e);
-        };
-
-        pc.oniceconnectionstatechange = function(e) {
-            onIceStateChange(pc, e);
-        };
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true})
+          .then(stream =>{
+              localStream = stream;
+              localVideo.srcObject = localStream;
+              localVideo.onloadedmetadata = () => localVideo.play();
+          });
+  
         
-        // Once remote track media arrives, show it in remote video element.
-        try {
-            pc.ontrack = function (e) {
-                remoteVideo.srcObject = e.streams[0];
-            };
-        } catch (error) {
-            alert(error);
-        }
-        alert(remoteVideo.srcObject);
-        alert(localVideo.srcObject);
-        // console.log(pc.ontrack);
-        // remoteVideo.srcObject = localStream;
-        pc.addStream(localStream);
-        // pc.addTrack(localStream);
-        trace('Added local stream to pc');
-        
-        peerConnectionDidCreate = true;
+          peer.on('open', id => {
+              let det = @json($data);
+              myId.value = id;
+              if(user_role == 'counselor'){
+                shareIdToPeer(id, det);
+              }else{
+                // join();
+              }
+          });
+       
+  
+      function shareIdToPeer(peer_id, info){
+        $.ajax({
+            type:'POST',
+            url:'{{ route("send.remote_id") }}',
+            data: {
+                peer_id,
+                info
+            },
+            success:function(data) {
+              console.log(data);
+            }
+        });
+      }
 
-        if(isCaller) {
-            trace('createOffer start');
-            trace('pc createOffer start');
+      function join(){
 
-            pc.createOffer(
-                offerOptions
-            ).then(
-                onCreateOfferSuccess,
-                onCreateSessionDescriptionError
-            );
+          const remotePeerId = peerId.value;
+          const call = peer.call(remotePeerId, localStream);
+          alert('joining');
+          alert(remotePeerId);
+
+          call.on('stream', stream => {
+              remoteVideo.srcObject = stream;
+              remoteVideo.onloadedmetadata = () => remoteVideo.play();
+              // $('.remote-screen').show();
+          })
+      }
+  
+      peer.on('call', call => {
+          call.answer(localStream);
+          call.on('stream', stream => {
+              remoteVideo.srcObject = stream;
+              remoteVideo.onloadedmetadata = () => remoteVideo.play();
+          })
+      })
+
+
+      var videoStatus = 1;
+      var audioStatus = 1;
+      function toggleVideo(){      
+        // Only Video
+        console.log('In Video');
+        console.log(videoStatus);
+        console.log(audioStatus);
+        if(videoStatus == 0){
+          // Turn On Video, & check the sound status
+          if(audioStatus == 0){
+              navigator.mediaDevices.getUserMedia({ video: true, audio: false})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }else{
+              navigator.mediaDevices.getUserMedia({ video: true, audio: true})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }
+          videoStatus = 1;
         }else{
-            onAnswer()
+          // Turn Off Video
+          // Turn off Video, & check the sound status
+          if(audioStatus == 0){
+              navigator.mediaDevices.getUserMedia({ video: false, audio: false})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }else{
+              navigator.mediaDevices.getUserMedia({ video: false, audio: true})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+              localStream.getVideoTracks()[0].enabled = false;
+          }
+          videoStatus = 0;
         }
-    }
-    let gotRemoteStream = (e) =>{
-        alert('am in');
-        if (remoteVideo.srcObject !== e.stream) {
-            remoteVideo.srcObject = e.stream;
-            trace('pc received remote stream');
+      }
+
+
+      function toggleAudioMute(){
+        // Only Audio
+        console.log('In audio');
+        console.log(videoStatus);
+        console.log(audioStatus);
+        if(audioStatus == 0){
+          // If the video is OFF - turn it OFF here as well
+          if(videoStatus == 0){
+              navigator.mediaDevices.getUserMedia({ video: false, audio: true})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }else{
+              // Leave it ON
+              navigator.mediaDevices.getUserMedia({ video: true, audio: true})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }
+          audioStatus = 1;
+        }else{
+          navigator.permissions.query({ name:'microphone'});
+          // localStream.getAudioTracks()[0].stop();
+          // If the video is OFF - turn it OFF here as well
+          if(videoStatus == 0){       
+              localStream.getTracks().forEach( (track) => {
+                track.stop();
+              });
+          }else{
+
+              navigator.mediaDevices.getUserMedia({ video: true, audio: false})
+              .then(stream =>{
+                  localStream = stream;
+                  localVideo.srcObject = localStream;
+                  localVideo.onloadedmetadata = () => localVideo.play();
+              });
+          }
+          audioStatus = 0;
         }
-    };
-    function onAnswer(){
-        var remoteOffer = Cookies.getJSON('offer');
+      }
 
-        pc.setRemoteDescription(remoteOffer).then(function(){onSetRemoteSuccess(pc)}, onSetSessionDescriptionError);
+      function endCall(){
+        peer.destroy();
+        $('.remote-screen').hide();
+        $('#local-screen').css = "width:100%; height:100%; margin:0 auto;"
+      }
 
-        pc.createAnswer().then(
-            onCreateAnswerSuccess,
-            onCreateSessionDescriptionError
-        );
-    }
+  
+      // localStream.getTracks().forEach( (track) => {
+      //   track.stop();
+      // });
 
-    function onCreateAnswerSuccess(desc) {
-        trace('Answer from pc:\n' + desc.sdp);
-        trace('pc setLocalDescription start');
-        pc.setLocalDescription(desc).then(
-            function() {
-                onSetLocalSuccess(pc);
-            },
-            onSetSessionDescriptionError
-        );
-        conversationID = Cookies.get('conversationID');
-        var message = {from: luid, to:ruid, type: 'signal', subtype: 'answer', content: desc, time:new Date()};
-        axios.post('/nsawellness/trigger/' + conversationID , message );
-    }
-
-    function onSetRemoteSuccess(pc) {
-        trace(pc + ' setRemoteDescription complete');
-        applyRemoteCandidates();
-    }
-
-    function applyRemoteCandidates(){
-        var candidates = Cookies.getJSON('candidate');
-        for(var candidate in candidates){
-            addRemoteCandidate(candidates[candidate]);
-        }
-        Cookies.remove('candidate');
-    }
-
-    function addRemoteCandidate(candidate){
-        pc.addIceCandidate(candidate).then(
-            function() {
-                onAddIceCandidateSuccess(pc);
-            },
-            function(err) {
-                onAddIceCandidateError(pc, err);
-            });
-    }
-
-    function onIceCandidate(pc, event) {
-        if (event.candidate){
-            trace(pc + ' ICE candidate: \n' + (event.candidate ? event.candidate.candidate : '(null)'));
-            conversationID = Cookies.get('conversationID');
-            var message = {from: luid, to:ruid, type: 'signal', subtype: 'candidate', content: event.candidate, time:new Date()};
-            axios.post('/nsawellness/trigger/' + conversationID , message );
-        }
-    }
-
-    function onAddIceCandidateSuccess(pc) {
-        trace(pc + ' addIceCandidate success');
-    }
-
-    function onAddIceCandidateError(pc, error) {
-        trace(pc + ' failed to add ICE Candidate: ' + error.toString());
-    }
-
-    function onIceStateChange(pc, event) {
-        if (pc) {
-            trace(pc + ' ICE state: ' + pc.iceConnectionState);
-            console.log('ICE state change event: ', event);
-        }
-    }
-
-    function onCreateSessionDescriptionError(error) {
-        trace('Failed to create session description: ' + error.toString());
-    }
-
-    function onCreateOfferSuccess(desc) {
-        trace('Offer from pc\n' + desc.sdp);
-        trace('pc setLocalDescription start');
-        pc.setLocalDescription(desc).then(
-            function() {
-                onSetLocalSuccess(pc);
-            },
-            onSetSessionDescriptionError
-        );
-
-        conversationID = Cookies.get('conversationID');
-        var message = {from: luid, to:ruid, type: 'signal', subtype: 'offer', content: desc, time:new Date()};
-        axios.post('/nsawellness/trigger/' + conversationID , message );
-    }
-
-    function onSetLocalSuccess(pc) {
-        trace( pc + ' setLocalDescription complete');
-    }
-
-    function onSetSessionDescriptionError(error) {
-        trace('Failed to set session description: ' + error.toString());
-    }
+</script>
 
 
+<script>
+  // $(document).ready(function() {
+    const user = {!! auth()->user()->toJson() ?? '' !!};
+    var data = @json($data);
+    var chat_id; 
+    var owner = null; 
+    var aDay = 24*60*60*1000;
+    var msgFeild = document.getElementById("message_textbox");
 
-    function trace(arg) {
-        var now = (window.performance.now() / 1000).toFixed(3);
-        console.log(now + ': ', arg);
-    }
+    console.log(data);
+    startChat(data['chat_id'], 'sender', data['receiver'], data['role']);
+  // });
 
-    function prepareUpload(event)
-    {
-        files = event.target.files;
-    }                           
-    </script>
-    
-    <script src="public/js/sock.js"></script>
-</html> 
+  
+  function startChat(id, who, names, role){
+      chat_id = id;
+      // alert(chat_id);
+      owner = who;
+      $('#chat_receiver_name').text(names);
+      $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
+      $('#message_thread').empty();
+      // $('#message_thread div').empty();
+      // {{-- Get chat message thread --}}
+      $.ajax({
+          type:'GET',
+          url:'{{ route("chat.index") }}',
+          data: {
+              id,owner
+          },
+          success:function(data) {
+              let messages = data.chat_session.chat_messages;
+              
+              // UPDATED
+              console.log(messages);
+              for (const message of messages){
+                    console.log(user['id'] != message.user_id);
+                  if(user['id'] != message.user_id){
+
+                      $('#message_thread').append('<div class="message-wrapper">\
+                        <div class="profile-picture">\
+                          <img\
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAKwLNQorSghh-caEq8UwWJmd60z4trnBNqbJujqDuq3rWxEJwU7QsdwpFzAWl1J6sijE&usqp=CAU"\
+                            alt=""\
+                          />\
+                        </div>\
+                        <div class="message-content">\
+                          <p class="name">'+ message.user.fname +' '+ message.user.lname +'</p>\
+                          <div class="message">'+ message.message +'</div>\
+                        </div>\
+                      </div>');
+                  }else{
+                      $('#message_thread').append('<div class="message-wrapper reverse">\
+                          <div class="profile-picture">\
+                            <img\
+                              src="https://png.pngtree.com/background/20211217/original/pngtree-traditional-african-color-pattern-picture-image_1590972.jpg"\
+                              alt=""\
+                            />\
+                          </div>\
+                          <div class="message-content">\
+                            <p class="name">'+ message.user.fname +' '+ message.user.lname +'</p>\
+                            <div class="message">'+ message.message +'</div>\
+                          </div>\
+                        </div>');
+                  }
+              } 
+              $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+          },
+          
+          error: function (msg) {
+              console.log(msg);
+              var errors = msg.responseJSON;
+          }
+      });
+  }
+
+  function send(){
+      var message = $('#message_textbox').val();
+      // alert(chat_id);
+      // alert(message_id);
+      let user_id = user['id'];
+      let status = 1;
+      // $('#message_thread').empty();
+      // $('#message_thread div').empty();
+      // {{-- Get chat message thread --}}
+      $.ajax({
+          type:'POST',
+          url:'{{ route("chat.store") }}',
+          data: {
+              user_id,
+              message,
+              chat_id,
+              status,
+          },
+          success:function(data) {    
+              update();
+              $('#message_textbox').val(''); 
+              $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+              
+          },
+          
+          error: function (msg) {
+              console.log(msg);
+              var errors = msg.responseJSON;
+          }
+      });
+
+
+  }
+
+  // // Execute a function when the user presses a key on the keyboard
+  // msgFeild.addEventListener("keypress", function(event) {
+  // // If the user presses the "Enter" key on the keyboard
+  //     if (event.key === "Enter") {
+  //         // Cancel the default action, if needed
+  //         event.preventDefault();
+  //         // Trigger the button element with a click
+  //         send();
+  //     }
+  // });
+
+  function update(){
+      let user_id = user['id'];
+      if(chat_id !== undefined){
+          $.ajax({    
+              type:'GET',
+              url:'{{ route("chat.stream") }}',
+              data: { 
+                  chat_id,owner
+              },
+              success:function(data) {
+                  let messages = data.chat_messages;
+                  console.log('Messages Thread Below');
+
+                  try {
+                      // console.log(Object.keys(messages).length);
+                      // console.log(messages);
+                      if(Object.keys(messages).length > 0){
+                          for (const message of messages){
+                              console.log(message);
+                              if(user['id'] != message.user_id){
+                                  $('#message_thread').append('<div class="message-wrapper">\
+                                    <div class="profile-picture">\
+                                        <img\
+                                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAKwLNQorSghh-caEq8UwWJmd60z4trnBNqbJujqDuq3rWxEJwU7QsdwpFzAWl1J6sijE&usqp=CAU"\
+                                          alt=""\
+                                        />\
+                                      </div>\
+                                      <div class="message-content">\
+                                        <p class="name">'+ message.user.fname +' '+ message.user.lname +'</p>\
+                                        <div class="message">'+ message.message +'</div>\
+                                      </div>\
+                                    </div>\
+                                  ');
+                                  $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+
+                              }else{
+                                  $('#message_thread').append('<div class="message-wrapper reverse">\
+                                    <div class="profile-picture">\
+                                        <img\
+                                          src="https://png.pngtree.com/background/20211217/original/pngtree-traditional-african-color-pattern-picture-image_1590972.jpg"\
+                                          alt=""\
+                                        />\
+                                      </div>\
+                                      <div class="message-content">\
+                                        <p class="name">'+ message.user.fname +' '+ message.user.lname +'</p>\
+                                        <div class="message">'+ message.message +'</div>\
+                                      </div>\
+                                    </div>\
+                                  ');
+                                  $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+                              }
+                          }
+                      } 
+                  }catch(err){
+                      console.log('Not updates yet');
+                  }         
+              },
+              
+              error: function (msg) {
+                  console.log(msg);
+                  var errors = msg.responseJSON;
+              }
+          });
+      }
+  }
+
+  function init(){
+      $('#message_thread').empty();
+  }
+
+  var default_avatar = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4n4D5jth4fm4GE7ut7lWW-04lnDO2OkD-sg&usqp=CAU';
+  
+  function handleError(image) {
+      image.src = default_avatar;
+  }
+
+  function back(){
+      $('.convoBody').hide();
+      $('.chatList').show();
+  }
+  function timeSince(timeStamp) {
+      var now = new Date(), secondsPast = (now.getTime() - timeStamp) / 1000;
+      if (secondsPast < 60) {
+          return parseInt(secondsPast) + 's ago';
+      }
+      if (secondsPast < 3600) {
+          return parseInt(secondsPast / 60) + 'min ago';
+      }
+      if (secondsPast <= 86400) {
+          return parseInt(secondsPast / 3600) + 'h ago';
+      }
+      if (secondsPast > 86400) {
+          day = timeStamp.getDate();
+          month = timeStamp.toDateString().match(/ [a-zA-Z]*/)[0].replace(" ", "");
+          year = timeStamp.getFullYear() == now.getFullYear() ? "" : " " + timeStamp.getFullYear();
+          return day + " " + month + year;
+      }
+  }
+
+  // const currentTimeStamp = new Date().getTime();
+  // console.log(timeSince(currentTimeStamp));
+
+  // var intervalId = window.setInterval(function(){
+  //     update();
+  // }, 1000);
+
+  var myclose = false;
+  function ConfirmClose(){
+      if (event.clientY < 0)
+      {
+          event.returnValue = 'You have closed the browser. Do you want to logout from your application?';
+          setTimeout('myclose=false',10);
+          myclose=true;
+      }
+  }
+
+  function HandleOnClose(){
+      if (myclose==true) 
+      {
+          //the url of your logout page which invalidate session on logout 
+          location.replace('/contextpath/j_spring_security_logout') ;
+      }   
+  }
+</script>
+</html>
