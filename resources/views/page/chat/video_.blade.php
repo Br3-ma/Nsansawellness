@@ -535,8 +535,8 @@
       var audioStatus = 1;
       function toggleVideo(){      
         // Only Video
-        mediaStream.getVideoTracks()[0].enabled =
-         !(mediaStream.getVideoTracks()[0].enabled);
+        // mediaStream.getVideoTracks()[0].enabled =
+        //  !(mediaStream.getVideoTracks()[0].enabled);
         console.log('In Video');
         console.log(videoStatus);
         console.log(audioStatus);
