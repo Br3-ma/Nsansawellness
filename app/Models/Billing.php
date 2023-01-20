@@ -10,6 +10,7 @@ class Billing extends Model
     use HasFactory;
     protected $fillable = [
         'user_id',
+        'counselor_id',
         'charge_amount',
         'remainder_count',
         'balance',
@@ -19,6 +20,10 @@ class Billing extends Model
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function counselor_billing(){
+        return $this->belongsTo(User::class, 'counselor_id');
     }
 
     public function payments(){

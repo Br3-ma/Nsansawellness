@@ -8,14 +8,14 @@ use App\Models\CommissionSetting;
 use App\Models\Department;
 use App\Models\DepartmentCommission;
 use App\Models\User;
+use App\Traits\BillingTrait;
 use App\Traits\CoreTrait;
-use App\Traits\FinTrait;
 use Session;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {    
-    use CoreTrait, FinTrait;
+    use CoreTrait, BillingTrait;
     public $user, $com, $com_set, $depts, $dept_coms;
     public function __construct(User $users, Commission $com, CommissionSetting $com_set, Department $depts, DepartmentCommission $dept_coms)
     {
