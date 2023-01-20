@@ -679,7 +679,7 @@
                         </small>
                     </div>
                     <div class="w-full flex text-white px-4">
-                        <a href="#" class="btn btn-warning btn-sm shadow-md text-white"> 
+                        <a href="{{ route('pay') }}" class="btn btn-warning btn-sm shadow-md text-white"> 
                             <i data-lucide="wallet" class="w-4 h-4 "></i> &nbsp; 
                             <small>Continue to Payments</small>
                         </a> 

@@ -41,8 +41,8 @@ trait CoreTrait {
         }
 
         public function get_my_appointments(){
-            $data = $this->appointment->where('user_id', Auth::user()->id)->get();
-            $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
+            $data = $this->appointment->where('user_id', auth()->user()->id)->get();
+            // $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
             
             return $data;
         }

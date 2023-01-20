@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\BillingTrait;
 use Illuminate\Http\Request;
 
 class BillingController extends Controller
 {
+    use BillingTrait;
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +15,8 @@ class BillingController extends Controller
      */
     public function index()
     {
-        return view('page.patients.billing');
+        $bills = $this->get_my_billings();
+        return view('page.billing.index', compact('bills'));
     }
 
     /**

@@ -55,20 +55,10 @@ class HomeController extends Controller
         // If the User is logging for the first time
         if(auth()->user()->first_login == 'true' || auth()->user()->first_login != 0){
 
-            $x = User::find(auth()->user()->id);
-            $x->first_login = 0;
-            $x->save();
-
-            // if its a Patient
+            // if its a Patient redirect them to payments
             if($this->my_role() == 'patient'){
-                // record invoice billing
-                $this->billing->create([
-                    'user_id' => auth()->user()->id,
-                    'charge_amount' => 950,
-                    'remainder_count' => $random,
-                    'balance' => 950,
-                    'desc' => 'Initial payment'
-                ]);
+                // record invoice billing.
+                // if they have a pending billing redirect to pays else patient dashboard
                 return redirect()->route('pay');
             }
             return view('home', compact('notifications', 'counselors', 'total_patients'));
