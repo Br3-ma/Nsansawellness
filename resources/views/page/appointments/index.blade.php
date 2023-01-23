@@ -242,11 +242,12 @@
 {{-- @include('page.modals.create-appointment-modal') --}}
 
 <script>
-    var appointments = @json($calendar);
-    console.log(appointments);
+    var evnt = @json($calendar);
+    var appointments = evnt;
+    // console.log();
     if(appointments.length === 0){
         console.log('its empty');
-        appointments = @json($calendar);
+        appointments = JSON.stringify(evnt);
     }
 </script>
 @endsection
