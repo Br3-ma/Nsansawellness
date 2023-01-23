@@ -57,7 +57,6 @@ class AppointmentController extends Controller
         $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         
-        
         $notifications = auth()->user()->unreadNotifications;
         try {
             // dd(!empty($appointments->toArray()));
@@ -70,7 +69,8 @@ class AppointmentController extends Controller
                     ];
                     array_push($events, $x);
                 }
-                $calendar = $events[0];
+                // $calendar = $events[0];
+                $calendar = $events;
             }else{
                 foreach($incoming_appointments as $a){
                     // dd($a);
@@ -81,7 +81,8 @@ class AppointmentController extends Controller
                     ];
                     array_push($events, $x);
                 }
-                $calendar = $events[0]; 
+                // $calendar = $events[0]; 
+                $calendar = $events; 
             }
             return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications'));
         } catch (\Throwable $th) {
@@ -106,33 +107,41 @@ class AppointmentController extends Controller
             'Oct',
             'Nov',
             'Dec'
-     );
+        );
  
-     $the_return = '';
+        $the_return = '';
 
-     $the_year = substr($d,8,9);
-     if ($the_year != ''){
-        //  if ($the_return != '') {
-        //      $the_return .= ', ';
-        //  }
-         $the_return .= $the_year.'-';
-     }
+        $the_year = substr($d,8,9);
+        if ($the_year != ''){
+            //  if ($the_return != '') {
+            //      $the_return .= ', ';
+            //  }
+            $the_return .= $the_year.'-';
+        }
 
-     $the_month = substr($d,3,3);
-     if ($the_month != '') {
-        $key = array_search($the_month, $ms);
-        $the_return .= $key + 1;
-     }
- 
-     $the_day = substr($d,0,2);
-     if ($the_day != ''){
-         $the_return .= '-'.$the_day;
-     }
- 
+        $the_month = substr($d,3,3);
+        $m = 0;
+        if ($the_month != '') {
+            $key = array_search($the_month, $ms);
+            $m = $key + 1;
+            if(strlen($m) == 1){
+                $the_return .= '0'.$m;
+            }else{
+                $the_return .= $m;
+            }
+        }
 
- 
-    //  return $the_month;
-     return $the_return;
+        if(strlen($m) == 1){
+            $the_day = substr($d,0,2);
+        }else{
+            $the_day = substr($d,0,2);
+        }
+        if ($the_day != ''){
+            $the_return .= '-'.$the_day;
+        }
+    
+        //  return $the_month;
+        return $the_return;
     }
     /**
      * Show the form for creating a new resource.

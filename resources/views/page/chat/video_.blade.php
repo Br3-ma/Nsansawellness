@@ -183,11 +183,12 @@
       <div class="app-main">            
         <input type="text" name="localPeerId" id="localPeerId" readonly>
         @hasrole('patient')
-        <input type="text" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
-        {{-- <input type="text" name="remotePeerId" id="remotePeerId"> --}}
-        <button onclick="join()" id="btn-call">Join (Call)</button>
+          <input type="text" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+          {{-- <input type="text" name="remotePeerId" id="remotePeerId"> --}}
+          <button onclick="join()" id="btn-call">Join (Call)</button>
+        @else
+          <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
         @endhasrole
-
         <div class="video-call-wrapper" style="position: relative">
           <!-- Video Participant 1 -->
         
@@ -281,6 +282,10 @@
         </div>
 
         <div class="video-call-actions">
+          @hasanyrole(['admin', 'counselor', 'therapist'])
+          <button onclick="startRecording()" id="start-btn" class="video-action-button start-recorder" title="Start Recording"></button>
+          <button onclick="stopRecording()" style="background-color:red" id="stop-btn" class="video-action-button start-recorder" title="Stop Recording"></button>
+          @endhasanyrole
           <button onclick="toggleAudioMute()" class="video-action-button mic"></button>
           <button onclick="toggleVideo()" class="video-action-button camera"></button>
           {{-- <button class="video-action-button maximize"></button> --}}
@@ -456,6 +461,8 @@
   <script th:inline="javascript">
       $(document).ready(function() {
           $('.remote-screen').show();
+          $('#stop-btn').hide();
+          $('#downloadButton').hide();
           // document.getElementById("local-screen").style.width = "100%"
           // document.getElementById("local-screen").style.height = "100%"
           // if (window.matchMedia("(max-width: 767px)").matches){}else{}
@@ -472,9 +479,12 @@
       var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
       // var myID = '';
       var peer = new Peer();
-
+            
+      let downloadButton = document.getElementById("downloadButton");
+      let stopRecBtn = document.getElementById("stop-btn");
+      let startRecBtn = document.getElementById("start-btn");
       let localStream;
-
+      let remoteStream;
       navigator.mediaDevices.getUserMedia({ video: true, audio: true})
           .then(stream =>{
               localStream = stream;
@@ -526,120 +536,83 @@
           call.answer(localStream);
           call.on('stream', stream => {
               remoteVideo.srcObject = stream;
+              remoteStream = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
           })
       })
 
 
-      var videoStatus = 1;
-      var audioStatus = 1;
       function toggleVideo(){      
-        // Only Video
-        // mediaStream.getVideoTracks()[0].enabled =
-        //  !(mediaStream.getVideoTracks()[0].enabled);
-        console.log('In Video');
-        console.log(videoStatus);
-        console.log(audioStatus);
-        if(videoStatus == 0){
-          // Turn On Video, & check the sound status
-              alert('enabling video only on remote stream....');
-          if(audioStatus == 0){
-              navigator.mediaDevices.getUserMedia({ video: true, audio: false})
-              .then(stream =>{
-                  localStream = stream;
-                  localVideo.srcObject = localStream;
-                  localVideo.onloadedmetadata = () => localVideo.play();
-              });
-              // localStream.getVideoTracks()[0].enabled = true;
-              // localStream.getAudioTracks()[0].enabled = false;
-
-          }else{
-              alert('enabling video and audio on remote stream....');
-              navigator.mediaDevices.getUserMedia({ video: true, audio: true})
-              .then(stream =>{
-                  localStream = stream;
-                  localVideo.srcObject = localStream;
-                  localVideo.onloadedmetadata = () => localVideo.play();
-              });
-              // localStream.getVideoTracks()[0].enabled = true;
-              // localStream.getAudioTracks()[0].enabled = true;
-
-          }
-          videoStatus = 1;
-        }else{
-          // Turn Off Video
-          // Turn off Video, & check the sound status
-          alert('hidding video and audio on remote stream....');
-          if(audioStatus == 0){
-              navigator.mediaDevices.getUserMedia({ video: false, audio: false})
-              .then(stream =>{
-                  localStream = stream;
-                  localVideo.srcObject = localStream;
-                  localVideo.onloadedmetadata = () => localVideo.play();
-              });
-              // localStream.getVideoTracks()[0].enabled = false;
-              // localStream.getAudioTracks()[0].enabled = false;
-          
-            }else{
-              alert('hidding video only on remote stream....');
-              navigator.mediaDevices.getUserMedia({ video: false, audio: true})
-              .then(stream =>{
-                  localStream = stream;
-                  localVideo.srcObject = localStream;
-                  localVideo.onloadedmetadata = () => localVideo.play();
-              });
-              // localStream.getVideoTracks()[0].enabled = false;
-              // localStream.getAudioTracks()[0].enabled = true;
-          }
-          videoStatus = 0;
-        }
+        alert('hidding video on remote stream....');
+        localStream.getVideoTracks()[0].enabled = !(localStream.getVideoTracks()[0].enabled);
       }
-
 
       function toggleAudioMute(){
-        // Only Audio
-        console.log('In audio');
-        console.log(videoStatus);
-        console.log(audioStatus);
-        if(audioStatus == 0){
-          // If the video is OFF - turn it OFF here as well
-          if(videoStatus == 0){
-              navigator.mediaDevices.getUserMedia({ video: false, audio: true})
-              .then(stream =>{
-                  localStream = stream;
-                  localVideo.srcObject = localStream;
-                  localVideo.onloadedmetadata = () => localVideo.play();
-              });
-          }else{
-              // Leave it ON
-              navigator.mediaDevices.getUserMedia({ video: true, audio: true})
-              .then(stream =>{
-                  localStream = stream;
-                  localVideo.srcObject = localStream;
-                  localVideo.onloadedmetadata = () => localVideo.play();
-              });
-          }
-          audioStatus = 1;
-        }else{
-          navigator.permissions.query({ name:'microphone'});
-          // localStream.getAudioTracks()[0].stop();
-          // If the video is OFF - turn it OFF here as well
-          if(videoStatus == 0){       
-              localStream.getTracks().forEach( (track) => {
-                track.stop();
-              });
-          }else{
-
-              navigator.mediaDevices.getUserMedia({ video: true, audio: false})
-              .then(stream =>{
-                  localStream = stream;
-                  localVideo.srcObject = localStream;
-                  localVideo.onloadedmetadata = () => localVideo.play();
-              });
-          }
-          audioStatus = 0;
-        }
+        alert('muting audio on remote stream....');
+        localStream.getAudioTracks()[0].enabled = !(localStream.getAudioTracks()[0].enabled);
       }
+
+      // ************** Recording Module ************* //
+      // var isRec = 0;
+      var lengthInMS = 5000;
+
+      function startRecording(){
+        recording(remoteStream, lengthInMS);
+      }
+
+      var recordedData = [];
+      function recording(stream, lengthInMS){
+        
+        let recorder = new MediaRecorder(stream);
+        
+        recorder.ondataavailable = (event) => recordedData.push(event.data);
+        recorder.start();
+        
+        
+        $('#start-btn').hide();
+        $('#stop-btn').stop();
+
+        console.log(`${recorder.state} for ${lengthInMS / 1000} seconds…`);
+
+        let stopped = new Promise((resolve, reject) => {
+          recorder.onstop = resolve;
+          recorder.onerror = (event) => reject(event.name);
+        });
+
+        let recorded = setTimeout(
+          () => {
+            console.log(recorder.state);
+            if (recorder.state === "recording") {
+              // remoteVideo.src = URL.createObjectURL(recorder.getBlob());
+              recorder.stop();
+            }
+          },
+          10000
+        );
+
+        return Promise.all([
+          stopped,
+          recorded
+        ])
+        .then(() => {
+            let recordedBlob = new Blob(recordedData, { type: "video/webm" });
+            // remoteVideo.src = URL.createObjectURL(recordedBlob);
+            // downloadButton.href = recording.src;
+            downloadButton.href = URL.createObjectURL(recordedBlob);
+            downloadButton.download = "RecordedVideo.webm";
+            $('#downloadButton').show();
+        });
+      }
+
+      function stopRecording(recordedData){
+        let recordedBlob = new Blob(recordedData, { type: "video/webm" });
+        downloadButton.href = URL.createObjectURL(recordedBlob);
+        downloadButton.download = "RecordedVideo.webm";
+        $('#downloadButton').show();
+        $('#start-btn').hide();
+        $('#stop-btn').stop();
+      }
+      // ************** End Recording Module ******** //
 
       function endCall(){
         peer.destroy();
