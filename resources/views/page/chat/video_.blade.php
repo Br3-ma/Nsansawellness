@@ -181,11 +181,11 @@
         </div> --}}
       </div>
       <div class="app-main">            
-        <input type="text" name="localPeerId" id="localPeerId" readonly>
+        <input type="text" class="dont-show" name="localPeerId" id="localPeerId" readonly>
         @hasrole('patient')
-          <input type="text" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+          <input type="text" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
           {{-- <input type="text" name="remotePeerId" id="remotePeerId"> --}}
-          <button onclick="join()" id="btn-call">Join (Call)</button>
+          <button onclick="join()" class="button" id="btn-call">Join Session</button>
         @else
           <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
         @endhasrole
@@ -208,8 +208,8 @@
           <!-- Video Participant 3 -->
           <div style="width:100%; height:100%" class="remote-screen video-participant">
             <div class="participant-action">
-              <button class="btn-mute"></button>
-              <button class="btn-camera"></button>
+              {{-- <button class="btn-mute"></button>
+              <button class="btn-camera"></button> --}}
             </div>
             @hasrole('patient')
             <a href="#" class="name-tag">Therapist</a>
@@ -277,17 +277,21 @@
             <video  muted="muted" poster="https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public" height="100%" width="100%" style=" object-fit: cover; background-position: cover; background-size:cover" class="img-responsive" id='localVideo'>
                 Your browser does not support the video tag.
             </video>
+            <p class="text"></p>
           </div>
 
         </div>
 
         <div class="video-call-actions">
           @hasanyrole(['admin', 'counselor', 'therapist'])
+          <span>
+            <div style="color:#FF2300; margin-right:2%" id="recorder-timer"></div>
+          </span>
           <button onclick="startRecording()" id="start-btn" class="video-action-button start-recorder" title="Start Recording"></button>
-          <button onclick="stopRecording()" style="background-color:red" id="stop-btn" class="video-action-button start-recorder" title="Stop Recording"></button>
+          <button onclick="stopRecording()" style="background-color:red" id="stop-btn" class="video-action-button stop-recorder" title="Stop Recording"></button>
           @endhasanyrole
-          <button onclick="toggleAudioMute()" class="video-action-button mic"></button>
-          <button onclick="toggleVideo()" class="video-action-button camera"></button>
+          <button onclick="toggleAudioMute()" class="audio-mic video-action-button mic"></button>
+          <button onclick="toggleVideo()" class="video-cam video-action-button camera"></button>
           {{-- <button class="video-action-button maximize"></button> --}}
           <button onclick="endCall()" class="video-action-button endcall">Leave</button>
           {{-- <button class="video-action-button magnifier">
@@ -463,6 +467,8 @@
           $('.remote-screen').show();
           $('#stop-btn').hide();
           $('#downloadButton').hide();
+          $('.dont-show').hide();
+          $('.recorder-timer').hide();
           // document.getElementById("local-screen").style.width = "100%"
           // document.getElementById("local-screen").style.height = "100%"
           // if (window.matchMedia("(max-width: 767px)").matches){}else{}
@@ -543,13 +549,33 @@
 
 
       function toggleVideo(){      
-        alert('hidding video on remote stream....');
         localStream.getVideoTracks()[0].enabled = !(localStream.getVideoTracks()[0].enabled);
+
+        if(localStream.getVideoTracks()[0].enabled){        
+          $(".video-cam").removeClass("camera-off");
+          $(".video-cam").removeClass("camera-off-bg");
+          $(".video-cam").addClass("camera");
+        }else{
+          $(".video-cam").removeClass("camera");
+          $(".video-cam").addClass("camera-off");
+          $(".video-cam").addClass("camera-off-bg");
+          $("#localVideo").poster = "https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public"
+        }
+
       }
 
       function toggleAudioMute(){
-        alert('muting audio on remote stream....');
         localStream.getAudioTracks()[0].enabled = !(localStream.getAudioTracks()[0].enabled);
+
+        if(localStream.getAudioTracks()[0].enabled){        
+          $(".audio-mic").removeClass("mic-off");
+          $(".audio-mic").removeClass("mic-off-bg");
+          $(".audio-mic").addClass("mic");
+        }else{
+          $(".audio-mic").removeClass("mic");
+          $(".audio-mic").addClass("mic-off");
+          $(".audio-mic").addClass("mic-off-bg");
+        }
       }
 
       // ************** Recording Module ************* //
@@ -557,51 +583,73 @@
       var lengthInMS = 5000;
 
       function startRecording(){
+
         recording(remoteStream, lengthInMS);
+        // start the timer
+        $('.recorder-timer').show();
+        var input = {
+            year: 0,
+            month: 0,
+            day: 0,
+            hours: 2,
+            minutes: 10,
+            seconds: 30
+        };
+
+        var timestamp = new Date(input.year, input.month, input.day,
+        input.hours, input.minutes, input.seconds);
+
+        var interval = 1;
+
+        setInterval(function () {
+            timestamp = new Date(timestamp.getTime() + interval * 1000);
+            document.getElementById('recorder-timer').innerHTML = timestamp.getHours() + 'h:' + timestamp.getMinutes() + 'm:' + timestamp.getSeconds() + 's';
+            // document.getElementById('recorder-timer').innerHTML = timestamp.getDay() + 'd:' + timestamp.getHours() + 'h:' + timestamp.getMinutes() + 'm:' + timestamp.getSeconds() + 's';
+        }, Math.abs(interval) * 1000);
       }
 
       var recordedData = [];
       function recording(stream, lengthInMS){
-        
-        let recorder = new MediaRecorder(stream);
-        
-        recorder.ondataavailable = (event) => recordedData.push(event.data);
-        recorder.start();
-        
-        
-        $('#start-btn').hide();
-        $('#stop-btn').stop();
+        try {
+            let recorder = new MediaRecorder(stream);
+            recorder.ondataavailable = (event) => recordedData.push(event.data);
+            recorder.start();
+            $('#start-btn').hide();
+            $('#stop-btn').show();
+            console.log(`${recorder.state} for ${lengthInMS / 1000} seconds…`);
+            let stopped = new Promise((resolve, reject) => {
+              recorder.onstop = resolve;
+              recorder.onerror = (event) => reject(event.name);
+            });
+            let recorded = setTimeout(
+            () => {
+              console.log(recorder.state);
+              if (recorder.state === "recording") {
+                // remoteVideo.src = URL.createObjectURL(recorder.getBlob());
+                recorder.stop();
+              }
+            },
+            10000
+            );
 
-        console.log(`${recorder.state} for ${lengthInMS / 1000} seconds…`);
-
-        let stopped = new Promise((resolve, reject) => {
-          recorder.onstop = resolve;
-          recorder.onerror = (event) => reject(event.name);
-        });
-
-        let recorded = setTimeout(
-          () => {
-            console.log(recorder.state);
-            if (recorder.state === "recording") {
-              // remoteVideo.src = URL.createObjectURL(recorder.getBlob());
-              recorder.stop();
-            }
-          },
-          10000
-        );
-
-        return Promise.all([
-          stopped,
-          recorded
-        ])
-        .then(() => {
-            let recordedBlob = new Blob(recordedData, { type: "video/webm" });
-            // remoteVideo.src = URL.createObjectURL(recordedBlob);
-            // downloadButton.href = recording.src;
-            downloadButton.href = URL.createObjectURL(recordedBlob);
-            downloadButton.download = "RecordedVideo.webm";
-            $('#downloadButton').show();
-        });
+            return Promise.all([
+              stopped,
+              recorded
+            ])
+            .then(() => {
+              let recordedBlob = new Blob(recordedData, { type: "video/webm" });
+              // remoteVideo.src = URL.createObjectURL(recordedBlob);
+              // downloadButton.href = recording.src;
+              downloadButton.href = URL.createObjectURL(recordedBlob);
+              downloadButton.download = "RecordedVideo.webm";
+              $('.recorder-timer').hide();
+              $('#start-btn').show();
+              $('#stop-btn').hide();
+              $('#downloadButton').show();
+            });
+        } catch (err) {
+          alert('Oops, Can not record video unless patient joins the session');
+        }
       }
 
       function stopRecording(recordedData){

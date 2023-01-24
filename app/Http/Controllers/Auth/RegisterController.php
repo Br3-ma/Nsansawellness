@@ -116,17 +116,17 @@ class RegisterController extends Controller
             $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
             // $pusher->trigger('popup-channel', 'user-register', $message); 
             // Send a notification to Admin about the new patient
-            // $user->notify(new Welcome($payload));
+            $user->notify(new Welcome($payload));
         }else{
             $user->assignRole('counselor');
             $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
             // $pusher->trigger('popup-channel', 'user-register', $message);
              // Send a notification to Admin about the new counselor
-            // $user->notify(new NsansaWellnessCounselor($payload));
+            $user->notify(new NsansaWellnessCounselor($payload));
         }
     
         // Send a notification to Admin about the new user
-        // $admin->notify(new NewUserNotification($payload));
+        $admin->notify(new NewUserNotification($payload));
         return $user;
     }
 }
