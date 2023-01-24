@@ -21,7 +21,7 @@ trait BillingTrait {
             $this->middleware(['auth', 'verified']);
         }
 
-        public function my_role(){            
+        public function role(){            
             return auth()->user()->roles->pluck('name')->first();
         }
 
@@ -29,11 +29,27 @@ trait BillingTrait {
             return $this->com_set->where('desc', 'global-commission')->where('status', 1)->first();
         }
 
+        public function create_billing(){
+            try {
+                $this->billing->create([
+                    'user_id' => auth()->user()->id,
+                    'charge_amount' => 950,
+                    'remainder_count' => 0,
+                    'balance' => 950,
+                    'desc' => 'Initial payment'
+                    
+                ]);
+                return true;
+            } catch (\Throwable $th) {
+                return false;
+            }
+        }
+
         public function get_my_billings(){
-            if($this->my_role() == 'patient'){
+            if($this->role() == 'patient'){
                 return $this->billing->with(['user', 'counselor_billing'])
                                         ->where('user_id', auth()->user()->id)->get();
-            }elseif($this->my_role() == 'counselor'){
+            }elseif($this->role() == 'counselor'){
                 return $this->billing->with(['user', 'counselor_billing'])
                                         ->where('counselor_id', auth()->user()->id)->get();
             }else{
