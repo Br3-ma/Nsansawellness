@@ -5,21 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePatientRecord;
 use App\Http\Requests\UpdatePatientRequest;
 use App\Models\Appointment;
+use App\Models\Billing;
 use App\Models\Chat as ModelsChat;
 use App\Models\PatientFile;
 use App\Models\User;
+use App\Traits\BillingTrait;
 use App\Traits\CoreTrait;
 use App\Traits\PatientTrait;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use PhpJunior\LaravelVideoChat\Facades\Chat;
-use PhpJunior\LaravelVideoChat\Models\File\File;
-use PhpJunior\LaravelVideoChat\Models\Conversation\Conversation;
-use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
 
 class PatientController extends Controller
 {
-    use CoreTrait, PatientTrait;
+    use CoreTrait, PatientTrait, BillingTrait;
     public $user, $users, $u, $pf, $appointment, $chat;
     /**
      * Create a new controller instance.
@@ -32,6 +28,7 @@ class PatientController extends Controller
         $this->appointment = $app;
         $this->user = $users;
         $this->pf = $pf;
+        $this->chat = $chat;
         $this->chat = $chat;
     }
 
@@ -54,13 +51,13 @@ class PatientController extends Controller
             $x->save();
 
             // record invoice billing
-            $this->billing->create([
+            // $this->create_billing();
+            Billing::create([
                 'user_id' => auth()->user()->id,
                 'charge_amount' => 950,
                 'remainder_count' => 0,
                 'balance' => 950,
                 'desc' => 'Initial payment'
-                
             ]);
             return view('page.patients.home', compact('notifications', 'chats'));
         }
