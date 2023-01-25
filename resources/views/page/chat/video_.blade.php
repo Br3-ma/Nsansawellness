@@ -294,51 +294,22 @@
           <button onclick="toggleVideo()" class="video-cam video-action-button camera"></button>
           {{-- <button class="video-action-button maximize"></button> --}}
           <button onclick="endCall()" class="video-action-button endcall">Leave</button>
-          {{-- <button class="video-action-button magnifier">
-            <!-- ZoomIn icon -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-zoom-in"
-              viewBox="0 0 24 24"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <path d="M21 21l-4.35-4.35M11 8v6M8 11h6" />
+          <button title="Take Notes" onclick="open_notes()" class="video-action-button magnifier">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"></path><path d="M15 3v6h6"></path></svg>
+          </button>
+          <button title="Chat" onclick="open_chat()" class="video-action-button magnifier">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
             </svg>
-
-            <!-- ZoomIn icon -->
-            <span>100%</span>
-            <!-- ZoomOut Icon -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-zoom-out"
-              title="Zoom In"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              <line x1="8" y1="11" x2="14" y2="11" />
-            </svg>
-            <!-- ZoomOut Icon -->
-          </button> --}}
+          </button>
         </div>
       </div>
 
       <!-- Right Side -->
-      <div class="right-side">
-        <button class="btn-close-right">
+      <div id="right-side-toolbar" class="right-side">
+        <button onclick="close_toolbar()" class="btn-close-right">
           <!-- Close Icon -->
+          Close
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -359,7 +330,7 @@
         </button>
 
         {{-- Chat --}}
-        <div class="convoBody chat-container"> 
+        <div id="right-side-chat" class="convoBody chat-container"> 
           <div class="chat-header">
             <button class="chat-header-button">Live Chat</button>
           </div>
@@ -394,9 +365,42 @@
           </div>
         </div> 
 
-
+        <div id="right-side-notes" class="convoBody chat-container"> 
+          <div class="chat-header">
+            <button class="chat-header-button">Session Notes</button>
+          </div>
+          {{-- convoBody message_thread  --}}
+          {{-- <div id="message_thread" class="chat-area"> --}}
+          <textarea row="10" cols="70" style="height: 30px"  name="notes" onclick="save_notes()" id="taking-notes" class="chat-area editor"></textarea>
+          {{-- <div class="chat-typing-area-wrapper">
+            <div class="chat-typing-area">
+              <input
+                id="message_textbox"
+                type="text"
+                placeholder="Type your message..."
+                class="chat-input"
+              />
+              <button onclick="send()" class="send-button">
+                <!-- Send icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-send"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                </svg>
+                <!-- Send icon -->
+              </button>
+            </div>
+          </div> --}}
+        </div> 
         {{-- Paticipants --}}
-        {{-- <div class="participants">
+        <div class="participants">
           <!-- Participant pic 1 -->
           <div class="participant profile-picture">
             <img
@@ -426,7 +430,7 @@
             />
           </div>
           <div class="participant-more">2+</div>
-        </div> --}}
+        </div>
       </div>
       <button title="Expand" class="expand-btn">
         <!-- expand icon -->
@@ -466,6 +470,9 @@
       $(document).ready(function() {
           $('.remote-screen').show();
           $('#stop-btn').hide();
+          $('#right-side-toolbar').hide();
+          $('#right-side-chat').hide();
+          $('#right-side-notes').hide();
           $('#downloadButton').hide();
           $('.dont-show').hide();
           $('.recorder-timer').hide();
@@ -669,9 +676,45 @@
       }
 
   
-      // localStream.getTracks().forEach( (track) => {
-      //   track.stop();
-      // });
+      // ************** ToolBar *************
+      function close_toolbar(){
+        $('#right-side-notes').hide();
+        $('#right-side-toolbar').hide();
+        $('#right-side-chat').hide();
+      }  
+      function open_chat(){
+        $('#right-side-notes').hide();
+        $('#right-side-toolbar').show();
+        $('#right-side-chat').show();
+      }
+      function open_notes(){
+        $('#right-side-chat').hide();
+        $('#right-side-notes').show();
+        $('#right-side-toolbar').show();
+      }
+
+      // ********* When taking notes *********
+      function save_notes(){
+          console.log('Typing...');
+          // Print entered value in a div box
+          // $("#save-notes").text("Saving...");
+          setTimeout(
+            () => {
+              $.ajax({
+                type:'POST',
+                url:'{{ route("send.remote_id") }}',
+                data: {
+                    peer_id,
+                    info
+                },
+                success:function(data) {
+                  console.log(data);
+                }
+              });
+            },
+            5000
+          );
+      };
 
 </script>
 
@@ -920,4 +963,6 @@
       }   
   }
 </script>
+
+<script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
 </html>
