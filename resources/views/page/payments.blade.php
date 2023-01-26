@@ -184,7 +184,7 @@ button:hover {
           <a href="#" target="_blank"><small style="color:#053d53;">Get Started &xrarr; </small></a>
         </div>
         <div class="card">
-          <span class="best-price">50% OFF</span>
+          {{-- <span class="best-price">50% OFF</span> --}}
           <h2 class="card__title">Insurance Payer</h2>
           <h1 class="card__price">K500.00</h1>
           <p class="old-offer">Get 3 sessions</p>
@@ -198,7 +198,7 @@ button:hover {
           <a href="https://northsgate.com" target="_blank"><small style="color:#ffffff;">Get Started &xrarr; </small></a>
         </div> --}}
       </div>
-      <a href="{{ route('patient') }}" target="_blank"><button>I'll Pay Later</button></a>
+      <a href="{{ route('patient') }}"><button>I'll Pay Later</button></a>
     </div>
 
   </section>

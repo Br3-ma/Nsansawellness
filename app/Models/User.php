@@ -51,6 +51,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'login_count'
     ];
 
+    protected $appends = [
+        'has_paid'
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -86,6 +90,51 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->roles()->where('id', 1)->exists();
     }
+
+    public function getHasPaidAttribute(){
+        if($this->new_paid()){
+            return true;
+        }else{
+            if($this->old_paid()){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function getNewClientAttribute(){
+        return $this->new_paid();
+    }
+
+    // Return true or false if paid, if its user's first assignment to counselor
+    public function new_paid(){
+        $x = $this->hasMany(Billing::class)
+                    ->where('status', 1)->get();
+                    // ->where('counselor_id', 1)->get();
+        return $x->count() > 0 && $x->count() < 2  ?  true :  false; 
+    }
+
+    // Return true or false if paid, if its user's return session to counselor
+    public function old_paid(){
+        $x = $this->hasMany(Billing::class)
+                    ->where('status', 1)->get();
+                    // ->where('counselor_id', 1)->get();
+        return $x->count() > 1 ?  true :  false; 
+    }
+    
+    public function new_client(){
+        $x = $this->hasMany(Billing::class)->get();
+                    // ->where('counselor_id', 1)->get();
+        return $x->count() > 0 && $x->count() < 2  ?  true :  false; 
+    }
+
+    // // Return true or false if paid, if its user's return session to counselor
+    // public function old_client(){
+    //     $x = $this->hasMany(Billing::class)
+    //                 ->where('status', 1)->get();
+    //                 // ->where('counselor_id', 1)->get();
+    //     return $x->count() > 1 ?  true :  false; 
+    // }
     
     public function userAppointments(){
         $this->hasMany(UserAppointment::class);

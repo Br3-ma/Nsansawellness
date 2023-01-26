@@ -20,6 +20,7 @@
                             &nbsp;
                             <span>Therapy Sessions</span>
                         </h2>
+                        
                         @forelse($chats as $chat)
                             {{-- If I Started the Chat --}}
                             @if($chat->sender_id == auth()->user()->id)
@@ -1852,6 +1853,10 @@
     </div>
 </div>
 @endsection
+
+<?php
+    $u_paid = auth()->user()->has_paid;    
+?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
 <script>
@@ -1871,8 +1876,9 @@
         }
     });
 
-    var APP_URL = {!! json_encode(url('/')) !!}
+    var APP_URL = {!! json_encode(url('/')) !!};
     var user = {!! auth()->user()->toJson() ?? '' !!};
+    var hasPaid = "{{ $u_paid }}"
     var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
 
     var chat_id; 
@@ -1880,41 +1886,76 @@
     var owner = null; 
     var aDay = 24*60*60*1000;
     var msgFeild = document.getElementById("message_textbox");
+
+  
     function startChat(id, who, names, role){
+        if(hasPaid){
+            open_chat(id, who, names, role);
+        }else{
+            if(user_role === 'counselor'){
+                open_chat(id, who, names, role);
+            }else{
+                const pay_notice = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
+                pay_notice.show();
+            }
+        }
+    }
+
+    function open_chat(id, who, names, role){
         chat_id = id;
         // alert(chat_id);
         owner = who;
         $('#chat_receiver_name').text(names);
         $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
         $('#message_thread').empty();
-        // $('#message_thread div').empty();
-        // {{-- Get chat message thread --}}
         $.ajax({
-            type:'GET',
-            url:'{{ route("chat.index") }}',
-            data: {
-                id,owner
-            },
-            success:function(data) {
-                $('.convoBody').show();
-                $('#chatList').hide();
+                type:'GET',
+                url:'{{ route("chat.index") }}',
+                data: {
+                    id,owner
+                },
+                success:function(data) {
+                    $('.convoBody').show();
+                    $('#chatList').hide();
 
-                let messages = data.chat_session.chat_messages;
-                
-                // UPDATED
-                for (const message of messages){
+                    let messages = data.chat_session.chat_messages;
+                    
+                    // UPDATED
+                    for (const message of messages){
 
-                    if(user['id'] != message.user_id){
-                        $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
-                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
+                        if(user['id'] != message.user_id){
+                            $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
+                                <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                    <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
+                                    </div>\
+                                <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
+                                                '+ message.message +'\
+                                    <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
+                                            </div>\
+                                            <div class="hidden sm:block dropdown ml-3 my-auto">\
+                                        <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                        <div class="dropdown-menu w-40">\
+                                            <ul class="dropdown-content">\
+                                                <li>\
+                                                    <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
+                                                </li>\
+                                                <li>\
+                                                    <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
+                                                </li>\
+                                            </ul>\
+                                        </div>\
+                                    </div>\
                                 </div>\
-                            <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
+                                <div class="clear-both"></div>\
+                            ');
+                        }else{
+                            $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
+                            <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
                                             '+ message.message +'\
                                 <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                         </div>\
                                         <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                    <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                    <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-dark" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
                                     <div class="dropdown-menu w-40">\
                                         <ul class="dropdown-content">\
                                             <li>\
@@ -1926,44 +1967,22 @@
                                         </ul>\
                                     </div>\
                                 </div>\
-                            </div>\
-                            <div class="clear-both"></div>\
-                        ');
-                    }else{
-                        $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
-                        <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
-                                        '+ message.message +'\
-                            <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
-                                    </div>\
-                                    <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-dark" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
-                                <div class="dropdown-menu w-40">\
-                                    <ul class="dropdown-content">\
-                                        <li>\
-                                            <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
-                                        </li>\
-                                        <li>\
-                                            <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
-                                        </li>\
-                                    </ul>\
+                                <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                    <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
                                 </div>\
                             </div>\
-                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
-                            </div>\
-                        </div>\
-                        <div class="clear-both"></div>\
-                        ');
-                    }
-                } 
-                $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
-            },
-            
-            error: function (msg) {
-                console.log(msg);
-                var errors = msg.responseJSON;
-            }
-        });
+                            <div class="clear-both"></div>\
+                            ');
+                        }
+                    } 
+                    $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+                },
+                
+                error: function (msg) {
+                    console.log(msg);
+                    var errors = msg.responseJSON;
+                }
+            });
     }
 
     function send(){

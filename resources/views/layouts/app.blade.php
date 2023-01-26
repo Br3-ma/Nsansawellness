@@ -1,6 +1,8 @@
+
 <!DOCTYPE html> 
 <html lang="en" id="rootApp" style="" class="light overflow-hidden">
     <!-- BEGIN: Head -->
+
     <head>
         <meta charset="utf-8">
         <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
@@ -126,12 +128,18 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-
+        <?php
+            $paid = auth()->user()->has_paid;   
+            // var_dump($paid); 
+        ?>
         <script>
+            
             $(document).ready(function(){
                 var user = {!! auth()->user()->toJson() ?? '' !!};
                 var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
-                // console.log();
+                var paid = "{{ auth()->user()->has_paid }}";
+
+                console.log(paid);
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -199,12 +207,15 @@
 
                 // ******* Custom Methods 
                 // *** Checks payment status
+                console.log("Have you paid: "+paid);
                 let rand1 = Math.floor(Math.random() * 21);
                 let rand2 = Math.floor(Math.random() * 21);
-                if(user_role == 'patient'){
+                if(user_role === 'patient'){
                     if(rand1 % 2 != 0 && rand2 % 2 != 0){
-                        const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
-                        myModal.show();
+                        if(paid){
+                            const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
+                            myModal.show();
+                        }
                     }
                 }
 
@@ -214,6 +225,7 @@
     <!-- END: Head -->
     <body style="height: 629px; min-height:629px; device-height:629px;" class="lg:py-5 py-0 md:py-0">
         <!-- BEGIN: Mobile Menu -->
+
         <div class="mobile-menu md:hidden">
             <div class="mobile-menu-bar">
                 <a href="{{ route('home') }}" class="flex mr-auto">
@@ -659,38 +671,7 @@
         </div>
         {{-- <div class="text-center"> <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#static-backdrop-modal-preview" class="btn btn-primary">Show Modal</a> </div> <!-- END: Modal Toggle --> --}}
         <!-- BEGIN: Modal Content -->
-        <div id="payment-remainder-modal" class="modal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-xl intro-y" id="payment-modal-dialog">
-                <div class="modal-content">
-                    <a href="{{ route('home') }}" class="modal-header">
-                        <img alt="Nsansa wellness" class="w-8 h-8 rounded-full" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}">
-                        &nbsp;&nbsp;
-                        <h2 class="font-medium text-base mr-auto">Nsansa Wellness</h2> 
-                    </a>
-                    <div class="modal-body text-left text-sm"> 
-                        <span class="items-center justify-center">
-                            <img class="w-52 h-52" src="https://img.freepik.com/premium-vector/man-working-armchair-laptop-with-cat-his-arms-freelance-work-home-concept-hand-drawn-flat-vector-illustration_528592-655.jpg">
-                        </span>
-                        <small>
-                        <b>Hi {{ Auth::user()->fname.' '.Auth::user()->lname }},</b>
-                        <br>
-                        Hope you are doing well. This is just to remaind you that the invoice #24602 with a
-                        total of K950 I've sent you on 31st Dec 2021 is due today
-                        </small>
-                    </div>
-                    <div class="w-full flex text-white px-4">
-                        <a href="{{ route('pay') }}" class="btn btn-warning btn-sm shadow-md text-white"> 
-                            <i data-lucide="wallet" class="w-4 h-4 "></i> &nbsp; 
-                            <small>Continue to Payments</small>
-                        </a> 
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a target="_blank" href="{{ route('billing') }}" class="text-primary py-2"> 
-                            <small>View Details</small>
-                        </a> 
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('page.common.payment-notice')
     {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->
     {{-- <div data-url="side-menu-dark-dashboard-overview-2.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">

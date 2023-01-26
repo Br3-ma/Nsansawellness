@@ -36,8 +36,8 @@ trait BillingTrait {
                     'charge_amount' => 950,
                     'remainder_count' => 0,
                     'balance' => 950,
-                    'desc' => 'Initial payment'
-                    
+                    'desc' => 'Initial payment',
+                    'status' => 0
                 ]);
                 return true;
             } catch (\Throwable $th) {
