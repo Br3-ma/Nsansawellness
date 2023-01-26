@@ -269,10 +269,12 @@
           </div> --}}
 
           <div id="local-screen" style="bottom:0; right:0; position:absolute; width:20%; height:20%; float:left" class="video-participant">
-            {{-- <div class="participant-action">
+            {{-- 
+            <div class="participant-action">
               <button class="btn-mute"></button>
               <button class="btn-camera"></button>
-            </div> --}}
+            </div> 
+            --}}
             <a href="#" class="name-tag">You</a>
             <video  muted="muted" poster="https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public" height="100%" width="100%" style=" object-fit: cover; background-position: cover; background-size:cover" class="img-responsive" id='localVideo'>
                 Your browser does not support the video tag.
@@ -694,6 +696,7 @@
       }
 
       // ********* When taking notes *********
+
       function save_notes(){
           console.log('Typing...');
           // Print entered value in a div box
@@ -965,4 +968,11 @@
 </script>
 
 <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
+<script>
+      var editor = CKEDITOR.replace( 'notes ', {});
+      // editor is object of your CKEDITOR
+      editor.on('change',function(){
+          console.log("test");
+      });
+</script>
 </html>

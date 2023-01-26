@@ -129,19 +129,23 @@
                         </td>
                         @endhasanyrole
                         <td class="w-40 text-right">
-                            <div class="pr-16">K {{ $bill->charge_amount }}</div>
+                            <div class="pr-16"> {{  $bill->charge_amount != 0 ? 'K '.$bill->charge_amount : '--' }}</div>
                         </td>
                         <td class="text-center">
                             
-                            @if($bill->status == 0)
+                            @if($bill->status == 1)
                             <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
                             @else
-                            <div class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Pay Now </div>
+                                @if($bill->charge_amount == 0 )
+                                    <a href="{{ route('pay') }}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Continue </a>
+                                @else
+                                    <a href="{{ route('pay') }}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Pay Now </a> 
+                                @endif
                             @endif
                         </td>
                         @hasrole('counselor')
                         <td class="w-40 text-right">
-                            <div class="pr-16">K25,000,00</div>
+                            <div class="pr-16">K 0</div>
                         </td>
                         @endhasrole
                         {{-- <td>

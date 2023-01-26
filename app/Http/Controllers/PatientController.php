@@ -54,9 +54,9 @@ class PatientController extends Controller
             // $this->create_billing();
             Billing::create([
                 'user_id' => auth()->user()->id,
-                'charge_amount' => 950,
+                'charge_amount' => null,
                 'remainder_count' => 0,
-                'balance' => 950,
+                'balance' => null,
                 'desc' => 'Initial payment'
             ]);
             return view('page.patients.home', compact('notifications', 'chats'));
