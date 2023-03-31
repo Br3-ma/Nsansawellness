@@ -150,7 +150,7 @@
                         @endhasrole
                         <td class="text-center">
                             
-                            @if($bill->status == 0)
+                            @if($bill->status == 1)
                                 <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
                             @else
                                 {{-- @if($bill->charge_amount == 0 ) --}}
