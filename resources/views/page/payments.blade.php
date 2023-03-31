@@ -198,7 +198,7 @@ button:hover {
           <a href="https://northsgate.com" target="_blank"><small style="color:#ffffff;">Get Started &xrarr; </small></a>
         </div> --}}
       </div>
-      <a href="{{ route('patient') }}"><button>I'll Pay Later</button></a>
+      {{-- <a href="{{ route('patient') }}"><button>I'll Pay Later</button></a> --}}
     </div>
 
   </section>
