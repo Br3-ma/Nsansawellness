@@ -104,9 +104,7 @@ class QuestionaireController extends Controller
      */
     public function show($id)
     {
-        $questionaires = $this->questionaire->with(['questions.answers'=> function($query) {
-            $query->latest()->paginate(2);
-        }])->where('id', $id)->first();
+        $questionaires = $this->questionaire->with('questions.answers')->where('id', $id)->first();
         return view('page.questionaires.edit_answers', compact('questionaires'));
     }
 
@@ -119,6 +117,7 @@ class QuestionaireController extends Controller
     public function edit($id)
     {
         $question = $this->questions->with(['answers'])->where('id', $id)->first();
+        
         return view('page.questionaires.edit', compact('question'));
     }
 

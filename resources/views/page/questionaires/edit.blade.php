@@ -16,7 +16,7 @@
         <form action="{{ route('answers.store')}}"  method="POST" >
             @csrf
             <div class="ans_wrapper row">
-                <div class="intro-y w-3/4 col-span-6 flex sm:col-span-6">
+                <div class="intro-y mb-2 w-3/4 col-span-6 flex sm:col-span-6">
                     <input id="input-wizard-1" required name="answer[]" type="text" class="form-control" placeholder="">
                     <input id="input-wizard-1" value="{{ $question->id }}"  name="question_id" type="hidden" class="form-control" placeholder="">
                     <input id="input-wizard-1" value="{{ $question->questionaire_id }}"  name="question" type="hidden" class="form-control" placeholder="">
@@ -46,7 +46,7 @@ $(document).ready(function(){
     // var fieldWRPPR ='';
     var ansNewField = '<div class="intro-y col-span-6 sm:col-span-6"><input id="input-wizard-1" name="answer[]" type="text" class="form-control" placeholder=""></div><div class="intro-y col-span-3 sm:col-span-3 md: mt-5"><a href="javascript:void(0)" class="add_ans_button btn btn-secondary w-20 text-xs">Add Answer</a></div>';
     var ansField = '<br><div class="intro-y w-3/4 col-span-6 sm:col-span-6"><input id="input-wizard-1" name="answer[]" type="text" class="form-control" placeholder=""></div><div class="intro-y col-span-3 sm:col-span-3 md: mt-5"></div>';
-    var fieldHTML ='<div class="intro-y col-span-4 sm:col-span-6"><input id="input-wizard-1" name="description[]" type="text" class="form-control" placeholder=""></div><div class="intro-y col-span-2 sm:col-span-2"><label for="input-wizard-6" class="form-label">Type</label><select name="group_assigned[]" id="input-wizard-6" class="form-select"><option>Select One</option><option>Select Many</option></select></div><div class="intro-y col-span-3 sm:col-span-2 mt-5"><a href="javascript:void(0)" class="btn btn-secondary w-20 text-xs remove_button">Remove Question</a></div>';
+    var fieldHTML ='<div class="intro-y mt-0 col-span-4 sm:col-span-6"><input id="input-wizard-1" name="description[]" type="text" class="form-control" placeholder=""></div><div class="intro-y col-span-2 sm:col-span-2"><label for="input-wizard-6" class="form-label">Type</label><select name="group_assigned[]" id="input-wizard-6" class="form-select"><option>Select One</option><option>Select Many</option></select></div><div class="intro-y col-span-3 sm:col-span-2 mt-5"><a href="javascript:void(0)" class="btn btn-secondary w-20 text-xs remove_button">Remove Question</a></div>';
     var x = 1; //Initial field counter is 1
     
     //Once add sub answer
