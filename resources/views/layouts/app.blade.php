@@ -671,7 +671,12 @@
         </div>
         {{-- <div class="text-center"> <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#static-backdrop-modal-preview" class="btn btn-primary">Show Modal</a> </div> <!-- END: Modal Toggle --> --}}
         <!-- BEGIN: Modal Content -->
-        @include('page.common.payment-notice')
+        
+        @hasanyrole('patient')
+        @if(App\Models\Billing::has_bill())
+            @include('page.common.payment-notice')
+        @endif
+        @endhasanyrole
     {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->
     {{-- <div data-url="side-menu-dark-dashboard-overview-2.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">

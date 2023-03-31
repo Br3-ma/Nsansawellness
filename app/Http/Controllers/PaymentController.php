@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Billing;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -43,6 +44,33 @@ class PaymentController extends Controller
             'email' => $request->email,
             ''
         ];
+    }
+
+    public function invoice($type){
+       if($type == 'eyJpdiI6ImY0'){
+            if(auth()->user()->hasRole('patient')){
+                Billing::create([
+                    'user_id' => auth()->user()->id,
+                    'charge_amount' => 750,
+                    'remainder_count' => 0,
+                    'status' => 0,
+                    'desc' => 'Cash Payer'
+                ]);
+            }
+       }else{
+            if(auth()->user()->hasRole('patient')){
+                Billing::create([
+                    'user_id' => auth()->user()->id,
+                    'charge_amount' => 500,
+                    'remainder_count' => 0,
+                    'balance' => 500,
+                    'status' => 0,
+                    'desc' => 'Insurance Payer'
+                ]);
+            }
+       }
+
+       return redirect()->route('patient');
     }
 
     /**

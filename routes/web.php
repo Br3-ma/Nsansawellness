@@ -14,6 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeworkController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewsPage;
@@ -59,6 +60,7 @@ Route::group(['middleware' => ['auth']], function() {
     
     Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile');
     Route::get('/video-session/{id}/{chat_id}/{receiver}/{role}', [VideoCallController::class, 'startVideoCall'])->name('video-call');
+    Route::get('/phone-session/{id}/{chat_id}/{receiver}/{role}', [VideoCallController::class, 'startPhoneCall'])->name('phone-call');
     Route::get('/therapy-session/{id}/{chat_id}/{receiver}/{role}/{peer_id}', [VideoCallController::class, 'startVideoCallPeer'])->name('video-call-peer');
     Route::post('/share-peer-id', [VideoCallController::class, 'sharePeerId'])->name('send.remote_id');
     Route::get('/get-video-link', [VideoCallController::class, 'getVideoLink'])->name('get.remote_id');
@@ -93,6 +95,8 @@ Route::group(['middleware' => ['auth']], function() {
     // });
     // Route::resource('assigner', AssignCounselorController::class);
     Route::get('auto-assign/{id}', [AssignCounselorController::class, 'index']);
+    
+    Route::get('by-pass-bill/{id}', [BillingController::class, 'byPassPayments'])->name('bpb');
 
     // ==== settings
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
@@ -147,6 +151,10 @@ Route::group(['middleware' => ['auth', 'permission:questionaires.index']], funct
 Route::group(['middleware' => ['auth', 'permission:billing']], function() {
     Route::get('/billing-history', [BillingController::class, 'index'])->name('billing');
 });
+// Income
+// Route::group(['middleware' => ['auth', 'permission:income']], function() {
+    Route::get('/income', [IncomeController::class, 'index'])->name('income');
+// });
 
 // Patient Dashboard
 Route::group(['middleware' => ['auth', 'permission:patient']], function() {
@@ -256,3 +264,4 @@ Route::get('/get-couples-started', [GetStartedPage::class, 'couples'])->name('co
 Route::get('/get-child-started', [GetStartedPage::class, 'child'])->name('child-start');
 Route::resource('results', ResultsController::class);
 Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
+Route::get('/invoice-patient/{type}', [PaymentController::class, 'invoice'])->name('invoice-patient');

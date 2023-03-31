@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Billing;
 use App\Traits\BillingTrait;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,13 @@ class BillingController extends Controller
     {
         $bills = $this->get_my_billings();
         return view('page.billing.index', compact('bills'));
+    }
+
+    public function byPassPayments($id){
+        $data = Billing::where('user_id', $id)->get()->first();
+        $data->status = 1;
+        $data->save();
+        return redirect()->back();
     }
 
     /**

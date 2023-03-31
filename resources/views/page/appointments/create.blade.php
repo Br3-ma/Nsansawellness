@@ -6,9 +6,9 @@
             <i data-lucide="calendar" class="w-6 h-6"></i>
             &nbsp;
             <span class="bloack">
-                <p>Appointments</p>
-                <p class="text-sm font-medium mr-auto">
-                    Make an Appointment
+                <p>Create {{ request()->get('type') }} Appointment</p>
+                <p class="capitalize text-sm font-medium mr-auto">
+                    {{ request()->get('type') }} Appointment
                 </p>
             </span>
         </div>

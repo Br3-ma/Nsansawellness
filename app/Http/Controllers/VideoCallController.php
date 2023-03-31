@@ -69,6 +69,21 @@ class VideoCallController extends Controller
         }
     }
 
+    public function startPhoneCall($id, $chat_id, $receiver, $role){
+        try {
+            $data = [
+                'id' => $id,
+                'chat_id' => $chat_id,
+                'receiver' => $receiver,
+                'role' => $role,
+                'token' =>  csrf_token()
+            ];
+            return view('page.chat.phone_', compact('data'));
+        } catch (\Throwable $th) {
+            dd('Refresh the Page');
+        }
+    }
+
     public function sharePeerId(Request $req){
         // echo $req->toArray()['info']['id'];
         $async = Async::where('chat_id', $req->toArray()['info']['chat_id']);

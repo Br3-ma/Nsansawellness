@@ -181,7 +181,7 @@ button:hover {
           <h1 class="card__price">K750.00 </h1>
           <p class="old-offer">Get 2 sessions</p>
           <p class="old-offer">1 hour /session</p>
-          <a href="#" target="_blank"><small style="color:#053d53;">Get Started &xrarr; </small></a>
+          <a href="{{ route('invoice-patient', ['type' => 'eyJpdiI6ImY0']) }}" target="_blank"><small style="color:#053d53;">Get Started &xrarr; </small></a>
         </div>
         <div class="card">
           {{-- <span class="best-price">50% OFF</span> --}}
@@ -189,7 +189,7 @@ button:hover {
           <h1 class="card__price">K500.00</h1>
           <p class="old-offer">Get 3 sessions</p>
           <p class="old-offer">1 hour /session</p>
-          <a href="#" target="_blank"><small style="color:#053d53;">Get Started &xrarr; </small></a>
+          <a href="{{ route('invoice-patient', ['type' => 'ZjMyZmYyYzEz']) }}" target="_blank"><small style="color:#053d53;">Get Started &xrarr; </small></a>
         </div>
         {{-- <div class="card">
           <h2 class="card__title">Ai Platnium</h2>
