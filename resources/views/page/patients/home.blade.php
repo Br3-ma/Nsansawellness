@@ -241,10 +241,10 @@
                                 @endif
                             @else
                                 <span id="patient_video_btn">
-
+                                    
                                 </span>
                                 <span id="patient_phone_btn">
-
+                                    
                                 </span>
                             @endhasanyrole
                             {{-- <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-primary shadow-md mr-2">Video Call</a> --}}
