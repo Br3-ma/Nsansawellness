@@ -21,7 +21,7 @@ class BillingController extends Controller
     }
 
     public function byPassPayments($id){
-        $data = Billing::where('user_id', $id)->get()->first();
+        $data = Billing::where('id', $id)->get()->first();
         $data->status = 1;
         $data->save();
         return redirect()->back();
