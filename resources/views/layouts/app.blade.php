@@ -207,17 +207,17 @@
 
                 // ******* Custom Methods 
                 // *** Checks payment status
-                console.log("Have you paid: "+paid);
-                let rand1 = Math.floor(Math.random() * 21);
-                let rand2 = Math.floor(Math.random() * 21);
-                if(user_role === 'patient'){
-                    if(rand1 % 2 != 0 && rand2 % 2 != 0){
-                        if(paid){
-                            const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
-                            myModal.show();
-                        }
-                    }
-                }
+                // console.log("Have you paid: "+paid);
+                // let rand1 = Math.floor(Math.random() * 21);
+                // let rand2 = Math.floor(Math.random() * 21);
+                // if(user_role === 'patient'){
+                //     if(rand1 % 2 != 0 && rand2 % 2 != 0){
+                //         if(paid){
+                //             const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
+                //             myModal.show();
+                //         }
+                //     }
+                // }
 
             });
         </script>
@@ -673,9 +673,9 @@
         <!-- BEGIN: Modal Content -->
         
         @hasanyrole('patient')
-        @if(App\Models\Billing::has_bill())
+        {{-- @if(App\Models\Billing::has_bill())
             @include('page.common.payment-notice')
-        @endif
+        @endif --}}
         @endhasanyrole
     {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->

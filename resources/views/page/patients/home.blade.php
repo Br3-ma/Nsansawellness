@@ -1895,16 +1895,16 @@
 
   
     function startChat(id, who, names, role){
-        if(hasPaid){
-            open_chat(id, who, names, role);
-        }else{
-            if(user_role === 'counselor'){
-                open_chat(id, who, names, role);
-            }else{
-                const pay_notice = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
-                pay_notice.show();
-            }
-        }
+        // if(hasPaid){
+        open_chat(id, who, names, role);
+        // }else{
+        //     if(user_role === 'counselor'){
+        //         open_chat(id, who, names, role);
+        //     }else{
+        //         const pay_notice = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
+        //         pay_notice.show();
+        //     }
+        // }
     }
 
     function open_chat(id, who, names, role){
