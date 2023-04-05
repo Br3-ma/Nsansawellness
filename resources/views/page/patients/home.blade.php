@@ -2159,7 +2159,7 @@
 
     
     function getVideoCallLink(){
-        console.log('here');
+        
         $.ajax({
             type:'GET',
             url:'{{ route("get.remote_id") }}',
@@ -2176,10 +2176,10 @@
                     <a target="_blank" href="'+APP_URL+'/therapy-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-danger shadow-md mr-2">\
                         <i data-lucide="video" class="w-5 h-5"></i>\
                     </a>');
-                // $('#patient_phone_btn').append('\
-                //     <a target="_blank" href="'+APP_URL+'/therapy-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-success shadow-md mr-2">\
-                //         <i data-lucide="phone" class="w-5 h-5"></i>\
-                //     </a>');
+                $('#patient_phone_btn').append('\
+                    <a target="_blank" href="'+APP_URL+'/therapy-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-success shadow-md mr-2">\
+                        <i data-lucide="phone" class="w-5 h-5"></i>\
+                    </a>');
               }
             }
         });
