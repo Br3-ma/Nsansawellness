@@ -965,7 +965,7 @@
           location.replace('/contextpath/j_spring_security_logout') ;
       }   
   }
-</script>
+</script> 
 
 {{-- <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
 <script>
