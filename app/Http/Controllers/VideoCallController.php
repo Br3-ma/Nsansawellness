@@ -98,8 +98,9 @@ class VideoCallController extends Controller
     }
 
     public function getVideoLink(Request $req){
-        $data = Async::where('chat_id', $req->toArray()['chat_id'])->get()->first();
-        return response()->json(['data' => $data], 200);
+        dd($req->toArray()['chat_id']);
+        // $data = Async::where('chat_id', $req->toArray()['chat_id'])->get()->first();
+        // return response()->json(['data' => $data], 200);
     }
 
     public function startVideoCallPeer($id, $chat_id, $receiver, $role, $peer_id){
