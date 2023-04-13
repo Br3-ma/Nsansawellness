@@ -218,7 +218,7 @@
                     @csrf
                     <div class="mx-auto bg-white dark:bg-darkmode-600 xl:bg-transparent sm:px-8 p-10 rounded-md shadow-md xl:shadow-none sm:w-3/4 lg:w-2/4 xl:w-auto">
                         <h2 style="text-align: center" class="intro-x font-bold text-xl xl:text-2xl text-center text-primary xl:text-left">
-                            Welcome come back!
+                            Welcome back!
                         </h2>
                         @error('email')
                             <div class="intro-x alert alert-danger show flex items-center mt-3 mb-2" role="alert"> 
