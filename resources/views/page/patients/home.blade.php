@@ -232,8 +232,9 @@
                             {{-- startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}' --}}
                             @hasanyrole(['admin', 'counselor'])
                                 @if(!empty($chats->toArray()))
-                                <a target="_blank" href="{{ route('video-call', ['id'=> auth()->user()->id, 'chat_id' => $chats->first()->id, 'receiver' => $chats->first()->receiver->fname.' '.$chats->first()->receiver->lname, 'role' => preg_replace('/[^A-Za-z0-9. -]/', '', $chats->first()->receiver->roles->pluck('name')) ]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">
+                                <a target="_blank" onclick="startVideoSession()" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">
                                     <i data-lucide="video" class="w-5 h-5"></i>
+                                    {{$chats->id}}
                                 </a>
                                 <a target="_blank" href="{{ route('phone-call', ['id'=> auth()->user()->id, 'chat_id' => $chats->first()->id, 'receiver' => $chats->first()->receiver->fname.' '.$chats->first()->receiver->lname, 'role' => preg_replace('/[^A-Za-z0-9. -]/', '', $chats->first()->receiver->roles->pluck('name')) ]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-success shadow-md mr-2">
                                     <i data-lucide="phone" class="w-5 h-5"></i>
@@ -1890,6 +1891,8 @@
     var chat_id; 
     var count = 0; 
     var owner = null; 
+    var receiver_role = null; 
+    var receiver_name = null; 
     var aDay = 24*60*60*1000;
     var msgFeild = document.getElementById("message_textbox");
 
@@ -1911,6 +1914,8 @@
         chat_id = id;
         // alert(chat_id);
         owner = who;
+        receiver_role = role.toString().replace(/[^a-zA-Z ]/g, "");
+        receiver_name = names;
         $('#chat_receiver_name').text(names);
         $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
         $('#message_thread').empty();
@@ -2157,9 +2162,14 @@
         }
     }
 
+
+    function startVideoSession(){
+        var url = '/video-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
+        window.location.href = url;
+    }
+
     
     function getVideoCallLink(){
-        
         $.ajax({
             type:'GET',
             url:'{{ route("get.remote_id") }}',
