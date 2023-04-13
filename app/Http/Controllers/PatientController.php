@@ -65,11 +65,7 @@ class PatientController extends Controller
         }
 
         // if they have a pending billing redirect to payments else patient dashboard
-
         return view('page.patients.home', compact('notifications', 'chats'));
-   
-
-
     }
 
     public function patient_files()

@@ -85,22 +85,22 @@ class VideoCallController extends Controller
     }
 
     public function sharePeerId(Request $req){
-        // echo $req->toArray()['info']['id'];
-        $async = Async::where('chat_id', $req->toArray()['info']['chat_id']);
-        $async->delete();
-        Async::create([
-            'name' => 'Activate Video Call Button',
-            'value' => $req->toArray()['peer_id'],
-            'chat_id' => $req->toArray()['info']['chat_id'],
-            'user_id' => auth()->user()->id,
-            'status' => 1
-        ]);
+        dd($req->toArray()['info']);
+        // $async = Async::where('chat_id', $req->toArray()['info']['chat_id']);
+        // $async->delete();
+        // Async::create([
+        //     'name' => 'Activate Video Call Button',
+        //     'value' => $req->toArray()['peer_id'],
+        //     'chat_id' => $req->toArray()['info']['chat_id'],
+        //     'user_id' => auth()->user()->id,
+        //     'status' => 1
+        // ]);
     }
 
     public function getVideoLink(Request $req){
-        dd($req->toArray()['chat_id']);
-        // $data = Async::where('chat_id', $req->toArray()['chat_id'])->get()->first();
-        // return response()->json(['data' => $data], 200);
+        $data = Async::where('chat_id', $req->toArray()['chat_id'])->get()->first();
+        // dd($data);
+        return response()->json(['data' => $data], 200);
     }
 
     public function startVideoCallPeer($id, $chat_id, $receiver, $role, $peer_id){
