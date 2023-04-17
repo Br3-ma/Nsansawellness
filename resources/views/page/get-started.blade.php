@@ -154,11 +154,10 @@
     }
 
     function gotToRegister(){
-        alert('yeas');
+        // alert('yeas');
     }
 
     $('#getStartedForm').submit(function(e){
-        alert('yeas');
         e.preventDefault();
         let url = "{{ route('register', ['role' => 'patient', 'type' => 'patient'])}}";
         document.location.href=url;

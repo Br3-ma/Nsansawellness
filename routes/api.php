@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\SurveyController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -19,6 +21,14 @@ use Laravel\Sanctum\PersonalAccessToken;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('get-patient-survey', [SurveyController::class, 'getPatientSurvey']);
+Route::get('get-counselor-survey', [SurveyController::class, 'getCounselorSurvey']);
+Route::get('get-therapy-sessions/{id}', [SurveyController::class, 'getTherapySessions']);
+Route::get('get-therapy-session-chat-messages/{chat_id}/{starter}', [SurveyController::class, 'getTherapySessionChatMessages']);
+
+Route::post('submit-survey', [ResultsController::class, 'store']);
+
 Route::controller(RegisterController::class)->group(function(){
     Route::post('register', 'register');
 });
