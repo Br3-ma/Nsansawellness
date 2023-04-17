@@ -18,10 +18,15 @@ class ChatController extends Controller
      */
     public function index(Request $req)
     {
-        //get my thread for chat
+        // Get my thread for chat
         $id = $req->toArray()['id'];
         $owner = $req->toArray()['owner'];
+
+        // Get the chat sessions
         $chat_session = Chat::with('chat_messages.user')->where('id', $id)->get()->toArray()[0];
+
+        // Set that either parties have seen the message
+        // The last message has appeared in either parties chat
         if($owner == 'sender'){
             // The sender has seen the message
             ChatMessages::where('chat_id', $id)

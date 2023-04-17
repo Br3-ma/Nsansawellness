@@ -123,6 +123,30 @@
                 margin-top:70%;
             }
         }
+
+        /* Preloader Screen  */
+        /* Create the overlay */
+        .overlay {
+            z-index:2147483647;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.1);
+            transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+        }
+
+        /* Content within the overlay */
+        .content {
+            /* background-color: #fff; background color of the content box */
+            padding: 20px;
+            /* border-radius: 5px; */
+            text-align: center;
+        }
         </style>
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -647,36 +671,42 @@
             <div class="w-full sm:pt-3 pt-2" style="">
                 @yield('content')
             </div>
-
     </div>
     <!-- The Modal -->
     {{-- @if(auth()->user()->id == 1) --}}
-        <div id="basic-non-sticky-notification-content" class="toastify-content hidden">
-            <div class="font-medium">A new Patient has signed up.</div>
-            <div class="text-slate-500 mt-1">
-                Check your notifications
-            </div>
+    <div id="basic-non-sticky-notification-content" class="toastify-content hidden">
+        <div class="font-medium">A new Patient has signed up.</div>
+        <div class="text-slate-500 mt-1">
+            Check your notifications
         </div>
-        <div id="basic-non-sticky-notification-content-two" class="toastify-content hidden">
-            <div class="font-medium">You have a new Appointment.</div>
-            <div class="text-slate-500 mt-1">
-                Check your notifications
-            </div>
+    </div>
+    <div id="basic-non-sticky-notification-content-two" class="toastify-content hidden">
+        <div class="font-medium">You have a new Appointment.</div>
+        <div class="text-slate-500 mt-1">
+            Check your notifications
         </div>
-        <div id="basic-non-sticky-notification-content-two" class="toastify-content hidden">
-            <div class="font-medium">You have a new Homework Activity.</div>
-            <div class="text-slate-500 mt-1">
-                Check your notifications
-            </div>
+    </div>
+    <div id="basic-non-sticky-notification-content-two" class="toastify-content hidden">
+        <div class="font-medium">You have a new Homework Activity.</div>
+        <div class="text-slate-500 mt-1">
+            Check your notifications
         </div>
-        {{-- <div class="text-center"> <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#static-backdrop-modal-preview" class="btn btn-primary">Show Modal</a> </div> <!-- END: Modal Toggle --> --}}
-        <!-- BEGIN: Modal Content -->
+    </div>
+    
+    <div class="overlay">
+        <div class="content">
+        <h1>Hello, World!</h1>
+        <p>This is an overlay screen.</p>
+        </div>
+    </div>
+    {{-- <div class="text-center"> <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#static-backdrop-modal-preview" class="btn btn-primary">Show Modal</a> </div> <!-- END: Modal Toggle --> --}}
+    <!-- BEGIN: Modal Content -->
         
-        @hasanyrole('patient')
-        {{-- @if(App\Models\Billing::has_bill())
-            @include('page.common.payment-notice')
-        @endif --}}
-        @endhasanyrole
+    @hasanyrole('patient')
+    {{-- @if(App\Models\Billing::has_bill())
+        @include('page.common.payment-notice')
+    @endif --}}
+    @endhasanyrole
     {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->
     {{-- <div data-url="side-menu-dark-dashboard-overview-2.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
