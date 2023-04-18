@@ -250,7 +250,7 @@
         </script>
     </head>
     <!-- END: Head -->
-    <body style="height: 629px; min-height:629px; device-height:629px;" id="nsansa_app" class="lg:py-5 py-0 md:py-0">
+    <body style="height: 100%; min-height:100%; device-height:100%; overflow:hidden" id="nsansa_app" class="lg:py-5 py-0 md:py-0">
         <!-- BEGIN: Mobile Menu -->
 
         <div class="mobile-menu md:hidden">
