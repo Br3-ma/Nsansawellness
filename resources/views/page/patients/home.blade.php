@@ -24,10 +24,16 @@
                         @forelse($chats as $chat)
                             {{-- If I Started the Chat --}}
                             @if($chat->sender_id == auth()->user()->id)
-                                <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')" class="intro-x chat-list-item cursor-pointer relative flex items-center p-5">
+                                <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')"
+                                    class="intro-x chat-list-item cursor-pointer rounded-lg bg-white mr-10 relative flex items-center p-5">
+
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
                                         @if($chat->sender->image_path != null) 
-                                        <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->receiver->image_path) }}" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
+                                            <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->receiver->image_path) }}" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
+                                        @else
+                                            <div class="font-bolder text-xs text-white w-10 h-10 bg-primary rounded-full flex items-center justify-center zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                                                {{ $chat->receiver->fname[0].' '.$chat->receiver->lname[0] }}
+                                            </div>
                                         @endif
                                     </div>
                                     <div class="ml-2 overflow-hidden">
@@ -41,10 +47,15 @@
                                 </div>
                             @else 
                             {{-- If They Started the Chat --}}
-                                <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" class="intro-x cursor-pointer chat-list-item relative flex items-center p-5 mt-3">
+                                <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" 
+                                    class="intro-x cursor-pointer rounded-lg bg-white mr-10 chat-list-item relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
                                         @if($chat->sender->image_path != null)
-                                        <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="rounded-full attachment-full size-full" alt="" loading="lazy" />
+                                            <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="rounded-full attachment-full size-full" alt="" loading="lazy" />
+                                        @else
+                                            <div class="font-bolder text-xs text-white w-10 h-10 bg-warning rounded-full flex items-center justify-center zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                                                {{ $chat->sender->fname[0].' '.$chat->sender->lname[0] }}
+                                            </div>
                                         @endif
                                     </div>
                                     <div class="ml-2 overflow-hidden">
@@ -60,7 +71,6 @@
                         @empty
 
                         @hasrole('counselor')
-
                         <div class="intro-x px-6 w-full mb-2">
                             <div class="lg:flex ">
                                 <div class="box w-full lg:mb-0 mb-2 lg:pb-4 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/no-patients.jpg") }}'); background-size:cover; background-color:#9374AD;">
@@ -1858,6 +1868,13 @@
         <!-- END: Chat Content -->
     </div>
 </div>
+
+<div id="sessionPreloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
+    {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
+    <img src="{{ asset('public/img/1.gif') }}">
+    <h2 class="text-center text-primary text-xl mt-10 font-semibold">Setting Up Session</h2>
+    <p id="hint1" class="w-1/3 text-center text-gray-200">Notifying counselor, please wait..</p>
+</div>
 @endsection
 
 <?php
@@ -1867,6 +1884,7 @@
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
 <script>
     $(document).ready(function() {
+        $('#sessionPreloader').hide();
         $('.convoBody').hide();
         const chatPage = document.querySelector('.chatPage');
         const h = window.innerHeight;
@@ -1898,7 +1916,10 @@
   
     function startChat(id, who, names, role){
         // if(hasPaid){
+        // $('#nsansa_app').hide();
+        $('#sessionPreloader').show();
         open_chat(id, who, names, role);
+
         // }else{
         //     if(user_role === 'counselor'){
         //         open_chat(id, who, names, role);
@@ -1925,8 +1946,9 @@
                     id,owner
                 },
                 success:function(data) {
+                    // State changes
                     $('.convoBody').show();
-                    $('#chatList').hide();
+                    $('#chatList').hide(); 
 
                     let messages = data.chat_session.chat_messages;
                     
@@ -1986,6 +2008,8 @@
                         }
                     } 
                     $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+                    $('#sessionPreloader').hide();
+                    $('#nsansa_app').show();
                 },
                 
                 error: function (msg) {
