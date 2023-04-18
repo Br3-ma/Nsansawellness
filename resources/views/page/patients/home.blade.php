@@ -71,7 +71,6 @@
                         @empty
 
                         @hasrole('counselor')
-
                         <div class="intro-x px-6 w-full mb-2">
                             <div class="lg:flex ">
                                 <div class="box w-full lg:mb-0 mb-2 lg:pb-4 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/no-patients.jpg") }}'); background-size:cover; background-color:#9374AD;">
@@ -1869,6 +1868,13 @@
         <!-- END: Chat Content -->
     </div>
 </div>
+
+<div id="sessionPreloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
+    {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
+    <img src="{{ asset('public/img/1.gif') }}">
+    <h2 class="text-center text-primary text-xl mt-10 font-semibold">Setting Up Session</h2>
+    <p id="hint1" class="w-1/3 text-center text-gray-200">Notifying counselor, please wait..</p>
+</div>
 @endsection
 
 <?php
@@ -1878,6 +1884,7 @@
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
 <script>
     $(document).ready(function() {
+        $('#sessionPreloader').hide();
         $('.convoBody').hide();
         const chatPage = document.querySelector('.chatPage');
         const h = window.innerHeight;
@@ -1909,7 +1916,10 @@
   
     function startChat(id, who, names, role){
         // if(hasPaid){
+        // $('#nsansa_app').hide();
+        $('#sessionPreloader').show();
         open_chat(id, who, names, role);
+
         // }else{
         //     if(user_role === 'counselor'){
         //         open_chat(id, who, names, role);
@@ -1936,8 +1946,9 @@
                     id,owner
                 },
                 success:function(data) {
+                    // State changes
                     $('.convoBody').show();
-                    $('#chatList').hide();
+                    $('#chatList').hide(); 
 
                     let messages = data.chat_session.chat_messages;
                     
@@ -1997,6 +2008,8 @@
                         }
                     } 
                     $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+                    $('#sessionPreloader').hide();
+                    $('#nsansa_app').show();
                 },
                 
                 error: function (msg) {

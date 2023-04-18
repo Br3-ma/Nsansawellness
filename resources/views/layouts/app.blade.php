@@ -24,105 +24,131 @@
         
         <!-- END: CSS Assets-->
         <style>
-        .modal {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(1.1);
-            transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-        }
+            .modal {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                visibility: hidden;
+                transform: scale(1.1);
+                transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+            }
 
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 1rem 1.5rem;
-            width: 24rem;
-            border-radius: 0.5rem;
-        }
+            .modal-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 1rem 1.5rem;
+                width: 24rem;
+                border-radius: 0.5rem;
+            }
 
-        .close-button {
-            float: right;
-            width: 1.5rem;
-            line-height: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 0.25rem;
-            background-color: lightgray;
-        }
+            .close-button {
+                float: right;
+                width: 1.5rem;
+                line-height: 1.5rem;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 0.25rem;
+                background-color: lightgray;
+            }
 
-        .close-button:hover {
-            background-color: darkgray;
-        }
+            .close-button:hover {
+                background-color: darkgray;
+            }
 
-        .show-modal {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1.0);
-            transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-        }
-        #desktopchat, 
-        #deskPersonalDetails,
-        #btnback{
-                display: block;
-        } 
-        #mobilechat,
-        #mobilePersonalDetails,
-        #btnback2{
-            display: none;
-        }
-        #chatContent{
-            margin-top:8%;
-        }            
-        .chat-list-tiem{
-            border: 1px solid #024A64;
-            border-radius:2%;
-        }
-
-        #payment-modal-dialog{
-            margin-top:25%;
-        }
-        @media only screen and (max-width:600px){
-            #mobilechat, 
+            .show-modal {
+                opacity: 1;
+                visibility: visible;
+                transform: scale(1.0);
+                transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+            }
+            #desktopchat, 
+            #deskPersonalDetails,
+            #btnback{
+                    display: block;
+            } 
+            #mobilechat,
             #mobilePersonalDetails,
             #btnback2{
-                display: block;
-            }        
-            #desktopchat,
-            #btnback{
                 display: none;
-            } 
-            #onChatMenu,#usersIndexControls, #deskPersonalDetails{
-                display: none;
-            }
-            #modalMobile{
-                margin-top:50%;
             }
             #chatContent{
-                margin-top:12%;
-            }
-            #rootApp{
-                background-color:#fff;
-            }
-            .contentCanvas{
-                background-color:rgb(255, 255, 255);
-                border-radius: 0%; 
-            
-            }
+                margin-top:8%;
+            }            
             .chat-list-tiem{
                 border: 1px solid #024A64;
+                border-radius:2%;
             }
+
             #payment-modal-dialog{
-                margin-top:70%;
+                margin-top:25%;
             }
-        }
+            @media only screen and (max-width:600px){
+                #mobilechat, 
+                #mobilePersonalDetails,
+                #btnback2{
+                    display: block;
+                }        
+                #desktopchat,
+                #btnback{
+                    display: none;
+                } 
+                #onChatMenu,#usersIndexControls, #deskPersonalDetails{
+                    display: none;
+                }
+                #modalMobile{
+                    margin-top:50%;
+                }
+                #chatContent{
+                    margin-top:12%;
+                }
+                #rootApp{
+                    background-color:#fff;
+                }
+                .contentCanvas{
+                    background-color:rgb(255, 255, 255);
+                    border-radius: 0%; 
+                
+                }
+                .chat-list-tiem{
+                    border: 1px solid #024A64;
+                }
+                #payment-modal-dialog{
+                    margin-top:70%;
+                }
+            }
+
+
+
+            .loader {
+                border-top-color: #3498db;
+                -webkit-animation: spinner 1.5s linear infinite;
+                animation: spinner 1.5s linear infinite;
+            }
+
+            @-webkit-keyframes spinner {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                }
+                100% {
+                    -webkit-transform: rotate(360deg);
+                }
+            }
+
+            @keyframes spinner {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
         </style>
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -135,6 +161,7 @@
         <script>
             
             $(document).ready(function(){
+                $('#main_preloader').hide();
                 var user = {!! auth()->user()->toJson() ?? '' !!};
                 var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
                 var paid = "{{ auth()->user()->has_paid }}";
@@ -223,7 +250,7 @@
         </script>
     </head>
     <!-- END: Head -->
-    <body style="height: 629px; min-height:629px; device-height:629px;" class="lg:py-5 py-0 md:py-0">
+    <body style="height: 629px; min-height:629px; device-height:629px;" id="nsansa_app" class="lg:py-5 py-0 md:py-0">
         <!-- BEGIN: Mobile Menu -->
 
         <div class="mobile-menu md:hidden">
@@ -690,12 +717,16 @@
         <div class="dark-mode-switcher__toggle border"></div>
     </div> --}}
     <!-- END: Dark Mode Switcher-->
-    
+    <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
+        {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
+        <img src="{{ asset('public/img/1.gif') }}">
+    </div>
     <!-- BEGIN: JS Assets-->
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
     <script src="{{ asset('public/app.js') }}"></script>
     <script src="{{ asset('dist/js/app.js') }}"></script>
+    <script src="{{ asset('dist/preloader.js') }}"></script>
     <script src="{{ asset('dist/jquery.js') }}"></script>
     <script src="{{ asset('dist/jquery-wizard.min.js') }}"></script>
     <script>
