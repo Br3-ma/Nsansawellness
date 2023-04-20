@@ -50,7 +50,7 @@
     <section class="elementor-section elementor-top-section elementor-element elementor-element-4b538fe elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="4b538fe" data-element_type="section">
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-6b8617c" data-id="6b8617c" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                <div style="background-image:url('https://www.apa.org/images/article-understanding_tcm7-285067.jpg'); background-repeat:none; background-position:center; background-size:cover" class="elementor-widget-wrap elementor-element-populated">
+                <div style="background-image:url('{{ asset("public/img/4.jpg") }}'); background-repeat:none; background-position:center; background-size:cover" class="elementor-widget-wrap elementor-element-populated">
                     <div class="elementor-element elementor-element-534938a elementor-widget elementor-widget-spacer" data-id="534938a" data-element_type="widget" data-widget_type="spacer.default">
                         <div class="elementor-widget-container">
                             <style>

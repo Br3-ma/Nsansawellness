@@ -58,7 +58,7 @@
                     </div>
                     <div class="elementor-element elementor-element-57285d4 elementor-widget elementor-widget-image" data-id="57285d4" data-element_type="widget" data-widget_type="image.default">
                         <div class="elementor-widget-container">
-                            <img width="800" height="484" src="https://societyforpsychotherapy.org/wp-content/uploads/2019/02/iStock-541975802-e1544109904717-768x512.jpg" class="attachment-large size-large" alt="Man and woman during the psychological counseling indoors" loading="lazy"
+                            <img width="800" height="484" src="{{ asset('public/img/3.jpg') }}" class="attachment-large size-large" alt="Man and woman during the psychological counseling indoors" loading="lazy"
                                 sizes="(max-width: 800px) 100vw, 800px" /> </div>
                     </div>
                 </div>
