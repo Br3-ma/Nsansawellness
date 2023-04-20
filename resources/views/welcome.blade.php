@@ -10,7 +10,8 @@
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
 										<h5 class="heading-section-subtitle  style-color">Welcome</h5>
 										<div class="heading-section-title ">
-											<h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1>
+											<h1 class="heading-title">Support <span class="style-gradient"><span>for</span></span> healthy mind</h1>
+											{{-- <h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1> --}}
 										</div>
 										<div class="heading-section-description">
 											<p>When confronted with stressful life circumstances like arguments or stress from work, learning to cope better with your emotions and mental health is crucial for a healthier lifestyle. Online therapy can be an effective method for connecting with other people who face similar struggles.</p>
