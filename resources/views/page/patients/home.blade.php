@@ -18,7 +18,7 @@
                         <h2 class="text-lg font-medium mr-auto flex space-x-6 mt-10 py-autox">
                             <i data-lucide="message-square" class="mt-1 w-6 h-6"></i>
                             &nbsp;
-                            <span>Therapy Sessions</span>
+                            <span>Counseling Sessions</span>
                         </h2>
                         
                         @forelse($chats as $chat)
@@ -242,7 +242,7 @@
                             {{-- startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}' --}}
                             @hasanyrole(['admin', 'counselor'])
                                 @if(!empty($chats->toArray()))
-                                <a target="_blank" onclick="startVideoSession()" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md mr-2">
+                                <a target="_blank" onclick="startVideoSession()" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
                                     <i data-lucide="video" class="w-5 h-5"></i>
                                 </a>
                                 {{-- <a target="_blank" href="{{ route('phone-call', ['id'=> auth()->user()->id, 'chat_id' => $chats->first()->id, 'receiver' => $chats->first()->receiver->fname.' '.$chats->first()->receiver->lname, 'role' => preg_replace('/[^A-Za-z0-9. -]/', '', $chats->first()->receiver->roles->pluck('name')) ]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-success shadow-md mr-2">
@@ -254,7 +254,12 @@
                                     
                                 </span>
                                 <span id="patient_phone_btn">
-                                    
+                                    {{-- /phone-session/{id}/{chat_id}/{receiver}/{role} --}}
+                                    <a onclick="startPhoneCall()" target="_blank" class="btn btn-success rounded-full shadow-md mr-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                        </svg>
+                                    </a>
                                 </span>
                             @endhasanyrole
                             
@@ -632,10 +637,14 @@
 
 
     function startVideoSession(){
-        var url = '/video-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
+        var url = '/nsansawellness/video-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
         window.location.href = url;
     }
 
+    function startPhoneCall(){
+        var url = '/nsansawellness/phone-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
+        window.location.href = url;
+    }
     
     function getVideoCallLink(){
         $.ajax({
@@ -650,14 +659,19 @@
               if(data.data !== null){
                 count = 1;
                 $('#patient_video_btn').empty();
+                // $('#patient_phone_btn').empty();
                 $('#patient_video_btn').append('\
-                    <a target="_blank" href="'+APP_URL+'/therapy-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-danger shadow-md mr-2">\
-                        <i data-lucide="video" class="w-5 h-5"></i>\
+                    <a target="_blank" href="'+APP_URL+'/therapy-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-danger rounded-full shadow-md mr-2">\
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">\
+                        <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5z"/>\
+                        </svg>\
                     </a>');
-                $('#patient_phone_btn').append('\
-                    <a target="_blank" href="'+APP_URL+'/therapy-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-success shadow-md mr-2">\
-                        <i data-lucide="phone" class="w-5 h-5"></i>\
-                    </a>');
+                // $('#patient_phone_btn').append('\
+                //     <a target="_blank" href="'+APP_URL+'/phone-session/'+ user['id']+'/'+ chat_id +'/receiver/patient/'+data.data.value+'" class="btn btn-success rounded-full shadow-md mr-2">\
+                //         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">\
+                //         <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>\
+                //         </svg>\
+                //     </a>');
               }
             }
         });
