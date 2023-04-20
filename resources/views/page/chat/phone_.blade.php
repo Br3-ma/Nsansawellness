@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nsansa Wellness | Video Session</title>
+    <title>Nsansa Wellness | Phone Call Session</title>
 
     <!-- Add Google Font -->
     <link
@@ -183,9 +183,11 @@
       <div class="app-main">            
         <input type="text" class="dont-show" name="localPeerId" id="localPeerId" readonly>
         @hasrole('patient')
-          <input type="text" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
-          {{-- <input type="text" name="remotePeerId" id="remotePeerId"> --}}
-          <button onclick="join()" class="button" id="btn-call">Join Session</button>
+          @isset($data['peer_id'])
+            <input type="text" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+            {{-- <input type="text" name="remotePeerId" id="remotePeerId"> --}}
+            <button onclick="join()" class="button" id="btn-call">Join Session</button>
+          @endisset
         @else
           <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
         @endhasrole
@@ -440,6 +442,17 @@
         <!-- expand icon -->
       </button>
     </div>
+
+    <div id="startingPhoneCall" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
+      {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
+      <img src="{{ asset('public/img/1.gif') }}">
+      <h2 class="text-center text-primary text-xl mt-10 font-semibold">Setting Up Call</h2>
+      @hasanyrole(['admin', 'counselor'])
+      <p id="hint1" class="w-1/3 text-center text-gray-200">Checking last conversations, please wait..</p>
+      @else
+      <p id="hint1" class="w-1/3 text-center text-gray-200">Notifying the counselor, please wait..</p>
+      @endhasanyrole
+  </div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
