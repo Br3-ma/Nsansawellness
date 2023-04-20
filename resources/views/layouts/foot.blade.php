@@ -786,7 +786,8 @@
                                                     <li class="elementor-icon-list-item elementor-inline-item">
                                                         <span class="elementor-icon-list-icon">
                                                             <i aria-hidden="true" class="fas fa-map-marker-alt"></i> </span>
-                                                        <span class="elementor-icon-list-text">Jl. Raya Puputan No. 142, Denpasar</span>
+                                                        {{-- <span class="elementor-icon-list-text">Jl. Raya Puputan No. 142, Denpasar</span> --}}
+                                                        <span class="elementor-icon-list-text">Lusaka, Zambia</span>
                                                     </li>
                                                     <li class="elementor-icon-list-item elementor-inline-item">
                                                         <span class="elementor-icon-list-icon">
@@ -796,7 +797,7 @@
                                                     <li class="elementor-icon-list-item elementor-inline-item">
                                                         <span class="elementor-icon-list-icon">
                                                             <i aria-hidden="true" class="fas fa-envelope"></i> </span>
-                                                        <span class="elementor-icon-list-text"><a href="https://templatekit.jegtheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="26454941484f524f50436642494b474f480845494b">[email&#160;protected]</a></span>
+                                                        <span class="elementor-icon-list-text"><a href="https://templatekit.jegtheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="26454941484f524f50436642494b474f480845494b">info@nsansawellness.com</a></span>
                                                     </li>
                                                 </ul>
                                             </div>

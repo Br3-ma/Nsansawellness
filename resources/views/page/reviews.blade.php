@@ -170,14 +170,16 @@ a{
     
     <section id="testimonials" class="elementor-container">
                         <!--testimonials-box-container------>
-                        <div class="testimonial-box-container"  style="padding: 4%">
-                            <p>
-                                These quotes represent a few of the many positive reviews that we have received for therapists who work with BetterHelp. 
-                                We don’t pay anyone to provide their review and they are all made voluntarily. 
-                                Some people's experience receiving therapy with BetterHelp might be different. 
-                                If you would like to review your therapist, <a href="{{ route('contact') }}">please send your review</a>.
-                            </p>
-                            <h3>Nsansa Wellness reviews from October 3, 2022</h3>
+                        <div class="testimonial-box-container"  style="padding: 6%; padding-right: 8%">
+                            <div style="text-align: center;">
+                                <p>
+                                    These quotes represent a few of the many positive reviews that we have received for therapists who work with BetterHelp. 
+                                    We don’t pay anyone to provide their review and they are all made voluntarily. 
+                                    Some people's experience receiving therapy with BetterHelp might be different. 
+                                    If you would like to review your therapist, <a href="{{ route('contact') }}">please send your review</a>.
+                                </p>
+                                <h3>Nsansa Wellness reviews from October 3, 2022</h3>
+                            </div>
                             <!--BOX-1-------------->
                             <div class="testimonial-box">
                                 <!--top------------------------->
