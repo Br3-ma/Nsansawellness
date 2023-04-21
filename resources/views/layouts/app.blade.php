@@ -21,7 +21,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         
-        
+        @livewireStyles
         <!-- END: CSS Assets-->
         <style>
             .modal {
@@ -124,31 +124,150 @@
                 }
             }
 
-
-
-            .loader {
-                border-top-color: #3498db;
-                -webkit-animation: spinner 1.5s linear infinite;
-                animation: spinner 1.5s linear infinite;
-            }
-
-            @-webkit-keyframes spinner {
-                0% {
-                    -webkit-transform: rotate(0deg);
-                }
-                100% {
-                    -webkit-transform: rotate(360deg);
-                }
-            }
-
-            @keyframes spinner {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
+ main {
+	 display: grid;
+	 place-items: center;
+	 min-height: 100vh;
+	 padding: 2em;
+}
+ form {
+	 max-width: 420px;
+	 padding: 2em;
+	 background-color: white;
+	 box-shadow: 2px 0 15px -2px rgba(0, 0, 0, 0.2);
+	 border-radius: 15px;
+}
+ form > h1 {
+	 text-align: center;
+	 font-weight: 900;
+	 color: #443c68;
+}
+ form > p {
+	 text-align: center;
+	 margin-bottom: 2.4em;
+	 line-height: 1.8;
+	 font-weight: 600;
+}
+ form > .textarea-group {
+	 margin-top: 2.4em;
+}
+ form > .textarea-group > label {
+	 display: block;
+	 width: 100%;
+}
+ form > .textarea-group > label > span {
+	 display: block;
+	 font-size: 0.9em;
+	 font-weight: 600;
+	 margin-bottom: 0.8em;
+}
+ form > .textarea-group > label > textarea {
+	 box-sizing: border-box;
+	 display: block;
+	 padding: 1em;
+	 font-family: "Mulish", sans-serif;
+	 line-height: 1.8;
+	 width: 100%;
+	 resize: none;
+	 border: none;
+	 background-color: #ebebeb;
+}
+ form > div.action-group {
+	 margin-top: 2em;
+	 display: flex;
+	 flex-direction: column;
+	 row-gap: 1em;
+}
+ form > div.action-group > input[type="reset"] {
+	 padding: 1em 2em;
+	 border: none;
+	 background: none;
+	 cursor: pointer;
+	 font-size: 0.9em;
+	 font-weight: 600;
+	 opacity: 0.8;
+}
+ @media (hover: hover) {
+	 form > div.action-group > input[type="reset"]:hover {
+		 text-decoration: underline;
+	}
+}
+ form > div.action-group > input[type="button"] {
+	 border: 2px solid transparent;
+	 padding: 1em 2em;
+	 border-radius: 12px;
+	 cursor: pointer;
+	 font-weight: 700;
+	 color: white;
+	 background-color: #443c68;
+	 transition: all 0.1s ease-in-out;
+}
+ @media (hover: hover) {
+	 form > div.action-group > input[type="button"]:hover {
+		 background-color: #534485;
+		 border: 2px solid #443c68;
+	}
+}
+/* Input Rating */
+ .rating {
+	 user-select: none;
+}
+ .rating > input[type="radio"] {
+	 position: absolute;
+	 opacity: 0;
+	 z-index: -999;
+}
+ .rating__box {
+	 display: flex;
+	 justify-content: center;
+	 gap: 1em;
+}
+ .rating__star {
+	 font-size: 3.2em;
+	 color: #d3d3d3;
+	 transition: all 0.1s ease-in-out;
+}
+ .rating__star:active {
+	 color: #4a4a4a !important;
+	 text-shadow: 1px 0 5px rgba(0, 0, 0, 0.2);
+}
+ @media (hover: hover) {
+	 .rating__star:hover {
+		 transform: scale(1.3);
+	}
+}
+ .rating > input[type="radio"]:nth-child(1):checked ~ .rating__box > .rating__star:nth-child(-n + 1) {
+	 color: orange;
+}
+ .rating > input[type="radio"]:nth-child(1):focus-visible ~ .rating__box > .rating__star:nth-child(1) {
+	 outline: solid 1px black;
+}
+ .rating > input[type="radio"]:nth-child(2):checked ~ .rating__box > .rating__star:nth-child(-n + 2) {
+	 color: orange;
+}
+ .rating > input[type="radio"]:nth-child(2):focus-visible ~ .rating__box > .rating__star:nth-child(2) {
+	 outline: solid 1px black;
+}
+ .rating > input[type="radio"]:nth-child(3):checked ~ .rating__box > .rating__star:nth-child(-n + 3) {
+	 color: orange;
+}
+ .rating > input[type="radio"]:nth-child(3):focus-visible ~ .rating__box > .rating__star:nth-child(3) {
+	 outline: solid 1px black;
+}
+ .rating > input[type="radio"]:nth-child(4):checked ~ .rating__box > .rating__star:nth-child(-n + 4) {
+	 color: orange;
+}
+ .rating > input[type="radio"]:nth-child(4):focus-visible ~ .rating__box > .rating__star:nth-child(4) {
+	 outline: solid 1px black;
+}
+ .rating > input[type="radio"]:nth-child(5):checked ~ .rating__box > .rating__star:nth-child(-n + 5) {
+	 color: orange;
+}
+ .rating > input[type="radio"]:nth-child(5):focus-visible ~ .rating__box > .rating__star:nth-child(5) {
+	 outline: solid 1px black;
+}
+/* End Input Rating */
+ 
         </style>
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -597,6 +716,12 @@
                                     <div class="side-menu__title">User Feedback</div>
                                 </a>
                             </li>
+                            <li>    
+                                <a href="{{ route('reviews.manage') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="star"></i> </div>
+                                    <div class="side-menu__title">User Reviews</div>
+                                </a>
+                            </li>
                             {{-- 
                             <li>
                                 <a href="javascript:;" class="side-menu">
@@ -664,7 +789,21 @@
                         </ul>
                     </li>
                     @endcan
+
+
                 </ul>
+                <span class="card btn" style="
+                    border-radius: 38px;
+                    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+                    box-shadow:  6px 6px 98px #ededed, -6px -6px 98px #ffffff;
+                ">
+                    <div class="card-body">
+                        <a href="#rating" onclick="startRating()">
+                            <p>Help Us Improve</p>
+                            <small>Add your rating</small>
+                        </a>
+                    </div>
+                </span>
             </nav>
             <div class="mt-5">
 
@@ -717,10 +856,59 @@
         <div class="dark-mode-switcher__toggle border"></div>
     </div> --}}
     <!-- END: Dark Mode Switcher-->
+    <div id="rating_preloader" class="fixed hide top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
+        {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
+        <main id="showmain">
+            <form id="myRatingForm" action="{{ route('rating.store') }}" method="POST" style="
+                border-radius: 21px;
+                background: linear-gradient(145deg, #e6e6e6, #ffffff);
+                box-shadow:  24px 24px 49px #e0e0e0,
+                -24px -24px 49px #ffffff;
+            ">
+            @csrf
+              <h1>Rate Us</h1>
+              <p>How was your experience using our application? Your rating matter!</p>
+          
+              <div class="rating">
+                <input type="radio" name="rating" id="rating-1" value="1">
+                <input type="radio" name="rating" id="rating-2" value="2">
+                <input type="radio" name="rating" id="rating-3" value="3">
+                <input type="radio" name="rating" id="rating-4" value="4">
+                <input type="radio" name="rating" id="rating-5" value="5">
+          
+                <div class="rating__box">
+                  <label for="rating-1" class="rating__star">&starf;</label>
+                  <label for="rating-2" class="rating__star">&starf;</label>
+                  <label for="rating-3" class="rating__star">&starf;</label>
+                  <label for="rating-4" class="rating__star">&starf;</label>
+                  <label for="rating-5" class="rating__star">&starf;</label>
+          
+                </div>
+              </div>
+          
+              <div class="textarea-group">
+                <label>
+                  <span>Comment : </span>
+                  <textarea id="comment-rating" placeholder="Additional feedback ..." name="feedback"></textarea>
+                </label>
+              </div>
+          
+              <div class="action-group">
+                <button type="button" onclick="submitRatingForm()">Submit</button>
+                <input type="reset" onclick="closeRating()" value="Cancel">
+              </div>
+            </form>
+          </main>
+          <img id="showspina" src="{{ asset('public/img/1.gif') }}">
+            <h1 class="text-lg font-bold text-success" id="flash"></h1>
+            <a href="#" class="btn btn-primary item-center" id="doneRating" onclick="reloadPage()">Back</a>
+    </div>
     <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
         {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
         <img src="{{ asset('public/img/1.gif') }}">
     </div>
+    
+    @livewireScripts 
     <!-- BEGIN: JS Assets-->
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
@@ -739,11 +927,73 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
+        const a = document.getElementById('showmain');
+        const b = document.getElementById('showspina');
+        const c = document.getElementById('flash');
+        const d = document.getElementById('doneRating');
+        b.style.display = "none";
+        c.style.display = "none";
+        d.style.display = "none";
         function displayPusherNotifications() {
             return $.ajax("{{ route('pop-notifications') }}", {
                 method: 'GET'
             });
         }
+        function startRating(){
+            const element = document.querySelector('.fixed.hide');
+            element.classList.remove('hide');
+        }
+        function closeRating(){
+            const element = document.getElementById('rating_preloader');
+            element.classList.add('hide');
+        }
+        function submitRatingForm() {
+            a.style.display = "none";
+            b.style.display = "block";
+            // Get the form element
+            var form = document.getElementById('myRatingForm');
+
+            // Create a new FormData object
+            var formData = new FormData(form);
+
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Set the HTTP method and URL
+            xhr.open('POST', form.action);
+
+            // Set the request header
+            xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+
+            // Handle the response
+            xhr.onload = function() {
+
+                if (xhr.status === 200) {
+                    data = JSON.parse(xhr.response);
+                    b.style.display = "none";
+                    c.style.display = "block";
+                    d.style.display = "block";
+                    c.textContent += data['msg'];
+                    // console.log(xhr);
+                    // Handle success
+                    
+                    // const element = document.getElementById('rating_preloader');
+                    // element.classList.add('hide');
+
+                } else {
+                // Handle error
+                console.log(xhr.statusText);
+                }
+            };
+
+            // Send the request
+            xhr.send(formData);
+        }
+
+        function reloadPage(){
+            location.reload();
+        }
+
         displayPusherNotifications();
     </script>
     <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
