@@ -135,7 +135,9 @@ class User extends Authenticatable implements MustVerifyEmail
     //                 // ->where('counselor_id', 1)->get();
     //     return $x->count() > 1 ?  true :  false; 
     // }
-    
+    public function site_rating(){
+        return $this->hasMany(SiteRating::class);
+    }
     public function userAppointments(){
         $this->hasMany(UserAppointment::class);
     }

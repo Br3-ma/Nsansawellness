@@ -28,6 +28,8 @@ use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\SiteRatingController;
+use App\Http\Livewire\Admin\Reviews\ManageReview;
 use App\Models\AssignCounselor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +58,8 @@ Route::get('/pop-ups', [NotificationController::class, 'realTimePopUps'])->name(
 
 Route::group(['middleware' => ['auth']], function() {
     // ====================Dashboard
+    Route::resource('rating', SiteRatingController::class);
+    Route::get('manage-reviews', ManageReview::class)->name('reviews.manage');
     Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
     
     Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile');

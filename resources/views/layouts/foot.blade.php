@@ -887,7 +887,7 @@
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div class="elementor-element elementor-element-50615cb elementor-widget elementor-widget-text-editor" data-id="50615cb" data-element_type="widget" data-widget_type="text-editor.default">
                                             <div class="elementor-widget-container">
-                                                Copyright © 2022. All rights reserved. </div>
+                                                Copyright © 2022. All rights reserved. Powered by <span style="color:rgb(0, 148, 0)">Green<span>webb</div>
                                         </div>
                                     </div>
                                 </div>
