@@ -808,7 +808,7 @@
                                                     <li class="elementor-icon-list-item">
                                                         <span class="elementor-icon-list-icon">
                                                             <i aria-hidden="true" class="fas fa-map-marker-alt"></i> </span>
-                                                        <span class="elementor-icon-list-text">Jl. Raya Puputan No. 142, Denpasar</span>
+                                                        <span class="elementor-icon-list-text">Lusaka, Zambia</span>
                                                     </li>
                                                     <li class="elementor-icon-list-item">
                                                         <span class="elementor-icon-list-icon">
