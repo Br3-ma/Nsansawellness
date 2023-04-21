@@ -9,8 +9,8 @@
 								<div class="elementor-widget-container">
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
 										<h5 class="heading-section-subtitle  style-color">Welcome</h5>
-										<div class="heading-section-title ">
-											<h1 class="heading-title">Support <span class="style-gradient"><span>for</span></span> healthy mind</h1>
+										<div class="heading-section-title">
+											<h1 class="heading-title">Support for  <span class="style-gradient"><span>a healthier </span></span>mind</h1>
 											{{-- <h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1> --}}
 										</div>
 										<div class="heading-section-description">
@@ -194,7 +194,7 @@
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-															<span class="elementor-icon-list-text">Curing Addiction</span>
+															<span class="elementor-icon-list-text">Alcohol & Substance Abuse</span>
 														</li>
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
@@ -231,7 +231,7 @@
 									<div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile- jeg_module_6_10_632ca6977ceb1">
 										<h5 class="heading-section-subtitle  style-color">Our Services</h5>
 										<div class="heading-section-title ">
-											<h2 class="heading-title">We Provide Best <span class="style-gradient"><span>Healthcare</span></span> Services</h2>
+											<h2 class="heading-title">We Provide <span class="style-gradient"><span>Metal Healthcare</span></span> Services</h2>
 										</div>
 										<div class="heading-section-description">
 											<p>Our thousands of therapists are licensed and experienced mental health counselors with expertise in a range of issues — including anxiety, depression, substance abuse, trauma, couples therapy, and more. All Nsansa Wellness therapists complete a rigorous vetting and credentialing process.</p>
@@ -265,11 +265,11 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_11_632ca697836e8">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Couple Counseling</h4>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Couples Therapy</h4>
 																<p class="icon-box-description">Couples therapy can help you at any stage of your relationship, regardless of marital status, age, race, faith, or sexual orientation.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
-																		<a href="#" class="icon-box-link">Read More</a>
+																		{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 																	</div>
 																</div>
 															</div>
@@ -299,7 +299,7 @@
 																<p class="icon-box-description">Depression is classified as a mood disorder. It may be described as feelings of sadness, loss, or anger that interfere with a person’s everyday activities.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
-																		<a href="#" class="icon-box-link">Read More</a>
+																		{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 																	</div>
 																</div>
 															</div>
@@ -329,11 +329,11 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_13_632ca6978aea8">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Child Psychotherapy</h4>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Child Mental heath therapy</h4>
 																<p class="icon-box-description">Many children and teens have problems that affect how they feel, act, or learn. Nsansa Therapy is a type of treatment for these problems. It is a way to get help for your child.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
-																		<a href="#" class="icon-box-link">Read More</a>
+																		{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 																	</div>
 																</div>
 															</div>
@@ -359,11 +359,11 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_14_632ca6978de45">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Group Counseling</h4>
-																<p class="icon-box-description">Helping a patient realize that they are not alone -- that there are other people who have similar problems. This is often a revelation, and a huge relief, to the person.</p>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Workplace counseling</h4>
+																<p class="icon-box-description">Support to help you navigate personal and work-related challenges that may be impacting your well-being. From stress and anxiety to conflicts with colleagues.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
-																		<a href="#" class="icon-box-link">Read More</a>
+																		{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 																	</div>
 																</div>
 															</div>
@@ -397,7 +397,7 @@
 												<p class="icon-box-description">Deciding how to manage stress, it is important to make sure your method is healthy and will work long-term. For example, eating comfort food may help someone feel better in the short term.</p>
 												<div class="icon-box-button ">
 													<div class="btn-wrapper icon-position-after">
-														<a href="#" class="icon-box-link">Read More</a>
+														{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 													</div>
 												</div>
 											</div>
@@ -1154,7 +1154,7 @@
 								<div class="elementor-widget-container">
 									<div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_6_34_632ca697de3a3">
 										<div class="heading-section-title ">
-											<h2 class="heading-title">Don&#039;t Hesitate To <span class="style-gradient"><span>Consultation</span></span> Your Problem With Us!</h2>
+											<h2 class="heading-title">Do not Hesitate To <span class="style-gradient"><span>Consult</span></span> with Us!</h2>
 										</div>
 										<div class="heading-section-description">
 											<p>Get face-to-face with a highly qualified therapist when and wherever's a good time to tap into you.</p>
