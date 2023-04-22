@@ -10,7 +10,7 @@
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
 										<h5 class="heading-section-subtitle  style-color">Welcome</h5>
 										<div class="heading-section-title">
-											<h1 class="heading-title">Support for  <span class="style-gradient"><span>a healthier </span></span>mind</h1>
+											<h1 class="heading-title">Support for  <span class="style-gradient"><span>a healthier&nbsp;</span></span>mind</h1>
 											{{-- <h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1> --}}
 										</div>
 										<div class="heading-section-description">
