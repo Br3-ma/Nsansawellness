@@ -68,7 +68,7 @@ return [
     |
     */
 
-    'app_url' =>  env('APP_URL', 'http://localhost/nsansaWellness'),
+    'app_url' =>  env('APP_URL', 'http://localhost/nsansawellness/'),
 
     /*
     |--------------------------------------------------------------------------
