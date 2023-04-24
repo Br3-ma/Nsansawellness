@@ -59,6 +59,7 @@ Route::get('/pop-ups', [NotificationController::class, 'realTimePopUps'])->name(
 Route::group(['middleware' => ['auth']], function() {
     // ====================Dashboard
     Route::resource('rating', SiteRatingController::class);
+    Route::post('rating-status', [SiteRatingController::class, 'update'])->name('rating.status');
     Route::get('manage-reviews', ManageReview::class)->name('reviews.manage');
     Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
     

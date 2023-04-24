@@ -14,8 +14,7 @@
             <ol class="breadcrumb breadcrumb-light">
                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Nsansa Wellness</a></li>
                 <li class="capitalize breadcrumb-item active" aria-current="page">
-                    {{ str_replace('
-                    -', ' ', Request::route()->uri)  }}
+                    {{ str_replace('-', ' ', Request::route()->uri)  }}
                 </li>
             </ol>
         </nav>

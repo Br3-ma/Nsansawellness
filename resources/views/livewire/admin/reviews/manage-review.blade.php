@@ -1,4 +1,3 @@
-<div>
     @extends('layouts.app')
     @section('content')
     <div>
@@ -60,7 +59,7 @@
                                     </td>
                                     {{-- <td class="w-40 !py-4"> <a href="" class="underline decoration-dotted whitespace-nowrap">#INV-25807556</a> </td> --}}
                     
-                                     <td>
+                                    <td>
                                         <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $rev->rating  }}</div>
                                     </td>
                                     
@@ -69,7 +68,7 @@
                                     </td> 
                                     <td class="table-report__action">
                                         <div class="flex justify-center items-center">
-                                            <input type="checkbox" data-id="{{ $rev->id }}" wire:click="switchStatus('{{ $rev->id }}')" class="js-switch" {{ $rev->status == 1 ? 'checked' : '' }}>                         
+                                            <input type="checkbox" data-id="{{ $rev->id }}" class="js-switch" {{ $rev->status == 1 ? 'checked' : '' }}>                         
                                         </div>
                                     </td>
                                 </tr>                        
@@ -124,5 +123,21 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $('.js-switch').change(function () {
+            let status = $(this).prop('checked') === true ? 1 : 0;
+            let id = $(this).data('id');
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                cache: false,
+                url: '{{ route('rating.status') }}',
+                data: {'status': status, 'id': id},
+                success: function (data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    </script>
     @endsection
-</div>

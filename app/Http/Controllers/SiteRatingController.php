@@ -77,9 +77,17 @@ class SiteRatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        
+        try {
+            $review = SiteRating::where('id', $request->toArray()['id'])->first();
+            $review->status =  $review->status == 0 ? 1 : 0;
+            $review->save();
+            return response()->json(['code' => 200]);
+        } catch (\Throwable $th) {
+            return response()->json(['code' => 500]);
+        }
     }
 
     /**

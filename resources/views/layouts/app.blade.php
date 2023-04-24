@@ -1,6 +1,6 @@
 
 <!DOCTYPE html> 
-<html lang="en" id="rootApp" style="" class="light overflow-hidden">
+<html lang="en" id="rootApp" style="" class="light overflow-auto">
     <!-- BEGIN: Head -->
 
     <head>
@@ -369,7 +369,16 @@
         </script>
     </head>
     <!-- END: Head -->
+    {{-- @if (Request::route()->uri)
+        
+    @else
+        
+    @endif --}}
+    @if(Request::route()->uri === 'counseling-center' || Request::route()->uri === 'home')
     <body style="height: 100%; min-height:100%; device-height:100%; overflow:hidden" id="nsansa_app" class="lg:py-5 py-0 md:py-0">
+    @else
+    <body id="nsansa_app" class="lg:py-5 py-0 md:py-0">
+    @endif    
         <!-- BEGIN: Mobile Menu -->
 
         <div class="mobile-menu md:hidden">
@@ -934,11 +943,11 @@
         b.style.display = "none";
         c.style.display = "none";
         d.style.display = "none";
-        function displayPusherNotifications() {
-            return $.ajax("{{ route('pop-notifications') }}", {
-                method: 'GET'
-            });
-        }
+        // function displayPusherNotifications() {
+        //     return $.ajax("{{ route('pop-notifications') }}", {
+        //         method: 'GET'
+        //     });
+        // }
         function startRating(){
             const element = document.querySelector('.fixed.hide');
             element.classList.remove('hide');
@@ -994,7 +1003,7 @@
             location.reload();
         }
 
-        displayPusherNotifications();
+        // displayPusherNotifications();
     </script>
     <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
 </body>
