@@ -54,7 +54,7 @@
                     <div class="elementor-element elementor-element-45fedcb animated-slow elementor-invisible elementor-widget elementor-widget-image" data-id="45fedcb" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:500}"
                         data-widget_type="image.default">
                         <div class="elementor-widget-container">
-                            <img width="1620" height="1079" src="https://media.istockphoto.com/photos/woman-sitting-on-couch-meeting-with-male-relationship-counsellor-in-picture-id1132295595?k=20&m=1132295595&s=612x612&w=0&h=46ft7f49kS6GnHjt8FKcHMIi_2KZLc1MFQUiezazrAk=" loading="lazy" /> </div>
+                            <img width="1620" height="1079" src="https://t4.ftcdn.net/jpg/03/91/10/01/360_F_391100121_IrmBtzs1T4RQXYQlLIBF8FBzDaeA0Vd9.jpg" loading="lazy" /> </div>
                     </div>
                     <div class="elementor-element elementor-element-57285d4 elementor-widget elementor-widget-image" data-id="57285d4" data-element_type="widget" data-widget_type="image.default">
                         <div class="elementor-widget-container">
