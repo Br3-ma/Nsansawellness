@@ -422,12 +422,12 @@
 											<div class="elementor-element elementor-element-32e285b elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="32e285b" data-element_type="widget" data-widget_type="jkit_heading.default">
 												<div class="elementor-widget-container">
 													<div class="jeg-elementor-kit jkit-heading  align-left align-tablet-center align-mobile- jeg_module_6_16_632ca69794804">
-														<h5 class="heading-section-subtitle  style-color">Patient Feedback</h5>
+														<h5 class="heading-section-subtitle  style-color">Personal, flexible care</h5>
 														<div class="heading-section-title ">
-															<h2 class="heading-title">Our Patient <span class="style-gradient"><span>Reviews</span></span></h2>
+															<small class="heading-title"><span class="style-gradient"><span> Take control </span></span> of your mental health.</small>
 														</div>
 														<div class="heading-section-description">
-															<p>Nsansa Wellness therapy has helped hundreds of people live happier lives and bypass barriers to therapy. Lucky for us, some of those people went out of their way to document their experiences by writing in-depth reviews of our brand of online counseling.</p>
+															<p>Mental health support for your whole being. Effective and affordable.</p>
 														</div>
 													</div>
 												</div>
