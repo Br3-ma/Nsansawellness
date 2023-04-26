@@ -72,16 +72,16 @@
                                     <div class="elementor-element elementor-element-3e2d135 animated-slow elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list" data-id="3e2d135" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:300}" data-widget_type="icon-list.default">
                                         <div class="elementor-widget-container">
                                             <ul class="elementor-icon-list-items">
-                                                <li class="elementor-icon-list-item">
+                                                {{-- <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
                                                     <i aria-hidden="true" class="fas fa-phone-alt"></i> </span>
                                                     <span class="elementor-icon-list-text">(+260) 97 3282857</span>
                                                     <span class="elementor-icon-list-text">(+260) 97 3282857</span>
-                                                </li>
+                                                </li> --}}
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
                                                         <i aria-hidden="true" class="fas fa-map-marker-alt"></i> </span>
-                                                    <span class="elementor-icon-list-text">Plot 1321, Enock Kavu Road, Rhodespark, Lusaka, Zambia.</span>
+                                                    <span class="elementor-icon-list-text">Ash Road, Lusaka, Zambia.</span>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
