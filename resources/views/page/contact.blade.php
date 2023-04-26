@@ -75,8 +75,8 @@
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
                                                     <i aria-hidden="true" class="fas fa-phone-alt"></i> </span>
-                                                    <span class="elementor-icon-list-text">(+260) 97745 6789</span>
-                                                    <span class="elementor-icon-list-text">(+260) 97745 6789</span>
+                                                    <span class="elementor-icon-list-text">(+260) 97 3282857</span>
+                                                    <span class="elementor-icon-list-text">(+260) 97 3282857</span>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
@@ -86,7 +86,7 @@
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
                                                         <i aria-hidden="true" class="fas fa-envelope"></i> </span>
-                                                    <span class="elementor-icon-list-text"><a href="https://templatekit.jegtheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4d7dbd3daddc0ddc2d1f4d0dbd9d5ddda9ad7dbd9"></a>support@nsansa.org</a></span>
+                                                    <span class="elementor-icon-list-text"><a href="https://templatekit.jegtheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4d7dbd3daddc0ddc2d1f4d0dbd9d5ddda9ad7dbd9"></a>info@nsansawellness.com</a></span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -602,7 +602,7 @@
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-91d2847" data-id="91d2847" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
-                    <div class="elementor-element elementor-element-8139652 elementor-widget elementor-widget-google_maps" data-id="8139652" data-element_type="widget" data-widget_type="google_maps.default">
+                    <div class="elementor-element elementor-widget elementor-widget-google_maps" data-id="8139652" data-element_type="widget" data-widget_type="google_maps.default">
                         <div class="elementor-widget-container">
                             <style>
                                 /*! elementor - v3.6.5 - 27-04-2022 */
@@ -615,8 +615,8 @@
                                     height: 300px
                                 }
                             </style>
-                            <div class="elementor-custom-embed">
-                                <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Jl.%20Raya%20Puputan%20No.%20142%2C%20Denpasar%20-%20Bali&amp;t=m&amp;z=15&amp;output=embed&amp;iwloc=near" title="Jl. Raya Puputan No. 142, Denpasar - Bali" aria-label="Jl. Raya Puputan No. 142, Denpasar - Bali"></iframe>
+                            <div class="">
+                                <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3845.896381706767!2d28.335620880126953!3d-15.436142921447754!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19408cf1bf189597%3A0xbc584d2f4da54fd9!2sAsh%20Rd%2C%20Lusaka!5e0!3m2!1sen!2szm!4v1682501700769!5m2!1sen!2szm" title="Ash Rd, Lusaka" aria-label="Ash Rd, Lusaka"></iframe>
                             </div>
                         </div>
                     </div>
