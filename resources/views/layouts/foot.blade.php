@@ -777,7 +777,7 @@
                                         </div>
                                         <div class="elementor-element elementor-element-37ff25f elementor-widget elementor-widget-text-editor" data-id="37ff25f" data-element_type="widget" data-widget_type="text-editor.default">
                                             <div class="elementor-widget-container">
-                                                <p>For fast and easy access to clinical support at your fingertips, please send us a message</p>
+                                                <p>For fast and easy access to metal health support at your fingertips, please send us a message</p>
                                             </div>
                                         </div>
                                         <div class="elementor-element elementor-element-cecbdd0 elementor-icon-list--layout-inline elementor-align-center elementor-mobile-align-left elementor-hidden-mobile elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="cecbdd0" data-element_type="widget" data-widget_type="icon-list.default">

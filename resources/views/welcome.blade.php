@@ -234,7 +234,7 @@
 											<h2 class="heading-title">We Provide <span class="style-gradient"><span>Metal Healthcare</span></span> Services</h2>
 										</div>
 										<div class="heading-section-description">
-											<p>Our thousands of therapists are licensed and experienced mental health counselors with expertise in a range of issues — including anxiety, depression, substance abuse, trauma, couples therapy, and more. All Nsansa Wellness therapists complete a rigorous vetting and credentialing process.</p>
+											<p>Our therapists are licensed and experienced mental health counselors with expertise in a range of issues — including anxiety, depression, substance abuse, trauma, couples therapy, and more. All Nsansa Wellness therapists complete a rigorous vetting and credentialing process.</p>
 										</div>
 									</div>
 								</div>
