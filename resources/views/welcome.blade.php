@@ -126,7 +126,7 @@
 									<img width="1620" height="1079" src="https://post.healthline.com/wp-content/uploads/2021/11/male-looking-down-732x549-thumbnail-732x549.jpg" class="attachment-full size-full" alt="Psychologist counseling teenage female, individual therapy in doctors office." loading="lazy" />
 								</div>
 							</div>
-							<div class="elementor-element elementor-element-25b05f5 elementor-widget elementor-widget-image" data-id="25b05f5" data-element_type="widget" data-widget_type="image.default">
+							<div class="elementor-element elementor-widget elementor-widget-image" data-id="25b05f5" data-element_type="widget" data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img width="800" height="484" src="https://static01.nyt.com/images/2021/05/06/multimedia/00xp-blacktherapy1/00xp-blacktherapy1-mobileMasterAt3x.jpg" class="attachment-large size-large" alt="Man and woman during the psychological counseling indoors" loading="lazy" sizes="(max-width: 800px) 100vw, 800px" />
 								</div>
@@ -138,7 +138,7 @@
 							<div class="elementor-element elementor-element-037eb86 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="037eb86" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="jkit_heading.default">
 								<div class="elementor-widget-container">
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_8_632ca69776b95">
-										<h5 class="heading-section-subtitle  style-color"></h5>
+										<h5 class="heading-section-subtitle  style-color">Flexible support fitting your lifestyle</h5>
 										{{-- <h5 class="heading-section-subtitle  style-color">Therapy. Anytime, anywhere.</h5> --}}
 										<div class="heading-section-title ">
 											<h2 class="heading-title">Therapy. <span class="style-gradient"><span>Anytime, </span></span>anywhere.</h2>
@@ -176,6 +176,31 @@
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">ADHD</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Insomia</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Grief / Loss</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Motivation</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Stress</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
 															<span class="elementor-icon-list-text">Executive Coaching</span>
 														</li>
 													</ul>
@@ -206,6 +231,26 @@
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Burnout</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Focus</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Family Therapy</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Work / Life Balance</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
 															<span class="elementor-icon-list-text">Stress Management</span>
 														</li>
 													</ul>
@@ -217,7 +262,7 @@
 							</section>
 							<div class="elementor-element elementor-element-1198947 elementor-widget__width-auto e-transform animated-slow elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="1198947" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:600,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 								<div class="elementor-widget-container">
-									<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_9_632ca6977b0df"><a href="{{route('about')}}" class="jkit-button-wrapper">About Us</a></div>
+									<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_9_632ca6977b0df"><a href="{{route('start')}}" class="jkit-button-wrapper">Get Started</a></div>
 								</div>
 							</div>
 						</div>
@@ -236,7 +281,7 @@
 											<h2 class="heading-title">We Provide <span class="style-gradient"><span>Metal Healthcare</span></span> Services</h2>
 										</div>
 										<div class="heading-section-description">
-											<p>Our therapists are licensed and experienced mental health counselors with expertise in a range of issues — including anxiety, depression, substance abuse, trauma, couples therapy, and more. All Nsansa Wellness therapists complete a rigorous vetting and credentialing process.</p>
+											<p>Our therapists are experienced mental health counselors with expertise in a range of issues — including anxiety, depression, substance abuse, trauma, couples therapy, and more. All Nsansa Wellness therapists complete a rigorous vetting and credentialing process.</p>
 										</div>
 									</div>
 								</div>
@@ -331,7 +376,7 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_13_632ca6978aea8">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Child Mental heath therapy</h4>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Child Mental Heath Therapy</h4>
 																<p class="icon-box-description">Many children and teens have problems that affect how they feel, act, or learn. Nsansa Therapy is a type of treatment for these problems. It is a way to get help for your child.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
@@ -361,7 +406,7 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_14_632ca6978de45">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Workplace counseling</h4>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Empolyee Counseling Services</h4>
 																<p class="icon-box-description">Support to help you navigate personal and work-related challenges that may be impacting your well-being. From stress and anxiety to conflicts with colleagues.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
@@ -411,6 +456,44 @@
 						</div>
 					</div>
 				</div>
+				{{-- <div class="elementor-col-50 elementor-element elementor-element-2406405" data-id="2406405" data-element_type="column">
+					<div class="elementor-widget-wrap elementor-element-populated">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-2317f4c elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="2317f4c" data-element_type="section">
+							<div class="elementor-container elementor-column-gap">
+								<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+									<div style="background-image: url('https://www.apa.org/images/therapy-group-title-image_tcm7-162394.jpg'); background-repeat: no-repeat, repeat;background-size: cover;" class="elementor-element-populated">
+										<div class="elementor-background-overlay"></div>
+										<div class="elementor-element elementor-element-6ff92aa elementor-widget elementor-widget-spacer" data-id="6ff92aa" data-element_type="widget" data-widget_type="spacer.default">
+											<div class="elementor-widget-container">
+												<div class="elementor-spacer">
+													<div class="elementor-spacer-inner"></div>
+												</div>
+											</div>
+										</div>
+										<div class="elementor-element elementor-element-0e08a84 jkit-equal-height-disable elementor-widget elementor-widget-jkit_icon_box" data-id="0e08a84" data-element_type="widget" data-widget_type="jkit_icon_box.default">
+											<div class="elementor-widget-container">
+												<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_14_632ca6978de45">
+													<div class="jkit-icon-box-wrapper hover-from-left">
+														<div class="icon-box icon-box-body">
+															<h4 class="title" style="color: #fff; font-weight:bolder">Empolyee Counseling Services</h4>
+															<p class="icon-box-description">Support to help you navigate personal and work-related challenges that may be impacting your well-being. From stress and anxiety to conflicts with colleagues.</p>
+															<div class="icon-box-button ">
+																<div class="btn-wrapper icon-position-after">
+																	<a href="#" class="icon-box-link">Read More</a>
+																</div>
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div> --}}
 			</section>
 			<section style="background-repeat: no-repeat;background-position: center;background-attachement:fixed;background-image: url('https://images.squarespace-cdn.com/content/v1/5dfd525d50a0d56cce072b41/1590348698201-Z217XU7BGM4IZICKFDVW/black+couple+in+love+%7C+marriage+counseling+in+Germantown%2C+TN+%7C+online+couples+counseling+in+TN+%7C+Marriage+and+family+therapist++%7C+catholic+marriage+counseling+%7C+catholic+couples+counseling+%7C+Vitus+Counseling+38139')" class="elementor-section elementor-top-section elementor-element elementor-element-e1b0bdb elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e1b0bdb" data-element_type="section">
 				<div class="elementor-background-overlay"></div>
@@ -431,6 +514,7 @@
 														<div class="heading-section-description">
 															<p>Mental health support for your whole being. Effective and affordable.</p>
 														</div>
+														<br><br>
 													</div>
 												</div>
 											</div>
@@ -447,9 +531,12 @@
 																	<div class="testimonial-box hover-from-left">
 																		<div class="icon-content"><i aria-hidden="true" class="jki jki-quote2-light"></i></div>
 																		<div class="comment-content">
-																			<p>I have an infant so the idea of actually going out to therapy was daunting. This is much lower stress for me and I can check-in whenever works for me.</p>
+																			<h3>Personalized match</h3>
+																			<p>We'll match you with a provider (typically within 48 hours)</p>
+																			{{-- <p>I have an infant so the idea of actually going out to therapy was daunting. This is much lower stress for me and I can check-in whenever works for me.</p> --}}
 																		</div>
-																		<div class="comment-header">
+																		<br><br><br><br>
+																		{{-- <div class="comment-header">
 																			<ul class="rating-stars">
 																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
 																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
@@ -457,8 +544,8 @@
 																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
 																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
 																			</ul>
-																		</div>
-																		<div class="comment-bio">
+																		</div> --}}
+																		{{-- <div class="comment-bio">
 																			<div class="bio-details">
 																				<div class="profile-image"><img src="data:image/jpeg;base64,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" alt="John Doe"></div>
 																				<span class="profile-info">
@@ -466,7 +553,7 @@
 																					<p class="profile-des">Patient</p>
 																				</span>
 																			</div>
-																		</div>
+																		</div> --}}
 																	</div>
 																</div>
 																{{-- <div class="testimonial-item  elementor-repeater-item-f04b4c1">
