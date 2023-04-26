@@ -8,13 +8,13 @@
 							<div class="elementor-element elementor-element-5408d36 animated-slow elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="5408d36" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="jkit_heading.default">
 								<div class="elementor-widget-container">
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
-										<h5 class="heading-section-subtitle  style-color">Welcome</h5>
+										{{-- <h5 class="heading-section-subtitle  style-color">Welcome</h5> --}}
 										<div class="heading-section-title">
 											<h1 class="heading-title">Support for  <span class="style-gradient"><span>a healthier&nbsp;</span></span>mind</h1>
 											{{-- <h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1> --}}
 										</div>
 										<div class="heading-section-description">
-											<p>When confronted with stressful life circumstances like arguments or stress from work, learning to cope better with your emotions and mental health is crucial for a healthier lifestyle. Online therapy can be an effective method for connecting with other people who face similar struggles.</p>
+											<p>Don't face life's challenges alone! From managing work stress to coping with difficult emotions, our online therapy can help you live a healthier, happier life. Let Nsansa Wellness therapists empower you to thrive again</p>
 										</div>
 									</div>
 								</div>
@@ -138,12 +138,14 @@
 							<div class="elementor-element elementor-element-037eb86 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="037eb86" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="jkit_heading.default">
 								<div class="elementor-widget-container">
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_8_632ca69776b95">
-										<h5 class="heading-section-subtitle  style-color">Therapy. Anytime, anywhere.</h5>
+										<h5 class="heading-section-subtitle  style-color"></h5>
+										{{-- <h5 class="heading-section-subtitle  style-color">Therapy. Anytime, anywhere.</h5> --}}
 										<div class="heading-section-title ">
-											<h2 class="heading-title">We Help You Solve <span class="style-gradient"><span>The Problems</span></span> You Face</h2>
+											<h2 class="heading-title">Therapy. <span class="style-gradient"><span>Anytime, </span></span>anywhere.</h2>
+											{{-- <h2 class="heading-title">We Help You Solve <span class="style-gradient"><span>The Problems</span></span> You Face</h2> --}}
 										</div>
 										<div class="heading-section-description">
-											<p>Nsansa Wellness is therapy for all. Online counseling lets you connect with a licensed therapist from the privacy of your device — at a significantly lower cost than traditional, in-person counseling.</p>
+											<p>Nsansa Wellness lets you connect with a therapist from the privacy of your device — at an affordable rate.</p>
 										</div>
 									</div>
 								</div>
