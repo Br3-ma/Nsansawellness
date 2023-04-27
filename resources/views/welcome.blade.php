@@ -1101,7 +1101,7 @@
 					</div>
 				</div>
 			</section> --}}
-			<section class="elementor-section elementor-top-section elementor-element elementor-element-a08d34e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="a08d34e" data-element_type="section">
+			{{-- <section class="elementor-section elementor-top-section elementor-element elementor-element-a08d34e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="a08d34e" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-11aa674 elementor-hidden-tablet elementor-hidden-mobile" data-id="11aa674" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 						<div style="background-image:url('https://lirp.cdn-website.com/6dd06852/dms3rep/multi/opt/stock-photo-mom-or-psychologist-talking-counseling-upset-offended-african-american-child-girl-feels-sad-1282522006-640w.jpg')" class="elementor-element-populated elementor-widget-wrap">
@@ -1132,11 +1132,11 @@
 							</div>
 							<div class="elementor-element elementor-element-cf3794e elementor-widget__width-auto e-transform elementor-widget elementor-widget-jkit_button" data-id="cf3794e" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 								<div class="elementor-widget-container">
-									{{-- <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_35_632ca697e061e">
+									<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_35_632ca697e061e">
 										<a href="{{ route('start')}}" class="jkit-button-wrapper">
 											Book Appointment
 										</a>
-									</div> --}}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -1154,7 +1154,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> --}}
 			{{-- <section class="elementor-section elementor-top-section elementor-element elementor-element-56f3679 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="56f3679" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-c1a8406" data-id="c1a8406" data-element_type="column">
