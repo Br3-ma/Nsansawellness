@@ -1025,7 +1025,7 @@ li{
                                                                 <li id="menu-item-16" class="@if(Request::route()->uri == 'frequently-asked-question') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-16"><a href="{{  route('faq')}}">FAQ</a>
 
                                                                 </li>
-                                                                <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a>
+                                                                {{-- <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a> --}}
                                                                 @if(!Auth::user())
                                                                 </li>
                                                                 <li id="menu-item-24" class="@if(Request::route()->uri == 'start-your-career') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-24"><a href="{{ route('careers')}}">Therapist Jobs</a>
@@ -1117,7 +1117,7 @@ li{
                     <li id="menu-item-16" class="@if(Request::route()->uri == 'frequently-asked-question') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-16"><a href="{{  route('faq')}}">FAQ</a>
 
                     </li>
-                    <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a>
+                    {{-- <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a> --}}
                     
                      @if(!Auth::user())
                         </li>
