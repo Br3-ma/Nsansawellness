@@ -16,7 +16,7 @@
                         @if(!empty($questionaires->questions))
                           @foreach ($questionaires->questions as $key => $q)
                             <div class="tab">
-                              <h2>{{ $q->question }}</h2>
+                              <h4>{{ $q->question }}</h4>
 
                               @forelse($q->answers as $ans)
                               <label>
