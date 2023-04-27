@@ -11,6 +11,7 @@
 	<link rel='dns-prefetch' href='http://s.w.org/' />
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Feed" href="feed/index.html" />
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Comments Feed" href="comments/feed/index.html" />
+	<link href='https://fonts.googleapis.com/css?family=Eczar' rel='stylesheet'>
 	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 	<script type="text/javascript">
 		window._wpemojiSettings = {
@@ -115,7 +116,7 @@
 			--wp--preset--font-size--medium: 20px;
 			--wp--preset--font-size--large: 36px;
 			--wp--preset--font-size--x-large: 42px;
-			/* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    			
 		}
 
 		.has-black-color {

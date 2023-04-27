@@ -51,6 +51,7 @@
 
 .elementor-6 .elementor-element.elementor-element-5408d36 .jeg-elementor-kit.jkit-heading .heading-title {
     font-family: var( --e-global-typography-primary-font-family), Sans-serif;
+    /* font-family: var( --e-global-typography-primary-font-family), Sans-serif; */
     font-size: var( --e-global-typography-primary-font-size);
     font-weight: var( --e-global-typography-primary-font-weight);
     line-height: var( --e-global-typography-primary-line-height);
