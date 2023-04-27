@@ -10,10 +10,14 @@
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
 										{{-- <h5 class="heading-section-subtitle  style-color">Welcome</h5> --}}
 										<div class="heading-section-title">
-											<h1 class="heading-title">Support for  <span class="style-gradient"><span>a healthier&nbsp;</span></span>mind</h1>
+											<h1 class="heading-title" style="color:#fff; font-family:Georgia">
+												Support for a
+												<span style="color: #02136d; font-family:Georgia;"><span>healthier&nbsp;</span></span>
+												mind
+											</h1>
 											{{-- <h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1> --}}
 										</div>
-										<div class="heading-section-description">
+										<div style="color:#fff;" class="heading-section-description">
 											<p>Don't face life's challenges alone! From managing work stress to coping with difficult emotions, our online therapy can help you live a healthier, happier life. Let Nsansa Wellness therapists empower you to thrive again</p>
 										</div>
 									</div>
@@ -65,7 +69,7 @@
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-914119c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="914119c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-b6e96b7 animated-slow elementor-invisible" data-id="b6e96b7" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:700}">
-						<div style="background: rgba(64, 150, 228, 0.81);
+						<div style="background: rgb(0, 13, 70);
 						box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 						backdrop-filter: blur(5.8px);
 						-webkit-backdrop-filter: blur(5.8px);
