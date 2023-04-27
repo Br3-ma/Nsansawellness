@@ -14,6 +14,9 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'results',
         'change-questionaire-status',
-        'rating'
+        'rating',
+        'api/register',
+        'api/login',
+        'api/submit-patient-survey'
     ];
 }
