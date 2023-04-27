@@ -17,11 +17,14 @@
 }
 
 .elementor-6 .elementor-element.elementor-element-11f97dc>.elementor-element-populated>.elementor-background-overlay {
-    background-image: url("../../2022/06/bg-orange-X8FYGQG.png");
+    /* background-image: url("../../2022/06/bg-orange-X8FYGQG.png"); */
     background-position: -20px 0px;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.1;
+    background-color:#800869;
+    color:#fff;
+    font-family: Arial, Helvetica, sans-serif;
+    /* opacity: 0.1; */
 }
 
 .elementor-6 .elementor-element.elementor-element-11f97dc>.elementor-element-populated {

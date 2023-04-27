@@ -115,6 +115,7 @@
 			--wp--preset--font-size--medium: 20px;
 			--wp--preset--font-size--large: 36px;
 			--wp--preset--font-size--x-large: 42px;
+			/* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
 		}
 
 		.has-black-color {
