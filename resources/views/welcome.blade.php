@@ -10,9 +10,9 @@
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
 										{{-- <h5 class="heading-section-subtitle  style-color">Welcome</h5> --}}
 										<div class="heading-section-title">
-											<h1 class="heading-title" style="color:#fff; font-family:Georgia">
+											<h1 class="heading-title" style="color:#fff; font-family:Georgia, serif; font-weight: 600;">
 												Support for a
-												<span style="color: #02136d; font-family:Georgia;"><span>healthier&nbsp;</span></span>
+												<span style="color: #02136d; font-family:Georgia, serif;"><span>healthier&nbsp;</span></span>
 												mind
 											</h1>
 											{{-- <h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1> --}}
@@ -78,7 +78,7 @@
 								<div class="elementor-widget-container">
 									<div id="mf-response-props-id-189" data-editswitchopen="" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
 										<div style="align-content: center; text-align:center; margin: 0 auto;" class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="189">
-											<h4 style="color: #fff">What type of therapy are you looking for?</h4>
+											<h4 style="color:#fff;">What type of therapy are you looking for?</h4>
 											<div class="elementor-widget-container row" style="margin: 0 auto;justify-content: center;">
 												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 													<div class="elementor-widget-container">
