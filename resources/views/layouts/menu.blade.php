@@ -372,7 +372,7 @@ li{
             word-spacing: var(--e-global-typography-93f7f1b-word-spacing);
             color: var(--e-global-color-61201e6);
             background-color: transparent;
-            background-image: linear-gradient(170deg, var(--e-global-color-primary) 0%, var(--e-global-color-76b8ccf) 100%);
+    background-image: linear-gradient(170deg, #60ccff 0%, #179d9d 100%);
             border-radius: 0px 0px 0px 0px;
         }
 
@@ -964,23 +964,23 @@ li{
                                                         <button class="jkit-hamburger-menu menu-icon" style="padding-top: 2%" type="button"><i aria-hidden="true" class="fas fa-bars"></i></button>
                                                         @auth
                                                             @hasanyrole('admin')
-                                                            <a id="login_btn" href="{{ route('home') }}" class="text-xs btn btn-sm btn-outline-warning">
+                                                            <a id="login_btn" href="{{ route('home') }}" class="text-xs btn btn-sm btn-outline-info">
                                                                 <i class="fa fa-cog"></i>&nbsp;Administration
                                                             </a>
                                                             @endhasanyrole
                                                             @hasanyrole(['counselor', 'staff'])
-                                                            <a id="login_btn" href="{{ route('home') }}" class="text-xs text-primary btn btn-sm btn-warning">
+                                                            <a id="login_btn" href="{{ route('home') }}" class="text-xs text-white btn btn-sm btn-info">
                                                                 <i class="fa fa-heartbeat"></i>&nbsp;Therapy Center
                                                             </a>
                                                             @endhasanyrole
                                                             @hasanyrole(['patient'])
-                                                            <a id="login_btn" href="{{ route('patient') }}" class="text-xs text-primary btn btn-sm btn-warning">
+                                                            <a id="login_btn" href="{{ route('patient') }}" class="text-xs text-white btn btn-sm btn-info">
                                                                 <i class="fa fa-life-saver"></i>&nbsp;Counseling Center
                                                             </a>
                                                             @endhasanyrole
                                                         @else
                                                             <a id="login_btn" href="{{ route('login') }}" style="
-                                                                border: 1px solid #FA8C1E;
+                                                                border: 1px solid #0e97ba;
                                                                 background-color:#FFF;
                                                                 height:50px;
                                                                 width:50px;
@@ -995,8 +995,8 @@ li{
                                                                 Login
                                                             </a>
                                                             <a id="login_btn" href="{{ route('start') }}" style="
-                                                                border: 1px solid #FA8C1E;
-                                                                background-color:#FA8C1E;
+                                                                border: 1px solid #0e97ba;
+                                                                background-color:#13959e;
                                                                 height:50px;
                                                                 width:50px;
                                                                 cursor:pointer;
@@ -1079,7 +1079,7 @@ li{
                                             <div class="elementor-element elementor-element-fb358db elementor-widget__width-auto elementor-widget elementor-widget-jkit_search" data-id="fb358db" data-element_type="widget" data-widget_type="jkit_search.default">
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-search jeg_module_6_1_632ca69743d73">
-                                                        <a href="{{ route('login') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 0px 0px;margin: 0.1rem;" class="btn btn-outline-warning "><i class="fa fa-user"></i> LOGIN</a>
+                                                        <a href="{{ route('login') }}" style="padding: 13px 28px 13px 28px;font-family: var( --e-global-typography-93f7f1b-font-family), Sans-serif;font-size: var( --e-global-typography-93f7f1b-font-size);font-weight: var( --e-global-typography-93f7f1b-font-weight);line-height: var( --e-global-typography-93f7f1b-line-height);letter-spacing: var( --e-global-typography-93f7f1b-letter-spacing);word-spacing: var( --e-global-typography-93f7f1b-word-spacing);background-color: transparent;border-radius: 0px 0px 0px 0px;margin: 0.1rem;" class="btn btn-outline-info"><i class="fa fa-user"></i> LOGIN</a>
                                                         {{-- <a href="{{ route('login') }}" class="jkit-button">LOGIN</a> --}}
                                                     </div>
                                                 </div>
@@ -1088,7 +1088,7 @@ li{
                                                 <div class="elementor-widget-container">
                                                     <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_2_632ca6974641a">
                                                         {{-- <a href="#" id="myBtn2" class="jkit-button-wrapper">Get Started</a> --}}
-                                                        <a href="{{ route('start') }}" class="jkit-button-wrapper">Get Started</a>
+                                                        <a href="{{ route('start') }}" style="color:#fff" class="jkit-button-wrapper">Get Started</a>
                                                     </div>
                                                 </div>
                                             </div>
