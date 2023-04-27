@@ -73,16 +73,19 @@
                         <th class="text-right whitespace-nowrap">
                             <div class="pr-16">TOTAL BILLING</div>
                         </th>
-
-                        <th class="text-center whitespace-nowrap">STATUS</th>
-
-                        @hasrole('counselor')
-                        <th class="whitespace-nowrap">TOTAL RETURN</th>
-                        @endhasrole
+                        <th class="text-right whitespace-nowrap">
+                            <div class="pr-16">TYPE</div>
+                        </th>
 
                         @hasrole('admin')
                         <th class="whitespace-nowrap">COMISSION</th>
                         @endhasrole
+                        <th class="text-center whitespace-nowrap">STATUS</th>
+
+                        @hasrole('counselor')
+                        <th class="whitespace-nowrap">RECIEVABLE</th>
+                        @endhasrole
+
                     </tr>
                 </thead>
                 <tbody>
@@ -92,7 +95,7 @@
                             <input class="form-check-input" type="checkbox">
                         </td>
                         <td class="w-40 text-left">
-                            <div class="pr-16">{{ $bill->created_at->toFormattedDateString() }}</div>
+                            {{ $bill->created_at->toFormattedDateString() }}
                         </td>
                         @hasanyrole(['admin', 'administrator'])
                         <td class="w-40">
@@ -105,7 +108,7 @@
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $bill->counselor_billing->address }}</div>
                         
                             @else
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor has been assigned to you</div>
+                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor assigned yet.</div>
                             @endif
                         </td>
                         @endhasanyrole
@@ -124,40 +127,48 @@
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $bill->counselor_billing->address }}</div>
                         
                             @else
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor has been assigned to you</div>
+                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor assigned yet</div>
                             @endif
                         </td>
                         @endhasanyrole
                         <td class="w-40 text-right">
                             <div class="pr-16"> {{  $bill->charge_amount != 0 ? 'K '.$bill->charge_amount : '--' }}</div>
                         </td>
+                        <td class="w-40 text-right">
+                            <div class="pr-16"> {{  $bill->desc }}</div>
+                        </td>
+                        
+                        @hasrole('counselor')
+                        <td class="w-40 text-right">
+                           K 0
+                        </td>
+                        @endhasrole
+                        @hasrole('admin')
+                        <td class="w-40 text-right">
+                            K 0
+                        </td>
+                        @endhasrole
                         <td class="text-center">
                             
                             @if($bill->status == 1)
-                            <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
+                                <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
                             @else
-                                @if($bill->charge_amount == 0 )
-                                    <a href="{{ route('pay') }}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Continue </a>
-                                @else
-                                    <a href="{{ route('pay') }}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Pay Now </a> 
-                                @endif
+                                {{-- @if($bill->charge_amount == 0 ) --}}
+                                    {{-- <a href="{{ route('pay') }}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Continue </a> --}}
+                                {{-- @else --}}
+                                    @hasrole('admin')
+                                    <a href="{{ route('bpb', ['id' => $bill->id])}}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Pay Now </a> 
+                                    @else
+                                    <a href="#" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Proceed to Payments </a> 
+                                    @endhasrole
+                                    {{-- @endif --}}
                             @endif
                         </td>
-                        @hasrole('counselor')
-                        <td class="w-40 text-right">
-                            <div class="pr-16">K 0</div>
-                        </td>
-                        @endhasrole
                         {{-- <td>
                             <div class="whitespace-nowrap">Direct bank transfer</div>
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">25 March, 12:55</div>
                             <a href="" class="underline decoration-dotted whitespace-nowrap">#INV-25807556</a>
                         </td> --}}
-                        @hasrole('admin')
-                        <td class="w-40 text-right">
-                            <div class="pr-16">K 0</div>
-                        </td>
-                        @endhasrole
                     </tr>
                     @empty
                         

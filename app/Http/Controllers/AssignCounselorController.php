@@ -92,7 +92,7 @@ class AssignCounselorController extends Controller
             ];
 
             try {
-                                // //Notify counselor
+                // //Notify counselor
                 User::find($request->toArray()['counselor_id'])
                 ->notify(new NewPatientAssigned($payload));
                 

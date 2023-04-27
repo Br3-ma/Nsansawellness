@@ -777,7 +777,7 @@
                                         </div>
                                         <div class="elementor-element elementor-element-37ff25f elementor-widget elementor-widget-text-editor" data-id="37ff25f" data-element_type="widget" data-widget_type="text-editor.default">
                                             <div class="elementor-widget-container">
-                                                <p>For fast and easy access to clinical support at your fingertips, please send us a message</p>
+                                                <p>For fast and easy access to metal health support at your fingertips, please send us a message</p>
                                             </div>
                                         </div>
                                         <div class="elementor-element elementor-element-cecbdd0 elementor-icon-list--layout-inline elementor-align-center elementor-mobile-align-left elementor-hidden-mobile elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="cecbdd0" data-element_type="widget" data-widget_type="icon-list.default">
@@ -786,17 +786,18 @@
                                                     <li class="elementor-icon-list-item elementor-inline-item">
                                                         <span class="elementor-icon-list-icon">
                                                             <i aria-hidden="true" class="fas fa-map-marker-alt"></i> </span>
-                                                        <span class="elementor-icon-list-text">Jl. Raya Puputan No. 142, Denpasar</span>
+                                                        {{-- <span class="elementor-icon-list-text">Jl. Raya Puputan No. 142, Denpasar</span> --}}
+                                                        <span class="elementor-icon-list-text">Ash Road, Lusaka, Zambia</span>
                                                     </li>
-                                                    <li class="elementor-icon-list-item elementor-inline-item">
+                                                    {{-- <li class="elementor-icon-list-item elementor-inline-item">
                                                         <span class="elementor-icon-list-icon">
                                                             <i aria-hidden="true" class="fas fa-phone-alt"></i> </span>
                                                         <span class="elementor-icon-list-text">(+62) 81 2345 6789</span>
-                                                    </li>
+                                                    </li> --}}
                                                     <li class="elementor-icon-list-item elementor-inline-item">
                                                         <span class="elementor-icon-list-icon">
                                                             <i aria-hidden="true" class="fas fa-envelope"></i> </span>
-                                                        <span class="elementor-icon-list-text"><a href="https://templatekit.jegtheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="26454941484f524f50436642494b474f480845494b">[email&#160;protected]</a></span>
+                                                        <span class="elementor-icon-list-text"><a href="https://templatekit.jegtheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="26454941484f524f50436642494b474f480845494b">info@nsansawellness.com</a></span>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -807,13 +808,13 @@
                                                     <li class="elementor-icon-list-item">
                                                         <span class="elementor-icon-list-icon">
                                                             <i aria-hidden="true" class="fas fa-map-marker-alt"></i> </span>
-                                                        <span class="elementor-icon-list-text">Jl. Raya Puputan No. 142, Denpasar</span>
+                                                        <span class="elementor-icon-list-text">Ash Road, Lusaka, Zambia</span>
                                                     </li>
-                                                    <li class="elementor-icon-list-item">
+                                                    {{-- <li class="elementor-icon-list-item">
                                                         <span class="elementor-icon-list-icon">
                                                             <i aria-hidden="true" class="fas fa-phone-alt"></i> </span>
                                                         <span class="elementor-icon-list-text">(+62) 81 2345 6789</span>
-                                                    </li>
+                                                    </li> --}}
                                                     <li class="elementor-icon-list-item">
                                                         <span class="elementor-icon-list-icon">
                                                             <i aria-hidden="true" class="fas fa-envelope"></i> </span>
@@ -886,7 +887,7 @@
                                     <div class="elementor-widget-wrap elementor-element-populated">
                                         <div class="elementor-element elementor-element-50615cb elementor-widget elementor-widget-text-editor" data-id="50615cb" data-element_type="widget" data-widget_type="text-editor.default">
                                             <div class="elementor-widget-container">
-                                                Copyright © 2022. All rights reserved. </div>
+                                                Copyright © 2022. All rights reserved. Powered by <span style="color:rgb(0, 148, 0)">Green<span>webb</div>
                                         </div>
                                     </div>
                                 </div>

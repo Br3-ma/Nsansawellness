@@ -52,22 +52,20 @@ class PatientController extends Controller
 
             // record invoice billing
             // $this->create_billing();
-            Billing::create([
-                'user_id' => auth()->user()->id,
-                'charge_amount' => null,
-                'remainder_count' => 0,
-                'balance' => null,
-                'desc' => 'Initial payment'
-            ]);
+            // if(auth()->user()->hasRole('patient')){
+            //     Billing::create([
+            //         'user_id' => auth()->user()->id,
+            //         'charge_amount' => 750,
+            //         'remainder_count' => 0,
+            //         'balance' => 750,
+            //         'desc' => 'Initial payment'
+            //     ]);
+            // }
             return view('page.patients.home', compact('notifications', 'chats'));
         }
 
         // if they have a pending billing redirect to payments else patient dashboard
-
         return view('page.patients.home', compact('notifications', 'chats'));
-   
-
-
     }
 
     public function patient_files()

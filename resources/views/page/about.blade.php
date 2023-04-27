@@ -54,11 +54,11 @@
                     <div class="elementor-element elementor-element-45fedcb animated-slow elementor-invisible elementor-widget elementor-widget-image" data-id="45fedcb" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:500}"
                         data-widget_type="image.default">
                         <div class="elementor-widget-container">
-                            <img width="1620" height="1079" src="https://media.istockphoto.com/photos/woman-sitting-on-couch-meeting-with-male-relationship-counsellor-in-picture-id1132295595?k=20&m=1132295595&s=612x612&w=0&h=46ft7f49kS6GnHjt8FKcHMIi_2KZLc1MFQUiezazrAk=" loading="lazy" /> </div>
+                            <img width="1620" height="1079" src="https://t4.ftcdn.net/jpg/03/91/10/01/360_F_391100121_IrmBtzs1T4RQXYQlLIBF8FBzDaeA0Vd9.jpg" loading="lazy" /> </div>
                     </div>
-                    <div class="elementor-element elementor-element-57285d4 elementor-widget elementor-widget-image" data-id="57285d4" data-element_type="widget" data-widget_type="image.default">
+                    <div class="elementor-element elementor-widget elementor-widget-image" data-id="57285d4" data-element_type="widget" data-widget_type="image.default">
                         <div class="elementor-widget-container">
-                            <img width="800" height="484" src="https://societyforpsychotherapy.org/wp-content/uploads/2019/02/iStock-541975802-e1544109904717-768x512.jpg" class="attachment-large size-large" alt="Man and woman during the psychological counseling indoors" loading="lazy"
+                            <img width="800" height="484" src="{{ asset('public/img/3.jpg') }}" class="attachment-large size-large" alt="Man and woman during the psychological counseling indoors" loading="lazy"
                                 sizes="(max-width: 800px) 100vw, 800px" /> </div>
                     </div>
                 </div>
@@ -71,14 +71,15 @@
                             <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_699_4_632ca9457867e">
                                 <h5 class="heading-section-subtitle  style-color">About Us</h5>
                                 <div class="heading-section-title ">
-                                    <h2 class="heading-title">We Are Best <span class="style-gradient"><span>Psychology</span></span> Counseling Since 2010</h2>
+                                    <h2 class="heading-title">Made for everyone to <span class="style-gradient"><span>feel safe and welcome.</span></span></h2>
                                 </div>
                                 <div class="heading-section-description">
                                     <p> 
-                                        At Nsansa Wellness, we’re on a mission to make therapy accessible. By providing on-the-spot access to 
-                                        first class psychologists in multiple different ways, alongside digital psychological and educational tools, 
-                                        we want to put the power of change back into each and every person’s hands. We enable people to become the best 
-                                        version of themselves so that they can build a life with greater meaning, fulfilment and purpose.
+                                        At Nsansa Wellness, we’re on a mission to make therapy accessible. 
+                                        We want to put the power of change back into each and every person’s hands, 
+                                        through quality therapy services. By providing immediate access to our 
+                                        psychologists and peer counselors, we hope to empower people to have a 
+                                        life of fulfilment and prosperity.
                                     </p>
                                 </div>
                             </div>
@@ -94,22 +95,47 @@
                                             <ul class="elementor-icon-list-items">
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
                                                     <span class="elementor-icon-list-text">Anxiety Therapy</span>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
                                                     <span class="elementor-icon-list-text">Bipolar Disorder</span>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
                                                     <span class="elementor-icon-list-text">Depression Therapy</span>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">ADHD</span>
+                                                </li>
+                                                <li class="elementor-icon-list-item">
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Insomia</span>
+                                                </li>
+                                                <li class="elementor-icon-list-item">
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Grief / Loss</span>
+                                                </li>
+                                                <li class="elementor-icon-list-item">
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Motivation</span>
+                                                </li>
+                                                <li class="elementor-icon-list-item">
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Stress</span>
+                                                </li>
+                                                <li class="elementor-icon-list-item">
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
                                                     <span class="elementor-icon-list-text">Executive Coaching</span>
                                                 </li>
                                             </ul>
@@ -125,22 +151,42 @@
                                             <ul class="elementor-icon-list-items">
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
                                                     <span class="elementor-icon-list-text">Family Therapy</span>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-                                                    <span class="elementor-icon-list-text">Curing Addiction</span>
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Alcohol & Substance Abuse</span>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
-                                                    <span class="elementor-icon-list-text">Emergency Services</span>
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Empolyee Counseling Services</span>
                                                 </li>
                                                 <li class="elementor-icon-list-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="fas fa-check-circle"></i>						</span>
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Burnout</span>
+                                                </li>
+                                                <li class="elementor-icon-list-item">
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Focus</span>
+                                                </li>
+                                                <li class="elementor-icon-list-item">
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Family Therapy</span>
+                                                </li>
+                                                <li class="elementor-icon-list-item">
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+                                                    <span class="elementor-icon-list-text">Work / Life Balance</span>
+                                                </li>
+                                                <li class="elementor-icon-list-item">
+                                                    <span class="elementor-icon-list-icon">
+                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
                                                     <span class="elementor-icon-list-text">Stress Management</span>
                                                 </li>
                                             </ul>

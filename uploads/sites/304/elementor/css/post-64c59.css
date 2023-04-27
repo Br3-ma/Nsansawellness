@@ -17,11 +17,14 @@
 }
 
 .elementor-6 .elementor-element.elementor-element-11f97dc>.elementor-element-populated>.elementor-background-overlay {
-    background-image: url("../../2022/06/bg-orange-X8FYGQG.png");
+    /* background-image: url("../../2022/06/bg-orange-X8FYGQG.png"); */
     background-position: -20px 0px;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.1;
+    background-color:#800869;
+    color:#fff;
+    font-family: Arial, Helvetica, sans-serif;
+    /* opacity: 0.1; */
 }
 
 .elementor-6 .elementor-element.elementor-element-11f97dc>.elementor-element-populated {
@@ -48,6 +51,7 @@
 
 .elementor-6 .elementor-element.elementor-element-5408d36 .jeg-elementor-kit.jkit-heading .heading-title {
     font-family: var( --e-global-typography-primary-font-family), Sans-serif;
+    /* font-family: var( --e-global-typography-primary-font-family), Sans-serif; */
     font-size: var( --e-global-typography-primary-font-size);
     font-weight: var( --e-global-typography-primary-font-weight);
     line-height: var( --e-global-typography-primary-line-height);
@@ -107,7 +111,7 @@
     word-spacing: var( --e-global-typography-751ec74-word-spacing);
     color: var( --e-global-color-61201e6);
     background-color: transparent;
-    background-image: linear-gradient(170deg, var( --e-global-color-primary) 0%, var( --e-global-color-76b8ccf) 100%);
+    /* background-image: linear-gradient(170deg, var( --e-global-color-primary) 0%, var( --e-global-color-76b8ccf) 100%); */
     border-radius: 0px 0px 0px 0px;
 }
 
@@ -117,7 +121,7 @@
 
 .elementor-6 .elementor-element.elementor-element-0077e9a .jeg-elementor-kit.jkit-button .jkit-button-wrapper:hover {
     background-color: transparent;
-    background-image: linear-gradient(180deg, var( --e-global-color-76b8ccf) 0%, var( --e-global-color-76b8ccf) 100%);
+    /* background-image: linear-gradient(180deg, var( --e-global-color-76b8ccf) 0%, var( --e-global-color-76b8ccf) 100%); */
 }
 
 .elementor-6 .elementor-element.elementor-element-0077e9a .jeg-elementor-kit.jkit-button.icon-position-before .jkit-button-wrapper i,

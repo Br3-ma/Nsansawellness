@@ -965,14 +965,14 @@
           location.replace('/contextpath/j_spring_security_logout') ;
       }   
   }
-</script>
+</script> 
 
-<script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
+{{-- <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
 <script>
       var editor = CKEDITOR.replace( 'notes ', {});
       // editor is object of your CKEDITOR
       editor.on('change',function(){
           console.log("test");
       });
-</script>
+</script> --}}
 </html>

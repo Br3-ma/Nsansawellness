@@ -18,6 +18,16 @@ class Billing extends Model
         'status'
     ];
 
+    public static function has_bill(){
+        return Billing::where('user_id', auth()->user()->id)
+        ->where('status', 0)->exists();
+    }
+    public static function last_billing(){
+        return Billing::where('user_id',  auth()->user()->id)
+                        ->where('status', 0)
+                        ->latest()->first();
+    }
+
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }

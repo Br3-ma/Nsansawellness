@@ -8,12 +8,17 @@
 							<div class="elementor-element elementor-element-5408d36 animated-slow elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="5408d36" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="jkit_heading.default">
 								<div class="elementor-widget-container">
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
-										<h5 class="heading-section-subtitle  style-color">Welcome</h5>
-										<div class="heading-section-title ">
-											<h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1>
+										{{-- <h5 class="heading-section-subtitle  style-color">Welcome</h5> --}}
+										<div class="heading-section-title">
+											<h1 class="heading-title" style="color:#fff; ">
+												Support for a
+												<span style="color: #02136d;"><span>healthier&nbsp;</span></span>
+												mind
+											</h1>
+											{{-- <h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1> --}}
 										</div>
-										<div class="heading-section-description">
-											<p>When confronted with stressful life circumstances like arguments or stress from work, learning to cope better with your emotions and mental health is crucial for a healthier lifestyle. Online therapy can be an effective method for connecting with other people who face similar struggles.</p>
+										<div style="color:#fff;" class="heading-section-description">
+											<p>Don't face life's challenges alone! From managing work stress to coping with difficult emotions, our online therapy can help you live a healthier, happier life. Let Nsansa Wellness therapists empower you to thrive again</p>
 										</div>
 									</div>
 								</div>
@@ -64,7 +69,7 @@
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-914119c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="914119c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-b6e96b7 animated-slow elementor-invisible" data-id="b6e96b7" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:700}">
-						<div style="background: rgba(64, 150, 228, 0.81);
+						<div style="background: rgb(0, 13, 70);
 						box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 						backdrop-filter: blur(5.8px);
 						-webkit-backdrop-filter: blur(5.8px);
@@ -73,11 +78,11 @@
 								<div class="elementor-widget-container">
 									<div id="mf-response-props-id-189" data-editswitchopen="" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
 										<div style="align-content: center; text-align:center; margin: 0 auto;" class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="189">
-											<h4 style="color: #fff">What type of therapy are you looking for?</h4>
+											<h4 style="color:#fff;">What type of therapy are you looking for?</h4>
 											<div class="elementor-widget-container row" style="margin: 0 auto;justify-content: center;">
 												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 													<div class="elementor-widget-container">
-														<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
+														<div style="background-color: #fff" class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
 															<a target="_blank" href="{{ route('start') }}" id="myBtn3" class="jkit-button-wrapper">
 																Individual<br>
 																<small>For myself</small>
@@ -88,7 +93,7 @@
 												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 													<div class="elementor-widget-container">
 														<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-															<a target="_blank" href="{{ route('couples-start') }}" id="myBtn4" class="jkit-button-wrapper">
+															<a style="background-color: #fff" target="_blank" href="{{ route('couples-start') }}" id="myBtn4" class="jkit-button-wrapper">
 																Couples<br>
 																<small>For me and my partner</small>
 															</a>
@@ -97,8 +102,8 @@
 												</div>
 												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 													<div class="elementor-widget-container">
-														<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-															<a target="_blank" href="child-start" id="myBtn5" class="jkit-button-wrapper">
+														<div class="jeg-elementor-kit jkit-button icon-position-before jeg_module_6_4_632ca6974f75c">
+															<a style="background-color: #fff" target="_blank" href="child-start" id="myBtn5" class="jkit-button-wrapper">
 																Teen<br>
 																<small>For my child</small>
 															</a>
@@ -125,7 +130,7 @@
 									<img width="1620" height="1079" src="https://post.healthline.com/wp-content/uploads/2021/11/male-looking-down-732x549-thumbnail-732x549.jpg" class="attachment-full size-full" alt="Psychologist counseling teenage female, individual therapy in doctors office." loading="lazy" />
 								</div>
 							</div>
-							<div class="elementor-element elementor-element-25b05f5 elementor-widget elementor-widget-image" data-id="25b05f5" data-element_type="widget" data-widget_type="image.default">
+							<div class="elementor-element elementor-widget elementor-widget-image" data-id="25b05f5" data-element_type="widget" data-widget_type="image.default">
 								<div class="elementor-widget-container">
 									<img width="800" height="484" src="https://static01.nyt.com/images/2021/05/06/multimedia/00xp-blacktherapy1/00xp-blacktherapy1-mobileMasterAt3x.jpg" class="attachment-large size-large" alt="Man and woman during the psychological counseling indoors" loading="lazy" sizes="(max-width: 800px) 100vw, 800px" />
 								</div>
@@ -135,14 +140,16 @@
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-437859c" data-id="437859c" data-element_type="column">
 						<div class="elementor-widget-wrap elementor-element-populated">
 							<div class="elementor-element elementor-element-037eb86 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="037eb86" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="jkit_heading.default">
-								<div class="elementor-widget-container">
+								<div class="elementor-widget-container" style="text-align: center">
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_8_632ca69776b95">
-										<h5 class="heading-section-subtitle  style-color">Therapy. Anytime, anywhere.</h5>
-										<div class="heading-section-title ">
-											<h2 class="heading-title">We Help You Solve <span class="style-gradient"><span>The Problems</span></span> You Face</h2>
+										<h5 class="heading-section-subtitle style-color" style="text-align:center">Flexible support fitting your lifestyle</h5>
+										{{-- <h5 class="heading-section-subtitle  style-color">Therapy. Anytime, anywhere.</h5> --}}
+										<div class="heading-section-title">
+											<h2 style="text-align: center" class="heading-title">Therapy. <span class="style-gradient"><span>Anytime, </span></span>anywhere.</h2>
+											{{-- <h2 class="heading-title">We Help You Solve <span class="style-gradient"><span>The Problems</span></span> You Face</h2> --}}
 										</div>
 										<div class="heading-section-description">
-											<p>Nsansa Wellness is therapy for all. Online counseling lets you connect with a licensed therapist from the privacy of your device — at a significantly lower cost than traditional, in-person counseling.</p>
+											<p style="text-align: center">Nsansa Wellness lets you connect with a therapist from the privacy of your device — at an affordable rate.</p>
 										</div>
 									</div>
 								</div>
@@ -173,6 +180,31 @@
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">ADHD</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Insomia</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Grief / Loss</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Motivation</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Stress</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
 															<span class="elementor-icon-list-text">Executive Coaching</span>
 														</li>
 													</ul>
@@ -193,17 +225,37 @@
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-															<span class="elementor-icon-list-text">Curing Addiction</span>
+															<span class="elementor-icon-list-text">Alcohol & Substance Abuse</span>
 														</li>
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-															<span class="elementor-icon-list-text">Emergency Services</span>
+															<span class="elementor-icon-list-text">Empolyee Counseling Services</span>
 														</li>
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-															<span class="elementor-icon-list-text">Stress Management</span>
+															<span class="elementor-icon-list-text">Burnout</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Focus</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Family Therapy</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+															<span class="elementor-icon-list-text">Work / Life Balance</span>
+														</li>
+														<li class="elementor-icon-list-item">
+															<span class="elementor-icon-list-icon">
+																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
+																<span class="elementor-icon-list-text">Stress Management</span>
 														</li>
 													</ul>
 												</div>
@@ -212,9 +264,12 @@
 									</div>
 								</div>
 							</section>
-							<div class="elementor-element elementor-element-1198947 elementor-widget__width-auto e-transform animated-slow elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="1198947" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:600,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
+							<div class="elementor-element elementor-element-f01c80f elementor-widget__width-auto e-transform elementor-widget elementor-widget-jkit_button" data-id="f01c80f" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 								<div class="elementor-widget-container">
-									<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_9_632ca6977b0df"><a href="{{route('about')}}" class="jkit-button-wrapper">About Us</a></div>
+									<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_2_632ca6974641a">
+										{{-- <a href="#" id="myBtn2" class="jkit-button-wrapper">Get Started</a> --}}
+										<a href="{{ route('start') }}" style="color:#fff" class="jkit-button-wrapper">Get Started</a>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -230,10 +285,10 @@
 									<div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile- jeg_module_6_10_632ca6977ceb1">
 										<h5 class="heading-section-subtitle  style-color">Our Services</h5>
 										<div class="heading-section-title ">
-											<h2 class="heading-title">We Provide Best <span class="style-gradient"><span>Healthcare</span></span> Services</h2>
+											<h2 class="heading-title">We Provide <span class="style-gradient"><span>Metal Healthcare</span></span> Services</h2>
 										</div>
 										<div class="heading-section-description">
-											<p>Our thousands of therapists are licensed and experienced mental health counselors with expertise in a range of issues — including anxiety, depression, substance abuse, trauma, couples therapy, and more. All Nsansa Wellness therapists complete a rigorous vetting and credentialing process.</p>
+											<p>Our therapists are experienced mental health counselors with expertise in a range of issues — including anxiety, depression, substance abuse, trauma, couples therapy, and more. All Nsansa Wellness therapists complete a rigorous vetting and credentialing process.</p>
 										</div>
 									</div>
 								</div>
@@ -264,11 +319,11 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_11_632ca697836e8">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Couple Counseling</h4>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Couples Therapy</h4>
 																<p class="icon-box-description">Couples therapy can help you at any stage of your relationship, regardless of marital status, age, race, faith, or sexual orientation.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
-																		<a href="#" class="icon-box-link">Read More</a>
+																		{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 																	</div>
 																</div>
 															</div>
@@ -298,7 +353,7 @@
 																<p class="icon-box-description">Depression is classified as a mood disorder. It may be described as feelings of sadness, loss, or anger that interfere with a person’s everyday activities.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
-																		<a href="#" class="icon-box-link">Read More</a>
+																		{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 																	</div>
 																</div>
 															</div>
@@ -328,11 +383,11 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_13_632ca6978aea8">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Child Psychotherapy</h4>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Child Mental Heath Therapy</h4>
 																<p class="icon-box-description">Many children and teens have problems that affect how they feel, act, or learn. Nsansa Therapy is a type of treatment for these problems. It is a way to get help for your child.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
-																		<a href="#" class="icon-box-link">Read More</a>
+																		{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 																	</div>
 																</div>
 															</div>
@@ -358,11 +413,11 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_14_632ca6978de45">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Group Counseling</h4>
-																<p class="icon-box-description">Helping a patient realize that they are not alone -- that there are other people who have similar problems. This is often a revelation, and a huge relief, to the person.</p>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Empolyee Counseling Services</h4>
+																<p class="icon-box-description">Support to help you navigate personal and work-related challenges that may be impacting your well-being. From stress and anxiety to conflicts with colleagues.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
-																		<a href="#" class="icon-box-link">Read More</a>
+																		{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 																	</div>
 																</div>
 															</div>
@@ -396,7 +451,7 @@
 												<p class="icon-box-description">Deciding how to manage stress, it is important to make sure your method is healthy and will work long-term. For example, eating comfort food may help someone feel better in the short term.</p>
 												<div class="icon-box-button ">
 													<div class="btn-wrapper icon-position-after">
-														<a href="#" class="icon-box-link">Read More</a>
+														{{-- <a href="#" class="icon-box-link">Read More</a> --}}
 													</div>
 												</div>
 											</div>
@@ -408,129 +463,46 @@
 						</div>
 					</div>
 				</div>
-			</section>
-			<section style="background-repeat: no-repeat;background-position: center;background-attachement:fixed;background-image: url('https://images.squarespace-cdn.com/content/v1/5dfd525d50a0d56cce072b41/1590348698201-Z217XU7BGM4IZICKFDVW/black+couple+in+love+%7C+marriage+counseling+in+Germantown%2C+TN+%7C+online+couples+counseling+in+TN+%7C+Marriage+and+family+therapist++%7C+catholic+marriage+counseling+%7C+catholic+couples+counseling+%7C+Vitus+Counseling+38139')" class="elementor-section elementor-top-section elementor-element elementor-element-e1b0bdb elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="e1b0bdb" data-element_type="section">
-				<div class="elementor-background-overlay"></div>
-				<div class="elementor-container elementor-column-gap-no">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-11fbc72" data-id="11fbc72" data-element_type="column">
-						<div class="elementor-widget-wrap elementor-element-populated">
-							<section class="elementor-section elementor-inner-section elementor-element elementor-element-535d234 animated-slow elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-invisible" data-id="535d234" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:200}">
-								<div class="elementor-container elementor-column-gap-no">
-									<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-2f28b0d" data-id="2f28b0d" data-element_type="column">
-										<div class="elementor-widget-wrap elementor-element-populated">
-											<div class="elementor-element elementor-element-32e285b elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="32e285b" data-element_type="widget" data-widget_type="jkit_heading.default">
-												<div class="elementor-widget-container">
-													<div class="jeg-elementor-kit jkit-heading  align-left align-tablet-center align-mobile- jeg_module_6_16_632ca69794804">
-														<h5 class="heading-section-subtitle  style-color">Patient Feedback</h5>
-														<div class="heading-section-title ">
-															<h2 class="heading-title">Our Patient <span class="style-gradient"><span>Reviews</span></span></h2>
-														</div>
-														<div class="heading-section-description">
-															<p>Nsansa Wellness therapy has helped hundreds of people live happier lives and bypass barriers to therapy. Lucky for us, some of those people went out of their way to document their experiences by writing in-depth reviews of our brand of online counseling.</p>
-														</div>
-													</div>
+				{{-- <div class="elementor-col-50 elementor-element elementor-element-2406405" data-id="2406405" data-element_type="column">
+					<div class="elementor-widget-wrap elementor-element-populated">
+						<section class="elementor-section elementor-inner-section elementor-element elementor-element-2317f4c elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="2317f4c" data-element_type="section">
+							<div class="elementor-container elementor-column-gap">
+								<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+									<div style="background-image: url('https://www.apa.org/images/therapy-group-title-image_tcm7-162394.jpg'); background-repeat: no-repeat, repeat;background-size: cover;" class="elementor-element-populated">
+										<div class="elementor-background-overlay"></div>
+										<div class="elementor-element elementor-element-6ff92aa elementor-widget elementor-widget-spacer" data-id="6ff92aa" data-element_type="widget" data-widget_type="spacer.default">
+											<div class="elementor-widget-container">
+												<div class="elementor-spacer">
+													<div class="elementor-spacer-inner"></div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-dc6c27a" data-id="dc6c27a" data-element_type="column">
-										<div class="elementor-widget-wrap elementor-element-populated">
-											<div class="elementor-element elementor-element-9197bcd animated-slow elementor-invisible elementor-widget elementor-widget-jkit_testimonials" data-id="9197bcd" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="jkit_testimonials.default">
-												<div class="elementor-widget-container">
-													<div class="jeg-elementor-kit jkit-testimonials arrow-middle-edge style-2 quote-override jeg_module_6_17_632ca6979a36d" data-id="jeg_module_6_17_632ca6979a36d" data-settings="{&quot;autoplay&quot;:true,&quot;autoplay_speed&quot;:3500,&quot;autoplay_hover_pause&quot;:false,&quot;show_navigation&quot;:false,&quot;navigation_left&quot;:&quot;&lt;i aria-hidden=\&quot;true\&quot; class=\&quot;fas fa-angle-left\&quot;&gt;&lt;\/i&gt;&quot;,&quot;navigation_right&quot;:&quot;&lt;i aria-hidden=\&quot;true\&quot; class=\&quot;fas fa-angle-right\&quot;&gt;&lt;\/i&gt;&quot;,&quot;show_dots&quot;:false,&quot;arrow_position&quot;:&quot;bottom&quot;,&quot;responsive&quot;:{&quot;desktop&quot;:{&quot;items&quot;:&quot;1&quot;,&quot;margin&quot;:10,&quot;breakpoint&quot;:1025},&quot;tablet&quot;:{&quot;items&quot;:&quot;1&quot;,&quot;margin&quot;:10,&quot;breakpoint&quot;:768},&quot;mobile&quot;:{&quot;items&quot;:1,&quot;margin&quot;:10,&quot;breakpoint&quot;:0}}}">
-														<div class="testimonials-list">
-															<div class="testimonials-track">
-																<div class="testimonial-item  elementor-repeater-item-d4b38ca">
-																	<div class="testimonial-box hover-from-left">
-																		<div class="icon-content"><i aria-hidden="true" class="jki jki-quote2-light"></i></div>
-																		<div class="comment-content">
-																			<p>I have an infant so the idea of actually going out to therapy was daunting. This is much lower stress for me and I can check-in whenever works for me.</p>
-																		</div>
-																		<div class="comment-header">
-																			<ul class="rating-stars">
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																			</ul>
-																		</div>
-																		<div class="comment-bio">
-																			<div class="bio-details">
-																				<div class="profile-image"><img src="data:image/jpeg;base64,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" alt="John Doe"></div>
-																				<span class="profile-info">
-																					<strong class="profile-name">Cosam</strong>
-																					<p class="profile-des">Patient</p>
-																				</span>
-																			</div>
-																		</div>
-																	</div>
+										<div class="elementor-element elementor-element-0e08a84 jkit-equal-height-disable elementor-widget elementor-widget-jkit_icon_box" data-id="0e08a84" data-element_type="widget" data-widget_type="jkit_icon_box.default">
+											<div class="elementor-widget-container">
+												<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_14_632ca6978de45">
+													<div class="jkit-icon-box-wrapper hover-from-left">
+														<div class="icon-box icon-box-body">
+															<h4 class="title" style="color: #fff; font-weight:bolder">Empolyee Counseling Services</h4>
+															<p class="icon-box-description">Support to help you navigate personal and work-related challenges that may be impacting your well-being. From stress and anxiety to conflicts with colleagues.</p>
+															<div class="icon-box-button ">
+																<div class="btn-wrapper icon-position-after">
+																	<a href="#" class="icon-box-link">Read More</a>
 																</div>
-																{{-- <div class="testimonial-item  elementor-repeater-item-f04b4c1">
-																	<div class="testimonial-box hover-from-left">
-																		<div class="icon-content"><i aria-hidden="true" class="jki jki-quote2-light"></i></div>
-																		<div class="comment-content">
-																			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-																		</div>
-																		<div class="comment-header">
-																			<ul class="rating-stars">
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																			</ul>
-																		</div>
-																		<div class="comment-bio">
-																			<div class="bio-details">
-																				<div class="profile-image"><img src="uploads/sites/304/2022/06/portrait-of-african-american-man-smiling-and-looking-at-camera-in-living-room-talking-sign-language-e1656478638960-150x150.jpg" alt="William Boer"></div>
-																				<span class="profile-info">
-																					<strong class="profile-name">William Boer</strong>
-																					<p class="profile-des">Patient</p>
-																				</span>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="testimonial-item  elementor-repeater-item-d3b9f79">
-																	<div class="testimonial-box hover-from-left">
-																		<div class="icon-content"><i aria-hidden="true" class="jki jki-quote2-light"></i></div>
-																		<div class="comment-content">
-																			<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-																		</div>
-																		<div class="comment-header">
-																			<ul class="rating-stars">
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-solid"></i></li>
-																				<li><i aria-hidden="true" class="jki jki-star-half"></i></li>
-																			</ul>
-																		</div>
-																		<div class="comment-bio">
-																			<div class="bio-details">
-																				<div class="profile-image"><img src="uploads/sites/304/2022/06/smiling-middle-aged-mature-grey-haired-woman-looking-at-camera-e1656478706933-150x150.jpg" alt="Jessica Fins"></div>
-																				<span class="profile-info">
-																					<strong class="profile-name">Jessica Fins</strong>
-																					<p class="profile-des">Patient</p>
-																				</span>
-																			</div>
-																		</div>
-																	</div>
-																</div> --}}
 															</div>
 														</div>
+
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</section>
-						</div>
+							</div>
+						</section>
 					</div>
-				</div>
+				</div> --}}
 			</section>
+			
 			
 			{{-- <section class="elementor-section elementor-top-section elementor-element elementor-element-89845c3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="89845c3" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				<div class="elementor-background-overlay"></div>
@@ -1132,7 +1104,7 @@
 					</div>
 				</div>
 			</section> --}}
-			<section class="elementor-section elementor-top-section elementor-element elementor-element-a08d34e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="a08d34e" data-element_type="section">
+			{{-- <section class="elementor-section elementor-top-section elementor-element elementor-element-a08d34e elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="a08d34e" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-25 elementor-top-column elementor-element elementor-element-11aa674 elementor-hidden-tablet elementor-hidden-mobile" data-id="11aa674" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 						<div style="background-image:url('https://lirp.cdn-website.com/6dd06852/dms3rep/multi/opt/stock-photo-mom-or-psychologist-talking-counseling-upset-offended-african-american-child-girl-feels-sad-1282522006-640w.jpg')" class="elementor-element-populated elementor-widget-wrap">
@@ -1153,7 +1125,7 @@
 								<div class="elementor-widget-container">
 									<div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_6_34_632ca697de3a3">
 										<div class="heading-section-title ">
-											<h2 class="heading-title">Don&#039;t Hesitate To <span class="style-gradient"><span>Consultation</span></span> Your Problem With Us!</h2>
+											<h2 class="heading-title">Do not Hesitate To <span class="style-gradient"><span>Consult</span></span> with Us!</h2>
 										</div>
 										<div class="heading-section-description">
 											<p>Get face-to-face with a highly qualified therapist when and wherever's a good time to tap into you.</p>
@@ -1163,11 +1135,11 @@
 							</div>
 							<div class="elementor-element elementor-element-cf3794e elementor-widget__width-auto e-transform elementor-widget elementor-widget-jkit_button" data-id="cf3794e" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 								<div class="elementor-widget-container">
-									{{-- <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_35_632ca697e061e">
+									<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_35_632ca697e061e">
 										<a href="{{ route('start')}}" class="jkit-button-wrapper">
 											Book Appointment
 										</a>
-									</div> --}}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -1185,7 +1157,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</section> --}}
 			{{-- <section class="elementor-section elementor-top-section elementor-element elementor-element-56f3679 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="56f3679" data-element_type="section">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-c1a8406" data-id="c1a8406" data-element_type="column">

@@ -23,7 +23,7 @@
                     <select onchange="getval(this);" id="personel" class="form-select">
                         <option value="None">None</option>
                         <option value="Clinical Social Worker">Clinical Social Worker</option>
-                        <option value="Marriage & Family Therapist">Marriage & Family Therapist</option>
+                        <option value="Marriage Family Therapist">Marriage & Family Therapist</option>
                         <option value="Mental Health Counselor">Mental Health Counselor</option>
                         <option value="Professional Counselor">Professional Counselor</option>
                         <option value="Psychologist">Psychologist</option>
