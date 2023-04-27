@@ -1,10 +1,10 @@
 .elementor-kit-3 {
-    --e-global-color-primary: #FFB260;
+    --e-global-color-primary: #5784a1;
     --e-global-color-secondary: #473F37;
     --e-global-color-text: #6C6C6C;
     --e-global-color-accent: #61CE70;
     --e-global-color-d656850: #0e97ba;
-    --e-global-color-76b8ccf: #F2793F;
+    --e-global-color-76b8ccf: #facffc;
     --e-global-color-61201e6: #02084b;
     --e-global-color-be8516a: #FFFFFF47;
     --e-global-color-3e336eb: #FFF4EF;
@@ -80,11 +80,11 @@
 }
 
 .elementor-kit-3 a {
-    color: var( --e-global-color-primary);
+    color: #0e97ba;
 }
 
 .elementor-kit-3 a:hover {
-    color: var( --e-global-color-76b8ccf);
+    color: #045c72;
 }
 
 .elementor-kit-3 h1 {

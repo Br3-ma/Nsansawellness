@@ -70,7 +70,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/share-peer-id', [VideoCallController::class, 'sharePeerId'])->name('send.remote_id');
     Route::get('/get-video-link', [VideoCallController::class, 'getVideoLink'])->name('get.remote_id');
     Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
-    Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
     Route::get('/api/fetch-session/{id}/{user}', [VideoCallController::class, 'getConversationDetails'])->name('conversation-details');
 
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
