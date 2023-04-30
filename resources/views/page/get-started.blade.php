@@ -115,6 +115,7 @@
                 document.location.href= url.replace(/&amp;/g, '&');
             }
         });
+        
         return false;
       }
       // Otherwise, display the correct tab:
@@ -162,4 +163,7 @@
         let url = "{{ route('register', ['role' => 'patient', 'type' => 'patient'])}}";
         document.location.href=url;
     });
+
+
+
     </script>

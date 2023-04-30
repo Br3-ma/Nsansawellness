@@ -1,5 +1,12 @@
 /* cyrillic-ext */
 @font-face {
+  font-family: 'Eczar';
+  src: url('dist/fonts/static/Eczar-SemiBold.ttf') format('truetype'),
+        url('dist/fonts/static/eczar-semibold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
   font-family: "Roboto";
   font-style: italic;
   font-weight: 100;
