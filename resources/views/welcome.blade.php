@@ -10,7 +10,7 @@
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
 										{{-- <h5 class="heading-section-subtitle  style-color">Welcome</h5> --}}
 										<div class="heading-section-title">
-											<h1 class="heading-title" style="color:#fff; ">
+											<h1 class="heading-title" style="color:#fff; font-family:'Eczar'">
 												Support for a
 												<span style="color: #02136d;"><span>healthier&nbsp;</span></span>
 												mind

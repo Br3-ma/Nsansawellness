@@ -12,6 +12,8 @@
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Feed" href="feed/index.html" />
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Comments Feed" href="comments/feed/index.html" />
 	<link href='https://fonts.googleapis.com/css?family=Eczar' rel='stylesheet'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&display=swap">
+
 	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 	<script type="text/javascript">
 		window._wpemojiSettings = {
