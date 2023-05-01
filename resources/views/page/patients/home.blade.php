@@ -637,12 +637,12 @@
 
 
     function startVideoSession(){
-        var url = '/nsansawellness/video-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
+        var url = '/video-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
         window.location.href = url;
     }
 
     function startPhoneCall(){
-        var url = '/nsansawellness/phone-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
+        var url = '/phone-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
         window.location.href = url;
     }
     

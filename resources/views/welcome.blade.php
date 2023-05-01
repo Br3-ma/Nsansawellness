@@ -384,7 +384,7 @@
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
 																<h4 class="title" style="color: #fff; font-weight:bolder">Child Mental Heath Therapy</h4>
-																<p class="icon-box-description">Many children and teens have problems that affect how they feel, act, or learn. Nsansa Therapy is a type of treatment for these problems. It is a way to get help for your child.</p>
+																<p class="icon-box-description">Many children and teens have problems that affect how they feel, act, or learn. It is a way to get help for your child.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
 																		{{-- <a href="#" class="icon-box-link">Read More</a> --}}
