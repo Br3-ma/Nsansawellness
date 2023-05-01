@@ -132,7 +132,7 @@
 							</div>
 							<div class="elementor-element elementor-widget elementor-widget-image" data-id="25b05f5" data-element_type="widget" data-widget_type="image.default">
 								<div class="elementor-widget-container">
-									<img width="800" height="484" src="https://static01.nyt.com/images/2021/05/06/multimedia/00xp-blacktherapy1/00xp-blacktherapy1-mobileMasterAt3x.jpg" class="attachment-large size-large" alt="Man and woman during the psychological counseling indoors" loading="lazy" sizes="(max-width: 800px) 100vw, 800px" />
+									<img width="800" height="484" src="https://images.squarespace-cdn.com/content/v1/56bcdff01d07c09b543cd200/1128c6f8-d098-4679-adf7-29be714099b4/online%2Btherapy%2Bin%2Btexas%2B_%2Bonline%2Btherapist%2B_%2Bonline%2Banxiety%2Btreatment%2B_%2Bonline%2Bdepression%2Btreatment%2B_%2Bonline%2Btrauma%2Btherapy%2B_%2Bheights%2Bfamily%2Bcounseling-min.jpeg" class="attachment-large size-large" alt="Man and woman during the psychological counseling indoors" loading="lazy" sizes="(max-width: 800px) 100vw, 800px" />
 								</div>
 							</div>
 						</div>
