@@ -89,7 +89,7 @@
 
 .elementor-kit-3 h1 {
     color: var( --e-global-color-d656850);
-    font-family: var( --e-global-typography-primary-font-family), Sans-serif;
+    font-family: 'Eczar';
     font-size: var( --e-global-typography-primary-font-size);
     font-weight: var( --e-global-typography-primary-font-weight);
     line-height: var( --e-global-typography-primary-line-height);
@@ -98,7 +98,7 @@
 
 .elementor-kit-3 h2 {
     color: var( --e-global-color-d656850);
-    font-family: var( --e-global-typography-secondary-font-family), Sans-serif;
+    font-family: 'Eczar';
     font-size: var( --e-global-typography-secondary-font-size);
     font-weight: var( --e-global-typography-secondary-font-weight);
     line-height: var( --e-global-typography-secondary-line-height);
