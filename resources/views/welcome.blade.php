@@ -142,12 +142,13 @@
 							<div class="elementor-element elementor-element-037eb86 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="037eb86" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="jkit_heading.default">
 								<div class="elementor-widget-container" style="text-align: center">
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_8_632ca69776b95">
-										<h5 class="heading-section-subtitle style-color" style="text-align:center">Flexible support fitting your lifestyle</h5>
-										{{-- <h5 class="heading-section-subtitle  style-color">Therapy. Anytime, anywhere.</h5> --}}
 										<div class="heading-section-title">
 											<h2 style="text-align: center" class="heading-title">Therapy. <span class="style-gradient"><span>Anytime, </span></span>anywhere.</h2>
 											{{-- <h2 class="heading-title">We Help You Solve <span class="style-gradient"><span>The Problems</span></span> You Face</h2> --}}
 										</div>
+										<h5 class="heading-section-subtitle style-color" style="text-align:center">Flexible support fitting your lifestyle</h5>
+										{{-- <h5 class="heading-section-subtitle  style-color">Therapy. Anytime, anywhere.</h5> --}}
+										
 										<div class="heading-section-description">
 											<p style="text-align: center">Nsansa Wellness lets you connect with a therapist from the privacy of your device — at an affordable rate.</p>
 										</div>
