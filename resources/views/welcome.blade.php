@@ -127,7 +127,7 @@
 						<div class="elementor-widget-wrap elementor-element-populated">
 							<div class="elementor-element elementor-element-85967db animated-slow elementor-invisible elementor-widget elementor-widget-image" data-id="85967db" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:500}" data-widget_type="image.default">
 								<div class="elementor-widget-container">
-									<img width="1620" height="1079" src="https://post.healthline.com/wp-content/uploads/2021/11/male-looking-down-732x549-thumbnail-732x549.jpg" class="attachment-full size-full" alt="Psychologist counseling teenage female, individual therapy in doctors office." loading="lazy" />
+									<img width="1620" height="1079" src="https://www.thetemper.com/wp-content/uploads/2020/06/Black-Therapist.png-e1516484163919.jpg" class="attachment-full size-full" alt="Psychologist counseling teenage female, individual therapy in doctors office." loading="lazy" />
 								</div>
 							</div>
 							<div class="elementor-element elementor-widget elementor-widget-image" data-id="25b05f5" data-element_type="widget" data-widget_type="image.default">
