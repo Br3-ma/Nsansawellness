@@ -121,7 +121,7 @@
 					</div>
 				</div>
 			</section>				
-			<div class="heading-section-title" style="margin-top:20%;">
+			<div class="heading-section-title" style="margin-top:5%;">
 				<h2 style="text-align: center" class="heading-title">Therapy. <span class="style-gradient"><span>Anytime, </span></span>anywhere.</h2>
 			</div>
 			<h5 class="heading-section-subtitle style-color" style="text-align:center">Flexible support fitting your lifestyle</h5>
