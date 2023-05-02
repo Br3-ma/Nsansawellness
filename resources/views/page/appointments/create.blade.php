@@ -27,7 +27,7 @@
                     </ul>
                 </div>
             @endif
-            <form class="col-span-12" method="POST" action="{{ route('appointment.store') }}">
+            <form style="max-width: 100%" class="col-span-12" method="POST" action="{{ route('appointment.store') }}">
                 @csrf
                 <div class="intro-y box p-5 mt-5">
                     <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
