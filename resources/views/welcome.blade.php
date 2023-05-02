@@ -355,7 +355,7 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_12_632ca697872ab">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Depression Counseling</h4>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Adult Therapy</h4>
 																<p class="icon-box-description">Depression is classified as a mood disorder. It may be described as feelings of sadness, loss, or anger that interfere with a person’s everyday activities.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
@@ -389,7 +389,7 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_13_632ca6978aea8">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Child Mental Heath Therapy</h4>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Child Therapy</h4>
 																<p class="icon-box-description">Many children and teens have problems that affect how they feel, act, or learn. It is a way to get help for your child.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
@@ -419,7 +419,7 @@
 													<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_14_632ca6978de45">
 														<div class="jkit-icon-box-wrapper hover-from-left">
 															<div class="icon-box icon-box-body">
-																<h4 class="title" style="color: #fff; font-weight:bolder">Empolyee Counseling Services</h4>
+																<h4 class="title" style="color: #fff; font-weight:bolder">Workplace Counseling</h4>
 																<p class="icon-box-description">Support to help you navigate personal and work-related challenges that may be impacting your well-being. From stress and anxiety to conflicts with colleagues.</p>
 																<div class="icon-box-button ">
 																	<div class="btn-wrapper icon-position-after">
@@ -453,7 +453,7 @@
 									<div class="jeg-elementor-kit jkit-icon-box icon-position-top elementor-animation- jeg_module_6_15_632ca69791933">
 										<div class="jkit-icon-box-wrapper hover-from-left">
 											<div class="icon-box icon-box-body">
-												<h4 class="title" style="color: #fff; font-weight:bolder">Stress management</h4>
+												<h4 class="title" style="color: #fff; font-weight:bolder">Peer Counseling</h4>
 												<p class="icon-box-description">Deciding how to manage stress, it is important to make sure your method is healthy and will work long-term. For example, eating comfort food may help someone feel better in the short term.</p>
 												<div class="icon-box-button ">
 													<div class="btn-wrapper icon-position-after">
