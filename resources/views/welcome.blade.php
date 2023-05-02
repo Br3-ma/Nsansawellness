@@ -83,7 +83,7 @@
 												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 													<div class="elementor-widget-container">
 														<div style="background-color: #fff" class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-															<a target="_blank" href="{{ route('start') }}" id="myBtn3" class="jkit-button-wrapper">
+															<a target="_blank" style="font-family:'Eczar'" href="{{ route('start') }}" id="myBtn3" class="jkit-button-wrapper">
 																Individual<br>
 																<small>For myself</small>
 															</a>
@@ -93,7 +93,7 @@
 												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 													<div class="elementor-widget-container">
 														<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-															<a style="background-color: #fff" target="_blank" href="{{ route('couples-start') }}" id="myBtn4" class="jkit-button-wrapper">
+															<a style="background-color: #fff; font-family:'Eczar'" target="_blank" href="{{ route('couples-start') }}" id="myBtn4" class="jkit-button-wrapper">
 																Couples<br>
 																<small>For me and my partner</small>
 															</a>
@@ -103,7 +103,7 @@
 												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 													<div class="elementor-widget-container">
 														<div class="jeg-elementor-kit jkit-button icon-position-before jeg_module_6_4_632ca6974f75c">
-															<a style="background-color: #fff" target="_blank" href="{{ route('child-start') }}" id="myBtn5" class="jkit-button-wrapper">
+															<a style="background-color: #fff; font-family:'Eczar'" target="_blank" href="{{ route('child-start') }}" id="myBtn5" class="jkit-button-wrapper">
 																Teen<br>
 																<small>For my child</small>
 															</a>
@@ -120,8 +120,14 @@
 						</div>
 					</div>
 				</div>
-			</section>
-			<section class="elementor-section elementor-top-section elementor-element elementor-element-342682a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="342682a" data-element_type="section">
+			</section>				
+			<div class="heading-section-title" style="margin-top:2px;">
+				<h2 style="text-align: center" class="heading-title">Therapy. <span class="style-gradient"><span>Anytime, </span></span>anywhere.</h2>
+			</div>
+			<h5 class="heading-section-subtitle style-color" style="text-align:center">Flexible support fitting your lifestyle</h5>
+	
+			<section class="elementor-section elementor-top-section elementor-element elementor-element-342682a " data-id="342682a" data-element_type="section">
+
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-9297125" data-id="9297125" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
 						<div class="elementor-widget-wrap elementor-element-populated">
@@ -142,15 +148,8 @@
 							<div class="elementor-element elementor-element-037eb86 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="037eb86" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="jkit_heading.default">
 								<div class="elementor-widget-container" style="text-align: center">
 									<div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_6_8_632ca69776b95">
-										<div class="heading-section-title">
-											<h2 style="text-align: center" class="heading-title">Therapy. <span class="style-gradient"><span>Anytime, </span></span>anywhere.</h2>
-											{{-- <h2 class="heading-title">We Help You Solve <span class="style-gradient"><span>The Problems</span></span> You Face</h2> --}}
-										</div>
-										<h5 class="heading-section-subtitle style-color" style="text-align:center">Flexible support fitting your lifestyle</h5>
-										{{-- <h5 class="heading-section-subtitle  style-color">Therapy. Anytime, anywhere.</h5> --}}
-										
 										<div class="heading-section-description">
-											<p style="text-align: center">Nsansa Wellness lets you connect with a therapist from the privacy of your device — at an affordable rate.</p>
+											<p style="">Nsansa Wellness lets you connect with a therapist from the privacy of your device — at an affordable rate.</p>
 										</div>
 									</div>
 								</div>
