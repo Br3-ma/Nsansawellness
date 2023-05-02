@@ -47,6 +47,10 @@
             </div>
         </div>
     </section>
+    
+    <div class="heading-section-title" style="margin-top:5%;">
+        <h2 style="text-align:center" class="heading-title">Made for everyone to <span class="style-gradient"><span>feel safe and welcome.</span></span></h2>
+    </div>
     <section class="elementor-section elementor-top-section elementor-element elementor-element-af094c0 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="af094c0" data-element_type="section">
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-b3ced88" data-id="b3ced88" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
@@ -63,16 +67,15 @@
                     </div>
                 </div>
             </div>
+
             <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-5887449" data-id="5887449" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
                     <div class="elementor-element elementor-element-ffe3f66 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="ffe3f66" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                         data-widget_type="jkit_heading.default">
                         <div class="elementor-widget-container">
                             <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_699_4_632ca9457867e">
-                                <h5 class="heading-section-subtitle  style-color">About Us</h5>
-                                <div class="heading-section-title ">
-                                    <h2 class="heading-title">Made for everyone to <span class="style-gradient"><span>feel safe and welcome.</span></span></h2>
-                                </div>
+                                {{-- <h5 class="heading-section-subtitle  style-color">About Us</h5> --}}
+
                                 <div class="heading-section-description">
                                     <p> 
                                         At Nsansa Wellness, we’re on a mission to make therapy accessible. 
@@ -85,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-5328d64 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5328d64" data-element_type="section">
+                    {{-- <section class="elementor-section elementor-inner-section elementor-element elementor-element-5328d64 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5328d64" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no">
                             <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0521274" data-id="0521274" data-element_type="column">
                                 <div class="elementor-widget-wrap elementor-element-populated">
@@ -195,7 +198,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </section> --}}
                     <div class="elementor-element elementor-element-12afd25 elementor-widget__width-auto e-transform animated-slow elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="12afd25" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:600,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
                         data-widget_type="jkit_button.default">
                         <div class="elementor-widget-container">
