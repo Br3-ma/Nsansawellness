@@ -49,7 +49,7 @@
     </section>
     
     <div class="heading-section-title" style="margin-top:5%;">
-        <h2 style="text-align:center" class="heading-title">Made for everyone to <span class="style-gradient"><span>feel safe and welcome.</span></span></h2>
+        <h2 style="text-align:center" class="heading-title">Made for everyone to <br><span class="style-gradient"><span>feel safe and welcome.</span></span></h2>
     </div>
     <section class="elementor-section elementor-top-section elementor-element elementor-element-af094c0 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="af094c0" data-element_type="section">
         <div class="elementor-container elementor-column-gap-no">
