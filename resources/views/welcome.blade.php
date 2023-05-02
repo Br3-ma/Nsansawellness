@@ -66,71 +66,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="elementor-section elementor-top-section elementor-element elementor-element-914119c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="914119c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-				<div class="elementor-container elementor-column-gap-no">
-					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-b6e96b7 animated-slow elementor-invisible" data-id="b6e96b7" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:700}">
-						<div style="background: rgb(0, 13, 70);
-						box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-						backdrop-filter: blur(5.8px);
-						-webkit-backdrop-filter: blur(5.8px);
-						border: 1px solid rgba(64, 150, 228, 0.3);" class="elementor-widget-wrap elementor-element-populated">
-							<div class="elementor-element elementor-element-4a7ac7c elementor-widget elementor-widget-metform" data-id="4a7ac7c" data-element_type="widget" data-widget_type="metform.default">
-								<div class="elementor-widget-container">
-									<div id="mf-response-props-id-189" data-editswitchopen="" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
-										<div style="align-content: center; text-align:center; margin: 0 auto;" class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="189">
-											<h4 style="color:#fff;font-family:'Eczar'">What type of support are you looking for?</h4>
-											<div class="elementor-widget-container row" style="margin: 0 auto;justify-content: center;">
-												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
-													<div class="elementor-widget-container">
-														<div style="background-color: #fff" class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-															<a target="_blank" style="font-family:'Eczar'" href="{{ route('start') }}" id="myBtn3" class="jkit-button-wrapper">
-																Individual<br>
-																<small>For myself</small>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
-													<div class="elementor-widget-container">
-														<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
-															<a style="background-color: #fff; font-family:'Eczar'" target="_blank" href="{{ route('couples-start') }}" id="myBtn4" class="jkit-button-wrapper">
-																Couples<br>
-																<small>For me and my partner</small>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
-													<div class="elementor-widget-container">
-														<div class="jeg-elementor-kit jkit-button icon-position-before jeg_module_6_4_632ca6974f75c">
-															<a style="background-color: #fff; font-family:'Eczar'" target="_blank" href="{{ route('child-start') }}" id="myBtn5" class="jkit-button-wrapper">
-																Teen<br>
-																<small>For my child</small>
-															</a>
-														</div>
-													</div>
-												</div>
-												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
-													<div class="elementor-widget-container">
-														<div class="jeg-elementor-kit jkit-button icon-position-before jeg_module_6_4_632ca6974f75c">
-															<a style="background-color: #fff; font-family:'Eczar'" target="_blank" href="{{ route('child-start') }}" id="myBtn5" class="jkit-button-wrapper">
-																Family<br>
-																<small>For us</small>
-															</a>
-														</div>
-													</div>
-												</div>
-												{{-- <div id="metform-wrap-4a7ac7c-189" class="mf-form-wrapper" data-form-id="189" data-action="https://templatekit.jegtheme.com/cognitive/wp-json/metform/v1/entries/insert/189" data-wp-nonce="19c08fe518" data-form-nonce="3f54fce5d3" data-stop-vertical-effect=""></div> --}}
-
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>				
+						
 			<div class="heading-section-title" style="margin-top:5%;">
 				<h2 style="text-align: center" class="heading-title">Therapy. <span class="style-gradient"><span>Anytime, </span></span>anywhere.</h2>
 			</div>
@@ -281,7 +217,72 @@
 					</div>
 				</div>
 			</section>
-			<section class="elementor-section elementor-top-section elementor-element elementor-element-7ade67f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7ade67f" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+			<section class="elementor-section elementor-top-section elementor-element elementor-element-914119c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="914119c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+				<div class="elementor-container elementor-column-gap-no">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-b6e96b7 animated-slow elementor-invisible" data-id="b6e96b7" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:700}">
+						<div style="background: rgb(0, 13, 70);
+						box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+						backdrop-filter: blur(5.8px);
+						-webkit-backdrop-filter: blur(5.8px);
+						border: 1px solid rgba(64, 150, 228, 0.3);" class="elementor-widget-wrap elementor-element-populated">
+							<div class="elementor-element elementor-element-4a7ac7c elementor-widget elementor-widget-metform" data-id="4a7ac7c" data-element_type="widget" data-widget_type="metform.default">
+								<div class="elementor-widget-container">
+									<div id="mf-response-props-id-189" data-editswitchopen="" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
+										<div style="align-content: center; text-align:center; margin: 0 auto;" class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="189">
+											<h4 style="color:#fff;font-family:'Eczar'">What type of support are you looking for?</h4>
+											<div class="elementor-widget-container row" style="margin: 0 auto;justify-content: center;">
+												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
+													<div class="elementor-widget-container">
+														<div style="background-color: #fff" class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
+															<a target="_blank" style="font-family:'Eczar'" href="{{ route('start') }}" id="myBtn3" class="jkit-button-wrapper">
+																Individual<br>
+																<small>For myself</small>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
+													<div class="elementor-widget-container">
+														<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_4_632ca6974f75c">
+															<a style="background-color: #fff; font-family:'Eczar'" target="_blank" href="{{ route('couples-start') }}" id="myBtn4" class="jkit-button-wrapper">
+																Couples<br>
+																<small>For me and my partner</small>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
+													<div class="elementor-widget-container">
+														<div class="jeg-elementor-kit jkit-button icon-position-before jeg_module_6_4_632ca6974f75c">
+															<a style="background-color: #fff; font-family:'Eczar'" target="_blank" href="{{ route('child-start') }}" id="myBtn5" class="jkit-button-wrapper">
+																Teen<br>
+																<small>For my child</small>
+															</a>
+														</div>
+													</div>
+												</div>
+												<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
+													<div class="elementor-widget-container">
+														<div class="jeg-elementor-kit jkit-button icon-position-before jeg_module_6_4_632ca6974f75c">
+															<a style="background-color: #fff; font-family:'Eczar'" target="_blank" href="{{ route('child-start') }}" id="myBtn5" class="jkit-button-wrapper">
+																Family<br>
+																<small>For us</small>
+															</a>
+														</div>
+													</div>
+												</div>
+												{{-- <div id="metform-wrap-4a7ac7c-189" class="mf-form-wrapper" data-form-id="189" data-action="https://templatekit.jegtheme.com/cognitive/wp-json/metform/v1/entries/insert/189" data-wp-nonce="19c08fe518" data-form-nonce="3f54fce5d3" data-stop-vertical-effect=""></div> --}}
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>	
+			<section class="elementor-section elementor-element elementor-element-7ade67f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7ade67f" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				<div class="elementor-container elementor-column-gap-no">
 					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-30e0119 elementor-invisible" data-id="30e0119" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
 						<div class="elementor-widget-wrap elementor-element-populated">
