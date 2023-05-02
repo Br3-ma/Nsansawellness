@@ -386,13 +386,22 @@
                                                     font-size: 59px
                                                 }
                                             </style>
-                                            <h4 class="elementor-heading-title elementor-size-default">We've Helped People Just Like You</h4>
                                         </div>
                                     </div>
+                                    <h4 class="elementor-heading-title elementor-size-default">Our Mission</h4>
+
                                     <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
                                         data-widget_type="text-editor.default">
                                         <div class="elementor-widget-container">
-                                            <p>Making professional therapy accessible, affordable, and convenient — so anyone who struggles with life’s challenges can get help, anytime and anywhere.</p>
+                                            <p>To improve accessibility of quality mental health services for all across Zambia</p>
+                                        </div>
+                                    </div>
+                                    <h4 class="elementor-heading-title elementor-size-default">Our Vision</h4>
+
+                                    <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
+                                        data-widget_type="text-editor.default">
+                                        <div class="elementor-widget-container">
+                                            <p> Be a medium for transformative mental health services in Zambia</p>
                                         </div>
                                     </div>
                                 </div>
@@ -473,7 +482,7 @@
             </div>
         </div>
     </section>
-    {{-- <section class="elementor-section elementor-top-section elementor-element elementor-element-12633b2 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="12633b2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+    <section class="elementor-section elementor-top-section elementor-element elementor-element-12633b2 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="12633b2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-eb00803" data-id="eb00803" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
@@ -481,160 +490,158 @@
                         data-widget_type="jkit_heading.default">
                         <div class="elementor-widget-container">
                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet- align-mobile- jeg_module_699_10_632ca945aadd0">
-                                <h5 class="heading-section-subtitle  style-color">Our Psychologist</h5>
+                                {{-- <h5 class="heading-section-subtitle  style-color">O</h5> --}}
                                 <div class="heading-section-title ">
-                                    <h2 class="heading-title">Meet Expert <span class="style-gradient"><span>Psychologist</span></span>
+                                    <h2 class="heading-title">Core <span class="style-gradient"><span>Values</span></span>
                                     </h2>
                                 </div>
                                 <div class="heading-section-description">
-                                    <p>We have hand-selected the very best HCPC registered psychologists.</p>
+                                    {{-- <p>We have hand-selected the very best HCPC registered psychologists.</p> --}}
                                 </div>
                             </div>
                         </div>
                     </div>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-5cd5314 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5cd5314" data-element_type="section">
-                        <div class="elementor-container elementor-column-gap-no">
-                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                        <div class="elementor-container elementor-column-gap-no container">
+                            
+                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                                <div style="padding: 10%">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                                <div class="profile-card "><img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                                    <div class="hover-area alignment-center">
-                                                        <div class="profile-body">
-                                                            <h3 class="profile-title"></h3>
-                                                            <p class="profile-designation"></p>
-
-                                                            <ul class="social-list">
-                                                                <li class="social-icon elementor-repeater-item-554c86a"><a href="https://facebook.com/"><i aria-hidden="true" class="fab fa-facebook-f"></i></a></li>
-                                                                <li class="social-icon elementor-repeater-item-9ca47d7"><a href="https://twitter.com/"><i aria-hidden="true" class="fab fa-twitter"></i></a></li>
-                                                                <li class="social-icon elementor-repeater-item-23f2c3d"><a href="https://instagram.com/"><i aria-hidden="true" class="jki jki-instagram-1-light"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                                <div class="profile-card ">
+                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
+                                                  
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <div class="heading-section-title ">
-                                                    <h5 class="heading-title">Jennifer Smith </h5>
-                                                </div>
-                                                <h5 class="heading-section-subtitle  style-color">Psychologist</h5>
+                                                <h4 style="color:rgb(25, 116, 119)">Cultural Sensitivity and Diversity</h4>
+                                                <h5 class="heading-section-subtitle  style-color">
+                                                    Recognizing and respecting individual and cultural differences, promoting inclusivity, and providing culturally sensitive care that acknowledges and respects the diversity of people's backgrounds, beliefs, and values
+                                                </h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-918ce12 animated-slow elementor-invisible" data-id="918ce12" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:200}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-519b51c elementor-widget elementor-widget-jkit_team" data-id="519b51c" data-element_type="widget" data-widget_type="jkit_team.default">
+                            
+                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                                <div style="padding: 10%">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_13_632ca945b6965">
-                                                <div class="profile-card "><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG1M_vlsZ87lb82tZwH4t61VYPjETAenPm6kXWz3zsPBB3oe2if8x0yuSpxCfyZHeLQJA&usqp=CAU">
-                                                    <div class="hover-area alignment-center">
-                                                        <div class="profile-body">
-                                                            <h3 class="profile-title"></h3>
-                                                            <p class="profile-designation"></p>
-
-                                                            <ul class="social-list">
-                                                                <li class="social-icon elementor-repeater-item-554c86a"><a href="https://facebook.com/"><i aria-hidden="true" class="fab fa-facebook-f"></i></a></li>
-                                                                <li class="social-icon elementor-repeater-item-9ca47d7"><a href="https://twitter.com/"><i aria-hidden="true" class="fab fa-twitter"></i></a></li>
-                                                                <li class="social-icon elementor-repeater-item-23f2c3d"><a href="https://instagram.com/"><i aria-hidden="true" class="jki jki-instagram-1-light"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
+                                                <div class="profile-card ">
+                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
+                                                  
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-45aceb0 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="45aceb0" data-element_type="widget" data-widget_type="jkit_heading.default">
+                                    </div> --}}
+                                    <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_14_632ca945bc2a4">
-                                                <div class="heading-section-title ">
-                                                    <h5 class="heading-title">Andrew Smith </h5>
-                                                </div>
-                                                <h5 class="heading-section-subtitle  style-color">Psychologist</h5>
+                                            <div class="jeg-elementor-kit jkit-heading align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
+                                                <h4 style="color:rgb(25, 116, 119)">Empathy and Compassion</h4>
+                                                <h5 class="heading-section-subtitle  style-color">
+                                                 Demonstrating understanding, empathy, and compassion, showing sensitivity and respect for people’s feelings, experiences, and perspectives.                                                
+                                                </h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-9a44011 animated-slow elementor-invisible" data-id="9a44011" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:400}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-909afe9 elementor-widget elementor-widget-jkit_team" data-id="909afe9" data-element_type="widget" data-widget_type="jkit_team.default">
+                            
+                            
+                            
+                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                                <div style="padding: 10%">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_15_632ca945bea5f">
-                                                <div class="profile-card "><img src="https://tribesites.com/wp-content/uploads/sites/291/2017/05/591e5a27a6a87.jpg">
-                                                    <div class="hover-area alignment-center">
-                                                        <div class="profile-body">
-                                                            <h3 class="profile-title"></h3>
-                                                            <p class="profile-designation"></p>
-
-                                                            <ul class="social-list">
-                                                                <li class="social-icon elementor-repeater-item-554c86a"><a href="https://facebook.com/"><i aria-hidden="true" class="fab fa-facebook-f"></i></a></li>
-                                                                <li class="social-icon elementor-repeater-item-9ca47d7"><a href="https://twitter.com/"><i aria-hidden="true" class="fab fa-twitter"></i></a></li>
-                                                                <li class="social-icon elementor-repeater-item-23f2c3d"><a href="https://instagram.com/"><i aria-hidden="true" class="jki jki-instagram-1-light"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
+                                                <div class="profile-card ">
+                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
+                                                  
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-edfe1dc elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="edfe1dc" data-element_type="widget" data-widget_type="jkit_heading.default">
+                                    </div> --}}
+                                    <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_16_632ca945c1556">
-                                                <div class="heading-section-title ">
-                                                    <h5 class="heading-title">Donna Turner </h5>
-                                                </div>
-                                                <h5 class="heading-section-subtitle  style-color">Psychologist</h5>
+                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
+                                                <h4 style="color:rgb(25, 116, 119)">Competence</h3>
+                                                <br>
+                                                <h5 class="heading-section-subtitle  style-color">
+                                                    Continuously developing and maintaining their professional skills and knowledge through ongoing education, training, and supervision to provide the best quality of care
+                                                </h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-558f745 elementor-invisible" data-id="558f745" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:600}">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-2e15f92 elementor-widget elementor-widget-jkit_team" data-id="2e15f92" data-element_type="widget" data-widget_type="jkit_team.default">
+                            
+                        </div>
+                    </section>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-5cd5314 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5cd5314" data-element_type="section">
+                        <div class="elementor-container elementor-column-gap-no container">
+                            
+                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                                <div style="padding: 10%">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_17_632ca945c3cad">
-                                                <div class="profile-card "><img src="https://images.squarespace-cdn.com/content/v1/59e4102d8fd4d2e0d6adcf7a/1576169028799-1BCVSBLR09XE3I9US5GW/Dr.+Perry+Pic2.jpg?format=1000w">
-                                                    <div class="hover-area alignment-center">
-                                                        <div class="profile-body">
-                                                            <h3 class="profile-title"></h3>
-                                                            <p class="profile-designation"></p>
-
-                                                            <ul class="social-list">
-                                                                <li class="social-icon elementor-repeater-item-554c86a"><a href="https://facebook.com/"><i aria-hidden="true" class="fab fa-facebook-f"></i></a></li>
-                                                                <li class="social-icon elementor-repeater-item-9ca47d7"><a href="https://twitter.com/"><i aria-hidden="true" class="fab fa-twitter"></i></a></li>
-                                                                <li class="social-icon elementor-repeater-item-23f2c3d"><a href="https://instagram.com/"><i aria-hidden="true" class="jki jki-instagram-1-light"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
+                                                <div class="profile-card ">
+                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
+                                                  
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-47a8447 elementor-widget-tablet__width-initial elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="47a8447" data-element_type="widget" data-widget_type="jkit_heading.default">
+                                    </div> --}}
+                                    <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_18_632ca945c6e76">
-                                                <div class="heading-section-title ">
-                                                    <h5 class="heading-title">Peter Owt </h5>
-                                                </div>
-                                                <h5 class="heading-section-subtitle  style-color">Psychologist</h5>
+                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
+                                                <h4 style="color:rgb(25, 116, 119)">Confidentiality<br>and Welfare</h3>
+                                                <h5 class="heading-section-subtitle  style-color">
+                                                    Prioritizing the well-being and best interests of clients, providing client-centered care, and working towards enhancing the psychological health and welfare of their clients.                                                
+                                                </h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                                <div style="padding: 10%">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
+                                                <div class="profile-card ">
+                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
+                                                  
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> --}}
+                                    <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
+                                                <h4 style="color:rgb(25, 116, 119)">Collaboration and Interdisciplinary Approach</h4>
+                                                <h5 class="heading-section-subtitle  style-color">
+                                                    Collaborating with other professionals, when appropriate, to provide comprehensive and integrated care to clients, and recognizing the value of an interdisciplinary approach in addressing complex psychological issues.                                                
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </section>
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
 </div>
 @include('layouts.footer')
