@@ -29,17 +29,10 @@ Route::get('get-therapy-session-chat-messages/{chat_id}/{starter}', [SurveyContr
 
 Route::post('submit-survey', [ResultsController::class, 'store']);
 
-Route::controller(RegisterController::class)->group(function(){
-    Route::post('register', 'register');
-});
+Route::post('login', [LoginController::class, 'login'])->middleware('auth:sanctum');
+Route::post('register', [RegisterController::class, 'register']);
 
-Route::controller(LoginController::class)->group(function(){
-    Route::post('login', 'login');
-});
-
-Route::controller(NotificationController::class)->group(function(){
-    Route::get('my-notifications', 'index')->middleware('auth:sanctum');
-});
+Route::get('my-notifications', [NotificationController::class, 'index'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->post('logout', function (Request $request) {
     Auth::guard('web')->logout();
