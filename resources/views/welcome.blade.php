@@ -289,9 +289,9 @@
 							<div class="elementor-element elementor-element-217e2e3 animated-slow elementor-widget-tablet__width-initial elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="217e2e3" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="jkit_heading.default">
 								<div class="elementor-widget-container">
 									<div style="margin-top:-20px" class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile- jeg_module_6_10_632ca6977ceb1">
-										<h5 class="heading-section-subtitle  style-color">Our Services</h5>
+										{{-- <h5 class="heading-section-subtitle  style-color">Our Services</h5> --}}
 										<div class="heading-section-title ">
-											<h2 class="heading-title">We Provide <span class="style-gradient"><span>Metal Healthcare</span></span> Services</h2>
+											<h2 class="heading-title"><span class="style-gradient"><span>Our</span></span> Services</h2>
 										</div>
 										<div class="heading-section-description">
 											<p>Our therapists are experienced mental health counselors with expertise in a range of issues — including anxiety, depression, substance abuse, trauma, couples therapy, and more. All Nsansa Wellness therapists complete a rigorous vetting and credentialing process.</p>
