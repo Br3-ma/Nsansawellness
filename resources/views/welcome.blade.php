@@ -185,7 +185,7 @@
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-															<span class="elementor-icon-list-text">Depression Therapy</span>
+															<span class="elementor-icon-list-text">Depression</span>
 														</li>
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
@@ -195,7 +195,7 @@
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-															<span class="elementor-icon-list-text">Insomia</span>
+															<span class="elementor-icon-list-text">Insomnia</span>
 														</li>
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
@@ -212,11 +212,6 @@
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
 															<span class="elementor-icon-list-text">Stress</span>
 														</li>
-														<li class="elementor-icon-list-item">
-															<span class="elementor-icon-list-icon">
-																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-															<span class="elementor-icon-list-text">Executive Coaching</span>
-														</li>
 													</ul>
 												</div>
 											</div>
@@ -227,11 +222,6 @@
 											<div class="elementor-element elementor-element-1dd72a8 animated-slow elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list" data-id="1dd72a8" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="icon-list.default">
 												<div class="elementor-widget-container">
 													<ul class="elementor-icon-list-items">
-														<li class="elementor-icon-list-item">
-															<span class="elementor-icon-list-icon">
-																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-															<span class="elementor-icon-list-text">Family Therapy</span>
-														</li>
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
@@ -270,7 +260,7 @@
 														<li class="elementor-icon-list-item">
 															<span class="elementor-icon-list-icon">
 																<i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-															<span class="elementor-icon-list-text">Anxiety Therapy</span>
+															<span class="elementor-icon-list-text">Anxiety</span>
 														</li>
 													</ul>
 												</div>
