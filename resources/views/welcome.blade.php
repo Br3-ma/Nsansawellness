@@ -205,14 +205,14 @@
 									</div>
 								</div>
 							</section>
-							<div class="elementor-element elementor-element-f01c80f elementor-widget__width-auto e-transform elementor-widget elementor-widget-jkit_button" data-id="f01c80f" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
+							{{-- <div class="elementor-element elementor-element-f01c80f elementor-widget__width-auto e-transform elementor-widget elementor-widget-jkit_button" data-id="f01c80f" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
 								<div class="elementor-widget-container">
 									<div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_6_2_632ca6974641a">
-										{{-- <a href="#" id="myBtn2" class="jkit-button-wrapper">Get Started</a> --}}
+										<a href="#" id="myBtn2" class="jkit-button-wrapper">Get Started</a>
 										<a href="{{ route('start') }}" style="color:#fff" class="jkit-button-wrapper">Get Started</a>
 									</div>
 								</div>
-							</div>
+							</div> --}}
 						</div>
 					</div>
 				</div>
@@ -288,7 +288,7 @@
 						<div class="elementor-widget-wrap elementor-element-populated">
 							<div class="elementor-element elementor-element-217e2e3 animated-slow elementor-widget-tablet__width-initial elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="217e2e3" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="jkit_heading.default">
 								<div class="elementor-widget-container">
-									<div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile- jeg_module_6_10_632ca6977ceb1">
+									<div style="margin-top:-20px" class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile- jeg_module_6_10_632ca6977ceb1">
 										<h5 class="heading-section-subtitle  style-color">Our Services</h5>
 										<div class="heading-section-title ">
 											<h2 class="heading-title">We Provide <span class="style-gradient"><span>Metal Healthcare</span></span> Services</h2>
