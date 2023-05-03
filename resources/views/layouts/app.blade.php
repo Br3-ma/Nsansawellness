@@ -124,150 +124,144 @@
                 }
             }
 
- main {
-	 display: grid;
-	 place-items: center;
-	 min-height: 100vh;
-	 padding: 2em;
-}
- form {
-	 max-width: 420px;
-	 padding: 2em;
-	 background-color: white;
-	 box-shadow: 2px 0 15px -2px rgba(0, 0, 0, 0.2);
-	 border-radius: 15px;
-}
- form > h1 {
-	 text-align: center;
-	 font-weight: 900;
-	 color: #443c68;
-}
- form > p {
-	 text-align: center;
-	 margin-bottom: 2.4em;
-	 line-height: 1.8;
-	 font-weight: 600;
-}
- form > .textarea-group {
-	 margin-top: 2.4em;
-}
- form > .textarea-group > label {
-	 display: block;
-	 width: 100%;
-}
- form > .textarea-group > label > span {
-	 display: block;
-	 font-size: 0.9em;
-	 font-weight: 600;
-	 margin-bottom: 0.8em;
-}
- form > .textarea-group > label > textarea {
-	 box-sizing: border-box;
-	 display: block;
-	 padding: 1em;
-	 font-family: "Mulish", sans-serif;
-	 line-height: 1.8;
-	 width: 100%;
-	 resize: none;
-	 border: none;
-	 background-color: #ebebeb;
-}
- form > div.action-group {
-	 margin-top: 2em;
-	 display: flex;
-	 flex-direction: column;
-	 row-gap: 1em;
-}
- form > div.action-group > input[type="reset"] {
-	 padding: 1em 2em;
-	 border: none;
-	 background: none;
-	 cursor: pointer;
-	 font-size: 0.9em;
-	 font-weight: 600;
-	 opacity: 0.8;
-}
- @media (hover: hover) {
-	 form > div.action-group > input[type="reset"]:hover {
-		 text-decoration: underline;
-	}
-}
- form > div.action-group > input[type="button"] {
-	 border: 2px solid transparent;
-	 padding: 1em 2em;
-	 border-radius: 12px;
-	 cursor: pointer;
-	 font-weight: 700;
-	 color: white;
-	 background-color: #443c68;
-	 transition: all 0.1s ease-in-out;
-}
- @media (hover: hover) {
-	 form > div.action-group > input[type="button"]:hover {
-		 background-color: #534485;
-		 border: 2px solid #443c68;
-	}
-}
-/* Input Rating */
- .rating {
-	 user-select: none;
-}
- .rating > input[type="radio"] {
-	 position: absolute;
-	 opacity: 0;
-	 z-index: -999;
-}
- .rating__box {
-	 display: flex;
-	 justify-content: center;
-	 gap: 1em;
-}
- .rating__star {
-	 font-size: 3.2em;
-	 color: #d3d3d3;
-	 transition: all 0.1s ease-in-out;
-}
- .rating__star:active {
-	 color: #4a4a4a !important;
-	 text-shadow: 1px 0 5px rgba(0, 0, 0, 0.2);
-}
- @media (hover: hover) {
-	 .rating__star:hover {
-		 transform: scale(1.3);
-	}
-}
- .rating > input[type="radio"]:nth-child(1):checked ~ .rating__box > .rating__star:nth-child(-n + 1) {
-	 color: orange;
-}
- .rating > input[type="radio"]:nth-child(1):focus-visible ~ .rating__box > .rating__star:nth-child(1) {
-	 outline: solid 1px black;
-}
- .rating > input[type="radio"]:nth-child(2):checked ~ .rating__box > .rating__star:nth-child(-n + 2) {
-	 color: orange;
-}
- .rating > input[type="radio"]:nth-child(2):focus-visible ~ .rating__box > .rating__star:nth-child(2) {
-	 outline: solid 1px black;
-}
- .rating > input[type="radio"]:nth-child(3):checked ~ .rating__box > .rating__star:nth-child(-n + 3) {
-	 color: orange;
-}
- .rating > input[type="radio"]:nth-child(3):focus-visible ~ .rating__box > .rating__star:nth-child(3) {
-	 outline: solid 1px black;
-}
- .rating > input[type="radio"]:nth-child(4):checked ~ .rating__box > .rating__star:nth-child(-n + 4) {
-	 color: orange;
-}
- .rating > input[type="radio"]:nth-child(4):focus-visible ~ .rating__box > .rating__star:nth-child(4) {
-	 outline: solid 1px black;
-}
- .rating > input[type="radio"]:nth-child(5):checked ~ .rating__box > .rating__star:nth-child(-n + 5) {
-	 color: orange;
-}
- .rating > input[type="radio"]:nth-child(5):focus-visible ~ .rating__box > .rating__star:nth-child(5) {
-	 outline: solid 1px black;
-}
-/* End Input Rating */
- 
+                main {
+                    display: grid;
+                    place-items: center;
+                    min-height: 100vh;
+                    padding: 2em;
+                }
+                
+                form > h1 {
+                    text-align: center;
+                    font-weight: 900;
+                    color: #443c68;
+                }
+                form > p {
+                    text-align: center;
+                    margin-bottom: 2.4em;
+                    line-height: 1.8;
+                    font-weight: 600;
+                }
+                form > .textarea-group {
+                    margin-top: 2.4em;
+                }
+                form > .textarea-group > label {
+                    display: block;
+                    width: 100%;
+                }
+                form > .textarea-group > label > span {
+                    display: block;
+                    font-size: 0.9em;
+                    font-weight: 600;
+                    margin-bottom: 0.8em;
+                }
+                form > .textarea-group > label > textarea {
+                    box-sizing: border-box;
+                    display: block;
+                    padding: 1em;
+                    font-family: "Mulish", sans-serif;
+                    line-height: 1.8;
+                    width: 100%;
+                    resize: none;
+                    border: none;
+                    background-color: #ebebeb;
+                }
+                form > div.action-group {
+                    margin-top: 2em;
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 1em;
+                }
+                form > div.action-group > input[type="reset"] {
+                    padding: 1em 2em;
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    font-size: 0.9em;
+                    font-weight: 600;
+                    opacity: 0.8;
+                }
+                @media (hover: hover) {
+                    form > div.action-group > input[type="reset"]:hover {
+                        text-decoration: underline;
+                    }
+                }
+                form > div.action-group > input[type="button"] {
+                    border: 2px solid transparent;
+                    padding: 1em 2em;
+                    border-radius: 12px;
+                    cursor: pointer;
+                    font-weight: 700;
+                    color: white;
+                    background-color: #443c68;
+                    transition: all 0.1s ease-in-out;
+                }
+                @media (hover: hover) {
+                    form > div.action-group > input[type="button"]:hover {
+                        background-color: #534485;
+                        border: 2px solid #443c68;
+                    }
+                }
+                /* Input Rating */
+                .rating {
+                    user-select: none;
+                }
+                .rating > input[type="radio"] {
+                    position: absolute;
+                    opacity: 0;
+                    z-index: -999;
+                }
+                .rating__box {
+                    display: flex;
+                    justify-content: center;
+                    gap: 1em;
+                }
+                .rating__star {
+                    font-size: 3.2em;
+                    color: #d3d3d3;
+                    transition: all 0.1s ease-in-out;
+                }
+                .rating__star:active {
+                    color: #4a4a4a !important;
+                    text-shadow: 1px 0 5px rgba(0, 0, 0, 0.2);
+                }
+                @media (hover: hover) {
+                    .rating__star:hover {
+                        transform: scale(1.3);
+                    }
+                }
+                .rating > input[type="radio"]:nth-child(1):checked ~ .rating__box > .rating__star:nth-child(-n + 1) {
+                    color: orange;
+                }
+                .rating > input[type="radio"]:nth-child(1):focus-visible ~ .rating__box > .rating__star:nth-child(1) {
+                    outline: solid 1px black;
+                }
+                .rating > input[type="radio"]:nth-child(2):checked ~ .rating__box > .rating__star:nth-child(-n + 2) {
+                    color: orange;
+                }
+                .rating > input[type="radio"]:nth-child(2):focus-visible ~ .rating__box > .rating__star:nth-child(2) {
+                    outline: solid 1px black;
+                }
+                .rating > input[type="radio"]:nth-child(3):checked ~ .rating__box > .rating__star:nth-child(-n + 3) {
+                    color: orange;
+                }
+                .rating > input[type="radio"]:nth-child(3):focus-visible ~ .rating__box > .rating__star:nth-child(3) {
+                    outline: solid 1px black;
+                }
+                .rating > input[type="radio"]:nth-child(4):checked ~ .rating__box > .rating__star:nth-child(-n + 4) {
+                    color: orange;
+                }
+                .rating > input[type="radio"]:nth-child(4):focus-visible ~ .rating__box > .rating__star:nth-child(4) {
+                    outline: solid 1px black;
+                }
+                .rating > input[type="radio"]:nth-child(5):checked ~ .rating__box > .rating__star:nth-child(-n + 5) {
+                    color: orange;
+                }
+                .rating > input[type="radio"]:nth-child(5):focus-visible ~ .rating__box > .rating__star:nth-child(5) {
+                    outline: solid 1px black;
+                }
+                /* End Input Rating */
+                
         </style>
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -873,6 +867,11 @@
                 background: linear-gradient(145deg, #e6e6e6, #ffffff);
                 box-shadow:  24px 24px 49px #e0e0e0,
                 -24px -24px 49px #ffffff;
+                max-width: 420px;
+                padding: 2em;
+                background-color: white;
+                box-shadow: 2px 0 15px -2px rgba(0, 0, 0, 0.2);
+                border-radius: 15px;
             ">
             @csrf
               <h1>Rate Us</h1>
