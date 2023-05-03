@@ -47,88 +47,9 @@
             </div>
         </div>
     </section>
-    <section class="elementor-section elementor-top-section elementor-element elementor-element-af094c0 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="af094c0" data-element_type="section">
+    <section style="margin-top:2%" class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="89c6fcb" data-element_type="section">
         <div class="elementor-container elementor-column-gap-no">
-            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-b3ced88" data-id="b3ced88" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;gradient&quot;}">
-                <div class="elementor-widget-wrap elementor-element-populated">
-                    <div class="elementor-element elementor-element-45fedcb animated-slow elementor-invisible elementor-widget elementor-widget-image" data-id="45fedcb" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInLeft&quot;,&quot;_animation_delay&quot;:500}"
-                        data-widget_type="image.default">
-                        <div class="elementor-widget-container">
-                            <img width="1620" height="1079" src="https://t4.ftcdn.net/jpg/03/91/10/01/360_F_391100121_IrmBtzs1T4RQXYQlLIBF8FBzDaeA0Vd9.jpg" loading="lazy" /> 
-                        </div>
-                    </div>
-                    <div class="elementor-element elementor-widget elementor-widget-image" data-id="57285d4" data-element_type="widget" data-widget_type="image.default">
-                        <div class="elementor-widget-container">
-                            <img width="800" height="184" src="{{ asset('public/img/5.jpg') }}" class="attachment-large size-large" alt="Man and woman during the psychological counseling indoors" loading="lazy"
-                                sizes="(max-width: 800px) 100vw, 800px" /> </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-5887449" data-id="5887449" data-element_type="column">
-                <div class="elementor-widget-wrap elementor-element-populated">
-                    <div class="elementor-element elementor-element-ffe3f66 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="ffe3f66" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
-                        data-widget_type="jkit_heading.default">
-                        <div class="elementor-widget-container">
-                            <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_699_4_632ca9457867e">
-                                {{-- <h5 class="heading-section-subtitle  style-color">About Us</h5> --}}
-
-                                <div class="heading-section-description">
-                                    <p> 
-                                        At Nsansa Wellness, we’re on a mission to make therapy accessible. 
-                                        We want to put the power of change back into each and every person’s hands, 
-                                        through quality therapy services. By providing immediate access to our 
-                                        psychologists and peer counselors, we hope to empower people to have a 
-                                        life of fulfilment and prosperity.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-5328d64 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5328d64" data-element_type="section">
-                        <div class="elementor-container">
-                            <div style="">
-                                <h4 style="font-family:'Eczar';color: #7e35a0" class="elementor-heading-title elementor-size-default">Our Mission</h4>
-
-                                <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
-                                    data-widget_type="text-editor.default">
-                                    <div class="elementor-widget-container">
-                                        <p>To improve accessibility of quality mental health services for all across Zambia</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-5328d64 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5328d64" data-element_type="section">
-                        <div style="">
-                            <h4 style="font-family:'Eczar';color: #7e35a0" class="elementor-heading-title elementor-size-default">Our Vision</h4>
-
-                            <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
-                                data-widget_type="text-editor.default">
-                                <div class="elementor-widget-container">
-                                    <p> Be a medium for transformative mental health services in Zambia</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    {{-- <div class="elementor-element elementor-element-12afd25 elementor-widget__width-auto e-transform animated-slow elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="12afd25" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:600,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
-                        data-widget_type="jkit_button.default">
-                        <div class="elementor-widget-container">
-                            <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_699_5_632ca94580f7d"><a href="{{ route('contact')}}" class="jkit-button-wrapper">Contact Us</a></div>
-                        </div>
-                    </div> --}}
-
-                    {{-- Mission and Values --}}
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="heading-section-title">
-        <h2 style="text-align:center" class="heading-title">Made for everyone<br> to <span class="style-gradient"><span>feel safe and welcome.</span></span></h2>
-    </div>
-    <section class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="89c6fcb" data-element_type="section">
-        <div class="elementor-container elementor-column-gap-no">
-            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-636fb60" data-id="636fb60" data-element_type="column">
+            <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-636fb60" data-id="636fb60" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
                     <div class="elementor-element elementor-element-04b8e5e animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="04b8e5e" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                         data-widget_type="jkit_heading.default">
@@ -136,10 +57,15 @@
                             <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_699_6_632ca945830dc">
                                 <h5 class="heading-section-subtitle  style-color">Why Choose</h5>
                                 <div class="heading-section-title ">
-                                    <h2 class="heading-title">We are Ready To <span class="style-gradient"><span>Support</span></span> </h2>
+                                    <h2 class="heading-title">Made for everyone to <span class="style-gradient"><span>feel safe and welcome</span></span></h2>
                                 </div>
-                                <div class="heading-section-description">Don’t go through tough times alone. Whatever you're grappling with, our skilled counselors can help you. You deserve to be happyMental health is like a garden that needs to be nourished, tended to, and taken care of regularly. It is only when we do this that our lives fully flourish, blossom and bear beautiful fruit. 
-                                    Your mental health is a gift that's worth its weight in gold.</div>
+                                <div class="heading-section-description">
+                                    At Nsansa Wellness, we’re on a mission to make therapy accessible. 
+                                    We want to put the power of change back into each and every person’s hands, 
+                                    through quality therapy services. By providing immediate access to our 
+                                    psychologists and peer counselors, we hope to empower people to have a 
+                                    life of fulfilment and prosperity.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -220,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-87bdecd" data-id="87bdecd" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-87bdecd" data-id="87bdecd" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                 <div style="background-image: url('https://cdn.mind-diagnostics.org/uploads/mind-diagnostics/images/image/url/online-therapy-cbt-is-a-thing-you-must-know-1.jpg'); background-repeat: no-repeat, repeat;background-position: center;background-size: cover;" class="elementor-widget-wrap elementor-element-populated">
                     <div class="elementor-element elementor-element-0064aa0 elementor-widget elementor-widget-spacer" data-id="0064aa0" data-element_type="widget" data-widget_type="spacer.default">
                         <div class="elementor-widget-container">
@@ -243,12 +169,12 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-1e866fe" data-id="1e866fe" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-1e866fe" data-id="1e866fe" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                 <div class="elementor-widget-wrap elementor-element-populated">
                     <div class="elementor-background-overlay"></div>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-eb39e0b elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="eb39e0b" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no">
-                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7e875aa animated-slow elementor-invisible" data-id="7e875aa" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:100}">
+                            {{-- <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7e875aa animated-slow elementor-invisible" data-id="7e875aa" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:100}">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-1480655 elementor-widget elementor-widget-jkit_fun_fact" data-id="1480655" data-element_type="widget" data-widget_type="jkit_fun_fact.default">
                                         <div class="elementor-widget-container">
@@ -266,7 +192,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div> --}}
                             <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-1f811f2" data-id="1f811f2" data-element_type="column">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-77a887f animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="77a887f" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:300}"
@@ -315,7 +241,7 @@
                     </section>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-3cfe2ce elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="3cfe2ce" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no">
-                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-576aee2 animated-slow elementor-invisible" data-id="576aee2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:200}">
+                            {{-- <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-576aee2 animated-slow elementor-invisible" data-id="576aee2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:200}">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-829f81d elementor-widget elementor-widget-jkit_fun_fact" data-id="829f81d" data-element_type="widget" data-widget_type="jkit_fun_fact.default">
                                         <div class="elementor-widget-container">
@@ -333,7 +259,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
+                            </div> --}}
                             <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-13c3e78" data-id="13c3e78" data-element_type="column">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-8d13eb9 animated-slow elementor-invisible elementor-widget elementor-widget-image-carousel" data-id="8d13eb9" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;2&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;slides_to_show_tablet&quot;:&quot;1&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:400,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500,&quot;image_spacing_custom&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:20,&quot;sizes&quot;:[]}}"
@@ -358,6 +284,28 @@
                                                     max-width: calc(100% / var(--e-image-carousel-slides-to-show, 3))
                                                 }
                                             </style>
+                                            <div class="elementor-container">
+                                                <div style="padding:5%">
+                                                    <h4 style="font-family:'Eczar';color: #7e35a0" class="elementor-heading-title elementor-size-default">Our Mission</h4>
+                    
+                                                    <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
+                                                        data-widget_type="text-editor.default">
+                                                        <div class="elementor-widget-container">
+                                                            <p>To improve accessibility of quality mental health services for all across Zambia</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="padding:5%">
+                                                <h4 style="font-family:'Eczar';color: #7e35a0" class="elementor-heading-title elementor-size-default">Our Vision</h4>
+                    
+                                                <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
+                                                    data-widget_type="text-editor.default">
+                                                    <div class="elementor-widget-container">
+                                                        <p> Be a medium for transformative mental health services in Zambia</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
                                                 <div class="elementor-image-carousel swiper-wrapper">
                                                     <div class="swiper-slide">
@@ -384,7 +332,7 @@
                         </div>
                     </section>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </section>
     <section class="elementor-section elementor-top-section elementor-element elementor-element-12633b2 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="12633b2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -411,7 +359,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -420,7 +368,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
@@ -436,7 +384,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -445,7 +393,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
@@ -463,7 +411,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -472,7 +420,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
@@ -494,7 +442,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -503,7 +451,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
@@ -519,7 +467,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -528,7 +476,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> --}}
+                                    </div>
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">

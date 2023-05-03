@@ -71,7 +71,7 @@ class LoginController extends Controller
                 if($request->wantsJson()){
                     auth()->login($user);
                     $token = $user->createToken('LaravelAuthApp')->accessToken;
-                    return response()->json(['token' => $token], 200);
+                    return response()->json(['token' => $token, 'user'=> $user], 200);
                 }else{
                     if ($user->role == 'patient') {
                         return redirect('/counseling-center');

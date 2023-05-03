@@ -85,118 +85,21 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <section class="elementor-section elementor-inner-section elementor-element elementor-element-5328d64 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5328d64" data-element_type="section">
-                        <div class="elementor-container elementor-column-gap-no">
-                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0521274" data-id="0521274" data-element_type="column">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-e5309f6 animated-slow elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list" data-id="e5309f6" data-element_type="widget"
-                                        data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:300}" data-widget_type="icon-list.default">
-                                        <div class="elementor-widget-container">
-                                            <ul class="elementor-icon-list-items">
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Anxiety Therapy</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Bipolar Disorder</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Depression Therapy</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">ADHD</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Insomia</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Grief / Loss</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Motivation</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Stress</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Executive Coaching</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-6b0fcf1" data-id="6b0fcf1" data-element_type="column">
-                                <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-518771b animated-slow elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list" data-id="518771b" data-element_type="widget"
-                                        data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="icon-list.default">
-                                        <div class="elementor-widget-container">
-                                            <ul class="elementor-icon-list-items">
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Family Therapy</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Alcohol & Substance Abuse</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Empolyee Counseling Services</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Burnout</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Focus</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Family Therapy</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Work / Life Balance</span>
-                                                </li>
-                                                <li class="elementor-icon-list-item">
-                                                    <span class="elementor-icon-list-icon">
-                                                        <i aria-hidden="true" class="fas fa-check-circle"></i> </span>
-                                                    <span class="elementor-icon-list-text">Stress Management</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-5328d64 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5328d64" data-element_type="section">
+
+                    </section>
+                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-5328d64 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="5328d64" data-element_type="section">
+                        <div style="">
+                            <h4 style="font-family:'Eczar';color: #7e35a0" class="elementor-heading-title elementor-size-default">Our Vision</h4>
+
+                            <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
+                                data-widget_type="text-editor.default">
+                                <div class="elementor-widget-container">
+                                    <p> Be a medium for transformative mental health services in Zambia</p>
                                 </div>
                             </div>
                         </div>
-                    </section> --}}
-
+                    </section>
                     {{-- <div class="elementor-element elementor-element-12afd25 elementor-widget__width-auto e-transform animated-slow elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="12afd25" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:600,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
                         data-widget_type="jkit_button.default">
                         <div class="elementor-widget-container">
@@ -209,12 +112,9 @@
             </div>
         </div>
     </section>
-    <div class="heading-section-title">
-        <h2 style="text-align:center" class="heading-title">Made for everyone<br> to <span class="style-gradient"><span>feel safe and welcome.</span></span></h2>
-    </div>
     <section class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="89c6fcb" data-element_type="section">
         <div class="elementor-container elementor-column-gap-no">
-            <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-636fb60" data-id="636fb60" data-element_type="column">
+            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-636fb60" data-id="636fb60" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
                     <div class="elementor-element elementor-element-04b8e5e animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="04b8e5e" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                         data-widget_type="jkit_heading.default">
@@ -222,9 +122,10 @@
                             <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_699_6_632ca945830dc">
                                 <h5 class="heading-section-subtitle  style-color">Why Choose</h5>
                                 <div class="heading-section-title ">
-                                    <h2 class="heading-title">We Always Ready To <span class="style-gradient"><span>Help</span></span> Your Problem</h2>
+                                    <h2 class="heading-title">Made for everyone<br> to <span class="style-gradient"><span>feel safe and welcome.</span></span> </h2>
                                 </div>
-                                <div class="heading-section-description">Join hundreds of people in getting high-quality mental health care from the comfort of wherever you choose.</div>
+                                <div class="heading-section-description">Don’t go through tough times alone. Whatever you're grappling with, our skilled counselors can help you. You deserve to be happyMental health is like a garden that needs to be nourished, tended to, and taken care of regularly. It is only when we do this that our lives fully flourish, blossom and bear beautiful fruit. 
+                                    Your mental health is a gift that's worth its weight in gold.</div>
                             </div>
                         </div>
                     </div>
@@ -305,7 +206,7 @@
                     </div>
                 </div>
             </div>
-            <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-87bdecd" data-id="87bdecd" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-87bdecd" data-id="87bdecd" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                 <div style="background-image: url('https://cdn.mind-diagnostics.org/uploads/mind-diagnostics/images/image/url/online-therapy-cbt-is-a-thing-you-must-know-1.jpg'); background-repeat: no-repeat, repeat;background-position: center;background-size: cover;" class="elementor-widget-wrap elementor-element-populated">
                     <div class="elementor-element elementor-element-0064aa0 elementor-widget elementor-widget-spacer" data-id="0064aa0" data-element_type="widget" data-widget_type="spacer.default">
                         <div class="elementor-widget-container">
@@ -328,12 +229,12 @@
                     </div>
                 </div>
             </div>
-            <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-1e866fe" data-id="1e866fe" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            {{-- <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-1e866fe" data-id="1e866fe" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                 <div class="elementor-widget-wrap elementor-element-populated">
                     <div class="elementor-background-overlay"></div>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-eb39e0b elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="eb39e0b" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no">
-                            {{-- <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7e875aa animated-slow elementor-invisible" data-id="7e875aa" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:100}">
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7e875aa animated-slow elementor-invisible" data-id="7e875aa" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:100}">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-1480655 elementor-widget elementor-widget-jkit_fun_fact" data-id="1480655" data-element_type="widget" data-widget_type="jkit_fun_fact.default">
                                         <div class="elementor-widget-container">
@@ -351,7 +252,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div> 
                             <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-1f811f2" data-id="1f811f2" data-element_type="column">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-77a887f animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="77a887f" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:300}"
@@ -400,7 +301,7 @@
                     </section>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-3cfe2ce elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="3cfe2ce" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no">
-                            {{-- <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-576aee2 animated-slow elementor-invisible" data-id="576aee2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:200}">
+                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-576aee2 animated-slow elementor-invisible" data-id="576aee2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:200}">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-829f81d elementor-widget elementor-widget-jkit_fun_fact" data-id="829f81d" data-element_type="widget" data-widget_type="jkit_fun_fact.default">
                                         <div class="elementor-widget-container">
@@ -418,7 +319,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div> 
                             <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-13c3e78" data-id="13c3e78" data-element_type="column">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-8d13eb9 animated-slow elementor-invisible elementor-widget elementor-widget-image-carousel" data-id="8d13eb9" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;2&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;slides_to_show_tablet&quot;:&quot;1&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:400,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500,&quot;image_spacing_custom&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:20,&quot;sizes&quot;:[]}}"
@@ -469,7 +370,7 @@
                         </div>
                     </section>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <section class="elementor-section elementor-top-section elementor-element elementor-element-12633b2 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="12633b2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
