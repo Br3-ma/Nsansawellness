@@ -23,4 +23,9 @@ class PatientFile extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
+    // Returns a patient's counselor
+    public static function counselorAssigned($patient_id){
+        return AssignCounselor::where('patient_id', $patient_id)->with('counselor')
+                ->get()->first();
+    }
 }

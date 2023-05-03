@@ -62,7 +62,4 @@ trait PatientTrait {
         return $total;
     }
 
-    
-
-
 }

@@ -62,7 +62,7 @@
         </div>
     </div>
     @if (Session::has('attention'))
-    <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('attention') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -70,7 +70,7 @@
         </button> 
     </div>
     @elseif (Session::has('err_msg'))
-    <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="intro-x alert alert-danger w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('err_msg') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -144,6 +144,18 @@
                     {{-- <div>Condition</div> --}}
                     <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file->email }}</div>
                     <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class="w-3 h-3 mr-2"></i> {{ $file->created_at }} </div>
+                    @hasrole('admin')
+                        @if (App\Models\PatientFile::counselorAssigned($file->id) !== null)
+                            <div class="bg-primary p-2 rounded-md text-white mt-1"> 
+                                {{App\Models\PatientFile::counselorAssigned($file->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($file->id)->counselor->lname}}<br>
+                                <small>{{App\Models\PatientFile::counselorAssigned($file->id)->counselor->department }}</small>
+                            </div>
+                        @else
+                            <br>
+                            <br>
+                            <br>
+                        @endif
+                    @endhasrole
                 </div>
                 <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                     <a href="{{ route('all-patient-files', $file->id) }}" class="btn btn-warning text-white py-1 px-2 mr-2">
@@ -152,12 +164,12 @@
                     </a>
                     @hasanyrole('admin')
                         @if($file->assignedCounselor == null)
-                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-secondary py-1 px-2">
+                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-success py-1 px-2">
                             <i data-lucide="shield-check" class="w-3 h-3 mr-2"></i>
                             Assign Counselor
                         </button>
                         @else
-                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-secondary py-1 px-2">
+                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-danger py-1 px-2">
                             <i data-lucide="refresh-cw" class="w-3 h-3 mr-2"></i>
                             Re-assign
                         </button>
