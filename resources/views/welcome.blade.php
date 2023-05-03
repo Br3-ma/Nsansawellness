@@ -405,7 +405,7 @@
 										</div>
 									</div>
 									<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0cb18d8" data-id="0cb18d8" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-										<div style="background-image: url('https://www.apa.org/images/therapy-group-title-image_tcm7-162394.jpg'); background-repeat: no-repeat, repeat;background-size: cover;" class="elementor-element-populated">
+										<div style="background-image: url('https://cdn.mind-diagnostics.org/uploads/mind-diagnostics/images/image/url/the-top-ten-benefits-of-group-counseling-1_.jpg'); background-repeat: no-repeat, repeat;background-size: cover;" class="elementor-element-populated">
 											<div class="elementor-background-overlay"></div>
 											<div class="elementor-element elementor-element-6ff92aa elementor-widget elementor-widget-spacer" data-id="6ff92aa" data-element_type="widget" data-widget_type="spacer.default">
 												<div class="elementor-widget-container">
@@ -439,7 +439,7 @@
 						</div>
 					</div>
 					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-215cab6" data-id="215cab6" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-						<div style="background-image: url('https://www.gameplan-a.com/wp-content/uploads/fly-images/22970/man-stress-working-work-office-productivity-scaled-1200x630-ct.jpg'); background-repeat: no-repeat, repeat;background-position: center;background-size: cover;" class="elementor-element-populated">
+						<div style="background-image: url('https://storage.googleapis.com/peer-uploads-prod/cms/3_1_b9dcdc9ed3/3_1_b9dcdc9ed3.jpeg'); background-repeat: no-repeat, repeat;background-position: center;background-size: cover;" class="elementor-element-populated">
 							<div class="elementor-background-overlay"></div>
 							<div class="elementor-element elementor-element-73905b5 elementor-widget elementor-widget-spacer" data-id="73905b5" data-element_type="widget" data-widget_type="spacer.default">
 								<div class="elementor-widget-container">
