@@ -239,7 +239,7 @@
                                                     font-size: 59px
                                                 }
                                             </style>
-                                            <div class="elementor-container">
+                                            <div class="elementor-container animated-slow">
                                                 <div style="padding:10%; text-align:right;">
                                                     <h4 style="font-family:'Eczar';color: #9145b4" class="elementor-heading-title elementor-size-default">Our Mission</h4>
                     
@@ -251,13 +251,15 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="padding:10%; text-align:right;">
-                                                <h4 style="font-family:'Eczar';color: #9145b4" class="elementor-heading-title elementor-size-default">Our Vision</h4>
-                    
-                                                <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
-                                                    data-widget_type="text-editor.default">
-                                                    <div class="elementor-widget-container">
-                                                        <p> Be a medium for transformative mental health services in Zambia</p>
+                                            <div class="elementor-container animated-slow">
+                                                <div style="padding:10%; text-align:right;">
+                                                    <h4 style="font-family:'Eczar';color: #9145b4" class="elementor-heading-title elementor-size-default">Our Vision</h4>
+                        
+                                                    <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
+                                                        data-widget_type="text-editor.default">
+                                                        <div class="elementor-widget-container">
+                                                            <p> Be a medium for transformative mental health services in Zambia</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -315,21 +317,20 @@
 
 
                                         </div>
-                                        <div style="padding-left: 25%; float:right" class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
-                                            <div class="row flex">
-                                                <div class="swiper-slide">
-                                                    <img class="swiper-slide-image" src="https://www.salemstate.edu/sites/default/files/styles/inline_wide/public/images/GettyImages-509094578.jpg?itok=MO74tUBb" alt="School counselor explaining anger management techniques to a gro"
+                                        <div style="padding-left: 35%; float:right" class="" dir="ltr">
+                                            <div style="display: inline-flex">
+                                                <span>
+                                                    <img width="120" class="swiper-slide-image" src="https://www.salemstate.edu/sites/default/files/styles/inline_wide/public/images/GettyImages-509094578.jpg?itok=MO74tUBb" alt="School counselor explaining anger management techniques to a gro"
                                                         />
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <img class="swiper-slide-image" src="https://rswellness.org/wp-content/uploads/2018/08/pexels-photo-1181355.jpeg" alt="Couple counseling." />
+                                                </span>
+                                                <span>
+                                                    <img width="100" class="swiper-slide-image" src="https://rswellness.org/wp-content/uploads/2018/08/pexels-photo-1181355.jpeg" alt="Couple counseling." />
                                                     
-                                                </div>
-                                                <div class="swiper-slide">
-                                                    <img class="swiper-slide-image" src="https://post.psychcentral.com/wp-content/uploads/sites/4/2021/05/therapy-laptop-home-portrait-happy-732x549-thumbnail.jpg" alt="Young couple during the psychological counseling with psychologist"
+                                                </span>
+                                                <span>
+                                                    <img width="110" class="swiper-slide-image" src="https://post.psychcentral.com/wp-content/uploads/sites/4/2021/05/therapy-laptop-home-portrait-happy-732x549-thumbnail.jpg" alt="Young couple during the psychological counseling with psychologist"
                                                         />
-                                                        
-                                                </div>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
