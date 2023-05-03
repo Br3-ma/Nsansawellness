@@ -29,7 +29,7 @@ Route::get('get-therapy-session-chat-messages/{chat_id}/{starter}', [SurveyContr
 
 Route::post('submit-survey', [ResultsController::class, 'store']);
 
-Route::post('login', [LoginController::class, 'login'])->middleware('auth:sanctum');
+Route::post('login', [LoginController::class, 'login']);
 Route::post('register', [RegisterController::class, 'register']);
 
 Route::get('my-notifications', [NotificationController::class, 'index'])->middleware('auth:sanctum');
