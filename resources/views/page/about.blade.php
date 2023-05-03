@@ -165,6 +165,7 @@
                             <div class="elementor-spacer">
                                 <div class="elementor-spacer-inner"></div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -233,6 +234,28 @@
                                                     font-size: 59px
                                                 }
                                             </style>
+                                            <div class="elementor-container">
+                                                <div style="padding:10%">
+                                                    <h4 style="font-family:'Eczar';color: #9145b4" class="elementor-heading-title elementor-size-default">Our Mission</h4>
+                    
+                                                    <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
+                                                        data-widget_type="text-editor.default">
+                                                        <div class="elementor-widget-container">
+                                                            <p>To improve accessibility of quality mental health services for all across Zambia</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="padding:10%">
+                                                <h4 style="font-family:'Eczar';color: #9145b4" class="elementor-heading-title elementor-size-default">Our Vision</h4>
+                    
+                                                <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
+                                                    data-widget_type="text-editor.default">
+                                                    <div class="elementor-widget-container">
+                                                        <p> Be a medium for transformative mental health services in Zambia</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -284,29 +307,8 @@
                                                     max-width: calc(100% / var(--e-image-carousel-slides-to-show, 3))
                                                 }
                                             </style>
-                                            <div class="elementor-container">
-                                                <div style="padding:5%">
-                                                    <h4 style="font-family:'Eczar';color: #7e35a0" class="elementor-heading-title elementor-size-default">Our Mission</h4>
-                    
-                                                    <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
-                                                        data-widget_type="text-editor.default">
-                                                        <div class="elementor-widget-container">
-                                                            <p>To improve accessibility of quality mental health services for all across Zambia</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div style="padding:5%">
-                                                <h4 style="font-family:'Eczar';color: #7e35a0" class="elementor-heading-title elementor-size-default">Our Vision</h4>
-                    
-                                                <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
-                                                    data-widget_type="text-editor.default">
-                                                    <div class="elementor-widget-container">
-                                                        <p> Be a medium for transformative mental health services in Zambia</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+
+                                            <div style="padding: 10%" class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
                                                 <div class="elementor-image-carousel swiper-wrapper">
                                                     <div class="swiper-slide">
                                                         <figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://www.salemstate.edu/sites/default/files/styles/inline_wide/public/images/GettyImages-509094578.jpg?itok=MO74tUBb" alt="School counselor explaining anger management techniques to a gro"
@@ -359,7 +361,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -368,7 +370,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
@@ -384,7 +386,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -393,7 +395,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
@@ -411,7 +413,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -420,7 +422,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
@@ -442,7 +444,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -451,7 +453,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
@@ -467,7 +469,7 @@
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
-                                    <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
+                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
                                                 <div class="profile-card ">
@@ -476,7 +478,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
