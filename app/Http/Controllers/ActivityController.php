@@ -46,7 +46,13 @@ class ActivityController extends Controller
     public function index()
     {
         $notifications = auth()->user()->notifications;
-        $activities = $this->activity->with('patient_activities.users')->paginate(7);;
+        if(auth()->user()->hasRole('counselor')){
+            $activities = Activity::where('counselor_id', auth()->user()->id)
+            ->with('patient_activities.users')->paginate(7);
+        }else{
+            $activities = Activity::where('user_id', auth()->user()->id)
+            ->with('patient_activities.users')->paginate(7);  
+        }
         return view('page.activity.index', compact('activities', 'notifications'));
     }
 
@@ -85,8 +91,8 @@ class ActivityController extends Controller
     
                 $this->assigned_patients->create([
                     'activity_id' => $activity->id,
-                    'user_id' => 
-                    $patient,
+                    'user_id' => $patient,
+                    'counselor_id' => auth()->user()->id,
                 ]);
     
                 $payload = [

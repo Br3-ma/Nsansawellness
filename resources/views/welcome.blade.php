@@ -454,7 +454,7 @@
 										<div class="jkit-icon-box-wrapper hover-from-left">
 											<div class="icon-box icon-box-body">
 												<h4 class="title" style="color: #fff; font-weight:bolder">Peer Counseling</h4>
-												<p class="icon-box-description">Deciding how to manage stress, it is important to make sure your method is healthy and will work long-term. For example, eating comfort food may help someone feel better in the short term.</p>
+												<p class="icon-box-description">Peer counselors use their own stories in helping others develop hope and improve their lives. Adults, youth, parents or legal guardians can provide support to their families. Peer support can be provided in many other settings as well, such as consumer-run organizations and housing programs.</p>
 												<div class="icon-box-button ">
 													<div class="btn-wrapper icon-position-after">
 														{{-- <a href="#" class="icon-box-link">Read More</a> --}}

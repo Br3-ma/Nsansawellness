@@ -13,6 +13,7 @@ class Activity extends Model
         'desc',
         'type',
         'user_id',
+        'counselor_id',
         'session_id',
         'link',
         'status_id'
@@ -20,6 +21,10 @@ class Activity extends Model
 
     public function users(){
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function counselor(){
+        return $this->belongsTo(User::class, 'counselor_id');
     }
 
     public function patient_activities(){

@@ -99,7 +99,7 @@
                                 <div class="card-wrapper expand">
                                     <div class="card-header">
                                         <a href="#expand-9f0600c" class="card-header-button" aria-expanded="false" data-target="#expand-9f0600c" aria-controls="expand-9f0600c">
-                                            <span class="title">What can a psychologist help with?</span>
+                                            <span class="title">What is Nsansa?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
@@ -116,7 +116,7 @@
                                 <div class="card-wrapper ">
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
-                                            <span class="title">Do I need a referral to see a psychologist?</span>
+                                            <span class="title">Who will be helping me?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
@@ -133,7 +133,7 @@
                                 <div class="card-wrapper ">
                                     <div class="card-header">
                                         <a href="#expand-9f158ba" class="card-header-button" aria-expanded="false" data-target="#expand-9f158ba" aria-controls="expand-9f158ba">
-                                            <span class="title">What are 3 things psychologist do?</span>
+                                            <span class="title">Who are the therapists?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
@@ -150,7 +150,7 @@
                                 <div class="card-wrapper ">
                                     <div class="card-header">
                                         <a href="#expand-5b1a793" class="card-header-button" aria-expanded="false" data-target="#expand-5b1a793" aria-controls="expand-5b1a793">
-                                            <span class="title">What are good questions about psychology?</span>
+                                            <span class="title">How are the therapists verified?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
@@ -169,7 +169,7 @@
                                 <div class="card-wrapper ">
                                     <div class="card-header">
                                         <a href="#expand-4a50248" class="card-header-button" aria-expanded="false" data-target="#expand-4a50248" aria-controls="expand-4a50248">
-                                            <span class="title">What are the basics for psychology?</span>
+                                            <span class="title">Is Nsansa right for me?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
@@ -186,6 +186,158 @@
                                             <p>Psychology Is All Around You.</p>
                                             <p>Psychology Has Many Career Paths.</p>
                                             <p> Psychologists Make Human Lives Better.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">How much does it cost?</span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Not answered yet..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">Can Nsansa substitute traditional face-to-face therapy?</span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Not answered yet..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">I signed up. How long until I get matched with a therapist?</span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Not answered yet..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">How does messaging work?</span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Not answered yet..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">How do live chat sessions work?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Not answered yet..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">How do live video sessions work?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Not answered yet..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">
+                                                Can I go back and read the therapist’s previous messages?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Not answered yet..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">
+                                                How long can I use Nsansa?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Not answered yet..</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">
+                                                Is Nsansa web accessible for disabled users?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Not answered yet..</p>
                                         </div>
                                     </div>
                                 </div>
