@@ -47,19 +47,24 @@
             </div>
         </div>
     </section>
-    <section style="margin-top:2%" class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="89c6fcb" data-element_type="section">
+    <section style="margin-top:5%;margin-bottom:2%;" class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default">
+        <div class="elementor-widget-container">
+            <div class="heading-section-title ">
+                <h2 style="text-align: center" class="heading-title">Made for everyone <br>to <span class="style-gradient"><span>feel safe and welcome</span></span></h2>
+            </div>
+        </div>
+    </section>
+    <section class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="89c6fcb" data-element_type="section">
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-636fb60" data-id="636fb60" data-element_type="column">
-                <div class="elementor-widget-wrap elementor-element-populated">
-                    <div class="elementor-element elementor-element-04b8e5e animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="04b8e5e" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
+                <div class="">
+                    <div class="elementor-element animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="04b8e5e" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200}"
                         data-widget_type="jkit_heading.default">
                         <div class="elementor-widget-container">
                             <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_699_6_632ca945830dc">
-                                <h5 class="heading-section-subtitle  style-color">Why Choose</h5>
-                                <div class="heading-section-title ">
-                                    <h2 class="heading-title">Made for everyone to <span class="style-gradient"><span>feel safe and welcome</span></span></h2>
-                                </div>
-                                <div class="heading-section-description">
+                                {{-- <h5 class="heading-section-subtitle  style-color">Why Choose</h5> --}}
+                            
+                                <div class="heading-section-description" style="padding:15%">
                                     At Nsansa Wellness, we’re on a mission to make therapy accessible. 
                                     We want to put the power of change back into each and every person’s hands, 
                                     through quality therapy services. By providing immediate access to our 
@@ -171,7 +176,7 @@
                 </div>
             </div>
             <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-1e866fe" data-id="1e866fe" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                <div class="elementor-widget-wrap elementor-element-populated">
+                <div class="">
                     <div class="elementor-background-overlay"></div>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-eb39e0b elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="eb39e0b" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no">
@@ -194,11 +199,11 @@
                                     </div>
                                 </div>
                             </div> --}}
-                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-1f811f2" data-id="1f811f2" data-element_type="column">
+                            <div class="" data-id="1f811f2" data-element_type="column">
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-77a887f animated-slow elementor-invisible elementor-widget elementor-widget-heading" data-id="77a887f" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:300}"
                                         data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
+                                        <div class="elementor-widget-container" style="float: right; text-align:center;">
                                             <style>
                                                 /*! elementor - v3.6.5 - 27-04-2022 */
                                                 
@@ -235,7 +240,7 @@
                                                 }
                                             </style>
                                             <div class="elementor-container">
-                                                <div style="padding:10%">
+                                                <div style="padding:10%; text-align:right;">
                                                     <h4 style="font-family:'Eczar';color: #9145b4" class="elementor-heading-title elementor-size-default">Our Mission</h4>
                     
                                                     <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
@@ -246,7 +251,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div style="padding:10%">
+                                            <div style="padding:10%; text-align:right;">
                                                 <h4 style="font-family:'Eczar';color: #9145b4" class="elementor-heading-title elementor-size-default">Our Vision</h4>
                     
                                                 <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
@@ -359,7 +364,10 @@
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-5cd5314 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5cd5314" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no container">
                             
-                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                            <div style="border-radius: 27px;
+                            background: linear-gradient(145deg, #b4c3e6, #97a4c2);
+                            box-shadow:  28px 28px 90px #a6b4d5,
+                                         -28px -28px 90px #aab8d9;" class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
                                 <div style="padding: 10%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">

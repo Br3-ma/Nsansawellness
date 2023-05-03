@@ -10,7 +10,7 @@
         <a href="{{ route('questionaires.index') }}" class="intro-x btn shadow-md mr-2">Back to Questionnaires</a>
     </div>
     <!-- BEGIN: Wizard Layout -->
-    <div class="intro-y box py-4 sm:py-20 mt-2">
+    <div class="intro-y sm:py-20">
         <div class="flex justify-center">
             <button id="stp1_indicator" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2">1</button>
             <button id="stp2_indicator" class="intro-y w-10 h-10 rounded-full btn  mx-2">2</button>
@@ -20,7 +20,7 @@
             <div class="font-medium text-center text-lg">Make a Questionnaire</div>
             <div class="text-slate-500 text-center mt-2">To start off, set the questionaire preferences.</div>
         </div>
-        <form method="POST" action="{{ route('questionaires.store') }}" id="wiz-questionaire" class="wizard">
+        <form style="max-width: 100%"  method="POST" action="{{ route('questionaires.store') }}" id="wiz-questionaire" class="wizard">
             @csrf
             <ul class="wizard-steps" role="tablist">
                 <li class="tab1" role="tab">
