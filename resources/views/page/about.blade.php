@@ -64,7 +64,7 @@
                             <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_699_6_632ca945830dc">
                                 {{-- <h5 class="heading-section-subtitle  style-color">Why Choose</h5> --}}
                             
-                                <div class="heading-section-description" style="padding:15%">
+                                <div class="heading-section-description" style="margin-top:-15%;padding:15%">
                                     At Nsansa Wellness, we’re on a mission to make therapy accessible. 
                                     We want to put the power of change back into each and every person’s hands, 
                                     through quality therapy services. By providing immediate access to our 
@@ -313,23 +313,22 @@
                                                 }
                                             </style>
 
-                                            <div style="padding: 10%" class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
-                                                <div class="elementor-image-carousel swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://www.salemstate.edu/sites/default/files/styles/inline_wide/public/images/GettyImages-509094578.jpg?itok=MO74tUBb" alt="School counselor explaining anger management techniques to a gro"
-                                                            /></figure>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://rswellness.org/wp-content/uploads/2018/08/pexels-photo-1181355.jpeg" alt="Couple counseling." /></figure>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://media.istockphoto.com/photos/in-therapy-teen-boy-shares-life-experiences-with-group-picture-id1158890183?k=20&m=1158890183&s=612x612&w=0&h=klLtd19jTHiADTh4KJTRqK3bFPFS4K5-yp9Idg5TrZE=" alt="Young couple during the psychological counseling with psychologist"
-                                                            /></figure>
-                                                    </div>
-                                                    <div class="swiper-slide">
-                                                        <figure class="swiper-slide-inner"><img class="swiper-slide-image" src="https://post.psychcentral.com/wp-content/uploads/sites/4/2021/05/therapy-laptop-home-portrait-happy-732x549-thumbnail.jpg" alt="Young couple during the psychological counseling with psychologist"
-                                                            /></figure>
-                                                    </div>
+
+                                        </div>
+                                        <div style="padding-left: 25%; float:right" class="elementor-image-carousel-wrapper swiper-container" dir="ltr">
+                                            <div class="row flex">
+                                                <div class="swiper-slide">
+                                                    <img class="swiper-slide-image" src="https://www.salemstate.edu/sites/default/files/styles/inline_wide/public/images/GettyImages-509094578.jpg?itok=MO74tUBb" alt="School counselor explaining anger management techniques to a gro"
+                                                        />
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img class="swiper-slide-image" src="https://rswellness.org/wp-content/uploads/2018/08/pexels-photo-1181355.jpeg" alt="Couple counseling." />
+                                                    
+                                                </div>
+                                                <div class="swiper-slide">
+                                                    <img class="swiper-slide-image" src="https://post.psychcentral.com/wp-content/uploads/sites/4/2021/05/therapy-laptop-home-portrait-happy-732x549-thumbnail.jpg" alt="Young couple during the psychological counseling with psychologist"
+                                                        />
+                                                        
                                                 </div>
                                             </div>
                                         </div>
@@ -364,11 +363,8 @@
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-5cd5314 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5cd5314" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no container">
                             
-                            <div style="border-radius: 27px;
-                            background: linear-gradient(145deg, #b4c3e6, #97a4c2);
-                            box-shadow:  28px 28px 90px #a6b4d5,
-                                         -28px -28px 90px #aab8d9;" class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="padding: 10%">
+                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
+                                <div  style="margin-right:5%; min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -382,10 +378,10 @@
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:rgb(25, 116, 119)">Cultural Sensitivity and Diversity</h4>
-                                                <h5 class="heading-section-subtitle  style-color">
+                                                <h4 style="color:#ffff">Cultural Sensitivity<br>and Diversity</h4>
+                                                <h6 style="color:#0e002c">
                                                     Recognizing and respecting individual and cultural differences, promoting inclusivity, and providing culturally sensitive care that acknowledges and respects the diversity of people's backgrounds, beliefs, and values
-                                                </h5>
+                                                </h6>
                                             </div>
                                         </div>
                                     </div>
@@ -393,7 +389,7 @@
                             </div>
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="padding: 10%">
+                                <div style="min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -407,10 +403,10 @@
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:rgb(25, 116, 119)">Empathy and Compassion</h4>
-                                                <h5 class="heading-section-subtitle  style-color">
+                                                <h4 style="color:#ffff">Empathy and Compassion</h4>
+                                                <h6 style="color:#0e002c">
                                                  Demonstrating understanding, empathy, and compassion, showing sensitivity and respect for people’s feelings, experiences, and perspectives.                                                
-                                                </h5>
+                                                </h6>
                                             </div>
                                         </div>
                                     </div>
@@ -420,7 +416,7 @@
                             
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="padding: 10%">
+                                <div style="margin-left:5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -434,11 +430,11 @@
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:rgb(25, 116, 119)">Competence</h3>
+                                                <h4 style="color:#ffff">Competence</h3>
                                                 <br>
-                                                <h5 class="heading-section-subtitle  style-color">
+                                                <h6 style="color:#0e002c">
                                                     Continuously developing and maintaining their professional skills and knowledge through ongoing education, training, and supervision to provide the best quality of care
-                                                </h5>
+                                                </h6>
                                             </div>
                                         </div>
                                     </div>
@@ -447,11 +443,11 @@
                             
                         </div>
                     </section>
-                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-5cd5314 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5cd5314" data-element_type="section">
+                    <section style="margin-top: 2%" class="elementor-section elementor-inner-section elementor-element elementor-element-5cd5314 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5cd5314" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no container">
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="padding: 10%">
+                                <div  style="margin-left: 5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -465,10 +461,10 @@
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:rgb(25, 116, 119)">Confidentiality<br>and Welfare</h3>
-                                                <h5 class="heading-section-subtitle  style-color">
+                                                <h4 style="color:#ffff">Confidentiality<br>and Welfare</h3>
+                                                <h6 style="color:#0e002c">
                                                     Prioritizing the well-being and best interests of clients, providing client-centered care, and working towards enhancing the psychological health and welfare of their clients.                                                
-                                                </h5>
+                                                </h6>
                                             </div>
                                         </div>
                                     </div>
@@ -476,7 +472,7 @@
                             </div>
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="padding: 10%">
+                                <div style="margin-left: 3%; max-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -490,10 +486,10 @@
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:rgb(25, 116, 119)">Collaboration and Interdisciplinary Approach</h4>
-                                                <h5 class="heading-section-subtitle  style-color">
+                                                <h4 style="color:#ffff">Collaboration</h4>
+                                                <h6 style="color:#0e002c">
                                                     Collaborating with other professionals, when appropriate, to provide comprehensive and integrated care to clients, and recognizing the value of an interdisciplinary approach in addressing complex psychological issues.                                                
-                                                </h5>
+                                                </h6>
                                             </div>
                                         </div>
                                     </div>
