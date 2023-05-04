@@ -379,7 +379,7 @@
                                     <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:#ffff">Cultural Sensitivity<br>and Diversity</h4>
+                                                <h4 style="color:#ffff">Inclusivity<b</h4>
                                                 <h6 style="color:#0e002c">
                                                     Recognizing and respecting individual and cultural differences, promoting inclusivity, and providing culturally sensitive care that acknowledges and respects the diversity of people's backgrounds, beliefs, and values
                                                 </h6>
