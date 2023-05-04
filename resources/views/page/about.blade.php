@@ -241,7 +241,7 @@
                                             </style>
                                             <div class="elementor-container animated-slow">
                                                 <div style="padding:10%; text-align:right;">
-                                                    <h4 style="font-family:'Eczar';color: #9145b4" class="elementor-heading-title elementor-size-default">Our Mission</h4>
+                                                    <h4 style="font-family:'Eczar';color: #0096FF" class="elementor-heading-title elementor-size-default">Our Mission</h4>
                     
                                                     <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
                                                         data-widget_type="text-editor.default">
@@ -253,7 +253,7 @@
                                             </div>
                                             <div class="elementor-container animated-slow">
                                                 <div style="padding:10%; text-align:right;">
-                                                    <h4 style="font-family:'Eczar';color: #9145b4" class="elementor-heading-title elementor-size-default">Our Vision</h4>
+                                                    <h4 style="font-family:'Eczar';color: #0096FF" class="elementor-heading-title elementor-size-default">Our Vision</h4>
                         
                                                     <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
                                                         data-widget_type="text-editor.default">
@@ -365,7 +365,7 @@
                         <div class="elementor-container elementor-column-gap-no container">
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div  style="margin-right:5%; min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
+                                <div  style="margin-right:5%; min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #800869; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -380,7 +380,7 @@
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
                                                 <h4 style="color:#ffff">Inclusivity<b</h4>
-                                                <h6 style="color:#0e002c">
+                                                <h6 style="color:#ffff">
                                                     Recognizing and respecting individual and cultural differences, promoting inclusivity, and providing culturally sensitive care that acknowledges and respects the diversity of people's backgrounds, beliefs, and values
                                                 </h6>
                                             </div>
@@ -390,7 +390,7 @@
                             </div>
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
+                                <div style="min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background:  #800869; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -405,7 +405,7 @@
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
                                                 <h4 style="color:#ffff">Empathy and Compassion</h4>
-                                                <h6 style="color:#0e002c">
+                                                <h6 style="color:#ffff">
                                                  Demonstrating understanding, empathy, and compassion, showing sensitivity and respect for people’s feelings, experiences, and perspectives.                                                
                                                 </h6>
                                             </div>
@@ -417,7 +417,7 @@
                             
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="margin-left:5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
+                                <div style="margin-left:5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #800869; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -432,8 +432,7 @@
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
                                                 <h4 style="color:#ffff">Competence</h3>
-                                                <br>
-                                                <h6 style="color:#0e002c">
+                                                <h6 style="color:#ffff">
                                                     Continuously developing and maintaining their professional skills and knowledge through ongoing education, training, and supervision to provide the best quality of care
                                                 </h6>
                                             </div>
@@ -448,7 +447,7 @@
                         <div class="elementor-container elementor-column-gap-no container">
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div  style="margin-left: 5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
+                                <div  style="margin-left: 5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #800869; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -463,7 +462,7 @@
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
                                                 <h4 style="color:#ffff">Confidentiality<br>and Welfare</h3>
-                                                <h6 style="color:#0e002c">
+                                                <h6 style="color:#ffff">
                                                     Prioritizing the well-being and best interests of clients, providing client-centered care, and working towards enhancing the psychological health and welfare of their clients.                                                
                                                 </h6>
                                             </div>
@@ -473,7 +472,7 @@
                             </div>
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="margin-left: 3%; max-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: linear-gradient(145deg, #d8d6ef, #b6b4c9); padding: 5%">
+                                <div style="margin-left: 3%; max-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #800869; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -488,7 +487,7 @@
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
                                                 <h4 style="color:#ffff">Collaboration</h4>
-                                                <h6 style="color:#0e002c">
+                                                <h6 style="color:#ffff">
                                                     Collaborating with other professionals, when appropriate, to provide comprehensive and integrated care to clients, and recognizing the value of an interdisciplinary approach in addressing complex psychological issues.                                                
                                                 </h6>
                                             </div>

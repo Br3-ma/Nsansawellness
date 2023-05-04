@@ -33,7 +33,8 @@
                                                 </li>
                                                 <li class="elementor-icon-list-item elementor-inline-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="jki jki-chevron-right-solid"></i>						</span>
+                                                        <i aria-hidden="true" class="jki jki-chevron-right-solid"></i>						
+                                                    </span>
                                                     <span class="elementor-icon-list-text">FAQs</span>
                                                 </li>
                                             </ul>
