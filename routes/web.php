@@ -187,6 +187,7 @@ Route::group(['middleware' => ['auth', 'permission:actions']], function() {
             'activities.destroy' => 'delete-activities'
         ]
     ]);
+    Route::get('change-activity-status', [ActivityController::class, 'updateStatus'])->name('activity.status');
     Route::get('/actions', [HomeworkController::class, 'actions'])->name('actions');
 });
 

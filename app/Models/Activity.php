@@ -30,4 +30,10 @@ class Activity extends Model
     public function patient_activities(){
         return $this->hasMany(PatientActivity::class);
     }
+
+    public static function assignedPatients($id){
+        $data = PatientActivity::where('activity_id', $id)->with('users')->get();
+        return $data;
+    }
+
 }

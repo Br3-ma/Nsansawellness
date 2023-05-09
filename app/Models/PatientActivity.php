@@ -10,6 +10,7 @@ class PatientActivity extends Model
     use HasFactory;
     protected $fillable = [
         'activity_id',
+        'counselor_id',
         'user_id',
         'comments',
         'diagnosis',

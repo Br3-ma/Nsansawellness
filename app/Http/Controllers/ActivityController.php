@@ -47,12 +47,14 @@ class ActivityController extends Controller
     {
         $notifications = auth()->user()->notifications;
         if(auth()->user()->hasRole('counselor')){
-            $activities = Activity::where('counselor_id', auth()->user()->id)
-            ->with('patient_activities.users')->paginate(7);
+            $activities = PatientActivity::where('counselor_id', auth()->user()->id)
+            ->with('activities.users')->with('activities.counselor')->get();
         }else{
-            $activities = Activity::where('user_id', auth()->user()->id)
-            ->with('patient_activities.users')->paginate(7);  
+            $activities = PatientActivity::where('user_id', auth()->user()->id)
+            ->with('activities.users')->with('activities.counselor')->get();  
         }
+
+        // dd($activities);
         return view('page.activity.index', compact('activities', 'notifications'));
     }
 
@@ -81,9 +83,7 @@ class ActivityController extends Controller
      */
     public function store(CreateActivityRequest $request)
     {
-
         try {
-            // dd('here');
             $activity = $this->activity->create($request->validated());
             // dd($activity);
             foreach($request->patient_ids as $patient){
@@ -103,9 +103,9 @@ class ActivityController extends Controller
                 ];
                 // Send a notification to Guest about the new homework
                 // $message = 'You have a new homework with'.auth()->user()->fname.' '.auth()->user()->lname;
-                $user->notify(new NewActivity($payload));
+                // $user->notify(new NewActivity($payload));
                 $this->pusher->trigger('popup-channel', 'new-activity', $patient);
-                Session::flash('attention', "Failed to create user, Email could not be found");
+                Session::flash('attention', "Activity successfully created.");
                 return redirect()->route('activities.index');
             }
         } catch (\Throwable $th) {
@@ -150,6 +150,13 @@ class ActivityController extends Controller
         //
     }
 
+    public function updateStatus(Request $request){
+        $q = $this->activity->where('id',$request->act_id)->first();
+        $q->status_id = $request->status;
+        $q->save();
+        
+        return response()->json(['message' => 'Activity status updated successfully.']);
+    }
     /**
      * Remove the specified resource from storage.
      *
