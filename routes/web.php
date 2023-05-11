@@ -20,6 +20,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ReviewsPage;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PatientQuestionAnswersController;
+use App\Http\Controllers\PatientQuestionnaire;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -29,6 +31,7 @@ use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SiteRatingController;
+use App\Http\Livewire\Admin\Patient\PatientQuestionView;
 use App\Http\Livewire\Admin\Reviews\ManageReview;
 use App\Models\AssignCounselor;
 use Illuminate\Support\Facades\Auth;
@@ -85,19 +88,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/group/chat/message/send', [VideoCallController::class, 'groupSend'])->name('group.send');
     Route::post('/group/chat/message/send/file', [VideoCallController::class, 'sendFilesInGroupConversation'])->name('group.send.file');
     
-    // Route::get('/accept/message/request/{id}' , function ($id){
-    //     Chat::acceptMessageRequest($id);
-    //     return redirect()->back();
-    // })->name('accept.message');
+
+    Route::resource('patient-questionaires', PatientQuestionnaire::class);
+    Route::resource('patient-answers', PatientQuestionAnswersController::class);
     
-    // // Route::get('/trigger/{id}' , [VideoCallController::class, 'startVideo'])->name('video-chat');
-    // Route::post('/trigger/{id}' , function (\Illuminate\Http\Request $request , $id) {
-    //     Chat::startVideoCall($id , $request->all());
-    // });
-    // Route::post('/group/chat/leave/{id}' , function ($id) {
-    //     Chat::leaveFromGroupConversation($id);
-    // });
-    // Route::resource('assigner', AssignCounselorController::class);
     Route::get('auto-assign/{id}', [AssignCounselorController::class, 'index']);
     
     Route::get('by-pass-bill/{id}', [BillingController::class, 'byPassPayments'])->name('bpb');
@@ -150,7 +144,6 @@ Route::group(['middleware' => ['auth', 'permission:questionaires.index']], funct
     Route::resource('answers', AnswerController::class);
     Route::delete('answers/delete/{id}/{qid}', [AnswerController::class, 'customDestroy'])->name('answers.remove');
 });
-
 // Billing
 Route::group(['middleware' => ['auth', 'permission:billing']], function() {
     Route::get('/billing-history', [BillingController::class, 'index'])->name('billing');
@@ -188,6 +181,7 @@ Route::group(['middleware' => ['auth', 'permission:actions']], function() {
         ]
     ]);
     Route::get('change-activity-status', [ActivityController::class, 'updateStatus'])->name('activity.status');
+    Route::get('/patient-questions', PatientQuestionView::class)->name('my-patient-questionnaires');
     Route::get('/actions', [HomeworkController::class, 'actions'])->name('actions');
 });
 

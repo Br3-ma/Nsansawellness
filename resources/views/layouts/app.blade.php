@@ -601,12 +601,12 @@
                                     <div class="side-menu__title"> Activities </div>
                                 </a>
                             </li>
-                            {{-- <li>
-                                <a href="{{ route('actions')}}" class="side-menu">
+                            <li>
+                                <a href="{{ route('my-patient-questionnaires')}}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> Actions </div>
+                                    <div class="side-menu__title"> Questionnaires </div>
                                 </a>
-                            </li> --}}
+                            </li>
                         </ul>
                     </li>
                     @endcan

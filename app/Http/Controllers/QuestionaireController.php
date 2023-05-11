@@ -12,18 +12,18 @@ use Session;
 
 class QuestionaireController extends Controller
 {
-    public  $questionaire;
-    public  $questions;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function __construct(Questionaire $q, Question $qn)
-    {
-        $this->questionaire = $q;
-        $this->questions = $qn;
-    }
+        public  $questionaire;
+        public  $questions;
+        /**
+         * Display a listing of the resource.
+         *
+         * @return \Illuminate\Http\Response
+         */
+        public function __construct(Questionaire $q, Question $qn)
+        {
+            $this->questionaire = $q;
+            $this->questions = $qn;
+        }
     public function index()
     {
         $questionaires = $this->questionaire->with('questions')->paginate(7);
@@ -102,6 +102,8 @@ class QuestionaireController extends Controller
      * @param  \App\Models\Questionaire  $questionaire
      * @return \Illuminate\Http\Response
      */
+
+    //  Show the questions and answers
     public function show($id)
     {
         $questionaires = $this->questionaire->with('questions.answers')->where('id', $id)->first();
