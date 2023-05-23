@@ -53,7 +53,12 @@
                         <th class="whitespace-nowrap">AUDIENCE</th>
                         <th class="text-center whitespace-nowrap">QUESTIONS</th>
                         <th class="text-center whitespace-nowrap">STATUS</th>
+                        @hasrole('counselor')
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
+                        @endhasrole
+                        @hasrole('patient')
+                        <th class="whitespace-nowrap"></th>
+                        @endhasrole
                     </tr>
                 </thead>
                 <tbody>
@@ -68,11 +73,16 @@
                             <a href="" class="capitalize font-medium whitespace-nowrap">{{ $q->group_assigned }}</a> 
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Group</div>
                         </td>
-                        <td class="text-center">{{ $q->questions->count() }}</td>
-                        <td class="w-40">
+                        <td class="text-center">{{ $q->questions->count() }} Questions</td>
+                        <td class="w-40 text-center">
+                            @hasrole('patient')
                             <input type="checkbox" data-id="{{ $q->id }}" name="status" class="js-switch" {{ $q->status_id == 1 ? 'checked' : '' }}>
+                            @endhasrole
+
+                            <p>{{ $q->status_id == 1 ? 'Completed' : 'In Progress' }}</p>
                             {{-- <div id="item{{ $q->id }}" onclick="changeQuestionaireStatus('{{ $q->id }}')" class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Activate </div> --}}
                         </td>
+                        @hasrole('counselor')
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center text-sm mr-3" href="{{ route('patient-questionaires.show', $q->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Add Answers </a>
@@ -82,6 +92,14 @@
                                 {{-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a> --}}
                             </div>
                         </td>
+                        @endhasrole
+                        @hasrole('patient')
+                        <td>
+                            <a class="flex items-center text-white text-sm btn btn-success bg-blue-200" href="{{ route('start-questions', $q->id) }}"> 
+                                <i data-lucide="power" class="w-4 h-4 mr-1"></i> Start 
+                            </a>
+                        </td>
+                        @endhasrole
                     </tr>
                     @empty
                         

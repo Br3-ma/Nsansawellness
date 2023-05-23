@@ -27,9 +27,14 @@ class PatientQuestionnaire extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function start($id)
     {
-        //
+        $session = auth()->user()->id;
+        $questionaires = $this->questionaire->with(['questions.answers'])
+        ->where('id', $id)->first();
+        return view('page.patient_questions.start-questions', 
+            compact('questionaires', 'session')
+        );
     }
 
     /**

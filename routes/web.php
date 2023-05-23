@@ -92,6 +92,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('patient-questionaires', PatientQuestionnaire::class);
     Route::resource('patient-answers', PatientQuestionAnswersController::class);
     
+    Route::get('start-questions/{id}', [PatientQuestionnaire::class, 'start'])->name('start-questions');
     Route::get('auto-assign/{id}', [AssignCounselorController::class, 'index']);
     
     Route::get('by-pass-bill/{id}', [BillingController::class, 'byPassPayments'])->name('bpb');
