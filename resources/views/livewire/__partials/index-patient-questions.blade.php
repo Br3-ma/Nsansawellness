@@ -52,7 +52,7 @@
                         <th class="whitespace-nowrap">QUESTIONNAIRE</th>
                         <th class="whitespace-nowrap">AUDIENCE</th>
                         <th class="text-center whitespace-nowrap">QUESTIONS</th>
-                        <th class="text-center whitespace-nowrap">STATUS</th>
+                        <th class="text-center whitespace-nowrap">CREATED ON</th>
                         @hasrole('counselor')
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
                         @endhasrole
@@ -71,17 +71,17 @@
                         </td>
                         <td>
                             <a href="" class="capitalize font-medium whitespace-nowrap">{{ $q->group_assigned }}</a> 
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Group</div>
+                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Patients</div>
                         </td>
                         <td class="text-center">{{ $q->questions->count() }} Questions</td>
-                        <td class="w-40 text-center">
+                        <td class="text-center">{{ $q->created_at->toFormattedDateString() }}</td>
+                        {{-- <td class="w-40 text-center">
                             @hasrole('patient')
                             <input type="checkbox" data-id="{{ $q->id }}" name="status" class="js-switch" {{ $q->status_id == 1 ? 'checked' : '' }}>
                             @endhasrole
 
                             <p>{{ $q->status_id == 1 ? 'Completed' : 'In Progress' }}</p>
-                            {{-- <div id="item{{ $q->id }}" onclick="changeQuestionaireStatus('{{ $q->id }}')" class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Activate </div> --}}
-                        </td>
+                        </td> --}}
                         @hasrole('counselor')
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
@@ -94,10 +94,24 @@
                         </td>
                         @endhasrole
                         @hasrole('patient')
-                        <td>
-                            <a class="flex items-center text-white text-sm btn btn-success bg-blue-200" href="{{ route('start-questions', $q->id) }}"> 
-                                <i data-lucide="power" class="w-4 h-4 mr-1"></i> Start 
-                            </a>
+                        <td class="text-center space-x-2 flex">
+                            @if (App\Models\PatientQuestionnaires::isCompleted( auth()->user()->id, $q->id ) == 0)
+                                <span class="flex items-center text-primary text-sm bg-gray-200"> 
+                                    <i data-lucide="check" class="w-4 h-4 mr-1"></i> Completed
+                                </span>
+                                &nbsp;&nbsp;
+                                <a class="flex float-right items-center text-white text-sm btn btn-warning bg-blue-200" href="{{ route('start-questions', $q->id) }}"> 
+                                    <i data-lucide="undo" class="w-4 h-4 mr-1"></i> Re-Take 
+                                </a>
+                            @else
+                                <span class="flex items-center text-success text-sm bg-gray-200"> 
+                                    <i data-lucide="clock" class="w-4 h-4 mr-1"></i> In Progress
+                                </span>
+                                &nbsp;&nbsp;
+                                <a class="flex items-center text-white text-sm btn btn-success bg-blue-200" href="{{ route('start-questions', $q->id) }}"> 
+                                    <i data-lucide="power" class="w-4 h-4 mr-1"></i> Start 
+                                </a>
+                            @endif
                         </td>
                         @endhasrole
                     </tr>

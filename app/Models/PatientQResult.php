@@ -12,7 +12,8 @@ class PatientQResult extends Model
         'user_answer',
         'question_id',
         'guest_id',
-        'user_id'
+        'user_id',
+        'questionnaire_id'
     ];
 
     public function user(){

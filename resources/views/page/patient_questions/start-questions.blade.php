@@ -1,155 +1,149 @@
 @extends('layouts.app')
 @section('content')
+<style>
+    .step {
+      display: none;
+    }
 
+    .step.active {
+      display: block;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+  </style>
 <div class="content">
     <div class="intro-y text-lg font-medium">
-        <section class="getStartedSurvey elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
-                  <div id="career-wizard" style="padding:2%; margin-left: auto; margin-right: auto; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; width:80%" class="card-body mb-4">
-                    <form id="getStartedForm">
-                      @csrf
+        
+        <section class="bg-white" style="padding:2%; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <h3 class="text-gray-100 py-4">{{ $questionaires->name }}</h3>
+            <hr>
+                <div id="career-wizard" class="text-primary card-body mb-4 py-4">
+                    <form id="wizardForm" onsubmit="return false">
+                        @csrf
                         @if(!empty($questionaires->questions))
-                          @foreach ($questionaires->questions as $key => $q)
-                            <div class="tab">
-                              <h4>{{ $q->question }}</h4>
-
-                              @forelse($q->answers as $ans)
-                              <label>
-                                <input type="radio" name="radio"/>
-                                <span id="ans{{ $q->id }}" onclick="nextPrev(1, '{{ $q->id }}', '{{ $ans->answer }}','{{ $session }}')">{{ $ans->answer }}</span>
-                              </label>
-                              @empty
-
-                              @endforelse
-                            </div>
-                          @endforeach
-                          <div style="overflow:auto;">
-                            <div style="float:right;">
-                              <button type="button" class="btn btn-outline-warning" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                              {{-- <button type="button" id="nextBtn" onclick="nextPrev(1, '{{ $q->id }}','{{ $session }}')">Next</button> --}}
-                            </div>
-                          </div>
+                            @foreach ($questionaires->questions as $key => $q)
+                                <div class="step active py-3 w-full" id="step{{$key+1}}">
+                                    <h6>{{ $q->question }}</h6>
+                                    @forelse($q->answers as $ans)
+                                        <div class="block ml-2">
+                                                <label>
+                                                    <input onclick="pushAnswer(1, '{{ $q->id }}', '{{ $ans->answer }}','{{ $session }}','{{ $questionaires->id }}')" type="radio" name="radio"/>
+                                                    <span id="ans{{ $q->id }}">{{ $ans->answer }}</span>
+                                                </label>
+                                        </div>
+                                    @empty
+                                    @endforelse
+                                    <br>
+                                    <br>
+                                    <div class="float-right">
+                                        @if ($questionaires->questions->count() === 1)
+                                            <div class="button-container">
+                                                <button class="btn btn-primary" onclick="submitForm()">Submit</button>
+                                            </div>
+                                        @elseif($key === 0)
+                                            <div class="button-container">
+                                                <button class="btn btn-primary" onclick="nextStep()">Next</button>
+                                            </div>
+                                        @elseif($questionaires->questions->count() !== $key+1)
+                                            <div class="button-container">
+                                                <button class="btn btn-default" onclick="previousStep()">Previous</button>
+                                                <button class="btn btn-primary" onclick="nextStep()">Next</button>
+                                            </div>
+                                        @else
+                                            <div class="button-container">
+                                                <button class="btn btn-default" onclick="previousStep()">Previous</button>
+                                                <button class="btn btn-primary" onclick="submitForm()">Submit</button>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
                         @endif
+                    
+                        {{-- <div class="step" id="step2">
+                          <h2>Step 2</h2>
+                          <input type="email" placeholder="Enter your email" required>
+                          <div class="button-container">
+                            <button onclick="previousStep()">Previous</button>
+                            <button onclick="nextStep()">Next</button>
+                          </div>
+                        </div>
+                    
+                        <div class="step" id="step3">
+                          <h2>Step 3</h2>
+                          <input type="password" placeholder="Enter a password" required>
+                          <div class="button-container">
+                            <button onclick="previousStep()">Previous</button>
+                            <button onclick="submitForm()">Submit</button>
+                          </div>
+                        </div> --}}
 
-                    </form>
-                  </div>
+                      </form>
+                </div>
         </section>
     </div>
 </div>
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-    $('.loading').hide();
+    var currentStep = 1;
     var feedback = [];
-    var currentTab = 0; // Current tab is set to be the first tab (0)
-    showTab(currentTab); // Display the current tab
-    var patientAnswer2 = document.getElementById("patientAnswer2");
-    patientAnswer2.onclick = function() {
-        alert('am here');
+    var form = document.getElementById("wizardForm");
+    var steps = document.getElementsByClassName("step");
+
+    function showStep(stepNumber) {
+        for (var i = 0; i < steps.length; i++) {
+            steps[i].classList.remove("active");
+        }
+        steps[stepNumber - 1].classList.add("active");
     }
-    function showTab(n) {
-      // This function will display the specified tab of the form...
-      var x = document.getElementsByClassName("tab");
-      x[n].style.display = "block";
-      //... and fix the Previous/Next buttons:
-      if (n == 0) {
-        document.getElementById("prevBtn").style.display = "none";
-      } else {
-        document.getElementById("prevBtn").style.display = "inline";
-      }
-      if (n == (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "Submit";
-      } else {
-        document.getElementById("nextBtn").innerHTML = "Next";
-      }
-      //... and run a function that will display the correct step indicator:
-      fixStepIndicator(n)
-    }
-    
-    function nextPrev(n, q, a, u) {
-      if(n == 1){
-          feedback.push({
+
+    function pushAnswer(n, q, a, u, s){
+        feedback.push({
             'answer': a,
             'question_id': q,
-            'user_id': u
-          });
-      }else{
-         feedback.pop();
-      }
-      // This function will figure out which tab to display
-      var x = document.getElementsByClassName("tab");
-      // Exit the function if any field in the current tab is invalid:
-      if (n == 1 && !validateForm()) return false;
-      // Hide the current tab:
-      x[currentTab].style.display = "none";
-      // Increase or decrease the current tab by 1:
-      currentTab = currentTab + n;
-      // if you have reached the end of the form...
-      if (currentTab >= x.length) {
-        $('#career-wizard').hide();
-        $('.loading').show();
+            'user_id': u,
+            'questionnaire_id': s
+        });
+    }
 
+    function nextStep() {
+        if (currentStep < steps.length) {
+            currentStep++;
+            showStep(currentStep);
+        }
+    }
+
+    function previousStep() {
+        if (currentStep > 1) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    }
+
+    function submitForm() {
+
+        // Push if the array is empty
         $.ajax({
               type:'POST',
-              url:"{{ route('results.store') }}",
+              url:"{{ route('patient-results.store') }}",
               cache: false,
               contentType: "application/json;charset=utf-8",
               dataType: "json",
               data: JSON.stringify(feedback),
               processData: false,
             success:function(data){
-                let url = "{{ route('register', ['role' => 'patient', 'type' => 'patient', 'guest_id' => $session])}}";
-                document.location.href= url.replace(/&amp;/g, '&');
+                let url = "{{ route('my-patient-questionnaires') }}";
+                document.location.href = url.replace(/&amp;/g, '&');
             }
         });
-        
-        return false;
-      }
-      // Otherwise, display the correct tab:
-      showTab(currentTab);
-    }
-    
-    function validateForm() {
-      // This function deals with validation of the form fields
-      var x, y, i, valid = true;
-      x = document.getElementsByClassName("tab");
-      y = x[currentTab].getElementsByTagName("input");
-      // A loop that checks every input field in the current tab:
-      for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value == "") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid";
-          // and set the current valid status to false
-          valid = false;
-        }
-      }
-      // If the valid status is true, mark the step as finished and valid:
-      // if (valid) {
-      //   document.getElementsByClassName("step")[currentTab].className += " finish";
-      // }
-      return valid; // return the valid status
-    }
-    
-    function fixStepIndicator(n) {
-      // This function removes the "active" class of all steps...
-      var i, x = document.getElementsByClassName("step");
-      for (i = 0; i < x.length; i++) {
-        x[i].className = x[i].className.replace(" active", "");
-      }
-      //... and adds the "active" class on the current step:
-      x[n].className += " active";
+
+        // // Reset the form and show the first step
+        // form.reset();
+        currentStep = 1;
+        showStep(currentStep);
     }
 
-    function gotToRegister(){
-        // alert('yeas');
-    }
-
-    $('#getStartedForm').submit(function(e){
-        e.preventDefault();
-        let url = "{{ route('register', ['role' => 'patient', 'type' => 'patient'])}}";
-        document.location.href=url;
-    });
-
-
-
+    showStep(currentStep);
     </script>
