@@ -292,10 +292,10 @@
           <button onclick="startRecording()" id="start-btn" class="video-action-button start-recorder" title="Start Recording"></button>
           <button onclick="stopRecording()" style="background-color:red" id="stop-btn" class="video-action-button stop-recorder" title="Stop Recording"></button>
           @endhasanyrole
-          <button onclick="toggleAudioMute()" class="audio-mic video-action-button mic"></button>
-          <button onclick="toggleVideo()" class="video-cam video-action-button camera"></button>
+          <button onclick="toggleAudioMute()" title="Mute / Unmute" class="audio-mic video-action-button mic"></button>
+          <button title="Hide / Unhide" onclick="toggleVideo()" class="video-cam video-action-button camera"></button>
           {{-- <button class="video-action-button maximize"></button> --}}
-          <button onclick="endCall()" class="video-action-button endcall">Leave</button>
+          <button onclick="endCall()" title="End Call" class="video-action-button endcall">Leave</button>
           <button title="Take Notes" onclick="open_notes()" class="video-action-button magnifier">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"></path><path d="M15 3v6h6"></path></svg>
           </button>
@@ -537,8 +537,8 @@
 
           const remotePeerId = peerId.value;
           const call = peer.call(remotePeerId, localStream);
-          alert('joining');
-          alert(remotePeerId);
+          // alert('joining');
+          // alert(remotePeerId);
 
           call.on('stream', stream => {
               remoteVideo.srcObject = stream;
