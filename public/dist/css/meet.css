@@ -378,15 +378,15 @@
     background-color: var(--button-bg);
   }
   .video-action-button.start-recorder {
-    background-image: url("/nsansawellness.com/public/dist/images/circle.svg");
+    background-image: url("/public/dist/images/circle.svg");
     background-position: center;
   }
   .video-action-button.stop-recorder {
-    background-image: url("/nsansawellness.com/public/dist/images/stop.svg");
+    background-image: url("/public/dist/images/stop.svg");
     background-position: center;
   }
   .video-action-button.mic {
-    background-image: url("/nsansawellness.com/public/dist/images/mic.svg");    
+    background-image: url("/public/dist/images/mic.svg");    
     background-position: center;
   }
   .video-action-button.mic-off {
@@ -404,7 +404,7 @@
     background-color:#636181;
   }
   .video-action-button.camera {
-    background-image: url("/nsansawellness.com/public/dist/images/camera.svg");
+    background-image: url("/public/dist/images/camera.svg");
     background-position: center;
   }
   .video-action-button.maximize {
