@@ -6,7 +6,7 @@
         <h2 class="intro-y text-lg font-medium mr-auto">
             Survey Questions
         </h2>
-        <a href="{{ route('questionaires.index') }}" class="intro-x btn shadow-md mr-2">Back to Questionnaires</a>
+        <a href="{{ route('my-patient-questionnaires') }}" class="intro-x btn shadow-md mr-2">Back to Questionnaires</a>
     </div>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <!-- BEGIN: Data List -->

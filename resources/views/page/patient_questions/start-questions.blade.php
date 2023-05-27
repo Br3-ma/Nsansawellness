@@ -86,7 +86,16 @@
     </div>
 </div>
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+    $(document).ready(function() {
+        // function showStep(stepNumber) {
+        for (var i = 0; i < steps.length; i++) {
+            steps[i].classList.remove("active");
+        }
+        steps[currentStep - 1].classList.add("active");
+    });
+
     var currentStep = 1;
     var feedback = [];
     var form = document.getElementById("wizardForm");
@@ -96,7 +105,7 @@
         for (var i = 0; i < steps.length; i++) {
             steps[i].classList.remove("active");
         }
-        steps[stepNumber - 1].classList.add("active");
+        steps[currentStep - 1].classList.add("active");
     }
 
     function pushAnswer(n, q, a, u, s){
@@ -123,7 +132,6 @@
     }
 
     function submitForm() {
-
         // Push if the array is empty
         $.ajax({
               type:'POST',
@@ -138,12 +146,9 @@
                 document.location.href = url.replace(/&amp;/g, '&');
             }
         });
-
         // // Reset the form and show the first step
         // form.reset();
         currentStep = 1;
         showStep(currentStep);
     }
-
-    showStep(currentStep);
-    </script>
+</script>

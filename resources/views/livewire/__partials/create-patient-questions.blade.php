@@ -7,7 +7,7 @@
         <h2 class="intro-y text-lg font-medium mr-auto">
             New Questionnaire
         </h2>
-        <a href="{{ route('questionaires.index') }}" class="intro-x btn shadow-md mr-2">Back to Questionnaires</a>
+        <a href="{{ route('my-patient-questionnaires') }}" class="intro-x btn shadow-md mr-2">Back to Questionnaires</a>
     </div>
     <!-- BEGIN: Wizard Layout -->
     <div class="intro-y sm:py-20">
@@ -67,7 +67,7 @@
                                     </select>
                                 </span>
                                 <span class="intro-y col-span-3 sm:col-span-2 mt-5">
-                                    <a href="javascript:void(0)" class="btn btn-secondary w-20 text-xs add_button">Add Question</a>
+                                    <a href="javascript:void(0)" class="btn btn-primary w-20 text-xs add_button">Add Question</a>
                                 </span>
                             </div>
                         </div>

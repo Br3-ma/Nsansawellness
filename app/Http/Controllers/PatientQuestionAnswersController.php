@@ -49,16 +49,21 @@ class PatientQuestionAnswersController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validated();
-        foreach ($request->all()['answer'] as $value) {
-            PatientQAnswers::create([
-                'answer' => $value,
-                'question_id' => $request->question_id,
-                'user_id' => auth()->user()->id
-            ]);
+        
+        try {
+            foreach ($request->all()['answer'] as $value) {
+                PatientQAnswers::create([
+                    'answer' => $value,
+                    'question_id' => $request->question_id,
+                    'user_id' => auth()->user()->id
+                ]);
+            }
+            return redirect()->route('patient-questionaires.show', $request->all()['question'])
+                ->withSuccess(__('Questionaire created successfully.'));
+        } catch (\Throwable $th) {
+            return redirect()->route('patient-questionaires.show', $request->all()['question'])
+                ->withSuccess(__('Questionaire created successfully.'));
         }
-        return redirect()->route('patient-questionaires.show', $request->toArray()['question_id'])
-            ->withSuccess(__('Questionaire created successfully.'));
     }
 
     /**

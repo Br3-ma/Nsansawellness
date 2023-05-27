@@ -82,7 +82,7 @@ class PatientQuestionnaire extends Controller
             }
 
             Session::flash('attention', "Questionnaire created successfully.");
-            return redirect()->back();
+            return redirect()->route('my-patient-questionnaires');
         }catch (\Throwable $th) {
             dd($th);
             Session::flash('error_msg', "Oops something went wrong again.");
