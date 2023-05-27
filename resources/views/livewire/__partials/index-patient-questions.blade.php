@@ -37,9 +37,9 @@
             {{-- <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div> --}}
             <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
                 @hasrole('counselor')
-                    <button wire:click='createQuestions()' class="btn btn-primary shadow-md mr-2"> 
+                    <a href="{{ route('patient-questionaires.create')}}" class="btn btn-primary shadow-md mr-2"> 
                         <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Create Questions 
-                    </button>
+                    </a>
                 @endhasrole
             </div>
         </div>

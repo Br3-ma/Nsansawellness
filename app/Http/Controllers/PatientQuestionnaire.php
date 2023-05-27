@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PatientQQuestions;
 use App\Models\PatientQuestionnaires;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Session;
 
@@ -44,7 +45,13 @@ class PatientQuestionnaire extends Controller
      */
     public function create()
     {
-        //
+        $u = auth()->user();
+        $users =  User::role('patient')->whereHas('assignedCounselor', function ($query) use ($u) {
+            $query->where('counselor_id', $u->id);
+        })->get();
+        return view('livewire.admin.patient.patient-create-survey',[
+            'users'=>$users
+        ]);
     }
 
     /**

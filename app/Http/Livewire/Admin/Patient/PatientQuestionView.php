@@ -20,14 +20,8 @@ class PatientQuestionView extends Component
         $this->users =  User::role('patient')->whereHas('assignedCounselor', function ($query) use ($u) {
             $query->where('counselor_id', $u->id);
         })->get();
-        $this->index = true;
         return view('livewire.admin.patient.patient-question-view',[
             'questionnaires' => $questionnaires
         ]);
-    }
-
-    public function createQuestions(){
-        dd('here');
-        $this->index = false;
     }
 }
