@@ -91,6 +91,8 @@ Route::group(['middleware' => ['auth']], function() {
     
 
     Route::resource('patient-questionaires', PatientQuestionnaire::class);
+    Route::get('patient-responses/{id}', [PatientQuestionnaire::class, 'responses'])->name('patient-responses');
+    Route::get('response/{id}', [PatientQuestionnaire::class, 'patientResponse'])->name('response');
     Route::resource('patient-answers', PatientQuestionAnswersController::class);
     
     Route::get('start-questions/{id}', [PatientQuestionnaire::class, 'start'])->name('start-questions');

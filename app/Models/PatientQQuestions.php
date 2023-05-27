@@ -24,6 +24,6 @@ class PatientQQuestions extends Model
     }
 
     public function results(){
-        return $this->hasMany(PatientQResult::class);
+        return $this->hasMany(PatientQResult::class, 'question_id');
     }
 }

@@ -51,6 +51,7 @@
                     <tr>
                         <th class="whitespace-nowrap">QUESTIONNAIRE</th>
                         <th class="whitespace-nowrap">AUDIENCE</th>
+                        <th class="whitespace-nowrap"></th>
                         <th class="text-center whitespace-nowrap">QUESTIONS</th>
                         <th class="text-center whitespace-nowrap">CREATED ON</th>
                         @hasrole('counselor')
@@ -72,6 +73,11 @@
                         <td>
                             <a href="" class="capitalize font-medium whitespace-nowrap">{{ $q->group_assigned }}</a> 
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Patients</div>
+                        </td>
+                        <td>
+                            <a href="{{ route('patient-responses', $q->id) }}" class="btn btn-primary font-medium whitespace-nowrap">
+                                Responses
+                            </a> 
                         </td>
                         <td class="text-center">{{ $q->questions->count() }} Questions</td>
                         <td class="text-center">{{ $q->created_at->toFormattedDateString() }}</td>

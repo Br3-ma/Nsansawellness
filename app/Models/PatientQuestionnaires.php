@@ -39,6 +39,10 @@ class PatientQuestionnaires extends Model
         return $this->hasMany(PatientQResult::class);
     }
 
+    public function patient(){
+        return $this->belongsTo(User::class);
+    }
+
     public static function boot() {
         parent::boot();
         self::deleting(function($questionaire) { // before delete() method call this

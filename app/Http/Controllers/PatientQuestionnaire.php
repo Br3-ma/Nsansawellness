@@ -6,6 +6,7 @@ use App\Models\PatientQQuestions;
 use App\Models\PatientQuestionnaires;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 class PatientQuestionnaire extends Controller
@@ -125,6 +126,30 @@ class PatientQuestionnaire extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function responses($id){
+        $row = $this->questionaire->where('id', $id)->first();
+        $string = $row->patients;
+        $string = str_replace("'", '"', $string); // Replace single quotes with double quotes
+        $array = json_decode($string);
+        $patients = User::whereIn('id', $array)->get();
+        return view('livewire.admin.patient.patient-responses',[
+            'patients' => $patients,
+            'questionnaire_id' => $id
+        ]);
+    }
+
+    public function patientResponse($id){
+        $user = User::where('id', $id)->first();
+
+        // get the active survey
+        $survey_results = $this->questions->with("results")->get();
+
+        return view('livewire.admin.patient.response',[
+            'user' => $user,
+            'survey_results' => $survey_results
+        ]); 
     }
 
     /**

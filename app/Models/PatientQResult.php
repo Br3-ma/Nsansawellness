@@ -16,6 +16,17 @@ class PatientQResult extends Model
         'questionnaire_id'
     ];
 
+    public static function myAnswer($user_id, $q_id){
+        try {
+            $ans = PatientQResult::where('user_id', $user_id)
+            ->where('question_id', $q_id)->first();
+                
+            return $ans->user_answer;
+        } catch (\Throwable $th) {
+            return 'Not Answered';
+        }
+    }
+
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
