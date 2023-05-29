@@ -47,6 +47,7 @@
                                 </div>
                             @else 
                             {{-- If They Started the Chat --}}
+                                @if ($chat->sender->id !== auth()->user()->id)
                                 <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" 
                                     class="intro-x cursor-pointer rounded-lg bg-white mr-10 chat-list-item relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
@@ -67,6 +68,7 @@
                                     </div>
                                     {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
                                 </div>
+                                @endif
                             @endif
                         @empty
 
