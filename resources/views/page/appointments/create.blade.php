@@ -263,7 +263,7 @@
                         </div>
                     </div>
                 </div>
-
+                <input type="hidden" name="video_link" id="peer_link_id">
                 <div class="flex justify-end flex-col md:flex-row gap-2 mt-5">
                     <button type="submit" class="btn py-3 btn-primary w-full md:w-52">Save & Send</button>
                 </div>
@@ -272,3 +272,26 @@
     </div>
 </div>
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+<script th:inline="javascript">
+$(document).ready(function() {
+      
+    const peer_field = document.getElementById('peer_link_id');
+    var peer = new Peer();
+    
+
+    navigator.mediaDevices.getUserMedia({ video: true, audio: true}).then(stream =>{
+          localStream = stream;
+          localVideo.srcObject = localStream;
+          localVideo.onloadedmetadata = () => localVideo.play();
+      });
+
+    // Generate an ID (Link)
+    peer.on('open', id => {
+        // Save the ID for Later User
+        peer_field.value = id;
+
+    });
+});
+</script>

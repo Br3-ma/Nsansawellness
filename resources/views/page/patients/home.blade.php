@@ -23,7 +23,7 @@
                         
                         @forelse($chats as $chat)
                             {{-- If I Started the Chat --}}
-                            @if($chat->sender_id == auth()->user()->id)
+                            @if($chat->sender_id == auth()->user()->id && $chat->receiver !== null)
                                 <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')"
                                     class="intro-x chat-list-item cursor-pointer rounded-lg bg-white mr-10 relative flex items-center p-5">
 

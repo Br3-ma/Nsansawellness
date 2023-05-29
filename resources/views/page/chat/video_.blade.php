@@ -500,23 +500,26 @@
       let startRecBtn = document.getElementById("start-btn");
       let localStream;
       let remoteStream;
-      navigator.mediaDevices.getUserMedia({ video: true, audio: true})
-          .then(stream =>{
-              localStream = stream;
-              localVideo.srcObject = localStream;
-              localVideo.onloadedmetadata = () => localVideo.play();
-          });
+
+
+      navigator.mediaDevices.getUserMedia({ video: true, audio: true}).then(stream =>{
+          localStream = stream;
+          localVideo.srcObject = localStream;
+          localVideo.onloadedmetadata = () => localVideo.play();
+      });
   
         
-          peer.on('open', id => {
-              let det = @json($data);
-              myId.value = id;
-              if(user_role == 'counselor'){
-                shareIdToPeer(id, det);
-              }else{
-                // join();
-              }
-          });
+      // Generate an ID (Link)
+      peer.on('open', id => {
+          let det = @json($data);
+          myId.value = id;
+          if(user_role == 'counselor'){
+            // Share the ID to the Patient
+            shareIdToPeer(id, det);
+          }else{
+            // join();
+          }
+      });
        
   
       function shareIdToPeer(peer_id, info){
