@@ -117,6 +117,22 @@ class VideoCallController extends Controller
         }
     }
 
+    public function startVideoCallPeer2($id, $chat_id, $receiver, $role, $peer_id){
+        try {
+            $data = [
+                'id' => $id,
+                'chat_id' => $chat_id,
+                'receiver' => $receiver,
+                'role' => $role,
+                'token' =>  csrf_token(),
+                'peer_id' => $peer_id
+            ];
+            return view('page.chat.video-appointment_', compact('data'));
+        } catch (\Throwable $th) {
+            dd('Refresh the Page');
+        }
+    }
+
     public function activeVideoCall(){
         return view('page.chat.video_chat');
     }

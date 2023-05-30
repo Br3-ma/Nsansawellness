@@ -55,9 +55,9 @@
                     @if (!empty($appointments->toArray()))
                     <div class="items-center flex transition rounded-md p-2 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400">
                         <div class="event p-3 -mx-3 {{  $appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} flex items-center">
-                            @if($appointment->status != 0)
-                            <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
-                            @endif
+                            {{-- @if($appointment->status !== 0)
+                            <div class="w-2 h-2 bg-pending rounded-full"></div>
+                            @endif --}}
                             <a href="{{ route('appointment.show', ['id' => $appointment->id ]) }}">
                                 <div class="pr-10">
                                     <div class="event__title">
@@ -67,17 +67,17 @@
                                         @endif
                                     </div>
                                 
-                                    <div class="text-slate-500 text-xs mt-0.5"> 
+                                    <small class="text-slate-500 text-xs mt-0.5"> 
                                          {{ $appointment->start_date }} 
                                         <span class="mx-1">•</span>{{ $appointment->start_time ?? '' }}
-                                    </div>
+                                    </small>
                                     {{-- <a title="view" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="eye" class="w-4 h-4 text-slate-500"></i> </a> --}}
                                 </div>
                             </a>
                         </div>
                         {{-- <a class="flex items-center absolute top-0 bottom-0 right-2" href=""> <i data-lucide="edit" class="w-4 h-4 text-slate-500"></i> </a> --}}
                         
-                        <div class="flex items-center space-x-2 justify-end">
+                        <div class="flex items-center space-x-3 justify-end">
                             {{-- @if($appointment->status == 0)
                             <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
                             @else
@@ -85,14 +85,14 @@
                                 <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> 
                             </a>
                             @endif --}}
-                            <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="btn bg-purple-500" href="">
-                                <i data-lucide="trash" class="w-4 h-4 text-slate-500"></i> 
+                            <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="btn btn-secondary text-white">
+                                <i data-lucide="trash" class="w-4 h-4 text-danger"></i> 
                             </a>
-                            <a title="Edit" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="btn" href="">
-                                <i data-lucide="edit-2" class="w-4 h-4 text-slate-500"></i> 
+                            <a title="Edit" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="btn mx-1">
+                                <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
                             </a>
-                            <a title="Join Video Call" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="btn bg-red-500" href="">
-                                <i data-lucide="video" class="w-4 h-4  text-slate-500"></i> 
+                            <a href="nsansawellness/therapy-session-appointment/{{ auth()->user()->id }}/{{ $appointment->id }}/receiver/patient/{{ $appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
+                                <i data-lucide="video" class="w-4 h-4 text-white"></i> 
                             </a>
                         </div>
                     </div>
@@ -105,9 +105,9 @@
                     @if($app->appointment != null)
                     <div class="relative items-center flex transition rounded-md p-2">
                         <div class="event p-3 -mx-3 {{  $app->appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} flex items-center">
-                            @if($app->appointment->status != 0)
+                            {{-- @if($app->appointment->status != 0)
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
-                            @endif
+                            @endif --}}
                             <a href="{{ route('appointment.show', ['id' => $app->appointment->id ]) }}">
                                 <div class="pr-10">
                                     <div class="event__title">
@@ -123,6 +123,24 @@
                                     </div>
                                     {{-- <a title="view" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="eye" class="w-4 h-4 text-slate-500"></i> </a> --}}
                                 </div>
+                            </a>
+                        </div>                        
+                        <div class="flex items-center space-x-3 justify-end">
+                            {{-- @if($appointment->status == 0)
+                            <a title="Reactivate" href="{{ route('appointment.activate', ['id' => $appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> <i data-lucide="redo" class="w-4 h-4 text-slate-500"></i> </a>
+                            @else
+                            <a title="Cancel"  href="{{ route('appointment.deactivate', ['id' => $appointment->id ]) }}" class="flex zoom-in tooltip items-center absolute top-0 bottom-0 my-auto right-0" href=""> 
+                                <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> 
+                            </a>
+                            @endif --}}
+                            <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="btn btn-secondary text-white">
+                                <i data-lucide="trash" class="w-4 h-4 text-danger"></i> 
+                            </a>
+                            <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="btn mx-1">
+                                <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
+                            </a>
+                            <a href="nsansawellness/therapy-session-appointment/{{ auth()->user()->id }}/{{ $app->appointment->id }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
+                                <i data-lucide="video" class="w-4 h-4 text-white"></i> 
                             </a>
                         </div>
                     </div>
