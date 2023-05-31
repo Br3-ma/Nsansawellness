@@ -18,12 +18,22 @@ class Billing extends Model
         'status'
     ];
 
+    // Returns true or false if the user has a current bill to pay
     public static function has_bill(){
         return Billing::where('user_id', auth()->user()->id)
         ->where('status', 0)->exists();
     }
+
+    // Returns the last billing to pay
     public static function last_billing(){
         return Billing::where('user_id',  auth()->user()->id)
+                        ->where('status', 0)
+                        ->latest()->first();
+    }
+
+    // Returns the total balance a user is to pay
+    public static function running_balance($user_id){
+        return Billing::where('user_id',  $user_id)
                         ->where('status', 0)
                         ->latest()->first();
     }

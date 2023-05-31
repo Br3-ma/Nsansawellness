@@ -11,23 +11,30 @@
         <div class="intro-y col-span-12 lg:col-span-4 xl:col-span-3">
             <div class="box mt-5">
                 <div class="p-5">
-                    <a class="flex items-center text-primary font-medium" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i> {{ $user->fname.' '.$user->lname }} </a>
-                    <a class="flex items-center mt-5" href=""> <i data-lucide="user-plus" class="w-4 h-4 mr-2"></i> {{ $user->role }} </a>
-                    <a class="flex items-center mt-5 capitalize" href=""> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> {{ $user->type }} </a>
-                    <a class="flex items-center mt-5" href=""> <i data-lucide="email" class="w-4 h-4 mr-2"></i>{{ $user->email }}</a>
+                    <a class="flex items-center text-primary font-medium"> <i data-lucide="user" class="w-4 h-4 mr-2"></i> {{ $user->fname.' '.$user->lname }} </a>
+                    <a class="flex items-center mt-5 capitalize"> <i data-lucide="lock" class="w-4 h-4 mr-2"></i> {{ $user->type }} </a>
+                    <a class="flex items-center mt-5"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i>{{ $user->email }}</a>
+                    <a href="{{ route('all-patient-files', $user->id) }}" class="btn btn-warning text-white flex items-center mt-5 capitalize">
+                        <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
+                        Patient Files
+                    </a>
                 </div>
                 @if($user->type == 'patient')
-                <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <a class="flex items-center" href=""> <i data-lucide="activity" class="w-4 h-4 mr-2"></i> Trial  </a>
-                    <a class="flex items-center mt-5" href=""> <i data-lucide="box" class="w-4 h-4 mr-2"></i> Counseling Fees ZMK 1200</a>
-                </div>
-                
-                <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <a class="flex items-center font-bold"> Assigned Counselor</a>
-                    <a class="flex items-center mt-5" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i> John Doe </a>
-                    <a class="flex items-center mt-5" href=""> <i data-lucide="user-plus" class="w-4 h-4 mr-2"></i> Counselor </a>
-                    <a class="flex items-center mt-5" href=""> <i data-lucide="email" class="w-4 h-4 mr-2"></i> john.doe@gmail.com </a>
-                </div>
+                    <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                        <a class="flex items-center"> <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i> {{ App\Models\Billing::running_balance($user->id)->desc}}  </a>
+                        <a class="flex items-center mt-5"> <i data-lucide="box" class="w-4 h-4 mr-2"></i> Current Balance ZMK {{ App\Models\Billing::running_balance($user->id)->balance}}</a>
+                    </div>
+                    
+                    <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                        <a class="flex items-center font-bold"> Assigned Counselor</a>
+                        <a class="flex items-center mt-5" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i> 
+                            @if (App\Models\PatientFile::counselorAssigned($user->id) !== null)
+                                {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($user->id)->counselor->lname}}<br>
+                            @endif
+                        </a>
+                        <a class="flex items-center mt-5"> <i data-lucide="user-plus" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->department }} </a>
+                        <a class="flex items-center mt-5" href="mailto:{{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }}"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }} </a>
+                    </div>
                 @endif
             </div>
         </div>
@@ -35,9 +42,9 @@
         <!-- BEGIN: FAQ Content -->
         <div class="intro-y col-span-12 lg:col-span-8 xl:col-span-9">
             <div class="intro-y box lg:mt-5">
-                <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
-                    <h2 class="font-medium text-base mr-auto">
-                        Questionaire 
+                <div class="flex items-center p-5 bg-primary border-b border-slate-200/60 dark:border-darkmode-400">
+                    <h2 class="font-extrabold text-white mr-auto">
+                        Questionnaire Answers
                     </h2>
                 </div>
                 <div id="faq-accordion-1" class="accordion p-5">

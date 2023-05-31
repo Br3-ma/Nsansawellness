@@ -144,8 +144,8 @@
                 </div>
                 <div class="text-center lg:text-left p-5">
                     {{-- <div>Condition</div> --}}
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file->email }}</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class="w-3 h-3 mr-2"></i> {{ $file->created_at }} </div>
+                    <a title="Send an email to {{ $file->fname.' '.$file->lname  }}" href="mailto:{{ $file->email }}" class="flex tooltip items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file->email }}</a>
+                    <div title="View counselor" class="flex tooltip items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class=" w-3 h-3 mr-2"></i> {{ $file->created_at }} </div>
                     @hasrole('admin')
                         @if (App\Models\PatientFile::counselorAssigned($file->id) !== null)
                             <div class="bg-primary p-2 rounded-md text-white mt-1"> 
@@ -160,7 +160,11 @@
                     @endhasrole
                 </div>
                 <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <a href="{{ route('all-patient-files', $file->id) }}" class="btn btn-warning text-white py-1 px-2 mr-2">
+                    <a target="_blank" title="View response to questionnaire" href="{{ route('user-survey-response', $file->guest_id) }}" class="tooltip btn btn-secondary text-primary py-1 px-2 mr-2">
+                        <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
+                        Survey Response
+                    </a>
+                    <a title="View medical and therapy information" href="{{ route('all-patient-files', $file->id) }}" class="tooltip btn btn-warning text-white py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
                         View All Files
                     </a>

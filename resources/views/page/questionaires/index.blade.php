@@ -80,19 +80,19 @@
                         </td>
                         <td class="text-center">{{ $q->questions->count() }}</td>
                         <td class="w-40 items-center" >
-                            <input type="checkbox" data-id="{{ $q->id }}" name="status" class="js-switch" {{ $q->status_id == 1 ? 'checked' : '' }}>
+                            <input title="Activate/ Deactivate Questionnaire" type="checkbox" data-id="{{ $q->id }}" name="status" class="js-switch tooltip" {{ $q->status_id == 1 ? 'checked' : '' }}>
                             {{-- <div id="item{{ $q->id }}" onclick="changeQuestionaireStatus('{{ $q->id }}')" class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Activate </div> --}}
                         </td>
                         <td class="w-full flex">
-                            <a  class="flex items-center text-xs btn btn-primary btn-xs text-white mr-3" href="{{ route('questionaires.show', $q->id) }}"> 
+                            <a title="Add answers to the Questions" class="flex tooltip items-center text-xs btn btn-primary btn-xs text-white mr-3" href="{{ route('questionaires.show', $q->id) }}"> 
                                 Manage Questions 
                             </a>
                             
-                            <button onclick="getID('{{ $q->id }}');"  data-tw-toggle="modal" data-tw-target="#change-survey-audience-modal" class="flex items-center text-xs btn btn-success btn-xs text-white mr-3"> 
+                            <button title="Change who should answer this questionnaire" onclick="getID('{{ $q->id }}');"  data-tw-toggle="modal" data-tw-target="#change-survey-audience-modal" class="flex tooltip items-center text-xs btn btn-success btn-xs text-white mr-3"> 
                                 Change Audience 
                             </button>
                             {!! Form::open(['method' => 'DELETE','route' => ['questionaires.destroy', $q->id],'style'=>'display:inline']) !!}
-                            {!! Form::submit('Delete', ['class' => 'mt-2.5 text-danger cursor']) !!}
+                            {!! Form::submit('Delete', ['class' => 'mt-2.5 tooltip text-danger cursor', 'title'=> 'Are you sure you want to permanently delete questionnaire']) !!}
                             {!! Form::close() !!}
                         </td>
                     </tr>

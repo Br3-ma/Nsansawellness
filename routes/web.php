@@ -145,7 +145,6 @@ Route::group(['middleware' => ['auth', 'permission:questionaires.index']], funct
     Route::get('users-feedback', [QuestionaireController::class, 'feed'])->name('questionaire-user-feedback');
     Route::post('change-questionnaire-audience', [QuestionaireController::class, 'changeAudience'])->name('change-audience');
     Route::delete('question/delete/{id}/{qid}', [QuestionaireController::class, 'questionDestroy'])->name('question.remove');
-    Route::get('user-survey-response/{id?}', [QuestionaireController::class, 'user_feed'])->name('user-survey-response');
     Route::resource('questionaires', QuestionaireController::class);
     Route::resource('answers', AnswerController::class);
     Route::delete('answers/delete/{id}/{qid}', [AnswerController::class, 'customDestroy'])->name('answers.remove');
@@ -161,6 +160,7 @@ Route::group(['middleware' => ['auth', 'permission:billing']], function() {
 
 // Patient Dashboard
 Route::group(['middleware' => ['auth', 'permission:patient']], function() {
+    Route::get('user-survey-response/{id?}', [QuestionaireController::class, 'user_feed'])->name('user-survey-response');
     Route::get('/counseling-center', [PatientController::class, 'index'])->name('patient');
 });
 

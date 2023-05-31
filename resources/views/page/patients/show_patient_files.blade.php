@@ -1,25 +1,25 @@
 @extends('layouts.app')
 @section('content')
-
 <div class="content">
-    <div class="w-16 h-16 image-fit mt-8">
-        @if($p->image_path == null)
-        <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="{{ $p->fname.' '.$p->lname  }}">
-            {{ $p->fname[0].' '.$p->lname[0] }}
-        </div>
-        @else
-        <img alt="{{$p->fname.' '.$p->lname}}" class="rounded-full" src="{{ asset('public/storage/'.$p->image_path) }}">
-        @endif
-    </div>
-    <h1 style="color:#F65B08" class="capitalize intro-y text-lg font-medium mr-auto">
-        {{ $p->fname.' '.$p->lname }}
-    </h1>
-    <div class="flex">
+    <div class="flex mt-6">
         <h6 class="intro-y text-sm font-medium mr-auto">
-            Patient Records
+            
         </h6>
-
         <a href="{{ route('patient-files') }}" class="intro-x btn shadow-md mr-2">Back to Patient Files</a>
+    </div>
+    <div class="flex">
+        <div class="flex space-x-2">
+            @if($p->image_path == null)
+            <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="{{ $p->fname.' '.$p->lname  }}">
+                {{ $p->fname[0].' '.$p->lname[0] }}
+            </div>
+            @else
+            <img alt="{{$p->fname.' '.$p->lname}}" class="rounded-full" src="{{ asset('public/storage/'.$p->image_path) }}">
+            @endif
+            <h1 style="color:#F65B08" class="capitalize intro-y mt-2 text-lg font-medium ml-4">
+                {{ $p->fname.' '.$p->lname }}
+            </h1>
+        </div>
     </div>
     @isset($message)
         @if ($message)
