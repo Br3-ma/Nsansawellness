@@ -13,6 +13,7 @@
         <title> Nsansa Wellness - Dashboard</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- BEGIN: CSS Assets-->
+        <link rel="icon" type="image/png" href="{{ asset('favicon.svg') }}">
         {{-- <link rel="stylesheet" href="dist/css/app.css" /> --}}
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
         <link rel="stylesheet" href="{{ asset('dist/css/wizard.min.css') }}">

@@ -8,6 +8,7 @@
 	<link rel="pingback" href="xmlrpc.html" />
 	<title>{{ $title ?? 'Home' }}  &#8211; Nsansa Psychology and Counseling </title>
 	<meta name='robots' content='max-image-preview:large' />
+	<link rel="icon" type="image/png" href="{{ asset('favicon.svg') }}">
 	<link rel='dns-prefetch' href='http://s.w.org/' />
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Feed" href="feed/index.html" />
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Comments Feed" href="comments/feed/index.html" />
