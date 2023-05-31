@@ -122,7 +122,7 @@
                             @endif
                         </div>
                         <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="capitalize font-medium">{{$file->fname.' '.$file->lname}}</a> 
+                            <a target="_blank" href="{{ route('users.show', $file->id) }}" class="capitalize font-medium">{{$file->fname.' '.$file->lname}}</a> 
                             <div class="text-slate-500 text-xs mt-0.5">Patient</div>
                         </div>
                     </div>
@@ -159,10 +159,10 @@
                         @endif
                     @endhasrole
                 </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                <div class="text-center w-full lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                     <a target="_blank" title="View response to questionnaire" href="{{ route('user-survey-response', $file->guest_id) }}" class="tooltip btn btn-secondary text-primary py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
-                        Survey Response
+                        Survey
                     </a>
                     <a title="View medical and therapy information" href="{{ route('all-patient-files', $file->id) }}" class="tooltip btn btn-warning text-white py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
@@ -175,9 +175,9 @@
                             Assign Counselor
                         </button>
                         @else
-                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-danger py-1 px-2">
-                            <i data-lucide="refresh-cw" class="w-3 h-3 mr-2"></i>
-                            Re-assign
+                        <button title="Re-assign new Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-outline-danger py-1 px-2">
+                            <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                            {{-- Re-assign --}}
                         </button>
                         @endif
                     @endhasanyrole

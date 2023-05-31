@@ -222,6 +222,14 @@ Route::group(['middleware' => ['auth', 'permission:users.edit']], function() {
     ]);
 });
 
+Route::group(['middleware' => ['auth', 'permission:users.show']], function() {
+    Route::resource('users', UserController::class, [
+        'names' => [
+            'users.show' => 'users.show'
+        ]
+    ]);
+});
+
 // Chat
 Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
     Route::resource('chat', ChatController::class, [
