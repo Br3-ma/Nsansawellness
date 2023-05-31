@@ -5,32 +5,34 @@
     <div class="modal-dialog" id="modalMobile" style="margin-top:20%">
         <div class="modal-content">
             <!-- BEGIN: Modal Header -->
-            <div class="modal-header">
-                <h2 class="font-medium text-base mr-auto">Assign Counselor</h2> 
+            <div class="modal-header bg-primary">
+                <h2 class="font-extrabold text-white mr-auto">Assign Counselor</h2> 
                 {{-- <button class="btn btn-outline-secondary hidden sm:flex"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download Docs </button> --}}
                 
             </div> <!-- END: Modal Header -->
             <!-- BEGIN: Modal Body -->
             <form method="POST" action="{{ route('manual.assign.counselor') }}">
                 @csrf
-            <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+            <div class="modal-body">
                 {{-- <div class="col-span-12 sm:col-span-6"> <label for="modal-form-1" class="form-label">From</label> <input id="modal-form-1" type="text" class="form-control" placeholder="example@gmail.com"> </div>
                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-2" class="form-label">To</label> <input id="modal-form-2" type="text" class="form-control" placeholder="example@gmail.com"> </div>
                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-3" class="form-label">Subject</label> <input id="modal-form-3" type="text" class="form-control" placeholder="Important Meeting"> </div>
                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-4" class="form-label">Has the Words</label> <input id="modal-form-4" type="text" class="form-control" placeholder="Job, Work, Documentation"> </div> --}}
                 <div class="col-span-12 sm:col-span-6"> 
-                    <label for="modal-form-6" class="form-label">Profession</label> 
+                    <label for="modal-form-6" class="form-label font-extrabold">Profession</label> 
                     <select onchange="getval(this);" id="personel" class="form-select">
                         <option value="None">None</option>
+                        <option value="Peer Counseling">Peer Counseling</option>
                         <option value="Clinical Social Worker">Clinical Social Worker</option>
-                        <option value="Marriage Family Therapist">Marriage & Family Therapist</option>
+                        <option value="Marriage and Couples Couseling">Marriage and Couples Couseling</option>
                         <option value="Mental Health Counselor">Mental Health Counselor</option>
                         <option value="Professional Counselor">Professional Counselor</option>
                         <option value="Psychologist">Psychologist</option>
                     </select>
                 </div>
+                <br>
                 <div class="col-span-12 sm:col-span-6"> 
-                    <label for="modal-form-5" class="form-label">Counselor/ Therapist</label> 
+                    <label for="modal-form-5" class="form-label font-extrabold">Counselor/ Therapist</label> 
                     <select name="counselor_id" id="these_counselors" data-search="true" class="form-select w-full">
                     </select>               
                     <input id="inputID" name="patient_id" type="hidden" /> 
@@ -210,20 +212,17 @@
     </div>
 
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
 <script>
-    // callback-message
-    // Toastify({ 
-    //     node: $("#callback-message").clone().removeClass("hidden")[0], 
-    //     duration: 9000, 
-    //     newWindow: true, 
-    //     close: true,
-    //     gravity: "top", 
-    //     position: "right", 
-    //     backgroundColor: "white", 
-    //     stopOnFocus: true, 
-    // }).showToast(); 
-
+  $(document).ready(function () {
+      $('select').selectize({
+          sortField: 'text'
+      });
+  });
     var counselor_id = 0;
     var patient_id = 0;
 

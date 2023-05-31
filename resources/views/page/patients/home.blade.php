@@ -25,7 +25,7 @@
                             {{-- If I Started the Chat --}}
                             @if($chat->sender_id == auth()->user()->id && $chat->receiver !== null)
                                 <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')"
-                                    class="intro-x chat-list-item cursor-pointer mt-2 rounded-lg bg-white mr-10 relative flex items-center p-5">
+                                    class="intro-x chat-list-item cursor-pointer w-full mt-2 rounded-lg bg-white mr-10 relative flex items-center p-5">
 
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
                                         @if($chat->sender->image_path != null) 
@@ -43,6 +43,7 @@
                                         <div class="w-full truncate text-slate-500 mt-0.5">{{ $chat->name}}</div>
                                         <small>{{ $chat->created_at->toFormattedDateString() }}</small>
                                     </div>
+                                    
                                     {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
                                 </div>
                             @else 

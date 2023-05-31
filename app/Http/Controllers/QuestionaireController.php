@@ -130,9 +130,20 @@ class QuestionaireController extends Controller
      * @param  \App\Models\Questionaire  $questionaire
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Questionaire $questionaire)
+    public function changeAudience(Request $request, Questionaire $questionaire)
     {
-        //
+        try {
+            $id = $request->toArray()['q_id'];
+            $data = $questionaire->where('id', $id)->first();
+            $data->group_assigned = $request->toArray()['audience'];
+            $data->save();
+
+            Session::flash('attention', "Audience changed successfully.");
+            return redirect()->route('questionaires.index');
+        } catch (\Throwable $th) {
+            Session::flash('err_msg', "Cannot change audience, failed.");
+            return redirect()->route('questionaires.index');
+        }
     }
 
     /**

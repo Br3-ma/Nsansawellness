@@ -65,8 +65,8 @@ class UserController extends Controller
             ]));
 
             $details = [
-                'title' => 'Your account has been created successfully, please visit the site to login',
-                'body' => 'Hi '.$u->fname.' '.$u->lname.' your current password is peace2u'
+                'title' => 'Your account has been created successfully.',
+                'body' => 'Hi '.$u->fname.' '.$u->lname.' your username is '.$u->email.' and default password is peace2u, please visit the site https://nsansawellness.com to login to your account. Thank you.'
             ];
 
             $u->syncRoles($request->user_group);

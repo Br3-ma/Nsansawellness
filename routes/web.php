@@ -143,6 +143,7 @@ Route::group(['middleware' => ['auth', 'permission:questionaires.index']], funct
     Route::post('/mark-as-read',[NotificationController::class, 'markNotification'])->name('markNotification');
     Route::get('change-questionaire-status', [QuestionaireController::class, 'updateStatus'])->name('questionaire.status');
     Route::get('users-feedback', [QuestionaireController::class, 'feed'])->name('questionaire-user-feedback');
+    Route::post('change-questionnaire-audience', [QuestionaireController::class, 'changeAudience'])->name('change-audience');
     Route::delete('question/delete/{id}/{qid}', [QuestionaireController::class, 'questionDestroy'])->name('question.remove');
     Route::get('user-survey-response/{id?}', [QuestionaireController::class, 'user_feed'])->name('user-survey-response');
     Route::resource('questionaires', QuestionaireController::class);

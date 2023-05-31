@@ -120,8 +120,11 @@
                             {{-- <div>20%</div> --}}
                         </div>
                     </div>
-                    {{-- <div class="w-20 h-10"> --}} 
-                    <a href={{ url('auto-assign/'.$user->guest_id) }} class="btn btn-warning text-white py-1 px-2 mr-2">Auto Assign</a>
+                    @foreach($user->roles as $role)
+                        @if($role->name == 'patient')
+                            <a href="{{ route('all-patient-files', $user->id) }}" class="btn btn-warning text-white py-1 px-2 mr-2">Patient Files</a>   
+                        @endif
+                    @endforeach
                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-secondary py-1 px-2">Profile</a>
                     
                 </div>
