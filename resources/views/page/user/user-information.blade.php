@@ -238,7 +238,9 @@
                                         <div class="progress-bar w-1/2 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div> --}}
-                                <a title="View medical and therapy information" href="{{ route('all-patient-files', $user->id) }}" class="btn btn-secondary block w-40 mx-auto mt-5 tooltip">Patient Records</a> 
+                                @if ($user->type == 'patient')
+                                    <a title="View medical and therapy information" href="{{ route('all-patient-files', $user->id) }}" class="btn btn-warning block w-40 mx-auto mt-5 tooltip">Patient Records</a> 
+                                @endif
                             </div>
                         </div>
                     </div>
