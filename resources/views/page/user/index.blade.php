@@ -70,7 +70,7 @@
                     <div class="w-8 h-8 lg:w-12 lg:h-12 image-fit mr-1">
                         @if($user->image_path == null)
                             <div class="w-8 h-8 bg-primary text-center px-1 py-2 rounded-full zoom-in tooltip" title="{{ $user->fname.' '.$user->lname  }}">
-                                <span class="text-white">{{ $user->fname[0].' '.$user->lname[0] }}</span>
+                                <span class="text-white capitalize">{{ $user->fname[0].' '.$user->lname[0] }}</span>
                             </div>
                         @else
                             <img alt="User" class="w-8 h-8 rounded-full" src="{{ asset('public/storage/'.$user->image_path) }}">
