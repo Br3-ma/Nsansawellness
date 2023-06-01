@@ -80,6 +80,8 @@
                     <div class="lg:ml-2 w-3/4 lg:w-full lg:mr-auto text-left mt-0">
                         <a href="{{ route('users.show', $user->id) }}" class="capitalize font-medium">{{ $user->fname.' '.$user->lname }}</a> 
                         <div class="text-slate-500 text-xs mt-0 lg:mt-0.5">
+                            <span>{{ $user->email }}</span>
+                            <br>
                             @foreach($user->roles as $role)
                                 <span class="capitalize">{{ $role->name }}</span>
                             @endforeach
