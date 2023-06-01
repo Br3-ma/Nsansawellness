@@ -11,6 +11,7 @@
         <title>Login - Nsansa Wellness</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="dist/css/app.css" />
+        <link rel="icon" type="image/png" href="{{ asset('favicon.svg') }}">
         <!-- END: CSS Assets-->
     </head>
     <style>

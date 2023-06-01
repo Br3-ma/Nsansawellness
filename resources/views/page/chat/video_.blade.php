@@ -523,17 +523,20 @@
        
   
       function shareIdToPeer(peer_id, info){
-        $.ajax({
-            type:'POST',
-            url:'{{ route("send.remote_id") }}',
-            data: {
-                peer_id,
-                info
-            },
-            success:function(data) {
-              console.log(data);
-            }
-        });
+        var message = document.getElementById('message_textbox');
+        message.value = "<a class='btn btn-danger btn-sm text-white' href='https://nsansawellness.com/therapy-session/10/4/receiver/patient/"+peer_id+"'>Join Video Call</a>" ;
+        send();
+        // $.ajax({
+        //     type:'POST',
+        //     url:'{{ route("send.remote_id") }}',
+        //     data: {
+        //         peer_id,
+        //         info
+        //     },
+        //     success:function(data) {
+
+        //     }
+        // });
       }
 
       function join(){

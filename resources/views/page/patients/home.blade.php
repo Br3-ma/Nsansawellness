@@ -83,7 +83,17 @@
                                     
                                     <p>Make Online and Live Consultation Easily Easily with Nsansa Wellness</p>
     
-                                    <button class="mt-10 btn btn-primary btn-sm">Request for a Patient</button>
+                                    <div class="w-full bg-warning flex space-x-2 p-2 rounded-lg text-white">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                              </svg>
+                                        </span>
+                                        &nbsp;&nbsp;
+                                        <span>
+                                            An email will be sent to you once a patient is assigned to you.
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="lg:w-1/2 lg:px-2 sm:px-2">
                                     <div class="w-full">
@@ -139,6 +149,17 @@
                                         <span>Get Help. Get Better</span>
                                     </h2>
                                     <div class="w-full">Get the Guidance you need from top Exprts right away.</div>
+                                    <div class="w-full bg-primary flex space-x-2 p-2 rounded-lg text-white">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                                              </svg>
+                                        </span>
+                                        &nbsp;&nbsp;
+                                        <span>
+                                            Please wait while we assign a counselor to you.
+                                        </span>
+                                    </div>
                                 </div>
                                 <div class="lg:flex ">
                                     <div class="lg:w-1/2 lg:px-2 sm:px-2">
@@ -154,7 +175,7 @@
                                                         Chat anonymously with an expert 
                                                     </small>
                                                 </span>
-                                                <i data-lucide="chevron-right"></i>
+                                                {{-- <i data-lucide="chevron-right"></i> --}}
                                             </div>
                                             <div class="box flex mt-2 py-6 p-3 m-3 text-white" style="background-color:#AE04B4">
                                                 <span class="mr-2">
@@ -167,7 +188,7 @@
                                                         Speak to an expert or get on a call with them
                                                     </small>
                                                 </span>
-                                                <i data-lucide="chevron-right"></i>
+                                                {{-- <i data-lucide="chevron-right"></i> --}}
                                             </div>
                                             <div class="box flex mt-2 py-6 p-3 m-3" style="background-color:#05C3E5">
                                                 <span class="mr-2">
@@ -180,16 +201,16 @@
                                                         Connect to 1-on-1 in-person with an expert.
                                                     </small>
                                                 </span>
-                                                <i data-lucide="chevron-right"></i>
+                                                {{-- <i data-lucide="chevron-right"></i> --}}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-white box w-full lg:mb-0 mb-2 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/remote.jpg") }}'); background-size:cover; background-color:#9374AD;">
 
                                         
-                                        <h3>Making through life's toughest times. Together.</h3>
+                                        {{-- <h1>Making through life's toughest times. Together.</h1>
         
-                                        <button class="mt-20 btn btn-warning btn-sm">Take a Quiz</button>
+                                        <button class="mt-20 btn btn-warning btn-sm">Take a Quiz</button> --}}
                                     </div>
                                 </div>
                             </div>

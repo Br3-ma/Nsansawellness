@@ -18,6 +18,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta name="keywords" content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
         <title>Register - Nsansa Wellness</title>
+        <link rel="icon" type="image/png" href="{{ asset('favicon.svg') }}">
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="dist/css/app.css" />
         <!-- END: CSS Assets-->

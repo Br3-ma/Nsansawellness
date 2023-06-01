@@ -153,9 +153,12 @@
                                 <small>{{App\Models\PatientFile::counselorAssigned($file->id)->counselor->department }}</small>
                             </div>
                         @else
-                            <br>
-                            <br>
-                            <br>
+                            <div class="text-primary rounded-md mt-1">
+                                <button title="Assign Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip text-primary btn btn-outline-success py-1 px-2">
+                                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                                    &nbsp; Assign Counselor
+                                </button>
+                            </div>
                         @endif
                     @endhasrole
                 </div>
@@ -166,13 +169,13 @@
                     </a>
                     <a title="View medical and therapy information" href="{{ route('all-patient-files', $file->id) }}" class="tooltip btn btn-warning text-white py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
-                        View All Files
+                        Records
                     </a>
                     @hasanyrole('admin')
                         @if($file->assignedCounselor == null)
-                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-success py-1 px-2">
-                            <i data-lucide="shield-check" class="w-3 h-3 mr-2"></i>
-                            Assign Counselor
+                        <button title="Assign Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip text-white btn btn-success py-1 px-2">
+                            <i data-lucide="shield-check" class="w-3 h-3"></i>
+                            {{-- Assign --}}
                         </button>
                         @else
                         <button title="Re-assign new Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-outline-danger py-1 px-2">
