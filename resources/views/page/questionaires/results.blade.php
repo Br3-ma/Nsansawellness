@@ -20,10 +20,10 @@
                     </a>
                 </div>
                 @if($user->type == 'patient')
-                    <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <a class="flex items-center"> <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i> {{ App\Models\Billing::running_balance($user->id)->desc}}  </a>
+                    {{-- <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                        <a class="flex items-center"> <i data-lucide="credit-card" class="w-4 h-4 mr-2"></i> {{ App\Models\Billing::running_balance($user->id)->desc ?? 'No Subscription'}}  </a>
                         <a class="flex items-center mt-5"> <i data-lucide="box" class="w-4 h-4 mr-2"></i> Current Balance ZMK {{ App\Models\Billing::running_balance($user->id)->balance}}</a>
-                    </div>
+                    </div> --}}
                     
                     <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                         <a class="flex items-center font-bold"> Assigned Counselor</a>
