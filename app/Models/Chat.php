@@ -16,6 +16,8 @@ class Chat extends Model
         'receiver_id',
         'third_party_id',
         'appointment_id',
+        'room_id',
+        'is_active',
         'status'
     ];
 

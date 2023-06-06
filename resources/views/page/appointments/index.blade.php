@@ -91,7 +91,7 @@
                             <a title="Edit" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="btn mx-1">
                                 <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
                             </a>
-                            <a href="nsansawellness/therapy-session-appointment/{{ auth()->user()->id }}/{{ $appointment->id }}/receiver/patient/{{ $appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
+                            <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $appointment->id }}/receiver/patient/{{ $appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
                                 <i data-lucide="video" class="w-4 h-4 text-white"></i> 
                             </a>
                         </div>
@@ -139,7 +139,7 @@
                             <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="btn mx-1">
                                 <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
                             </a>
-                            <a href="nsansawellness/therapy-session-appointment/{{ auth()->user()->id }}/{{ $app->appointment->id }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
+                            <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $app->appointment->id }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
                                 <i data-lucide="video" class="w-4 h-4 text-white"></i> 
                             </a>
                         </div>

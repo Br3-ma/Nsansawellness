@@ -61,8 +61,13 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        // Save the new message
-        ChatMessages::firstOrCreate($request->toArray());
+        try {
+            // Save the new message
+            ChatMessages::firstOrCreate($request->toArray());
+            return response()->json(200);
+        } catch (\Throwable $th) {
+            return response()->json(500);
+        }
     }
 
     /**
@@ -140,9 +145,17 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        try {
+            $chat = Chat::where('id', $request->toArray()['chat_id'])->first();
+            $chat->room_id = $request->toArray()['room_id'];
+            $chat->save();
+            return response()->json(200);
+        } catch (\Throwable $th) {
+            return response()->json(500);
+        }
+
     }
 
     /**
@@ -153,6 +166,13 @@ class ChatController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        try {
+            $chat = Chat::where('id', $id)->first();
+            $chat->is_active = 0;
+            $chat->save();
+            return response()->json(200);
+        } catch (\Throwable $th) {
+            return response()->json(500);
+        }
     }
 }

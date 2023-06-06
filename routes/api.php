@@ -28,6 +28,8 @@ Route::get('get-therapy-sessions/{id}', [SurveyController::class, 'getTherapySes
 Route::get('get-therapy-session-chat-messages/{chat_id}/{starter}', [SurveyController::class, 'getTherapySessionChatMessages']);
 
 Route::post('submit-survey', [ResultsController::class, 'store']);
+Route::get('send-chat-message', [ChatController::class, 'store']);
+Route::post('update-session', [ChatController::class, 'update']);
 
 Route::post('login', [LoginController::class, 'login']);
 Route::post('register', [RegisterController::class, 'register']);

@@ -414,54 +414,32 @@
         $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
         $('#message_thread').empty();
         $.ajax({
-                type:'GET',
-                url:'{{ route("chat.index") }}',
-                data: {
-                    id,owner
-                },
-                success:function(data) {
-                    // State changes
-                    $('.convoBody').show();
-                    $('#chatList').hide(); 
+            type:'GET',
+            url:'{{ route("chat.index") }}',
+            data: {
+                id,owner
+            },
+            success:function(data) {
+                // State changes
+                $('.convoBody').show();
+                $('#chatList').hide(); 
 
-                    let messages = data.chat_session.chat_messages;
-                    
-                    // UPDATED
-                    for (const message of messages){
+                let messages = data.chat_session.chat_messages;
+                
+                // UPDATED
+                for (const message of messages){
 
-                        if(user['id'] != message.user_id){
-                            $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
-                                <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                    <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
-                                    </div>\
-                                <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
-                                                '+ message.message +'\
-                                    <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
-                                            </div>\
-                                            <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                        <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
-                                        <div class="dropdown-menu w-40">\
-                                            <ul class="dropdown-content">\
-                                                <li>\
-                                                    <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
-                                                </li>\
-                                                <li>\
-                                                    <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
-                                                </li>\
-                                            </ul>\
-                                        </div>\
-                                    </div>\
+                    if(user['id'] != message.user_id){
+                        $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
                                 </div>\
-                                <div class="clear-both"></div>\
-                            ');
-                        }else{
-                            $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
-                            <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                            <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
                                             '+ message.message +'\
                                 <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                         </div>\
                                         <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                    <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-dark" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                    <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
                                     <div class="dropdown-menu w-40">\
                                         <ul class="dropdown-content">\
                                             <li>\
@@ -473,24 +451,46 @@
                                         </ul>\
                                     </div>\
                                 </div>\
-                                <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                    <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
-                                </div>\
                             </div>\
                             <div class="clear-both"></div>\
-                            ');
-                        }
-                    } 
-                    $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
-                    $('#sessionPreloader').hide();
-                    $('#nsansa_app').show();
-                },
-                
-                error: function (msg) {
-                    console.log(msg);
-                    var errors = msg.responseJSON;
-                }
-            });
+                        ');
+                    }else{
+                        $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
+                        <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                                        '+ message.message +'\
+                            <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
+                                    </div>\
+                                    <div class="hidden sm:block dropdown ml-3 my-auto">\
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-dark" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                <div class="dropdown-menu w-40">\
+                                    <ul class="dropdown-content">\
+                                        <li>\
+                                            <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
+                                        </li>\
+                                    </ul>\
+                                </div>\
+                            </div>\
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
+                            </div>\
+                        </div>\
+                        <div class="clear-both"></div>\
+                        ');
+                    }
+                } 
+                $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+                $('#sessionPreloader').hide();
+                $('#nsansa_app').show();
+            },
+            
+            error: function (msg) {
+                console.log(msg);
+                var errors = msg.responseJSON;
+            }
+        });
     }
 
     function send(){
@@ -523,8 +523,6 @@
                 var errors = msg.responseJSON;
             }
         });
-
-
     }
 
     // // Execute a function when the user presses a key on the keyboard
@@ -640,6 +638,7 @@
         $('.convoBody').hide();
         $('.chatList').show();
     }
+
     function timeSince(timeStamp) {
         var now = new Date(), secondsPast = (now.getTime() - timeStamp) / 1000;
         if (secondsPast < 60) {
