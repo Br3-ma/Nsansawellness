@@ -282,11 +282,11 @@ $(document).ready(function() {
     var peer = new Peer();
     
 
-    navigator.mediaDevices.getUserMedia({ video: true, audio: true}).then(stream =>{
+    navigator.mediaDevices.getUserMedia({ video: false, audio: false}).then(stream =>{
           localStream = stream;
           localVideo.srcObject = localStream;
           localVideo.onloadedmetadata = () => localVideo.play();
-      });
+    });
 
     // Generate an ID (Link)
     peer.on('open', id => {

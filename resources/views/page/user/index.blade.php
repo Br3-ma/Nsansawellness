@@ -140,22 +140,14 @@
         </div>
         @endforelse
         
-        <!-- END: Users Layout -->
-        <!-- BEGIN: Pagination -->
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center"></div>
-            <nav class="w-full sm:w-1/2 sm:mr-auto">
-                <ul class="pagination w-1/2">
-                    {!! $users->links('pagination::tailwind') !!}
+
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap w-full"></div>
+            <nav class="w-full">
+                <ul class="w-full" style="width:100%">
+                    {!! $users->links() !!}
                 </ul>
             </nav>
-            {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
-                <option>10</option>
-                <option>25</option>
-                <option>35</option>
-                <option>50</option>
-            </select> --}}
         </div>
-        <!-- END: Pagination -->
     </div>
 </div>
 <!-- BEGIN: Delete Confirmation Modal -->

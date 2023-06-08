@@ -51,9 +51,6 @@ class AppointmentController extends Controller
     {
         $events = [];
 
-        // $x = $this->get_my_appointments();
-        // dd($x);
-
         $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         
@@ -158,9 +155,6 @@ class AppointmentController extends Controller
         }else{
             $users = $this->user->get();
         }
-        
-        
-        
         return view('page.appointments.create', compact('users'));
     }
 
@@ -188,7 +182,8 @@ class AppointmentController extends Controller
                     'name' => auth()->user()->fname.' '.auth()->user()->lname,
                     'type' => $request->type,
                     'title' => $request->title,
-                    'appointment_id' => $appointment->id
+                    'appointment_id' => $appointment->id,
+                    'link' => $appointment->video_link
                 ];
                 // Send a notification to Guest about the new Appointment
                 // $message = 'You have a new appointment with'.auth()->user()->fname.' '.auth()->user()->lname;
@@ -198,10 +193,13 @@ class AppointmentController extends Controller
             // Send a notification to my self about the new Appointment
             $u->notify(new MyNewAppointment($payload));
             Session::flash('attention', "Appointment has been scheduled successfully.");
+            $appointment->delete();
+            $this->user_appointment->where('appointment_id', $appointment->id)->first()->delete();
             return redirect()->route('appointment');
         } catch (\Throwable $th) {
-            Session::flash('error_msg', "Oops something went wrong. Email(s) not sent");
-            return redirect()->route('appointment');
+            dd($th);
+            // Session::flash('error_msg', "Oops something went wrong. Email(s) not sent");
+            // return redirect()->route('appointment');
         }
     }
 

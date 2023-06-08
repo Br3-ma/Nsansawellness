@@ -264,7 +264,6 @@ Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
 //     Route::resource('users', UserController::class)->name('users.store');
 // });
 
-
 // ================== Website
 Route::get('/about', [AboutPage::class, 'index'])->name('about');
 Route::get('/contact', [ContactPage::class, 'index'])->name('contact');

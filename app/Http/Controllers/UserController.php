@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UserAppointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Spatie\Permission\Models\Permission;
@@ -27,8 +28,11 @@ class UserController extends Controller
         $userRole = Role::pluck('name')->toArray();
         $permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = User::latest()->paginate(4);
+        $users = Cache::remember('user_list', 60 * 60, function(){
+            return User::latest()->paginate(4);
+        });
         $notifications = auth()->user()->unreadNotifications;
+        
         return view('page.user.index', compact('users','permissions','roles','userRole','notifications'));
     }
 

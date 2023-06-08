@@ -912,10 +912,9 @@
             <h1 class="text-lg font-bold text-success" id="flash"></h1>
             <a href="#" class="btn btn-primary item-center" id="doneRating" onclick="reloadPage()">Back</a>
     </div>
-    <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
-        {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
+    {{-- <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
         <img src="{{ asset('public/img/1.gif') }}">
-    </div>
+    </div> --}}
     
     @livewireScripts 
     <!-- BEGIN: JS Assets-->

@@ -514,24 +514,24 @@
           localVideo.onloadedmetadata = () => localVideo.play();
       });
   
-      if (user_role !== 'patient') {
-        // Generate an ID (Link)
-        peer.on('open', id => {
-            alert(id);
-            const remotePeerId = peerId.value;
-            const call = peer.call(remotePeerId, localStream);
-            // call of undefine 'on' from 'call'
-            console.log(call);
-            // alert('joining');
-            // alert(remotePeerId);
+      // if (user_role !== 'patient') {
+      //   // Generate an ID (Link)
+      //   peer.on('open', id => {
+      //       alert(id);
+      //       const remotePeerId = peerId.value;
+      //       const call = peer.call(remotePeerId, localStream);
+      //       // call of undefine 'on' from 'call'
+      //       console.log(call);
+      //       // alert('joining');
+      //       // alert(remotePeerId);
 
-            call.on('stream', stream => {
-                remoteVideo.srcObject = stream;
-                remoteVideo.onloadedmetadata = () => remoteVideo.play();
-                $('.remote-screen').show();
-            });
-        });
-      }
+      //       // call.on('stream', stream => {
+      //       //     remoteVideo.srcObject = stream;
+      //       //     remoteVideo.onloadedmetadata = () => remoteVideo.play();
+      //       //     $('.remote-screen').show();
+      //       // });
+      //   });
+      // }
 
       function join(){
           const remotePeerId = peerId.value;

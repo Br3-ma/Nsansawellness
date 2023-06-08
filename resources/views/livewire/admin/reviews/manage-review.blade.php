@@ -29,9 +29,9 @@
                     <table class="table table-report -mt-2">
                         <thead>
                             <tr>
-                                <th class="whitespace-nowrap">
+                                {{-- <th class="whitespace-nowrap">
                                     <input class="form-check-input" type="checkbox">
-                                </th>
+                                </th> --}}
                                 {{-- <th class="whitespace-nowrap">INVOICE</th> --}}
                                 <th class="whitespace-nowrap">REVIEWER</th>
                                 <th class="text-center whitespace-nowrap">FEEDBACK</th>
@@ -47,9 +47,9 @@
                             @forelse ($reviews as $rev)
                             
                                 <tr class="intro-x">
-                                    <td class="w-10">
+                                    {{-- <td class="w-10">
                                         <input class="form-check-input" type="checkbox">
-                                    </td>
+                                    </td> --}}
                                     <td class="w-40">
                                         <a href="" class="font-medium whitespace-nowrap">{{ $rev->user->fname.' '.$rev->user->lname}}</a> 
                                         {{-- <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div> --}}
@@ -86,38 +86,15 @@
                     @endif
                 </div>
                 <!-- END: Data List -->
-                @if($reviews  != [])
+                @if($reviews  !== [])
                 <!-- BEGIN: Pagination -->
-                <div class="intro-y col-span-12 block">
-                    <nav class="w-full sm:w-auto sm:mr-auto block">
-                        <ul class="pagination">
-                            {!! $reviews->links('pagination::tailwind') !!}
-                            {{-- <li class="page-item">
-                                <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-left"></i> </a>
-                            </li>
-                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
-                            <li class="page-item"> <a class="page-link" href="#">1</a> </li>
-                            <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
-                            <li class="page-item"> <a class="page-link" href="#">3</a> </li>
-                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-right"></i> </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-right"></i> </a>
-                            </li> --}}
-                        </ul>
-                    </nav>
-                    {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
-                        <option>10</option>
-                        <option>25</option>
-                        <option>35</option>
-                        <option>50</option>
-                    </select> --}}
-                </div>
+                    <div class="intro-y col-span-12 block">
+                        <nav class="w-full sm:w-auto sm:mr-auto block">
+                            <ul class="pagination">
+                                {!! $reviews->links('pagination::tailwind') !!}
+                            </ul>
+                        </nav>
+                    </div>
                 <!-- END: Pagination -->
                 @endif
             </div>

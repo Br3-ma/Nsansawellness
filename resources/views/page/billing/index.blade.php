@@ -52,9 +52,9 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">
+                        {{-- <th class="whitespace-nowrap">
                             <input class="form-check-input" type="checkbox">
-                        </th>
+                        </th> --}}
                         <th class="whitespace-nowrap">DATE</th>
 
                         @hasanyrole(['admin', 'administrator'])
@@ -91,9 +91,9 @@
                 <tbody>
                     @forelse ($bills as $bill)
                     <tr class="intro-x">
-                        <td class="w-10">
+                        {{-- <td class="w-10">
                             <input class="form-check-input" type="checkbox">
-                        </td>
+                        </td> --}}
                         <td class="w-40 text-left">
                             {{ $bill->created_at->toFormattedDateString() }}
                         </td>

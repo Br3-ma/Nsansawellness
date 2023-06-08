@@ -41,7 +41,7 @@ class NewAppointment extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('You have been invited to a new '.$this->data['type'].' call appointment with '.$this->data['name'])
+                    ->line('You have been invited to a new '.$this->data['type'].' call appointment with '.$this->data['name'].' Click on this link to join video call '.$this->data['link'])
                     ->action('Goto Appointment', url('view-appointment/'.$this->data['appointment_id']))
                     ->line('Thank you!');
     }
@@ -61,7 +61,7 @@ class NewAppointment extends Notification
             'sender' => $this->data['name'],
             'type' =>  'new-appointment',
             'ispopped' =>  0,
-            'link' => 'view-appointment/'.$this->data['appointment_id']
+            'link' => $this->data['link']
         ];
     }
 }
