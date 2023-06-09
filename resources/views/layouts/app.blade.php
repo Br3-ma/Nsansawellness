@@ -1005,5 +1005,78 @@
         // displayPusherNotifications();
     </script>
     <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
+    <script>
+        if (!("Notification" in window) || Notification.permission === "denied") {
+            // Fallback mechanism
+            // For example, use postMessage() to communicate or inform the user in a different way
+            alert("Notifications are not supported or permission is denied.");
+        } else if (Notification.permission === "granted") {
+            // If the notification permission is already granted, show the notification
+            
+            showNotification();
+        } else {
+            // Request permission from the user to show notifications
+            Notification.requestPermission().then(function (permission) {
+                if (permission === "granted") {
+                    showNotification();
+                } else {
+                    alert("Permission for notifications was denied.");
+                }
+            });
+        }
+
+        // Function to show the notification
+        function showNotification() {
+            var user = {!! auth()->user()->toJson() ?? '' !!}
+            // Send a POST request to add the product to the cart
+            axios.get("{{ route('notify')}}", {
+                user_id: user['id']
+            })
+            .then(response => {
+                alert(response);
+                var notification = new Notification("Hello, world!");
+                notification.onclick = function () {
+                    alert("Notification clicked.");
+                    // Handle the notification click event here
+                };
+                notification.onclose = function () {
+                    alert("Notification closed.");
+                    // Handle the notification close event here
+                };
+            })
+            .catch(error => {
+
+            });
+
+    // Send an AJAX request to add the product to the cart
+    $.ajax({
+      url: "{{ route('notify')}}",
+      method: 'POST',
+      data: {
+        user_id: user['id']
+      },
+      success: function(response) {
+        const elements = response.data;
+        elements.forEach((element) => {
+            var notification = new Notification(element['message']);
+        });
+        // notification.onclick = function () {
+        //     alert("Notification clicked.");
+        //     // Handle the notification click event here
+        // };
+        // notification.onclose = function () {
+        //     alert("Notification closed.");
+        //     // Handle the notification close event here
+        // };
+      },
+      error: function(xhr, status, error) {
+        // Handle any errors that occur during the AJAX request
+        console.error('Error Getting Notification:', error);
+      }
+    });
+
+
+        }
+    </script>
 </body>
 </html>

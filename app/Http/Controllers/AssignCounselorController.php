@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AssignCounselor;
 use App\Models\Chat;
+use App\Models\PushAlert;
 use App\Models\Question;
 use App\Models\Result;
 use App\Models\User;
@@ -90,6 +91,16 @@ class AssignCounselorController extends Controller
                 'name' => 'Nsansa wellness',
                 'sender' => 'Nsansa Wellness Group'
             ];
+
+            PushAlert::create([
+                'message' => 'A Counselor has been assigned to you',
+                'for_user_id' => $request->toArray()['patient_id'],
+                'from_user_id' => auth()->user()->id
+            ],[
+                'message' => 'A New Patient has been assigned to you',
+                'for_user_id' => $request->toArray()['counselor_id'],
+                'from_user_id' => auth()->user()->id
+            ]);
 
             try {
                 // //Notify counselor

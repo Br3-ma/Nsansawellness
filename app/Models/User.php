@@ -182,4 +182,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function patient_questionaires(){
         return $this->hasMany(PatientQuestionnaires::class);
     }
+    
+    public function push_alerts(){
+        return $this->hasMany(PushAlert::class);
+    }
+
+    public function unseen_push_alerts(){
+        return $this->hasMany(PushAlert::class)->where('is_seen', 1);
+    }
 }

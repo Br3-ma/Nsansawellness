@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
 use App\Models\Appointment;
+use App\Models\PushAlert;
 use App\Models\User;
 use App\Models\UserAppointment;
 use App\Notifications\MyNewAppointment;
@@ -50,7 +51,7 @@ class AppointmentController extends Controller
     public function index()
     {
         $events = [];
-
+        $this->mark_as_seen();
         $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         
@@ -185,6 +186,12 @@ class AppointmentController extends Controller
                     'appointment_id' => $appointment->id,
                     'link' => $appointment->video_link
                 ];
+
+                PushAlert::create([
+                    'message' => 'You have been invited to an appointment',
+                    'for_user_id' => $guest,
+                    'from_user_id' => auth()->user()->id
+                ]);
                 // Send a notification to Guest about the new Appointment
                 // $message = 'You have a new appointment with'.auth()->user()->fname.' '.auth()->user()->lname;
                 $user->notify(new NewAppointment($payload));
@@ -197,9 +204,9 @@ class AppointmentController extends Controller
             $this->user_appointment->where('appointment_id', $appointment->id)->first()->delete();
             return redirect()->route('appointment');
         } catch (\Throwable $th) {
-            dd($th);
-            // Session::flash('error_msg', "Oops something went wrong. Email(s) not sent");
-            // return redirect()->route('appointment');
+            // dd($th);
+            Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
+            return redirect()->route('appointment');
         }
     }
 
@@ -301,5 +308,10 @@ class AppointmentController extends Controller
         $a->delete();
         return redirect()->route('appointment.edit', ['id'=>$appointment_id]);
         // return view('page.appointments.edit', ['appointment' => $appointment, 'guests'=> $guests, 'users' => $users]);
+    }
+
+    // Reusable
+    public function mark_as_seen(){
+        PushAlert::where('for_user_id', auth()->user()->id)->update(['is_seen' => 1]);
     }
 }

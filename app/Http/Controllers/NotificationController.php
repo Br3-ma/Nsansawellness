@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\RealTimeNotification;
+use App\Models\PushAlert;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,9 @@ use Pusher\Pusher;
 class NotificationController extends Controller
 {
 
-    public $pushConfs, $pusher;
+    public $pushConfs, $pusher, $push;
 
-    public function __construct()
+    public function __construct(PushAlert $p)
     {
         $this->pushConfs = array(
             'cluster' => 'ap2',
@@ -25,6 +26,7 @@ class NotificationController extends Controller
             '1507438',
             $this->pushConfs
         );
+        $this->push = $p;
     }
     /**
      * Display a listing of the resource.
@@ -81,6 +83,12 @@ class NotificationController extends Controller
         }
 
         return response()->noContent();
+    }
+
+    public function pushNotific(Request $req){
+        $data = $this->push->where('for_user_id', $req->toArray()['user_id'])
+                        ->where('is_seen', 0)->get();
+        return response()->json(['data' => $data]);
     }
 
     /**

@@ -59,6 +59,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/pop-ups', [NotificationController::class, 'realTimePopUps'])->name('pop-notifications');
+Route::post('/push-notify', [NotificationController::class, 'pushNotific'])->name('notify');
 
 Route::group(['middleware' => ['auth']], function() {
     // ====================Dashboard

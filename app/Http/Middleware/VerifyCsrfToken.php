@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
+        'push-notify',
         'results',
         'change-questionaire-status',
         'rating',
