@@ -7,6 +7,7 @@ use App\Mail\SendUserInfoEmail;
 use App\Models\User;
 use App\Models\UserAppointment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
@@ -157,7 +158,7 @@ class UserController extends Controller
     public function destroy(User $user) 
     {
         $user->delete();
-
+        Artisan::call('optimize:clear');
         return redirect()->route('users.index')
             ->withSuccess(__('User deleted successfully.'));
     }
