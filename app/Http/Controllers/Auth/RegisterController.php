@@ -75,7 +75,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $pushConfs = array(
+
+        try {
+                $pushConfs = array(
             'cluster' => 'ap2',
             'useTLS' => true
         );
@@ -128,5 +130,8 @@ class RegisterController extends Controller
         // Send a notification to Admin about the new user
         $admin->notify(new NewUserNotification($payload));
         return $user;
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 }
