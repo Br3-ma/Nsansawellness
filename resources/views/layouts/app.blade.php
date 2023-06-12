@@ -467,12 +467,12 @@
                     </li>
                     @endcan
                     @can('billing')
-                    <li>
+                    {{-- <li>
                         <a href="{{  route('billing') }}" class="menu">
                             <div class="menu__icon"> <i data-lucide="wallet"></i> </div>
                             <div class="menu__title"> Billing</div>
                         </a>
-                    </li>
+                    </li> --}}
                     @endcan
 
                     @can('patient-files')
@@ -622,12 +622,12 @@
                     @endcan
 
                     @can('billing')
-                    <li>
+                    {{-- <li>
                         <a href="{{  route('billing') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="wallet"></i> </div>
                             <div class="side-menu__title"> Billing </div>
                         </a>
-                    </li>
+                    </li> --}}
                     @endcan
                     
                     @can('settings')

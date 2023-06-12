@@ -36,6 +36,10 @@ class BillingController extends Controller
     public function create()
     {
         return view('page.patients.billing');
+    }    
+
+    public function create_subscription(){
+        return view('page.settings.__crud.subscription.create');
     }
 
     /**
@@ -48,11 +52,9 @@ class BillingController extends Controller
     {
         //
     }
-    
 
-    public function create_subscription(){
+    public function store_subscription(Request $req){
         
-        return view('page.settings.__crud.subscription.create');
     }
 
     /**

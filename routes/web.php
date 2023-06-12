@@ -110,6 +110,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/create-department', [SettingsController::class, 'storeDept'])->name('settings.departments.store');
     Route::get('/delete-department/{id}', [SettingsController::class, 'destroyDept'])->name('settings.departments.delete');
     Route::get('/create-plan', [BillingController::class, 'create_subscription'])->name('settings.plan.create');
+    Route::get('/add-plan', [BillingController::class, 'store_subscription'])->name('subscription.store');
+    
 });
 
 // Notifications

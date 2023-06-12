@@ -12,7 +12,7 @@
             <div class="font-medium text-center text-lg">New Subscription Plan</div>
             <div class="text-slate-500 text-center mt-2">Please fill the subsciption plan form wizard.</div>
         </div>
-        <form style="max-width: 100%"  method="POST" action="{{ route('questionaires.store') }}" id="wiz-questionaire" class="wizard">
+        <form style="max-width: 100%"  method="POST" action="{{ route('subscription.store') }}" id="wiz-questionaire" class="wizard">
             @csrf
             <ul class="wizard-steps" role="tablist">
                 <li class="tab1" role="tab">
@@ -33,7 +33,7 @@
                             </div>
                             <div class="intro-y col-span-12 sm:col-span-6">
                                 <label for="input-wizard-1" class="form-label label-1">Duration (in Days)</label>
-                                <input id="input-wizard-1" name="pice" type="text" class="form-control" placeholder="Number of Days">
+                                <input id="input-wizard-1" name="duration" type="text" class="form-control" placeholder="Number of Days">
                                 <small>For example, 31</small>
                                 <small class="text-danger" id="error_msg3">This field is empty</small>
                             </div>
@@ -54,23 +54,16 @@
 
                 <li role="tab">
                     <div class="tab2 px-5 sm:px-20 mt-10 pt-10 border-t border-slate-200/60 dark:border-darkmode-400">
-                        <div class="font-medium text-base font-bold">Question List</div>
+                        <div class="font-medium text-base font-bold">Feature List</div>
                         <div class="field_wrapper col-12">
-                            <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
+                            <div class="grid grid-cols-12 gap-1 gap-y-5 mt-5">
                                 <span class="intro-y col-span-12 sm:col-span-6">
                                     <label for="input-wizard-1" class="form-label ">Description</label>
-                                    <input id="input-wizard-1" name="question[]" type="text" class="form-control" required placeholder="Description">
+                                    <input id="input-wizard-1" name="feature[]" type="text" class="form-control" required placeholder="Description">
                                     <small>For example, Patient Registration Survey</small>
                                 </span>
-                                <span class="intro-y col-span-2 sm:col-span-2">
-                                    <label for="input-wizard-6" class="form-label">Answer Type</label>
-                                    <select name="type[]" id="input-wizard-6" class="form-select">
-                                        <option>Select One</option>
-                                        <option>Select Many</option>
-                                    </select>
-                                </span>
                                 <span class="intro-y col-span-3 sm:col-span-2 mt-5">
-                                    <a href="javascript:void(0)" class="btn btn-secondary w-20 text-xs add_button">Add Question</a>
+                                    <a href="javascript:void(0)" class="btn btn-primary w-20 text-xs add_button">Add Feature</a>
                                 </span>
                             </div>
                         </div>
@@ -141,7 +134,7 @@ $(document).ready(function(){
     // var fieldWRPPR ='';
     var ansNewField = '<div class="intro-y col-span-6 sm:col-span-6"><label for="input-wizard-1" class="form-label font-bold">Answers</label><input id="input-wizard-1" name="answer[]" type="text" class="form-control" placeholder="Description"></div><div class="intro-y col-span-3 sm:col-span-3 md: mt-5"><a href="javascript:void(0)" class="add_ans_button btn btn-secondary w-20 text-xs">Add Answer</a></div>';
     var ansField = '<div class="intro-y col-span-6 sm:col-span-6"><label for="input-wizard-1" class="form-label font-bold">Answers</label><input id="input-wizard-1" name="answer[]" type="text" class="form-control" placeholder="Description"></div><div class="intro-y col-span-3 sm:col-span-3 md: mt-5"><a href="javascript:void(0)" class="remove_ans_button btn btn-secondary w-20 text-xs">Remove Answer</a></div>';
-    var fieldHTML ='<div class="grid grid-cols-12 gap-4 gap-y-5 mt-5"><span class="intro-y col-span-4 sm:col-span-6"><label for="input-wizard-1" class="form-label">Description</label><input id="input-wizard-1" name="question[]" type="text" class="form-control" required placeholder="Description"></span><span class="intro-y col-span-2 sm:col-span-2"><label for="input-wizard-6" class="form-label">Answer Type</label><select name="type[]" id="input-wizard-6" class="form-select"><option>Select One</option><option>Select Many</option></select></span><span class="intro-y col-span-3 sm:col-span-2 mt-5"><a href="javascript:void(0)" class="btn btn-secondary w-20 text-xs remove_button">Remove Question</a></span></div>';
+    var fieldHTML ='<div class="grid grid-cols-12 gap-4 gap-y-5 mt-5"><span class="intro-y col-span-4 sm:col-span-6"><label for="input-wizard-1" class="form-label">Description</label><input id="input-wizard-1" name="question[]" type="text" class="form-control" required placeholder="Description"></span><span class="intro-y col-span-3 sm:col-span-2 mt-5"><a href="javascript:void(0)" class="btn btn-secondary w-20 text-xs remove_button">Remove Question</a></span></div>';
     var x = 1; //Initial field counter is 1
     
     //Once add sub answer
