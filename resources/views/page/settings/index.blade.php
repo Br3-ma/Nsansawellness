@@ -70,15 +70,13 @@
             </div>
         </div>
         @empty
-            
-        @endforelse
-
         <div class="intro-y col-span-12 md:col-span-12 lg:col-span-12">
             <div class="items-center justify-center centered" style="text-align: center">
                 <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
                 <h3>No Profiles Yet</h3>
             </div>
         </div>
+        @endforelse
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center">
             <nav class="w-full sm:w-auto sm:mr-auto">
                 <ul class="pagination">
