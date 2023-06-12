@@ -10,12 +10,13 @@ use App\Models\DepartmentCommission;
 use App\Models\User;
 use App\Traits\BillingTrait;
 use App\Traits\CoreTrait;
+use App\Traits\SubscriptionTrait;
 use Session;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {    
-    use CoreTrait, BillingTrait;
+    use CoreTrait, BillingTrait, SubscriptionTrait;
     public $user, $com, $com_set, $depts, $dept_coms;
     public function __construct(User $users, Commission $com, CommissionSetting $com_set, Department $depts, DepartmentCommission $dept_coms)
     {
@@ -32,7 +33,8 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        return view('page.settings.index');
+        $plans = $this->get_subscriptions();
+        return view('page.settings.index', compact('plans'));
     }
     public function commissions(){
         $com_sets = $this->get_com();

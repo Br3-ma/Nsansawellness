@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Billing;
+use App\Models\Plan;
+use App\Models\PlanItem;
 use App\Traits\BillingTrait;
 use App\Traits\SubscriptionTrait;
 use Illuminate\Http\Request;
+use Session;
 
 class BillingController extends Controller
 {
@@ -14,7 +17,19 @@ class BillingController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */        
+    public  $plan;
+    public  $plan_item;
+     /**
+      * Display a listing of the resource.
+      *
+      * @return \Illuminate\Http\Response
+      */
+    public function __construct(Plan $plan, PlanItem $pi)
+     {
+         $this->plan = $plan;
+         $this->plan_item = $pi;
+     }
     public function index()
     {
         $bills = $this->get_my_billings();
@@ -53,8 +68,30 @@ class BillingController extends Controller
         //
     }
 
-    public function store_subscription(Request $req){
-        
+    public function store_subscription(Request $request){
+        try{
+            $plan = $this->plan->create([
+                'name'=>$request->name,
+                'price'=>$request->price,
+                'duration'=>$request->duration,
+                'per'=>$request->per,
+                'user_id'=>auth()->user()->id
+            ]);
+            
+            foreach ($request->feature as $value) {
+                
+                $this->plan_item->create([
+                    'name' => $value,
+                    'user_id' => auth()->user()->id,
+                    'plan_id' => $plan->id
+                ]);
+            }
+            Session::flash('attention', "Subscription created successfully.");
+            return redirect()->route('settings.index');
+        }catch (\Throwable $th) {
+            Session::flash('error_msg', "Oops something went wrong again.");
+            return redirect()->route('settings.index');
+        }
     }
 
     /**
