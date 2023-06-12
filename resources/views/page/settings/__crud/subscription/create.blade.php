@@ -27,7 +27,7 @@
                             </div>
                             <div class="intro-y col-span-12 sm:col-span-6">
                                 <label for="input-wizard-1" class="form-label label-1">Price</label>
-                                <input id="input-wizard-1" name="pice" type="text" class="form-control" placeholder="0.00">
+                                <input id="input-wizard-1" name="price" type="text" class="form-control" placeholder="0.00">
                                 <small>For example, 200</small>
                                 <small class="text-danger" id="error_msg2">This field is empty</small>
                             </div>
