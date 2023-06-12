@@ -122,7 +122,7 @@ class VideoCallController extends Controller
             $data = [
                 'id' => $id,
                 'chat_id' => $chat_id,
-                'receiver' => $receiver,
+                'source' => $receiver,
                 'role' => $role,
                 'token' =>  csrf_token(),
                 'peer_id' => $peer_id
