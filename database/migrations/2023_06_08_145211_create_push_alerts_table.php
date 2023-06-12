@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('push_alerts', function (Blueprint $table) {
-            $table->bigIncrements('id')->nullable();
+            $table->bigIncrements('id');
             $table->text('message')->nullable();
             $table->unsignedInteger('for_user_id')->nullable();
             $table->unsignedInteger('from_user_id')->nullable();
