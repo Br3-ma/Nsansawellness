@@ -19,7 +19,6 @@ class SettingsController extends Controller
     public $user, $com, $com_set, $depts, $dept_coms;
     public function __construct(User $users, Commission $com, CommissionSetting $com_set, Department $depts, DepartmentCommission $dept_coms)
     {
-        
         $this->users = $users;
         $this->com = $com;
         $this->com_set = $com_set;
@@ -37,7 +36,6 @@ class SettingsController extends Controller
     }
     public function commissions(){
         $com_sets = $this->get_com();
-
         return view('page.settings.commissions', compact('com_sets'));
     }
     public function departments(){

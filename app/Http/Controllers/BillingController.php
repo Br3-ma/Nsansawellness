@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Billing;
 use App\Traits\BillingTrait;
+use App\Traits\SubscriptionTrait;
 use Illuminate\Http\Request;
 
 class BillingController extends Controller
 {
-    use BillingTrait;
+    use BillingTrait, SubscriptionTrait;
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +35,7 @@ class BillingController extends Controller
      */
     public function create()
     {
-        return view('page\patients\billing');
+        return view('page.patients.billing');
     }
 
     /**
@@ -46,6 +47,12 @@ class BillingController extends Controller
     public function store(Request $request)
     {
         //
+    }
+    
+
+    public function create_subscription(){
+        
+        return view('page.settings.__crud.subscription.create');
     }
 
     /**

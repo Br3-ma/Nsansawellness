@@ -406,9 +406,9 @@
                     @hasanyrole(['admin', 'administrator'])
                     <li>
                         <a href="{{ route('settings.index') }}" class="side-menu side-menu--active">
-                            <div class="side-menu__icon"> <i data-lucide="settings"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="package"></i> </div>
                             <div class="side-menu__title">
-                                General Settings 
+                                Subscription Plans
                             </div>
                         </a>
                     </li>

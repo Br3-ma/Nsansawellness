@@ -107,8 +107,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/set-commission-setting', [SettingsController::class, 'store'])->name('set-commission');
     Route::get('/settings/commissions', [SettingsController::class, 'commissions'])->name('settings.commissions');
     Route::get('/settings/departments', [SettingsController::class, 'departments'])->name('settings.departments');
-    Route::post('/add-department', [SettingsController::class, 'storeDept'])->name('settings.departments.store');
-    Route::get('/add-department/{id}', [SettingsController::class, 'destroyDept'])->name('settings.departments.delete');
+    Route::post('/create-department', [SettingsController::class, 'storeDept'])->name('settings.departments.store');
+    Route::get('/delete-department/{id}', [SettingsController::class, 'destroyDept'])->name('settings.departments.delete');
+    Route::get('/create-plan', [BillingController::class, 'create_subscription'])->name('settings.plan.create');
 });
 
 // Notifications
