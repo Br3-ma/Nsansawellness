@@ -29,9 +29,7 @@ class UserController extends Controller
         $userRole = Role::pluck('name')->toArray();
         $permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = Cache::remember('user_list', 60 * 60, function(){
-            return User::latest()->paginate(4);
-        });
+        $users = User::latest()->paginate(6);
         $notifications = auth()->user()->unreadNotifications;
         
         return view('page.user.index', compact('users','permissions','roles','userRole','notifications'));
@@ -158,7 +156,6 @@ class UserController extends Controller
     public function destroy(User $user) 
     {
         $user->delete();
-        Artisan::call('optimize:clear');
         return redirect()->route('users.index')
             ->withSuccess(__('User deleted successfully.'));
     }
