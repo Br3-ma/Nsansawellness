@@ -35,7 +35,7 @@
                             <a class="flex items-center mt-5" href="mailto:{{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }}"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }} </a>
                         @else
                             <p>No Counselor Assigned</p>
-                            <a href="{{ route('patient-files') }}" class="py-2 text-info">
+                            <a href="{{ route('patient-files') }}" class="py-2 btn btn-sm flex d-flex">
                                 <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="side-menu__title">Patient Profiles</div>
                             </a>
