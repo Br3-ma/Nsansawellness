@@ -27,13 +27,19 @@
                     
                     <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                         <a class="flex items-center font-bold"> Assigned Counselor</a>
-                        <a class="flex items-center mt-5" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i> 
-                            @if (App\Models\PatientFile::counselorAssigned($user->id) !== null)
+                        @if (App\Models\PatientFile::counselorAssigned($user->id) !== null)
+                            <a class="flex items-center mt-5" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i> 
                                 {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($user->id)->counselor->lname}}<br>
-                            @endif
-                        </a>
-                        <a class="flex items-center mt-5"> <i data-lucide="user-plus" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->department }} </a>
-                        <a class="flex items-center mt-5" href="mailto:{{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }}"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }} </a>
+                            </a>
+                            <a class="flex items-center mt-5"> <i data-lucide="user-plus" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->department }} </a>
+                            <a class="flex items-center mt-5" href="mailto:{{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }}"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }} </a>
+                        @else
+                            <p>No Counselor Assigned</p>
+                            <a href="{{ route('patient-files') }}" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                <div class="side-menu__title">Patient Profiles</div>
+                            </a>
+                        @endif
                     </div>
                 @endif
             </div>
