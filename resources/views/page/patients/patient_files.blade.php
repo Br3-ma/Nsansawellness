@@ -148,12 +148,12 @@
                     <div title="View counselor" class="flex tooltip items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class=" w-3 h-3 mr-2"></i> {{ $file->created_at }} </div>
                     @hasrole('admin')
                         @if (App\Models\PatientFile::counselorAssigned($file->id) !== null)
-                            <div class="bg-primary p-2 rounded-md text-white mt-1"> 
-                                @if (App\Models\PatientFile::counselorAssigned($file->id)->counselor !== null)
+                            @if (App\Models\PatientFile::counselorAssigned($file->id)->counselor !== null)
+                                <div class="bg-primary p-2 rounded-md text-white mt-1"> 
                                     {{App\Models\PatientFile::counselorAssigned($file->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($file->id)->counselor->lname}}<br>
                                     <small>{{App\Models\PatientFile::counselorAssigned($file->id)->counselor->department }}</small>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
                         @else
                             <div class="text-primary rounded-md mt-1">
                                 <button title="Assign Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip text-primary btn btn-outline-success py-1 px-2">
