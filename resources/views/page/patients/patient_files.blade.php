@@ -153,6 +153,13 @@
                                     {{App\Models\PatientFile::counselorAssigned($file->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($file->id)->counselor->lname}}<br>
                                     <small>{{App\Models\PatientFile::counselorAssigned($file->id)->counselor->department }}</small>
                                 </div>
+                            @else
+                            <div class="text-warning rounded-md mt-1">
+                                <button title="Assign Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip text-primary btn btn-outline-success py-1 px-2">
+                                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                                    &nbsp; Re-assign Counselor
+                                </button>
+                            </div>
                             @endif
                         @else
                             <div class="text-primary rounded-md mt-1">
