@@ -3,7 +3,7 @@
 <div class="content">
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
-            {{ $user->fname.' '.$user->lname }} Survey Response
+            {{ $user->fname.' '.$user->lname }}'s Survey Response
         </h2>
     </div>
     <div class="grid grid-cols-12 gap-6">
@@ -35,7 +35,7 @@
                             <a class="flex items-center mt-5" href="mailto:{{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }}"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }} </a>
                         @else
                             <p>No Counselor Assigned</p>
-                            <a href="{{ route('patient-files') }}" class="side-menu">
+                            <a href="{{ route('patient-files') }}" class="py-2 text-info">
                                 <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="side-menu__title">Patient Profiles</div>
                             </a>
