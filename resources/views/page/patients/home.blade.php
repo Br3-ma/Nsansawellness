@@ -1,5 +1,22 @@
 @extends('layouts.app')
 @section('content')
+<style>
+.pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>
 <div class="chatPage" style="">
     <div class="intro-y">
         <!-- BEGIN: Chat Side Menu -->
@@ -20,7 +37,6 @@
                             &nbsp;
                             <span>Counseling Sessions</span>
                         </h2>
-                        
                         @forelse($chats as $chat)
                             {{-- If I Started the Chat --}}
                             @if($chat->sender_id == auth()->user()->id && $chat->receiver !== null)
@@ -69,153 +85,23 @@
                                     </div>
                                     {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
                                 </div>
+                                @else                        
+                                    {{-- Welcome Counselor No Assignment Banner --}}
+                                    {{-- @include('page.patients._partials.welcome-counselor') --}}
+                                    
+                                    {{-- Welcome Patient's No Assignment Banner --}}
+                                    {{-- @include('page.patients._partials.welcome-patient') --}}
                                 @endif
                             @endif
                         @empty
 
-                        @hasrole('counselor')
-                        <div class="intro-x px-6 w-full mb-2">
-                            <div class="lg:flex ">
-                                <div class="box w-full lg:mb-0 mb-2 lg:pb-4 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/no-patients.jpg") }}'); background-size:cover; background-color:#9374AD;">
-                                    <h4 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
-                                        No Patients Assigned to You
-                                    </h4>
-                                    
-                                    <p>Make Online and Live Consultation Easily Easily with Nsansa Wellness</p>
-    
-                                    <div class="w-full bg-warning flex space-x-2 p-2 rounded-lg text-white">
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
-                                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-                                              </svg>
-                                        </span>
-                                        &nbsp;&nbsp;
-                                        <span>
-                                            An email will be sent to you once a patient is assigned to you.
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="lg:w-1/2 lg:px-2 sm:px-2">
-                                    <div class="w-full">
-                                        <div class="flex box w-full py-8 p-3 lg:m-3 text-white" style="background-color:#9374AD">
-                                            <span class="mr-2">
-                                                <img width="30px" src="https://cdn.iconscout.com/icon/free/png-256/ecosystem-2871958-2383613.png">
-                                            </span>
-                                            <span>
-                                                A Complete mental health ecosystem
-                                                <br>
-                                                <small>
-                                                    Earn ZMW 3000 as an online therapist
-                                                </small>
-                                            </span>
-                                            <i data-lucide="chevron-right"></i>
-                                        </div>
-                                        <div class="box flex mt-2 py-8 p-3 m-3 text-white" style="background-color:#22A89C">
-                                            <span class="mr-2">
-                                                <img width="30px" class="rounded-full" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/files-1433950-1211984.png?f=avif">
-                                            </span>
-                                            <span>
-                                                Patient Record Management
-                                                <br>
-                                                <small>
-                                                    Manage your patient medical information
-                                                </small>
-                                            </span>
-                                            <i data-lucide="chevron-right"></i>
-                                        </div>
-                                        <div class="box flex mt-2 py-8 p-3 m-3" style="background-color:#e9f7ff">
-                                            <span class="mr-2">
-                                                <img width="30px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/activity-4-185786.png?f=avif">
-                                            </span>
-                                            <span>
-                                                Assign Homework Activities and Actions
-                                                <br>
-                                                <small>
-                                                    Create and assign homework activities for your patients.s
-                                                </small>
-                                            </span>
-                                            <i data-lucide="chevron-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endhasrole
-
-                        @hasrole('patient')
-                            <div class="intro-x px-6">
-                                <div class="my-6">
-                                    <h2 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
-                                        <span>Get Help. Get Better</span>
-                                    </h2>
-                                    <div class="w-full">Get the Guidance you need from top Exprts right away.</div>
-                                    <div class="w-full bg-primary flex space-x-2 p-2 rounded-lg text-white">
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
-                                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-                                              </svg>
-                                        </span>
-                                        &nbsp;&nbsp;
-                                        <span>
-                                            Please wait while we assign a counselor to you.
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="lg:flex ">
-                                    <div class="lg:w-1/2 lg:px-2 sm:px-2">
-                                        <div class="w-full">
-                                            <div class="flex box w-full py-6 p-3 lg:m-3 text-white" style="background-color:#9374AD">
-                                                <span class="mr-2">
-                                                    <img width="30px" src="https://cdn.iconscout.com/icon/free/png-256/chatting-418-530377.png?f=avif">
-                                                </span>
-                                                <span>
-                                                    Online Chat Sessions
-                                                    <br>
-                                                    <small>
-                                                        Chat anonymously with an expert 
-                                                    </small>
-                                                </span>
-                                                {{-- <i data-lucide="chevron-right"></i> --}}
-                                            </div>
-                                            <div class="box flex mt-2 py-6 p-3 m-3 text-white" style="background-color:#AE04B4">
-                                                <span class="mr-2">
-                                                    <img width="30px" class="rounded-full" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/video-call-103-772229.png?f=avif">
-                                                </span>
-                                                <span>
-                                                    Voice and Video Calls
-                                                    <br>
-                                                    <small>
-                                                        Speak to an expert or get on a call with them
-                                                    </small>
-                                                </span>
-                                                {{-- <i data-lucide="chevron-right"></i> --}}
-                                            </div>
-                                            <div class="box flex mt-2 py-6 p-3 m-3" style="background-color:#05C3E5">
-                                                <span class="mr-2">
-                                                    <img width="30px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/doctor-615-1178523.png?f=avif">
-                                                </span>
-                                                <span>
-                                                    Face to Face Sessions
-                                                    <br>    
-                                                    <small>
-                                                        Connect to 1-on-1 in-person with an expert.
-                                                    </small>
-                                                </span>
-                                                {{-- <i data-lucide="chevron-right"></i> --}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-white box w-full lg:mb-0 mb-2 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/remote.jpg") }}'); background-size:cover; background-color:#9374AD;">
-
-                                        
-                                        {{-- <h1>Making through life's toughest times. Together.</h1>
-        
-                                        <button class="mt-20 btn btn-warning btn-sm">Take a Quiz</button> --}}
-                                    </div>
-                                </div>
-                            </div>
-                        @endhasrole
+                        {{-- Welcome Counselor No Assignment Banner --}}
+                        @include('page.patients._partials.welcome-counselor')
                         
+                        {{-- Welcome Patient's No Assignment Banner --}}
+                        @include('page.patients._partials.welcome-patient')
+                        
+
                         @hasanyrole(['admin', 'administrator'])
                             <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
@@ -372,6 +258,11 @@
         }else{
             chatPage.style.cssText += "height:100%; min-height:100%; device-height: 100%; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
         }
+
+                
+        setInterval(function() {
+            $('.pulse-effect').toggleClass('pulse');
+        }, 3000); // Toggle class every 1 second (1000 milliseconds)
     });
 
     var APP_URL = {!! json_encode(url('/')) !!};
@@ -711,5 +602,4 @@
             }
         }
     }, 1000);
-
 </script>
