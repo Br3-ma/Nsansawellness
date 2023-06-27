@@ -482,6 +482,7 @@
           // document.getElementById("local-screen").style.height = "100%"
           // if (window.matchMedia("(max-width: 767px)").matches){}else{}
       });
+      
       const btnCall = document.getElementById('btn-call');
       const myId = document.getElementById('localPeerId');
       const peerId = document.getElementById('remotePeerId');
@@ -506,6 +507,22 @@
           localStream = stream;
           localVideo.srcObject = localStream;
           localVideo.onloadedmetadata = () => localVideo.play();
+          // Get the local video track
+          const videoTrack = stream.getVideoTracks()[0];
+          // Adjust video constraints to reduce quality
+          const videoConstraints = {
+            width: { max: 640 },
+            height: { max: 480 },
+            frameRate: { max: 15 },
+          };
+          // Apply the new video constraints to the video track to limit data usage
+          videoTrack.applyConstraints(videoConstraints).then(() => {
+              console.log('Video constraints applied successfully!');
+          }).catch((error) => {
+              console.error('Failed to apply video constraints:', error);
+          });
+      }).catch((error) => {
+        console.error('Error accessing user media:', error);
       });
   
         
@@ -516,8 +533,6 @@
           if(user_role == 'counselor'){
             // Share the ID to the Patient
             shareIdToPeer(id, det);
-          }else{
-            // join();
           }
       });
        
@@ -526,25 +541,18 @@
         var message = document.getElementById('message_textbox');
         message.value = "<a class='btn btn-danger btn-sm text-white' href='https://nsansawellness.com/therapy-session/10/4/receiver/patient/"+peer_id+"'>Join Video Call</a>" ;
         send();
-        // $.ajax({
-        //     type:'POST',
-        //     url:'{{ route("send.remote_id") }}',
-        //     data: {
-        //         peer_id,
-        //         info
-        //     },
-        //     success:function(data) {
-
-        //     }
-        // });
       }
 
       function join(){
-
           const remotePeerId = peerId.value;
           const call = peer.call(remotePeerId, localStream);
-          // alert('joining');
-          // alert(remotePeerId);
+          // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage.
+          const videoReceiveBandwidth = 200; // Set the desired video receive bandwidth in Kbps
+          const sender = call.peerConnection.getSenders()[0];
+
+          const parameters = sender.getParameters();
+          parameters.encodings[0].maxBitrate = videoReceiveBandwidth * 1000; // Convert to bps
+          sender.setParameters(parameters);
 
           call.on('stream', stream => {
               remoteVideo.srcObject = stream;
@@ -555,11 +563,22 @@
   
       peer.on('call', call => {
           call.answer(localStream);
+          // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage
+          // videoBandwidth to 200 Kbps (kilobits per second)
+          const videoReceiveBandwidth = 200; // Set the desired video receive bandwidth in Kbps
+          const sender = call.peerConnection.getSenders()[0];
+
+          const parameters = sender.getParameters();
+          parameters.encodings[0].maxBitrate = videoReceiveBandwidth * 1000; // Convert to bps
+          sender.setParameters(parameters);
+          
           call.on('stream', stream => {
               remoteVideo.srcObject = stream;
               remoteStream = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
           })
+              // Adjust video constraints to reduce quality
+
       })
 
 
@@ -668,15 +687,38 @@
       }
 
       function stopRecording(recordedData){
+        const user = {!! auth()->user()->toJson() ?? '' !!};
         let recordedBlob = new Blob(recordedData, { type: "video/webm" });
         downloadButton.href = URL.createObjectURL(recordedBlob);
         downloadButton.download = "RecordedVideo.webm";
+        // Create a FormData object and append the recordedBlob to it
+        const formData = new FormData();
+        formData.append('video', recordedBlob, 'RecordedVideo.webm');
+        formData.append('counselor_id', user['id']);
+        // formData.append('patient_id', 'A description of the recorded video');
+        // Make the POST request to your Laravel backend
+        fetch('/upload-video', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          console.log(response);
+          if (response.ok) {
+            console.log('Video uploaded successfully');
+          } else {
+            console.error('Failed to upload video');
+          }
+        })
+        .catch(error => {
+          console.error('Error uploading video:', error);
+        });
+
         $('#downloadButton').show();
         $('#start-btn').hide();
         $('#stop-btn').stop();
+
       }
       // ************** End Recording Module ******** //
-
       function endCall(){
         peer.destroy();
         $('.remote-screen').hide();
@@ -705,29 +747,9 @@
 
       function save_notes(){
           console.log('Typing...');
-          // Print entered value in a div box
-          // $("#save-notes").text("Saving...");
-          setTimeout(
-            () => {
-              $.ajax({
-                type:'POST',
-                url:'{{ route("send.remote_id") }}',
-                data: {
-                    peer_id,
-                    info
-                },
-                success:function(data) {
-                  console.log(data);
-                }
-              });
-            },
-            5000
-          );
+          
       };
-
 </script>
-
-
 <script>
   // $(document).ready(function() {
     const user = {!! auth()->user()->toJson() ?? '' !!};
@@ -763,8 +785,8 @@
               // UPDATED
               console.log(messages);
               for (const message of messages){
-                    console.log(user['id'] != message.user_id);
-                  if(user['id'] != message.user_id){
+                  console.log(message);
+                  if(user['id'] !== message.user_id ){
 
                       $('#message_thread').append('<div class="message-wrapper">\
                         <div class="profile-picture">\

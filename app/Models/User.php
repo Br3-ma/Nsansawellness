@@ -190,4 +190,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function unseen_push_alerts(){
         return $this->hasMany(PushAlert::class)->where('is_seen', 1);
     }
+
+    public function videos(){
+        return $this->hasMany(Video::class);
+    }
 }

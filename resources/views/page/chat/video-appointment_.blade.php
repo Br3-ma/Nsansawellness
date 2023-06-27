@@ -280,6 +280,22 @@
           localStream = stream;
           localVideo.srcObject = localStream;
           localVideo.onloadedmetadata = () => localVideo.play();
+          // Get the local video track
+          const videoTrack = stream.getVideoTracks()[0];
+          // Adjust video constraints to reduce quality
+          const videoConstraints = {
+            width: { max: 640 },
+            height: { max: 480 },
+            frameRate: { max: 15 },
+          };
+          // Apply the new video constraints to the video track to limit data usage
+          videoTrack.applyConstraints(videoConstraints).then(() => {
+              console.log('Video constraints applied successfully!');
+          }).catch((error) => {
+              console.error('Failed to apply video constraints:', error);
+          });
+      }).catch((error) => {
+        console.error('Error accessing user media:', error);
       });
 
       function join(){
@@ -288,7 +304,7 @@
           alert('joining');
           alert(remotePeerId);
 
-          call.on('stream', stream => {
+          call.on('stream', stream, { metadata: { videoBandwidth: 200 } => {
               remoteVideo.srcObject = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
               $('.remote-screen').show();
@@ -297,7 +313,7 @@
   
       peer.on('call', call => {
           call.answer(localStream);
-          call.on('stream', stream => {
+          call.on('stream', stream, { metadata: { videoBandwidth: 200 }=> {
               remoteVideo.srcObject = stream;
               remoteStream = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();

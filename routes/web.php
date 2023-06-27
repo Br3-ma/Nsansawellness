@@ -80,7 +80,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
     Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
-
+    Route::post('/upload-video',[VideoCallController::class,'upload'])->name('upload-video');
 
     Route::get('/chat/{id}', [VideoCallController::class, 'chat'])->name('chat');
     Route::get('/group/chat/{id}', [VideoCallController::class, 'groupChat'])->name('group.chat');

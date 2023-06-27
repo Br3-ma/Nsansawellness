@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Async;
 use Illuminate\Http\Request;
-use PhpJunior\LaravelVideoChat\Facades\Chat;
-use PhpJunior\LaravelVideoChat\Models\File\File;
-use PhpJunior\LaravelVideoChat\Models\Conversation\Conversation;
-use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Video;
 
 class VideoCallController extends Controller
 {
@@ -137,62 +135,35 @@ class VideoCallController extends Controller
         return view('page.chat.video_chat');
     }
 
-    public function getConversationDetails($conversation_id, $user_id){
-        $conversation = Chat::getConversationMessageById($conversation_id);
-        $user = User::where('id', $user_id)->first();
-        return response()->json($conversation);
-    }
 
-
-    public function groupChat($id)
-    {
-        $conversation = Chat::getGroupConversationMessageById($id);
-
-        return view('page.chat.group_chat')->with([
-            'conversation' => $conversation
-        ]);
-    }
-
-    public function send(Request $request)
+    public function upload(Request $request)
     {
         try {
-            Chat::sendConversationMessage($request->input('conversationId'), $request->input('text'));
+            // Validate the request
+            $request->validate([
+                'video' => 'required|mimetypes:video/webm|max:500000', // Adjust max size as per your requirement
+            ]);
 
+            // Store the uploaded file
+            $path = $request->file('video')->store('videos');
+
+            // Create a new video record in the database
+            $video = new Video();
+            $video->file_name = $request->file('video')->getClientOriginalName();
+            $video->file_path = $path;
+            $video->user_id = auth()->id(); // Assuming you have user authentication
+            $video->save();
+
+            // Return a response or redirect as needed
+            return response()->json([
+                'message' => 'Video uploaded successfully',
+            ]);
         } catch (\Throwable $th) {
             dd($th);
+            // return response()->json([
+            //     'message' => 'Video uploaded successfully',
+            // ]);
         }
     }
-
-    public function groupSend(Request $request)
-    {
-        Chat::sendGroupConversationMessage($request->input('groupConversationId'), $request->input('text'));
-    }
-
-    public function sendFilesInConversation(Request $request)
-    {
-        Chat::sendFilesInConversation($request->input('conversationId') , $request->file('files'));
-    }
-
-    public function sendFilesInGroupConversation(Request $request)
-    {
-        Chat::sendFilesInGroupConversation($request->input('groupConversationId') , $request->file('files'));
-    }
-
-    public function store(){
-        $conversation = new Conversation();
-        $conversation->first_user_id = 1;
-        $conversation->second_user_id = 2;
-        $conversation->save();
-
-        $conversation->messages()->create([
-            'user_id'   => 1,
-            'text'      => 'Hello'
-        ]);
-
-        $group = new GroupConversation();
-        $group->name = 'Test';
-        $group->save();
-
-        $group->users()->attach([ 1,2,3,4 ]);
-    }
+    
 }

@@ -58,7 +58,7 @@
                                 {{-- @if($appointment->status !== 0)
                                 <div class="w-2 h-2 bg-pending rounded-full"></div>
                                 @endif --}}
-                                <a href="{{ route('appointment.show', ['id' => $appointment->id ]) }}">
+                                <a target="_blank" href="{{ route('appointment.show', ['id' => $appointment->id ]) }}">
                                     <div class="pr-10">
                                         <div class="event__title">
                                             {{ $appointment->title }}
@@ -108,7 +108,7 @@
                             {{-- @if($app->appointment->status != 0)
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                             @endif --}}
-                            <a href="{{ route('appointment.show', ['id' => $app->appointment->id ]) }}">
+                            <a target="_blank" href="{{ route('appointment.show', ['id' => $app->appointment->id ]) }}">
                                 <div class="pr-10">
                                     <div class="event__title">
                                         {{ $app->appointment->title }}
