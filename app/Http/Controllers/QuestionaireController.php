@@ -7,6 +7,7 @@ use App\Models\Question;
 use App\Models\Questionaire;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Session;
 
@@ -40,9 +41,15 @@ class QuestionaireController extends Controller
     {
         $user = User::where('guest_id', $id)->first();
         // get the active survey
-        $survey_results = $this->questions->with("results")->whereHas("results",function($q) use($id){
-            $q->where("guest_id","=",$id);
-        })->get();
+        // $survey_results = $this->questions->with("results")->whereHas("results",function($q) use($id){
+        //     $q->where("guest_id", "=" , $id);
+        // })->get();
+        $survey_results = DB::table('questions')
+        ->join('results', 'questions.id', '=', 'results.question_id')
+        ->where('results.guest_id', '=', $id)
+        ->select('questions.*', 'results.*')
+        ->get();
+
         return view('page.questionaires.results', compact('survey_results', 'user'));
     }
 

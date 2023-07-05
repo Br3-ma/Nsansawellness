@@ -27,11 +27,13 @@ class SurveyController extends Controller
         $this->questionaire = $q;
         $this->questions = $qn;
     }
+    
     public function getPatientSurvey(){
         $questionaires = $this->questionaire->with(['questions.answers'])
         ->where('status_id', 1)->where('group_assigned', 'patient')->first();
         return response()->json(['data' => $questionaires]);
     }
+
     public function getCounselorSurvey(){
         $questionaires = $this->questionaire->with(['questions.answers'])
         ->where('status_id', 1)->where('group_assigned', 'counselor')->first();

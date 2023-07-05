@@ -61,9 +61,8 @@
                                     {{ $question->question }} 
                                 </button>
                             </div>
-                            {{-- @forelse ($question->results as $result) --}}
                             <div id="faq-accordion-collapse-1" class="accordion-collapse collapse show" aria-labelledby="faq-accordion-content-1" data-tw-parent="#faq-accordion-1">
-                                <div class="accordion-body text-slate-600 dark:text-slate-500 leading-relaxed"> {{ $question->results->first()->user_answer }}</div>
+                                <div class="accordion-body text-slate-600 dark:text-slate-500 leading-relaxed"> {{ $question->user_answer }}</div>
                             </div>
                         </div>
                     @empty
