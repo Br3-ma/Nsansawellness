@@ -187,11 +187,11 @@ class AppointmentController extends Controller
                     'link' => $appointment->video_link
                 ];
 
-                PushAlert::create([
-                    'message' => 'You have been invited to an appointment',
-                    'for_user_id' => $guest,
-                    'from_user_id' => auth()->user()->id
-                ]);
+                // PushAlert::create([
+                //     'message' => 'You have been invited to an appointment',
+                //     'for_user_id' => $guest,
+                //     'from_user_id' => auth()->user()->id
+                // ]);
                 // Send a notification to Guest about the new Appointment
                 // $message = 'You have a new appointment with'.auth()->user()->fname.' '.auth()->user()->lname;
                 $user->notify(new NewAppointment($payload));
@@ -204,7 +204,7 @@ class AppointmentController extends Controller
             $this->user_appointment->where('appointment_id', $appointment->id)->first()->delete();
             return redirect()->route('appointment');
         } catch (\Throwable $th) {
-            // dd($th);
+            dd($th);
             Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
             return redirect()->route('appointment');
         }
