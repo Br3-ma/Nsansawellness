@@ -173,7 +173,7 @@ class AppointmentController extends Controller
             $appointment = $this->appointment->create($request->toArray());
             foreach($request->guest_id as $guest){
                 $user = $this->user->find($guest);
-                $chat_id =$this->active_chat($user->id);
+                $chat_id = $this->active_chat($user->id);
                 $this->user_appointment->create([
                     'guest_id' => $guest,
                     'appointment_id' => $appointment->id,

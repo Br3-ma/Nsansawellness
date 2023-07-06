@@ -12,7 +12,8 @@ class UserAppointment extends Model
     protected $fillable = [
         'guest_id',
         'appointment_id',
-        'status'
+        'status',
+        'chat_id'
     ];
 
     public function appointment(){
