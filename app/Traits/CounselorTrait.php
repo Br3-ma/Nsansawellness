@@ -9,6 +9,7 @@ use App\Models\PatientFile;
 use App\Models\User;
 
 trait CounselorTrait {
+    use ChatTrait;
     public $users, $u, $pf, $ac, $appointment;
     /**
      * Create a new controller instance.
@@ -25,9 +26,8 @@ trait CounselorTrait {
     }
 
     public function getMyCounselor($u){
-        $counselor = $this->user->role('counselor')->whereHas('assignedCounselor', function ($query) use ($u) {
-            $query->where('patient_id', $u->id);
-        })->get();
+        $my_active_chat = $this->active_chat_info($u);
+        $counselor = $this->user->role('counselor')->where('id', $my_active_chat->sender_id)->get();
         return $counselor;
     }
 

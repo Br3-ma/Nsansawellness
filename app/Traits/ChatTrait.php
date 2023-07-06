@@ -13,6 +13,10 @@ trait ChatTrait {
         return Chat::where('receiver_id', auth()->user()->id)
                         ->where('status', 1)->first()->id;
     }
+    public function active_chat_info($id){
+        return Chat::where('receiver_id', auth()->user()->id)
+                        ->where('status', 1)->first();
+    }
 
     public function getChatMessages($req){
        
