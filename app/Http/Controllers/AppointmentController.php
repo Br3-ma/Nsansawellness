@@ -195,7 +195,7 @@ class AppointmentController extends Controller
                 // Send a notification to Guest about the new Appointment
                 // $message = 'You have a new appointment with'.auth()->user()->fname.' '.auth()->user()->lname;
                 $user->notify(new NewAppointment($payload));
-                $this->pusher->trigger('popup-channel', 'new-appointment', $guest);
+                // $this->pusher->trigger('popup-channel', 'new-appointment', $guest);
             }
             // Send a notification to my self about the new Appointment
             $u->notify(new MyNewAppointment($payload));
