@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nsansa Wellness | Video Session</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="{{ asset('public/dist/css/meet.css ')}}" />
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Nsansa Wellness | Video Session</title>
+      <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap"rel="stylesheet"/>
+      <link rel="stylesheet" href="{{ asset('public/dist/css/meet.css ')}}" />     
+      <script>
+        // Hide the preloader when the page finishes loading
+        window.addEventListener('load', function() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.display = 'none';
+        });
+      </script>
   </head>
-
   
   <body>
+    <!-- Preloader HTML -->
+    <div class="preloader">
+        <h3>Getting Started</h3>
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+    </div>
     <div class="app-container">
       <button class="mode-switch">
         <img alt="Nsansa wellness" width="110%" class="w-6 rounded-full" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}">
@@ -38,14 +49,21 @@
       <div class="app-main">            
           @if ($data['source'] == 'receiver')
           <div class="join-card">
-            <small>Press join session whenever you are ready.</small>
-            <br>
-            <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
-            <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
-            <div>
-              <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
+            <div class="joinloader">
+              <img width="50" src="{{ asset('public/img/lod.gif') }}">
+              <p>Checking for therapist ...</p>
+            </div>
+            <div class="join-card-content">
+              <small>Press join session whenever you are ready.</small>
+              <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
+              <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+              <div>
+                <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
+              </div>
             </div>
           </div>
+          @else
+          <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
           @endif
 
         
@@ -245,9 +263,7 @@
           $('#downloadButton').hide();
           $('.dont-show').hide();
           $('.recorder-timer').hide();
-          // document.getElementById("local-screen").style.width = "100%"
-          // document.getElementById("local-screen").style.height = "100%"
-          // if (window.matchMedia("(max-width: 767px)").matches){}else{}
+          $('.joinloader').hide();
       });
       const btnCall = document.getElementById('btn-call');
       const myId = document.getElementById('localPeerId');
@@ -300,25 +316,45 @@
 
       function join(){
           const remotePeerId = peerId.value;
-          const call = peer.call(remotePeerId, localStream);
-          alert('joining');
-          alert(remotePeerId);
+          
+          $('.join-card-content').hide();
+          $('.joinloader').show();
+          $('.join-card').hide();
 
-          call.on('stream', stream, { metadata: { videoBandwidth: 200 } => {
+          const call = peer.call(remotePeerId, localStream);
+          // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage.
+          const videoReceiveBandwidth = 200; // Set the desired video receive bandwidth in Kbps
+          const sender = call.peerConnection.getSenders()[0];
+
+          const parameters = sender.getParameters();
+          parameters.encodings[0].maxBitrate = videoReceiveBandwidth * 1000; // Convert to bps
+          sender.setParameters(parameters);
+
+          call.on('stream', stream => {
               remoteVideo.srcObject = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
               $('.remote-screen').show();
-          })
+          });
+
       }
   
       peer.on('call', call => {
           call.answer(localStream);
-          call.on('stream', stream, { metadata: { videoBandwidth: 200 }=> {
+          // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage.
+          const videoReceiveBandwidth = 200; // Set the desired video receive bandwidth in Kbps
+          const sender = call.peerConnection.getSenders()[0];
+
+          const parameters = sender.getParameters();
+          parameters.encodings[0].maxBitrate = videoReceiveBandwidth * 1000; // Convert to bps
+          sender.setParameters(parameters);
+
+          call.on('stream', stream => {
               remoteVideo.srcObject = stream;
               remoteStream = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
           })
       })
+
 
 
       function toggleVideo(){      
@@ -353,13 +389,14 @@
 
       // ************** Recording Module ************* //
       // var isRec = 0;
-      var lengthInMS = 5000;
+      var lengthInMS = 300000;
 
       function startRecording(){
 
         recording(remoteStream, lengthInMS);
+
         // start the timer
-        $('.recorder-timer').show();
+        $('#recorder-timer').show();
         var input = {
             year: 0,
             month: 0,
@@ -384,41 +421,43 @@
       var recordedData = [];
       function recording(stream, lengthInMS){
         try {
+
             let recorder = new MediaRecorder(stream);
+
             recorder.ondataavailable = (event) => recordedData.push(event.data);
             recorder.start();
+
             $('#start-btn').hide();
             $('#stop-btn').show();
+
             console.log(`${recorder.state} for ${lengthInMS / 1000} seconds…`);
+            var fulltime = lengthInMS / 1000;
             let stopped = new Promise((resolve, reject) => {
               recorder.onstop = resolve;
               recorder.onerror = (event) => reject(event.name);
             });
-            let recorded = setTimeout(
-            () => {
+
+            let recorded = setTimeout(() => {
               console.log(recorder.state);
               if (recorder.state === "recording") {
                 // remoteVideo.src = URL.createObjectURL(recorder.getBlob());
                 recorder.stop();
               }
-            },
-            10000
-            );
+            },fulltime);
 
             return Promise.all([
               stopped,
               recorded
-            ])
-            .then(() => {
+            ]).then(() => {
               let recordedBlob = new Blob(recordedData, { type: "video/webm" });
               // remoteVideo.src = URL.createObjectURL(recordedBlob);
               // downloadButton.href = recording.src;
               downloadButton.href = URL.createObjectURL(recordedBlob);
               downloadButton.download = "RecordedVideo.webm";
-              $('.recorder-timer').hide();
+              $('#recorder-timer').hide();
               $('#start-btn').show();
               $('#stop-btn').hide();
-              $('#downloadButton').show();
+              $('#downloadButton').hide();
             });
         } catch (err) {
           alert('Oops, Can not record video unless patient joins the session');
@@ -427,14 +466,42 @@
 
       function stopRecording(recordedData){
         let recordedBlob = new Blob(recordedData, { type: "video/webm" });
+
         downloadButton.href = URL.createObjectURL(recordedBlob);
         downloadButton.download = "RecordedVideo.webm";
+
+        save_recording(recordedBlob);
+
         $('#downloadButton').show();
         $('#start-btn').hide();
         $('#stop-btn').stop();
+
+      }
+
+      function save_recording(recordedData){
+        const user = {!! auth()->user()->toJson() ?? '' !!};
+        const formData = new FormData();
+        formData.append('video', recordedBlob, 'RecordedVideo.webm');
+        formData.append('counselor_id', user['id']);
+        // formData.append('patient_id', 'A description of the recorded video');
+        // Make the POST request to your Laravel backend
+        fetch('/upload-video', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          console.log(response);
+          if (response.ok) {
+            console.log('Video uploaded successfully');
+          } else {
+            console.error('Failed to upload video');
+          }
+        })
+        .catch(error => {
+          console.error('Error uploading video:', error);
+        });
       }
       // ************** End Recording Module ******** //
-
       function endCall(){
         peer.destroy();
         $('.remote-screen').hide();
@@ -463,26 +530,8 @@
 
       function save_notes(){
           console.log('Typing...');
-          // Print entered value in a div box
-          // $("#save-notes").text("Saving...");
-          setTimeout(
-            () => {
-              $.ajax({
-                type:'POST',
-                url:'{{ route("send.remote_id") }}',
-                data: {
-                    peer_id,
-                    info
-                },
-                success:function(data) {
-                  console.log(data);
-                }
-              });
-            },
-            5000
-          );
+          
       };
-
 </script>
 
 

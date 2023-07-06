@@ -12,10 +12,26 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="{{ asset('public/dist/css/meet.css ')}}" />
+             
+    <script>
+      // Hide the preloader when the page finishes loading
+      window.addEventListener('load', function() {
+          var preloader = document.querySelector('.preloader');
+          preloader.style.display = 'none';
+      });
+    </script>
   </head>
 
   
   <body>
+    <!-- Preloader HTML -->
+    <div class="preloader">
+        <h3>Getting Started</h3>
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+    </div>
     <div class="app-container">
       <button class="mode-switch">
         <!-- sun icon -->
@@ -183,9 +199,15 @@
       <div class="app-main">            
         <input type="text" class="dont-show" name="localPeerId" id="localPeerId" readonly>
         @hasrole('patient')
-          <input type="text" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
-          {{-- <input type="text" name="remotePeerId" id="remotePeerId"> --}}
-          <button onclick="join()" class="button" id="btn-call">Join Session</button>
+        <div class="join-card">
+          <small>Press join session whenever you are ready.</small>
+          <br>
+          <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
+          <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+          <div>
+            <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
+          </div>
+        </div>
         @else
           <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
         @endhasrole
@@ -477,7 +499,7 @@
           $('#right-side-notes').hide();
           $('#downloadButton').hide();
           $('.dont-show').hide();
-          $('.recorder-timer').hide();
+          $('#recorder-timer').hide();
           // document.getElementById("local-screen").style.width = "100%"
           // document.getElementById("local-screen").style.height = "100%"
           // if (window.matchMedia("(max-width: 767px)").matches){}else{}
@@ -497,8 +519,8 @@
       var peer = new Peer();
             
       let downloadButton = document.getElementById("downloadButton");
-      let stopRecBtn = document.getElementById("stop-btn");
-      let startRecBtn = document.getElementById("start-btn");
+      // let stopRecBtn = document.getElementById("stop-btn");
+      // let startRecBtn = document.getElementById("start-btn");
       let localStream;
       let remoteStream;
 
@@ -539,7 +561,12 @@
   
       function shareIdToPeer(peer_id, info){
         var message = document.getElementById('message_textbox');
-        message.value = "<a class='btn btn-danger btn-sm text-white' href='https://nsansawellness.com/therapy-session/10/4/receiver/patient/"+peer_id+"'>Join Video Call</a>" ;
+        message.value = "<a class='btn btn-danger btn-sm text-white' href='https://nsansawellness.com/therapy-session/10/4/receiver/patient/"+peer_id+"'>\
+          <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-person-video3' viewBox='0 0 16 16'>\
+            <path d='M14 9.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-6 5.7c0 .8.8.8.8.8h6.4s.8 0 .8-.8-.8-3.2-4-3.2-4 2.4-4 3.2Z'/>\
+            <path d='M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.243c.122-.326.295-.668.526-1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v7.81c.353.23.656.496.91.783.059-.187.09-.386.09-.593V4a2 2 0 0 0-2-2H2Z'/>\
+          </svg>\
+          Join Video Call</a>";
         send();
       }
 
@@ -614,13 +641,14 @@
 
       // ************** Recording Module ************* //
       // var isRec = 0;
-      var lengthInMS = 5000;
+      var lengthInMS = 300000;
 
       function startRecording(){
 
         recording(remoteStream, lengthInMS);
+
         // start the timer
-        $('.recorder-timer').show();
+        $('#recorder-timer').show();
         var input = {
             year: 0,
             month: 0,
@@ -645,41 +673,43 @@
       var recordedData = [];
       function recording(stream, lengthInMS){
         try {
+
             let recorder = new MediaRecorder(stream);
+
             recorder.ondataavailable = (event) => recordedData.push(event.data);
             recorder.start();
+
             $('#start-btn').hide();
             $('#stop-btn').show();
+
             console.log(`${recorder.state} for ${lengthInMS / 1000} seconds…`);
+            var fulltime = lengthInMS / 1000;
             let stopped = new Promise((resolve, reject) => {
               recorder.onstop = resolve;
               recorder.onerror = (event) => reject(event.name);
             });
-            let recorded = setTimeout(
-            () => {
+
+            let recorded = setTimeout(() => {
               console.log(recorder.state);
               if (recorder.state === "recording") {
                 // remoteVideo.src = URL.createObjectURL(recorder.getBlob());
                 recorder.stop();
               }
-            },
-            10000
-            );
+            },fulltime);
 
             return Promise.all([
               stopped,
               recorded
-            ])
-            .then(() => {
+            ]).then(() => {
               let recordedBlob = new Blob(recordedData, { type: "video/webm" });
               // remoteVideo.src = URL.createObjectURL(recordedBlob);
               // downloadButton.href = recording.src;
               downloadButton.href = URL.createObjectURL(recordedBlob);
               downloadButton.download = "RecordedVideo.webm";
-              $('.recorder-timer').hide();
+              $('#recorder-timer').hide();
               $('#start-btn').show();
               $('#stop-btn').hide();
-              $('#downloadButton').show();
+              $('#downloadButton').hide();
             });
         } catch (err) {
           alert('Oops, Can not record video unless patient joins the session');
@@ -687,11 +717,21 @@
       }
 
       function stopRecording(recordedData){
-        const user = {!! auth()->user()->toJson() ?? '' !!};
         let recordedBlob = new Blob(recordedData, { type: "video/webm" });
+
         downloadButton.href = URL.createObjectURL(recordedBlob);
         downloadButton.download = "RecordedVideo.webm";
-        // Create a FormData object and append the recordedBlob to it
+
+        save_recording(recordedBlob);
+
+        $('#downloadButton').show();
+        $('#start-btn').hide();
+        $('#stop-btn').stop();
+
+      }
+
+      function save_recording(recordedData){
+        const user = {!! auth()->user()->toJson() ?? '' !!};
         const formData = new FormData();
         formData.append('video', recordedBlob, 'RecordedVideo.webm');
         formData.append('counselor_id', user['id']);
@@ -712,11 +752,6 @@
         .catch(error => {
           console.error('Error uploading video:', error);
         });
-
-        $('#downloadButton').show();
-        $('#start-btn').hide();
-        $('#stop-btn').stop();
-
       }
       // ************** End Recording Module ******** //
       function endCall(){

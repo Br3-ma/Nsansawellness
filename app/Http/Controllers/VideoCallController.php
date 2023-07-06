@@ -148,11 +148,11 @@ class VideoCallController extends Controller
             $path = $request->file('video')->store('videos');
 
             // Create a new video record in the database
-            $video = new Video();
-            $video->file_name = $request->file('video')->getClientOriginalName();
-            $video->file_path = $path;
-            $video->user_id = auth()->id(); // Assuming you have user authentication
-            $video->save();
+            Video::create([
+                'file_name' => $request->file('video')->getClientOriginalName(),
+                'file_path' => $path,
+                'user_id' => auth()->id()
+            ]);
 
             // Return a response or redirect as needed
             return response()->json([
@@ -164,6 +164,14 @@ class VideoCallController extends Controller
             //     'message' => 'Video uploaded successfully',
             // ]);
         }
+    }
+
+    public function view_recordings(Request $request){
+
+    }
+
+    public function captureBill(Request $request){
+
     }
     
 }
