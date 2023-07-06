@@ -21,6 +21,10 @@ class Chat extends Model
         'status'
     ];
 
+    public static function getChatId($id){
+        $guest = UserAppointment::where('appointment_id', $id);
+    }
+
     public function sender(){
         return $this->belongsTo(User::class, 'sender_id');
     }

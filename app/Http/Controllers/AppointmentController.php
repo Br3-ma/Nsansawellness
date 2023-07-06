@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\UserAppointment;
 use App\Notifications\MyNewAppointment;
 use App\Notifications\NewAppointment;
+use App\Traits\ChatTrait;
 use App\Traits\CounselorTrait;
 use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ use Session;
 
 class AppointmentController extends Controller
 {    
-    use PatientTrait, CounselorTrait;
+    use PatientTrait, CounselorTrait, ChatTrait;
     public $appointment, $user_appointment, $user, $pushConfs, $pusher;
     /**
      * Display a listing of the resource.
@@ -52,7 +53,7 @@ class AppointmentController extends Controller
     {
         $events = [];
         $this->mark_as_seen();
-        $appointments = $this->appointment->where('user_id', Auth::user()->id)->get();
+        $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         
         $notifications = auth()->user()->unreadNotifications;
@@ -172,11 +173,12 @@ class AppointmentController extends Controller
             $appointment = $this->appointment->create($request->toArray());
             foreach($request->guest_id as $guest){
                 $user = $this->user->find($guest);
-    
+                $chat_id =$this->active_chat($user->id);
                 $this->user_appointment->create([
                     'guest_id' => $guest,
                     'appointment_id' => $appointment->id,
-                    'status' => 1
+                    'status' => 1,
+                    'chat_id' => $chat_id
                 ]);
                 $payload = [
                     'sender_id' => auth()->user()->id,

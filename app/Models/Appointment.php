@@ -27,6 +27,10 @@ class Appointment extends Model
         return $this->hasMany(UserAppointment::class);
     }
 
+    public function guests(){
+        return $this->hasMany(UserAppointment::class);
+    }
+
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
