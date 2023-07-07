@@ -529,7 +529,7 @@
       // ********* When taking notes *********
 
       function save_notes(){
-          console.log('Typing...');
+          alert('Typing...');
           
       };
 </script>

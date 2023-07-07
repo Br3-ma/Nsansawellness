@@ -62,13 +62,14 @@ Route::get('/pop-ups', [NotificationController::class, 'realTimePopUps'])->name(
 Route::post('/push-notify', [NotificationController::class, 'pushNotific'])->name('notify');
 
 Route::group(['middleware' => ['auth']], function() {
-    // ====================Dashboard
+    // Dashboard
     Route::resource('rating', SiteRatingController::class);
     Route::post('rating-status', [SiteRatingController::class, 'update'])->name('rating.status');
     Route::get('manage-reviews', ManageReview::class)->name('reviews.manage');
     Route::get('/therapy-center', [CounsellorController::class, 'index'])->name('counsellor');
-    
     Route::get('/my-profile', [ProfileController::class, 'index'])->name('profile');
+    
+    // Vide Call Feature
     Route::get('/video-session/{id}/{chat_id}/{receiver}/{role}', [VideoCallController::class, 'startVideoCall'])->name('video-call');
     Route::get('/phone-session/{id}/{chat_id}/{receiver}/{role}', [VideoCallController::class, 'startPhoneCall'])->name('phone-call');
     Route::get('/therapy-session/{id}/{chat_id}/{receiver}/{role}/{peer_id}', [VideoCallController::class, 'startVideoCallPeer'])->name('video-call-peer');
@@ -77,6 +78,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/get-video-link', [VideoCallController::class, 'getVideoLink'])->name('get.remote_id');
     Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
     Route::get('/api/fetch-session/{id}/{user}', [VideoCallController::class, 'getConversationDetails'])->name('conversation-details');
+    Route::post('/save-notes', [VideoCallController::class, 'takeNote'])->name('save-notes');
+    
 
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
     Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");

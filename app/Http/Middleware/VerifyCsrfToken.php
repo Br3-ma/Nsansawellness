@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
         'api/register',
         'api/login',
         'api/submit-patient-survey',
-        'upload-video'
+        'upload-video',
+        'save-notes'
     ];
 }

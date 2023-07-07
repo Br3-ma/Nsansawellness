@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Async;
+use App\Models\SessionNote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Video;
+use Illuminate\Support\Facades\DB;
 
 class VideoCallController extends Controller
 {
@@ -23,42 +25,32 @@ class VideoCallController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function takeNote(Request $req)
     {
-        $groups = Chat::getAllGroupConversations();
-        $threads = Chat::getAllConversations();
-
-        return view('home')->with([
-            'threads' => $threads,
-            'groups'  => $groups
-        ]);
-    }
-
-    public function chat($id)
-    {
-        $conversation = Chat::getConversationMessageById($id);
-
-
-        return view('page.chat.chat')->with([
-            'conversation' => $conversation
-        ]);
-    }
-
-    public function startVideo($id){
-        $conversation = Chat::getConversationMessageById($id);
-
-        return view('page.common.video-call')->with([
-            'conversation' => $conversation
-        ]);
+        
+        DB::beginTransaction();
+        try {
+            // SessionNote::create($req->toArray);
+            SessionNote::updateOrCreate(
+                ['chat_id' => $req->toArray()['chat_id']], // Condition to find an existing record (e.g., based on 'id')
+                $req->toArray() // Data to be saved or updated
+            );
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollback();
+            dd($th);
+        }
     }
 
     public function startVideoCall($id, $chat_id, $receiver, $role){
         try {
+            $notes = SessionNote::where('chat_id', $chat_id)->where('status', 1)->first()->notes;
             $data = [
                 'id' => $id,
                 'chat_id' => $chat_id,
                 'receiver' => $receiver,
                 'role' => $role,
+                'notes' => $notes,
                 'token' =>  csrf_token()
             ];
             return view('page.chat.video_', compact('data'));

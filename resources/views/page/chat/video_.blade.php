@@ -398,12 +398,17 @@
         </div> 
 
         <div id="right-side-notes" class="convoBody chat-container"> 
-          <div class="chat-header">
+          <div class="chat-header justify-content-between">
             <button class="chat-header-button">Session Notes</button>
+            <span id="notes_status"></span>
+            
+            <button class="btn">Save</button>
           </div>
           {{-- convoBody message_thread  --}}
           {{-- <div id="message_thread" class="chat-area"> --}}
-          <textarea row="10" cols="70" style="height: 30px"  name="notes" onclick="save_notes()" id="taking-notes" class="chat-area editor"></textarea>
+          <textarea row="10" cols="70" style="height: 30px"  name="notes" onchange="save_notes()" id="taking-notes-textarea" class="chat-area editor">
+            {{ $data['notes'] }}
+          </textarea>
           {{-- <div class="chat-typing-area-wrapper">
             <div class="chat-typing-area">
               <input
@@ -518,6 +523,7 @@
       const btnCall = document.getElementById('btn-call');
       const myId = document.getElementById('localPeerId');
       const peerId = document.getElementById('remotePeerId');
+      var info = @json($data);
       // const localScreen = document.getElementById('local-screen');
       // const remoteScreen = document.getElementByClassName('remote-screen');
       var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
@@ -658,7 +664,7 @@
         }
       }
 
-      // ************** Recording Module ************* //
+      // Start Recording Function //
       // var isRec = 0;
       var lengthInMS = 300000;
 
@@ -689,6 +695,7 @@
         }, Math.abs(interval) * 1000);
       }
 
+      // Recorder function
       var recordedData = [];
       function recording(stream, lengthInMS){
         try {
@@ -735,6 +742,7 @@
         }
       }
 
+      // Stop Recording
       function stopRecording(recordedData){
         let recordedBlob = new Blob(recordedData, { type: "video/webm" });
 
@@ -749,6 +757,7 @@
 
       }
 
+      // Save the Recording to Database
       function save_recording(recordedData){
         const user = {!! auth()->user()->toJson() ?? '' !!};
         const formData = new FormData();
@@ -800,8 +809,35 @@
       // ********* When taking notes *********
 
       function save_notes(){
-          console.log('Typing...');
-          
+        const user = {!! auth()->user()->toJson() ?? '' !!};
+        const my_notes = $('#taking-notes-textarea').val();
+        $('#notes_status').html('<span>Saving...</span>');
+
+        const formData = new FormData();
+        formData.append('chat_id', info['chat_id']);
+        formData.append('notes', my_notes);
+        formData.append('status', 1);
+        formData.append('user_id', user['id']);
+        
+        console.log('Typing...');
+
+        fetch("{{ route('save-notes') }}", {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          console.log(response);
+          if (response.ok) {
+            $('#notes_status').html('<span>Saved.</span>');
+          } else {
+            $('#notes_status').html('<span style="color:red">Failed to save notes.</span>');
+          }
+        })
+        .catch(error => {
+          $('#myText').html('<span style="color:red">Check your internet connection</span>');
+        });
+
+        
       };
 </script>
 <script>
