@@ -13,23 +13,25 @@ use Session;
 
 class QuestionaireController extends Controller
 {
-        public  $questionaire;
-        public  $questions;
-        /**
-         * Display a listing of the resource.
-         *
-         * @return \Illuminate\Http\Response
-         */
-        public function __construct(Questionaire $q, Question $qn)
-        {
-            $this->questionaire = $q;
-            $this->questions = $qn;
-        }
+    public  $questionaire;
+    public  $questions;
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function __construct(Questionaire $q, Question $qn)
+    {
+        $this->questionaire = $q;
+        $this->questions = $qn;
+    }
+
     public function index()
     {
         $questionaires = $this->questionaire->with('questions')->paginate(7);
         return view('page.questionaires.index', compact('questionaires'));
     }
+
     public function feed()
     {
         // get the active survey
@@ -37,13 +39,10 @@ class QuestionaireController extends Controller
         $users = User::latest()->paginate(7);
         return view('page.questionaires.user_feedback', compact('roles', 'users'));
     }
+
     public function user_feed($id)
     {
         $user = User::where('guest_id', $id)->first();
-        // get the active survey
-        // $survey_results = $this->questions->with("results")->whereHas("results",function($q) use($id){
-        //     $q->where("guest_id", "=" , $id);
-        // })->get();
         $survey_results = DB::table('questions')
         ->join('results', 'questions.id', '=', 'results.question_id')
         ->where('results.guest_id', '=', $id)

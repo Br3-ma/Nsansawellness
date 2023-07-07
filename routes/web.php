@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');
     Route::get('/api/fetch-session/{id}/{user}', [VideoCallController::class, 'getConversationDetails'])->name('conversation-details');
     Route::post('/save-notes', [VideoCallController::class, 'takeNote'])->name('save-notes');
+    Route::get('/session-notes/{id}', [ChatController::class, 'session_notes'])->name('session-notes');
     
 
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");

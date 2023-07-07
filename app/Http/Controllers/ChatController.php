@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Chat;
 use App\Models\ChatMessages;
+use App\Models\SessionNote;
+use App\Models\User;
 use App\Traits\ChatTrait;
 use Illuminate\Http\Request;
 use Session;
@@ -41,6 +43,15 @@ class ChatController extends Controller
             ]);
         }
         return response()->json(['chat_session' => $chat_session], 200);
+    }
+    
+    public function session_notes($id)
+    {
+        $chat =Chat::where('id', $id)->where('status', 1)->first();
+        $notes = SessionNote::where('chat_id', $id)->where('status', 1)->first();
+        $user = User::where('id', $chat->receiver_id)->first();
+
+        return view('page.patients.session_notes', compact('notes', 'user'));
     }
 
     /**

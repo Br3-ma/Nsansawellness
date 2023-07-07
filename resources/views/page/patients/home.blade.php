@@ -144,17 +144,28 @@
                                 <i data-lucide="undo" class="w-5 h-5"></i>
                             </button>
                         </div>
-                        <div class="flex items-center sm:ml-auto mt-5 sm:mt-0 border-t sm:border-0 border-slate-200/60 pt-3 sm:pt-0 -mx-5 sm:mx-0 px-5 sm:px-0">
-                            
-                            <button class="mr-2" id="btnback" onclick="back()">
-                                <i data-lucide="undo" class="w-5 h-5"></i>
-                            </button>
+                        <div class="flex items-center justify-between justify-content-between sm:ml-auto mt-5 sm:mt-0 border-t sm:border-0 border-slate-200/60 pt-3 sm:pt-0 -mx-5 sm:mx-0 px-5 sm:px-0">
+                           
                             {{-- startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}' --}}
                             @hasanyrole(['admin', 'counselor'])
                                 @if(!empty($chats->toArray()))
+                                    
+                                <a target="_blank" onclick="CheckNotes()" class="btn btn-primary" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-bookmark" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"/>
+                                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                                    </svg>&nbsp;
+                                    <span>Session Notes</span>
+                                </a>
+                                &nbsp;
                                 <a target="_blank" onclick="startVideoSession()" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
                                     <i data-lucide="video" class="w-5 h-5"></i>
+                                    &nbsp;
+                                    <span>Start Call</span>
                                 </a>
+                                &nbsp;
+                                
                                 {{-- <a target="_blank" href="{{ route('phone-call', ['id'=> auth()->user()->id, 'chat_id' => $chats->first()->id, 'receiver' => $chats->first()->receiver->fname.' '.$chats->first()->receiver->lname, 'role' => preg_replace('/[^A-Za-z0-9. -]/', '', $chats->first()->receiver->roles->pluck('name')) ]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-success shadow-md mr-2">
                                     <i data-lucide="phone" class="w-5 h-5"></i>
                                 </a> --}}
@@ -172,7 +183,10 @@
                                     </a>
                                 </span>
                             @endhasanyrole
-                            
+                             
+                            <button class="mr-2" id="btnback" onclick="back()">
+                                <i data-lucide="undo" class="w-5 h-5"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -549,7 +563,11 @@
         }
     }
 
-
+    
+    function CheckNotes(){
+        var url = '/session-notes/' + chat_id; 
+        window.location.href = url;
+    }
     function startVideoSession(){
         var url = '/video-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
         window.location.href = url;
