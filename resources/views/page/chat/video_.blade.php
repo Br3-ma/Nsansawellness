@@ -197,18 +197,23 @@
         </div> --}}
       </div>
       <div class="app-main">            
-        <input type="text" class="dont-show" name="localPeerId" id="localPeerId" readonly>
         @hasrole('patient')
         <div class="join-card">
-          <small>Press join session whenever you are ready.</small>
-          <br>
-          <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
-          <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
-          <div>
-            <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
+          <div class="joinloader">
+            <img width="50" src="{{ asset('public/img/lod.gif') }}">
+            <p>Checking for therapist ...</p>
+          </div>
+          <div class="join-card-content">
+            <small>Press join session whenever you are ready.</small>
+            <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
+            <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+            <div>
+              <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
+            </div>
           </div>
         </div>
         @else
+          <input type="text" class="dont-show" name="localPeerId" id="localPeerId" readonly>
           <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
         @endhasrole
         <div class="video-call-wrapper" style="position: relative">
@@ -308,19 +313,22 @@
 
         <div class="video-call-actions">
           @hasanyrole(['admin', 'counselor', 'therapist'])
-          <span>
-            <div style="color:#FF2300; margin-right:2%" id="recorder-timer"></div>
-          </span>
-          <button onclick="startRecording()" id="start-btn" class="video-action-button start-recorder" title="Start Recording"></button>
-          <button onclick="stopRecording()" style="background-color:red" id="stop-btn" class="video-action-button stop-recorder" title="Stop Recording"></button>
+            <span>
+              <div style="color:#FF2300; margin-right:2%" id="recorder-timer"></div>
+            </span>
+            <button onclick="startRecording()" id="start-btn" class="video-action-button start-recorder" title="Start Recording"></button>
+            <button onclick="stopRecording()" style="background-color:red" id="stop-btn" class="video-action-button stop-recorder" title="Stop Recording"></button>
           @endhasanyrole
+
           <button onclick="toggleAudioMute()" title="Mute / Unmute" class="audio-mic video-action-button mic"></button>
           <button title="Hide / Unhide" onclick="toggleVideo()" class="video-cam video-action-button camera"></button>
-          {{-- <button class="video-action-button maximize"></button> --}}
+          
+          
           <button onclick="endCall()" title="End Call" class="video-action-button endcall">Leave</button>
           <button title="Take Notes" onclick="open_notes()" class="video-action-button magnifier">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"></path><path d="M15 3v6h6"></path></svg>
           </button>
+
           <button title="Chat" onclick="open_chat()" class="video-action-button magnifier">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
@@ -500,6 +508,8 @@
           $('#downloadButton').hide();
           $('.dont-show').hide();
           $('#recorder-timer').hide();
+          
+          $('.joinloader').hide();
           // document.getElementById("local-screen").style.width = "100%"
           // document.getElementById("local-screen").style.height = "100%"
           // if (window.matchMedia("(max-width: 767px)").matches){}else{}
@@ -544,7 +554,7 @@
               console.error('Failed to apply video constraints:', error);
           });
       }).catch((error) => {
-        console.error('Error accessing user media:', error);
+          alert('Could not join video call try to refresh the page or go back and rejoin the last session', error);
       });
   
         
@@ -560,27 +570,36 @@
        
   
       function shareIdToPeer(peer_id, info){
+        var detail = @json($data);
         var message = document.getElementById('message_textbox');
-        message.value = "<a class='btn btn-danger btn-sm text-white' href='https://nsansawellness.com/therapy-session/10/4/receiver/patient/"+peer_id+"'>\
+        message.value = "<a class='btn btn-danger btn-sm text-white' href='https://nsansawellness.com/therapy-session/10/"+detail['chat_id']+"/receiver/patient/"+peer_id+"'>\
           <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-person-video3' viewBox='0 0 16 16'>\
             <path d='M14 9.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm-6 5.7c0 .8.8.8.8.8h6.4s.8 0 .8-.8-.8-3.2-4-3.2-4 2.4-4 3.2Z'/>\
             <path d='M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h5.243c.122-.326.295-.668.526-1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v7.81c.353.23.656.496.91.783.059-.187.09-.386.09-.593V4a2 2 0 0 0-2-2H2Z'/>\
           </svg>\
+          &nbsp;\
           Join Video Call</a>";
         send();
       }
 
       function join(){
+          // Change state after guest clicks join 
+          $('.joinloader').show();
+          $('.join-card-content').hide();
+          $('.join-card').hide();
+
+          // Get romote sharedID 
           const remotePeerId = peerId.value;
           const call = peer.call(remotePeerId, localStream);
+
           // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage.
           const videoReceiveBandwidth = 200; // Set the desired video receive bandwidth in Kbps
           const sender = call.peerConnection.getSenders()[0];
-
           const parameters = sender.getParameters();
           parameters.encodings[0].maxBitrate = videoReceiveBandwidth * 1000; // Convert to bps
           sender.setParameters(parameters);
 
+          // On Call
           call.on('stream', stream => {
               remoteVideo.srcObject = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
