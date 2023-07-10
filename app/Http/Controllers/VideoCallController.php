@@ -44,18 +44,21 @@ class VideoCallController extends Controller
 
     public function startVideoCall($id, $chat_id, $receiver, $role){
         try {
-            $notes = SessionNote::where('chat_id', $chat_id)->where('status', 1)->first()->notes;
+            $notes = SessionNote::where('chat_id', $chat_id)->where('status', 1)->first();
+            if($notes !== null){
+                $nts = $notes->notes;
+            }
             $data = [
                 'id' => $id,
                 'chat_id' => $chat_id,
                 'receiver' => $receiver,
                 'role' => $role,
-                'notes' => $notes,
+                'notes' => $nts ?? '',
                 'token' =>  csrf_token()
             ];
             return view('page.chat.video_', compact('data'));
         } catch (\Throwable $th) {
-            dd('Refresh the Page');
+            dd($th);
         }
     }
 
