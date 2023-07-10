@@ -186,7 +186,7 @@ class AppointmentController extends Controller
                     'name' => auth()->user()->fname.' '.auth()->user()->lname,
                     'type' => $request->type,
                     'title' => $request->title,
-                    'appointment_id' => $appointment->id,
+                    'appointment_id' => $chat_id, //Needed to get the right chat messages
                     'link' => $appointment->video_link
                 ];
 
@@ -207,7 +207,7 @@ class AppointmentController extends Controller
             // $this->user_appointment->where('appointment_id', $appointment->id)->first()->delete();
             return redirect()->route('appointment');
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
             Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
             return redirect()->route('appointment');
         }
