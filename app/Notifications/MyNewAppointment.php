@@ -42,7 +42,7 @@ class MyNewAppointment extends Notification
     {
         return (new MailMessage)
                     ->line('You have sent a '.$this->data['title'].' '.$this->data['type'].' call appointment')
-                    ->action('Goto Appointment', url('view-appointment/'.$this->data['appointment_id']))
+                    ->action('Goto Appointment', url('/schedule-appointments'))
                     ->line('Thank you!');
     }
 
