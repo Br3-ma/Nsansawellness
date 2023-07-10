@@ -836,9 +836,8 @@
         .catch(error => {
           $('#myText').html('<span style="color:red">Check your internet connection</span>');
         });
-
-        
-      };
+      }
+      
 </script>
 <script>
   // $(document).ready(function() {
