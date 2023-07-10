@@ -67,9 +67,9 @@
           @endif
 
         
-            @hasrole('counselor')
-            <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
-            @endhasrole
+        {{-- @hasrole('counselor') --}}
+        <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
+        {{-- @endhasrole --}}
         <div class="video-call-wrapper" style="position: relative">
           <!-- Video Participant 3 -->
           <div style="width:100%; height:100%" class="remote-screen video-participant">
@@ -100,7 +100,7 @@
         <div class="video-call-actions">
           @hasanyrole(['admin', 'counselor', 'therapist'])
           <span>
-            <div style="color:#FF2300; margin-right:2%" id="recorder-timer"></div>
+            <div style="color:#ff5100; margin-right:2%" id="recorder-timer"></div>
           </span>
           <button onclick="startRecording()" id="start-btn" class="video-action-button start-recorder" title="Start Recording"></button>
           <button onclick="stopRecording()" style="background-color:red" id="stop-btn" class="video-action-button stop-recorder" title="Stop Recording"></button>
@@ -267,9 +267,8 @@
           $('#right-side-toolbar').hide();
           $('#right-side-chat').hide();
           $('#right-side-notes').hide();
-          $('#downloadButton').hide();
           $('.dont-show').hide();
-          $('.recorder-timer').hide();
+          // $('#recorder-timer').hide();
           $('.joinloader').hide();
       });
       const btnCall = document.getElementById('btn-call');
@@ -294,8 +293,6 @@
       }
             
       let downloadButton = document.getElementById("downloadButton");
-      let stopRecBtn = document.getElementById("stop-btn");
-      let startRecBtn = document.getElementById("start-btn");
       let localStream;
       let remoteStream;
 
@@ -322,13 +319,12 @@
         console.error('Error accessing user media:', error);
       });
 
-      function join(){
-          const remotePeerId = peerId.value;
-          
+      function join(){          
           $('.join-card-content').hide();
-          $('.joinloader').show();
           $('.join-card').hide();
+          $('.joinloader').show();
 
+          const remotePeerId = peerId.value;
           const call = peer.call(remotePeerId, localStream);
           // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage.
           const videoReceiveBandwidth = 200; // Set the desired video receive bandwidth in Kbps
@@ -397,14 +393,12 @@
 
       // ************** Recording Module ************* //
       // var isRec = 0;
-      var lengthInMS = 300000;
+      var lengthInMS = 10800000;
 
       function startRecording(){
 
         recording(remoteStream, lengthInMS);
 
-        // start the timer
-        $('#recorder-timer').show();
         var input = {
             year: 0,
             month: 0,
@@ -422,14 +416,17 @@
         setInterval(function () {
             timestamp = new Date(timestamp.getTime() + interval * 1000);
             document.getElementById('recorder-timer').innerHTML = timestamp.getHours() + 'h:' + timestamp.getMinutes() + 'm:' + timestamp.getSeconds() + 's';
-            // document.getElementById('recorder-timer').innerHTML = timestamp.getDay() + 'd:' + timestamp.getHours() + 'h:' + timestamp.getMinutes() + 'm:' + timestamp.getSeconds() + 's';
         }, Math.abs(interval) * 1000);
       }
 
+
+      // Recording function
       var recordedData = [];
       function recording(stream, lengthInMS){
         try {
-
+          
+            // start the timer and recording media
+            $('#recorder-timer').show();
             let recorder = new MediaRecorder(stream);
 
             recorder.ondataavailable = (event) => recordedData.push(event.data);
@@ -439,6 +436,7 @@
             $('#stop-btn').show();
 
             console.log(`${recorder.state} for ${lengthInMS / 1000} seconds…`);
+            
             var fulltime = lengthInMS / 1000;
             let stopped = new Promise((resolve, reject) => {
               recorder.onstop = resolve;
@@ -462,31 +460,31 @@
               // downloadButton.href = recording.src;
               downloadButton.href = URL.createObjectURL(recordedBlob);
               downloadButton.download = "RecordedVideo.webm";
-              $('#recorder-timer').hide();
+              // 
               $('#start-btn').show();
               $('#stop-btn').hide();
               $('#downloadButton').hide();
             });
         } catch (err) {
-          alert('Oops, Can not record video unless patient joins the session');
+            alert('Oops, Can not record video unless patient joins the session');
         }
       }
 
       function stopRecording(recordedData){
         let recordedBlob = new Blob(recordedData, { type: "video/webm" });
-
+        $('#recorder-timer').hide();
         downloadButton.href = URL.createObjectURL(recordedBlob);
         downloadButton.download = "RecordedVideo.webm";
 
         save_recording(recordedBlob);
 
         $('#downloadButton').show();
-        $('#start-btn').hide();
-        $('#stop-btn').stop();
+        $('#start-btn').show();
+        $('#stop-btn').hide();
 
       }
 
-      function save_recording(recordedData){
+      function save_recording(recordedBlob){
         const user = {!! auth()->user()->toJson() ?? '' !!};
         const formData = new FormData();
         formData.append('video', recordedBlob, 'RecordedVideo.webm');

@@ -431,6 +431,15 @@
                         </a>
                     </li>
                     @endhasanyrole
+
+                    @hasanyrole(['admin', 'administrator'])
+                    <li>
+                        <a href="{{ route('settings.configs') }}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="shield-check"></i> </div>
+                            <div class="side-menu__title"> Configurations </div>
+                        </a>
+                    </li>
+                    @endhasanyrole
                 </ul>
             </nav>
             <div class="mt-5">

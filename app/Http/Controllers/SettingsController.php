@@ -36,10 +36,16 @@ class SettingsController extends Controller
         $plans = $this->get_subscriptions();
         return view('page.settings.index', compact('plans'));
     }
+
     public function commissions(){
         $com_sets = $this->get_com();
         return view('page.settings.commissions', compact('com_sets'));
     }
+
+    public function configs(){
+        return view('page.settings.configs');
+    }
+    
     public function departments(){
         $depts = $this->depts->get();
         return view('page.settings.departments', compact('depts'));
@@ -50,9 +56,28 @@ class SettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createBackUp()
     {
-        //
+        // Database credentials
+        $host = 'localhost';
+        $username = 'your_username';
+        $password = 'your_password';
+        $database = 'your_database';
+
+        // Backup file name and path
+        $backupFileName = 'database_backup.sql';
+        $backupPath = '/path/to/backup/directory/' . $backupFileName;
+
+        // MySQL dump command
+        $command = "mysqldump --host={$host} --user={$username} --password={$password} {$database} > {$backupPath}";
+
+        // Execute the command
+        system($command);
+
+        // Download the backup file
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . $backupFileName . '"');
+        readfile($backupPath);  
     }
 
     /**

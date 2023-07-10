@@ -108,6 +108,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // ==== settings
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::get('/configurations', [SettingsController::class, 'configs'])->name('settings.configs');
     Route::post('/set-commission-setting', [SettingsController::class, 'store'])->name('set-commission');
     Route::get('/settings/commissions', [SettingsController::class, 'commissions'])->name('settings.commissions');
     Route::get('/settings/departments', [SettingsController::class, 'departments'])->name('settings.departments');
