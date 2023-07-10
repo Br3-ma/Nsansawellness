@@ -56,6 +56,7 @@ class AppointmentController extends Controller
         $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         
+
         $notifications = auth()->user()->unreadNotifications;
         try {
             // dd(!empty($appointments->toArray()));

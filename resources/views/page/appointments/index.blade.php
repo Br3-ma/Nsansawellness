@@ -7,6 +7,8 @@
             &nbsp;
             <span>Appointments</span>
         </h2>
+        @dd($appointments)
+        @dd($incoming_appointments)
         @if (Session::has('attention'))
         <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
             <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
