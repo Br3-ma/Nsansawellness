@@ -203,8 +203,8 @@ class AppointmentController extends Controller
             // Send a notification to my self about the new Appointment
             $u->notify(new MyNewAppointment($payload));
             Session::flash('attention', "Appointment has been scheduled successfully.");
-            $appointment->delete();
-            $this->user_appointment->where('appointment_id', $appointment->id)->first()->delete();
+            // $appointment->delete();
+            // $this->user_appointment->where('appointment_id', $appointment->id)->first()->delete();
             return redirect()->route('appointment');
         } catch (\Throwable $th) {
             dd($th);
