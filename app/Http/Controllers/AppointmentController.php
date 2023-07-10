@@ -206,7 +206,7 @@ class AppointmentController extends Controller
             $this->user_appointment->where('appointment_id', $appointment->id)->first()->delete();
             return redirect()->route('appointment');
         } catch (\Throwable $th) {
-            // dd($th);
+            dd($th);
             Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
             return redirect()->route('appointment');
         }
