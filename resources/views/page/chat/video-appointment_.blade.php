@@ -320,9 +320,8 @@
       });
 
       function join(){          
-          $('.join-card-content').hide();
-          $('.join-card').hide();
           $('.joinloader').show();
+          $('.join-card-content').hide();
 
           const remotePeerId = peerId.value;
           const call = peer.call(remotePeerId, localStream);
@@ -335,9 +334,14 @@
           sender.setParameters(parameters);
 
           call.on('stream', stream => {
-              remoteVideo.srcObject = stream;
-              remoteVideo.onloadedmetadata = () => remoteVideo.play();
-              $('.remote-screen').show();
+              if(stream.active){
+                $('.join-card').hide();
+                remoteVideo.srcObject = stream;
+                remoteVideo.onloadedmetadata = () => remoteVideo.play();
+                $('.remote-screen').show();
+              }else{
+                
+              }
           });
 
       }
