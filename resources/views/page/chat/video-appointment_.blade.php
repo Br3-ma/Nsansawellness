@@ -17,6 +17,32 @@
   </head>
   
   <body>
+    @if ($data['source'] == 'receiver')
+    <div class="join-card">
+      <div class="joinloader">
+        <img width="50" src="{{ asset('public/img/lod.gif') }}">
+        <p>Joining ...</p>
+      </div>
+      <div class="joinmessage">
+        <small>No one has joined the call yet. Try again later</small>
+        <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
+        <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+        <div>
+          <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
+        </div>
+      </div>
+      <div class="join-card-content">
+        <small>Press join session whenever you are ready.</small>
+        <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
+        <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+        <div>
+          <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
+        </div>
+      </div>
+    </div>
+    @else
+    <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+    @endif
     <!-- Preloader HTML -->
     <div class="preloader">
         <h3>Getting Started</h3>
@@ -47,24 +73,7 @@
       <div class="left-side">
       </div>
       <div class="app-main">            
-          @if ($data['source'] == 'receiver')
-          <div class="join-card">
-            <div class="joinloader">
-              <img width="50" src="{{ asset('public/img/lod.gif') }}">
-              <p>Checking for therapist ...</p>
-            </div>
-            <div class="join-card-content">
-              <small>Press join session whenever you are ready.</small>
-              <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
-              <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
-              <div>
-                <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
-              </div>
-            </div>
-          </div>
-          @else
-          <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
-          @endif
+
 
         
         {{-- @hasrole('counselor') --}}
@@ -269,6 +278,7 @@
           $('#right-side-notes').hide();
           $('.dont-show').hide();
           // $('#recorder-timer').hide();
+          $('.joinmessage').hide();
           $('.joinloader').hide();
       });
       const btnCall = document.getElementById('btn-call');
@@ -319,10 +329,12 @@
         console.error('Error accessing user media:', error);
       });
 
-      function join(){          
+      function join(){   
+        
+          $('.joinmessage').hide();       
           $('.joinloader').show();
           $('.join-card-content').hide();
-
+          
           const remotePeerId = peerId.value;
           const call = peer.call(remotePeerId, localStream);
           // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage.
@@ -333,16 +345,35 @@
           parameters.encodings[0].maxBitrate = videoReceiveBandwidth * 1000; // Convert to bps
           sender.setParameters(parameters);
 
+          
           call.on('stream', stream => {
-              if(stream.active){
-                $('.join-card').hide();
-                remoteVideo.srcObject = stream;
-                remoteVideo.onloadedmetadata = () => remoteVideo.play();
-                $('.remote-screen').show();
+              alert(stream.active);
+              if(stream.active === true){
+                  $('.join-card').hide();
+                  remoteVideo.srcObject = stream;
+                  remoteVideo.onloadedmetadata = () => remoteVideo.play();
+                  $('.remote-screen').show();
               }else{
-                
+                  $('.joinloader').hide();
+                  $('.joinmessage').show();
               }
           });
+
+          call.on('error', error => {
+            if (error.type === 'peer-unavailable') {
+              // Stream is unavailable
+              console.log('Stream is unavailable');
+            } else {
+              // Handle other errors
+              console.error('An error occurred:', error);
+            }
+          });
+
+          setTimeout(() => {
+            // Code to be executed after 6 seconds
+            $('.joinloader').hide();
+            $('.joinmessage').show();
+          }, 6000);
 
       }
   

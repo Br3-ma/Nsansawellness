@@ -23,7 +23,34 @@
   </head>
 
   
-  <body>
+  <body>        
+    @hasrole('patient')
+    <div class="join-card">
+      <div class="joinloader">
+        <img width="50" src="{{ asset('public/img/lod.gif') }}">
+        <p>Joining ...</p>
+      </div>
+      <div class="joinmessage">
+        <small>No one has joined the call yet.</small>
+        <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
+        <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+        <div>
+          <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
+        </div>
+      </div>
+      <div class="join-card-content">
+        <small>Press join session whenever you are ready.</small>
+        <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
+        <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
+        <div>
+          <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
+        </div>
+      </div>
+    </div>
+    @else
+      <input type="text" class="dont-show" name="localPeerId" id="localPeerId" readonly>
+      <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
+    @endhasrole
     <!-- Preloader HTML -->
     <div class="preloader">
         <h3>Getting Started</h3>
@@ -197,25 +224,7 @@
         </div> --}}
       </div>
       <div class="app-main">            
-        @hasrole('patient')
-        <div class="join-card">
-          <div class="joinloader">
-            <img width="50" src="{{ asset('public/img/lod.gif') }}">
-            <p>Checking for therapist ...</p>
-          </div>
-          <div class="join-card-content">
-            <small>Press join session whenever you are ready.</small>
-            <input type="hidden" class="dont-show" name="localPeerId" id="localPeerId" readonly>
-            <input type="hidden" class="dont-show" value="{{ $data['peer_id']}}" name="remotePeerId" id="remotePeerId">
-            <div>
-              <button onclick="join()" style="float:right" class="button chat-header-button" id="btn-call">Join Session</button>
-            </div>
-          </div>
-        </div>
-        @else
-          <input type="text" class="dont-show" name="localPeerId" id="localPeerId" readonly>
-          <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
-        @endhasrole
+
         <div class="video-call-wrapper" style="position: relative">
           <!-- Video Participant 1 -->
         
@@ -513,7 +522,7 @@
           $('#downloadButton').hide();
           $('.dont-show').hide();
           $('#recorder-timer').hide();
-          
+          $('.joinmessage').hide();
           $('.joinloader').hide();
           // document.getElementById("local-screen").style.width = "100%"
           // document.getElementById("local-screen").style.height = "100%"
@@ -589,10 +598,9 @@
       }
 
       function join(){
-          // Change state after guest clicks join 
+          $('.joinmessage').hide();       
           $('.joinloader').show();
           $('.join-card-content').hide();
-          $('.join-card').hide();
 
           // Get romote sharedID 
           const remotePeerId = peerId.value;
@@ -607,10 +615,32 @@
 
           // On Call
           call.on('stream', stream => {
-              remoteVideo.srcObject = stream;
-              remoteVideo.onloadedmetadata = () => remoteVideo.play();
-              // $('.remote-screen').show();
-          })
+            if(stream.active){
+                $('.join-card').hide();
+                remoteVideo.srcObject = stream;
+                remoteVideo.onloadedmetadata = () => remoteVideo.play();
+                $('.remote-screen').show();
+              }else{
+                $('.joinloader').hide();
+                $('.joinmessage').show();
+              }
+          });
+
+          call.on('error', error => {
+            if (error.type === 'peer-unavailable') {
+              // Stream is unavailable
+              console.log('Stream is unavailable');
+            } else {
+              // Handle other errors
+              console.error('An error occurred:', error);
+            }
+          });
+
+          setTimeout(() => {
+            // Code to be executed after 6 seconds
+            $('.joinloader').hide();
+            $('.joinmessage').show();
+          }, 6000);
       }
   
       peer.on('call', call => {
