@@ -155,10 +155,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function assignedCounselor(){
-        // Change to:
-        // Has One Through (has one USER through AssignCounselor)
         return $this->hasOne(AssignCounselor::class, 'patient_id');
-        // return $this->hasOne(AssignCounselor::class, 'counselor_id');
     }
 
     public function billing(){

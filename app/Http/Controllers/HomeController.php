@@ -50,11 +50,10 @@ class HomeController extends Controller
         // event(new RealTimeNotification($message));
         // check if its first time login
         $counselors =  $this->users->role('counselor')->get();
-        $total_patients =  $this->getMyTotalPatients(auth()->user());
+        $total_patients =   Chat::whereHas('receiver')->where('status',1)->where('sender_id', auth()->user()->id)->count();
         
         // If the User is logging for the first time
         if(auth()->user()->first_login == 'true' || auth()->user()->first_login != 0){
-
             // if its a Patient redirect them to payments
             if($this->my_role() == 'patient'){
                 // record invoice billing.
@@ -62,14 +61,13 @@ class HomeController extends Controller
                 return redirect()->route('pay');
             }
             return view('home', compact('notifications', 'counselors', 'total_patients'));
-
         }else{
             // if the User logs in in the future
             if($this->my_role() == 'patient'){
                 $this->billing->where('user_id', auth()->user()->id)->update(['remainder_count'=> $random]);
                 return view('page.patients.home', compact('notifications','chats', 'counselors', 'total_patients'));
             }
-            return view('home', compact('notifications', 'counselors', 'total_patients'));
+            return view('home', compact('notifications', 'chats', 'counselors', 'total_patients'));
         }
 
     }

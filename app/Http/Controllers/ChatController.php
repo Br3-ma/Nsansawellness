@@ -24,8 +24,8 @@ class ChatController extends Controller
         $id = $req->toArray()['id'];
         $owner = $req->toArray()['owner'];
 
-        // Get the chat sessions
-        $chat_session = Chat::with('chat_messages.user')->where('id', $id)->get()->toArray()[0];
+  // Get the chat sessions
+        $chat_session = Chat::with('chat_messages.user')->where('id', $id)->get()->toArray()[0];      
 
         // Set that either parties have seen the message
         // The last message has appeared in either parties chat

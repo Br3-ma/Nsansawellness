@@ -15,7 +15,7 @@ class AssignCounselor extends Model
         'status_id', // 1 / 2
         'comments',
         'status', // paid / unpaid
-        'rate', //ammount
+        'rate', // amount
         'end_date'
     ];
 

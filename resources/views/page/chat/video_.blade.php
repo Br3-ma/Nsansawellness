@@ -533,19 +533,14 @@
       const myId = document.getElementById('localPeerId');
       const peerId = document.getElementById('remotePeerId');
       var info = @json($data);
-      // const localScreen = document.getElementById('local-screen');
-      // const remoteScreen = document.getElementByClassName('remote-screen');
       var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
 
       var localVideo = document.getElementById('localVideo');
       var remoteVideo = document.getElementById('remoteVideo');
       var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-      // var myID = '';
       var peer = new Peer();
             
       let downloadButton = document.getElementById("downloadButton");
-      // let stopRecBtn = document.getElementById("stop-btn");
-      // let startRecBtn = document.getElementById("start-btn");
       let localStream;
       let remoteStream;
 
@@ -649,8 +644,8 @@
           // videoBandwidth to 200 Kbps (kilobits per second)
           const videoReceiveBandwidth = 200; // Set the desired video receive bandwidth in Kbps
           const sender = call.peerConnection.getSenders()[0];
-
           const parameters = sender.getParameters();
+
           parameters.encodings[0].maxBitrate = videoReceiveBandwidth * 1000; // Convert to bps
           sender.setParameters(parameters);
           
@@ -658,9 +653,7 @@
               remoteVideo.srcObject = stream;
               remoteStream = stream;
               remoteVideo.onloadedmetadata = () => remoteVideo.play();
-          })
-              // Adjust video constraints to reduce quality
-
+          });
       })
 
 
