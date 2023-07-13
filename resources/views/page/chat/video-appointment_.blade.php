@@ -277,7 +277,7 @@
           $('#right-side-chat').hide();
           $('#right-side-notes').hide();
           $('.dont-show').hide();
-          // $('#recorder-timer').hide();
+          $('#downloadButton').hide();
           $('.joinmessage').hide();
           $('.joinloader').hide();
       });
@@ -326,7 +326,8 @@
               console.error('Failed to apply video constraints:', error);
           });
       }).catch((error) => {
-        console.error('Error accessing user media:', error);
+          console.error('Error accessing user media:', error);
+          // location.reload();
       });
 
       function join(){   
@@ -347,7 +348,7 @@
 
           
           call.on('stream', stream => {
-              alert(stream.active);
+              // alert(stream.active);
               if(stream.active === true){
                   $('.join-card').hide();
                   remoteVideo.srcObject = stream;
@@ -431,55 +432,52 @@
       var lengthInMS = 10800000;
 
       function startRecording(){
+          recording(remoteStream, lengthInMS);
+          var input = {
+              year: 0,
+              month: 0,
+              day: 0,
+              hours: 2,
+              minutes: 10,
+              seconds: 30
+          };
 
-        recording(remoteStream, lengthInMS);
+          var timestamp = new Date(input.year, input.month, input.day,
+          input.hours, input.minutes, input.seconds);
 
-        var input = {
-            year: 0,
-            month: 0,
-            day: 0,
-            hours: 2,
-            minutes: 10,
-            seconds: 30
-        };
-
-        var timestamp = new Date(input.year, input.month, input.day,
-        input.hours, input.minutes, input.seconds);
-
-        var interval = 1;
-
-        setInterval(function () {
-            timestamp = new Date(timestamp.getTime() + interval * 1000);
-            document.getElementById('recorder-timer').innerHTML = timestamp.getHours() + 'h:' + timestamp.getMinutes() + 'm:' + timestamp.getSeconds() + 's';
-        }, Math.abs(interval) * 1000);
+          var interval = 1;
+          setInterval(function () {
+              timestamp = new Date(timestamp.getTime() + interval * 1000);
+              document.getElementById('recorder-timer').innerHTML = timestamp.getHours() + 'h:' + timestamp.getMinutes() + 'm:' + timestamp.getSeconds() + 's';
+          }, Math.abs(interval) * 1000);
       }
 
 
       // Recording function
       var recordedData = [];
+      let recordedVid;
       function recording(stream, lengthInMS){
         try {
-          
+            console.log('recording...');
             // start the timer and recording media
             $('#recorder-timer').show();
+            $('#start-btn').hide();
+            $('#stop-btn').show();
             let recorder = new MediaRecorder(stream);
 
             recorder.ondataavailable = (event) => recordedData.push(event.data);
             recorder.start();
 
-            $('#start-btn').hide();
-            $('#stop-btn').show();
 
-            console.log(`${recorder.state} for ${lengthInMS / 1000} seconds…`);
-            
-            var fulltime = lengthInMS / 1000;
+            // console.log(`${recorder.state} for ${lengthInMS / 1000} seconds…`);
+            var fulltime =  5000;
             let stopped = new Promise((resolve, reject) => {
               recorder.onstop = resolve;
               recorder.onerror = (event) => reject(event.name);
             });
 
             let recorded = setTimeout(() => {
-              console.log(recorder.state);
+              console.log('timeout...');
               if (recorder.state === "recording") {
                 // remoteVideo.src = URL.createObjectURL(recorder.getBlob());
                 recorder.stop();
@@ -487,36 +485,41 @@
             },fulltime);
 
             return Promise.all([
-              stopped,
-              recorded
+                stopped,
+                recorded
             ]).then(() => {
-              let recordedBlob = new Blob(recordedData, { type: "video/webm" });
-              // remoteVideo.src = URL.createObjectURL(recordedBlob);
-              // downloadButton.href = recording.src;
-              downloadButton.href = URL.createObjectURL(recordedBlob);
-              downloadButton.download = "RecordedVideo.webm";
-              // 
-              $('#start-btn').show();
-              $('#stop-btn').hide();
-              $('#downloadButton').hide();
+                console.log('stopped...');
+                let recordedBlob = new Blob(recordedData, { type: "video/webm" });
+                // recordedVid = recordedBlob;
+                stopRecording(recordedBlob);
+                // remoteVideo.src = URL.createObjectURL(recordedBlob);
+                // downloadButton.href = recording.src;
+                downloadButton.href = URL.createObjectURL(recordedBlob);
+                downloadButton.download = "RecordedVideo.webm";
+                // 
+                // $('#start-btn').show();
+                // $('#stop-btn').hide();
+                // $('#recorder-timer').hide();
+                $('#downloadButton').show();
             });
         } catch (err) {
             alert('Oops, Can not record video unless patient joins the session');
         }
       }
 
-      function stopRecording(recordedData){
-        let recordedBlob = new Blob(recordedData, { type: "video/webm" });
-        $('#recorder-timer').hide();
-        downloadButton.href = URL.createObjectURL(recordedBlob);
-        downloadButton.download = "RecordedVideo.webm";
+      function stopRecording(recordedVid){
+          // console.log(recordedData);
+          // let recordedBlob = new Blob(recordedData, { type: "video/webm" });
+          console.log(recordedVid);
+          downloadButton.href = URL.createObjectURL(recordedVid);
+          downloadButton.download = "RecordedVideo.webm";
 
-        save_recording(recordedBlob);
+          save_recording(recordedVid);
 
-        $('#downloadButton').show();
-        $('#start-btn').show();
-        $('#stop-btn').hide();
-
+          $('#recorder-timer').hide();
+          $('#downloadButton').show();
+          $('#start-btn').show();
+          $('#stop-btn').hide();
       }
 
       function save_recording(recordedBlob){
@@ -524,9 +527,9 @@
         const formData = new FormData();
         formData.append('video', recordedBlob, 'RecordedVideo.webm');
         formData.append('counselor_id', user['id']);
-        // formData.append('patient_id', 'A description of the recorded video');
+        formData.append('chat_id', info['chat_id']);
         // Make the POST request to your Laravel backend
-        fetch('/upload-video', {
+        fetch("{{ route('upload-video') }}", {
           method: 'POST',
           body: formData
         })

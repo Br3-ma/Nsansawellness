@@ -697,6 +697,15 @@
                             @endforelse --}}
                         </ul>
                     </li>
+                    <li>
+                        <a href="{{ route('recordings') }}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="video"></i> </div>
+                            <div class="side-menu__title">
+                                Patient Recordings
+                                <div class="side-menu__sub-icon "> </div>
+                            </div>
+                        </a>
+                    </li>
                     @endcan
                     @can('questionaires.index')
                     <li>

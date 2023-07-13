@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AssignCounselor;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 use App\Models\Commission;
 use App\Models\CommissionSetting;
 use App\Models\Department;
@@ -115,6 +117,27 @@ class SettingsController extends Controller
             Session::flash('error_msg', "Oops. Something went wrong when adding ". $request->toArray()['name']." department.");
             return redirect()->back();
         }
+    }
+
+
+    public function backupDB(Request $request){
+
+
+        try {
+            // Define the database credentials
+            $host = env('DB_HOST');
+            $database = env('DB_DATABASE');
+            $username = env('DB_USERNAME');
+            $password = env('DB_PASSWORD');
+            $backupPath = 'backup.sql';
+
+            $command = "mysqldump --host={$host} --user={$username} --password={$password} {$database} > {$backupPath}";
+            dd($command);
+            exec($command, $output, $returnVar);
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+           
     }
 
     /**

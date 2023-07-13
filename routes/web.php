@@ -85,7 +85,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post("/createMeeting", [MeetingController::class, 'createMeeting'])->name("createMeeting");
     Route::post("/validateMeeting", [MeetingController::class, 'validateMeeting'])->name("validateMeeting");
     Route::post('/upload-video',[VideoCallController::class,'upload'])->name('upload-video');
-
+    Route::get('/recordings',[VideoCallController::class,'view_recordings'])->name('recordings');
+    
     Route::get('/chat/{id}', [VideoCallController::class, 'chat'])->name('chat');
     Route::get('/group/chat/{id}', [VideoCallController::class, 'groupChat'])->name('group.chat');
     
@@ -108,6 +109,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     // ==== settings
     Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+    Route::post('/backup-db',[SettingsController::class,'backupDB'])->name('backup-db');
+
     Route::get('/configurations', [SettingsController::class, 'configs'])->name('settings.configs');
     Route::post('/set-commission-setting', [SettingsController::class, 'store'])->name('set-commission');
     Route::get('/settings/commissions', [SettingsController::class, 'commissions'])->name('settings.commissions');

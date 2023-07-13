@@ -151,7 +151,8 @@ class VideoCallController extends Controller
             Video::create([
                 'file_name' => $request->file('video')->getClientOriginalName(),
                 'file_path' => $path,
-                'user_id' => auth()->id()
+                'user_id' => auth()->id(),
+                'chat_id' => $request->toArray()['chat_id']
             ]);
 
             // Return a response or redirect as needed
@@ -167,7 +168,9 @@ class VideoCallController extends Controller
     }
 
     public function view_recordings(Request $request){
-
+        
+        $videos = Video::where('user_id', auth()->user()->id);
+        return view('page.patients.recordings', compact('videos'));
     }
 
     public function captureBill(Request $request){
