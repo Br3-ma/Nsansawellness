@@ -149,7 +149,7 @@
                             {{-- startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}' --}}
                             @hasanyrole(['admin', 'counselor'])
                                 @if(!empty($chats->toArray()))
-                                    
+                                
                                 <a target="_blank" onclick="CheckNotes()" class="btn btn-primary" >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-bookmark" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"/>
@@ -159,11 +159,17 @@
                                     <span>Session Notes</span>
                                 </a>
                                 &nbsp;
-                                <a target="_blank" onclick="startVideoSession()" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
+                                   
+                                <a target="_blank" href="{{ route('appointment.create', ['type' => 'video']) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
+                                    <i data-lucide="video" class="w-5 h-5"></i>
+                                    &nbsp;
+                                    <span>Create Video Appointment</span>
+                                </a>
+                                {{-- <a target="_blank" onclick="startVideoSession()" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
                                     <i data-lucide="video" class="w-5 h-5"></i>
                                     &nbsp;
                                     <span>Start Call</span>
-                                </a>
+                                </a> --}}
                                 &nbsp;
                                 
                                 {{-- <a target="_blank" href="{{ route('phone-call', ['id'=> auth()->user()->id, 'chat_id' => $chats->first()->id, 'receiver' => $chats->first()->receiver->fname.' '.$chats->first()->receiver->lname, 'role' => preg_replace('/[^A-Za-z0-9. -]/', '', $chats->first()->receiver->roles->pluck('name')) ]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-success shadow-md mr-2">

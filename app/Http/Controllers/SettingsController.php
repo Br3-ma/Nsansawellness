@@ -131,8 +131,8 @@ class SettingsController extends Controller
             $password = env('DB_PASSWORD');
             $backupPath = 'backup.sql';
 
-            $command = "mysqldump --host={$host} --user={$username} --password={$password} {$database} > {$backupPath}";
-            dd($command);
+                $command = "mysqldump --host={$host} --user={$username} --password={$password} {$database} > {$backupPath}";
+                dd($command);
             exec($command, $output, $returnVar);
         } catch (\Throwable $th) {
             dd($th);

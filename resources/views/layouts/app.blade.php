@@ -21,7 +21,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      
         
+        
+        <link rel="stylesheet" href="https://unpkg.com/@sjmc11/tourguidejs/dist/css/tour.min.css">
         @livewireStyles
         <!-- END: CSS Assets-->
         <style>
@@ -362,6 +365,7 @@
 
             });
         </script>
+
     </head>
     <!-- END: Head -->
     {{-- @if (Request::route()->uri)
@@ -577,7 +581,11 @@
                     @endhasanyrole
 
                     @can('patient')
-                    <li>
+                    <li data-tg-tour="Chat with your counselor"
+                    data-tg-title="Counseling Session"
+                    data-tg-group="my-first-tour"
+                    data-tg-scroll-margin="0"
+                    data-tg-fixed>
                         <a href="{{ route('patient') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
                             <div class="side-menu__title"> Counseling Sessions </div>
@@ -587,7 +595,11 @@
                     
 
                     @can('actions')
-                    <li>
+                    <li data-tg-tour="Check your homework, activities, and questionnaires."
+                    data-tg-title="Activities & Questionnaires"
+                    data-tg-group="my-second-tour"
+                    data-tg-scroll-margin="0"
+                    data-tg-fixed>
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
                             <div class="side-menu__title">
@@ -613,7 +625,11 @@
                     @endcan
 
                     @can('appointment')
-                    <li>
+                    <li data-tg-tour="View video call appointments."
+                    data-tg-title="Video Call Appointments"
+                    data-tg-group="my-third-tour"
+                    data-tg-scroll-margin="0"
+                    data-tg-fixed>
                         <a href="{{  route('appointment') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
                             <div class="side-menu__title"> Appointments </div>
@@ -622,12 +638,16 @@
                     @endcan
 
                     @can('billing')
-                    {{-- <li>
+                    <li data-tg-tour="Check your billing history."
+                    data-tg-title="Billing"
+                    data-tg-group="my-fourth-tour"
+                    data-tg-scroll-margin="0"
+                    data-tg-fixed>
                         <a href="{{  route('billing') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="wallet"></i> </div>
                             <div class="side-menu__title"> Billing </div>
                         </a>
-                    </li> --}}
+                    </li>
                     @endcan
                     
                     @can('settings')
@@ -666,7 +686,11 @@
 
                     @can('patient-files')
                    
-                    <li>
+                    <li data-tg-tour="View patient records, such as therapy notes, survey feedback, and medical conditions."
+                    data-tg-title="Patient Records & Profiles"
+                    data-tg-group="my-fifth-tour"
+                    data-tg-scroll-margin="0"
+                    data-tg-fixed>
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="files"></i> </div>
                             <div class="side-menu__title">
@@ -697,7 +721,11 @@
                             @endforelse --}}
                         </ul>
                     </li>
-                    <li>
+                    <li data-tg-tour="View recent recorded video call sessions."
+                    data-tg-title="Video Call Recordings"
+                    data-tg-group="my-sixth-tour"
+                    data-tg-scroll-margin="0"
+                    data-tg-fixed>
                         <a href="{{ route('recordings') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="video"></i> </div>
                             <div class="side-menu__title">
@@ -708,7 +736,11 @@
                     </li>
                     @endcan
                     @can('questionaires.index')
-                    <li>
+                    <li data-tg-tour="Create and view onboarding questionnaire for patients & counselors."
+                    data-tg-title="Onboarding Questionnaires"
+                    data-tg-group="my-seventh-tour"
+                    data-tg-scroll-margin="0"
+                    data-tg-fixed>
                         <a href="javascript:;" class="side-menu ">
                             <div {{ Route::currentRouteName() == 'questionaires.index' ? 'style="color:#F65B08"' : '' }}  class="side-menu__icon"> <i data-lucide="clipboard-list"></i> </div>
                             <div class="side-menu__title">
@@ -765,7 +797,11 @@
                     @endcan
 
                     @can('notification')
-                    <li>
+                    <li data-tg-tour="Check your notifications."
+                    data-tg-title="Notifications & Alerts"
+                    data-tg-group="my-ninth-tour"
+                    data-tg-scroll-margin="0"
+                    data-tg-fixed>
                         <a href="{{ route('notification') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="bell"></i> </div>
                             <div class="side-menu__title"> Notifications </div>
@@ -926,6 +962,13 @@
     </div>
     
     @livewireScripts 
+    <script src="https://unpkg.com/@sjmc11/tourguidejs/dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const tg = new tourguide.TourGuideClient()
+        function startYourTour(){
+            tg.start();
+        }
+    </script>
     <!-- BEGIN: JS Assets-->
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
@@ -951,11 +994,10 @@
         b.style.display = "none";
         c.style.display = "none";
         d.style.display = "none";
-        // function displayPusherNotifications() {
-        //     return $.ajax("{{ route('pop-notifications') }}", {
-        //         method: 'GET'
-        //     });
-        // }
+  
+
+
+
         function startRating(){
             const element = document.querySelector('.fixed.hide');
             element.classList.remove('hide');

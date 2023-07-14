@@ -107,15 +107,25 @@
             </div>
         </div>
         <!-- END: Search -->
-        
+        <a href="#" onclick="startYourTour()" class="-intro-x md:flex xl:w-[180px] flex items-center">
+            <i data-lucide="help-circle" class="notification__icon text-slate-400"></i> 
+            <span class="text-white text-sm ml-3 text-slate-400"> Quick tour </span> 
+        </a>
         <!-- BEGIN: Notifications -->
         <div class="intro-x dropdown mr-4 sm:mr-6">
-            <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="bell" class="notification__icon dark:text-slate-500"></i> </div>
+            
+            <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button" aria-expanded="false" data-tw-toggle="dropdown"> 
+                <i data-lucide="bell" class="notification__icon dark:text-slate-500"></i> 
+            </div>
             <div class="notification-content pt-2 dropdown-menu">
                 <div class="notification-content__box dropdown-content">
                     <div class="notification-content__title">Notifications</div>
                     @isset($notifications)
+                        @php
+                            $counter = 1;
+                        @endphp
                         @forelse ($notifications as $note)
+                        @if ($counter < 6)
                         <div class="cursor-pointer relative flex items-center py-2">
                             <div class="w-12 h-12 flex-none image-fit mr-1">
                                 @switch($note->data['type'])
@@ -144,8 +154,15 @@
                                 <div class="w-full truncate text-slate-500 mt-0.5">{{ $note->data['message'] }}</div>
                             </div>
                         </div>
+                        @endif
+                        @php
+                            $counter++;
+                        @endphp
                         @empty
                         @endforelse
+                        <div class="mt-4 border-top border text-center w-full items-center justify-content-center justify-center">
+                            <a href="{{ route('notification') }}">View more</a>
+                        </div>
                     @endisset
                 </div>
             </div>
@@ -156,7 +173,7 @@
         <div class="intro-x dropdown w-8 h-8">
             <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
                 @if(Auth::user()->image_path == null)
-                <div class="font-bolder text-xs text-white w-4 h-4 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-slate-400 zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                <div class="border border-white py-1.5 px-1 text-gray-400 font-extrabold bg-white" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
                     {{ Auth::user()->fname[0].' '.Auth::user()->lname[0] }}
                 </div>
                 @else
@@ -210,7 +227,7 @@
 
                     @can('users.create')
                     <li>
-                        <a href="{{ route('users.create')}}" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
+                        <a href="{{ route('users.create')}}" class="dropdown-item hover:bg-white/5"> <i data-lucide="edit" class="w-4 h-4 mr-2"></i> Add an Account </a>
                     </li>
                     @endcan
                     <li>

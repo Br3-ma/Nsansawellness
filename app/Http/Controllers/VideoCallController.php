@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Async;
+use App\Models\Chat;
 use App\Models\SessionNote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -146,13 +147,15 @@ class VideoCallController extends Controller
 
             // Store the uploaded file
             $path = $request->file('video')->store('videos');
-
+            $chat = Chat::where('id', $request->toArray()['chat_id'])->with('receiver')->first();
             // Create a new video record in the database
             Video::create([
                 'file_name' => $request->file('video')->getClientOriginalName(),
                 'file_path' => $path,
                 'user_id' => auth()->id(),
-                'chat_id' => $request->toArray()['chat_id']
+                'user_id' => auth()->id(),
+                'chat_id' => $request->toArray()['chat_id'],
+                'description' => $chat->receiver->fname.' '.$chat->receiver->lname.' Session'
             ]);
 
             // Return a response or redirect as needed
@@ -169,7 +172,7 @@ class VideoCallController extends Controller
 
     public function view_recordings(Request $request){
         
-        $videos = Video::where('user_id', auth()->user()->id);
+        $videos = Video::where('user_id', auth()->user()->id)->get();
         return view('page.patients.recordings', compact('videos'));
     }
 
