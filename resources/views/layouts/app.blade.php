@@ -638,7 +638,7 @@
                     @endcan
 
                     @can('billing')
-                    <li data-tg-tour="Check your billing history."
+                    {{-- <li data-tg-tour="Check your billing history."
                     data-tg-title="Billing"
                     data-tg-group="my-fourth-tour"
                     data-tg-scroll-margin="0"
@@ -647,7 +647,7 @@
                             <div class="side-menu__icon"> <i data-lucide="wallet"></i> </div>
                             <div class="side-menu__title"> Billing </div>
                         </a>
-                    </li>
+                    </li> --}}
                     @endcan
                     
                     @can('settings')
