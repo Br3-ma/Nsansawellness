@@ -116,22 +116,28 @@
       }
   
       peer.on('call', call => {
-          call.answer(localStream);
-          // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage.
-          const videoReceiveBandwidth = 200; // Set the desired video receive bandwidth in Kbps
-          const sender = call.peerConnection.getSenders()[0];
+          const userResponse = confirm("Allow patient to join video call");
+          if(userResponse){
+            call.answer(localStream);
+            
+            // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage.
+            const videoReceiveBandwidth = 200; // Set the desired video receive bandwidth in Kbps
+            const sender = call.peerConnection.getSenders()[0];
 
-          const parameters = sender.getParameters();
-          parameters.encodings[0].maxBitrate = videoReceiveBandwidth * 1000; // Convert to bps
-          sender.setParameters(parameters);
+            const parameters = sender.getParameters();
+            parameters.encodings[0].maxBitrate = videoReceiveBandwidth * 1000; // Convert to bps
+            sender.setParameters(parameters);
 
-          call.on('stream', stream => {
-              remoteVideo.srcObject = stream;
-              remoteStream = stream;
-              remoteVideo.onloadedmetadata = () => remoteVideo.play();
-          })
-      })
-
+            call.on('stream', stream => {
+                remoteVideo.srcObject = stream;
+                remoteStream = stream;
+                remoteVideo.onloadedmetadata = () => remoteVideo.play();
+            })
+          }else{
+            call.close();
+            endCall();
+          }
+      });
 
 
       function toggleVideo(){      
@@ -165,11 +171,8 @@
       }
 
       // ************** Recording Module ************* //
-      // var isRec = 0;
-      var lengthInMS = 10800000;
-
       function startRecording(){
-          recording(remoteStream, lengthInMS);
+          recording(remoteStream);
           var input = {
               year: 0,
               month: 0,
@@ -193,7 +196,7 @@
       // Recording function
       var recordedData = [];
       let recordedVid;
-      function recording(stream, lengthInMS){
+      function recording(stream){
         try {
             // start the timer and recording media
             console.log('recording...');
@@ -206,10 +209,8 @@
             let recorder = new MediaRecorder(stream);
             recorder.ondataavailable = (event) => recordedData.push(event.data);
             recorder.start();
-
-
-            // console.log(`${recorder.state} for ${lengthInMS / 1000} seconds…`);
-            var fulltime =  1005000;
+            
+            var fulltime =  10800000;
             let stopped = new Promise((resolve, reject) => {
               recorder.onstop = resolve;
               recorder.onerror = (event) => reject(event.name);
@@ -291,6 +292,7 @@
 
       // ************** End Recording Module ******** //
       function endCall(){
+        
         peer.destroy();
         $('.remote-screen').hide();
         $('#local-screen').hide();

@@ -705,20 +705,6 @@
                                     <div class="side-menu__title"> All Profiles </div>
                                 </a>
                             </li>
-                            {{-- @forelse(App\Models\User::role('patient')->get() as $my_patient)
-                            <li>
-                                <a href="{{ route('all-patient-files', $my_patient->id ) }}" class="side-menu">
-                                    <div class="side-menu__icon"> <i data-lucide="user"></i> </div>
-                                    <div class="side-menu__title"> {{ $my_patient->fname.' '.$my_patient->lname }} </div>
-                                </a>
-                            </li>
-                            @empty
-                            <li>
-                                <a href="#" class="side-menu">
-                                    <div class="side-menu__title text-xs"> No Assigned Patients</div>
-                                </a>
-                            </li>
-                            @endforelse --}}
                         </ul>
                     </li>
                     <li data-tg-tour="View recent recorded video call sessions."
@@ -797,11 +783,8 @@
                     @endcan
 
                     @can('notification')
-                    <li data-tg-tour="Check your notifications."
-                    data-tg-title="Notifications & Alerts"
-                    data-tg-group="my-ninth-tour"
-                    data-tg-scroll-margin="0"
-                    data-tg-fixed>
+                    <li
+                    >
                         <a href="{{ route('notification') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="bell"></i> </div>
                             <div class="side-menu__title"> Notifications </div>

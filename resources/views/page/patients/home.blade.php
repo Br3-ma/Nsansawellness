@@ -40,7 +40,11 @@
                         @forelse($chats as $chat)
                             {{-- If I Started the Chat --}}
                             @if($chat->sender_id == auth()->user()->id && $chat->receiver !== null)
-                                <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')"
+                                <div data-tg-tour="Continue to a chat session with patient."
+                                data-tg-title="Chat Session"
+                                data-tg-group="my-ninth-tour"
+                                data-tg-scroll-margin="0"
+                                data-tg-fixed onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')"
                                     class="intro-x chat-list-item cursor-pointer w-full mt-2 rounded-lg bg-white mr-10 relative flex items-center p-5">
 
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
@@ -65,7 +69,11 @@
                             @else 
                             {{-- If They Started the Chat --}}
                                 @if ($chat->sender->id !== auth()->user()->id)
-                                <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" 
+                                <div data-tg-tour="Continue to a chat session with your counselor."
+                                data-tg-title="Chat Session"
+                                data-tg-group="my-ninth-tour"
+                                data-tg-scroll-margin="0"
+                                data-tg-fixed onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" 
                                     class="intro-x cursor-pointer rounded-lg bg-white mr-10 chat-list-item relative flex items-center p-5 mt-3">
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
                                         @if($chat->sender->image_path != null)
@@ -160,7 +168,11 @@
                                 </a>
                                 &nbsp;
                                    
-                                <a target="_blank" href="{{ route('appointment.create', ['type' => 'video']) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
+                                <a data-tg-tour="Create a video call meeting with patient."
+                                data-tg-title="Video Call Appointment"
+                                data-tg-group="my-ninth-tour"
+                                data-tg-scroll-margin="0"
+                                data-tg-fixed  target="_blank" href="{{ route('appointment.create', ['type' => 'video']) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
                                     <i data-lucide="video" class="w-5 h-5"></i>
                                     &nbsp;
                                     <span>Create Video Appointment</span>
@@ -177,20 +189,26 @@
                                 </a> --}}
                                 @endif
                             @else
-                                <span id="patient_video_btn">
+                                <a target="_blank" href="{{ route('appointment') }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-light text-black shadow-md rounded-full mr-2">
+                                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                                    &nbsp;
+                                    <span>Appointments</span>
+                                </a>
+                                &nbsp;
+                                {{-- <span id="patient_video_btn">
                                     
-                                </span>
-                                <span id="patient_phone_btn">
-                                    {{-- /phone-session/{id}/{chat_id}/{receiver}/{role} --}}
+                                </span> --}}
+                                {{-- <span id="patient_phone_btn">
+                                    /phone-session/{id}/{chat_id}/{receiver}/{role}
                                     <a onclick="startPhoneCall()" target="_blank" class="btn btn-success rounded-full shadow-md mr-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
                                         </svg>
                                     </a>
-                                </span>
+                                </span> --}}
                             @endhasanyrole
                              
-                            <button class="mr-2" id="btnback" onclick="back()">
+                            <button class="mr-2 rounded-full btn bg-gray hover:bg-white hover:text-black" id="btnback" onclick="back()">
                                 <i data-lucide="undo" class="w-5 h-5"></i>
                             </button>
                         </div>
@@ -345,7 +363,7 @@
                             <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
                                 <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
                                 </div>\
-                            <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
+                            <div class="bg-slate-100 mt-2 px-4 py-3 text-black rounded-r-md rounded-t-md">\
                                             '+ message.message +'\
                                 <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                         </div>\
@@ -367,7 +385,7 @@
                         ');
                     }else{
                         $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
-                        <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                        <div  style="background-color:#9ABCC3;" class="mt-2 px-4 py-3 text-black rounded-r-md rounded-t-md">\
                                         '+ message.message +'\
                             <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                     </div>\
