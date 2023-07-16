@@ -85,7 +85,8 @@
 
           
           call.on('stream', stream => {
-              // alert(stream.active);
+            const cool = new Audio('/public/ringer/joined.wav');
+            cool.play();
               if(stream.active === true){
                   $('.join-card').hide();
                   remoteVideo.srcObject = stream;
@@ -116,6 +117,9 @@
       }
   
       peer.on('call', call => {
+          
+          const audio = new Audio('/public/ringer/incoming.wav');
+          audio.play();
           const userResponse = confirm("Allow patient to join video call");
           if(userResponse){
             call.answer(localStream);
