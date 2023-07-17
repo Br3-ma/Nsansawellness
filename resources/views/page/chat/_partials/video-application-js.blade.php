@@ -139,11 +139,11 @@
             })
           }
           
-          if(!userResponse){
-            alert(userResponse);
-            call.close();
-            endCall();
-          }
+          // if(!userResponse){
+          //   alert(userResponse);
+          //   call.close();
+          //   endCall();
+          // }
       });
 
 
