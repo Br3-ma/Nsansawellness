@@ -175,6 +175,7 @@ class AppointmentController extends Controller
             foreach($request->guest_id as $guest){
                 $user = $this->user->where('id',$guest)->first();
                 $chat_id = $this->active_chat($guest);
+                dd($chat_id);
                 $this->user_appointment->create([
                     'guest_id' => $guest,
                     'appointment_id' => $appointment->id,
