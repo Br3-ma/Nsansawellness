@@ -170,8 +170,8 @@ class AssignCounselorController extends Controller
 
             // Disable the Chat
             $update->status == 0 ? 
-            $this->chat->where('receiver_id', $update->patient_id)->update(['status' => 0]) : 
-            $this->chat->where('receiver_id', $update->patient_id)->update(['status' => 1]);
+            $this->chat->where('receiver_id', $update->patient_id)->update(['status' => 1]) : 
+            $this->chat->where('receiver_id', $update->patient_id)->update(['status' => 0]);
             
             $update->status == 0 ? 
             Session::flash('attention', "Counselor has been disabled successfully"):
