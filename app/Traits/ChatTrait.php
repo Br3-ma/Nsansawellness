@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 trait ChatTrait {
 
     public function active_chat($id){
+        dd($id);
         return Chat::where('receiver_id', $id)
                         ->where('status', 1)->first()->id;
     }

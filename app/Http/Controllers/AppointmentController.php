@@ -170,11 +170,11 @@ class AppointmentController extends Controller
     public function store(CreateAppointmentRequest $request)
     {
         try {
-            $u = $this->user->find(1);
+            $admin = $this->user->find(1);
             $appointment = $this->appointment->create($request->toArray());
             foreach($request->guest_id as $guest){
-                $user = $this->user->find($guest);
-                $chat_id = $this->active_chat($user->id);
+                $user = $this->user->where('id',$guest)->first();
+                $chat_id = $this->active_chat($guest);
                 $this->user_appointment->create([
                     'guest_id' => $guest,
                     'appointment_id' => $appointment->id,
@@ -201,7 +201,7 @@ class AppointmentController extends Controller
                 // $this->pusher->trigger('popup-channel', 'new-appointment', $guest);
             }
             // Send a notification to my self about the new Appointment
-            $u->notify(new MyNewAppointment($payload));
+            $admin->notify(new MyNewAppointment($payload));
             Session::flash('attention', "Appointment has been scheduled successfully.");
             // $appointment->delete();
             // $this->user_appointment->where('appointment_id', $appointment->id)->first()->delete();
