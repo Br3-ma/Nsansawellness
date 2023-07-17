@@ -120,8 +120,8 @@
           
           const audio = new Audio('/public/ringer/incoming.wav');
           audio.play();
-          const userResponse = confirm("Allow patient to join video call");
-          if(userResponse){
+          // const userResponse = confirm("Allow patient to join video call");
+          // if(userResponse){
             call.answer(localStream);
             
             // PeerJS will limit the bandwidth used by the video stream during the call, reducing the network data usage.
@@ -137,7 +137,7 @@
                 remoteStream = stream;
                 remoteVideo.onloadedmetadata = () => remoteVideo.play();
             })
-          }
+          // }
           
           // if(!userResponse){
           //   alert(userResponse);
