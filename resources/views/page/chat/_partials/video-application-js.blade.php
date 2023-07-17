@@ -137,7 +137,10 @@
                 remoteStream = stream;
                 remoteVideo.onloadedmetadata = () => remoteVideo.play();
             })
-          }else{
+          }
+          
+          if(!userResponse){
+            alert(userResponse);
             call.close();
             endCall();
           }
