@@ -152,6 +152,11 @@
                                 <div class="bg-primary p-2 rounded-md text-white mt-1"> 
                                     {{App\Models\PatientFile::counselorAssigned($file->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($file->id)->counselor->lname}}<br>
                                     <small>{{App\Models\PatientFile::counselorAssigned($file->id)->counselor->department }}</small>
+                                    @if (App\Models\PatientFile::counselorAssigned($file->id)->status == 0)
+                                        <h2 class="text-red-600 d-flex items-center justify-content-center justify-center">
+                                            <span>Disabled</span>
+                                        </h2>
+                                    @endif
                                 </div>
                             @else
                             <div class="text-warning rounded-md mt-1">
