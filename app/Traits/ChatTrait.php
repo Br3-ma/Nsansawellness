@@ -11,7 +11,10 @@ trait ChatTrait {
 
     public function active_chat($id){
         return Chat::where('receiver_id', $id)
-                        ->where('status', 1)->first()->id;
+        ->where('status', 1)
+        ->orderByDesc('id')
+        ->first()
+        ->id;
     }
     
     public function active_chat_info($id){
