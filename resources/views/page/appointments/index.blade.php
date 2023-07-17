@@ -50,7 +50,7 @@
         <div class="col-span-12 xl:col-span-4 2xl:col-span-3">
             <div class="box p-5 intro-y">
                 <a href="{{ route('appointment.create', ['type' => 'video']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Add New Video Call Appointment </a>
-                <a href="{{ route('appointment.create', ['type' => 'phone']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </a>
+                {{-- <a href="{{ route('appointment.create', ['type' => 'phone']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </a> --}}
                 <div class="border-t border-b border-slate-200/60 dark:border-darkmode-400 mt-6 mb-5 py-3" id="calendar-events">
                     
                     @forelse ($appointments as $appointment)
@@ -95,6 +95,7 @@
                                     <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
                                 </a>
                                 @if($appointment->guests !== null)
+                                
                                 <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $appointment->guests->first()->chat_id ?? 0 }}/sender/patient/{{ $appointment->video_link }}" title="Join Video Call" class="tooltip btn btn-danger text-white">
                                     <i data-lucide="video" class="w-4 h-4 text-white"></i> 
                                 </a>
@@ -144,7 +145,8 @@
                             <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="btn mx-1">
                                 <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
                             </a>
-                            <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $app->chat_id ?? 0 }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
+                            
+                            <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $app->guests->first()->chat_id ?? 0 }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
                                 <i data-lucide="video" class="w-4 h-4 text-white"></i> 
                             </a>
                         </div>

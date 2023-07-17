@@ -112,7 +112,7 @@
             // Code to be executed after 6 seconds
             $('.joinloader').hide();
             $('.joinmessage').show();
-          }, 6000);
+          }, 10000);
 
       }
   
