@@ -165,12 +165,11 @@ class AssignCounselorController extends Controller
     {
         try {
             $update = $assignCounselor->find($id);
-            $update->status == 1 ? $update->status = 0 : $update->status = 1;
-            $update->save();
-
+            // $update->status == 1 ? $update->status = 0 : $update->status = 1;
+            // $update->save();
+            AssignCounselor::where('id', $id )->delete();
             // Disable the Chat
-            $update->status == 0 ? 
-            $this->chat->where('receiver_id', $update->patient_id)->update(['status' => 1]) : 
+            
             $this->chat->where('receiver_id', $update->patient_id)->update(['status' => 0]);
             
             $update->status == 0 ? 
