@@ -272,6 +272,7 @@
     <p id="hint1" class="w-1/3 text-center text-gray-200">Notifying the counselor, please wait..</p>
     @endhasanyrole
 </div>
+@hasanyrole('patient')
 <div id="payment-remainder-modal" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl intro-y" id="payment-modal-dialog">
         <div class="modal-content">
@@ -308,6 +309,7 @@
         </div>
     </div>
 </div>
+@endhasrole
 @endsection
 
 <?php
