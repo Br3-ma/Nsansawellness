@@ -47,14 +47,13 @@
         <!-- moon icon -->
       </button>
       <div class="left-side">
+        <span class="rec-timer">
+          <div style="color:#ff5100; margin-right:2%" id="recorder-timer"></div>
+        </span>
       </div>
-      <div class="app-main">            
 
 
-        
-        {{-- @hasrole('counselor') --}}
-        <a href='' id="downloadButton" style="color:white; font-size:13px;" class="button"> Download </a>
-        {{-- @endhasrole --}}
+      <div class="app-main">    
         <div class="video-call-wrapper" style="position: relative">
           <!-- Video Participant 3 -->
           <div style="width:100%; height:100%" class="remote-screen video-participant">
@@ -82,19 +81,28 @@
 
         </div>
 
+        <span style="color: #0c709e; text-align:center" id="session-timer"></span>
         <div class="video-call-actions">
           @hasanyrole(['admin', 'counselor', 'therapist'])
-          <span>
-            <div style="color:#ff5100; margin-right:2%" id="recorder-timer"></div>
-          </span>
+          <button title="Download audio" style="background:#002f44" class="video-action-button" id="downloadButton"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+            </svg>
+          </button>
+          <button title="View recordings" class="video-action-button"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5zm-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5zm12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+          </button>
           <button onclick="startRecording()" id="start-btn" class="video-action-button start-recorder" title="Start Recording"></button>
-          <button onclick="stopRecording()" style="background-color:red" id="stop-btn" class="video-action-button stop-recorder" title="Stop Recording"></button>
+          <button style="background-color:red" id="stop-btn" class="video-action-button stop-recorder" title="Stop Recording"></button>
           @endhasanyrole
-          <button onclick="toggleAudioMute()" title="Mute / Unmute" class="audio-mic video-action-button mic"></button>
+          <button style="color:blueviolet" onclick="toggleAudioMute()" title="Mute / Unmute" class="audio-mic video-action-button mic"></button>
           <button title="Hide / Unhide" onclick="toggleVideo()" class="video-cam video-action-button camera"></button>
           {{-- <button class="video-action-button maximize"></button> --}}
           <button onclick="endCall()" title="End Call" class="video-action-button endcall">Leave</button>
-          <button title="Take Notes" onclick="open_notes()" class="video-action-button magnifier">
+          <button title="Meeting Notes" onclick="open_notes()" class="video-action-button magnifier">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"></path><path d="M15 3v6h6"></path></svg>
           </button>
           <button title="Chat" onclick="open_chat()" class="video-action-button magnifier">
@@ -104,6 +112,7 @@
           </button>
         </div>
       </div>
+
 
       <!-- Right Side -->
       <div id="right-side-toolbar" class="right-side">
@@ -173,47 +182,47 @@
             <button class="btn">Save</button>
           </div>
           {{-- convoBody message_thread  --}}
-          {{-- <div id="message_thread" class="chat-area"> --}}
-          <textarea row="10" cols="70" style="height: 30px"  name="notes" onchange="save_notes()" id="taking-notes-textarea" class="chat-area editor">
-            {{ $data['notes'] }}
-          </textarea>
-        </div> 
+          <div id="message_thread" class="chat-area">
+            <textarea row="10" cols="70" style="height: 30px"  name="notes" onchange="save_notes()" id="taking-notes-textarea" class="chat-area editor">
+              {{ $data['notes'] }}
+            </textarea>
+          </div> 
         {{-- Paticipants --}}
         <div class="participants">
           <!-- Participant pic 1 -->
           <div class="participant profile-picture">
-            <img
+            {{-- <img
               src="https://images.unsplash.com/photo-1576110397661-64a019d88a98?ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80"
               alt=""
-            />
+            /> --}}
           </div>
           <!-- Participant pic 2 -->
           <div class="participant profile-picture">
-            <img
+            {{-- <img
               src="https://images.unsplash.com/photo-1566821582776-92b13ab46bb4?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
               alt=""
-            />
+            /> --}}
           </div>
           <!-- Participant pic 3 -->
           <div class="participant profile-picture">
-            <img
+            {{-- <img
               src="https://images.unsplash.com/photo-1600207438283-a5de6d9df13e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
               alt=""
-            />
+            /> --}}
           </div>
           <!-- Participant pic 4 -->
           <div class="participant profile-picture">
-            <img
+            {{-- <img
               src="https://images.unsplash.com/photo-1581824283135-0666cf353f35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80"
               alt=""
-            />
+            /> --}}
           </div>
           <div class="participant-more">2+</div>
         </div>
       </div>
       <button title="Expand" class="expand-btn">
         <!-- expand icon -->
-        <svg
+        {{-- <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -228,7 +237,7 @@
           <path
             d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
           />
-        </svg>
+        </svg> --}}
         <!-- expand icon -->
       </button>
     </div>
@@ -244,7 +253,7 @@
       });
     });
   </script>  
-  {{-- <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script> --}}
+  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
   <script src="{{ asset('/public/js/peerjs.min.js') }}"></script>
   @include('page.chat._partials.video-application-js')
   @include('page.chat._partials.vchat-js')

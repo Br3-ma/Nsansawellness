@@ -7,6 +7,7 @@ use App\Models\Activity;
 use App\Models\PatientActivity;
 use App\Models\User;
 use App\Notifications\NewActivity;
+use App\Traits\ActivityTrait;
 use App\Traits\CounselorTrait;
 use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ use Session;
 
 class ActivityController extends Controller
 {    
-    use PatientTrait, CounselorTrait;
+    use PatientTrait, CounselorTrait, ActivityTrait;
     public $activity, $user, $pushConfs, $pusher, $assigned_patients;
     /**
      * Display a listing of the resource.
@@ -47,14 +48,11 @@ class ActivityController extends Controller
     {
         $notifications = auth()->user()->notifications;
         if(auth()->user()->hasRole('counselor')){
-            $activities = PatientActivity::where('counselor_id', auth()->user()->id)
-            ->with('activities.users')->with('activities.counselor')->get();
+            $activities = $this->getActivitiesForCounselor();
         }else{
-            $activities = PatientActivity::where('user_id', auth()->user()->id)
-            ->with('activities.users')->with('activities.counselor')->get();  
+            $activities = $this->getActivitiesForPatient();
         }
-
-        // dd($activities);
+        
         return view('page.activity.index', compact('activities', 'notifications'));
     }
 
@@ -154,7 +152,6 @@ class ActivityController extends Controller
         $q = $this->activity->where('id',$request->act_id)->first();
         $q->status_id = $request->status;
         $q->save();
-        
         return response()->json(['message' => 'Activity status updated successfully.']);
     }
     /**

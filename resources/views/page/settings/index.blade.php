@@ -14,7 +14,7 @@
         </a>
     </div>
     @if (Session::has('attention'))
-    <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="mt-2 intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('attention') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -22,7 +22,7 @@
         </button> 
     </div>
     @elseif (Session::has('error_msg'))
-    <div class="intro-x alert alert-danger w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="mt-2 intro-x alert alert-danger w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('error_msg') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -56,15 +56,12 @@
                   
                     <button title="View more" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-info py-1 px-2">
                         <i data-lucide="eye" class="w-3 h-3"></i>
-                        
                     </button>
                     <button title="Update details" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-success py-1 px-2">
                         <i data-lucide="edit" class="w-3 h-3 text-white"></i>
-                       
                     </button>
                     <button title="Permanently delete" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-danger py-1 px-2">
                         <i data-lucide="trash-2" class="w-3 h-3"></i>
-                        
                     </button>
                 </div>
             </div>

@@ -20,12 +20,16 @@ class Billing extends Model
 
     // Returns true or false if the user has a current bill to pay
     public static function has_bill(){
-        return Billing::where('user_id', auth()->user()->id)
-        ->where('status', 0)->exists();
+        if(auth()->user() && auth()->user()->hasRole('patient')){
+            return Billing::where('user_id', auth()->user()->id)
+            ->where('status', 0)->exists();
+        }else{
+            return false;
+        }
     }
 
     // Returns the last billing to pay
-    public static function last_billing(){
+    public static function current_bill(){
         return Billing::where('user_id',  auth()->user()->id)
                         ->where('status', 0)
                         ->latest()->first();

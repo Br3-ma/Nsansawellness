@@ -289,4 +289,5 @@ Route::get('/get-child-started', [GetStartedPage::class, 'child'])->name('child-
 Route::resource('results', ResultsController::class);
 Route::resource('patient-results', PatientQAnswerController::class);
 Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
-Route::get('/invoice-patient/{type}', [PaymentController::class, 'invoice'])->name('invoice-patient');
+Route::get('/payment-gateway', [PaymentController::class, 'gateway'])->name('payment-gateway');
+Route::get('/choose-payment-method/{id}', [PaymentController::class, 'bill'])->name('bill-patient');

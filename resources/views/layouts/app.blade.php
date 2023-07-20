@@ -352,16 +352,16 @@
                 // ******* Custom Methods 
                 // *** Checks payment status
                 // console.log("Have you paid: "+paid);
-                // let rand1 = Math.floor(Math.random() * 21);
-                // let rand2 = Math.floor(Math.random() * 21);
-                // if(user_role === 'patient'){
-                //     if(rand1 % 2 != 0 && rand2 % 2 != 0){
-                //         if(paid){
-                //             const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
-                //             myModal.show();
-                //         }
-                //     }
-                // }
+                let rand1 = Math.floor(Math.random() * 21);
+                let rand2 = Math.floor(Math.random() * 21);
+                if(user_role === 'patient'){
+                    if(rand1 % 2 != 0 && rand2 % 2 != 0){
+                        if(paid){
+                            const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
+                            myModal.show();
+                        }
+                    }
+                }
 
             });
         </script>
@@ -871,9 +871,9 @@
         <!-- BEGIN: Modal Content -->
         
         @hasanyrole('patient')
-        {{-- @if(App\Models\Billing::has_bill())
+        @if(App\Models\Billing::has_bill())
             @include('page.common.payment-notice')
-        @endif --}}
+        @endif
         @endhasanyrole
     {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->
@@ -890,53 +890,53 @@
     <!-- END: Dark Mode Switcher-->
     <div id="rating_preloader" class="fixed hide top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
         {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
-        <main id="showmain">
-            <form id="myRatingForm" action="{{ route('rating.store') }}" method="POST" style="
-                border-radius: 21px;
-                background: linear-gradient(145deg, #e6e6e6, #ffffff);
-                box-shadow:  24px 24px 49px #e0e0e0,
-                -24px -24px 49px #ffffff;
-                max-width: 420px;
-                padding: 2em;
-                background-color: white;
-                box-shadow: 2px 0 15px -2px rgba(0, 0, 0, 0.2);
-                border-radius: 15px;
-            ">
-            @csrf
-              <h1>Rate Us</h1>
-              <p>How was your experience using our application? Your rating matter!</p>
-          
-              <div class="rating">
-                <input type="radio" name="rating" id="rating-1" value="1">
-                <input type="radio" name="rating" id="rating-2" value="2">
-                <input type="radio" name="rating" id="rating-3" value="3">
-                <input type="radio" name="rating" id="rating-4" value="4">
-                <input type="radio" name="rating" id="rating-5" value="5">
-          
-                <div class="rating__box">
-                  <label for="rating-1" class="rating__star">&starf;</label>
-                  <label for="rating-2" class="rating__star">&starf;</label>
-                  <label for="rating-3" class="rating__star">&starf;</label>
-                  <label for="rating-4" class="rating__star">&starf;</label>
-                  <label for="rating-5" class="rating__star">&starf;</label>
-          
+            <main id="showmain">
+                <form id="myRatingForm" action="{{ route('rating.store') }}" method="POST" style="
+                    border-radius: 21px;
+                    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+                    box-shadow:  24px 24px 49px #e0e0e0,
+                    -24px -24px 49px #ffffff;
+                    max-width: 420px;
+                    padding: 2em;
+                    background-color: white;
+                    box-shadow: 2px 0 15px -2px rgba(0, 0, 0, 0.2);
+                    border-radius: 15px;
+                ">
+                @csrf
+                <h1>Rate Us</h1>
+                <p>How was your experience using our application? Your rating matter!</p>
+            
+                <div class="rating">
+                    <input type="radio" name="rating" id="rating-1" value="1">
+                    <input type="radio" name="rating" id="rating-2" value="2">
+                    <input type="radio" name="rating" id="rating-3" value="3">
+                    <input type="radio" name="rating" id="rating-4" value="4">
+                    <input type="radio" name="rating" id="rating-5" value="5">
+            
+                    <div class="rating__box">
+                    <label for="rating-1" class="rating__star">&starf;</label>
+                    <label for="rating-2" class="rating__star">&starf;</label>
+                    <label for="rating-3" class="rating__star">&starf;</label>
+                    <label for="rating-4" class="rating__star">&starf;</label>
+                    <label for="rating-5" class="rating__star">&starf;</label>
+            
+                    </div>
                 </div>
-              </div>
-          
-              <div class="textarea-group">
-                <label>
-                  <span>Comment : </span>
-                  <textarea id="comment-rating" placeholder="Additional feedback ..." name="feedback"></textarea>
-                </label>
-              </div>
-          
-              <div class="action-group">
-                <button type="button" onclick="submitRatingForm()">Submit</button>
-                <input type="reset" onclick="closeRating()" value="Cancel">
-              </div>
-            </form>
-          </main>
-          <img id="showspina" src="{{ asset('public/img/1.gif') }}">
+            
+                <div class="textarea-group">
+                    <label>
+                    <span>Comment : </span>
+                    <textarea id="comment-rating" placeholder="Additional feedback ..." name="feedback"></textarea>
+                    </label>
+                </div>
+            
+                <div class="action-group">
+                    <button type="button" onclick="submitRatingForm()">Submit</button>
+                    <input type="reset" onclick="closeRating()" value="Cancel">
+                </div>
+                </form>
+            </main>
+            <img id="showspina" src="{{ asset('public/img/1.gif') }}">
             <h1 class="text-lg font-bold text-success" id="flash"></h1>
             <a href="#" class="btn btn-primary item-center" id="doneRating" onclick="reloadPage()">Back</a>
     </div>
@@ -977,9 +977,6 @@
         b.style.display = "none";
         c.style.display = "none";
         d.style.display = "none";
-  
-
-
 
         function startRating(){
             const element = document.querySelector('.fixed.hide');
@@ -1082,32 +1079,32 @@
 
             });
 
-    // Send an AJAX request to add the product to the cart
-    $.ajax({
-      url: "{{ route('notify')}}",
-      method: 'POST',
-      data: {
-        user_id: user['id']
-      },
-      success: function(response) {
-        const elements = response.data;
-        elements.forEach((element) => {
-            var notification = new Notification(element['message']);
-        });
-        // notification.onclick = function () {
-        //     alert("Notification clicked.");
-        //     // Handle the notification click event here
-        // };
-        // notification.onclose = function () {
-        //     alert("Notification closed.");
-        //     // Handle the notification close event here
-        // };
-      },
-      error: function(xhr, status, error) {
-        // Handle any errors that occur during the AJAX request
-        console.error('Error Getting Notification:', error);
-      }
-    });
+            // Send an AJAX request to add the product to the cart
+            $.ajax({
+            url: "{{ route('notify')}}",
+            method: 'POST',
+            data: {
+                user_id: user['id']
+            },
+            success: function(response) {
+                const elements = response.data;
+                elements.forEach((element) => {
+                    var notification = new Notification(element['message']);
+                });
+                // notification.onclick = function () {
+                //     alert("Notification clicked.");
+                //     // Handle the notification click event here
+                // };
+                // notification.onclose = function () {
+                //     alert("Notification closed.");
+                //     // Handle the notification close event here
+                // };
+            },
+            error: function(xhr, status, error) {
+                // Handle any errors that occur during the AJAX request
+                console.error('Error Getting Notification:', error);
+            }
+            });
 
 
         }

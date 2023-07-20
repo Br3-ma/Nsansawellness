@@ -43,28 +43,9 @@ class PatientController extends Controller
         $chats = $this->get_my_chats();
         $notifications = auth()->user()->unreadNotifications;
 
-        // If the User is logging for the first time
-        if(auth()->user()->first_login == 'true' || auth()->user()->first_login != 0){
-
-            $x = User::find(auth()->user()->id);
-            $x->first_login = 0;
-            $x->save();
-
-            // record invoice billing
-            // $this->create_billing();
-            // if(auth()->user()->hasRole('patient')){
-            //     Billing::create([
-            //         'user_id' => auth()->user()->id,
-            //         'charge_amount' => 750,
-            //         'remainder_count' => 0,
-            //         'balance' => 750,
-            //         'desc' => 'Initial payment'
-            //     ]);
-            // }
-            return view('page.patients.home', compact('notifications', 'chats'));
+        if(!(Billing::has_bill())){    
+            return redirect()->route('pay');
         }
-
-        // if they have a pending billing redirect to payments else patient dashboard
         return view('page.patients.home', compact('notifications', 'chats'));
     }
 

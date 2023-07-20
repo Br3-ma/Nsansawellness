@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ActivityController;
 use App\Http\Controllers\Api\SurveyController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -21,6 +22,13 @@ use Laravel\Sanctum\PersonalAccessToken;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::get('get-activities/{id}', [ActivityController::class, 'index']);
+Route::get('mark-complete', [ActivityController::class, 'markComplete']);
+
+Route::get('my-survey', [SurveyController::class, 'patientSurveys']);
+Route::get('start-survey/{id}', [SurveyController::class, 'startSurvey']);
+Route::get('submit-survey', [SurveyController::class, 'submitSurvey']);
 
 Route::get('get-patient-survey', [SurveyController::class, 'getPatientSurvey']);
 Route::get('get-counselor-survey', [SurveyController::class, 'getCounselorSurvey']);

@@ -357,12 +357,19 @@
   .btn-camera {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-camera-off' viewBox='0 0 24 24'%3E%3Cpath d='M1 1l22 22M21 21H3a2 2 0 01-2-2V8a2 2 0 012-2h3m3-3h6l2 3h4a2 2 0 012 2v9.34m-7.72-2.06a4 4 0 11-5.56-5.56'/%3E%3C/svg%3E%0A");
   }
+  
+
+  .rec-timer{
+    margin-top: 40%;
+  }
+
+
   .video-call-actions {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 64px;
-    max-width: 500px;
+    max-width: 800px;
   }
   .video-action-button {
     background-repeat: no-repeat;

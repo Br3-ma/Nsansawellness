@@ -35,8 +35,16 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        $plans = $this->get_subscriptions();
+        $plans = $this->get_subscriptions_pg();
         return view('page.settings.index', compact('plans'));
+    }
+
+    public function view_subscription_plan(){
+        
+    }
+
+    public function delete_subscription(){
+
     }
 
     public function commissions(){

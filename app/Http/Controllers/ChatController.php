@@ -108,7 +108,6 @@ class ChatController extends Controller
                 $chat_session = ChatMessages::with('user')->where('chat_id', $chat_id)->where('status', 1)->get();
                 
                 if($chat_session->isNotEmpty()){
-                    
                     // The sender has seen the message
                     ChatMessages::where('chat_id', $chat_id)
                     ->update([
@@ -119,7 +118,6 @@ class ChatController extends Controller
                 return response()->json(['chat_messages' => 0], 200);
     
             }elseif($owner == 'receiver'){
-                
                 $chat_session = ChatMessages::with('user')->where('chat_id', $chat_id)->where('status_received', 0)->get();
                 
                 if($chat_session->isNotEmpty()){
@@ -132,7 +130,6 @@ class ChatController extends Controller
                     return response()->json(['chat_messages' => $chat_session->toArray()], 200);
                 }
                 return response()->json(['chat_messages' => 0], 200);
-    
             }  
         }
         return response()->json(['chat_messages' => 0], 200);

@@ -37,6 +37,7 @@
       }
             
       let downloadButton = document.getElementById("downloadButton");
+      let stopRecordingButton = document.getElementById("stop-btn");
       let localStream;
       let remoteStream;
 
@@ -133,6 +134,7 @@
             sender.setParameters(parameters);
 
             call.on('stream', stream => {
+                sessionTimer();
                 remoteVideo.srcObject = stream;
                 remoteStream = stream;
                 remoteVideo.onloadedmetadata = () => remoteVideo.play();
@@ -177,97 +179,66 @@
         }
       }
 
-      // ************** Recording Module ************* //
       function startRecording(){
-          recording(remoteStream);
-          var input = {
-              year: 0,
-              month: 0,
-              day: 0,
-              hours: 2,
-              minutes: 10,
-              seconds: 30
-          };
-
-          var timestamp = new Date(input.year, input.month, input.day,
-          input.hours, input.minutes, input.seconds);
-
-          var interval = 1;
-          setInterval(function () {
-              timestamp = new Date(timestamp.getTime() + interval * 1000);
-              document.getElementById('recorder-timer').innerHTML = timestamp.getHours() + 'h:' + timestamp.getMinutes() + 'm:' + timestamp.getSeconds() + 's';
-          }, Math.abs(interval) * 1000);
+        recording(remoteStream);
+        recorderTimer();
       }
 
 
-      // Recording function
-      var recordedData = [];
-      let recordedVid;
-      function recording(stream){
-        try {
-            // start the timer and recording media
-            console.log('recording...');
-            $('#recorder-timer').show();
-            $('#start-btn').hide();
-            $('#stop-btn').show();
+        // Recording function
+        var recordedData = [];
+        let recordedVid;
+        function recording(stream){
+          try {
+              // start the timer and recording media
+              console.log('recording...');
+              $('#recorder-timer').show();
+              $('#start-btn').hide();
+              $('#stop-btn').show();
 
 
-            // Set the recorder
-            let recorder = new MediaRecorder(stream);
-            recorder.ondataavailable = (event) => recordedData.push(event.data);
-            recorder.start();
-            
-            var fulltime =  10800000;
-            let stopped = new Promise((resolve, reject) => {
-              recorder.onstop = resolve;
-              recorder.onerror = (event) => reject(event.name);
-            });
-
-            let recorded = setTimeout(() => {
-              console.log('timeout...');
-              if (recorder.state === "recording") {
-                // remoteVideo.src = URL.createObjectURL(recorder.getBlob());
+              // Set the recorder
+              let recorder = new MediaRecorder(stream);
+              recorder.ondataavailable = (event) => recordedData.push(event.data);
+              recorder.start();
+              
+              stopRecordingButton.addEventListener('click', function(){
                 recorder.stop();
-              }
-            },fulltime);
+              });
 
-            return Promise.all([
-                stopped,
-                recorded
-            ]).then(() => {
-                console.log('stopped...');
-                let recordedBlob = new Blob(recordedData, { type: "video/webm" });
-                // recordedVid = recordedBlob;
-                stopRecording(recordedBlob);
-                // remoteVideo.src = URL.createObjectURL(recordedBlob);
-                // downloadButton.href = recording.src;
-                downloadButton.href = URL.createObjectURL(recordedBlob);
-                downloadButton.download = "RecordedVideo.webm";
-                // 
-                // $('#start-btn').show();
-                // $('#stop-btn').hide();
-                // $('#recorder-timer').hide();
-                $('#downloadButton').show();
-            });
-        } catch (err) {
-            alert('Oops, Can not record video unless patient joins the session');
+              var fulltime =  10800000;
+              let stopped = new Promise((resolve, reject) => {
+                recorder.onstop = resolve;
+                recorder.onerror = (event) => reject(event.name);
+              });
+
+              let recorded = setTimeout(() => {
+                console.log('timeout...');
+                if (recorder.state === "recording") {
+                  recorder.stop();
+                }
+              },fulltime);
+
+              return Promise.all([
+                  stopped,
+                  recorded
+              ]).then(() => {
+                  console.log('stopped...');
+                  let recordedBlob = new Blob(recordedData, { type: "video/webm" });
+                  
+                  downloadButton.href = URL.createObjectURL(recordedBlob);
+                  downloadButton.download = "RecordedVideo.webm";
+             
+                  $('#start-btn').show();
+                  $('#stop-btn').hide();
+                  $('#recorder-timer').hide();
+                  $('#downloadButton').show();
+                  save_recording(recordedBlob);
+              });
+          } catch (err) {
+              alert('Oops, Can not record video unless patient joins the session');
+          }
         }
-      }
-
-      function stopRecording(recordedData){
-          // console.log(recordedData);
-          let recordedBlob = new Blob(recordedData, { type: "video/webm" });
-          console.log(recordedBlob);
-          downloadButton.href = URL.createObjectURL(recordedBlob);
-          downloadButton.download = "RecordedVideo.webm";
-
-          save_recording(recordedVid);
-
-          $('#recorder-timer').hide();
-          $('#downloadButton').show();
-          $('#start-btn').show();
-          $('#stop-btn').hide();
-      }
 
       function save_recording(recordedBlob){
         const user = {!! auth()->user()->toJson() ?? '' !!};
@@ -354,5 +325,38 @@
         .catch(error => {
           $('#myText').html('<span style="color:red">Check your internet connection</span>');
         });
+      }
+
+
+      function sessionTimer(){
+        var input = {
+            year: 0,
+            month: 0,
+            day: 0,
+            hours: 3,
+            minutes: 10,
+            seconds: 30
+        };
+
+        var timestamp = new Date(input.year, input.month, input.day,
+        input.hours, input.minutes, input.seconds);
+
+        var interval = 1;
+        setInterval(function () {
+            timestamp = new Date(timestamp.getTime() + interval * 1000);
+            document.getElementById('session-timer').innerHTML = timestamp.getHours() + 'h:' + timestamp.getMinutes() + 'm:' + timestamp.getSeconds() + 's';
+        }, Math.abs(interval) * 1000);
+      }
+
+      function recorderTimer(){
+        // Start a timer
+        const startTime = Date.now();
+
+        // Update the timer every second
+        const timerInterval = setInterval(() => {
+          const elapsedTime = Date.now() - startTime;
+          const formattedTime = formatTime(elapsedTime);
+          document.getElementById('recorder-timer').innerHTML = formattedTime;
+        }, 1000);
       }
 </script>

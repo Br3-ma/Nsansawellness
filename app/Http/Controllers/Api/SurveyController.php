@@ -8,11 +8,14 @@ use App\Models\Question;
 use App\Models\Questionaire;
 use App\Models\Chat;
 use App\Models\ChatMessages;
+use App\Models\PatientQuestionnaires;
 use App\Models\User;
+use App\Traits\ActivityTrait;
 use Illuminate\Support\Str;
 
 class SurveyController extends Controller
 {   
+    use ActivityTrait;
     public  $questionaire;
     public  $questions;
     public  $chat;
@@ -81,5 +84,21 @@ class SurveyController extends Controller
             ]);
         }
         return response()->json(['chat_session' => $chat_session], 200);
+    }
+
+    // ----- Patient Questionnaires
+    public function patientSurveys(){
+        $questionnaires = PatientQuestionnaires::with('questions')->get();
+        return response()->json(['questionnaires' => $questionnaires], 200);
+    }
+
+    public function submitSurvey(){
+        return response()->json(['success' => 'Submitted successfully'], 200);
+    }
+
+    public function startSurvey($id){
+        $questionnaires = PatientQuestionnaires::with(['questions.answers'])
+        ->where('id', $id)->first();
+        return response()->json(['questionnaires' => $questionnaires], 200);
     }
 }

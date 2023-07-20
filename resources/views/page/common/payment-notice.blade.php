@@ -13,8 +13,8 @@
                 <small>
                 <b>Hi {{ Auth::user()->fname.' '.Auth::user()->lname }},</b>
                 <br>
-                Hope you are doing well. This is just to remaind you that the billing #00{{ App\Models\Billing::last_billing()['id'] }} with a
-                total of K{{ App\Models\Billing::last_billing()['balance'] }} We've sent you on {{ App\Models\Billing::last_billing()['created_at']->toFormattedDateString() }} is pending.
+                Hope you are doing well. This is just to remaind you that the billing #00{{ App\Models\Billing::current_bill()['id'] }} with a
+                total of K{{ App\Models\Billing::current_bill()['balance'] }} We've sent you on {{ App\Models\Billing::current_bill()['created_at']->toFormattedDateString() }} is pending.
                 </small>
             </div>
             <div class="w-full flex text-white px-4">

@@ -9,6 +9,7 @@ use App\Notifications\NewUserNotification;
 use App\Notifications\NsansaWellnessCounselor;
 use App\Notifications\Welcome;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
@@ -75,63 +76,51 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        DB::beginTransaction();
         try {
-                $pushConfs = array(
-            'cluster' => 'ap2',
-            'useTLS' => true
-        );
-        $pusher = new Pusher(
-            '033c1fdbd94861470759',
-            '779dcdbbdd308d0dd9e9',
-            '1507438',
-            $pushConfs
-        );
+            $admin = User::first();
+            $user = User::create([
+                'fname' => $data['fname'],
+                'lname' => $data['lname'],
+                'email' => $data['email'],
+                'username' => $data['email'],
+                'type' => $data['type'],
+                'guest_id' => $data['guest_id'],
+                'password' => bcrypt($data['password']),
+                'liecense_number' => $data['liecense'] ?? 000000,
+                'department' => $data['role']
+                // 'mobile_no' => $data['mobile_no'],
+                // 'state' => $data['state'],
+                // 'active' => 0,
+                // 'password' => Hash::make($data['password']),
+                // 'password' => Hash::make($data['password']),
+            ]);
 
-        $admin = User::first();
-        $user = User::create([
-            'fname' => $data['fname'],
-            'lname' => $data['lname'],
-            'email' => $data['email'],
-            'username' => $data['email'],
-            'type' => $data['type'],
-            'guest_id' => $data['guest_id'],
-            'password' => bcrypt($data['password']),
-            'liecense_number' => $data['liecense'] ?? 000000,
-            'department' => $data['role']
-            // 'mobile_no' => $data['mobile_no'],
-            // 'state' => $data['state'],
-            // 'active' => 0,
-            // 'password' => Hash::make($data['password']),
-            // 'password' => Hash::make($data['password']),
-        ]);
+            $payload = [
+                'sender_id' => $user->id,
+                'name' => $user->fname.' '.$user->lname,
+                'sender' => 'NsansaWellness Group'
+            ];
 
-        $payload = [
-            'sender_id' => $user->id,
-            'name' => $user->fname.' '.$user->lname,
-            'sender' => 'Nsansa Wellness Group'
-        ];
-
-        if($data['type'] == 'patient'){
-            $user->assignRole('patient');
-            // Broadcast a notifications
-            $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
-            // $pusher->trigger('popup-channel', 'user-register', $message); 
-            // Send a notification to Admin about the new patient
-            $user->notify(new Welcome($payload));
-        }else{
-            $user->assignRole('counselor');
-            $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
-            // $pusher->trigger('popup-channel', 'user-register', $message);
-             // Send a notification to Admin about the new counselor
-            $user->notify(new NsansaWellnessCounselor($payload));
-        }
-    
-        // Send a notification to Admin about the new user
-        $admin->notify(new NewUserNotification($payload));
+            if($data['type'] == 'patient'){
+                $user->assignRole('patient');
+                $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
+                // Send a notification to Admin about the new patient
+                $user->notify(new Welcome($payload));
+            }else{
+                $user->assignRole('counselor');
+                $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
+                // Send a notification to Admin about the new counselor
+                $user->notify(new NsansaWellnessCounselor($payload));
+            }
+        
+            // Send a notification to Admin about the new user
+            $admin->notify(new NewUserNotification($payload));
+            DB::commit();
         return $user;
         } catch (\Throwable $th) {
-            dd($th);
+            DB::rollBack();
+            return redirect()->back()->with('message', 'An email could not be sent you. please check again');
         }
     }
 }

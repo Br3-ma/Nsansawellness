@@ -10,7 +10,9 @@ class PlanItem extends Model
     use HasFactory;
 
     protected $fillable = [
-        'item',
+        'desc',
+        'desc2',
+        'price',
         'user_id',
         'plan_id'
     ];

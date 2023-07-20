@@ -15,9 +15,13 @@ use Livewire\WithPagination;
 trait SubscriptionTrait {
     use WithPagination;
     public function get_subscriptions(){
-        return Cache::remember('plan_list', 60 * 60, function () {
-            return Plan::with('feature')->latest()->paginate(10);
-        });
+        return Plan::with('feature')->get();
+    }
+    public function get_subscriptions_pg(){
+        return Plan::with('feature')->paginate(10);
+    }
+    public function get_plan($id){
+        return Plan::find($id)->with('feature')->first();
     }
 
 }

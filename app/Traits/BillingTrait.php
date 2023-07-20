@@ -29,17 +29,23 @@ trait BillingTrait {
             return $this->com_set->where('desc', 'global-commission')->where('status', 1)->first();
         }
 
-        public function create_billing(){
+        public function create_billing($id){
             try {
-                $this->billing->create([
-                    'user_id' => auth()->user()->id,
-                    'charge_amount' => 950,
-                    'remainder_count' => 0,
-                    'balance' => 950,
-                    'desc' => 'Initial payment',
-                    'status' => 0
-                ]);
-                return true;
+                $plan = $this->get_plan($id);
+                // false to true
+                if(!(Billing::has_bill())){
+                    $billing = Billing::create([
+                        'user_id' => auth()->user()->id,
+                        'charge_amount' => $plan->price,
+                        'remainder_count' => 0,
+                        'balance' => $plan->price,
+                        'desc' => $plan->name,
+                        'status' => 0
+                    ]);
+                    return $billing;
+                }else{
+                    return Billing::current_bill();
+                }
             } catch (\Throwable $th) {
                 return false;
             }

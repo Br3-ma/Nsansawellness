@@ -28,7 +28,6 @@
             </div>
             {{-- @endhasanyrole --}}
             <div class="tab-content h-full">
-
                 <div id="chats" class="tab-pane active h-full" role="tabpanel" aria-labelledby="chats-tab">
                     <div style="margin-bottom:0px; padding-bottom:0px;" class="chat__chat-list h-full overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4 px-4">
                        
@@ -273,6 +272,42 @@
     <p id="hint1" class="w-1/3 text-center text-gray-200">Notifying the counselor, please wait..</p>
     @endhasanyrole
 </div>
+<div id="payment-remainder-modal" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl intro-y" id="payment-modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header flex items-center justify-content-between justify-center">
+                <img alt="Nsansa wellness" class="w-8 h-8 rounded-full" src="{{ asset('uploads/sites/304/2022/06/logos.svg') }}">
+               
+                <h2 class="font-medium text-base mr-auto">Nsansa Wellness</h2> 
+            </div>
+            <div class="modal-body text-left text-sm"> 
+                <span class="items-center justify-center">
+                    <img class="w-52 h-52" src="https://img.freepik.com/premium-vector/man-working-armchair-laptop-with-cat-his-arms-freelance-work-home-concept-hand-drawn-flat-vector-illustration_528592-655.jpg">
+                </span>
+                <small>
+                <b>Hi {{ Auth::user()->fname.' '.Auth::user()->lname }},</b>
+                <br>
+                Hope you are doing well. This is just to remaind you that the billing #00{{ App\Models\Billing::current_bill()['id'] }} with a
+                total of K{{ App\Models\Billing::current_bill()['balance'] }} We've sent you on {{ App\Models\Billing::current_bill()['created_at']->toFormattedDateString() }} is pending.
+                </small>
+            </div>
+            <div class="w-full flex text-white px-4">
+                {{-- <a href="{{ route('pay') }}" class="btn btn-warning btn-sm shadow-md text-white"> 
+                    <i data-lucide="wallet" class="w-4 h-4 "></i> &nbsp; 
+                    <small>Continue to Payments</small>
+                </a> --}}
+                <a href="{{ route('pay') }}" class="btn btn-warning btn-sm shadow-md text-white"> 
+                    <i data-lucide="wallet" class="w-4 h-4 "></i> &nbsp; 
+                    <small>Continue to Payments</small>
+                </a> 
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a target="_blank" href="{{ route('billing') }}" class="text-primary py-2"> 
+                    <small>View Billing</small>
+                </a> 
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 <?php
@@ -318,19 +353,18 @@
 
   
     function startChat(id, who, names, role){
-        // if(hasPaid){
-        // $('#nsansa_app').hide();
+        if(hasPaid){
+        $('#nsansa_app').hide();
         $('#sessionPreloader').show();
         open_chat(id, who, names, role);
-
-        // }else{
-        //     if(user_role === 'counselor'){
-        //         open_chat(id, who, names, role);
-        //     }else{
-        //         const pay_notice = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
-        //         pay_notice.show();
-        //     }
-        // }
+        }else{
+            if(user_role === 'counselor'){
+                open_chat(id, who, names, role);
+            }else{
+                const pay_notice = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
+                pay_notice.show();
+            }
+        }
     }
 
     function open_chat(id, who, names, role){
