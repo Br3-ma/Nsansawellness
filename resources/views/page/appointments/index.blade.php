@@ -49,8 +49,10 @@
         <!-- BEGIN: Calendar Side Menu -->
         <div class="col-span-12 xl:col-span-4 2xl:col-span-3">
             <div class="box p-5 intro-y">
+                @hasanyrole(['counselor', 'admin'])
                 <a href="{{ route('appointment.create', ['type' => 'video']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Add New Video Call Appointment </a>
                 {{-- <a href="{{ route('appointment.create', ['type' => 'phone']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </a> --}}
+                @endhasanyrole
                 <div class="border-t border-b border-slate-200/60 dark:border-darkmode-400 mt-6 mb-5 py-3" id="calendar-events">
                     
                     @forelse ($appointments as $appointment)
@@ -106,6 +108,8 @@
                     <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
                     @endforelse
 
+                    
+                    @if(!empty($questionnaires->toArray()))
                     @forelse ($incoming_appointments as $app)
                     @if($app->appointment != null)
                     <div class="relative items-center flex transition rounded-md p-2">
@@ -154,6 +158,12 @@
                     <div class="text-slate-500 p-3 text-center hidden" id="calendar-no-events">No Appointments Made</div>
                     
                     @endforelse
+                    @else 
+                    <div class="items-center justify-center centered" style="text-align: center">
+                        <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/premium/preview/empty-dirty-beach-3707861-3100312.png?f=avif&h=700 1x, https://cdni.iconscout.com/illustration/premium/preview/empty-dirty-beach-3707861-3100312.png?f=avif&h=1400 2x">
+                        <h3>No Appointments</h3>
+                    </div>
+                    @endif
                     
                 </div>
                 {{-- <div class="form-check form-switch flex">
