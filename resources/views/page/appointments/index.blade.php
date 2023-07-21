@@ -109,7 +109,7 @@
                     @endforelse
 
                     
-                    @if(!empty($questionnaires->toArray()))
+                    @if(!empty($incoming_appointments->toArray()))
                     @forelse ($incoming_appointments as $app)
                     @if($app->appointment != null)
                     <div class="relative items-center flex transition rounded-md p-2">
