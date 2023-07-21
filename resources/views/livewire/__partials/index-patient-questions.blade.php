@@ -46,6 +46,7 @@
         {{-- @dd($activities  == []) --}}
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+            @if(!empty($questionnaires->toArray()))
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
@@ -126,6 +127,12 @@
                     @endforelse
                 </tbody>
             </table>
+            @else 
+            <div class="items-center justify-center centered" style="text-align: center">
+                <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
+                <h3>No Questionnaire For You</h3>
+            </div>
+            @endif
         </div>
         <!-- END: Data List -->
         
