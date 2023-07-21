@@ -26,6 +26,6 @@ class CounselorSeeder extends Seeder
             'password' => bcrypt('test@123')
         ]);
      
-        $c->assignRole('patient');
+        $c->assignRole('counselor');
     }
 }
