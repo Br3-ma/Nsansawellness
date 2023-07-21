@@ -46,6 +46,7 @@
         {{-- @dd($activities  == []) --}}
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+            @dd($questionnaires->toArray())
             @if(!empty($questionnaires->toArray()))
             <table class="table table-report -mt-2">
                 <thead>
