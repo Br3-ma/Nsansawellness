@@ -88,7 +88,14 @@ class SurveyController extends Controller
 
     // ----- Patient Questionnaires
     public function patientSurveys(){
-        $questionnaires = PatientQuestionnaires::with('questions')->get();
+        if($this->my_role() == 'patient'){
+            $user_id = $this->getMyCounselor(auth()->user()->id);
+            $questionnaires = PatientQuestionnaires::where('user_id', $user_id)
+            ->with('questions')->get();
+        }else{
+            $questionnaires = PatientQuestionnaires::where('user_id', auth()->user()->id)
+            ->with('questions')->get();
+        }
         return response()->json(['questionnaires' => $questionnaires], 200);
     }
 

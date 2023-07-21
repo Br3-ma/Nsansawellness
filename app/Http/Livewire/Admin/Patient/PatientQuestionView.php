@@ -4,18 +4,26 @@ namespace App\Http\Livewire\Admin\Patient;
 
 use App\Models\PatientQuestionnaires;
 use App\Models\User;
+use App\Traits\CoreTrait;
 use App\Traits\CounselorTrait;
 use App\Traits\PatientTrait;
 use Livewire\Component;
 
 class PatientQuestionView extends Component
 {
+    use CoreTrait, CounselorTrait;
     public $index, $create, $update, $users;
 
     public function render()
     {
-
-        $questionnaires = PatientQuestionnaires::with('questions')->paginate(7);
+        if($this->my_role() == 'patient'){
+            $user_id = $this->getMyCounselor(auth()->user()->id);
+            $questionnaires = PatientQuestionnaires::here('user_id', $user_id)
+            ->with('questions')->paginate(7);
+        }else{
+            $questionnaires = PatientQuestionnaires::where('user_id', auth()->user()->id)
+            ->with('questions')->paginate(7);
+        }
         $u = auth()->user();
         $this->users =  User::role('patient')->whereHas('assignedCounselor', function ($query) use ($u) {
             $query->where('counselor_id', $u->id);
