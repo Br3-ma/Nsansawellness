@@ -39,7 +39,7 @@ Route::post('submit-survey', [ResultsController::class, 'store']);
 Route::get('send-chat-message', [ChatController::class, 'store']);
 Route::post('update-session', [ChatController::class, 'update']);
 
-Route::post('login', [LoginController::class, 'login']);
+Route::post('login', [LoginController::class, 'loginApi']);
 Route::post('register', [RegisterController::class, 'register']);
 
 Route::get('my-notifications', [NotificationController::class, 'index'])->middleware('auth:sanctum');
