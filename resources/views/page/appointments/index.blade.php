@@ -59,7 +59,7 @@
                     
                         @if (!empty($appointments->toArray()))
                         <div class="items-center flex transition rounded-md p-2 duration-300 ease-in-out hover:bg-slate-100 dark:hover:bg-darkmode-400">
-                            <div class="event p-3 -mx-3 {{  $appointment->status == 0 ? 'disabled bg-slate-200 italic' : 'cursor-pointer' }} flex items-center">
+                            <div class="event p-3 -mx-3 flex items-center">
                                 {{-- @if($appointment->status !== 0)
                                 <div class="w-2 h-2 bg-pending rounded-full"></div>
                                 @endif --}}
@@ -90,16 +90,18 @@
                                     <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> 
                                 </a>
                                 @endif --}}
-                                <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="tooltip btn btn-secondary text-white">
-                                    <i data-lucide="trash" class="w-4 h-4 text-danger"></i> 
-                                </a>
-                                <a title="Edit Appointment" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="tooltip btn mx-1">
-                                    <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
-                                </a>
-                                @if($appointment->guests !== null)
-                                <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $appointment->guests->first()->chat_id ?? 0 }}/sender/patient/{{ $appointment->video_link }}" title="Join Video Call" class="tooltip btn btn-danger text-white">
-                                    <i data-lucide="video" class="w-4 h-4 text-white"></i> 
-                                </a>
+                                @if($appointment->status !== 0)
+                                    <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="tooltip btn btn-secondary text-white">
+                                        <i data-lucide="trash" class="w-4 h-4 text-danger"></i> 
+                                    </a>
+                                    <a title="Edit Appointment" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="tooltip btn mx-1">
+                                        <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
+                                    </a>
+                                    @if($appointment->guests !== null)
+                                    <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $appointment->guests->first()->chat_id ?? 0 }}/sender/patient/{{ $appointment->video_link }}" title="Join Video Call" class="tooltip btn btn-danger text-white">
+                                        <i data-lucide="video" class="w-4 h-4 text-white"></i> 
+                                    </a>
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -142,15 +144,17 @@
                                 <i data-lucide="x" class="w-4 h-4 text-slate-500"></i> 
                             </a>
                             @endif --}}
-                            <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="btn btn-secondary text-white">
+                            @if($app->appointment->status == 1)
+                            {{-- <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="btn btn-secondary text-white">
                                 <i data-lucide="trash" class="w-4 h-4 text-danger"></i> 
-                            </a>
-                            <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="btn mx-1">
+                            </a> --}}
+                            {{-- <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="btn mx-1">
                                 <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
-                            </a>
+                            </a> --}}
                             <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $app->chat_id ?? 0 }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
                                 <i data-lucide="video" class="w-4 h-4 text-white"></i> 
                             </a>
+                            @endif
                         </div>
                     </div>
                     @endif

@@ -186,28 +186,15 @@ class AppointmentController extends Controller
                     'name' => auth()->user()->fname.' '.auth()->user()->lname,
                     'type' => $request->type,
                     'title' => $request->title,
-                    'appointment_id' => $chat_id, //Needed to get the right chat messages
+                    'appointment_id' => $chat_id, 
                     'link' => $appointment->video_link
                 ];
-
-                // PushAlert::create([
-                //     'message' => 'You have been invited to an appointment',
-                //     'for_user_id' => $guest,
-                //     'from_user_id' => auth()->user()->id
-                // ]);
-                // Send a notification to Guest about the new Appointment
-                // $message = 'You have a new appointment with'.auth()->user()->fname.' '.auth()->user()->lname;
                 $user->notify(new NewAppointment($payload));
-                // $this->pusher->trigger('popup-channel', 'new-appointment', $guest);
             }
-            // Send a notification to my self about the new Appointment
             $admin->notify(new MyNewAppointment($payload));
             Session::flash('attention', "Appointment has been scheduled successfully.");
-            // $appointment->delete();
-            // $this->user_appointment->where('appointment_id', $appointment->id)->first()->delete();
             return redirect()->route('appointment');
         } catch (\Throwable $th) {
-            // dd($th);
             Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
             return redirect()->route('appointment');
         }

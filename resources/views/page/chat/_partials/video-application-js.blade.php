@@ -270,11 +270,36 @@
 
       // ************** End Recording Module ******** //
       function endCall(){
-        
         peer.destroy();
         $('.remote-screen').hide();
         $('#local-screen').hide();
-        $('.end-call-card').show();
+        
+        if(user_role === 'patient'){
+          $('.end-call-card').show();
+          closeTransaction();
+        }else{
+          
+        }
+      }
+
+      function closeTransaction(){
+        const user = {!! auth()->user()->toJson() ?? '' !!};
+        const formData = new FormData();
+        formData.append('counselor_id', user['id']);
+        formData.append('chat_id', info['chat_id']);
+        // formData.append('time', info['chat_id']);
+        // Make the POST request to your Laravel backend
+        fetch("{{ route('close-session-call') }}", {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          console.log(response);
+          $('#su_id').val() = response.data.su_id;
+        })
+        .catch(error => {
+          console.error('Error uploading video:', error);
+        });
       }
 
   

@@ -117,6 +117,7 @@ button:hover {
             Please let us know how we did with your support request. All feedback is appreciated
             to help us improve our offering!
         </p>
+        <input id="su_id" type="hidden">
         <ul id="options">
             <li><a href="#1" class="option">1</a></li>
             <li><a href="#2" class="option">2</a></li>
@@ -124,7 +125,7 @@ button:hover {
             <li><a href="#4" class="option">4</a></li>
             <li><a href="#5" class="option">5</a></li>
         </ul>
-        <button onclick="submit()">Submit</button>
+        <button onclick="submitRating()">Submit</button>
     </div>
     <div class="card" id="result">
         <div class="image">
@@ -150,7 +151,22 @@ button:hover {
         };
     });
 
-    function submit() {
+    function submitRating() {
+        let usid = $('#su_id').val(); 
+        const formData = new FormData();
+        formData.append('us_id', user['id']);
+        fetch("{{ route('rate-video-call') }}", {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          console.log(response);
+          $('#su_id').val() = response.data.su_id;
+        })
+        .catch(error => {
+          console.error('Error uploading video:', error);
+        });
+
         result.style.display = "flex";
         intro.style.display = "none";
         document.getElementById("selected").innerHTML = `You selcted ${

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Async;
 use App\Models\Chat;
 use App\Models\SessionNote;
+use App\Models\SessionUsage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Video;
@@ -176,8 +177,23 @@ class VideoCallController extends Controller
         return view('page.patients.recordings', compact('videos'));
     }
 
-    public function captureBill(Request $request){
+    public function closeCall(Request $request){
+        $chat = Chat::where('id', $request->toArray()['chat_id'])->with('receiver')->first();
+        $data = SessionUsage::create([
+            // 'time' => $chat->id,
+            'chat_id' => $chat->id,
+            'patient_id' => $chat->receiver_id,
+            'counselor_id' => $chat->sender_id
+            // 'package_id' => $chat->sender_id
+        ]);
+        return response()->json(['su_id' => $data->id]);
+    }
 
+    public function rateCall(Request $request){
+        $data = SessionUsage::where('patient_id', auth()->user()->id)
+                ->orderBy('id', 'desc')->first();
+        $data->rating = $request->toArray()['rating'];
+        $data->save();
     }
     
 }
