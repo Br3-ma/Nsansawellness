@@ -48,7 +48,7 @@ section.pricing-section {
 	 justify-content: center;
 	 align-items: center;
 	 row-gap: 15px;
-     margin-top: 10%;
+     margin-top: 25%;
 }
  section.pricing-section .pricing .pricing-body .pricing-body-header h2 {
 	 font-weight: 500;
