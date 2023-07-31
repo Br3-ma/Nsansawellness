@@ -1060,24 +1060,6 @@
         function showNotification() {
             var user = {!! auth()->user()->toJson() ?? '' !!}
             // Send a POST request to add the product to the cart
-            axios.get("{{ route('notify')}}", {
-                user_id: user['id']
-            })
-            .then(response => {
-                alert(response);
-                var notification = new Notification("Hello, world!");
-                notification.onclick = function () {
-                    alert("Notification clicked.");
-                    // Handle the notification click event here
-                };
-                notification.onclose = function () {
-                    alert("Notification closed.");
-                    // Handle the notification close event here
-                };
-            })
-            .catch(error => {
-
-            });
 
             // Send an AJAX request to add the product to the cart
             $.ajax({
@@ -1102,7 +1084,7 @@
             },
             error: function(xhr, status, error) {
                 // Handle any errors that occur during the AJAX request
-                console.error('Error Getting Notification:', error);
+                // console.error('Error Getting Notification:', error);
             }
             });
 
