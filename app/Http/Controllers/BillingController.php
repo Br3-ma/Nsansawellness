@@ -80,7 +80,7 @@ class BillingController extends Controller
             
             foreach ($request->feature as $value) {
                 $this->plan_item->create([
-                    'name' => $value,
+                    'desc' => $value,
                     'user_id' => auth()->user()->id,
                     'plan_id' => $plan->id,
                     'price' => 0.00
