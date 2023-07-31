@@ -52,14 +52,15 @@ trait BillingTrait {
         }
 
         public function get_my_billings(){
+            // dd($this->billing);
             if($this->role() == 'patient'){
-                return $this->billing->with(['user', 'counselor_billing'])
-                                        ->where('user_id', auth()->user()->id)->get();
+                return $this->billing != null ? $this->billing->with(['user', 'counselor_billing'])
+                                        ->where('user_id', auth()->user()->id)->get() : null;
             }elseif($this->role() == 'counselor'){
-                return $this->billing->with(['user', 'counselor_billing'])
-                                        ->where('counselor_id', auth()->user()->id)->get();
+                return $this->billing != null ? $this->billing->with(['user', 'counselor_billing'])
+                                        ->where('counselor_id', auth()->user()->id)->get() : null;
             }else{
-                return $this->billing->get();
+                return $this->billing != null ? $this->billing->get() : null;
             }
         }
 

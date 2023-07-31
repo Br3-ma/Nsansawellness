@@ -13,8 +13,14 @@
                 <small>
                 <b>Hi {{ Auth::user()->fname.' '.Auth::user()->lname }},</b>
                 <br>
+                @if (!empty(current_bill()['balance'] ))
                 Hope you are doing well. This is just to remaind you that the billing #00{{ App\Models\Billing::current_bill()['id'] }} with a
                 total of K{{ App\Models\Billing::current_bill()['balance'] }} We've sent you on {{ App\Models\Billing::current_bill()['created_at']->toFormattedDateString() }} is pending.
+                @else
+                Prior to embarking on your online therapy journey, we kindly ask you to make your payment first. This ensures a seamless experience with licensed therapists and personalized 
+                resources for your well-being. We're here to support you every step of the way.
+                @endif
+               
                 </small>
             </div>
             <div class="w-full flex text-white px-4">

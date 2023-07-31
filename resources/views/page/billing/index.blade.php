@@ -22,7 +22,7 @@
                     <option>Completed</option>
                 </select> --}}
             </div>
-            <div class="hidden xl:block mx-auto text-slate-500">Showing {{ $bills->count(); }} entries</div>
+            <div class="hidden xl:block mx-auto text-slate-500">Showing {{ $bills != null ? $bills->count(): 0 }} entries</div>
             {{-- <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div> --}}
             {{-- <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
                 <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Export to Excel </button>
@@ -49,6 +49,7 @@
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
+            @if(!empty($bills))
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
@@ -176,10 +177,24 @@
                     
                 </tbody>
             </table>
-            {{-- <div class="items-center justify-center centered" style="text-align: center">
+            @else
+            <div class="items-center justify-center centered" style="text-align: center">
                 <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
                 <h3>No Transactions</h3>
-            </div> --}}
+
+
+                @hasrole('patient')
+                <a target="_blank" href="{{ route('pay') }}" class="d-flex space-x-4 items-center justify-center btn btn-warning text-white mt-5">
+                    <span>Get started</span>
+                    &nbsp;&nbsp;
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                        <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                    </svg>
+                </a>
+                @endhasrole
+            </div>
+            @endif
         </div>
         <!-- END: Data List -->
         <!-- BEGIN: Pagination -->
