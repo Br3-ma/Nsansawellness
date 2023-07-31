@@ -69,6 +69,7 @@ class BillingController extends Controller
     }
 
     public function store_subscription(Request $request){
+        dd($request);
         try{
             $plan = $this->plan->create([
                 'name'=>$request->name,
