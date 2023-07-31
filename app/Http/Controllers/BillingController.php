@@ -69,7 +69,6 @@ class BillingController extends Controller
     }
 
     public function store_subscription(Request $request){
-        dd($request);
         try{
             $plan = $this->plan->create([
                 'name'=>$request->name,
@@ -83,13 +82,13 @@ class BillingController extends Controller
                 $this->plan_item->create([
                     'name' => $value,
                     'user_id' => auth()->user()->id,
-                    'plan_id' => $plan->id
+                    'plan_id' => $plan->id,
+                    'price' => 0.00
                 ]);
             }
             Session::flash('attention', "Subscription created successfully.");
             return redirect()->route('settings.index');
         }catch (\Throwable $th) {
-            dd($th);
             Session::flash('error_msg', "Oops something went wrong again.");
             return redirect()->route('settings.index');
         }
