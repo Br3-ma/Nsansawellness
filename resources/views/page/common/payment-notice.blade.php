@@ -13,7 +13,7 @@
                 <small>
                 <b>Hi {{ Auth::user()->fname.' '.Auth::user()->lname }},</b>
                 <br>
-                @if (!empty(current_bill()['balance'] ))
+                @if (!empty(App\Models\Billing::current_bill()['balance'] ))
                 Hope you are doing well. This is just to remaind you that the billing #00{{ App\Models\Billing::current_bill()['id'] }} with a
                 total of K{{ App\Models\Billing::current_bill()['balance'] }} We've sent you on {{ App\Models\Billing::current_bill()['created_at']->toFormattedDateString() }} is pending.
                 @else
