@@ -54,15 +54,15 @@
                 </div>
                 <div class="text-center w-full lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                   
-                    <button title="View more" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-info py-1 px-2">
+                    {{-- <button title="View more" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-info py-1 px-2">
                         <i data-lucide="eye" class="w-3 h-3"></i>
-                    </button>
-                    <button title="Update details" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-success py-1 px-2">
+                    </button> --}}
+                    {{-- <button title="Update details" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-success py-1 px-2">
                         <i data-lucide="edit" class="w-3 h-3 text-white"></i>
-                    </button>
-                    <button title="Permanently delete" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-danger py-1 px-2">
+                    </button> --}}
+                    <a href="{{ route('delete-package', $plan->id)}}" title="Permanently delete" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-danger py-1 px-2">
                         <i data-lucide="trash-2" class="w-3 h-3"></i>
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

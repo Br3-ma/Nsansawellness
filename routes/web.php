@@ -121,7 +121,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/delete-department/{id}', [SettingsController::class, 'destroyDept'])->name('settings.departments.delete');
     Route::get('/create-plan', [BillingController::class, 'create_subscription'])->name('settings.plan.create');
     Route::post('/add-plan', [BillingController::class, 'store_subscription'])->name('subscription.store');
-    
+    Route::get('delete-package/{id}', [BillingController::class, 'remove_billing'])->name('delete-package');
 });
 
 // Notifications

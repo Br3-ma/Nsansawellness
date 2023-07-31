@@ -79,7 +79,6 @@ class BillingController extends Controller
             ]);
             
             foreach ($request->feature as $value) {
-                
                 $this->plan_item->create([
                     'name' => $value,
                     'user_id' => auth()->user()->id,
@@ -89,8 +88,19 @@ class BillingController extends Controller
             Session::flash('attention', "Subscription created successfully.");
             return redirect()->route('settings.index');
         }catch (\Throwable $th) {
+            dd($th);
             Session::flash('error_msg', "Oops something went wrong again.");
             return redirect()->route('settings.index');
+        }
+    }
+
+    public function remove_billing($id){
+        try {
+            $this->plan_item->where('plan_id', $id)->delete();
+            $this->plan->where('id', $id)->delete();
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            dd($th);
         }
     }
 
