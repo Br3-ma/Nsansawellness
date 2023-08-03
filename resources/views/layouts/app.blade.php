@@ -869,7 +869,7 @@
         </div>
         {{-- <div class="text-center"> <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#static-backdrop-modal-preview" class="btn btn-primary">Show Modal</a> </div> <!-- END: Modal Toggle --> --}}
         <!-- BEGIN: Modal Content -->
-        
+         
         @hasanyrole('patient')
         @if(App\Models\Billing::has_bill())
             @include('page.common.payment-notice')

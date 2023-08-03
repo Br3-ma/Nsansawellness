@@ -36,7 +36,7 @@ class Billing extends Model
     public static function current_bill(){
         return Billing::where('user_id',  auth()->user()->id)
                         ->where('status', 0)
-                        ->latest()->first();
+                        ->latest()->first() ?? 0;
     }
 
     // Returns the total balance a user is to pay
