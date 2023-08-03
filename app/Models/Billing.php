@@ -11,6 +11,7 @@ class Billing extends Model
     protected $fillable = [
         'user_id',
         'counselor_id',
+        'package_id',
         'charge_amount',
         'remainder_count',
         'balance',

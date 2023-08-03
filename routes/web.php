@@ -122,6 +122,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/create-plan', [BillingController::class, 'create_subscription'])->name('settings.plan.create');
     Route::post('/add-plan', [BillingController::class, 'store_subscription'])->name('subscription.store');
     Route::get('delete-package/{id}', [BillingController::class, 'remove_billing'])->name('delete-package');
+
+
+    Route::post('/transaction-processing', [PaymentController::class, 'gateway'])->name('make-payment');
+
 });
 
 // Notifications
@@ -291,5 +295,4 @@ Route::get('/get-child-started', [GetStartedPage::class, 'child'])->name('child-
 Route::resource('results', ResultsController::class);
 Route::resource('patient-results', PatientQAnswerController::class);
 Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
-Route::get('/payment-gateway', [PaymentController::class, 'gateway'])->name('payment-gateway');
 Route::get('/choose-payment-method/{id}', [PaymentController::class, 'bill'])->name('bill-patient');

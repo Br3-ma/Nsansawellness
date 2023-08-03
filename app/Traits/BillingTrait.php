@@ -44,7 +44,12 @@ trait BillingTrait {
                     ]);
                     return $billing;
                 }else{
-                    return Billing::current_bill();
+                    $update = Billing::current_bill();
+                    $update->charge_amount = $plan->price;
+                    $update->balance = $plan->price;
+                    $update->desc = $plan->name;
+                    $update->save();
+                    return $update;
                 }
             } catch (\Throwable $th) {
                 return false;

@@ -212,9 +212,15 @@ button:hover {
           <p>ZMW {{ $billing->charge_amount }}</p>  
         </div>
         <div style="width: 100%; justify-content:center;" class="items-center">
-            <button style="float: right" type="submit">
-                Proceed to Payments
-            </button>
+            <form action="{{ route('make-payment')}}" method="POST">
+              @csrf
+              <input type="hidden"{{ auth()->user()->id }} name="user_id" />
+              <input type="hidden" value="{{ $billing->plan_id ?? 1 }}" name="package_id" />
+              <input type="hidden" value="{{ $billing->charge_amount }}" name="amount" />
+              <button style="float: right" type="submit">
+                  Proceed to Payments
+              </button>
+            </form>
         </div>
     </div>
   

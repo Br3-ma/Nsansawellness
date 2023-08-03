@@ -21,7 +21,7 @@ trait SubscriptionTrait {
         return Plan::with('feature')->paginate(10);
     }
     public function get_plan($id){
-        return Plan::find($id)->with('feature')->first();
+        return Plan::where('id',$id)->with('feature')->first();
     }
 
 }
