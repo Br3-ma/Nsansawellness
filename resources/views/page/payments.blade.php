@@ -255,7 +255,7 @@ section.pricing-section {
                               </ul>
                           </div>
                           <div class="card-footer">
-                              <a href="{{ route('bill-patient', ['id' => $plan->id]) }}">Choose Plan</a>
+                              <a target="_blank" href="{{ route('bill-patient', ['id' => $plan->id]) }}">Choose Plan</a>
                           </div>
                       </div>
                       @empty

@@ -9,7 +9,7 @@ class Commission extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
+        'user_id', //counselor ID
         'payment_id',
         'amount',
         'owner',

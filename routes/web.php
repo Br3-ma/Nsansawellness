@@ -23,6 +23,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PatientQAnswerController;
 use App\Http\Controllers\PatientQuestionAnswersController;
 use App\Http\Controllers\PatientQuestionnaire;
+use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -123,9 +124,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/add-plan', [BillingController::class, 'store_subscription'])->name('subscription.store');
     Route::get('delete-package/{id}', [BillingController::class, 'remove_billing'])->name('delete-package');
 
-
+    // ==== Payment Processing
     Route::post('/transaction-processing', [PaymentController::class, 'gateway'])->name('make-payment');
-
 });
 
 // Notifications
@@ -296,3 +296,4 @@ Route::resource('results', ResultsController::class);
 Route::resource('patient-results', PatientQAnswerController::class);
 Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
 Route::get('/choose-payment-method/{id}', [PaymentController::class, 'bill'])->name('bill-patient');
+Route::post('transaction-summary', [PaymentCallbackController::class, 'index'])->name('transaction-summary');

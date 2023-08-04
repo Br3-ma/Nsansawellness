@@ -68,5 +68,12 @@ trait BillingTrait {
             }
         }
 
+        public function autoBillingUpdate($val){
+            $update = Billing::current_bill();
+            $update->status = $val;
+            $update->save();
+            return $update;
+        }
+
         
 }

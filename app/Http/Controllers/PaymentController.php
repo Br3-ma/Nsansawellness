@@ -6,12 +6,14 @@ use App\Models\Billing;
 use App\Models\Payment;
 use App\Models\User;
 use App\Traits\BillingTrait;
+use App\Traits\CounselorTrait;
+use App\Traits\PaymentTrait;
 use App\Traits\SubscriptionTrait;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {    
-    use SubscriptionTrait, BillingTrait;
+    use SubscriptionTrait, BillingTrait, CounselorTrait, PaymentTrait;
     public $users, $payments, $plans;
     /**
      * Create a new controller instance.
@@ -77,10 +79,11 @@ class PaymentController extends Controller
         }
     }
 
-    public function gateway(){
+    public function gateway(Request $request){
 
-        
-
+        $data = $this->requestPayment($request);
+        $data = $this->getAllTransactions();
+        return $data;
     }
 
     /**

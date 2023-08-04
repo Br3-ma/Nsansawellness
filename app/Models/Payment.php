@@ -14,7 +14,26 @@ class Payment extends Model
         'payment_method',
         'user_id',
         'billing_id',
-        'desc'
+        'desc',
+
+        // probase structure
+        "amount",
+        "companyName",
+        "firstName",
+        "lastName",
+        "customerType",
+        "email",
+        "expiryDate",
+        "mobile",
+        "responseMethod",
+        "sourceInstitution",
+        "paymentDescription",
+        "paymentReference",
+        "paymentType",
+        "redirectUrl",  
+        "systemId",
+        "password",
+        "tpin"
     ];
 
     public function user(){

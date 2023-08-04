@@ -493,7 +493,7 @@
                         <div class="2xl:border-l -mb-10 pb-10">
                             <div class="2xl:pl-6 grid grid-cols-12 gap-x-6 2xl:gap-x-0 gap-y-6">
                                 <!-- BEGIN: Important Notes -->
-                                <div class="col-span-12 md:col-span-6 xl:col-span-12 mt-3 2xl:mt-8">
+                                {{-- <div class="col-span-12 md:col-span-6 xl:col-span-12 mt-3 2xl:mt-8">
                                     <div class="intro-x flex items-center h-10">
                                         <h2 class="text-lg font-medium truncate mr-auto">
                                             Upcoming Meetings
@@ -536,7 +536,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
+
                                 <!-- END: Important Notes -->
                                 <!-- BEGIN: Recent Activities -->
                                 {{-- <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 mt-3">
