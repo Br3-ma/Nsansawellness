@@ -223,7 +223,7 @@
               <input type="hidden" id="external_ref" class="form-control"  name="paymentReference">
 
               {{-- <label> Redirect Url </label><br/> --}}
-              <input type="hidden" class="form-control" value="nsansawellness.com/transaction-summary" id="redirectUrl"  name="redirectUrl" >
+              <input type="hidden" class="form-control" value="https://nsansawellness.com/transaction-summary" id="redirectUrl"  name="redirectUrl" >
 
               {{-- <label> Payment Type </label><br/> --}}
               {{-- <input type="text" class="form-control"  id="paymentType"  name="paymentType" > --}}
