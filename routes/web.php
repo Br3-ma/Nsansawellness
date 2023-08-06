@@ -50,6 +50,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/transaction-summary/{user_id}/{billing_id}', [PaymentCallbackController::class, 'index'])->name('transaction-summary');
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -296,4 +297,4 @@ Route::resource('results', ResultsController::class);
 Route::resource('patient-results', PatientQAnswerController::class);
 Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
 Route::get('/choose-payment-method/{id}', [PaymentController::class, 'bill'])->name('bill-patient');
-Route::post('transaction-summary', [PaymentCallbackController::class, 'index'])->name('transaction-summary');
+

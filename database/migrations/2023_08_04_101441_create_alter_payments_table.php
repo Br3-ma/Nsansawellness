@@ -25,7 +25,8 @@ return new class extends Migration
             $table->string("responseMethod")->nullable();
             $table->string("sourceInstitution")->nullable();
             $table->string("paymentDescription")->nullable();
-
+            $table->string("transaction_status")->nullable();
+            
             $table->string("paymentType")->nullable();
             $table->string("paymentReference")->nullable();
             $table->string("redirectUrl")->nullable();  

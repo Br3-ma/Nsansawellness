@@ -212,18 +212,17 @@
             <p>ZMW {{ $billing->charge_amount }}</p>  
           </div>
           <div style="width: 100%; justify-content:center;" class="items-center">
-            <form id="payment_form" action="http://95.179.223.128:4200/pbs/payments" method="post">
-              @csrf                        
+            <form id="payment_form" action="http://95.179.223.128:4200/pbs/payments" method="post">                       
               {{-- <label class="form-label">System ID</label><br/> --}}
               <input id="system_id" type="hidden" class="form-control" name="systemId" value="PBS-Super Merchant">
               <input type="hidden" class="form-control" name="responseMethod" value="">
-              <input type="hidden" class="form-control" name="sourceInstitution" value="Evelyn Hone College">
+              <input type="hidden" class="form-control" name="sourceInstitution" value="Nsansa Wellness Services Limited">
 
               {{-- <label>External Reference</label><br/> --}}
               <input type="hidden" id="external_ref" class="form-control"  name="paymentReference">
 
               {{-- <label> Redirect Url </label><br/> --}}
-              <input type="hidden" class="form-control" value="https://nsansawellness.com/transaction-summary" id="redirectUrl"  name="redirectUrl" >
+              <input type="hidden" class="form-control" value="http://localhost:90/nsansawellness/transaction-summary/{{ auth()->user()->id}}/{{ $billing->id }}" id="redirectUrl"  name="redirectUrl" >
 
               {{-- <label> Payment Type </label><br/> --}}
               {{-- <input type="text" class="form-control"  id="paymentType"  name="paymentType" > --}}

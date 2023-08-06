@@ -15,6 +15,7 @@ class Payment extends Model
         'user_id',
         'billing_id',
         'desc',
+        'transaction_status',
 
         // probase structure
         "amount",
