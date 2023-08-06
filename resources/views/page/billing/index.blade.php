@@ -160,7 +160,7 @@
                                     @hasrole('admin')
                                     <a href="{{ route('bpb', ['id' => $bill->id])}}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Pay Now </a> 
                                     @else
-                                    <a href="#" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Proceed to Payments </a> 
+                                    <a href="{{ route('pay') }}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Proceed to Payments </a> 
                                     @endhasrole
                                     {{-- @endif --}}
                             @endif
