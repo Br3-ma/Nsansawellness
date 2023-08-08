@@ -264,5 +264,18 @@
         <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
         <script src="{{ asset('public/dist/js/inputstyle.js') }}"></script>
         <!-- END: JS Assets-->
+        <script>
+            function handleExpiredToken() {
+                // Refresh the page when the CSRF token has expired
+                location.reload();
+            }
+
+            // Attach an event listener for AJAX errors
+            window.addEventListener('error', function(event) {
+                if (event.target instanceof XMLHttpRequest && event.target.status === 419) {
+                    handleExpiredToken();
+                }
+            });
+        </script>
     </body>
 </html>

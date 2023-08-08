@@ -329,6 +329,18 @@
             });
         }
         displayPusherNotifications();
+        
+        function handleExpiredToken() {
+            // Refresh the page when the CSRF token has expired
+            location.reload();
+        }
+
+        // Attach an event listener for AJAX errors
+        window.addEventListener('error', function(event) {
+            if (event.target instanceof XMLHttpRequest && event.target.status === 419) {
+                handleExpiredToken();
+            }
+        });
     </script>
     <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
 </body>

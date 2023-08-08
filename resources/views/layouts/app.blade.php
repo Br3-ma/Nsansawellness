@@ -1044,7 +1044,7 @@
         } else if (Notification.permission === "granted") {
             // If the notification permission is already granted, show the notification
             
-            showNotification();
+            // showNotification();
         } else {
             // Request permission from the user to show notifications
             Notification.requestPermission().then(function (permission) {
@@ -1090,6 +1090,18 @@
 
 
         }
+
+        function handleExpiredToken() {
+            // Refresh the page when the CSRF token has expired
+            location.reload();
+        }
+
+        // Attach an event listener for AJAX errors
+        window.addEventListener('error', function(event) {
+            if (event.target instanceof XMLHttpRequest && event.target.status === 419) {
+                handleExpiredToken();
+            }
+        });
     </script>
 </body>
 </html>
