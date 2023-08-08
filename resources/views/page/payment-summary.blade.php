@@ -222,7 +222,7 @@
               <input type="hidden" id="external_ref" class="form-control"  name="paymentReference">
 
               {{-- <label> Redirect Url </label><br/> --}}
-              <input type="hidden" class="form-control" value="https://nsansawellness.com/transaction-summary/{{ auth()->user()->id}}/{{ $billing->id }}" id="redirectUrl"  name="redirectUrl" >
+              <input type="hidden" class="form-control" value="http://localhost:90/nsansawellness/transaction-summary/{{ auth()->user()->id}}/{{ $billing->id }}" id="redirectUrl"  name="redirectUrl" >
 
               {{-- <label> Payment Type </label><br/> --}}
               {{-- <input type="text" class="form-control"  id="paymentType"  name="paymentType" > --}}

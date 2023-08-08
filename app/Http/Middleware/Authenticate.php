@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Traits\PaymentTrait;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Str;
 
 class Authenticate extends Middleware
 {
@@ -16,7 +17,10 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if($request->getPathInfo() == '/transaction-summary/*'){
+        $string = $request->getPathInfo();
+        $substring = "transaction-summary";
+        
+        if(Str::contains($string, $substring)){
             $this->recordTransaction($request);
         }
         if (! $request->expectsJson()) {
