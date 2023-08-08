@@ -16,7 +16,9 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        $this->recordTransaction($request);
+        if($request->getPathInfo() == '/transaction-summary/*'){
+            $this->recordTransaction($request);
+        }
         if (! $request->expectsJson()) {
             return route('login');
         }
