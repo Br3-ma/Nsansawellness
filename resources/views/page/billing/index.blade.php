@@ -116,8 +116,10 @@
 
                         @hasanyrole(['counselor'])
                         <td class="w-40">
+                            @if ($bill->user !== null)
                             <a href="" class="font-medium whitespace-nowrap">{{ $bill->user->fname.' '.$bill->user->lname }}</a> 
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $bill->user->address }}</div>
+                            @endif
                         </td>
                         @endhasanyrole
 
