@@ -29,7 +29,7 @@ class UserController extends Controller
         $userRole = Role::pluck('name')->toArray();
         $permissions = Permission::get();
         $roles = Role::orderBy('id','DESC')->paginate(5);
-        $users = User::latest()->orderBy('fname', 'asc')->paginate(9);
+        $users = User::orderBy('fname', 'asc')->paginate(9);
         $notifications = auth()->user()->unreadNotifications;
         
         return view('page.user.index', compact('users','permissions','roles','userRole','notifications'));
