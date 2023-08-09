@@ -138,7 +138,7 @@ class VideoCallController extends Controller
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
-            dd('Refresh the Page');
+            dd($th);
         }
     }
 
