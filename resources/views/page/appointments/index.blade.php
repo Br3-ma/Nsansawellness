@@ -164,8 +164,8 @@
                     @endforelse
                     @else 
                     <div class="items-center justify-center centered" style="text-align: center">
-                        <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
-                        <h3>No Appointments</h3>
+                        {{-- <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
+                        <h3>No Appointments</h3> --}}
                     </div>
                     @endif
                     
