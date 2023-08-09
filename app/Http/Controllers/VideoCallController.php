@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Async;
+use App\Models\Billing;
 use App\Models\Chat;
+use App\Models\Plan;
 use App\Models\SessionNote;
 use App\Models\SessionUsage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Video;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class VideoCallController extends Controller
 {
@@ -127,7 +130,13 @@ class VideoCallController extends Controller
                 'token' =>  csrf_token(),
                 'peer_id' => $peer_id
             ];
-            return view('page.chat.video-appointment_', compact('data'));
+
+            if(Billing::can_video_call()){
+                return view('page.chat.video-appointment_', compact('data'));
+            }else{
+                Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
+                return redirect()->back();
+            }
         } catch (\Throwable $th) {
             dd('Refresh the Page');
         }
@@ -179,13 +188,30 @@ class VideoCallController extends Controller
 
     public function closeCall(Request $request){
         $chat = Chat::where('id', $request->toArray()['chat_id'])->with('receiver')->first();
+        $b = Billing::current_bill();
+        $p = Plan::with('feature')->where('id', $b->package_id)->first();
         $data = SessionUsage::create([
             // 'time' => $chat->id,
             'chat_id' => $chat->id,
             'patient_id' => $chat->receiver_id,
-            'counselor_id' => $chat->sender_id
-            // 'package_id' => $chat->sender_id
+            'counselor_id' => $chat->sender_id,
+            'package_id' => $b->package_id
         ]);
+
+        // Close video package
+        $filteredFeatures = $p->feature->filter(function ($item) {
+            return str_contains(strtolower($item->desc), 'session');
+        })->map(function ($item) {
+            preg_match('/\d+/', $item->desc, $matches);
+            return $matches[0] ?? null;
+        })->filter(); 
+        
+        $s = SessionUsage::where('package_id', $b->package_id)->count();
+        if($filteredFeatures >= $s){
+            $b->can_video_call = false;
+            $b->save();
+        }
+
         return response()->json(['su_id' => $data->id]);
     }
 

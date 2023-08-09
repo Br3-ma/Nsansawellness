@@ -16,7 +16,10 @@ class Billing extends Model
         'remainder_count',
         'balance',
         'desc',
-        'status'
+        'status',
+        'is_paid',
+        'can_video_call',
+        'expired'
     ];
 
     // Returns true or false if the user has a current bill to pay
@@ -46,6 +49,15 @@ class Billing extends Model
         return Billing::where('user_id',  $user_id)
                         ->where('status', 0)
                         ->latest()->first();
+    }
+
+    public static function can_video_call(){
+        $b = Billing::current_bill();
+        if($b !== null){
+            return $b->can_video_call;
+        }else{
+            return false;
+        }
     }
 
     public function user(){
