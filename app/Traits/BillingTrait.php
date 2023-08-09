@@ -61,12 +61,15 @@ trait BillingTrait {
         public function get_my_billings(){
             if($this->role() == 'patient'){
                 return Billing::with(['user', 'counselor_billing'])
-                                        ->where('user_id', auth()->user()->id)->get();
+                                        ->where('user_id', auth()->user()->id)->orderByDesc('created_at') // Change 'created_at' to the desired field for sorting
+                                        ->get();
             }elseif($this->role() == 'counselor'){
                 return Billing::with(['user', 'counselor_billing'])
-                                        ->where('counselor_id', auth()->user()->id)->get();
+                                        ->where('counselor_id', auth()->user()->id)->orderByDesc('created_at') // Change 'created_at' to the desired field for sorting
+                                        ->get();
             }else{
-                return Billing::get();
+                return Billing::orderByDesc('created_at') 
+                ->get();
             }
         }
 
