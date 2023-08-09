@@ -27,12 +27,12 @@ trait PatientTrait {
     // Return all your patients with their user info, file records
     public function getMyPatients($u){
         if($u->hasAnyRole(['admin','administrator'])){
-            $my_patients = $this->user->role('patient')->with('assignedCounselor')->paginate(6);
+            $my_patients = $this->user->role('patient')->with('assignedCounselor')->orderByDesc('fname')->paginate(6);
         }else{
             $my_patients = $this->user->role('patient')->whereHas('assignedCounselor', function ($query) use ($u) {
                 $query->where('counselor_id', $u->id);
                 $query->where('status', 1);
-            })->paginate(6);
+            })->orderByDesc('fname') ->paginate(6);
         }
         return $my_patients;
     }
