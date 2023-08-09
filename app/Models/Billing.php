@@ -53,7 +53,7 @@ class Billing extends Model
 
     public static function can_video_call(){
         $b = Billing::current_bill();
-        if($b !== null){
+        if($b !== 0){
             return $b->can_video_call;
         }else{
             return false;
