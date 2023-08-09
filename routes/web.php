@@ -127,6 +127,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // ==== Payment Processing
     Route::post('/transaction-processing', [PaymentController::class, 'gateway'])->name('make-payment');
+    Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
 });
 
 // Notifications
@@ -295,6 +296,5 @@ Route::get('/get-couples-started', [GetStartedPage::class, 'couples'])->name('co
 Route::get('/get-child-started', [GetStartedPage::class, 'child'])->name('child-start');
 Route::resource('results', ResultsController::class);
 Route::resource('patient-results', PatientQAnswerController::class);
-Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
 Route::get('/choose-payment-method/{id}', [PaymentController::class, 'bill'])->name('bill-patient');
 
