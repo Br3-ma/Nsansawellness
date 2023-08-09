@@ -871,7 +871,7 @@
         <!-- BEGIN: Modal Content -->
          
         @hasanyrole('patient')
-        @if(App\Models\Billing::has_bill())
+        @if(App\Models\Billing::has_no_bill())
             @include('page.common.payment-notice')
         @endif
         @endhasanyrole

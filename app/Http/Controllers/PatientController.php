@@ -43,9 +43,6 @@ class PatientController extends Controller
         $chats = $this->get_my_chats();
         $notifications = auth()->user()->unreadNotifications;
 
-        // if(Billing::has_bill()){    
-        //     return redirect()->route('pay');
-        // }
         return view('page.patients.home', compact('notifications', 'chats'));
     }
 

@@ -32,8 +32,8 @@ trait BillingTrait {
         public function create_billing($id){
             try {
                 $plan = $this->get_plan($id);
-                // false to true
-                if(!(Billing::has_bill())){
+                
+                if((Billing::has_no_bill())){
                     $billing = Billing::create([
                         'user_id' => auth()->user()->id,
                         'charge_amount' => $plan->price,
