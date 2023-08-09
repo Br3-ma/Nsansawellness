@@ -134,7 +134,7 @@ class VideoCallController extends Controller
             if(Billing::can_video_call()){
                 return view('page.chat.video-appointment_', compact('data'));
             }else{
-                Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
+                Session::flash('error_msg', "You may have no active subscription package.");
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
