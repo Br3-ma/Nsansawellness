@@ -23,6 +23,7 @@ class VerifyCsrfToken extends Middleware
         'save-notes',
         'close-session-call',
         'rate-video-call',
-        '/transaction-summary/*'
+        '/transaction-summary/*',
+        '/payment-details/*'
     ];
 }

@@ -37,7 +37,7 @@ trait BillingTrait {
                     $billing = Billing::create([
                         'user_id' => auth()->user()->id,
                         'charge_amount' => $plan->price,
-                        'package_id' => $plan->id,
+                        'plan_id' => $plan->id,
                         'remainder_count' => 0,
                         'balance' => $plan->price,
                         'desc' => $plan->name,
@@ -47,13 +47,14 @@ trait BillingTrait {
                 }else{
                     $update = Billing::current_bill();
                     $update->charge_amount = $plan->price;
-                    $update->package_id = $plan->id;
+                    $update->plan_id = $plan->id;
                     $update->balance = $plan->price;
                     $update->desc = $plan->name;
                     $update->save();
                     return $update;
                 }
             } catch (\Throwable $th) {
+                dd($th);
                 return false;
             }
         }

@@ -222,7 +222,7 @@
               <input type="hidden" id="external_ref" class="form-control"  name="paymentReference">
 
               {{-- <label> Redirect Url </label><br/> --}}
-              <input type="hidden" class="form-control" value="http://localhost:90/nsansawellness/transaction-summary/{{ auth()->user()->id}}/{{ $billing->id }}" id="redirectUrl"  name="redirectUrl" >
+              <input type="hidden" class="form-control" value="https://nsansawellness.com/transaction-summary/{{ auth()->user()->id}}/{{ $billing->id }}" id="redirectUrl"  name="redirectUrl" >
 
               {{-- <label> Payment Type </label><br/> --}}
               {{-- <input type="text" class="form-control"  id="paymentType"  name="paymentType" > --}}
@@ -257,7 +257,7 @@
               <input class="form-control" type="hidden"  name="password" value="qq!q/Db[pSTn@NbcdS9S">
               
               <input type="hidden"{{ auth()->user()->id }} name="user_id" />
-              <input type="hidden" value="{{ $billing->plan_id ?? 1 }}" name="package_id" />
+              <input type="hidden" value="{{ $billing->plan_id ?? 1 }}" name="plan_id" />
               <input type="hidden" value="{{ $billing->charge_amount }}" id="amount" name="amount" />
               <button style="float: right" type="submit">
                   Proceed to Payments

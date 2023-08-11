@@ -106,7 +106,7 @@
                             @endif
                         </td>
                         <td class="w-40">
-                            @if($bill->counselor_billing != null)
+                            @if($bill->counselor_billing !== null)
                             <a href="" class="font-medium whitespace-nowrap">{{ $bill->counselor_billing->fname.' '.$bill->counselor_billing->lname }}</a> 
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $bill->counselor_billing->address }}</div>
                         
@@ -127,7 +127,7 @@
 
                         @hasanyrole(['patient'])
                         <td class="w-40">
-                            @if($bill->counselor_billing != null)
+                            @if($bill->counselor_billing !== null)
                             <a href="" class="font-medium whitespace-nowrap">{{ $bill->counselor_billing->fname.' '.$bill->counselor_billing->lname }}</a> 
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $bill->counselor_billing->address }}</div>
                         
@@ -154,19 +154,17 @@
                         </td>
                         @endhasrole
                         <td class="text-center">
-                            
                             @if($bill->status == 1)
-                                <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </div>
+                            <a href="#" onclick="viewPayments('{{$bill->id}}')" class="flex items-center justify-center whitespace-nowrap text-success"> 
+                                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed 
+                                {{-- <span id="cl{{}}" class="d"></span> --}}
+                            </a>
                             @else
-                                {{-- @if($bill->charge_amount == 0 ) --}}
-                                    {{-- <a href="{{ route('pay') }}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Continue </a> --}}
-                                {{-- @else --}}
-                                    @hasrole('admin')
+                                @hasrole('admin')
                                     <a href="{{ route('bpb', ['id' => $bill->id])}}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Pay Now </a> 
-                                    @else
+                                @else
                                     <a href="{{ route('pay') }}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Proceed to Payments </a> 
-                                    @endhasrole
-                                    {{-- @endif --}}
+                                @endhasrole
                             @endif
                         </td>
                         {{-- <td>
@@ -185,8 +183,6 @@
             <div class="items-center justify-center centered" style="text-align: center">
                 <img class="intro-y mx-auto" width="300" src="https://cdni.iconscout.com/illustration/free/thumb/empty-box-4085812-3385481.png">
                 <h3>No Transactions</h3>
-
-
                 @hasrole('patient')
                     <a target="_blank" href="{{ route('pay') }}" class="d-flex space-x-4 items-center justify-center btn btn-warning text-white mt-5">
                         <span>Get started</span>
@@ -256,5 +252,50 @@
         </div>
     </div>
     <!-- END: Delete Confirmation Modal -->
+
+    {{-- Payment Details --}}
+    @include('page.common.payment-details-modal')
 </div>
 @endsection
+<script>
+    const viewPayments = (id) => {
+        const url = `/nsansawellness/payment-details/${id}`;
+        document.getElementById('pIDText').textContent = '';
+        document.getElementById('pDateText').textContent = '';
+        document.getElementById('amtText').textContent = '';
+        document.getElementById('methText').textContent = '';
+        document.getElementById('transText').textContent = '';
+        document.getElementById('transStatusText').textContent = '';
+        // document.getElementById('pUserText').textContent = '';
+        // document.getElementById('bDateText').textContent = '';
+        document.getElementById('billText').textContent = '';
+        document.getElementById('descText').textContent = '';
+        try {
+            return axios.get(url).then((response) => {
+                if (response.status === 200) {
+                    console.log(response.data.data);
+                    document.getElementById('pIDText').textContent = response.data.data.id;
+                    document.getElementById('pDateText').textContent = response.data.data.created_at;
+                    document.getElementById('amtText').textContent = response.data.data.amount;
+                    document.getElementById('methText').textContent = response.data.data.paymentType;
+                    document.getElementById('transText').textContent = response.data.data.paymentReference;
+                    document.getElementById('transStatusText').textContent = response.data.data.transaction_status;
+                    // document.getElementById('pUserText').textContent = data.pUser;
+                    // document.getElementById('bDateText').textContent = data.bDate;
+                    document.getElementById('billText').textContent = response.data.data.amount;
+                    document.getElementById('descText').textContent = response.data.data.desc;
+                    const pay_notice = tailwind.Modal.getInstance(document.querySelector("#payment-details-modal"));
+                    pay_notice.show();
+                    return response.data;
+                } else {
+                    throw new Error(`Failed to fetch payment details. Status: ${response.status}`);
+                }
+            }).catch((error) => {
+                console.error("Error fetching payment details:", error);
+                throw error;
+            });
+        } catch (error) {
+            
+        }
+    }
+</script>

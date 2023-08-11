@@ -92,9 +92,15 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // API
     public function show($id)
     {
-        //
+        try {
+            $payment = $this->payments->where('billing_id', $id)->first();
+            return response()->json(['data' => $payment], 200);
+        } catch (\Exception $ex) {
+            return response()->json(['error' => 'Payment not found'], 404);
+        }
     }
 
     /**

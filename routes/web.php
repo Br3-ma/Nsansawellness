@@ -128,6 +128,7 @@ Route::group(['middleware' => ['auth']], function() {
     // ==== Payment Processing
     Route::post('/transaction-processing', [PaymentController::class, 'gateway'])->name('make-payment');
     Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
+    Route::get('/payment-details/{id}', [PaymentController::class, 'show'])->name('payments.show');
 });
 
 // Notifications
