@@ -11,6 +11,7 @@ trait PaymentTrait {
 
     public function recordTransaction($data){
       try {
+        // dd($data);
           // Explode the string by slashes
           $segments = explode('/', $data->getRequestUri());
 
@@ -20,6 +21,13 @@ trait PaymentTrait {
           // Remove the comma from the string
           $numericValue = str_replace(',', '', $data['amount']);
           $amount = (float) $numericValue;
+          if($data['paymentStatus'] == 'S' || $data['paymentStatus'] == 's'){
+            $status = 'Success';
+            $bool = 2;
+          }else{
+            $status = 'Failed';
+            $bool = 3;
+          }
           Auth::loginUsingId($user_id);
           Payment::create([
             'settled_amount' => $amount,
@@ -31,12 +39,13 @@ trait PaymentTrait {
             'user_id' => (int) $user_id,
             'billing_id' => $billing_id,
             'desc' => 'Nsansa Wellness Counseling Services',
-            'transaction_status'=> 'F'
+            'transaction_status'=> $status
+            // 'is_paid'=> 'F'
           ]);
 
           // Update billing status
           $billing = Billing::where('id', (int) $billing_id)->first();
-          $billing->status = 1;
+          $billing->status = $bool;
           $billing->balance = $billing->charge_amount - $amount;
           $billing->save();
 

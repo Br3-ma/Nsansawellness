@@ -92,14 +92,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function getHasPaidAttribute(){
-        if($this->new_paid()){
-            return true;
-        }else{
-            if($this->old_paid()){
-                return true;
-            }
-        }
-        return false;
+        return Billing::has_no_bill();
     }
 
     public function getNewClientAttribute(){
@@ -128,13 +121,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $x->count() > 0 && $x->count() < 2  ?  true :  false; 
     }
 
-    // // Return true or false if paid, if its user's return session to counselor
-    // public function old_client(){
-    //     $x = $this->hasMany(Billing::class)
-    //                 ->where('status', 1)->get();
-    //                 // ->where('counselor_id', 1)->get();
-    //     return $x->count() > 1 ?  true :  false; 
-    // }
+    public static function fullNames($id){
+        $u = User::where('id', $id)->first();
+        if($u !== null){
+            return $u->fname.' '.$u->lname;
+        }
+    }
     public function site_rating(){
         return $this->hasMany(SiteRating::class);
     }

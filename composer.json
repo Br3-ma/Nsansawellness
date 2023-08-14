@@ -16,6 +16,7 @@
         "laravelcollective/html": "^6.3",
         "livewire/livewire": "^2.12",
         "php-ai/php-ml": "^0.10.0",
+        "php-ffmpeg/php-ffmpeg": "^1.1",
         "php-junior/laravel-video-chat": "^1.1",
         "rubix/ml": "^2.2",
         "spatie/laravel-permission": "^5.5"

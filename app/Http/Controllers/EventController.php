@@ -2,55 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SessionUsage;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class CounsellorController extends Controller
+class EventController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Display a listing of the resource.
      *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        
-        return view('home');
-
-    }
-    public function profiles()
-    {
-        
-        $counselors = User::role('counselor')->get();
-        return view('page.counselors.index', compact('counselors'));
-
+        $title = 'Events';
+        return view('page.events', compact('Events'));
     }
 
-    public function patient_files()
-    {
-        return view('page.common.patient_files');
-    }
-
-    public function details($id) 
-    {
-        $videocalls = SessionUsage::where('counselor_id', $id)->get();
-        $user = User::where('id', $id)->first();
-        return view('page.counselors.details', [
-            'user' => $user,
-            'videocalls' => $videocalls,
-        ]);
-    }
     /**
      * Show the form for creating a new resource.
      *

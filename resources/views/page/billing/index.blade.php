@@ -49,7 +49,7 @@
         </div>
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
-            @if(!empty($bills))
+            @if(!empty($bills->toArray()))
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>

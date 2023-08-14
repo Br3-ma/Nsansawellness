@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Async;
 use App\Models\Billing;
 use App\Models\Chat;
@@ -10,10 +9,11 @@ use App\Models\Plan;
 use App\Models\SessionNote;
 use App\Models\SessionUsage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Models\Video;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Audio\Mp3;
 
 class VideoCallController extends Controller
 {
@@ -155,7 +155,7 @@ class VideoCallController extends Controller
                 'video' => 'required|mimetypes:video/webm|max:500000', // Adjust max size as per your requirement
             ]);
 
-            // Store the uploaded file
+            // Store the uploaded file -- OLD
             $path = $request->file('video')->store('videos');
             $chat = Chat::where('id', $request->toArray()['chat_id'])->with('receiver')->first();
             // Create a new video record in the database
@@ -167,18 +167,55 @@ class VideoCallController extends Controller
                 'chat_id' => $request->toArray()['chat_id'],
                 'description' => $chat->receiver->fname.' '.$chat->receiver->lname.' Session'
             ]);
+            
+            // NEW
+            // Store the uploaded file
+            // $path = $request->file('video')->store('videos');
+
+            // Convert the video to MP3 format
+            // $audioPath = $this->convertToMp3($path);
+
+
+            // $chat = Chat::where('id', $request->toArray()['chat_id'])->with('receiver')->first();
+            
+            // // Create a new video record in the database
+            // Video::create([
+            //     'file_name' => pathinfo($audioPath, PATHINFO_BASENAME), // Using the converted audio file name
+            //     'file_path' => $audioPath,
+            //     'user_id' => auth()->id(),
+            //     'user_id' => auth()->id(),
+            //     'chat_id' => $request->toArray()['chat_id'],
+            //     'description' => $chat->receiver->fname.' '.$chat->receiver->lname.' Session'
+            // ]);
 
             // Return a response or redirect as needed
             return response()->json([
                 'message' => 'Video uploaded successfully',
             ]);
         } catch (\Throwable $th) {
-            dd($th);
-            // return response()->json([
-            //     'message' => 'Video uploaded successfully',
-            // ]);
+            // dd($th);
+            return response()->json([
+                'message' => 'Video upload failed',
+            ]);
         }
     }
+
+
+    // public function convertToMp3($videoPath)
+    // {
+        
+    //     $ffmpeg = FFMpeg::create();
+    //     $video = $ffmpeg->open(storage_path('app/' . $videoPath));
+    //     $audioPath = 'audios/' . pathinfo($videoPath, PATHINFO_FILENAME) . '.mp3'; // Adjust the output path as needed
+    
+    //     $format = new Mp3();
+    //     $format->setAudioChannels(2)
+    //            ->setAudioKiloBitrate(256);
+    
+    //     $video->save($format, storage_path('app/' . $audioPath));
+    
+    //     return $audioPath;
+    // }
 
     public function view_recordings(Request $request){
         

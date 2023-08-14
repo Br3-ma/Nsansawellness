@@ -483,7 +483,7 @@
                     <li>
                         <a href="{{ route('patient-files') }}"  class="menu">
                             <div class="menu__icon"> <i data-lucide="files"></i> </div>
-                            <div class="menu__title"> Patient Profiles </div>
+                            <div class="menu__title"> Profiles </div>
                         </a>
                     </li>
                     @endcan
@@ -694,7 +694,7 @@
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="files"></i> </div>
                             <div class="side-menu__title">
-                                Patient Profiles
+                                Profiles
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -702,9 +702,17 @@
                             <li>
                                 <a href="{{ route('patient-files') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> All Profiles </div>
+                                    <div class="side-menu__title"> Patient Profiles </div>
                                 </a>
                             </li>
+                            @hasrole('admin')
+                            <li>
+                                <a href="{{ route('counselor-files') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Counselors </div>
+                                </a>
+                            </li>
+                            @endhasrole
                         </ul>
                     </li>
                     <li data-tg-tour="View recent recorded video call sessions."

@@ -17,6 +17,17 @@ class Plan extends Model
         'user_id'
     ];
 
+    public static function planInfo($id){
+        $p = Plan::where('id', $id)->first();
+
+        if($p !== null){
+            return $p;
+        }else{
+            return 0;
+        }
+        
+    }
+
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }

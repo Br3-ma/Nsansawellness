@@ -14,6 +14,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomeworkController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
@@ -99,6 +100,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/chat/message/send/file', [VideoCallController::class, 'sendFilesInConversation'])->name('chat.send.file');
     Route::post('/group/chat/message/send', [VideoCallController::class, 'groupSend'])->name('group.send');
     Route::post('/group/chat/message/send/file', [VideoCallController::class, 'sendFilesInGroupConversation'])->name('group.send.file');
+    
+    Route::get('/counselor-files', [CounsellorController::class, 'profiles'])->name('counselor-files');
+    Route::get('/counselor-details/{id}', [CounsellorController::class, 'details'])->name('counselor.details');
     
 
     Route::resource('patient-questionaires', PatientQuestionnaire::class);
@@ -188,6 +192,7 @@ Route::group(['middleware' => ['auth', 'permission:patient']], function() {
 // Patient Files
 Route::group(['middleware' => ['auth', 'permission:patient-files']], function() {
     Route::get('/patient-files', [PatientController::class, 'patient_files'])->name('patient-files');
+
     Route::get('/create-patient-file/{id}', [PatientController::class, 'create'])->name('create-patient-file');
     Route::get('/show-patient-file/{id}', [PatientController::class, 'show'])->name('show-patient-file');
     Route::get('/edit-patient-file/{id}', [PatientController::class, 'edit'])->name('edit-patient-file');
@@ -292,6 +297,7 @@ Route::get('/frequently-asked-question', [FaqPage::class, 'index'])->name('faq')
 Route::get('/start-your-career', [CareerPage::class, 'index'])->name('careers');
 Route::get('/quick-questionaire', [CareerPage::class, 'careerSurveyQuestionaire'])->name('career-survey');
 Route::get('/reviews', [ReviewsPage::class, 'index'])->name('reviews');
+Route::get('/events', [EventController::class, 'index'])->name('events');
 Route::get('/get-started', [GetStartedPage::class, 'index'])->name('start');
 Route::get('/get-couples-started', [GetStartedPage::class, 'couples'])->name('couples-start');
 Route::get('/get-child-started', [GetStartedPage::class, 'child'])->name('child-start');

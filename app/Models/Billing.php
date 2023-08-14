@@ -26,13 +26,26 @@ class Billing extends Model
     public static function has_no_bill(){
         if(auth()->user()->hasRole('patient')){
             if(auth()->user()){
-                return Billing::where('user_id', auth()->user()->id)
-                ->where('status', 1)->exists();
+                $isthere = Billing::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->limit(1)->exists();
+                $isbilled = Billing::where('user_id', auth()->user()->id)->where('status', 1)->orderBy('id', 'desc')->limit(1)->exists();
+                $isActive = Billing::where('user_id', auth()->user()->id)->where('status', 2)->where('expired', false)->orderBy('id', 'desc')->limit(1)->exists();
+                // dd($isthere);
+                // dd($isbilled);
+                // dd($isActive);
+                if($isthere){
+                    if($isbilled){
+                        return false;
+                    }
+                    if($isActive){
+                        return true;
+                    }
+                }else{
+                    return true;
+                }
             }else{
-                return false;
+                return true;
             }
         }else{
-            
             return true;
         }
     }
