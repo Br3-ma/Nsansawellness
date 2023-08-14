@@ -638,16 +638,18 @@
                     @endcan
 
                     @can('billing')
-                    <li data-tg-tour="Check your billing history."
-                        data-tg-title="Billing"
-                        data-tg-group="my-fourth-tour"
-                        data-tg-scroll-margin="0"
-                        data-tg-fixed>
-                        <a href="{{  route('billing') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="wallet"></i> </div>
-                            <div class="side-menu__title"> Billing </div>
-                        </a>
-                    </li>
+                        @hasallroles(['admin','administrator','patient'])
+                        <li data-tg-tour="Check your billing history."
+                            data-tg-title="Billing"
+                            data-tg-group="my-fourth-tour"
+                            data-tg-scroll-margin="0"
+                            data-tg-fixed>
+                            <a href="{{  route('billing') }}" class="side-menu">
+                                <div class="side-menu__icon"> <i data-lucide="wallet"></i> </div>
+                                <div class="side-menu__title"> Billing </div>
+                            </a>
+                        </li>
+                        @endhasanyrole
                     @endcan
                     
                     @can('settings')
