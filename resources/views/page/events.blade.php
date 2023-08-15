@@ -116,6 +116,33 @@
         color: #ffffff;
         background-color: #252525;
     }
+
+
+
+    /*  */
+    .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .activity-card {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .activity-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .activity-description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
     </style>
     @include('layouts.head')
     
@@ -206,7 +233,7 @@
             </div>
         </section>
         <section style="background-color: #d6ae91;
-        background-image: url('https://images.pexels.com/photos/355863/pexels-photo-355863.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=800'); /* Replace with your image URL */
+        background-image: url('https://images.pexels.com/photos/1080471/pexels-photo-1080471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); /* Replace with your image URL */
         background-size: cover;
         background-position: center;"
          class="elementor-section elementor-top-section elementor-element elementor-element-c14718f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c14718f" data-element_type="section">
@@ -238,7 +265,7 @@
                 <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-a604ae7" data-id="a604ae7" data-element_type="column">
                     <div class="elementor-widget-wrap elementor-element-populated">            
                         <div class="elementor-section">
-                            <div class="elementor-container text-center" style="text-align: center; padding-left:8%; padding-top:5%">
+                            <div class="elementor-container text-center" style="text-align: center; padding-left:8%; padding-top:15%">
                                 <h2 class="elementor-heading-title">Benefits of Rest Fest 2023</h2>
                             </div>
                         </div>
@@ -258,173 +285,89 @@
                 </div>
             </div>
             <div class="elementor-container elementor-column-gap-no container">
-                
-                <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                    <div  style="margin-right:5%; min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #800869; padding: 5%">
-                        {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                    <div class="profile-card ">
-                                        <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                    <h4 style="color:#ffff">Yoga<b></b></h4>
-                                    <h6 style="color:#ffff">
-                                        Revitalising yoga sessions led by an experienced yoga instructor to help participants
-                                        connect with their body, mind, and soul
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
+                <div class="grid-container">
+                    <div class="activity-card">
+                        <h4 class="activity-title">Yoga</h4>
+                        <p class="activity-description">
+                            Revitalising yoga sessions led by an experienced yoga instructor to help participants
+                            connect with their body, mind, and soul
+                        </p>
                     </div>
-                </div>
-                
-                <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                    <div style="min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background:  #800869; padding: 5%">
-                        {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                    <div class="profile-card ">
-                                        <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-heading align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                    <h4 style="color:#ffff">Meditation</h4>
-                                    <h6 style="color:#ffff">
-                                        Practising mindfulness through meditation, promoting mental clarity and emotional well-being.
-                                        Participants will learn different mindfulness techniques that can be practised from the comfort
-                                        of their homes or office to help with stress or anxiety relief.                                    </h6>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="activity-card">
+                        <h4 class="activity-title">Meditation</h4>
+                        <p class="activity-description">
+                            Practising mindfulness through meditation, promoting mental clarity and emotional well-being.
+                            Participants will learn different mindfulness techniques that can be practised from the comfort
+                            of their homes or office to help with stress or anxiety relief
+                        </p>
                     </div>
-                </div>
-                
-                
-                
-                <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                    <div style="margin-left:5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #800869; padding: 5%">
-                        {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                    <div class="profile-card ">
-                                        <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                    <h4 style="color:#ffff">Rage Room</h3>
-                                    <h6 style="color:#ffff">
-                                        Release pent-up stress and negative emotions in our specially designed rage room. Letting go of
-                                        tension through smashing breakable items can be incredibly cathartic and freeing. We will also be
-                                        providing emotion and stress management worksheets and guides for those who participate in the
-                                        rage room.
-                                                                            
-                                    </h6>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="activity-card">
+                        <h4 class="activity-title">Rage Room</h4>
+                        <p class="activity-description">
+                            Release pent-up stress and negative emotions in our specially designed rage room. Letting go of
+                            tension through smashing breakable items can be incredibly cathartic and freeing. We will also be
+                            providing emotion and stress management worksheets and guides for those who participate in the
+                            rage room
+                        </p>
                     </div>
+                    <div class="activity-card">
+                        <h4 class="activity-title">Painting and Pottery Sessions</h4>
+                        <p class="activity-description">
+                            Exploring the creative side in painting and pottery workshops. Engaging in artistic expression can be
+                            a powerful way to reduce stress, tap into emotions, and discover new ways of self-expression.
+                        </p>
+                    </div>
+                    <div class="activity-card">
+                        <h4 class="activity-title">Plant-Making</h4>
+                        <p class="activity-description">
+                            Learning the art of plant propagation by creating a terrarium or plant arrangement. Bringing nature
+                            into the living space can promote tranquility and enhance the overall ambiance
+                        </p>
+                    </div>
+                    <div class="activity-card">
+                        <h4 class="activity-title">Access to Psychologists</h4>
+                        <p class="activity-description">
+                            Our team of compassionate psychologists will be available throughout the event to provide
+                            counselling and support for those seeking professional guidance or simply a listening ear.
+                        </p>
+                    </div>
+                    <div class="activity-card">
+                        <h4 class="activity-title">Sauna and Swimming</h4>
+                        <p class="activity-description">
+                            The blissful experience of the sauna and access to a refreshing pool to unwind and cool off
+                            during the event. Swimming is an excellent exercise to enhance mood and reduce stress.
+                        </p>
+                    </div>
+                    <div class="activity-card">
+                        <h4 class="activity-title">Access to Fishing Ponds</h4>
+                        <p class="activity-description">Immersion in the soothing embrace of nature's waters. The act of fishing requires patience,
+                            focus, and a sense of quiet determination—qualities that cultivate a serene mind and a
+                            balanced spirit.</p>
+                    </div>
+                    <div class="activity-card">
+                        <h4 class="activity-title">Massage</h4>
+                        <p class="activity-description">Relaxing massages are available from certified therapists designed to relieve physical tension
+                            and promote a deep sense of relaxation.
+                            </p>
+                    </div>
+                    <div class="activity-card">
+                        <h4 class="activity-title">Tai Chi</h4>
+                        <p class="activity-description">Tai Chi seamlessly combines gentle, flowing movements with focused breathing and
+                            mindfulness. This discipline fosters a sense of tranquility and inner calm, making it a soothing
+                            and meditative experience that gently eases away stress and tension.</p>
+                    </div>
+                    <!-- Repeat the above activity-card blocks for each activity -->
                 </div>
-                
             </div>
         </section>
 
-     
+{{--      
         <section style="padding-top: 2%" class="elementor-section elementor-inner-section elementor-element elementor-element-5cd5314 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5cd5314" data-element_type="section">
  
             <div class="elementor-container elementor-column-gap-no container">
-                       
-                <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                    <div  style="margin-left: 5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #800869; padding: 5%">
-                        {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                    <div class="profile-card ">
-                                        <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                    <h4 style="color:#ffff">Painting &<br>Pottery Sessions</h3>
-                                    <h6 style="color:#ffff">
-                                        Exploring the creative side in painting and pottery workshops. Engaging in artistic expression can be
-                                        a powerful way to reduce stress, tap into emotions, and discover new ways of self-expression.
-                                        </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                    <div style="margin-left: 3%; max-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #800869; padding: 5%">
-                        {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                    <div class="profile-card ">
-                                        <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                      
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                            <div class="elementor-widget-container">
-                                <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                    <h4 style="color:#ffff">Plant-Making:</h4>
-                                    <h6 style="color:#ffff">
-                                        Learning the art of plant propagation by creating a terrarium or plant arrangement. Bringing nature
-                                        into the living space can promote tranquility and enhance the overall ambiance                                    </h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+
             </div>
-        </section>
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-c14718f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="c14718f" data-element_type="section">
-            <div class="elementor-container elementor-column-gap-no">
-                <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-a604ae7" data-id="a604ae7" data-element_type="column">
-                    <div class="elementor-widget-wrap elementor-element-populated">
-                        <section class="elementor-section elementor-inner-section elementor-element elementor-element-db73e97 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="db73e97" data-element_type="section">
-                            <div class="elementor-container elementor-column-gap-no">
-                                <div class="elementor-element elementor-element-64afac2 elementor-hidden-tablet elementor-hidden-mobile" data-id="64afac2" data-element_type="column">
-                                    <div class="elementor-widget-wrap elementor-element-populated">
-                                        <div class="elementor-element elementor-element-febb0bb elementor-widget__width-auto e-transform animated-slow elementor-invisible elementor-widget elementor-widget-jkit_button" data-id="febb0bb" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:300,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
-                                            data-widget_type="jkit_button.default">
-                                            <div class="elementor-widget-container">
-                                                <div class="jeg-elementor-kit jkit-button  icon-position-before jeg_module_1173_5_632ca94d7d7e1"><a href="#" class="jkit-button-wrapper">Buy Your Ticket</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </div>
-                        </section>
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
+        </section> --}}
+        
     </div>
     @include('layouts.footer')
