@@ -136,7 +136,7 @@
             call.on('stream', stream => {
                 sessionTimer();
                 remoteVideo.srcObject = stream;
-                remoteStream = stream;
+                                          remoteStream = stream;
                 remoteVideo.onloadedmetadata = () => remoteVideo.play();
             })
           // }
@@ -146,43 +146,43 @@
           //   call.close();
           //   endCall();
           // }
-      });
+      }); 
 
 
-      function toggleVideo(){      
-        localStream.getVideoTracks()[0].enabled = !(localStream.getVideoTracks()[0].enabled);
+        function toggleVideo(){      
+          localStream.getVideoTracks()[0].enabled = !(localStream.getVideoTracks()[0].enabled);
 
-        if(localStream.getVideoTracks()[0].enabled){        
-          $(".video-cam").removeClass("camera-off");
-          $(".video-cam").removeClass("camera-off-bg");
-          $(".video-cam").addClass("camera");
-        }else{
-          $(".video-cam").removeClass("camera");
-          $(".video-cam").addClass("camera-off");
-          $(".video-cam").addClass("camera-off-bg");
-          $("#localVideo").poster = "https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public"
+          if(localStream.getVideoTracks()[0].enabled){        
+            $(".video-cam").removeClass("camera-off");
+            $(".video-cam").removeClass("camera-off-bg");
+            $(".video-cam").addClass("camera");
+          }else{
+            $(".video-cam").removeClass("camera");
+            $(".video-cam").addClass("camera-off");
+            $(".video-cam").addClass("camera-off-bg");
+            $("#localVideo").poster = "https://api-private.atlassian.com/users/5e04ca154006ea0ea3273e3e/avatar?initials=public"
+          }
+
         }
 
-      }
+        function toggleAudioMute(){
+          localStream.getAudioTracks()[0].enabled = !(localStream.getAudioTracks()[0].enabled);
 
-      function toggleAudioMute(){
-        localStream.getAudioTracks()[0].enabled = !(localStream.getAudioTracks()[0].enabled);
-
-        if(localStream.getAudioTracks()[0].enabled){        
-          $(".audio-mic").removeClass("mic-off");
-          $(".audio-mic").removeClass("mic-off-bg");
-          $(".audio-mic").addClass("mic");
-        }else{
-          $(".audio-mic").removeClass("mic");
-          $(".audio-mic").addClass("mic-off");
-          $(".audio-mic").addClass("mic-off-bg");
+          if(localStream.getAudioTracks()[0].enabled){        
+            $(".audio-mic").removeClass("mic-off");
+            $(".audio-mic").removeClass("mic-off-bg");
+            $(".audio-mic").addClass("mic");
+          }else{
+            $(".audio-mic").removeClass("mic");
+            $(".audio-mic").addClass("mic-off");
+            $(".audio-mic").addClass("mic-off-bg");
+          }
         }
-      }
 
-      function startRecording(){
-        recording(remoteStream);
-        recorderTimer();
-      }
+        function startRecording(){
+          recording(remoteStream);
+          recorderTimer();
+        }
 
 
         // Recording function
@@ -281,6 +281,7 @@
           
         }
       }
+
 
       function closeTransaction(){
         const user = {!! auth()->user()->toJson() ?? '' !!};

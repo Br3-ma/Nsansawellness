@@ -118,6 +118,7 @@ class VideoCallController extends Controller
     public function startVideoCallPeer2($id, $chat_id, $receiver, $role, $peer_id){
         try {
             $notes = SessionNote::where('chat_id', $chat_id)->where('status', 1)->first();
+            // $
             if($notes !== null){
                 $nts = $notes->notes;
             }
