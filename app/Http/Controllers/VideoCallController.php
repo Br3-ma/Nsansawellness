@@ -10,6 +10,7 @@ use App\Models\SessionNote;
 use App\Models\SessionUsage;
 use Illuminate\Http\Request;
 use App\Models\Video;
+use App\Traits\CoreTrait;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use FFMpeg\FFMpeg;
@@ -17,6 +18,7 @@ use FFMpeg\Format\Audio\Mp3;
 
 class VideoCallController extends Controller
 {
+    use CoreTrait;
     /**
      * Create a new controller instance.
      */
@@ -132,14 +134,20 @@ class VideoCallController extends Controller
                 'peer_id' => $peer_id
             ];
 
-            if(Billing::can_video_call()){
-                return view('page.chat.video-appointment_', compact('data'));
+
+            if($this->my_role() == 'patient'){
+                if(Billing::can_video_call()){
+                    return view('page.chat.video-appointment_', compact('data'));
+                }else{
+                    Session::flash('error_msg', "You may have no active subscription package.");
+                    return redirect()->back();
+                }
             }else{
-                Session::flash('error_msg', "You may have no active subscription package.");
-                return redirect()->back();
+                return view('page.chat.video-appointment_', compact('data'));
             }
         } catch (\Throwable $th) {
-            dd('Refresh the Page');
+            Session::flash('attention', "Try again now.");
+            return redirect()->back();
         }
     }
 
