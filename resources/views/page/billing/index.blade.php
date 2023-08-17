@@ -155,13 +155,15 @@
                         @endhasrole
                         <td class="text-center">
                             @if($bill->status == 1)
-                            <a href="#" onclick="viewPayments('{{$bill->id}}')" class="flex items-center justify-center whitespace-nowrap text-success"> 
-                                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed 
-                                {{-- <span id="cl{{}}" class="d"></span> --}}
-                            </a>
+                            <span  class="flex items-center justify-center whitespace-nowrap text-success"> 
+                                <a href="#" id="a{{$bill->id}}" onclick="viewPayments('{{$bill->id}}')"><i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </a>
+                                <span style="display:none"  id="cl{{$bill->id}}" class="initLoad">
+                                    <img src="{{ asset('public/img/4.gif') }}">
+                                </span>
+                            </span>
                             @else
                                 @hasrole('admin')
-                                    <a href="{{ route('bpb', ['id' => $bill->id])}}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Pay Now </a> 
+                                    <a href="{{ route('bpb', ['id' => $bill->id])}}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Bypass </a> 
                                 @else
                                     <a href="{{ route('pay') }}" class="flex items-center justify-center whitespace-nowrap text-danger"> <i data-lucide="wallet" class="w-4 h-4 mr-2"></i> Proceed to Payments </a> 
                                 @endhasrole
@@ -259,7 +261,10 @@
 @endsection
 <script>
     const viewPayments = (id) => {
+        
         const url = `/nsansawellness/payment-details/${id}`;
+        document.getElementById('cl'+id).style.display = 'none';
+        document.getElementById('a'+id).style.display = 'block';
         document.getElementById('pIDText').textContent = '';
         document.getElementById('pDateText').textContent = '';
         document.getElementById('amtText').textContent = '';

@@ -45,7 +45,7 @@ class CounsellorController extends Controller
     public function details($id) 
     {
         $videocalls = SessionUsage::where('counselor_id', $id)->get();
-        $user = User::where('id', $id)->first();
+        $user = User::with('myfiles')->where('id', $id)->first();
         return view('page.counselors.details', [
             'user' => $user,
             'videocalls' => $videocalls,

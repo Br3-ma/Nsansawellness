@@ -106,7 +106,7 @@
                     </a>
                     <a title="View commissions" href="{{ route('counselor.details', $file->id) }}" class="tooltip btn btn-warning text-white py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
-                        Sessions Conducted
+                        Details
                     </a>
                 </div>
             </div>

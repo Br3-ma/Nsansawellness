@@ -22,6 +22,32 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="dist/css/app.css" />
         <!-- END: CSS Assets-->
+        <style>
+            .file-input-container {
+                position: relative;
+                overflow: hidden;
+                display: inline-block;
+            }
+
+            .file-input {
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+            }
+
+            .file-input-button-1, .file-input-button-2, .file-input-button-3, .file-input-button-4 {
+                padding: 10px 15px;
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <!-- END: Head -->
     <body class="bg-white">
@@ -51,7 +77,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!-- END: Register Info -->
                 <!-- BEGIN: Register Form -->
-                <form method="POST" action="{{ route('register') }}" >
+                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @csrf
                     <div style="box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;" class="lg:mt-5 mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 px-5 sm:px-8 py-8 xl:p-4 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
                          <h6 class="intro-x text-default text-xs xl:text-sm text-center xl:text-left">
@@ -91,9 +117,11 @@ License: You must have a valid license purchased only from themeforest(the above
                         {{--
                         <div class="intro-x mt-2 text-slate-400 dark:text-slate-400 xl:hidden text-center">Thank you for your interest! Please create your <span class="text-success">{{ $role ?? 'therapist' }}</span> account so we can start processing your application.</div> --}}
                         <div class="intro-x mt-8">
-                            <input type="text" id="fname" name="fname" class="intro-x login__input form-control py-3 px-4 block" placeholder="First Name">
-                            <br>
-                            <input type="text" id="lname" name="lname" class="intro-x login__input form-control py-3 px-4 block" placeholder="Last Name">
+                            <div class="flex gap-2">
+                                <input type="text" id="fname" name="fname" class="intro-x login__input form-control py-3 px-4 block" placeholder="First Name">
+    
+                                <input type="text" id="lname" name="lname" class="intro-x login__input form-control py-3 px-4 block" placeholder="Last Name">
+                            </div>
                             @if(request()->get('role') != 'patient')
                             <input type="hidden" id="type" name="type" value="counsellor">
                             @else
@@ -102,19 +130,40 @@ License: You must have a valid license purchased only from themeforest(the above
                             <input type="hidden" id="role" name="role" value="{{ request()->get('role') }}">
                             <input type="hidden" name="guest_id" value="{{ request()->get('guest_id') }}">
                             @if (request()->get('role') != 'patient')
-                            <input type="text" id="liecense" name="liecense" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Liecense">
+                            {{-- <input type="text" id="liecense" name="liecense" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Liecense"> --}}
                             @endif
                             <input type="email" id="email" @error('email') is-invalid @enderror name="email" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Email Address">
 
                             <input type="password"  @error('password') is-invalid @enderror id="password" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password">
+                            
                             {{-- <div class="intro-x w-full grid grid-cols-12 gap-4 h-1 mt-3">
-                                <div class="col-span-3 h-full rounded bg-success"></div>
-                                <div class="col-span-3 h-full rounded bg-success"></div>
-                                <div class="col-span-3 h-full rounded bg-success"></div>
+                                <div id="firstrule" class="col-span-3 h-full rounded"></div>
+                                <div id="secondrule" class="col-span-3 h-full rounded"></div>
+                                <div id="thirdrule" class="col-span-3 h-full rounded"></div>
                                 <div class="col-span-3 h-full rounded bg-slate-100 dark:bg-darkmode-800"></div>
-                            </div>
-                            <a href="" class="intro-x text-slate-500 block mt-2 text-xs sm:text-sm">What is a secure password?</a>  --}}
+                            </div> --}}
+                            <div id="password-feedback" class="intro-x text-slate-500 block mt-2 text-xs sm:text-sm"></div> 
                             <input type="password" id="password-confirm" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password Confirmation">
+                            
+                            {{-- Uploads --}}
+                            <div class="flex py-2 gap-2">
+                                <div class="file-input-container">
+                                    <input type="file" class="file-input" name="nrc_doc" id="nrc_doc">
+                                    <button class="file-input-button-1" type="button">NRC Document</button>
+                                </div> 
+                                <div class="file-input-container">
+                                    <input type="file" class="file-input" name="cv_doc" id="cv_doc">
+                                    <button class="file-input-button-2" type="button">C.V Document</button>
+                                </div> 
+                                <div class="file-input-container">
+                                    <input type="file" class="file-input" name="license_doc" id="license_doc">
+                                    <button class="file-input-button-3" type="button">License Document</button>
+                                </div> 
+                                <div class="file-input-container">
+                                    <input type="file" class="file-input" name="cert_doc" id="cert_doc">
+                                    <button class="file-input-button-4" type="button">Certificate Document</button>
+                                </div>  
+                            </div>
                         </div>
                         <div class="intro-x flex items-center text-slate-600 dark:text-slate-500 mt-4 text-xs sm:text-sm">
                             <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
@@ -136,5 +185,60 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN: JS Assets-->
         <script src="dist/js/app.js"></script>
         <!-- END: JS Assets-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            $('#password').on('input', function() {
+                var password = $(this).val();
+                var hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password);
+                var hasCapital = /[A-Z]/.test(password);
+                var hasNumber = /[0-9]/.test(password);
+                
+                var feedback = '';
+                
+                if (!hasSymbol) {
+                    feedback += 'Password must have at least one symbol (!@#$%^&*?).<br>';
+                }else{
+                    // $('#thirdrule').addClass('bg-success');
+                }
+                
+                if (!hasCapital) {
+                    feedback += 'Password must have at least one capital letter.<br>';
+                }else{
+                    // $('#firstrule').addClass('bg-success');
+                }
+                
+                if (!hasNumber) {
+                    feedback += 'Password must have at least one number.<br>';
+                }else{
+                    // $('#secondrule').addClass('bg-success');
+                }
+                
+                $('#password-feedback').html(feedback);
+            });
+
+
+            $('#nrc_doc').on('change', function() {
+                var fileName = $(this).val().split('\\').pop();
+                $('.file-input-button-1').text('Done');
+                // $('.file-input-button-1').b
+            });
+
+            $('#cv_doc').on('change', function() {
+                var fileName = $(this).val().split('\\').pop();
+                $('.file-input-button-2').text('Done');
+            });
+
+            $('#cert_doc').on('change', function() {
+                var fileName = $(this).val().split('\\').pop();
+                $('.file-input-button-4').text('Done');
+            });
+
+            $('#license_doc').on('change', function() {
+                var fileName = $(this).val().split('\\').pop();
+                $('.file-input-button-3').text('Done');
+            });
+        });
+        </script>
     </body>
 </html>

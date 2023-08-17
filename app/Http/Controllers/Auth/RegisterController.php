@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\MyFile;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\UserFile;
 use App\Notifications\NewUserNotification;
 use App\Notifications\NsansaWellnessCounselor;
 use App\Notifications\Welcome;
@@ -12,6 +14,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Pusher\Pusher;
 
@@ -76,7 +79,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        DB::beginTransaction();
+        
+        // DB::beginTransaction();
         try {
             $admin = User::first();
             $user = User::create([
@@ -96,10 +100,59 @@ class RegisterController extends Controller
                 // 'password' => Hash::make($data['password']),
             ]);
 
+            $mf = MyFile::create([
+                'user_id' => $user->id
+            ]);
+
+            if (array_key_exists('nrc_doc', $data)) {
+                $nrcDoc = $data['nrc_doc'];
+    
+                if ($nrcDoc instanceof \Illuminate\Http\UploadedFile && $nrcDoc->isValid()) {
+                    $path = Storage::disk('public')->putFile('ufiles', $nrcDoc);
+    
+                    // Store the $path in your database or perform other actions related to the uploaded file
+                    $mf->nrc_file = $path;
+                    $mf->save();
+                }
+            }
+            if (array_key_exists('cv_doc', $data)) {
+                $cvDoc = $data['cv_doc'];
+    
+                if ($cvDoc instanceof \Illuminate\Http\UploadedFile && $cvDoc->isValid()) {
+                    $path = Storage::disk('public')->putFile('ufiles', $cvDoc);
+    
+                    // Store the $path in your database or perform other actions related to the uploaded file
+                    $mf->cv_file = $path;
+                    $mf->save();
+                }
+            }
+            if (array_key_exists('cert_doc', $data)) {
+                $certDoc = $data['cert_doc'];
+    
+                if ($certDoc instanceof \Illuminate\Http\UploadedFile && $certDoc->isValid()) {
+                    $path = Storage::disk('public')->putFile('ufiles', $certDoc);
+    
+                    // Store the $path in your database or perform other actions related to the uploaded file
+                    $mf->cert_file = $path;
+                    $mf->save();
+                }
+            }
+            if (array_key_exists('license_doc', $data)) {
+                $licenseDoc = $data['license_doc'];
+    
+                if ($licenseDoc instanceof \Illuminate\Http\UploadedFile && $licenseDoc->isValid()) {
+                    $path = Storage::disk('public')->putFile('ufiles', $licenseDoc);
+    
+                    // Store the $path in your database or perform other actions related to the uploaded file
+                    $mf->license_file = $path;
+                    $mf->save();
+                }
+            }
+            
             $payload = [
                 'sender_id' => $user->id,
                 'name' => $user->fname.' '.$user->lname,
-                'sender' => 'NsansaWellness Group'
+                'sender' => 'Nsansa Wellness Group'
             ];
 
             if($data['type'] == 'patient'){
@@ -116,10 +169,11 @@ class RegisterController extends Controller
         
             // Send a notification to Admin about the new user
             $admin->notify(new NewUserNotification($payload));
-            DB::commit();
+            // DB::commit();
         return $user;
         } catch (\Throwable $th) {
-            DB::rollBack();
+            dd($th);
+            // DB::rollBack();
             return redirect()->back()->with('message', 'An email could not be sent you. please check again');
         }
     }

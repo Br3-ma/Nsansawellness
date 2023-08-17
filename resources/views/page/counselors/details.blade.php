@@ -98,7 +98,7 @@
                 <!-- BEGIN: Latest Tasks -->
                 <div class="intro-y box col-span-12 lg:col-span-12 video-tab">
                     <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
-                        <h2 class="font-medium text-base mr-auto">
+                        <h2 class="font-extrabold text-base mr-auto">
                             Conducted Video Call Sessions
                         </h2>
                         <ul class="nav nav-link-tabs w-auto ml-auto hidden sm:flex" role="tablist" >
@@ -152,30 +152,50 @@
 
 
                 <div class="intro-y box col-span-12 lg:col-span-12 commision-tab">
-                    <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
-                        <h2 class="font-medium text-base mr-auto">
-                            Commission
+                    <div class="flex items-center px-5 py-10 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
+                        <h2 class="font-extrabold text-base mr-auto py-5">
+                            Uploaded Documents
                         </h2>
-                        {{-- <ul class="nav nav-link-tabs w-auto ml-auto hidden sm:flex" role="tablist" >
-                            <li id="latest-tasks-new-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-5 active" data-tw-target="#latest-tasks-new" aria-controls="latest-tasks-new" aria-selected="true" role="tab" > New </a> </li>
-                            <li id="latest-tasks-last-week-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-5" data-tw-target="#latest-tasks-last-week" aria-selected="false" role="tab" > Last Week </a> </li>
-                        </ul> --}}
-                        <div class="dropdown ml-auto">
-                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                            <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
-                                <ul class="dropdown-content">
-                                    <li> 
-                                        <a href="{{  route('appointment') }}" class="dropdown-item"> <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Schedule Session </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="p-5">
                         <div class="tab-content">
-                            <div id="latest-tasks-new" class="tab-pane active" role="tabpanel" aria-labelledby="latest-tasks-new-tab">
+                            <div id="latest-tasks-new" class="tab-pane active w-full flex gap-3" role="tabpanel" aria-labelledby="latest-tasks-new-tab">
                                 
-                          
+                                    @if ($user->myfiles)
+                                        
+                                        @forelse ($user->myfiles as $key => $file )
+                                        <div class='shadow px-4 py-4 w-1/2'>
+                                            <div class="mb-4">
+                                                <iframe src="{{ asset('public/ufiles/'.$file->nrc_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
+                                            </div>
+                                            <a href="{{ asset('/public/ufiles/'.$file->nrc_file) }}" class="text-purple-500 hover:underline" target="_blank">View NRC</a>
+                                        </div>
+                                        <div class='shadow px-4 py-4 w-1/2'>
+                                            <div class="mb-4">
+                                                <iframe src="{{ asset('public/ufiles/'.$file->cv_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
+                                            </div>
+                                            <a href="{{ asset('/public/ufiles/'.$file->cv_file) }}" class="text-purple-500 hover:underline" target="_blank">View CV</a>
+                                        </div>
+                                        <div class='shadow px-4 py-4 w-1/2'>
+                                            <div class="mb-4">
+                                                <iframe src="{{ asset('public/ufiles/'.$file->cert_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
+                                            </div>
+                                            <a href="{{ asset('/public/ufiles/'.$file->cert_file) }}" class="text-purple-500 hover:underline" target="_blank">View Certificate</a>
+                                        </div>
+                                        <div class='shadow px-4 py-4 w-1/2'>
+                                            <div class="mb-4">
+                                                <iframe src="{{ asset('public/ufiles/'.$file->license_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
+                                            </div>
+                                            <a href="{{ asset('/public/ufiles/'.$file->license_file) }}" class="text-purple-500 hover:underline" target="_blank">View License</a>
+                                        </div>
+                                        @empty
+                                            
+                                        @endforelse
+                                    @else
+                                        <p>No NRC document uploaded.</p>
+                                    @endif
+                                    
                             </div>
                         </div>
                     </div>

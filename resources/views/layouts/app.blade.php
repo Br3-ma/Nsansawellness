@@ -638,7 +638,7 @@
                     @endcan
 
                     @can('billing')
-                        @hasallroles(['admin','administrator','patient'])
+                        @hasanyrole(['admin','administrator','patient'])
                         <li data-tg-tour="Check your billing history."
                             data-tg-title="Billing"
                             data-tg-group="my-fourth-tour"
@@ -950,9 +950,9 @@
             <h1 class="text-lg font-bold text-success" id="flash"></h1>
             <a href="#" class="btn btn-primary item-center" id="doneRating" onclick="reloadPage()">Back</a>
     </div>
-    <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
+    {{-- <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
         <img src="{{ asset('public/img/1.gif') }}">
-    </div>
+    </div> --}}
     
     @livewireScripts 
     <script src="https://unpkg.com/@sjmc11/tourguidejs/dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
