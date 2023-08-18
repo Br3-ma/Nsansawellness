@@ -209,7 +209,7 @@
                         <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Personalize Counseling</div>
                         <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Home work & Activities</div>
                         {{-- <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/wrong.svg" alt="">Converted to responsive components</div> --}}
-                    </div>
+                </div>
                 </div>
                 <div class="card-button">
                     @php

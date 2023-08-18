@@ -129,6 +129,11 @@ class QuestionaireController extends Controller
         return view('page.questionaires.edit', compact('question'));
     }
 
+
+    public function update_question(Request $request){
+        
+    }
+
     /**
      * Update the specified resource in storage.
      *
