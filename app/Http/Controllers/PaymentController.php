@@ -69,10 +69,12 @@ class PaymentController extends Controller
     }
 
     public function bill($id){
+        $gateway = 'sparco';
         try {
             $billing = $this->create_billing($id);
             return view('page.payment-summary',[
-                'billing' => $billing
+                'billing' => $billing,
+                'gateway' => $gateway
             ]);
         } catch (\Throwable $th) {
             return redirect()->back();
