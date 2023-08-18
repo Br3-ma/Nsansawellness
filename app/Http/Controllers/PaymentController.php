@@ -8,12 +8,13 @@ use App\Models\User;
 use App\Traits\BillingTrait;
 use App\Traits\CounselorTrait;
 use App\Traits\PaymentTrait;
+use App\Traits\SparcoTrait;
 use App\Traits\SubscriptionTrait;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {    
-    use SubscriptionTrait, BillingTrait, CounselorTrait, PaymentTrait;
+    use SubscriptionTrait, BillingTrait, CounselorTrait, PaymentTrait, SparcoTrait;
     public $users, $payments, $plans;
     /**
      * Create a new controller instance.
@@ -72,10 +73,14 @@ class PaymentController extends Controller
         $gateway = 'sparco';
         try {
             $billing = $this->create_billing($id);
-            return view('page.payment-summary',[
-                'billing' => $billing,
-                'gateway' => $gateway
-            ]);
+            if($billing !== false){
+                return view('page.payment-summary',[
+                    'billing' => $billing,
+                    'gateway' => $gateway
+                ]);
+            }else{
+                return redirect()->back();
+            }
         } catch (\Throwable $th) {
             return redirect()->back();
         }
@@ -86,6 +91,11 @@ class PaymentController extends Controller
         $data = $this->requestPayment($request);
         $data = $this->getAllTransactions();
         return $data;
+    }
+
+    public function sparco_collect(Request $request){
+        $data = $this->collect($request->toArray());
+        dd($data);
     }
 
     /**

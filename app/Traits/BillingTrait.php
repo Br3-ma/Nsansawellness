@@ -47,15 +47,20 @@ trait BillingTrait {
                 }
                 else{
                     $update = Billing::current_bill();
-                    $update->charge_amount = $plan->price;
-                    $update->plan_id = $plan->id;
-                    $update->balance = $plan->price;
-                    $update->desc = $plan->name;
-                    $update->save();
-                    return $update;
+                    // dd($update);
+                    if($update !== 0){
+                        $update->charge_amount = $plan->price;
+                        $update->plan_id = $plan->id;
+                        $update->balance = $plan->price;
+                        $update->desc = $plan->name;
+                        $update->save();
+                        return $update;
+                    }else{
+                        return false;
+                    }
                 }
             } catch (\Throwable $th) {
-                dd($th);
+                // dd($th);
                 return false;
             }
         }

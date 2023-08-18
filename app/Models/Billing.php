@@ -55,7 +55,6 @@ class Billing extends Model
     // Returns the last billing to pay
     public static function current_bill(){
         return Billing::where('user_id',  auth()->user()->id)
-                        ->where('status', 0)
                         ->latest()->first() ?? 0;
     }
 

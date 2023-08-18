@@ -1,310 +1,355 @@
-<style>
-    /*
-      ========================================
-      Reset & Basic Styles
-      ========================================
-    */
-    *,
-    *:after,
-    *:before {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font: 16px 'Ubuntu', Arial, sans-serif;
-    }
-    .container,
-    .row {
-      width: 1000px;
-      margin: 0 auto;
-    }
-    .row {
-      margin-bottom: 50px;
-    }
-    .row-alt {
-      background: #F4FAFB;
-      padding: 45px 0;
-      margin-bottom: 50px;
-    }
-    .col-1,
-    .col-2,
-    .col-3 {
-      display: inline-block;
-      vertical-align: top;
-    }
-    .col-1 { width: 180px; }
-    .col-2 { width: 565px; }
-    .col-3 { width: 750px; }
-    
-    /*
-      ========================================
-      Payment
-      ========================================
-    */
-    .payment {
-      margin-top: 60px;
-    }
-    .payment h1 {
-      font-size: 26px;
-      font-weight: 300;
-      line-height: 28px;
-      color: #0d2b3e;
-      width: 1000px;
-      margin: 0 auto 40px;
-    }
-    .payment h1:before {
-      content: '';
-      float: left;
-      width: 28px;
-      height: 28px;
-      margin-right: 10px;
-      background: url("../uploads/sites/304/2022/06/logos.svg");  
-    }
-    
-    /*
-      ========================================
-      Custom list
-      ========================================
-    */
-    .card-list {
-      background: url("https://stripe.com/img/v3/pricing/payments/card-brands.svg") no-repeat;
-      height: 25px;
-      margin-top: 10px;
-    }
-    .card-list li {
-      display: inline-block;
-      text-indent: -999em;
-    }
-    .features-list {
-      list-style-position: inside;
-      color: #566b78;
-      margin-top: 20px;
-      overflow: auto;
-    }
-    .features-list li {
-      float: left;
-      width: 33.33%;
-      margin-bottom: 15px;
-    }
-    
-    /*
-      ========================================
-      Icons
-      ========================================
-    */
-    .icons {
-      text-align: right;
-      margin-right: 40px;
-    }
-    .icons img {
-      margin-left: 5px;
-      margin-top: 20px;
-    }
-    .row-alt .icons img {
-      margin-top: 80px;
-    }
-    
-    /*
-      ========================================
-      Info
-      ========================================
-    */
-    .info h2 {
-      color: #0d2b3e;
-      font-size: 19px;
-      margin-bottom: 10px;
-    }
-    .info h3 {
-      color: #566b78;
-      font-weight: 500;
-      margin: 20px 0 5px;
-    }
-    .info .description {
-      width: 100%;
-      padding: 5px 40px 5px 0;
-      border-right: 1px solid rgba(52,21,112,.075);
-    }
-    .row-alt .info .description {
-      border-right: none;
-    }
-    .info .description p {
-      color: #566b78;
-      line-height: 22px;
-    }
-    .info .description p a {
-      color: #008cdd;
-      text-decoration: none;
-    }
-    .info .description p a:hover {
-      color: #003f5e;
-    }
-    
-    /*
-      ========================================
-      Price
-      ========================================
-    */
-    .price {
-      vertical-align: bottom;
-      margin-bottom: 25px;
-    }
-    .price p {
-      margin-left: 35px;
-      font-size: 24px;
-      font-weight: 300;
-      color: #00ab1c;
-    }
-    .payment h1 + .row .price {
-      margin-bottom: 55px;
-    }
-    
-    button {
-       border: 1px solid #621ebc;
-       background: #421a68;;
-       padding: 10px 25px;
-       color: #ffffff;
-       cursor: pointer;
-         float:right;
-    }
-    button:hover {
-       background: #1e48bc;
-       color: #fff;
-    }
-    </style>
-    <div style="width: 100%">
-        <a href="{{ route('welcome') }}" style="padding:2%">
-            <img width="50" src="../uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" />
-        </a>
-    </div>
-    <section class="payment">
-        <h1>Payments</h1>
-        
-        <div class="row">
-            <div class="col-1 icons">
-              <img src="https://stripe.com/img/v3/pricing/payments/section-cards.svg" width="70" height="70" alt="cards logo">
-            </div>
-            <div class="col-2 info">
-              <h2>Payment Summary</h2>
-              <div class="description">
-                <p class="py-4">
-                    Thank you for choosing our therapy platform and entrusting us with your emotional well-being. 
-                    Here's a summary of your payment details:
-                </p>
-                <br>
-                <p>
-                    Package: {{ $billing->desc }}
-                    Billing Amount: K{{ $billing->charge_amount }}
-                    Thank you again for choosing Nsansawellness Online Therapy. 
-                    We are honored to be a part of your healing process and are 
-                    committed to delivering the highest level of service and support.
-                </p>
-                <br>
-                {{-- <p>We charge a percentage-based fee each time you accept a credit or debit card payment. The price is the same for all major cards, including American Express. There’s no additional fee for international cards, failed charges, or refunds.</p> --}}
-                <ul class="card-list">
-                  <li class="card-visa">Visa</li>
-                  <li class="card-masterCard">Master Card</li>
-                  <li class="card-dinersClub">Airtel Money</li>
-                  <li class="card-dinersClub">MTN Money</li>
-                  <li class="card-dinersClub">Zamtel Kwacha</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-1 price">
-              <p>ZMW {{ $billing->charge_amount }}</p>  
-            </div>
-            <div style="width: 100%; justify-content:center;" class="items-center">
-              <form id="payment_form" action="http://95.179.223.128:4200/pbs/payments" method="post">                       
-                {{-- <label class="form-label">System ID</label><br/> --}}
-                <input id="system_id" type="hidden" class="form-control" name="systemId" value="PBS-Super Merchant">
-                <input type="hidden" class="form-control" name="responseMethod" value="">
-                <input type="hidden" class="form-control" name="sourceInstitution" value="Nsansa Wellness Services Limited">
-  
-                {{-- <label>External Reference</label><br/> --}}
-                <input type="hidden" id="external_ref" class="form-control"  name="paymentReference">
-  
-                {{-- <label> Redirect Url </label><br/> --}}
-                <input type="hidden" class="form-control" value="http://localhost:90/nsansawellness/transaction-summary/{{ auth()->user()->id}}/{{ $billing->id }}" id="redirectUrl"  name="redirectUrl" >
-  
-                {{-- <label> Payment Type </label><br/> --}}
-                {{-- <input type="text" class="form-control"  id="paymentType"  name="paymentType" > --}}
-  
-                {{-- <label>Customer Type</label><br/> --}}
-                <input value="cooperate" type="hidden" name="customerType" class="form-control" id="client_type">
-                {{-- <input  value="retail" name="customerType" class="form-control" id="client_type"> --}}
-  
-                {{-- <label>Company Name</label><br/> --}}
-                <input type="hidden" value="Nsansa Wellness Services Limited" id="company_name" class="form-control"  name="companyName">
-                
-                {{-- <label> T-PIN </label><br/> --}}
-                <input type="hidden" id="tpin" class="form-control" value="1234567890" name="tpin">
-  
-                {{-- <label>First Name</label><br/> --}}
-                <input type="hidden" id="first_name" class="form-control" value="{{ auth()->user()->fname }}"  name="firstName">
-  
-                {{-- <label>Last Name</label><br/> --}}
-                <input type="hidden" id="last_name" class="form-control" value="{{ auth()->user()->lname }}" name="lastName">
-  
-                {{-- <label>National ID</label><br/> --}}
-                <input id="nrc" class="form-control" type="hidden" value="{{ auth()->user()->nrc_id }}" name="nationalId">
-  
-                {{-- <label>Mobile</label><br/> --}}
-                <input id="mobile" class="form-control" type="hidden" value="{{ auth()->user()->mobile_no ?? '260973282857'}}"  name="mobile">
-  
-                {{-- <label> Payment Description </label><br/> --}}
-                <input type="hidden" class="form-control" id="description" value="Nsansawellness counseling services"  name="paymentDescription" />
-  
-                {{-- <label> Expiry date </label><br/> --}}
-                <input class="form-control" type="hidden" id="expiry" value="" name="expiryDate">
-                <input class="form-control" type="hidden"  name="password" value="qq!q/Db[pSTn@NbcdS9S">
-                
-                <input type="hidden"{{ auth()->user()->id }} name="user_id" />
-                <input type="hidden" value="{{ $billing->plan_id ?? 1 }}" name="plan_id" />
-                <input type="hidden" value="{{ $billing->charge_amount }}" id="amount" name="amount" />
-                <button style="float: right" type="submit">
-                    Proceed to Payments
-                </button>
-              </form>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+         * {
+             padding: 0;
+             margin: 0;
+             box-sizing: border-box;
+        }
+         body {
+             background-color: #e7e7e7;
+             width: 100%;
+             height: 100vh;
+             font-family: "Roboto", sans-serif;
+        }
+         body .pricing-card {
+             width: 400px;
+             min-height: 300px;
+             height: auto;
+             background: #fff;
+             border-radius: 10px;
+             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.286);
+             padding: 50px;
+             display: flex;
+             flex-direction: column;
+             row-gap: 20px;
+             position: absolute;
+             top: 10%;
+             left: 50%;
+             transform: translateX(-50%);
+        }
+         body .pricing-card .card-header {
+             width: 100%;
+             height: 60px;
+             padding: 10px;
+             border: 1px solid #ededed;
+             border-radius: 10px;
+        }
+         body .pricing-card .card-header .card-btn-parent {
+             width: 100%;
+             height: 100%;
+             display: flex;
+             position: relative;
+        }
+         body .pricing-card .card-header .card-btn-parent button {
+             width: calc(100%/3);
+             height: 100%;
+             border: 0;
+             border-radius: 7px;
+             background-color: transparent;
+             cursor: pointer;
+             z-index: 1;
+             font-weight: 500;
+             transition: color 0.5s ease;
+        }
+         body .pricing-card .card-header .card-btn-parent button:nth-of-type(1).active, body .pricing-card .card-header .card-btn-parent button:nth-of-type(1).active ~ div {
+             left: 0px;
+             color: #fff;
+        }
+         body .pricing-card .card-header .card-btn-parent button:nth-of-type(2).active, body .pricing-card .card-header .card-btn-parent button:nth-of-type(2).active ~ div {
+             left: calc(100%/3);
+             color: #fff;
+        }
+         body .pricing-card .card-header .card-btn-parent button:nth-of-type(3).active, body .pricing-card .card-header .card-btn-parent button:nth-of-type(3).active ~ div {
+             left: calc(calc(100%/3)*2);
+             color: #fff;
+        }
+         body .pricing-card .card-header .card-btn-parent div {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: calc(100%/3);
+             height: 100%;
+             background: #0b7f9c;
+             border-radius: 7px;
+             transition: left 0.5s ease;
+        }
+         body .pricing-card .card-body {
+             display: flex;
+             width: 100%;
+             padding: 10px 20px;
+        }
+         body .pricing-card .card-body > div {
+             width: 100%;
+             height: auto;
+             display: none;
+        }
+         body .pricing-card .card-body > div .card-plans {
+             width: 100%;
+             display: flex;
+             flex-direction: column;
+             row-gap: 5px;
+        }
+         body .pricing-card .card-body > div .card-plans span {
+             color: gray;
+             font-weight: 500;
+             font-size: 13px;
+             letter-spacing: 0.5px;
+        }
+         body .pricing-card .card-body > div .card-plans div {
+             display: flex;
+             justify-content: space-between;
+        }
+         body .pricing-card .card-body > div .card-plans div h3 {
+             font-size: 24px;
+        }
+         body .pricing-card .card-body > div .card-content {
+             margin-top: 25px;
+        }
+         body .pricing-card .card-body > div .card-content > p {
+             line-height: 20px;
+             font-size: 14px;
+             font-weight: 400;
+        }
+         body .pricing-card .card-body > div .card-content .card-lists {
+             margin-top: 20px;
+             display: flex;
+             flex-direction: column;
+             row-gap: 10px;
+        }
+         body .pricing-card .card-body > div .card-content .card-lists .card-list {
+             display: flex;
+             column-gap: 10px;
+             font-size: 14px;
+        }
+         body .pricing-card .card-body > div .card-content .card-lists .card-list img {
+             width: 15px;
+        }
+         body .pricing-card .card-body > div .card-button {
+             margin-top: 35px;
+        }
+         body .pricing-card .card-body > div .card-button button {
+             border: 0;
+             width: 100%;
+             height: 40px;
+             background-color: #4e1a50;
+             border-radius: 20px;
+             color: #fff;
+             font-size: 14px;
+             cursor: pointer;
+             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.286);
+             letter-spacing: 0.5px;
+             font-weight: 500;
+        }
+         body .pricing-card .card-body > div.active {
+             display: block;
+        }
+         @media screen and (max-width: 400px) {
+             body .pricing-card {
+                 width: 320px;
+                 padding: 25px;
+            }
+        }
+        body .input-container {
+        width: 300px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .label {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        }
+
+        body input[type="tel"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        }
+
+        body input[type="tel"]:focus {
+        outline: none;
+        border-color: #005aa5;
+        }
+        </style>
+           
+</head>
+<body>
+    <div class="pricing-card">
+        <div class="card-header">
+            <div class="card-btn-parent">
+                <button id="basic-plan" class="active">Airel Money</button>
+                <button id="standard-plan">MTN Money</button>
+                <button id="premium-plan">Visa</button>
+                <div class="overlay"></div>
             </div>
         </div>
-      
-        {{-- <div class="row info">
-          <div class="col-1 icons">
-            <img src="https://stripe.com/img/v3/pricing/payments/section-disputes.svg" width="70" height="70" alt="disputes logo">
-          </div>
-          <div class="col-2 info">
-            <h2>Disputes</h2>
-            <div class="description">
-              <p>Disputed payments, such as chargebacks, incur a fee. If the customer’s bank resolves the dispute in your favor, the fee is fully refunded. <a href="#" class="ico-arrow">Learn more</a></p>
+        <div class="card-body">
+
+            <div id="card-basic-plan" class="active">
+                <div class="card-plans">
+                    <span class="plan-tag">Airtel Mobile Money</span>
+                    <div class="card-plan">
+                        <h3 class="plan-title">Total</h3>
+                        <h3 class="plan-price">ZK {{ $billing->charge_amount }}</h3>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>Make an instant mobile money payment</p>
+                    <div class="card-lists">
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">24 hours daily support</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Chat messages</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Video calls</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Personalize Counseling</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Home work & Activities</div>
+                        {{-- <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/wrong.svg" alt="">Converted to responsive components</div> --}}
+                    </div>
+                </div>
+                <div class="card-button">
+                    @php
+                        $randomStr = Illuminate\Support\Str::random(5);
+                        $transRef = Illuminate\Support\Str::random(7);
+                    @endphp
+                    <form action="{{ route('pay-w-sparco') }}" method="POST" id="airtelform">
+                        @csrf
+                        <div class="input-container">
+                            <input type="tel" id="contact" name="wallet" placeholder="Mobile number">
+                        </div>
+                        <input type="hidden" name="amount" value="{{ $billing->charge_amount }}">
+                        <input type="hidden" name="currency" value="ZMW">
+                        <input type="hidden" name="customerFirstName" value="{{ auth()->user()->fname }}">
+                        <input type="hidden" name="customerLastName" value="{{ auth()->user()->lname }}">
+                        <input type="hidden" name="merchantPublicKey" value="name">
+                        <input type="hidden" name="transactionName" value="NSANSTR#".{{ $randomStr }}>
+                        <input type="hidden" name="transactionReference" value="{{ $transRef }}">
+                        <input type="hidden" name="chargeMe" value="true">
+                        <input type="hidden" name="{{ auth()->user()->email }}" name="customerEmail">
+                        <br>
+                        <button type="submit">Pay</button>
+                    </form>
+                </div>
             </div>
-          </div>
-          <div class="col-1 price">
-            <p>$15.00 or $0</p>
-          </div>
-        </div> --}}
-    </section>
+            <div id="card-standard-plan">
+                <div class="card-plans">
+                    <span class="plan-tag">MTN Mobile Money</span>
+                    <div class="card-plan">
+                        <h3 class="plan-title">Total</h3>
+                        <h3 class="plan-price">ZK {{ $billing->charge_amount }}</h3>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>Make an instant mobile money payment</p>
+                    <div class="card-lists">
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">24 hours daily support</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Chat messages</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Video calls</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Personalize Counseling</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Home work & Activities</div>
+                    </div>
+                </div>
+                <div class="card-button">
+                    <button>Pay</button>
+                </div>
+            </div>
+            <div id="card-premium-plan">
+                <div class="card-plans">
+                    <span class="plan-tag">Visa & Master Card</span>
+                    <div class="card-plan">
+                        <h3 class="plan-title">Total</h3>
+                        <h3 class="plan-price">ZK {{ $billing->charge_amount }}</h3>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <p>Make an instant credit card payment</p>
+                    <div class="card-lists">
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">24 hours daily support</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Chat messages</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Video calls</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Personalize Counseling</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Home work & Activities</div>
+                    </div>
+                </div>
+                <div class="card-button">
+                    <button>Pay</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
   
-    <script>
-      // let retail = document.getElementById('retail');
-      // let co_operate = document.getElementById('co_operate');
-      // const play = () => {
-      //     if (document.getElementById('client_type').value === "cooperate"){
-      //         retail.style.display = "none";
-      //         co_operate.style.display = "block";
-      //     } else{
-      //         co_operate.style.display = "none";
-      //         retail.style.display = "block";
-      //     }
-      // }
-      // play();
-  
-      client_type.onchange = () => {play()}
-      const ref = () => {
-          let result = '';
-          let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-          let charactersLength = characters.length;
-          for ( var i = 0; i < 15; i++ ) {
-              result += characters.charAt(Math.floor(Math.random() * charactersLength));
-          }
-          document.getElementById('external_ref').value = result;
-      }
-      ref();
-  </script>
+<script>
+const planBtns = document.querySelectorAll(".card-btn-parent button");
+const plans = document.querySelectorAll(".card-body > div");
+
+planBtns.forEach(planBtn => {
+    planBtn.addEventListener("click", function() {
+        removeClass();
+        this.classList.add("active");
+        let btnVal = this.getAttribute("id");
+        let btnId = "#card-"+btnVal;
+        document.querySelector(btnId).classList.add("active");
+    })
+})
+
+function removeClass() {
+    planBtns.forEach(planBtn => {
+        if(planBtn.classList.contains("active")) {
+            planBtn.classList.remove("active");
+        }
+    });
+    plans.forEach(plan => {
+        if(plan.classList.contains("active")) {
+            plan.classList.remove("active");
+        }
+    });
+}
+
+client_type.onchange = () => {play()}
+const ref = () => {
+    let result = '';
+    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let charactersLength = characters.length;
+    for ( var i = 0; i < 15; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    document.getElementById('external_ref').value = result;
+}
+ref();
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#submitBtn').click(function() {
+            event.preventDefault();
+            const form = $('#airtelform')[0];
+            const formData = new FormData(form);
+            
+            $.ajax({
+                type: 'POST',
+                url: form.action,
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Handle success, e.g., redirect or display a success message
+                    console.log('Payment successful!');
+                },
+                error: function(xhr, status, error) {
+                    // Handle error, e.g., display an error message
+                    console.error('Payment failed', error);
+                }
+            });
+        });
+    });
+</script>
+
+</html>
