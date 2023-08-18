@@ -154,9 +154,11 @@
                         </td>
                         @endhasrole
                         <td class="text-center">
-                            @if($bill->status == 1)
-                            <span  class="flex items-center justify-center whitespace-nowrap text-success"> 
-                                <a href="#" id="a{{$bill->id}}" onclick="viewPayments('{{$bill->id}}')"><i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed </a>
+                            @if($bill->status == 2)
+                            <span  class="w-full flex items-center justify-center whitespace-nowrap text-success font-extrabold text-sm"> 
+                                <a href="#" id="a{{$bill->id}}" class="flex gap-2" onclick="viewPayments('{{$bill->id}}')">
+                                    <i data-lucide="check-square" class="w-4 h-4 mr-2"></i>
+                                    Paid | View Payment </a>
                                 <span style="display:none"  id="cl{{$bill->id}}" class="initLoad">
                                     <img src="{{ asset('public/img/4.gif') }}">
                                 </span>

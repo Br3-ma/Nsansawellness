@@ -37,6 +37,8 @@ class Billing extends Model
                         return false;
                     }
                     if($isActive){
+                        return false;
+                    }else{
                         return true;
                     }
                 }else{
