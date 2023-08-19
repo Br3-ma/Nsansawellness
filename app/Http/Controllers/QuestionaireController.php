@@ -130,8 +130,17 @@ class QuestionaireController extends Controller
     }
 
 
-    public function update_question(Request $request){
-        
+    public function update_question(Request $request, $id){
+        // dd($i    d);
+        try {
+            $question = Question::where('id', $id)->first();
+            $question->question = $request->toArray()['edited_question'];
+            $question->save();
+            return response()->json(['message' => 'success.']);
+        } catch (\Throwable $th) {
+            dd($th);
+            return response()->json(['message' => 'failed.']);
+        }
     }
 
     /**

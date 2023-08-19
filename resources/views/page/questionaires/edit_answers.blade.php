@@ -26,7 +26,8 @@
                             <div class="flex font-bold text-primary">
                                 <span class="question-text" id="question_{{ $q->id }}">{{ $loop->iteration }}. {{ $q->question }}</span>
                                 <div class="question-edit" id="edit_question_{{ $q->id }}" style="display: none">
-                                    {!! Form::open(['method' => 'PUT', 'route' => ['questions.update', $q->id], 'class' => 'edit-question-form']) !!}
+                                    {!! Form::open(['method' => 'POST', 'route' => ['questions.update', $q->id], 'class' => 'edit-question-form']) !!}
+                                    @csrf
                                     {!! Form::textarea('edited_question', $q->question, ['class' => 'form-control', 'rows' => 2]) !!}
                                     <button type="submit" class="btn btn-primary btn-sm">Save</button>
                                     <button type="button" class="btn btn-secondary btn-sm cancel-edit" data-question-id="{{ $q->id }}">Cancel</button>
@@ -57,6 +58,7 @@
                             </div>
                             <div class="answer-edit" id="edit_answer_{{ $ans->id }}" style="display: none">
                                 {!! Form::open(['method' => 'PUT', 'route' => ['answers.update', $ans->id, $q->questionaire_id], 'class' => 'edit-answer-form']) !!}
+                                @csrf
                                 {!! Form::text('edited_answer', $ans->answer, ['class' => 'form-control']) !!}
                                 <button type="submit" class="btn btn-primary btn-sm">Save</button>
                                 <button type="button" class="btn btn-secondary btn-sm cancel-edit" data-answer-id="{{ $ans->id }}">Cancel</button>
@@ -190,9 +192,10 @@
                 event.preventDefault();
                 const formData = new FormData(form);
                 const questionId = form.getAttribute("action").split("/")[2];
-                
+                alert(formData);
+                console.log(formData);
                 fetch(form.getAttribute("action"), {
-                    method: "PUT",
+                    method: "POST",
                     body: formData
                 }).then(response => response.json())
                   .then(data => {
@@ -214,7 +217,7 @@
                 const answerId = form.getAttribute("action").split("/")[2];
                 
                 fetch(form.getAttribute("action"), {
-                    method: "PUT",
+                    method: "POST",
                     body: formData
                 }).then(response => response.json())
                   .then(data => {

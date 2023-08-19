@@ -175,7 +175,7 @@ Route::group(['middleware' => ['auth', 'permission:questionaires.index']], funct
     Route::delete('question/delete/{id}/{qid}', [QuestionaireController::class, 'questionDestroy'])->name('question.remove');
     Route::resource('questionaires', QuestionaireController::class);
     Route::resource('answers', AnswerController::class);
-    Route::put('edit-question', [QuestionaireController::class, 'update_question'])->name('questions.update');
+    Route::post('edit-question/{id}', [QuestionaireController::class, 'update_question'])->name('questions.update');
     Route::delete('answers/delete/{id}/{qid}', [AnswerController::class, 'customDestroy'])->name('answers.remove');
 });
 // Billing
