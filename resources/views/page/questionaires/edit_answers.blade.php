@@ -30,7 +30,7 @@
                                     @csrf
                                     {!! Form::textarea('edited_question', $q->question, ['class' => 'form-control', 'rows' => 2]) !!}
                                     <button type="submit" class="btn btn-primary btn-sm">Save</button>
-                                    <button type="button" class="btn btn-secondary btn-sm cancel-edit" data-question-id="{{ $q->id }}">Cancel</button>
+                                    <button type="button" class="btn btn-secondary btn-sm cancel-question-edit" data-question-id="{{ $q->id }}">Cancel</button>
                                     {!! Form::close() !!}
                                 </div>
                             </div>
@@ -147,6 +147,7 @@
     document.addEventListener("DOMContentLoaded", function() {
         const editQuestionButtons = document.querySelectorAll(".edit-question");
         const editAnswerButtons = document.querySelectorAll(".edit-answer");
+        const cancelQEditButtons = document.querySelectorAll(".cancel-question-edit");
         const cancelEditButtons = document.querySelectorAll(".cancel-edit");
         const questionTexts = document.querySelectorAll(".question-text");
         const answerTexts = document.querySelectorAll(".answer-text");
@@ -175,11 +176,22 @@
             });
         });
 
+        cancelQEditButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const elementId = button.getAttribute("data-question-id");
+                const editElement = document.getElementById(`edit_question_${elementId}`);
+                const viewElement = document.getElementById(`question_${elementId}`);
+                
+                editElement.style.display = "none";
+                viewElement.style.display = "block";
+            });
+        });
+
         cancelEditButtons.forEach(button => {
             button.addEventListener("click", function() {
-                const elementId = button.getAttribute("data-question-id") || button.getAttribute("data-answer-id");
-                const editElement = document.getElementById(`edit_${elementId}`);
-                const viewElement = document.getElementById(`view_${elementId}`);
+                const elementId = button.getAttribute("data-answer-id");
+                const editElement = document.getElementById(`edit_answer_${elementId}`);
+                const viewElement = document.getElementById(`answer_${elementId}`);
                 
                 editElement.style.display = "none";
                 viewElement.style.display = "block";
