@@ -18,20 +18,28 @@
                             <div class="tab">
                               <h4>{{ $q->question }}</h4>
 
-                              @forelse($q->answers as $ans)
-                              <label>
-                                <input type="radio" name="radio"/>
-                                <span id="ans{{ $q->id }}" onclick="nextPrev(1, '{{ $q->id }}', '{{ $ans->answer }}','{{ $session }}')">{{ $ans->answer }}</span>
-                              </label>
-                              @empty
-
-                              @endforelse
+                              @if ($q->type == 'Custom')
+                              <textarea id="custom_answer_{{$q->id}}" rows="4" cols="50">Please enter your text here.</textarea>
+                              <a type="button" onclick="nextStep('{{$q->id}}', '{{ $session }}')">NEXT</a>
+                              <p id="result">The value will appear here after clicking the button.</p>
+                              @else
+                                @forelse($q->answers as $ans)
+                                <label>
+                                  <input type="radio" name="radio"/>
+                                  <span id="ans{{ $q->id }}" onclick="nextPrev(1, '{{ $q->id }}', '{{ $ans->answer }}','{{ $session }}')">{{ $ans->answer }}</span>
+                                </label>
+                                @empty
+                                @endforelse
+                              @endif
+                              
                             </div>
                           @endforeach
                           <div style="overflow:auto;">
                             <div style="float:right;">
                               <button type="button" class="btn btn-outline-warning" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                              {{-- <button type="button" id="nextBtn" onclick="nextPrev(1, '{{ $q->id }}','{{ $session }}')">Next</button> --}}
+                              @if ($q->type == 'Custom')
+                                <button type="button" class="btn btn-outline-warning" id="nextBtn">Next</button>
+                              @endif
                             </div>
                           </div>
                         @else
@@ -157,10 +165,31 @@
         alert('yeas');
     }
 
+    function nextStep(qid, session){
+      const customAnswer = document.getElementById(`custom_answer_${qid}`);
+      const answer = customAnswer.textContent;
+      nextPrev(1, qid, answer, session);
+    }
+
     $('#getStartedForm').submit(function(e){
         alert('yeas');
         e.preventDefault();
         let url = "{{ route('register', ['role' => 'patient', 'type' => 'patient'])}}";
         document.location.href=url;
     });
+
+    // // Get references to the textarea, button, and result element
+    // const textarea = document.getElementById("myTextarea");
+    // const captureButton = document.getElementById("captureButton");
+    // const resultElement = document.getElementById("result");
+
+    // // Function to capture the textarea value
+    // function captureTextareaValue() {
+    //     const textareaValue = textarea.value;
+    //     resultElement.textContent = "Textarea value after clicking the button: " + textareaValue;
+    // }
+
+    // // Add a click event listener to the button
+    // captureButton.addEventListener("click", captureTextareaValue);
+
     </script>

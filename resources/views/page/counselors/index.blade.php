@@ -100,6 +100,8 @@
                    
                 </div>
                 <div class="text-center w-full lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                    <input title="Activate/ Deactivate Questionnaire" type="checkbox" data-id="{{ $file->id }}" name="status" class="js-switch tooltip" {{ $file->status == 1 ? 'checked' : '' }}>
+
                     <a target="_blank" title="View response to questionnaire" href="{{ route('user-survey-response', $file->guest_id) }}" class="tooltip btn btn-secondary text-primary py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
                         Survey
@@ -193,4 +195,24 @@
             }
         });
     }
+
+
+    $(document).ready(function(){
+        $('.js-switch').change(function () {
+            let status = $(this).prop('checked') === true ? 1 : 0;
+            let user_id = $(this).data('id');
+
+            
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: '{{ route('user.status') }}',
+                data: {'status': status, 'user_id': user_id},
+                success: function (data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    });
 </script>

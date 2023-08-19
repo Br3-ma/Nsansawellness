@@ -147,6 +147,16 @@ class UserController extends Controller
         }
     }
 
+public function updateStatus(Request $request){
+    try {
+        $user = User::where('id', $request->toArray()['user_id'])->first();
+        $user->status = $request->toArray()['status'];
+        $user->save();
+    } catch (\Throwable $th) {
+        dd($th);
+    }
+
+}
     /**
      * Remove the specified resource from storage.
      *

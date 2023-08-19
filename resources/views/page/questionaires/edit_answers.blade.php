@@ -36,11 +36,15 @@
                             </div>
                         </td>
                         <td class="w-40">
-                            <div class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Inactive </div>
+                            <div class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> 
+                            {{ $q->type ?? 'Multiple Choice' }}
+                            </div>
                         </td>
                         <td class="table-report__action w-56">
-                            <div class="flex justify-center items-center">
+                            <div class="flex justify-end items-right">
+                                @if($q->type !== 'Custom')
                                 <a href="{{ route('questionaires.edit', $q->id) }}" class="flex items-center mr-3"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Add Answers </a>
+                                @endif
                                 {!! Form::open(['method' => 'DELETE', 'route' => ['question.remove', $q->id, $q->questionaire_id], 'style' => 'display:inline']) !!}
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm  mr-2']) !!}
                                 {!! Form::close() !!}

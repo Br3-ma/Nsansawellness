@@ -136,6 +136,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/processing-your-transaction', [PaymentController::class, 'sparco_collect'])->name('pay-w-sparco');
 
     
+    Route::get('update-user-status', [UserController::class, 'updateStatus'])->name('user.status');
+
 });
 
 // Notifications

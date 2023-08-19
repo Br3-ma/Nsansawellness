@@ -103,7 +103,11 @@
                         @empty
 
                         {{-- Welcome Counselor No Assignment Banner --}}
+                        @if (auth()->user()->status == 1)
                         @include('page.patients._partials.welcome-counselor')
+                        @else
+                        @include('page.patients._partials.not-approved  ')
+                        @endif
                         
                         {{-- Welcome Patient's No Assignment Banner --}}
                         @include('page.patients._partials.welcome-patient')

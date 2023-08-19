@@ -5,7 +5,7 @@
             No Patients Assigned to You
         </h4>
         
-        <p class="py-2">Make Online and Live Consultation Easily Easily with Nsansa Wellness</p>
+        <p class="py-2">Make Online and Live Consultation Easily with Nsansa Wellness</p>
 
         <div class="pulse-effect w-full bg-warning py-4 flex space-x-2 p-2 rounded-lg text-white">
             <span>
