@@ -109,11 +109,11 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public static function hasNotUploaded(){
+        $mf = MyFile::where('user_id', auth()->user()->id)->latest()->first()->toArray();
         if(
-            auth()->user()->with('myfiles')->latest()->first()->nrc_file === null ||
-            auth()->user()->with('myfiles')->latest()->first()->cv_file === null ||
-            auth()->user()->with('myfiles')->latest()->first()->cert_file === null
-            // auth()->user()->with('myfiles')->first()->license_file = '' 
+            empty($mf->nrc_file) ||
+            empty($mf->cv_file) ||
+            empty($mf->cert_file)  
         ){
             return true;
         }else{
