@@ -146,6 +146,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <input type="password" id="password-confirm" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password Confirmation">
                             
                             {{-- Uploads --}}
+                            @if (request()->get('role') != 'patient')
                             <div class="flex py-2 gap-2">
                                 <div class="file-input-container">
                                     <input type="file" class="file-input" name="nrc_doc" id="nrc_doc">
@@ -164,6 +165,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <button class="file-input-button-4" type="button">License or Certificate Document</button>
                                 </div>  
                             </div>
+                            @endif
                         </div>
                         <div class="intro-x flex items-center text-slate-600 dark:text-slate-500 mt-4 text-xs sm:text-sm">
                             <input id="remember-me" type="checkbox" class="form-check-input border mr-2">
