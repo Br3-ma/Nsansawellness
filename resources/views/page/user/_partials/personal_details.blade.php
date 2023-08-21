@@ -3,12 +3,12 @@
     <div class="w-full">
         <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
             <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                <img class="rounded-md" alt="Midone - HTML Admin Template" id="preview-image-before-upload_create" src="{{ asset('dist/images/profile-10.jpg') }}">
+                <img class="rounded-md" alt="Midone - HTML Admin Template" id="preview-user-image-before-upload_create" src="{{ asset('dist/images/profile-10.jpg') }}">
                 {{-- <div title="Remove this profile photo?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2"> <i data-lucide="x" class="w-4 h-4"></i> </div> --}}
             </div>
             <div class="mx-auto cursor-pointer relative mt-5">
             <button type="button" class="btn btn-primary w-full">Change Photo</button>
-                <input type="file" id="prof_image_create" name="image_path" class="w-full h-full top-0 left-0 absolute opacity-0"> 
+                <input type="file" id="prof-user-image-create" name="image_path" class="w-full h-full top-0 left-0 absolute opacity-0"> 
                 {{-- <input type="file" name="image_path" class="w-full h-full"> --}}
             </div>
             <small>

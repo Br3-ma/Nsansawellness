@@ -359,12 +359,6 @@ $(document).ready(function (e) {
             $('#professional_details').show();
             $('#medical_details').hide();
         }
-
-        // // 👇️ get selected VALUE even outside event handler
-        // console.log(select.options[select.selectedIndex].value);
-
-        // // 👇️ get selected TEXT in or outside event handler
-        // console.log(select.options[select.selectedIndex].text);
     });
 });
 
