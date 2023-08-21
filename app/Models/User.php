@@ -110,9 +110,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function hasNotUploaded(){
         if(
-            auth()->user()->with('myfiles')->latest()->first()->nrc_file == null ||
-            auth()->user()->with('myfiles')->latest()->first()->cv_file == null ||
-            auth()->user()->with('myfiles')->latest()->first()->cert_file == null
+            auth()->user()->with('myfiles')->latest()->first()->nrc_file === null ||
+            auth()->user()->with('myfiles')->latest()->first()->cv_file === null ||
+            auth()->user()->with('myfiles')->latest()->first()->cert_file === null
             // auth()->user()->with('myfiles')->first()->license_file = '' 
         ){
             return true;
