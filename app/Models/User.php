@@ -110,7 +110,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function hasNotUploaded(){
         $mf = MyFile::where('user_id', auth()->user()->id)->latest()->first()->toArray();
-        dd(empty($mf['nrc_file']));
+        // dd(empty($mf['nrc_file']));
         if(
             empty($mf['nrc_file']) ||
             empty($mf['cv_file']) ||
