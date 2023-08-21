@@ -167,21 +167,21 @@
                                         @forelse ($user->myfiles as $key => $file )
                                         <div class='shadow px-4 py-4 w-1/2'>
                                             <div class="mb-4">
-                                                <iframe src="{{ asset('public/ufiles/'.$file->nrc_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
+                                                <iframe src="{{ asset('public/'.$file->nrc_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
                                             </div>
-                                            <a href="{{ asset('/public/ufiles/'.$file->nrc_file) }}" class="text-purple-500 hover:underline" target="_blank">View NRC</a>
+                                            <a href="{{ asset('/public/'.$file->nrc_file) }}" class="text-purple-500 hover:underline" target="_blank">View NRC</a>
                                         </div>
                                         <div class='shadow px-4 py-4 w-1/2'>
                                             <div class="mb-4">
-                                                <iframe src="{{ asset('public/ufiles/'.$file->cv_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
+                                                <iframe src="{{ asset('public/'.$file->cv_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
                                             </div>
-                                            <a href="{{ asset('/public/ufiles/'.$file->cv_file) }}" class="text-purple-500 hover:underline" target="_blank">View CV</a>
+                                            <a href="{{ asset('/public/'.$file->cv_file) }}" class="text-purple-500 hover:underline" target="_blank">View CV</a>
                                         </div>
                                         <div class='shadow px-4 py-4 w-1/2'>
                                             <div class="mb-4">
-                                                <iframe src="{{ asset('public/ufiles/'.$file->cert_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
+                                                <iframe src="{{ asset('public/'.$file->cert_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
                                             </div>
-                                            <a href="{{ asset('/public/ufiles/'.$file->cert_file) }}" class="text-purple-500 hover:underline" target="_blank">View Certificate</a>
+                                            <a href="{{ asset('/public/'.$file->cert_file) }}" class="text-purple-500 hover:underline" target="_blank">View Certificate</a>
                                         </div>
                                         {{-- <div class='shadow px-4 py-4 w-1/2'>
                                             <div class="mb-4">
