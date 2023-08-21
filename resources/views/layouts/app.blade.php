@@ -25,7 +25,7 @@
         
         
         <link rel="stylesheet" href="https://unpkg.com/@sjmc11/tourguidejs/dist/css/tour.min.css">
-        @livewireStyles
+        
         <!-- END: CSS Assets-->
         <style>
             .modal {
@@ -954,7 +954,7 @@
         <img src="{{ asset('public/img/1.gif') }}">
     </div>
     
-    @livewireScripts 
+    
     <script src="https://unpkg.com/@sjmc11/tourguidejs/dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         const tg = new tourguide.TourGuideClient()
