@@ -183,12 +183,12 @@
                                             </div>
                                             <a href="{{ asset('/public/ufiles/'.$file->cert_file) }}" class="text-purple-500 hover:underline" target="_blank">View Certificate</a>
                                         </div>
-                                        <div class='shadow px-4 py-4 w-1/2'>
+                                        {{-- <div class='shadow px-4 py-4 w-1/2'>
                                             <div class="mb-4">
                                                 <iframe src="{{ asset('public/ufiles/'.$file->license_file) }}" class="w-full h-40 border" frameborder="0"></iframe>
                                             </div>
                                             <a href="{{ asset('/public/ufiles/'.$file->license_file) }}" class="text-purple-500 hover:underline" target="_blank">View License</a>
-                                        </div>
+                                        </div> --}}
                                         @empty
                                             
                                         @endforelse

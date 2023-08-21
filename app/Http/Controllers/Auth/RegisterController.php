@@ -137,17 +137,17 @@ class RegisterController extends Controller
                     $mf->save();
                 }
             }
-            if (array_key_exists('license_doc', $data)) {
-                $licenseDoc = $data['license_doc'];
+            // if (array_key_exists('license_doc', $data)) {
+            //     $licenseDoc = $data['license_doc'];
     
-                if ($licenseDoc instanceof \Illuminate\Http\UploadedFile && $licenseDoc->isValid()) {
-                    $path = Storage::disk('public')->putFile('ufiles', $licenseDoc);
+            //     if ($licenseDoc instanceof \Illuminate\Http\UploadedFile && $licenseDoc->isValid()) {
+            //         $path = Storage::disk('public')->putFile('ufiles', $licenseDoc);
     
-                    // Store the $path in your database or perform other actions related to the uploaded file
-                    $mf->license_file = $path;
-                    $mf->save();
-                }
-            }
+            //         // Store the $path in your database or perform other actions related to the uploaded file
+            //         $mf->license_file = $path;
+            //         $mf->save();
+            //     }
+            // }
             
             $payload = [
                 'sender_id' => $user->id,

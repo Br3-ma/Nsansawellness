@@ -108,6 +108,19 @@ class User extends Authenticatable implements MustVerifyEmail
         return $x->count() > 0 && $x->count() < 2  ?  true :  false; 
     }
 
+    public static function hasNotUploaded(){
+        if(
+            auth()->user()->with('myfiles')->first()->nrc_file = '' ||
+            auth()->user()->with('myfiles')->first()->cv_file = '' ||
+            auth()->user()->with('myfiles')->first()->cert_file = '' ||
+            auth()->user()->with('myfiles')->first()->license_file = '' 
+        ){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     // Return true or false if paid, if its user's return session to counselor
     public function old_paid(){
         $x = $this->hasMany(Billing::class)

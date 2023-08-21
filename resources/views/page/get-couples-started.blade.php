@@ -21,7 +21,7 @@
                               @if ($q->type == 'Custom')
                               <textarea id="custom_answer_{{$q->id}}" rows="4" cols="50">Please enter your text here.</textarea>
                               <a type="button" onclick="nextStep('{{$q->id}}', '{{ $session }}')">NEXT</a>
-                              <p id="result">The value will appear here after clicking the button.</p>
+                              {{-- <p id="result">The value will appear here after clicking the button.</p> --}}
                               @else
                                 @forelse($q->answers as $ans)
                                 <label>

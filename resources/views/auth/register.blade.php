@@ -155,13 +155,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <input type="file" class="file-input" name="cv_doc" id="cv_doc">
                                     <button class="file-input-button-2" type="button">C.V Document</button>
                                 </div> 
-                                <div class="file-input-container">
+                                {{-- <div class="file-input-container">
                                     <input type="file" class="file-input" name="license_doc" id="license_doc">
                                     <button class="file-input-button-3" type="button">License Document</button>
-                                </div> 
+                                </div>  --}}
                                 <div class="file-input-container">
                                     <input type="file" class="file-input" name="cert_doc" id="cert_doc">
-                                    <button class="file-input-button-4" type="button">Certificate Document</button>
+                                    <button class="file-input-button-4" type="button">License or Certificate Document</button>
                                 </div>  
                             </div>
                         </div>

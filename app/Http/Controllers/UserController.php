@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;
 use App\Mail\SendUserInfoEmail;
+use App\Models\MyFile;
 use App\Models\User;
 use App\Models\UserAppointment;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -156,6 +158,64 @@ public function updateStatus(Request $request){
         dd($th);
     }
 
+}
+
+public function uploadMyFiles(Request $request){
+    try {
+        $data = $request->toArray();
+        $mf = MyFile::create([
+            'user_id' => auth()->user()->id
+        ]);
+    
+        if (array_key_exists('nrc_doc', $data)) {
+            $nrcDoc = $data['nrc_doc'];
+    
+            if ($nrcDoc instanceof \Illuminate\Http\UploadedFile && $nrcDoc->isValid()) {
+                $path = Storage::disk('public')->putFile('ufiles', $nrcDoc);
+    
+                // Store the $path in your database or perform other actions related to the uploaded file
+                $mf->nrc_file = $path;
+                $mf->save();
+            }
+        }
+        if (array_key_exists('cv_doc', $data)) {
+            $cvDoc = $data['cv_doc'];
+    
+            if ($cvDoc instanceof \Illuminate\Http\UploadedFile && $cvDoc->isValid()) {
+                $path = Storage::disk('public')->putFile('ufiles', $cvDoc);
+    
+                // Store the $path in your database or perform other actions related to the uploaded file
+                $mf->cv_file = $path;
+                $mf->save();
+            }
+        }
+        if (array_key_exists('cert_doc', $data)) {
+            $certDoc = $data['cert_doc'];
+    
+            if ($certDoc instanceof \Illuminate\Http\UploadedFile && $certDoc->isValid()) {
+                $path = Storage::disk('public')->putFile('ufiles', $certDoc);
+    
+                // Store the $path in your database or perform other actions related to the uploaded file
+                $mf->cert_file = $path;
+                $mf->save();
+            }
+        }
+        if (array_key_exists('license_doc', $data)) {
+            $licenseDoc = $data['license_doc'];
+    
+            if ($licenseDoc instanceof \Illuminate\Http\UploadedFile && $licenseDoc->isValid()) {
+                $path = Storage::disk('public')->putFile('ufiles', $licenseDoc);
+    
+                // Store the $path in your database or perform other actions related to the uploaded file
+                $mf->license_file = $path;
+                $mf->save();
+            }
+        }
+
+        return redirect()->back();
+    } catch (\Throwable $th) {
+        dd($th);
+    }
 }
     /**
      * Remove the specified resource from storage.
