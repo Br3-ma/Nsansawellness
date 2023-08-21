@@ -112,8 +112,8 @@ class User extends Authenticatable implements MustVerifyEmail
         if(
             auth()->user()->with('myfiles')->first()->nrc_file = '' ||
             auth()->user()->with('myfiles')->first()->cv_file = '' ||
-            auth()->user()->with('myfiles')->first()->cert_file = '' ||
-            auth()->user()->with('myfiles')->first()->license_file = '' 
+            auth()->user()->with('myfiles')->first()->cert_file = ''
+            // auth()->user()->with('myfiles')->first()->license_file = '' 
         ){
             return true;
         }else{
