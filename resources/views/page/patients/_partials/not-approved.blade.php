@@ -60,6 +60,7 @@
         @endif
     </div>
 
+    @dd (App\Models\User::hasNotUploaded())
     @if (App\Models\User::hasNotUploaded())
     <div class="lg:flex gap-2">
         <div class="box w-full lg:mb-0 mb-2 lg:pb-4 lg:w-1/2 p-4" style="padding:6%; background-image:url('https://img.freepik.com/premium-vector/certificate-documents-award-verified-icon-illustration_515653-418.jpg?w=2000'); background-size:cover; background-color:#9374AD;">
