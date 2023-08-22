@@ -18,12 +18,18 @@
                         Video Call | Session Notes
                     </h2>
                 </div>
-                <div id="faq-accordion-1" class="accordion p-5">
-                  {{ $notes->notes ?? 'Notes not found for this patient' }}
-                </div>
-                <div class="justify-content-center justify-center items-center flex p-4">
-                    <span>Last Updated: {{ $notes->updated_at->toFormattedDateString() }}</span>
-                </div>
+                @if ($notes !== null)
+                    <div id="faq-accordion-1" class="accordion p-5">
+                        {{ $notes->notes ?? 'Notes not found for this patient' }}
+                    </div>
+                    <div class="justify-content-center justify-center items-center flex p-4">
+                        <span>Last Updated: {{ $notes->updated_at->toFormattedDateString() }}</span>
+                    </div>
+                @else
+                    <div id="faq-accordion-1" class="accordion p-5">
+                        Notes not found for this patient
+                    </div>
+                @endif)
             </div>
         </div>
         <!-- END: FAQ Content -->
