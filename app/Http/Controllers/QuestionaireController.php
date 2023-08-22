@@ -97,6 +97,7 @@ class QuestionaireController extends Controller
             return redirect()->route('questionaires.index');
             // return redirect()->route('questionaires.index');
         }catch (\Throwable $th) {
+            dd($th);
             Session::flash('error_msg', "Oops something went wrong again.");
             return redirect()->route('questionaires.index');
         }
