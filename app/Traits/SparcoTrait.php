@@ -33,11 +33,10 @@ trait SparcoTrait {
 
     public function collect(array $request){
         $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
-
         // Prepare the payload data as a JSON string
         $data = [
-        "transactionName"=> "Online Counseling Service",
-            "amount"=> $request['amount'],
+            "transactionName"=> "Online Counseling Service",
+            "amount"=> 1,
             "currency"=> $request['currency'],
             "chargeMe"=> "true",
             "wallet"=>  $request['wallet'],
@@ -47,18 +46,22 @@ trait SparcoTrait {
             "customerEmail"=> $request['customerEmail'],
             "customerPhone"=> $request['wallet'],
             "returnUrl"=> "http://localhost/Sparco/verify_pay.php?ref=".$uuid,
-            "autoReturn"=> '.$var.',
+            "autoReturn"=> "true", // Fix the variable interpolation
             "merchantPublicKey"=> "de7afd6176bb4eff99316dcf508e5be6"
         ];
-        $payload = json_encode(["payload" => $data]);
+
+        // Convert the data to bytes
+        $payload = json_encode(["payload" => $data], JSON_UNESCAPED_UNICODE);
+        // dd($payload);
+        $byteToken ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5Mjc0MDk5NH0._bpDmqyjKNEmJl82BDLOxfhh74UTP_BTQ8tATqFlmyE';
         // Set the cURL options
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, 'https://live.sparco.io/gateway/api/v1/momo/credit');
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, [
+            'token: '.$byteToken,
             'X-PUB-KEY: de7afd6176bb4eff99316dcf508e5be6',
             'Content-Type: application/json',
-            'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5MjcxMjIyMX0.EZoR0rJTSlMMic_-rkHdy7BsZg67lOZi_MX07Gc94M8'
         ]);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
 
@@ -70,12 +73,7 @@ trait SparcoTrait {
             echo 'Request failed: ' . curl_error($curl);
             exit;
         }
-
-        // Close the cURL session
         curl_close($curl);
-
-        // Handle the response data as needed
-        // You can echo it, save it to a file, or perform any other actions
 
         dd($response);
     }
@@ -103,13 +101,19 @@ trait SparcoTrait {
                 "currency": "'.$request['currency'].'",
                 "chargeMe": "true",
                 "wallet":  "'.$request['wallet'].'",
+                "customerAddr": "Test",
+                "customerCity": "Lusaka",
+                "customerState": "Lusaka",
+                "customerCountryCode": "ZM",
+                "customerPostalCode": "10101",
                 "transactionReference": "'.$uuid.'",
                 "customerFirstName": "'.$request['customerFirstName'].'",
                 "customerLastName": "'.$request['customerLastName'].'",
                 "customerEmail": "'.$request['customerEmail'].'",
                 "customerPhone": "'.$request['wallet'].'",
-                "returnUrl": "http://localhost/Sparco/verify_pay.php?ref='.$uuid.'",
+                "returnUrl": "http://localhost:90/Sparco/verify_pay.php?ref='.$uuid.'",
                 "autoReturn": '.$var.',
+                "webhookUrl": "https://2150-165-58-129-124.ngrok.io/webhook?src=test",
                 "merchantPublicKey": "de7afd6176bb4eff99316dcf508e5be6"
             }',
             CURLOPT_HTTPHEADER => array(

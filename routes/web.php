@@ -5,6 +5,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AssignCounselorController;
+use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\CareerPage;
 use App\Http\Controllers\ContactPage;
 use App\Http\Controllers\CounsellorController;
@@ -138,6 +139,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('update-user-status', [UserController::class, 'updateStatus'])->name('user.status');
     Route::post('upload-files', [UserController::class, 'uploadMyFiles'])->name('user.files');
     Route::post('update-question-type', [QuestionaireController::class, 'updateQType'])->name('update.questiontype');
+
+    Route::resource('availabilities', AvailabilityController::class);
 });
 
 // Notifications

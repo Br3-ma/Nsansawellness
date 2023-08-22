@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <div class="content">
     <div class="intro-y mt-8 flex justify-content-between justify-center">
         <h2 class="text-lg font-medium mr-auto flex space-x-6">
@@ -196,25 +197,33 @@
         <button class="btn btn-primary" id="close-sidebar">Close</button>
     </div>
     <!-- Sidebar content goes here -->
-    <div class="container">
+    <div class="px-10 container mt-10 pt-8">
         <h2 class="text-lg font-semibold mb-4">Add Available Time</h2>
-        <form>
+        <form action="{{ route('availabilities.store') }}" method="POST" id="formAvailability" onsubmit="submitForm(); return false;">
+            @csrf
             <div class="mb-4">
-                <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
-                <input type="text" name="start_date" id="start_date" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <label for="datepicker" class="block text-sm font-medium text-gray-700">Select a Date:</label>
+                <input type="date" id="datepicker" name="av_date" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                
             </div>
-            <!-- Add more form fields as needed -->
-            <!-- For example, you can add fields for end date and time -->
             <div class="mb-4">
-                <label for="end_date" class="block text-sm font-medium text-gray-700">End Date</label>
-                <input type="text" name="end_date" id="end_date" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <label for="timepicker" class="block text-sm font-medium text-gray-700">Select a Opening Time:</label>
+                <input type="text" id="timepicker" name="opening_time" class="flatpickr mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
             </div>
-            <!-- Add more fields as needed -->
-            <!-- Example: Time, Description, etc. -->
+            <div class="mb-4">
+                <label for="timepicker" class="block text-sm font-medium text-gray-700">Select a Closing Time:</label>
+                <input type="text" id="timepicker" name="closing_time" class="flatpickr mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+               
+            </div>
             <div class="flex justify-end">
                 <button type="submit" class="btn btn-primary">Add</button>
             </div>
         </form>
+
+        <ul id="availabilityList" class="mt-4 space-y-2">
+
+        </ul>
     </div>
     
     <!-- Add your form or content for adding available time here -->
@@ -224,6 +233,7 @@
     var evnt = @json($calendar);
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     $(document).ready(function () {
         // Open the sidebar when clicking "Add Available Time"
@@ -238,6 +248,86 @@
             var sidebarId = $(this).closest(".sidebar").attr("id");
             $("#" + sidebarId).css("transform", "translateX(100%)");
         });
+
+        // Initialize Flatpickr for the time input field
+        flatpickr("#timepicker", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i", // Format for displaying time (hours and minutes)
+            time_24hr: true // Use 24-hour format
+        });
     });
+
+    function submitForm() {
+        const form = document.getElementById("formAvailability");
+        const formData = new FormData(form);
+
+        fetch(form.getAttribute("action"), {
+            method: "POST",
+            body: formData,
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            // Handle the response data as needed
+            console.log(data.data.av_date);
+            // Create a new list item
+            const listItem = document.createElement("li");
+            listItem.className = "border rounded p-2";
+
+            // Build the content of the list item using the response data
+            listItem.innerHTML = `
+                Date: ${data.data.av_date}<br>
+                Opening Time: ${data.data.opening_time}<br>
+                Closing Time: ${data.data.closing_time}
+            `;
+
+            // Get the list element by its ID
+            const list = document.getElementById("availabilityList");
+
+            // Append the new list item to the list
+            list.appendChild(listItem);
+            // Optionally, reset the form
+            form.reset();
+        })
+        .catch((error) => {
+            // Handle any errors that occur during the fetch
+            console.error(error);
+        });
+    }
+
+
+    // Function to fetch list items from the server
+    function fetchListItems() {
+        fetch('{{ route("availabilities.index") }}')
+        .then((response) => response.json())
+        .then((data) => {
+            // Get the list element by its ID
+            const list = document.getElementById("availabilityList");
+            // console.log(data);
+            // Iterate through the fetched data and create list items
+            data.data.forEach((item) => {
+                // Create a new list item
+                const listItem = document.createElement("li");
+                listItem.className = "border rounded p-2";
+
+                // Build the content of the list item using the fetched data
+                listItem.innerHTML = `
+                    Date: ${item.av_date}<br>
+                    Opening Time: ${item.opening_time}<br>
+                    Closing Time: ${item.closing_time}
+                `;
+
+                // Append the new list item to the list
+                list.appendChild(listItem);
+            });
+        })
+        .catch((error) => {
+            // Handle any errors that occur during the fetch
+            console.error(error);
+        });
+    }
+
+    // Call the fetchListItems function when the page loads
+    window.addEventListener("load", fetchListItems);
 </script>
 @endsection

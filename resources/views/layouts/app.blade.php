@@ -271,7 +271,7 @@
                 /* Side bar */
                 /* Add custom styles for the sidebar */
                 .sidebar {
-                    width: 320px; /* Adjust the width as needed */
+                    width: 40%; /* Adjust the width as needed */
                     transform: translateX(100%);
                     transition: transform 0.3s ease-in-out;
                     position: fixed;
