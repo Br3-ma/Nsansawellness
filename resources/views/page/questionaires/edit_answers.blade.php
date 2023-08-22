@@ -24,12 +24,17 @@
                     <tr class="intro-x">
                         <td class="w-40">
                             <div class="flex font-bold text-primary">
-                                <span class="question-text" id="question_{{ $q->id }}">{{ $loop->iteration }}. {{ $q->question }}</span>
+                                <span class="question-text">{{ $loop->iteration }}. <span data-question-id="{{ $q->id }}" id="question_{{ $q->id }}">{{ $q->question }}</span></span>
                                 <div class="question-edit" id="edit_question_{{ $q->id }}" style="display: none">
-                                    {!! Form::open(['method' => 'POST', 'route' => ['questions.update', $q->id], 'class' => 'edit-question-form']) !!}
+                                    {!! Form::open(['method' => 'POST', 'route' => ['questions.update', $q->id], 'class' => 'edit-question-form', 'data-question-id' => $q->id]) !!}
                                     @csrf
                                     {!! Form::textarea('edited_question', $q->question, ['class' => 'form-control', 'rows' => 2]) !!}
-                                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                    <div class="flex gap-2">
+                                        <button id="save_btn_{{ $q->id}}" type="submit" class="btn btn-primary btn-sm">Save</button>
+                                        <span style="display: none" id="btn_loader_{{$q->id}}">
+                                            <img width="25" src="{{ asset('public/img/lod.gif')}}">
+                                        </span>
+                                    </div>
                                     <button type="button" class="btn btn-secondary btn-sm cancel-question-edit" data-question-id="{{ $q->id }}">Cancel</button>
                                     {!! Form::close() !!}
                                 </div>
@@ -65,15 +70,20 @@
                             @forelse ($q->answers as $ans)
                             <tr class="intro-x">
                                 <td class="w-10">
-                                    <div class="flex answer-text" id="answer_{{ $ans->id }}">
+                                    <div class="flex answer-text" data-question-id="{{ $ans->id }}" id="answer_{{ $ans->id }}">
                                         {{ $ans->answer }}
                                     </div>
                                     <div class="answer-edit" id="edit_answer_{{ $ans->id }}" style="display: none">
-                                        {!! Form::open(['method' => 'PUT', 'route' => ['answers.update', $ans->id, $q->questionaire_id], 'class' => 'edit-answer-form']) !!}
+                                        {!! Form::open(['method' => 'PUT', 'route' => ['answers.update', $ans->id, $q->questionaire_id], 'class' => 'edit-answer-form', 'data-ans-id' => $q->id]) !!}
                                         @csrf
                                         {!! Form::text('edited_answer', $ans->answer, ['class' => 'form-control']) !!}
-                                        <button type="submit" class="btn btn-primary btn-sm">Save</button>
-                                        <button type="button" class="btn btn-secondary btn-sm cancel-edit" data-answer-id="{{ $ans->id }}">Cancel</button>
+                                        <div class="flex gap-2">
+                                            <button id="ans_save_btn_{{ $q->id}}" type="submit" class="btn btn-primary btn-sm">Save</button>
+                                            <span style="display: none" id="ans_btn_loader_{{$q->id}}">
+                                                <img width="25" src="{{ asset('public/img/lod.gif')}}">
+                                            </span>
+                                            <button type="button" class="btn btn-secondary btn-sm cancel-edit" data-answer-id="{{ $ans->id }}">Cancel</button>
+                                        </div>
                                         {!! Form::close() !!}
                                     </div>
                                 </td>
@@ -216,9 +226,13 @@
             form.addEventListener("submit", function(event) {
                 event.preventDefault();
                 const formData = new FormData(form);
-                const questionId = form.getAttribute("action").split("/")[2];
-                // alert(formData);
-                // console.log(formData);
+                // const questionId = form.getAttribute("action").split("/")[2];
+                const questionId = form.getAttribute('data-question-id');
+                const saveBtn = document.getElementById(`save_btn_${questionId}`);
+                const btnloader = document.getElementById(`btn_loader_${questionId}`);
+                saveBtn.style.display = "none";
+                btnloader.style.display = "block";
+                // alert(questionId);
                 fetch(form.getAttribute("action"), {
                     method: "POST",
                     body: formData
@@ -227,7 +241,9 @@
                       const questionText = document.getElementById(`question_${questionId}`);
                       const questionEdit = document.getElementById(`edit_question_${questionId}`);
                       
-                      questionText.innerText = data.updated_question;
+                      btnloader.style.display = "none";
+                      saveBtn.style.display = "block";
+                      questionText.innerText = data.data;
                       questionText.style.display = "block";
                       questionEdit.style.display = "none";
                   });
@@ -239,8 +255,13 @@
             form.addEventListener("submit", function(event) {
                 event.preventDefault();
                 const formData = new FormData(form);
-                const answerId = form.getAttribute("action").split("/")[2];
-                
+                const answerId = form.getAttribute("data-ans-id");
+                const saveBtn = document.getElementById(`ans_save_btn_${answerId}`);
+                const btnloader = document.getElementById(`ans_btn_loader_${answerId}`);
+
+                saveBtn.style.display = "none";
+                btnloader.style.display = "block";
+
                 fetch(form.getAttribute("action"), {
                     method: "POST",
                     body: formData
@@ -249,6 +270,8 @@
                       const answerText = document.getElementById(`answer_${answerId}`);
                       const answerEdit = document.getElementById(`edit_answer_${answerId}`);
                       
+                      btnloader.style.display = "none";
+                      saveBtn.style.display = "block";
                       answerText.innerText = data.updated_answer;
                       answerText.style.display = "block";
                       answerEdit.style.display = "none";
@@ -283,9 +306,7 @@
                         hide_answers.style.display = "none";
                         hide_add_answers.style.display = "none";
                     }else{
-                        
-                        hide_answers.style.display = "block";
-                        hide_add_answers.style.display = "block";
+                        location.reload();
                     }
                 },
                 error: function(xhr) {

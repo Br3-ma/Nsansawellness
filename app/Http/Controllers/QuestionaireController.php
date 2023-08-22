@@ -90,7 +90,7 @@ class QuestionaireController extends Controller
                $question->create([
                     'question' => $value,
                     'type' => $request->type[$key],
-                    'questionaire_id' => $survey->id
+                    'questionaire_id' => $survey->id    
                 ]);
             }
             Session::flash('attention', "Questionnaire created successfully.");
@@ -132,12 +132,11 @@ class QuestionaireController extends Controller
 
 
     public function update_question(Request $request, $id){
-        // dd($i    d);
         try {
             $question = Question::where('id', $id)->first();
             $question->question = $request->toArray()['edited_question'];
             $question->save();
-            return response()->json(['message' => 'success.']);
+            return response()->json(['message' => 'success.', 'data' => $request->toArray()['edited_question']]);
         } catch (\Throwable $th) {
             return response()->json(['message' => 'failed.']);
         }
