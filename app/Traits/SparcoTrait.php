@@ -31,8 +31,7 @@ trait SparcoTrait {
         return ($result);
     }  
 
-        public function collect(array $request)
-    {
+    public function collect(array $request){
         $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
 
         // Prepare the payload data as a JSON string
