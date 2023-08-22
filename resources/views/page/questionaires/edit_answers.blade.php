@@ -262,7 +262,7 @@
             const selectElement = document.getElementById('sel_' + id);
             const selectedValue = selectElement.value;
         
-            alert(selectedValue);
+            
             const dataId = id; // Get the data-id attribute value
             // const dataId = $(this).data('id'); // Get the data-id attribute value
             const hide_answers = document.getElementById(`answers_part_${dataId}`);
