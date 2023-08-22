@@ -88,14 +88,15 @@ class QuestionaireController extends Controller
         
             foreach ($request->question as $key => $value) {
                
-                $q = $question->create([
+               $question->create([
                     'question' => $value,
                     'type' => $request->type[$key],
                     'questionaire_id' => $survey->id
                 ]);
             }
             Session::flash('attention', "Questionnaire created successfully.");
-            return redirect()->route('questionaires.show', $q->id);
+            return redirect()->route('questionaires.show', $survey->id);
+            // return redirect()->route('questionaires.index');
         }catch (\Throwable $th) {
             Session::flash('error_msg', "Oops something went wrong again.");
             return redirect()->route('questionaires.index');
