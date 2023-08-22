@@ -282,6 +282,10 @@
                     if(selectedValue === 'Custom'){
                         hide_answers.style.display = "none";
                         hide_add_answers.style.display = "none";
+                    }else{
+                        
+                        hide_answers.style.display = "block";
+                        hide_add_answers.style.display = "block";
                     }
                 },
                 error: function(xhr) {
