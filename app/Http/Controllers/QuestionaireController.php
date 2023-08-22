@@ -85,7 +85,6 @@ class QuestionaireController extends Controller
     {
         try{
             $survey = $this->questionaire->create($request->validated());
-        
             foreach ($request->question as $key => $value) {
                
                $question->create([
@@ -193,6 +192,13 @@ class QuestionaireController extends Controller
     
     public function questionDestroy($question, $questionnaire)
     {
+        
+        $q = $this->questions->where('questionaire_id', $questionnaire)->count();
+        if($q == 1){
+            $qn = $this->questionaire->where('id', $questionnaire)->first();
+            $qn->delete();
+            return redirect()->route('questionaires.index');
+        }
         $del = $this->questions->findOrFail($question);
         $del->delete();
         Session::flash('attention', "Questionnaire removed successfully.");

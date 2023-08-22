@@ -38,7 +38,7 @@
                         <td class="w-40">
                             <div class="flex items-center justify-center text-danger"> 
                                 <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> 
-                                <select placeholder="{{ $q->type ?? 'Multiple Choice' }}" data-id="{{ $q->id }}" class="form-control" id="onQuestionType">
+                                <select data-id="{{ $q->id }}" class="form-control" id="onQuestionType">
                                     <option value="Select One">Select One</option>
                                     <option value="Select Many">Select Many</option>
                                     <option value="Custom">Custom</option>
