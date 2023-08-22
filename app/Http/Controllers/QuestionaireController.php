@@ -94,7 +94,7 @@ class QuestionaireController extends Controller
                 ]);
             }
             Session::flash('attention', "Questionnaire created successfully.");
-            return redirect()->route('questionaires.show', $survey->id);
+            return redirect()->route('questionaires.index');
             // return redirect()->route('questionaires.index');
         }catch (\Throwable $th) {
             Session::flash('error_msg', "Oops something went wrong again.");

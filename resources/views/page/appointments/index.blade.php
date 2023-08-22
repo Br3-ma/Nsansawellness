@@ -8,6 +8,7 @@
             <span>Appointments</span>
         </h2>
         
+        @hasanyrole(['counselor', 'admin'])
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <button class="btn btn-primary shadow-md mr-2">Free Schedule</button>
             <div class="dropdown ml-auto sm:ml-0">
@@ -28,6 +29,7 @@
                 </div>
             </div>
         </div>
+        @endhasanyrole
     </div>
     @if (Session::has('attention'))
     <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
