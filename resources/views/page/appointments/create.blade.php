@@ -106,7 +106,7 @@
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <select name="start_time" id="start_time" class="tom-select w-full">
+                                    <select name="start_time" id="start_time" class="form-control w-full">
                                     
                                         <option value="00:00">00:00</option>
                                         <option value="00:15">00:15</option>
@@ -213,13 +213,13 @@
                                 <div class="form-label xl:w-64 xl:!mr-10">
                                     <div class="text-left">
                                         <div class="flex items-center">
-                                            <div class="font-medium">End Time</div>
+                                            <div class="font-medium">Closing Time</div>
                                             {{-- <div class="ml-2 px-2 py-0.5 bg-slate-200 text-slate-600 dark:bg-darkmode-300 dark:text-slate-400 text-xs rounded-md">Required</div> --}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="w-full mt-3 xl:mt-0 flex-1">
-                                    <select name="end_time" id="end_time" class="tom-select w-full">
+                                    <select name="end_time" id="end_time" class="form-control w-full">
                                         
                                         <option value="00:00">00:00</option>
                                         <option value="00:15">00:15</option>

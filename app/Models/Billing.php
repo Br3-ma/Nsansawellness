@@ -42,7 +42,7 @@ class Billing extends Model
                         return true;
                     }
                 }else{
-                    return true;
+                    return false;
                 }
             }else{
                 return true;
