@@ -36,14 +36,19 @@
                             </div>
                         </td>
                         <td class="w-40">
-                            <div class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> 
-                            {{ $q->type ?? 'Multiple Choice' }}
+                            <div class="flex items-center justify-center text-danger"> 
+                                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> 
+                                <select placeholder="{{ $q->type ?? 'Multiple Choice' }}" data-id="{{ $q->id }}" class="form-control" id="onQuestionType">
+                                    <option value="Select One">Select One</option>
+                                    <option value="Select Many">Select Many</option>
+                                    <option value="Custom">Custom</option>
+                                </select>
                             </div>
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-end items-right">
                                 @if($q->type !== 'Custom')
-                                <a href="{{ route('questionaires.edit', $q->id) }}" class="flex items-center mr-3"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Add Answers </a>
+                                <a href="{{ route('questionaires.edit', $q->id) }}" id="add_answers_part_{{ $q->id }}" class="flex items-center mr-3"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Add Answers </a>
                                 @endif
                                 {!! Form::open(['method' => 'DELETE', 'route' => ['question.remove', $q->id, $q->questionaire_id], 'style' => 'display:inline']) !!}
                                 {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm  mr-2']) !!}
@@ -55,7 +60,7 @@
                         </td>
                     </tr>
                     @forelse ($q->answers as $ans)
-                    <tr class="intro-x">
+                    <tr id="answers_part_{{ $q->id}}" class="intro-x">
                         <td class="w-10">
                             <div class="flex answer-text" id="answer_{{ $ans->id }}">
                                 {{ $ans->answer }}
@@ -208,8 +213,8 @@
                 event.preventDefault();
                 const formData = new FormData(form);
                 const questionId = form.getAttribute("action").split("/")[2];
-                alert(formData);
-                console.log(formData);
+                // alert(formData);
+                // console.log(formData);
                 fetch(form.getAttribute("action"), {
                     method: "POST",
                     body: formData
@@ -244,6 +249,36 @@
                       answerText.style.display = "block";
                       answerEdit.style.display = "none";
                   });
+            });
+        });
+        
+
+        $('#onQuestionType').change(function() {
+            const selectedValue = $(this).val();
+            const dataId = $(this).data('id'); // Get the data-id attribute value
+            const hide_answers = document.getElementById(`answers_part_${dataId}`);
+            const hide_add_answers = document.getElementById(`add_answers_part_${dataId}`);
+            const formData = new FormData();
+            formData.append('question_type', selectedValue);
+            formData.append('data_id', dataId); // Include the data-id in the form data
+
+            $.ajax({
+                url: '{{ route('update.questiontype') }}', // Replace with your Laravel route name
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // console.log(response);
+                    if(selectedValue === 'Custom'){
+                        hide_answers.style.display = "none";
+                        hide_add_answers.style.display = "none";
+                    }
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                    // Handle any errors here
+                }
             });
         });
 

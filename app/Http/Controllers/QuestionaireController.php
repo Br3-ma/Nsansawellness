@@ -138,9 +138,19 @@ class QuestionaireController extends Controller
             $question->save();
             return response()->json(['message' => 'success.']);
         } catch (\Throwable $th) {
-            dd($th);
             return response()->json(['message' => 'failed.']);
         }
+    }
+
+    public function updateQType(Request $request){
+      try {
+        $question = Question::where('id', $request->toArray()['data_id'])->first();
+        $question->type = $request->toArray()['question_type'];
+        $question->save();
+        return response()->json(['message' => 'success.']);
+      } catch (\Throwable $th) {
+        return response()->json(['message' => 'failed.']);
+      }
     }
 
     /**

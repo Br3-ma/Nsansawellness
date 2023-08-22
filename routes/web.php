@@ -137,6 +137,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('update-user-status', [UserController::class, 'updateStatus'])->name('user.status');
     Route::post('upload-files', [UserController::class, 'uploadMyFiles'])->name('user.files');
+    Route::post('update-question-type', [QuestionaireController::class, 'updateQType'])->name('update.questiontype');
 });
 
 // Notifications
