@@ -266,6 +266,30 @@
                 }
                 /* End Input Rating */
                 
+
+
+                /* Side bar */
+                /* Add custom styles for the sidebar */
+                .sidebar {
+                    width: 320px; /* Adjust the width as needed */
+                    transform: translateX(100%);
+                    transition: transform 0.3s ease-in-out;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    height: 100%;
+                    background-color: #fff;
+                    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+                    z-index: 9999; /* Set a high z-index value */
+                }
+
+                /* Add a close button for the sidebar */
+                .close-sidebar {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    cursor: pointer;
+                }
         </style>
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">

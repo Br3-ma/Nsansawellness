@@ -1,50 +1,51 @@
 @extends('layouts.app')
 @section('content')
 <div class="content">
-    <div class="intro-y mt-8">
+    <div class="intro-y mt-8 flex justify-content-between justify-center">
         <h2 class="text-lg font-medium mr-auto flex space-x-6">
             <i data-lucide="calendar" class="w-6 h-6"></i>
             &nbsp;
             <span>Appointments</span>
         </h2>
-        {{-- @dd($appointments)
-        @dd($incoming_appointments) --}}
-        @if (Session::has('attention'))
-        <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
-            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
-            {{ Session::get('attention') }}
-            <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
-                <i data-lucide="x" class="w-4 h-4"></i> 
-            </button> 
-        </div>
-        @elseif (Session::has('error_msg'))
-        <div class="intro-x alert alert-danger w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
-            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
-            {{ Session::get('error_msg') }}
-            <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
-                <i data-lucide="x" class="w-4 h-4"></i> 
-            </button> 
-        </div>
-        @endif
+        
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            {{-- <button class="btn btn-primary shadow-md mr-2">Print Schedule</button> --}}
-            {{-- <div class="dropdown ml-auto sm:ml-0">
+            <button class="btn btn-primary shadow-md mr-2">Free Schedule</button>
+            <div class="dropdown ml-auto sm:ml-0">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
                 </button>
                 <div class="dropdown-menu w-40">
                     <ul class="dropdown-content">
-                        <li>
-                            <a href="" class="dropdown-item"> <i data-lucide="share-2" class="w-4 h-4 mr-2"></i> Share </a>
+                        <li style="z-index: 600;">
+                            <a href="#" class="dropdown-item add-time-trigger" data-sidebar="add-time-sidebar">
+                                <i data-lucide="share-2" class="w-4 h-4 mr-2"></i> Add Available Time
+                            </a>                        
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="" class="dropdown-item"> <i data-lucide="settings" class="w-4 h-4 mr-2"></i> Settings </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
+    @if (Session::has('attention'))
+    <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+        <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
+        {{ Session::get('attention') }}
+        <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
+            <i data-lucide="x" class="w-4 h-4"></i> 
+        </button> 
+    </div>
+    @elseif (Session::has('error_msg'))
+    <div class="intro-x alert alert-danger w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+        <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
+        {{ Session::get('error_msg') }}
+        <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
+            <i data-lucide="x" class="w-4 h-4"></i> 
+        </button> 
+    </div>
+    @endif
     <div class="grid grid-cols-12 gap-5 mt-5">
         <!-- BEGIN: Calendar Side Menu -->
         <div class="col-span-12 xl:col-span-4 2xl:col-span-3">
@@ -186,10 +187,55 @@
         <!-- END: Calendar Content -->
     </div>
 </div>
+<!-- Sidebar -->
+<div class="sidebar" id="add-time-sidebar">
+    <!-- Close button for the sidebar -->
+    <div class="close-sidebar">
+        <button class="btn btn-primary" id="close-sidebar">Close</button>
+    </div>
+    <!-- Sidebar content goes here -->
+    <div class="container">
+        <h2 class="text-lg font-semibold mb-4">Add Available Time</h2>
+        <form>
+            <div class="mb-4">
+                <label for="start_date" class="block text-sm font-medium text-gray-700">Start Date</label>
+                <input type="text" name="start_date" id="start_date" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <!-- Add more form fields as needed -->
+            <!-- For example, you can add fields for end date and time -->
+            <div class="mb-4">
+                <label for="end_date" class="block text-sm font-medium text-gray-700">End Date</label>
+                <input type="text" name="end_date" id="end_date" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+            <!-- Add more fields as needed -->
+            <!-- Example: Time, Description, etc. -->
+            <div class="flex justify-end">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Add your form or content for adding available time here -->
+</div>
 {{-- @include('page.modals.create-appointment-modal') --}}
-
 <script>
     var evnt = @json($calendar);
-    
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Open the sidebar when clicking "Add Available Time"
+        $(".add-time-trigger").on("click", function (e) {
+            e.preventDefault();
+            var sidebarId = $(this).data("sidebar");
+            $("#" + sidebarId).css("transform", "translateX(0)");
+        });
+
+        // Close the sidebar when clicking the close button
+        $("#close-sidebar").on("click", function () {
+            var sidebarId = $(this).closest(".sidebar").attr("id");
+            $("#" + sidebarId).css("transform", "translateX(100%)");
+        });
+    });
 </script>
 @endsection

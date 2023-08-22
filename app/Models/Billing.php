@@ -27,7 +27,7 @@ class Billing extends Model
         if(auth()->user()->hasRole('patient')){
             if(auth()->user()){
                 $isthere = Billing::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->limit(1)->exists();
-                $isbilled = Billing::where('user_id', auth()->user()->id)->where('status', 1)->orderBy('id', 'desc')->limit(1)->exists();
+                $isbilled = Billing::where('user_id', auth()->user()->id)->where('status', 0)->orderBy('id', 'desc')->limit(1)->exists();
                 $isActive = Billing::where('user_id', auth()->user()->id)->where('status', 2)->where('expired', false)->orderBy('id', 'desc')->limit(1)->exists();
                 // dd($isthere);
                 // dd($isbilled);

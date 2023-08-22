@@ -203,11 +203,10 @@
                 <div class="card-content">
                     <p>Make an instant mobile money payment</p>
                     <div class="card-lists">
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">24 hours daily support</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Chat messages</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Online Chat messages</div>
                         <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Video calls</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Personalize Counseling</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Home work & Activities</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Access to Personalized Counseling</div>
+                        {{-- <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Home work & Activities</div> --}}
                         {{-- <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/wrong.svg" alt="">Converted to responsive components</div> --}}
                 </div>
                 </div>
@@ -219,19 +218,22 @@
                     <form action="{{ route('pay-w-sparco') }}" method="POST" id="airtelform">
                         @csrf
                         <div class="input-container">
+                            {{-- <input type="tel" id="contact" name="customerPhone" placeholder="Mobile number"> --}}
                             <input type="tel" id="contact" name="wallet" placeholder="Mobile number">
                         </div>
                         <input type="hidden" name="amount" value="{{ $billing->charge_amount }}">
+                        <input type="hidden" name="billing_id" value="{{ $billing->id }}">
                         <input type="hidden" name="currency" value="ZMW">
                         <input type="hidden" name="customerFirstName" value="{{ auth()->user()->fname }}">
                         <input type="hidden" name="customerLastName" value="{{ auth()->user()->lname }}">
-                        <input type="hidden" name="merchantPublicKey" value="name">
+                        <input type="hidden" name="customerEmail" value="{{ auth()->user()->email }}">
+                        <input type="hidden" name="merchantPublicKey" value="de7afd6176bb4eff99316dcf508e5be6">
                         <input type="hidden" name="transactionName" value="NSANSTR#".{{ $randomStr }}>
                         <input type="hidden" name="transactionReference" value="{{ $transRef }}">
                         <input type="hidden" name="chargeMe" value="true">
                         <input type="hidden" name="{{ auth()->user()->email }}" name="customerEmail">
                         <br>
-                        <button type="submit">Pay</button>
+                        <button id="submitBtn">Pay</button>
                     </form>
                 </div>
             </div>
@@ -246,18 +248,32 @@
                 <div class="card-content">
                     <p>Make an instant mobile money payment</p>
                     <div class="card-lists">
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">24 hours daily support</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Chat messages</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Online Chat messages</div>
                         <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Video calls</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Personalize Counseling</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Home work & Activities</div>
+                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Access to Personalized Counseling</div>
                     </div>
                 </div>
                 <div class="card-button">
-                    <button>Pay</button>
+                    <form action="{{ route('pay-w-sparco') }}" method="POST" id="mtnform">
+                        @csrf
+                        <div class="input-container">
+                            <input type="tel" id="contact" name="wallet" placeholder="Mobile number">
+                        </div>
+                        <input type="hidden" name="amount" value="{{ $billing->charge_amount }}">
+                        <input type="hidden" name="currency" value="ZMW">
+                        <input type="hidden" name="customerFirstName" value="{{ auth()->user()->fname }}">
+                        <input type="hidden" name="customerLastName" value="{{ auth()->user()->lname }}">
+                        <input type="hidden" name="merchantPublicKey" value="de7afd6176bb4eff99316dcf508e5be6">
+                        <input type="hidden" name="transactionName" value="NSANSTR#".{{ $randomStr }}>
+                        <input type="hidden" name="transactionReference" value="{{ $transRef }}">
+                        <input type="hidden" name="chargeMe" value="true">
+                        <input type="hidden" name="{{ auth()->user()->email }}" name="customerEmail">
+                        <br>
+                        <button type="submit">Pay</button>
+                    </form>
                 </div>
             </div>
-            <div id="card-premium-plan">
+            {{-- <div id="card-premium-plan">
                 <div class="card-plans">
                     <span class="plan-tag">Visa & Master Card</span>
                     <div class="card-plan">
@@ -278,7 +294,7 @@
                 <div class="card-button">
                     <button>Pay</button>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>

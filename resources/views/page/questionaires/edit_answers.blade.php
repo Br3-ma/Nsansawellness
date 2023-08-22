@@ -38,7 +38,8 @@
                         <td class="w-40">
                             <div class="flex items-center justify-center text-danger"> 
                                 <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> 
-                                <select data-id="{{ $q->id }}" class="form-control" id="onQuestionType">
+                                <select data-id="{{ $q->id }}" class="form-control" id="sel_{{ $q->id }}" onchange="onQuestionType('{{ $q->id}}')">
+                                    <option>{{ $q->type }}</option>
                                     <option value="Select One">Select One</option>
                                     <option value="Select Many">Select Many</option>
                                     <option value="Custom">Custom</option>
@@ -58,34 +59,37 @@
                         <td class="w-2">
                             <button class="btn btn-success text-white btn-sm edit-question" data-question-id="{{ $q->id }}">Edit</button>
                         </td>
+                        
                     </tr>
-                    @forelse ($q->answers as $ans)
-                    <tr id="answers_part_{{ $q->id}}" class="intro-x">
-                        <td class="w-10">
-                            <div class="flex answer-text" id="answer_{{ $ans->id }}">
-                                {{ $ans->answer }}
-                            </div>
-                            <div class="answer-edit" id="edit_answer_{{ $ans->id }}" style="display: none">
-                                {!! Form::open(['method' => 'PUT', 'route' => ['answers.update', $ans->id, $q->questionaire_id], 'class' => 'edit-answer-form']) !!}
-                                @csrf
-                                {!! Form::text('edited_answer', $ans->answer, ['class' => 'form-control']) !!}
-                                <button type="submit" class="btn btn-primary btn-sm">Save</button>
-                                <button type="button" class="btn btn-secondary btn-sm cancel-edit" data-answer-id="{{ $ans->id }}">Cancel</button>
-                                {!! Form::close() !!}
-                            </div>
-                        </td>
-                        <td class="w-2">
-                            {!! Form::open(['method' => 'DELETE', 'route' => ['answers.remove', $ans->id, $q->questionaire_id], 'style' => 'display:inline']) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
-                            {!! Form::close() !!}
-                        </td>
-                        <td class="w-2">
-                            <button class="btn btn-success text-white btn-sm edit-answer" data-answer-id="{{ $ans->id }}">Edit</button>
-                        </td>
-                    </tr>
-                    @empty
-            
-                    @endforelse
+                        <div id="answers_part_{{ $q->id}}">
+                            @forelse ($q->answers as $ans)
+                            <tr class="intro-x">
+                                <td class="w-10">
+                                    <div class="flex answer-text" id="answer_{{ $ans->id }}">
+                                        {{ $ans->answer }}
+                                    </div>
+                                    <div class="answer-edit" id="edit_answer_{{ $ans->id }}" style="display: none">
+                                        {!! Form::open(['method' => 'PUT', 'route' => ['answers.update', $ans->id, $q->questionaire_id], 'class' => 'edit-answer-form']) !!}
+                                        @csrf
+                                        {!! Form::text('edited_answer', $ans->answer, ['class' => 'form-control']) !!}
+                                        <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                        <button type="button" class="btn btn-secondary btn-sm cancel-edit" data-answer-id="{{ $ans->id }}">Cancel</button>
+                                        {!! Form::close() !!}
+                                    </div>
+                                </td>
+                                <td class="w-2">
+                                    {!! Form::open(['method' => 'DELETE', 'route' => ['answers.remove', $ans->id, $q->questionaire_id], 'style' => 'display:inline']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
+                                    {!! Form::close() !!}
+                                </td>
+                                <td class="w-2">
+                                    <button class="btn btn-success text-white btn-sm edit-answer" data-answer-id="{{ $ans->id }}">Edit</button>
+                                </td>
+                            </tr>
+                            @empty
+                    
+                            @endforelse
+                        </div>
                     @empty
             
                     @endforelse
@@ -251,11 +255,16 @@
                   });
             });
         });
-        
 
-        $('#onQuestionType').change(function() {
-            const selectedValue = $(this).val();
-            const dataId = $(this).data('id'); // Get the data-id attribute value
+    });
+
+    function onQuestionType(id) {
+            const selectElement = document.getElementById('sel_' + id);
+            const selectedValue = selectElement.value;
+        
+            alert(selectedValue);
+            const dataId = id; // Get the data-id attribute value
+            // const dataId = $(this).data('id'); // Get the data-id attribute value
             const hide_answers = document.getElementById(`answers_part_${dataId}`);
             const hide_add_answers = document.getElementById(`add_answers_part_${dataId}`);
             const formData = new FormData();
@@ -280,9 +289,7 @@
                     // Handle any errors here
                 }
             });
-        });
-
-    });
+        }
 </script>
 
 @include('page.modals.create-question-answers')
