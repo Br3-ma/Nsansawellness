@@ -136,6 +136,8 @@
                                     <a href="{{ route('manual.remove.counselor', $file->assignedCounselor->id) }}" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Disable Counselor </a>
                                     @elseif($file->assignedCounselor != null && $file->assignedCounselor->status == 0)
                                     <a href="{{ route('manual.remove.counselor', $file->assignedCounselor->id) }}" class="dropdown-item"> <i data-lucide="recycle" class="w-4 h-4 mr-2"></i> Recover Counselor </a>
+                                    <a href="{{ route('manual.delete.counselor', $file->assignedCounselor->id) }}" class="dropdown-item"> <i data-lucide="recycle" class="w-4 h-4 mr-2 text-danger text-red-500"></i> Remove Counselor </a>
+                                    
                                     @endif
                                 @endhasanyrole
                             </div>
