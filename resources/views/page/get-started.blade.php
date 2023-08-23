@@ -19,7 +19,7 @@
                               <h4>{{ $q->question }}</h4>
 
                               @if ($q->type == 'Custom')
-                              <textarea id="custom_answer_{{$q->id}}" rows="4" cols="50"></textarea>
+                              <textarea id="gt_custom_answer_{{$q->id}}"  rows="4" cols="50"></textarea>
                               <a type="button" onclick="nextStep('{{$q->id}}', '{{ $session }}')">NEXT</a>
                               {{-- <p id="result">The value will appear here after clicking the button.</p> --}}
                               @else
@@ -165,10 +165,16 @@
         alert('yeas');
     }
 
-    function nextStep(qid, session){
-      const customAnswer = document.getElementById(`custom_answer_${qid}`);
-      const answer = customAnswer.textContent;
-      nextPrev(1, qid, answer, session);
+    function nextStep(qid, session) {
+        // Check if the element exists
+        const customAnswer = document.getElementById(`gt_custom_answer_${qid}`);
+        if (customAnswer) {
+            // Use the value property to get the text entered in the textarea
+            const answer = customAnswer.value;
+            nextPrev(1, qid, answer, session);
+        } else {
+            alert(`Element not found for qid: ${qid}`);
+        }
     }
 
     $('#getStartedForm').submit(function(e){
