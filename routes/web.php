@@ -285,6 +285,7 @@ Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
     Route::get('/get-counselors-by-dept', [AssignCounselorController::class, 'getCounselorByDept'])->name('counselors-by-dept');
     Route::post('/manual-assign', [AssignCounselorController::class, 'store'])->name('manual.assign.counselor');
     Route::get('/remove-counselor/{id}', [AssignCounselorController::class, 'remove_counselor'])->name('manual.remove.counselor');
+    Route::get('/delete-counselor/{id}', [AssignCounselorController::class, 'remove_counselor_complete'])->name('manual.delete.counselor');
 // });
 
 // Route::group(['middleware' => ['auth', 'permission:users.update']], function() {

@@ -72,9 +72,8 @@ class AssignCounselorController extends Controller
      */
     public function store(Request $request)
     {
-        // Save the new message
+            // Save the new message
             $check = AssignCounselor::where('patient_id', $request->toArray()['patient_id'])->first();
-            // dd($check);
             if($check != null){
                 AssignCounselor::where('patient_id', $request->toArray()['patient_id'])->delete();
             }
@@ -84,32 +83,21 @@ class AssignCounselorController extends Controller
                 'receiver_id' => $request->toArray()['patient_id'],
                 'status' => 1
             ]);
-
-            $payload = [
+            $message = [
                 'sender_id' => $request->toArray()['counselor_id'],
                 'patient_id' => $request->toArray()['patient_id'],
                 'name' => 'Nsansa wellness',
                 'sender' => 'Nsansa Wellness Group'
             ];
 
-            PushAlert::create([
-                'message' => 'A Counselor has been assigned to you',
-                'for_user_id' => $request->toArray()['patient_id'],
-                'from_user_id' => auth()->user()->id
-            ],[
-                'message' => 'A New Patient has been assigned to you',
-                'for_user_id' => $request->toArray()['counselor_id'],
-                'from_user_id' => auth()->user()->id
-            ]);
-
             try {
                 // //Notify counselor
                 User::find($request->toArray()['counselor_id'])
-                ->notify(new NewPatientAssigned($payload));
+                ->notify(new NewPatientAssigned($message));
                 
                 // // Notify patient
                 User::find($request->toArray()['patient_id'])
-                ->notify(new CounselorAssigned($payload));
+                ->notify(new CounselorAssigned($message));
 
                 Session::flash('attention', "Counselor has been assign successfully");
                 return redirect()->back();
@@ -176,6 +164,22 @@ class AssignCounselorController extends Controller
             $update->status == 0 ? 
             Session::flash('attention', "Counselor has been disabled successfully"):
             Session::flash('attention', "Counselor Recovered!");
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            Session::flash('err_msg', "Oops. Something went wrong, task failed.");
+            return redirect()->back();
+        }
+
+    }
+    public function remove_counselor_complete(AssignCounselor $assignCounselor, $id)
+    {
+        try {
+            $data = $assignCounselor->where('id', $id)->first();
+            // Disable the Chat
+            $this->chat->where('receiver_id', $data->patient_id)->update(['status' => 0]); 
+            // Delete assignment
+            $data->delete();
+            Session::flash('attention', "Counselor has been removed permanently");
             return redirect()->back();
         } catch (\Throwable $th) {
             Session::flash('err_msg', "Oops. Something went wrong, task failed.");
