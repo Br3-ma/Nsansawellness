@@ -21,6 +21,7 @@
             
             <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                 <a class="flex items-center font-bold"> Assigned Counselor</a>
+                @dd(App\Models\PatientFile::counselorAssigned($user->id))
                 @if (App\Models\PatientFile::counselorAssigned($user->id) !== null)
                     <a class="flex items-center mt-5" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i> 
                         @if(App\Models\PatientFile::counselorAssigned($user->id)->counselor !== null)
