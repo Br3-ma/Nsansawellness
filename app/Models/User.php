@@ -93,6 +93,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function getHasPaidAttribute(){
+        // dd(Billing::has_no_bill());
         return Billing::has_no_bill();
     }
 

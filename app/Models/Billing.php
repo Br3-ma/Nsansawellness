@@ -42,7 +42,11 @@ class Billing extends Model
                         return true;
                     }
                 }else{
-                    return true;
+                    if($isbilled){
+                        return false;
+                    }else{
+                        return true;
+                    }
                 }
             }else{
                 return true;
