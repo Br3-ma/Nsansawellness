@@ -52,7 +52,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/transaction-summary/{user_id}/{billing_id}', [PaymentCallbackController::class, 'index'])->name('transaction-summary');
+Route::get('/transaction-summary/{user_id}/{billing_id}/{uuid}', [PaymentCallbackController::class, 'index'])->name('transaction-summary');
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');

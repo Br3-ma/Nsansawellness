@@ -4,21 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Traits\BillingTrait;
 use App\Traits\PaymentTrait;
+use App\Traits\SparcoTrait;
 use Illuminate\Http\Request;
 
 class PaymentCallbackController extends Controller
 {
-    use PaymentTrait, BillingTrait;
-    public function index(Request $request){
-        dd($request);
-
-        // record transaction
-        // $data = $this->recordTransaction($request);
-        // update billing status, balance
-        // if(){
-        //     $this->autoBillingUpdate(1);
-        // }
-        // Send Email to User and Admin
-    
+    use PaymentTrait, BillingTrait, SparcoTrait;
+    public function index($id, $billing_id, $uuid){
+        // dd($billing_id);
+        $data = $this->verifyTransaction($uuid);
+        $data = $this->recordSparcoTransaction($data, $id, $billing_id);
+        return redirect()->route('patient');
     }
 }
