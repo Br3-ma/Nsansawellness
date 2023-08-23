@@ -19,7 +19,7 @@
                               <h4>{{ $q->question }}</h4>
 
                               @if ($q->type == 'Custom')
-                              <textarea id="custom_answer_{{$q->id}}" rows="4" cols="50">Please enter your text here.</textarea>
+                              <textarea id="custom_answer_{{$q->id}}" rows="4" cols="50"></textarea>
                               <a type="button" onclick="nextStep('{{$q->id}}', '{{ $session }}')">NEXT</a>
                               {{-- <p id="result">The value will appear here after clicking the button.</p> --}}
                               @else
