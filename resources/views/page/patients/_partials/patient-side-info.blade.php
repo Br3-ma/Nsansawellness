@@ -23,7 +23,9 @@
                 <a class="flex items-center font-bold"> Assigned Counselor</a>
                 @if (App\Models\PatientFile::counselorAssigned($user->id) !== null)
                     <a class="flex items-center mt-5" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i> 
-                        {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($user->id)->counselor->lname}}<br>
+                        @if(App\Models\PatientFile::counselorAssigned($user->id)->counselor !== null)
+                            {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($user->id)->counselor->lname}}<br>
+                        @endif
                     </a>
                     <a class="flex items-center mt-5"> <i data-lucide="user-plus" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->department }} </a>
                     <a class="flex items-center mt-5" href="mailto:{{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }}"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{App\Models\PatientFile::counselorAssigned($user->id)->counselor->email }} </a>
