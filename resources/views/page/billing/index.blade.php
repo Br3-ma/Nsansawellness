@@ -129,12 +129,14 @@
 
                         @hasanyrole(['patient'])
                         <td class="w-40">
-                            @if($bill->counselor_billing !== null)
-                            <a href="" class="font-medium whitespace-nowrap">{{ $bill->counselor_billing->fname.' '.$bill->counselor_billing->lname }}</a> 
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $bill->counselor_billing->address }}</div>
-                        
+                            @if(App\Models\PatientFile::counselorAssigned($bill->user->id) !== null)
+                                @if(App\Models\PatientFile::counselorAssigned($bill->user->id)->counselor !== null)
+                                    {{App\Models\PatientFile::counselorAssigned($bill->user->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($bill->user->id)->counselor->lname}}<br>
+                                @else
+                                <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor assigned yet.</div>
+                                @endif
                             @else
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor assigned yet</div>
+                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor assigned yet.</div>
                             @endif
                         </td>
                         @endhasanyrole
