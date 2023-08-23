@@ -91,17 +91,16 @@ class AssignCounselorController extends Controller
             ];
 
             try {
-                // //Notify counselor
                 User::find($request->toArray()['counselor_id'])
                 ->notify(new NewPatientAssigned($message));
                 
-                // // Notify patient
                 User::find($request->toArray()['patient_id'])
                 ->notify(new CounselorAssigned($message));
 
                 Session::flash('attention', "Counselor has been assign successfully");
                 return redirect()->back();
             } catch (\Throwable $th) {
+                dd($th);
                 Session::flash('attention', "Counselor has been assign successfully");
                 Session::flash('err_msg', "Email notification was not sent.");
                 return redirect()->back();
