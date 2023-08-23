@@ -18,8 +18,10 @@ class PatientQuestionView extends Component
     {
         if($this->my_role() == 'patient'){
             $user_id = $this->getMyCounselor(auth()->user()->id);
-            $questionnaires = PatientQuestionnaires::where('user_id', $user_id)
+            if($user_id !== 'null'){
+                $questionnaires = PatientQuestionnaires::where('user_id', $user_id)
             ->with('questions')->paginate(7);
+            }
         }else{
             $questionnaires = PatientQuestionnaires::where('user_id', auth()->user()->id)
             ->with('questions')->paginate(7);
