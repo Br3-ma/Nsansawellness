@@ -219,7 +219,7 @@
                         @csrf
                         <div class="input-container">
                             {{-- <input type="tel" id="contact" name="customerPhone" placeholder="Mobile number"> --}}
-                            <input type="tel" id="contact" name="wallet" placeholder="Mobile number">
+                            <input type="hidden" id="contact" name="wallet" placeholder="Mobile number">
                         </div>
                         <input type="hidden" name="amount" value="{{ $billing->charge_amount }}">
                         <input type="hidden" name="billing_id" value="{{ $billing->id }}">
@@ -233,7 +233,7 @@
                         <input type="hidden" name="chargeMe" value="true">
                         <input type="hidden" name="{{ auth()->user()->email }}" name="customerEmail">
                         <br>
-                        <button id="submitBtn">Pay</button>
+                        <button id="submitBtn">Proceed to Payments</button>
                     </form>
                 </div>
             </div>
@@ -356,6 +356,9 @@ ref();
                 processData: false,
                 contentType: false,
                 success: function(response) {
+                    var link = response.data;
+                    // Redirect the user to the external URL
+                    window.location.href = response.data;
                     // Handle success, e.g., redirect or display a success message
                     console.log('Payment successful!');
                 },

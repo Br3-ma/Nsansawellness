@@ -32,7 +32,9 @@ trait SparcoTrait {
     }  
 
     public function collect(array $request){
-        $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+
+        try {
+                    $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
         // Prepare the payload data as a JSON string
         $data = [
             "transactionName"=> "Online Counseling Service",
@@ -53,15 +55,16 @@ trait SparcoTrait {
         // Convert the data to bytes
         $payload = json_encode(["payload" => $data], JSON_UNESCAPED_UNICODE);
         // dd($payload);
-        $byteToken ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5Mjc0MDk5NH0._bpDmqyjKNEmJl82BDLOxfhh74UTP_BTQ8tATqFlmyE';
+        $token ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5Mjc0MDk5NH0._bpDmqyjKNEmJl82BDLOxfhh74UTP_BTQ8tATqFlmyE';
+        // $byteToken = utf8_encode($token);
         // Set the cURL options
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, 'https://live.sparco.io/gateway/api/v1/momo/credit');
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, [
-            'token: '.$byteToken,
             'X-PUB-KEY: de7afd6176bb4eff99316dcf508e5be6',
             'Content-Type: application/json',
+            'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5Mjc0MDk5NH0._bpDmqyjKNEmJl82BDLOxfhh74UTP_BTQ8tATqFlmyE',
         ]);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
 
@@ -76,6 +79,9 @@ trait SparcoTrait {
         curl_close($curl);
 
         dd($response);
+        } catch (\Throwable $th) {
+            dd($th);
+        }
     }
 
     public function collect2(array $request){
@@ -86,8 +92,8 @@ trait SparcoTrait {
         $var = true;
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://live.sparco.io/gateway/api/v1/momo/debit',
-            // CURLOPT_URL => 'https://checkout.sparco.io/gateway/api/v1/checkout',
+            // CURLOPT_URL => 'https://live.sparco.io/gateway/api/v1/momo/debit',
+            CURLOPT_URL => 'https://checkout.sparco.io/gateway/api/v1/checkout',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -128,10 +134,9 @@ trait SparcoTrait {
         curl_close($curl);
 
         // Checkout link
-        print_r($result);
-
+        // print_r($result);
         // Return checkout link or json data
-        return array($result, $uuid);
+        return $result;
     }
 
     public function disburse(array $request){
