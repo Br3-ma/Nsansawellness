@@ -1071,24 +1071,24 @@
     </script>
     <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
     <script>
-        if (!("Notification" in window) || Notification.permission === "denied") {
-            // Fallback mechanism
-            // For example, use postMessage() to communicate or inform the user in a different way
-            alert("Notifications are not supported or permission is denied.");
-        } else if (Notification.permission === "granted") {
-            // If the notification permission is already granted, show the notification
+        // if (!("Notification" in window) || Notification.permission === "denied") {
+        //     // Fallback mechanism
+        //     // For example, use postMessage() to communicate or inform the user in a different way
+        //     alert("Notifications are not supported or permission is denied.");
+        // } else if (Notification.permission === "granted") {
+        //     // If the notification permission is already granted, show the notification
             
-            // showNotification();
-        } else {
-            // Request permission from the user to show notifications
-            Notification.requestPermission().then(function (permission) {
-                if (permission === "granted") {
-                    showNotification();
-                } else {
-                    alert("Permission for notifications was denied.");
-                }
-            });
-        }
+        //   // showNotification();
+        // } else {
+        //     // Request permission from the user to show notifications
+        //     Notification.requestPermission().then(function (permission) {
+        //         if (permission === "granted") {
+        //             showNotification();
+        //         } else {
+        //             alert("Permission for notifications was denied.");
+        //         }
+        //     });
+        // }
 
         // Function to show the notification
         function showNotification() {
