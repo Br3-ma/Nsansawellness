@@ -152,7 +152,7 @@
                 </div>
             </div>
             <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-87bdecd" data-id="87bdecd" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                <div style="background-image: url('https://cdn.mind-diagnostics.org/uploads/mind-diagnostics/images/image/url/online-therapy-cbt-is-a-thing-you-must-know-1.jpg'); background-repeat: no-repeat, repeat;background-position: center;background-size: cover;" class="elementor-widget-wrap elementor-element-populated">
+                <div style="background-image: url('public/img/abouts.jpg'); background-repeat: no-repeat, repeat;background-position: center;background-size: cover;" class="elementor-widget-wrap elementor-element-populated">
                     <div class="elementor-element elementor-element-0064aa0 elementor-widget elementor-widget-spacer" data-id="0064aa0" data-element_type="widget" data-widget_type="spacer.default">
                         <div class="elementor-widget-container">
                             <style>

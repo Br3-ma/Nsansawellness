@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\AssignCounselor;
+use App\Models\Availability;
 use App\Models\Chat;
 use App\Models\Department;
 use App\Models\MyFile;
@@ -60,11 +61,14 @@ class CoreController extends Controller
                     ->get()
                     ->toArray();
                     // Create an associative array with patient and survey results
+                    $avdates = Availability::where('user_id', $c->id)
+                    ->where('av_date', '>=', now()->toDateString())
+                    ->get();
                     // if (!empty($mf)) {
                         $counselorData = [
                             'counselor' => $c,
                             'survey_results' => $survey_results,
-                            // 'qualifications' => $mf,
+                            'availability' => $avdates,
                         ];
                 
                         // Push the associative array to the $data array
