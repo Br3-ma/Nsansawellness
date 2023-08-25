@@ -24,29 +24,33 @@ class Billing extends Model
 
     // Returns true or false if the user has a current bill to pay
     public static function has_no_bill(){
-        if(auth()->user()->hasRole('patient')){
-            if(auth()->user()){
-                $isthere = Billing::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->limit(1)->exists();
-                $isbilled = Billing::where('user_id', auth()->user()->id)->where('status', 0)->orderBy('id', 'desc')->limit(1)->exists();
-                $isActive = Billing::where('user_id', auth()->user()->id)->where('status', 2)->where('expired', false)->orderBy('id', 'desc')->limit(1)->exists();
-                // dd($isthere);
-                // dd($isbilled);
-                // dd($isActive);
-                if($isthere){
-                    if($isbilled){
-                        return false;
-                    }
-                    if($isActive){
-                        return false;
+        if (auth()->user()) {
+            if(auth()->user()->hasRole('patient')){
+                if(auth()->user()){
+                    $isthere = Billing::where('user_id', auth()->user()->id)->orderBy('id', 'desc')->limit(1)->exists();
+                    $isbilled = Billing::where('user_id', auth()->user()->id)->where('status', 0)->orderBy('id', 'desc')->limit(1)->exists();
+                    $isActive = Billing::where('user_id', auth()->user()->id)->where('status', 2)->where('expired', false)->orderBy('id', 'desc')->limit(1)->exists();
+                    // dd($isthere);
+                    // dd($isbilled);
+                    // dd($isActive);
+                    if($isthere){
+                        if($isbilled){
+                            return false;
+                        }
+                        if($isActive){
+                            return false;
+                        }else{
+                            return true;
+                        }
                     }else{
-                        return true;
+                        if($isbilled){
+                            return false;
+                        }else{
+                            return true;
+                        }
                     }
                 }else{
-                    if($isbilled){
-                        return false;
-                    }else{
-                        return true;
-                    }
+                    return true;
                 }
             }else{
                 return true;

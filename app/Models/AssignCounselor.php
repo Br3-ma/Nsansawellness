@@ -19,6 +19,27 @@ class AssignCounselor extends Model
         'end_date'
     ];
 
+    public static function has_new_assignment(){
+        try {
+            $chat = Chat::where('sender_id', auth()->user()->id)
+            ->where('status', 3)->exist(); 
+            return $chat;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+    public static function currrentAssignReq(){
+    
+        try {
+            $chat = Chat::where('sender_id', auth()->user()->id)
+            ->where('status', 3)->first(); 
+            $assign = AssignCounselor::with('patient')
+                        ->where('assign_id', $chat->assign_id)->first(); 
+            return $assign;
+        } catch (\Throwable $th) {
+            return 0;
+        }
+    }
     public function counselor(){
         return $this->belongsTo(User::class, 'counselor_id');
     }

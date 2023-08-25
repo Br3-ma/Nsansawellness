@@ -107,5 +107,6 @@ class SurveyController extends Controller
         $questionnaires = PatientQuestionnaires::with(['questions.answers'])
         ->where('id', $id)->first();
         return response()->json(['questionnaires' => $questionnaires], 200);
-    }
+    }    
+    
 }

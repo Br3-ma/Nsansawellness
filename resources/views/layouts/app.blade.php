@@ -307,7 +307,9 @@
                 var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
                 var paid = "{{ auth()->user()->has_paid }}";
 
-                console.log(paid);
+                const newAssignment = tailwind.Modal.getInstance(document.querySelector("#new-assignment-modal"));
+                newAssignment.show();
+                            
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -905,9 +907,14 @@
         <!-- BEGIN: Modal Content -->
          
         @hasanyrole('patient')
-        @if(App\Models\Billing::has_no_bill())
-            @include('page.common.payment-notice')
-        @endif
+            @if(App\Models\Billing::has_no_bill())
+                @include('page.common.payment-notice')
+            @endif
+        @endhasanyrole        
+        @hasanyrole('counselor')
+            {{-- @if(App\Models\AssignCounselor::has_new_assignment()) --}}
+                @include('page.common.assignment-notice')
+            {{-- @endif --}}
         @endhasanyrole
     {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->
@@ -974,9 +981,9 @@
             <h1 class="text-lg font-bold text-success" id="flash"></h1>
             <a href="#" class="btn btn-primary item-center" id="doneRating" onclick="reloadPage()">Back</a>
     </div>
-    <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
+    {{-- <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
         <img src="{{ asset('public/img/1.gif') }}">
-    </div>
+    </div> --}}
     
     
     <script src="https://unpkg.com/@sjmc11/tourguidejs/dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -1136,6 +1143,19 @@
                 handleExpiredToken();
             }
         });
+
+        function deleteCurrentRequest(id){
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                url: '{{ route("delete-assign") }}',
+                data: {'assign_id': id},
+                success: function (data) {
+                    alert(data.message);
+                }
+            });
+        }
     </script>
     @stack('scripts')
 </body>

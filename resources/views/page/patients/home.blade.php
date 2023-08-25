@@ -66,38 +66,42 @@
                                     {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
                                 </div>
                             @else 
-                            {{-- If They Started the Chat --}}
-                                @if ($chat->sender->id !== auth()->user()->id)
-                                <div data-tg-tour="Continue to a chat session with your counselor."
-                                data-tg-title="Chat Session"
-                                data-tg-group="my-ninth-tour"
-                                data-tg-scroll-margin="0"
-                                data-tg-fixed onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" 
-                                    class="intro-x cursor-pointer rounded-lg bg-white mr-10 chat-list-item relative flex items-center p-5 mt-3">
-                                    <div class="w-12 h-12 flex-none image-fit mr-1">
-                                        @if($chat->sender->image_path != null)
-                                            <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="rounded-full attachment-full size-full" alt="" loading="lazy" />
-                                        @else
-                                            <div class="font-bolder text-xs capitalize text-white w-10 h-10 bg-warning rounded-full flex items-center justify-center zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
-                                                {{ $chat->sender->fname[0].' '.$chat->sender->lname[0] }}
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="ml-2 overflow-hidden">
-                                        <div class="flex items-center">
-                                            <a href="javascript:;" class="font-medium capitalize">{{ $chat->sender->fname.' '.$chat->sender->lname }}</a> 
+                                {{-- If They Started the Chat --}}
+                                @if($chat->sender !== null)
+                                    @if ($chat->sender->id !== auth()->user()->id)
+                                    <div data-tg-tour="Continue to a chat session with your counselor."
+                                    data-tg-title="Chat Session"
+                                    data-tg-group="my-ninth-tour"
+                                    data-tg-scroll-margin="0"
+                                    data-tg-fixed onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" 
+                                        class="intro-x cursor-pointer rounded-lg bg-white mr-10 chat-list-item relative flex items-center p-5 mt-3">
+                                        <div class="w-12 h-12 flex-none image-fit mr-1">
+                                            @if($chat->sender->image_path != null)
+                                                <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="rounded-full attachment-full size-full" alt="" loading="lazy" />
+                                            @else
+                                                <div class="font-bolder text-xs capitalize text-white w-10 h-10 bg-warning rounded-full flex items-center justify-center zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                                                    {{ $chat->sender->fname[0].' '.$chat->sender->lname[0] }}
+                                                </div>
+                                            @endif
                                         </div>
-                                        <div class="w-full truncate text-slate-500 mt-0.5">{{ $chat->name}}</div>
-                                        <small>{{ $chat->created_at->toFormattedDateString() }}</small>
+                                        <div class="ml-2 overflow-hidden">
+                                            <div class="flex items-center">
+                                                <a href="javascript:;" class="font-medium capitalize">{{ $chat->sender->fname.' '.$chat->sender->lname }}</a> 
+                                            </div>
+                                            <div class="w-full truncate text-slate-500 mt-0.5">{{ $chat->name}}</div>
+                                            <small>{{ $chat->created_at->toFormattedDateString() }}</small>
+                                        </div>
+                                        {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
                                     </div>
-                                    {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
-                                </div>
-                                @else                        
+                                    @else                        
+                                        {{-- Welcome Banners --}}
+                                    @endif
+                                @else
                                     {{-- Welcome Counselor No Assignment Banner --}}
-                                    {{-- @include('page.patients._partials.welcome-counselor') --}}
+                                    @include('page.patients._partials.welcome-counselor')
                                     
                                     {{-- Welcome Patient's No Assignment Banner --}}
-                                    {{-- @include('page.patients._partials.welcome-patient') --}}
+                                    @include('page.patients._partials.welcome-patient')
                                 @endif
                             @endif
                         @empty
@@ -266,8 +270,7 @@
     </div>
 </div>
 
-<div id="sessionPreloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 bg-white flex flex-col items-center justify-center">
-    {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
+{{-- <div id="sessionPreloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 bg-white flex flex-col items-center justify-center">
     <img src="{{ asset('public/img/1.gif') }}">
     <h2 class="text-center text-primary text-xl mt-10 font-semibold">Setting Up Session</h2>
     @hasanyrole(['admin', 'counselor'])
@@ -275,7 +278,7 @@
     @else
     <p id="hint1" class="w-1/3 text-center text-gray-200">Notifying the counselor, please wait..</p>
     @endhasanyrole
-</div>
+</div> --}}
 @hasanyrole('patient')
 <div id="payment-remainder-modal" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl intro-y" id="payment-modal-dialog">

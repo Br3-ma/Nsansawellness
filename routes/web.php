@@ -141,6 +141,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('update-question-type', [QuestionaireController::class, 'updateQType'])->name('update.questiontype');
 
     Route::resource('availabilities', AvailabilityController::class);
+    Route::post('accept-assigmnent', [AssignCounselorController::class, 'acceptReq'])->name('accept-assign');
+    Route::post('delete-assigment', [AssignCounselorController::class, 'deleteReq'])->name('delete-assign');
 });
 
 // Notifications

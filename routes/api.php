@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ActivityController;
+use App\Http\Controllers\Api\CoreController;
 use App\Http\Controllers\Api\SurveyController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -23,6 +24,13 @@ use Laravel\Sanctum\PersonalAccessToken;
 |
 */
 
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return auth()->user(); 
+});
+Route::post('login', [LoginController::class, 'loginApi']);
+Route::post('register', [RegisterController::class, 'register']);
+
 Route::get('get-activities/{id}', [ActivityController::class, 'index']);
 Route::get('mark-complete', [ActivityController::class, 'markComplete']);
 
@@ -39,17 +47,15 @@ Route::post('submit-survey', [ResultsController::class, 'store']);
 Route::get('send-chat-message', [ChatController::class, 'store']);
 Route::post('update-session', [ChatController::class, 'update']);
 
-Route::post('login', [LoginController::class, 'loginApi']);
-Route::post('register', [RegisterController::class, 'register']);
-
 Route::get('my-notifications', [NotificationController::class, 'index'])->middleware('auth:sanctum');
+
+Route::get('/unassigned-patients', [CoreController::class, 'unsignedPatients']);
+Route::get('/counselors', [CoreController::class, 'getCounselors']);
+Route::get('/departments', [CoreController::class, 'getDepartments']);
+Route::get('/assign/{patient_id}/{counselor_id}', [CoreController::class, 'assignCounselor']);
 
 Route::middleware('auth:sanctum')->post('logout', function (Request $request) {
     Auth::guard('web')->logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-});
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return auth()->user(); 
 });
