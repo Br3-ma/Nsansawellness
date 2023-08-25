@@ -191,11 +191,11 @@
                                             </p>
                                             <p>Nsansa is <b>NOT</b> the right solution for you if any of the following is true:</p>
                                             <ol>
-                                                <li>You are a minor or you are under the care of a legal guardian</li>
-                                                <li>You are in an urgent crisis or an emergency situation</li>
-                                                <li>You were required to undergo therapy either by a court order or by any other authority</li>
+                                                <li>* You are a minor or you are under the care of a legal guardian</li>
+                                                <li>* You are in an urgent crisis or an emergency situation</li>
+                                                <li>* You were required to undergo therapy either by a court order or by any other authority</li>
                                                 <li>
-                                                    You do not have a device that can connect to the Internet or you do not have a reliable Internet connection
+                                                    * You do not have a device that can connect to the Internet or you do not have a reliable Internet connection
                                                 </li>
                                             </ol>
                                         </div>
@@ -213,7 +213,7 @@
                                     </div>
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
-                                            <p>The cost of therapy through Nsansa ranges from K… to K… per week (billed every 4 weeks) and it is based on your preferences, and therapist availability. You can cancel your membership at any time, for any reason.</p>
+                                            <p>The cost of therapy through Nsansa ranges from K150 to K1,200 and it is based on your subscription, preferences, and therapist availability.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -263,10 +263,10 @@
                                         <div class="card-body">
                                             <p>You can get therapy in four ways:</p>
                                             <ol>
-                                                <li><b>Exchanging messages</b> with your therapist</li>
-                                                <li><b>Chatting live</b> with your therapist</li>
-                                                <li><b>Speaking over the phone</b> with your therapist</li>
-                                                <li><b>Video conferencing</b> with your therapist</li>
+                                                <li>*<b>Exchanging messages</b> with your therapist</li>
+                                                <li>*<b>Chatting live</b> with your therapist</li>
+                                                <li>*<b>Speaking over the phone</b> with your therapist</li>
+                                                <li>*<b>Video conferencing</b> with your therapist</li>
                                             </ol>
                                             <p>You can use different ways at different times as you wish, based on your needs, availability, and convenience.</p>
                                         </div>
@@ -307,12 +307,13 @@
                                         <div class="card-body">
                                             <p>
                                                 You can also have a video session with your therapist where you see each other and talk with each other in a virtual face-to-face setting (similar to Skype).
-                                                To talk with your therapist via video, you will need to schedule a time with your therapist and log in to your therapy room at that time. Your therapist will then prompt you to start the video session. After you confirm, you will immediately begin video chatting with your therapist.
+                                                To talk with your therapist via video, your counselor will schedule an appointment with you, then, your will receive an email notification. Login to the platform. 
+                                                From the appointments section you will view and click on the appointment to join the video call.
                                                 </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-wrapper">
+                                {{-- <div class="card-wrapper">
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
                                             <span class="title">How do live phone sessions work?
@@ -331,7 +332,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="card-wrapper">
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
@@ -382,7 +383,11 @@
                                     </div>
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
-                                            <p>Your membership payments will be charged to a credit card or PayPal on a recurring basis. If you accomplish your goals or if you find therapy with Nsansa wellness to no longer be helpful for any reason, you can simply cancel the subscription.</p>
+                                            <p>
+                                                Your membership payments will be charged to a credit card or Mobile money. 
+                                                If you accomplish your goals or if you find therapy with Nsansa wellness to 
+                                                no longer be helpful for any reason, you can simply cancel the subscription.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
