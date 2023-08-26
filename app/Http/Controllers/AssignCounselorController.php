@@ -12,6 +12,7 @@ use App\Notifications\CounselorAssigned;
 use App\Notifications\NewPatientAssigned;
 use App\Traits\MatchMakerTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Session;
 
 class AssignCounselorController extends Controller
@@ -200,10 +201,11 @@ class AssignCounselorController extends Controller
     public function acceptReq(Request $request)
     {
         try {
-            $chat = $this->chat->where('assign_id', $request->toArray()['assign_id'])->first(); 
-            $chat->status = 1;
-            $chat->save();
-            return redirect()->back();
+            DB::table('chats')
+            ->where('assign_id', $request->input('assign_id'))
+            ->update(['status' => 1]);
+        
+            return redirect()->route('patient');
         } catch (\Throwable $th) {
             dd($th);
             return redirect()->back();

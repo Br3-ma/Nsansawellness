@@ -905,16 +905,16 @@
         </div>
         {{-- <div class="text-center"> <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#static-backdrop-modal-preview" class="btn btn-primary">Show Modal</a> </div> <!-- END: Modal Toggle --> --}}
         <!-- BEGIN: Modal Content -->
-         
+         {{-- @dd(App\Models\AssignCounselor::has_new_assignment()   ) --}}
         @hasanyrole('patient')
             @if(App\Models\Billing::has_no_bill())
                 @include('page.common.payment-notice')
             @endif
         @endhasanyrole        
         @hasanyrole('counselor')
-            {{-- @if(App\Models\AssignCounselor::has_new_assignment()) --}}
+            @if(App\Models\AssignCounselor::has_new_assignment())
                 @include('page.common.assignment-notice')
-            {{-- @endif --}}
+            @endif
         @endhasanyrole
     {{-- @endif --}}
     <!-- BEGIN: Dark Mode Switcher-->

@@ -22,7 +22,7 @@ class AssignCounselor extends Model
     public static function has_new_assignment(){
         try {
             $chat = Chat::where('sender_id', auth()->user()->id)
-            ->where('status', 3)->exist(); 
+            ->where('status', 3)->exists(); 
             return $chat;
         } catch (\Throwable $th) {
             return false;
