@@ -304,6 +304,8 @@ Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
 
 // ================== Website
 Route::get('/about', [AboutPage::class, 'index'])->name('about');
+Route::get('/privacy-policy', [AboutPage::class, 'pp'])->name('privacy-policy');
+Route::get('/terms-and-condition', [AboutPage::class, 'terms'])->name('terms');
 Route::get('/contact', [ContactPage::class, 'index'])->name('contact');
 Route::get('/frequently-asked-question', [FaqPage::class, 'index'])->name('faq');
 Route::get('/start-your-career', [CareerPage::class, 'index'])->name('careers');

@@ -853,18 +853,18 @@
                                                             <span class="elementor-icon-list-text">Contact</span>
                                                         </a>
                                                     </li>
-                                                    {{-- <li class="elementor-icon-list-item">
-                                                        <a href="#">
+                                                    <li class="elementor-icon-list-item">
+                                                        <a href="{{ route('privacy-policy') }}">
 
                                                             <span class="elementor-icon-list-text">Privacy Policy</span>
                                                         </a>
                                                     </li>
                                                     <li class="elementor-icon-list-item">
-                                                        <a href="#">
+                                                        <a href="{{ route('terms') }}">
 
                                                             <span class="elementor-icon-list-text">Terms & Conditions</span>
                                                         </a>
-                                                    </li> --}}
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
