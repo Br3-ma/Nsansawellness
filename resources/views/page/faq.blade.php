@@ -110,7 +110,7 @@
                                     <div class="card-expand" id="expand-9f0600c" style="display:block">
                                         <div class="card-body">
                                             <p>
-                                                Nsansa is one of the first, Zambian owned teletherapy platforms. We change the way people approach their mental health and help them tackle life’s challenges by providing accessible and affordable care. With Nsansa, you can message a professional therapist anytime, anywhere.
+                                                Nsansa is one of Zambian owned teletherapy platforms. We change the way people approach their mental health and help them tackle life’s challenges by providing accessible and affordable care. With Nsansawellness, you can message a professional therapist anytime, anywhere.
                                             </p>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
                                             <p>
-                                                After you sign up, we will match you to an available therapist who fits your objectives, preferences, and the type of issues you are dealing with. Different therapists have different approaches and areas of focus, so it's important to find the right person who can achieve the best results for you. We have found that we are able to provide a successful match most of the time; however, if you start the process and you feel your therapist isn't a good fit for you, you may elect to be matched to a different therapist.
+                                                After you sign up, we will match you to an available therapist who fits your objectives, preferences, and the type of issues you are dealing with. Different therapists have different approaches and areas of focus, so it's important to find the right person who can achieve the best results for you. 
                                             </p>
                                         </div>
                                     </div>
@@ -146,7 +146,7 @@
                                     <div class="card-expand" id="expand-9f158ba" style="display:none">
                                         <div class="card-body">
                                             <p>
-                                                Therapists on Nsansa are licensed, trained, experienced, and accredited psychologists (PhD / PsyD), licensed marriage and family therapists (LMFT), licensed clinical social workers (LCSW / LICSW), or licensed professional counselors (LPC). All of them have a … Degree or a … Degree in their field. They have been qualified and certified by the country’s professional board after successfully completing the necessary education, exams, training and practice. While their experience, expertise, and background vary, they all possess at least … years and … hours of hands-on experience.
+                                                Therapists on Nsansa are licensed, trained, experienced, and accredited psychologists (PhD / PsyD), licensed marriage and family therapists (LMFT), licensed clinical social workers (LCSW / LICSW), or licensed professional counselors (LPC). They have been qualified and certified by the country’s professional board after successfully completing the necessary education, exams, training and practice. While their experience, expertise, and background vary. 
                                             </p>
                                         </div>
                                     </div>
@@ -168,36 +168,9 @@
                                                 In addition to checking credentials, each potential provider needs to complete a case study exam graded by a licensed clinician and be evaluated in a video interview. 
                                             </p>
                                             <p>
-                                                The result of this rigorous process is that only about 25% of applicants who apply to work as therapists through Nsansa are accepted to the platform.
+                                                The result of this rigorous process is that only about 25% of applicants who apply to work as therapists through Nsansawellness are accepted to the platform.
                                                 We also show the full licensing information for each provider to make it easy for you to do your own due diligence on your therapist.
                                             </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-wrapper ">
-                                    <div class="card-header">
-                                        <a href="#expand-4a50248" class="card-header-button" aria-expanded="false" data-target="#expand-4a50248" aria-controls="expand-4a50248">
-                                            <span class="title">Is Nsansa right for me?</span>
-                                            <div class="right-icon-group">
-                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
-                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="card-expand" id="expand-4a50248" style="display:none">
-                                        <div class="card-body">
-                                            <p>
-                                                Nsansa may be right for you if you're looking to improve the quality of your life. Whenever there is anything that interferes with your happiness or prevents you from achieving your goals, we may be able to help. We also have therapists who specialise in specific issues such as stress, anxiety, relationships, parenting, depression, addictions, eating, sleeping, trauma, anger, family conflicts, LGBT matters, grief, religion, self esteem, and more.
-                                            </p>
-                                            <p>Nsansa is <b>NOT</b> the right solution for you if any of the following is true:</p>
-                                            <ol>
-                                                <li>* You are a minor or you are under the care of a legal guardian</li>
-                                                <li>* You are in an urgent crisis or an emergency situation</li>
-                                                <li>* You were required to undergo therapy either by a court order or by any other authority</li>
-                                                <li>
-                                                    * You do not have a device that can connect to the Internet or you do not have a reliable Internet connection
-                                                </li>
-                                            </ol>
                                         </div>
                                     </div>
                                 </div>
@@ -265,7 +238,6 @@
                                             <ol>
                                                 <li>*<b>Exchanging messages</b> with your therapist</li>
                                                 <li>*<b>Chatting live</b> with your therapist</li>
-                                                <li>*<b>Speaking over the phone</b> with your therapist</li>
                                                 <li>*<b>Video conferencing</b> with your therapist</li>
                                             </ol>
                                             <p>You can use different ways at different times as you wish, based on your needs, availability, and convenience.</p>
@@ -287,7 +259,7 @@
                                         <div class="card-body">
                                             <p>
                                                 You will sometimes want to have a text conversation with your therapist in real-time. This way you can still enjoy the convenience of messaging but also enjoy a "live" interaction that allows instant response and feedback from your therapist.
-                                                To have a live chat session, you will first need to schedule a time with your therapist. At the scheduled time, log in to your account to start typing and chatting with your therapist.
+                                               
                                             </p>
                                         </div>
                                     </div>
@@ -369,7 +341,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-wrapper">
+                                {{-- <div class="card-wrapper">
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
                                             <span class="title">
@@ -390,7 +362,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="card-wrapper">
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
@@ -406,24 +378,24 @@
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
                                             <p>
-                                                Neither Nsansa nor Therapists on the Nsansa Platform submit claims to Prudential, One life or health insurers. Services offered using this site are generally not covered by health insurance.
+                                                * Neither Nsansa nor Therapists on the Nsansa Platform submit claims to Prudential, One life or health insurers. Services offered using this site are generally not covered by health insurance.
                                             </p>
 
                                             <p>
-                                                Coverage and benefits for traditional therapy and therapy services change from one health insurance company to another and from plan to plan, but generally the following rules apply:
+                                                * Coverage and benefits for traditional therapy and therapy services change from one health insurance company to another and from plan to plan, but generally the following rules apply:
                                             </p>
                                             <ol>
                                                 <li>
-                                                    With many health insurance plans, coverage can be partial or very limited.
+                                                    * With many health insurance plans, coverage can be partial or very limited.
                                                 </li>
                                                 <li>    
-                                                    Even if your plan covers all your costs, the co-pay that you would be required to contribute may be higher than the entire cost of Nsansa.
+                                                    * Even if your plan covers all your costs, the co-pay that you would be required to contribute may be higher than the entire cost of Nsansa.
                                                 </li>
                                                 <li>    
-                                                    In many cases, before you can get reimbursed by your insurance company, your therapist would have to diagnose you with a mental disorder or issue. This diagnosis would be sent to the insurance company and recorded in your medical file. In some cases the therapist would also have to provide additional clinical information to the insurance company, such as treatment plans, summaries or copies of the entire record.                                                    
+                                                    * In many cases, before you can get reimbursed by your insurance company, your therapist would have to diagnose you with a mental disorder or issue. This diagnosis would be sent to the insurance company and recorded in your medical file. In some cases the therapist would also have to provide additional clinical information to the insurance company, such as treatment plans, summaries or copies of the entire record.                                                    
                                                 </li>
                                             </ol>
-                                            <p>Please note that Nsansa Wellness offers very affordable pricing options which are typically comparable with the co-pays of most insurance plans</p>
+                                            <p>* Please note that Nsansa Wellness offers very affordable pricing options which are typically comparable with the co-pays of most insurance plans</p>
                                         </div>
                                     </div>
                                 </div>
