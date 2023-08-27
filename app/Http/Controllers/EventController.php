@@ -14,7 +14,7 @@ class EventController extends Controller
     public function index()
     {
         $title = 'Events';
-        return view('page.events', compact('title'));
+        return view('page.eventer', compact('title'));
     }
 
     /**
