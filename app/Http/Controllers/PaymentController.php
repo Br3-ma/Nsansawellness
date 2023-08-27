@@ -95,7 +95,9 @@ class PaymentController extends Controller
 
     public function sparco_collect(Request $request){
         $data = $this->collect2($request->toArray());
-        return response()->json(['data' => $data->paymentUrl], 200);
+        if ($data !== null) {
+            return response()->json(['data' => $data->paymentUrl], 200);
+        }
     }
 
     /**

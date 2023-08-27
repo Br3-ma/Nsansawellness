@@ -94,10 +94,7 @@ class AssignCounselorController extends Controller
 
             try {
                 User::find($request->toArray()['counselor_id'])
-                ->notify(new NewPatientAssigned($message));
-                
-                User::find($request->toArray()['patient_id'])
-                ->notify(new CounselorAssigned($message));
+                ->notify(new NewPatientAssigned($message));;
 
                 Session::flash('attention', "Counselor has been assign successfully");
                 return redirect()->back();
@@ -201,13 +198,18 @@ class AssignCounselorController extends Controller
     public function acceptReq(Request $request)
     {
         try {
-            DB::table('chats')
-            ->where('assign_id', $request->input('assign_id'))
-            ->update(['status' => 1]);
-        
-            return redirect()->route('patient');
+            $chat = Chat::where('assign_id', $request->input('assign_id'))->update(['status' => 1]);
+            return response()->json(['message' => 'ok'], 200);
+            $message = [
+                'sender_id' => $chat->sender_id,
+                'patient_id' => $chat->receiver_id,
+                'name' => 'Nsansa wellness',
+                'sender' => 'Nsansa Wellness Group'
+            ];
+                
+            User::find($chat->receiver_id)
+            ->notify(new CounselorAssigned($message));
         } catch (\Throwable $th) {
-            dd($th);
             return redirect()->back();
         }
     }

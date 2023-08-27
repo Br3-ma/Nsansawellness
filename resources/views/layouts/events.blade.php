@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
     window._wpemojiSettings = {
         "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/",
@@ -70,13 +71,13 @@
         padding: 0 !important;
     }
 </style>
-<link rel='stylesheet' id='jkit-elements-main-css'
+{{-- <link rel='stylesheet' id='jkit-elements-main-css'
     href='{{ asset("public/wp-content/plugins/jeg-elementor-kit/assets/css/elements/main04c6.css?ver=2.4.4-dev-1")}}' type='text/css'
-    media='all' />
-<link rel='stylesheet' id='wp-block-library-css'
-    href='{{ asset("public/wp-includes/css/dist/block-library/style.min9bd2.css?ver=5.9.4'")}} type='text/css' media='all' />
+    media='all' /> --}}
+{{-- <link rel='stylesheet' id='wp-block-library-css'
+    href='{{ asset("public/wp-includes/css/dist/block-library/style.min9bd2.css?ver=5.9.4'")}} type='text/css' media='all' /> --}}
 <style id='global-styles-inline-css' type='text/css'>
-    body {
+    /* body {
         --wp--preset--color--black: #000000;
         --wp--preset--color--cyan-bluish-gray: #abb8c3;
         --wp--preset--color--white: #ffffff;
@@ -321,7 +322,7 @@
 
     .has-x-large-font-size {
         font-size: var(--wp--preset--font-size--x-large) !important;
-    }
+    } */
 </style>
 <link rel='stylesheet' id='template-kit-export-css'
     href='{{ asset('public/wp-content/plugins/template-kit-export/public/assets/css/template-kit-export-public.min365c.css?ver=1.0.2')}}1'
@@ -401,7 +402,7 @@
     }
 </style>
 <style id='global-styles-inline-css' type='text/css'>
-    body {
+    /* body {
         --wp--preset--color--black: #000000;
         --wp--preset--color--cyan-bluish-gray: #abb8c3;
         --wp--preset--color--white: #ffffff;
@@ -1125,7 +1126,7 @@
     <blade media|%20(max-width%3A%20767px)%20%7B>.wgl-hidden-mobile {
         display: none;
     }
-    }
+    } */
 </style>
 <!-- <link rel='stylesheet' id='font-awesome-5-all-css' href='https://wgl-demo.net/itconf/wp-content/themes/itconf/css/font-awesome-5.min.css?ver=1.0.0' type='text/css' media='all' /> -->
 <!-- <link rel='stylesheet' id='itconf-flaticon-css' href='https://wgl-demo.net/itconf/wp-content/themes/itconf/fonts/flaticon/flaticon.css?ver=1.0.0' type='text/css' media='all' /> -->

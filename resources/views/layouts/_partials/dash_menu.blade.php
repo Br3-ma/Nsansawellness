@@ -219,6 +219,9 @@
                     
                     @hasanyrole(['counselor', 'therapist', 'admin', 'administrator'])
                     <li>
+                        <a href="{{ route('tickets') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="ticket" class="w-4 h-4 mr-2"></i>Sold Tickets</a>
+                    </li>
+                    <li>
                         <a href="{{ route('settings.index') }}" class="dropdown-item hover:bg-white/5"> <i data-lucide="wrench" class="w-4 h-4 mr-2"></i>Settings</a>
                     </li>
                     @else

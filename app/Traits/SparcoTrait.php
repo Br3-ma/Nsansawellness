@@ -85,58 +85,59 @@ trait SparcoTrait {
     }
 
     public function collect2(array $request){
-        // UUID ID generator
-        $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
-
-        $curl = curl_init();
-        $var = true;
-
-        curl_setopt_array($curl, array(
-            // CURLOPT_URL => 'https://live.sparco.io/gateway/api/v1/momo/debit',
-            CURLOPT_URL => 'https://checkout.sparco.io/gateway/api/v1/checkout',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => '{
-                "transactionName": "Online Counseling Service",
-                "amount": "'.$request['amount'].'",
-                "currency": "'.$request['currency'].'",
-                "chargeMe": "true",
-                "wallet":  "'.$request['wallet'].'",
-                "customerAddr": "Test",
-                "customerCity": "Lusaka",
-                "customerState": "Lusaka",
-                "customerCountryCode": "ZM",
-                "customerPostalCode": "10101",
-                "transactionReference": "'.$uuid.'",
-                "customerFirstName": "'.$request['customerFirstName'].'",
-                "customerLastName": "'.$request['customerLastName'].'",
-                "customerEmail": "'.$request['customerEmail'].'",
-                "customerPhone": "'.$request['wallet'].'",
-                "returnUrl": "https://nsansawellness.com/transaction-summary/'.auth()->user()->id.'/'.$request['billing_id'].'/'.$uuid.'",
-                "autoReturn": '.$var.',
-                "webhookUrl": "https://2150-165-58-129-124.ngrok.io/webhook?src=test",
-                "merchantPublicKey": "de7afd6176bb4eff99316dcf508e5be6"
-            }',
-            CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5MjcwNzIwOH0.Qi6KFBzFy7iST0bFylG-Vb5cpzVJ710lg1V296uRKck',
-                'X-PUB-KEY; de7afd6176bb4eff99316dcf508e5be6' 
-            ),
-        ));
-
-        $response = curl_exec($curl);
-        $result = json_decode($response);
-        curl_close($curl);
-
-        // Checkout link
-        // print_r($result);
-        // Return checkout link or json data
-        return $result;
+        try {
+            $curl = curl_init();
+            $var = true;
+    
+            curl_setopt_array($curl, array(
+                // CURLOPT_URL => 'https://live.sparco.io/gateway/api/v1/momo/debit',
+                CURLOPT_URL => 'https://checkout.sparco.io/gateway/api/v1/checkout',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'POST',
+                CURLOPT_POSTFIELDS => '{
+                    "transactionName": "Online Counseling Service",
+                    "amount": "'.$request['amount'].'",
+                    "currency": "'.$request['currency'].'",
+                    "chargeMe": "true",
+                    "wallet":  "'.$request['wallet'].'",
+                    "customerAddr": "Test",
+                    "customerCity": "Lusaka",
+                    "customerState": "Lusaka",
+                    "customerCountryCode": "ZM",
+                    "customerPostalCode": "10101",
+                    "transactionReference": "'.$request['uuid'].'",
+                    "customerFirstName": "'.$request['customerFirstName'].'",
+                    "customerLastName": "'.$request['customerLastName'].'",
+                    "customerEmail": "'.$request['customerEmail'].'",
+                    "customerPhone": "'.$request['wallet'].'",
+                    "returnUrl": "'.$request['callback'].'",
+                    "autoReturn": '.$var.',
+                    "webhookUrl": "https://2150-165-58-129-124.ngrok.io/webhook?src=test",
+                    "merchantPublicKey": "de7afd6176bb4eff99316dcf508e5be6"
+                }',
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json',
+                    'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5MjcwNzIwOH0.Qi6KFBzFy7iST0bFylG-Vb5cpzVJ710lg1V296uRKck',
+                    'X-PUB-KEY; de7afd6176bb4eff99316dcf508e5be6' 
+                ),
+            ));
+    
+            $response = curl_exec($curl);
+            $result = json_decode($response);
+            curl_close($curl);
+    
+            // Checkout link
+            // print_r($result);
+            // Return checkout link or json data
+            return $result;
+        } catch (\Throwable $th) {
+            dd($th);
+        }   
     }
 
     public function disburse(array $request){

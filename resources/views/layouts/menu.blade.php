@@ -1032,7 +1032,7 @@ li{
                                                                 </li>
                                                                 <li id="menu-item-1440" class="@if(Request::route()->uri == 'contact') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-1440"><a href="{{  route('contact')}}">Contact Us</a></li>
                                                                 {{-- <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Events</a> --}}
-                                                                    {{-- <li id="menu-item-17" class="@if(Request::route()->uri == 'events') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('events')}}">Events</a> --}}
+                                                                    <li id="menu-item-17" class="@if(Request::route()->uri == 'events') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('events')}}">Events</a>
                                                             </ul>
                                                         </div>
                                                         <div class="jkit-nav-identity-panel">

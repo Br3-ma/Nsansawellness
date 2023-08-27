@@ -35,6 +35,7 @@ use App\Http\Controllers\QuestionaireController;
 use App\Http\Controllers\ResultsController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SiteRatingController;
+use App\Http\Controllers\TicketController;
 use App\Http\Livewire\Admin\Patient\PatientQuestionView;
 use App\Http\Livewire\Admin\Reviews\ManageReview;
 use App\Models\AssignCounselor;
@@ -52,6 +53,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/ticket-callback/{uuid}', [TicketController::class, 'callback']);
+Route::get('/ticket-summary/{id}', [TicketController::class, 'response_back'])->name('ticket-status');
 Route::get('/transaction-summary/{user_id}/{billing_id}/{uuid}', [PaymentCallbackController::class, 'index'])->name('transaction-summary');
 Route::get('/', function () {
     return view('welcome');
@@ -303,6 +306,7 @@ Route::group(['middleware' => ['auth', 'permission:chat.index']], function() {
 // });
 
 // ================== Website
+Route::get('/tickets', [TicketController::class, 'index'])->name('tickets');
 Route::get('/about', [AboutPage::class, 'index'])->name('about');
 Route::get('/privacy-policy', [AboutPage::class, 'pp'])->name('privacy-policy');
 Route::get('/terms-and-condition', [AboutPage::class, 'terms'])->name('terms');

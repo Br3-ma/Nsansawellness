@@ -212,12 +212,16 @@
                     @php
                         $randomStr = Illuminate\Support\Str::random(5);
                         $transRef = Illuminate\Support\Str::random(7);
-                    @endphp
+                        // UUID ID generator
+                        $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+                    @endphp 
                     <form action="{{ route('pay-w-sparco') }}" method="POST" id="airtelform">
                         @csrf
                             {{-- <input type="tel" id="contact" name="customerPhone" placeholder="Mobile number"> --}}
-                            <input type="hidden" id="contact" name="wallet" placeholder="Mobile number">
-                       
+                        <input type="hidden" id="contact" name="wallet" placeholder="Mobile number">
+                    
+                        <input type="hidden" name="callback" value="{{'https://nsansawellness.com/transaction-summary/'.auth()->user()->id.'/'.$billing->id.'/'.$uuid.''}}">
+                        <input type="hidden" name="uuid" value="{{ $uuid }}">
                         <input type="hidden" name="amount" value="{{ $billing->charge_amount }}">
                         <input type="hidden" name="billing_id" value="{{ $billing->id }}">
                         <input type="hidden" name="currency" value="ZMW">
@@ -256,6 +260,7 @@
                         <div class="input-container">
                             <input type="tel" id="contact" name="wallet" placeholder="Mobile number">
                         </div>
+                        
                         <input type="hidden" name="amount" value="{{ $billing->charge_amount }}">
                         <input type="hidden" name="currency" value="ZMW">
                         <input type="hidden" name="customerFirstName" value="{{ auth()->user()->fname }}">

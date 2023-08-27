@@ -1157,6 +1157,43 @@
             });
         }
     </script>
+    <script>
+        $(document).ready(function () {
+            // Get references to the button and loading GIF elements
+            const button = $("#accept-button");
+            const loadingGif = $("#loading-gif");
+
+            // Add a click event listener to the button
+            button.on("click", function () {
+                // Show the loading GIF on the button
+                button.html('<span>Loading</span>');
+                // button.html('<img src="/public/img/" alt="Loading...">');
+
+                // Disable the button
+                button.prop("disabled", true);
+
+                // Perform any other necessary actions here using AJAX
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('accept-assign') }}",
+                    data: $("#accept-form").serialize(), // You can serialize the form data if needed
+                    success: function (response) {
+                        button.html('<small>Setting Up Session</small>');
+                        button.prop("disabled", true);
+                        window.location.reload();
+                    },
+                    error: function (error) {
+                        // Handle any errors here
+
+                        // Re-enable the button on error
+                        button.html('<i data-lucide="wallet" class="w-4 h-4"></i> &nbsp;<small>Accept</small>');
+                        button.prop("disabled", false);
+                    }
+                });
+            });
+        });
+    </script>
+
     @stack('scripts')
 </body>
 </html>

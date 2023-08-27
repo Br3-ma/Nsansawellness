@@ -16,7 +16,7 @@
 									<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-f82f054"
 										data-id="f82f054" data-element_type="column">
 										<div class="elementor-widget-wrap elementor-element-populated">
-											<div class="elementor-element elementor-element-4dc25b2 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading"
+											<div class="elementor-element elementor-element-4dc25b2 animated-slow elementor-widget elementor-widget-jkit_heading"
 												data-id="4dc25b2" data-element_type="widget"
 												data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
 												data-widget_type="jkit_heading.default">
@@ -36,13 +36,12 @@
 									<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0299996"
 										data-id="0299996" data-element_type="column">
 										<div class="elementor-widget-wrap elementor-element-populated">
-											<div class="elementor-element elementor-element-199174a elementor-icon-list--layout-inline elementor-widget__width-auto animated-slow elementor-mobile-align-center elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list"
+											<div class="elementor-element elementor-element-199174a elementor-icon-list--layout-inline elementor-widget__width-auto animated-slow elementor-mobile-align-center elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
 												data-id="199174a" data-element_type="widget"
 												data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:300}"
 												data-widget_type="icon-list.default">
 												<div class="elementor-widget-container">
-													<link rel="stylesheet"
-														href="{{ asset('public/wp-content/plugins/elementor/assets/css/widget-icon-list.min.css')}}">
+													
 													<ul class="elementor-icon-list-items elementor-inline-items">
 														<li class="elementor-icon-list-item elementor-inline-item">
 															<span class="elementor-icon-list-text">Home</span>
@@ -330,10 +329,10 @@
 												class="elementor-section elementor-inner-section elementor-element elementor-element-5cf996b elementor-section-boxed elementor-section-height-default elementor-section-height-default"
 												data-id="5cf996b" data-element_type="section">
 												<div class="elementor-container elementor-column-gap-default">
-													<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-d68e8dc"
+													{{-- <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-d68e8dc"
 														data-id="d68e8dc" data-element_type="column">
 														<div class="elementor-widget-wrap elementor-element-populated">
-															<div class="elementor-element elementor-element-7e41fb0 aleft elementor-invisible elementor-widget elementor-widget-wgl-counter"
+															<div class="elementor-element elementor-element-7e41fb0 aleft elementor-widget elementor-widget-wgl-counter"
 																data-id="7e41fb0" data-element_type="widget"
 																data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:100}"
 																data-widget_type="wgl-counter.default">
@@ -361,7 +360,7 @@
 																</div>
 															</div>
 														</div>
-													</div>
+													</div> --}}
 
 													<div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-b978f41"
 														data-id="b978f41" data-element_type="column">
@@ -370,10 +369,7 @@
 													</div>
 												</div>
 											</section>
-											<div class="elementor-element elementor-element-c3b3aea aleft elementor-invisible elementor-widget elementor-widget-wgl-double-heading"
-												data-id="c3b3aea" data-element_type="widget"
-												data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:600}"
-												data-widget_type="wgl-double-heading.default">
+											<div class="elementor-element elementor-element-c3b3aea aleft elementor-widget elementor-widget-wgl-double-heading">
 												<div class="elementor-widget-container">
 													<div class="wgl-double-heading">
 														<div class="dblh__wrapper">
@@ -385,7 +381,7 @@
 												</div>
 											</div>
 
-											<div class="elementor-element elementor-element-31c058d elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-invisible elementor-widget elementor-widget-text-editor"
+											<div class="elementor-element elementor-element-31c058d elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-text-editor"
 												data-id="31c058d" data-element_type="widget"
 												data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:700}"
 												data-widget_type="text-editor.default">
@@ -420,7 +416,7 @@
 									<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-e359882"
 										data-id="e359882" data-element_type="column">
 										<div class="elementor-widget-wrap elementor-element-populated">
-											<div class="elementor-element elementor-element-4b13383 elementor-widget__width-auto elementor-absolute elementor-invisible elementor-widget elementor-widget-text-editor"
+											<div class="elementor-element elementor-element-4b13383 elementor-widget__width-auto elementor-absolute elementor-widget elementor-widget-text-editor"
 												data-id="4b13383" data-element_type="widget"
 												data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:800}"
 												data-widget_type="text-editor.default">
@@ -434,14 +430,14 @@
 									<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-fde09d9"
 										data-id="fde09d9" data-element_type="column">
 										<div class="elementor-widget-wrap elementor-element-populated">
-											<div class="elementor-element elementor-element-eb087aa elementor-widget__width-auto elementor-absolute elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor"
+											<div class="elementor-element elementor-element-eb087aa elementor-widget__width-auto elementor-absolute elementor-widget-mobile__width-inherit elementor-widget elementor-widget-text-editor"
 												data-id="eb087aa" data-element_type="widget"
 												data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:850}"
 												data-widget_type="text-editor.default">
 												<div class="elementor-widget-container">
-													<a href="tel:+1800123456789">7th and 8th October 2023</a> </div>
+													<a href="#">7th and 8th October 2023</a> </div>
 											</div>
-											<div class="elementor-element elementor-element-117cd76 elementor-widget__width-auto elementor-absolute elementor-widget-mobile__width-inherit elementor-invisible elementor-widget elementor-widget-text-editor"
+											<div class="elementor-element elementor-element-117cd76 elementor-widget__width-auto elementor-absolute elementor-widget-mobile__width-inherit elementor-widget elementor-widget-text-editor"
 												data-id="117cd76" data-element_type="widget"
 												data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:900}"
 												data-widget_type="text-editor.default">
@@ -481,9 +477,9 @@
 																data-id="4d10e58" data-element_type="widget"
 																data-widget_type="wgl-info-box.default">
 																<div class="elementor-widget-container">
-																	<div class="wgl-infobox"><a
-																			class="wgl-infobox__link"
-																			href="https://wgl-demo.net/itconf/contacts/"></a>
+																	<div class="wgl-infobox">
+																		<a class="wgl-infobox__link scroll-button"
+																			href="#"></a>
 																		<div class="wgl-infobox_wrapper">
 																			<div class="content_wrapper">
 																				<div class="wgl-infobox-title_wrapper">
@@ -515,34 +511,24 @@
 																<div class="elementor-widget-container">
 																	<div class="wgl-double-heading">
 																		<div class="dblh__wrapper">
-																			<h3 class="dblh__title-wrapper"><span
-																					class="dblh__title dblh__title-1">Welcome
-																					to </span><span
-																					class="dblh__title dblh__title-2">the
-																					AI
-																					conference, </span><span
-																					class="dblh__title dblh__title-3">where
-																					we will explore how ai can</span>
+																			<h3 class="dblh__title-wrapper">
+																				<span class="dblh__title dblh__title-1">
+																					To raise awareness about the importance of 
+																				</span>
+																				<span class="dblh__title dblh__title-2">mental health</span>
+																				<span class="dblh__title dblh__title-1">
+																					and provide educational resources to attendees, empowering them with knowledge about recognizing signs of 
+																				</span>
+																				
+																				<span class="dblh__title dblh__title-2">
+																					emotional distress, managing stress, and fostering emotional well-being
+																				</span>
 																			</h3>
 																		</div>
 																	</div>
 																</div>
 															</div>
-															<div class="elementor-element elementor-element-b3d71d4 elementor-widget__width-initial aleft elementor-widget elementor-widget-wgl-double-heading"
-																data-id="b3d71d4" data-element_type="widget"
-																data-widget_type="wgl-double-heading.default">
-																<div class="elementor-widget-container">
-																	<div class="wgl-double-heading">
-																		<div class="dblh__wrapper">
-																			<h3 class="dblh__title-wrapper"><span
-																					class="dblh__title dblh__title-1">revolutionize
-																					the fields of </span><span
-																					class="dblh__title dblh__title-2">design
-																					and development.</span></h3>
-																		</div>
-																	</div>
-																</div>
-															</div>
+															
 														</div>
 													</div>
 												</div>
@@ -647,44 +633,26 @@
 																									<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/"
 																										class="media-link image-overlay"><img
 																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-1-740x540.jpg')}}"
+																											src="{{ asset('public/events/6.png')}}"
 																											alt="blog-s-1"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
+																								</div>
 																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="https://wgl-demo.net/itconf/category/technology/">technology</a></span></span>
+																							<div class="blog-post_content">
+																								<div class="post_meta-wrap">
+																									<div class="meta-data">
+																										<span class="post_categories">
+																											<span>
+																												<a href="https://wgl-demo.net/itconf/category/technology/">
+																													Revitalising yoga sessions led by an experienced yoga instructor to help participants
+																													connect with their body, mind, and soul
+																												</a>
+																											</span>
+																										</span>
 																									</div>
 																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/">YOGA</a>
+																								<h3 class="blog-post_title">
+																									<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/">YOGA</a>
 																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
 																							</div>
 																						</div>
 																					</div>
@@ -701,12 +669,10 @@
 																									<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
 																										class="media-link image-overlay"><img
 																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-6-740x540.jpg')}}"
+																											src="{{ asset('public/events/2.png')}}"
 																											alt="blog-s-6"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
+																								</div>
+																								
 																							</div>
 																							<div
 																								class="blog-post_content">
@@ -714,9 +680,16 @@
 																									class="post_meta-wrap">
 																									<div
 																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="#">digital</a></span></span>
+																										<span class="post_categories">
+																											<span>
+																												<a
+																													href="#">
+																													Practising mindfulness through meditation, promoting mental clarity and emotional well-being.
+																													Participants will learn different mindfulness techniques that can be practised from the comfort
+																													of their homes or office to help with stress or anxiety relief
+																												</a>
+																											</span>
+																										</span>
 																									</div>
 																								</div>
 																								<h3
@@ -725,19 +698,6 @@
 																										href="#">Meditation</a>
 																								</h3>
 																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
 																								</div>
 																							</div>
 																						</div>
@@ -755,12 +715,9 @@
 																									<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
 																										class="media-link image-overlay"><img
 																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-7-740x540.jpg')}}"
+																											src="{{ asset('public/events/9.png')}}"
 																											alt="blog-s-7"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
+																								</div>
 																							</div>
 																							<div
 																								class="blog-post_content">
@@ -768,305 +725,29 @@
 																									class="post_meta-wrap">
 																									<div
 																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="https://wgl-demo.net/itconf/category/conference/">conference</a></span></span>
+																										<span class="post_categories"><span><a
+																													href="https://wgl-demo.net/itconf/category/conference/">
+																													Release pent-up stress and negative emotions in our specially designed rage room. Letting go of
+																													tension through smashing breakable items can be incredibly cathartic and freeing. We will also be
+																													providing emotion and stress management worksheets and guides for those who participate in the
+																													rage room
+																													</a>
+																												</span>
+																											</span>
 																									</div>
 																								</div>
 																								<h3
 																									class="blog-post_title">
-																									<a
-																										href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">RAGE
+																									<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">RAGE
 																										ROOM</a></h3>
 																								<div class="clear">
 																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
 																							</div>
 																						</div>
 																					</div>
 																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-6-740x540.jpg')}}"
-																											alt="blog-s-6"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="#">digital</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="#">Meditation</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-6-740x540.jpg')}}"
-																											alt="blog-s-6"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="#">digital</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="#">Meditation</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-6-740x540.jpg')}}"
-																											alt="blog-s-6"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="#">digital</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="#">Meditation</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-6-740x540.jpg')}}"
-																											alt="blog-s-6"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="#">digital</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="#">Meditation</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-6-740x540.jpg')}}"
-																											alt="blog-s-6"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="#">digital</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="#">Meditation</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
+																				
+																
 																			</div>
 																		</div>
 																	</div>
@@ -1092,118 +773,8 @@
 																		<div class="wgl-carousel swiper wgl-carousel_swiper swiper-container "
 																			data-swiper='{"mousewheel":false,"speed":400,"infinite":false,"variableWidth":false,"autoplay":false,"autoplaySpeed":null,"autoplayPause":true,"autoplayReverse":false,"watchOverflow":true,"arrows":false,"dots":false,"adaptiveHeight":true,"direction":"horizontal","responsive":[{"breakpoint":1601,"slidesToShow":"3","slidesToScroll":1},{"breakpoint":1201,"slidesToShow":"3","slidesToScroll":1},{"breakpoint":768,"slidesToShow":"2","slidesToScroll":1},{"breakpoint":280,"slidesToShow":"1","slidesToScroll":1}]}'
 																			data-item-carousel='wgl_carousel_64d49b3de688d'>
-																			<div class="swiper-wrapper">
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-1-740x540.jpg')}}"
-																											alt="blog-s-1"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="https://wgl-demo.net/itconf/category/technology/">technology</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/">YOGA</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-6-740x540.jpg')}}"
-																											alt="blog-s-6"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="#">digital</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="#">Meditation</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																			
-																				<div
-																				class="item wgl_col-4 swiper-slide">
+																			<div class="swiper-wrapper">														
+																			<div class="item wgl_col-4 swiper-slide">
 																				<div
 																					class="blog-post format-standard-image">
 																					<div class="blog-post_wrapper">
@@ -1211,15 +782,12 @@
 																							class="blog-post_media">
 																							<div
 																								class="blog-post_media_part">
-																								<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
+																								<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
 																									class="media-link image-overlay"><img
 																										decoding="async"
-																										src="{{ asset('public/wp-content/uploads/2023/05/blog-s-7-740x540.jpg')}}"
-																										alt="blog-s-7"></a>
-																							</div><span
-																								class="post_date">May
-																								30,
-																								2023</span>
+																										src="{{ asset('public/events/1.png')}}"
+																										alt="blog-s-6"></a>
+																							</div>
 																						</div>
 																						<div
 																							class="blog-post_content">
@@ -1229,37 +797,25 @@
 																									class="meta-data">
 																									<span
 																										class="post_categories"><span><a
-																												href="https://wgl-demo.net/itconf/category/conference/">conference</a></span></span>
+																												href="#">Immersion in the soothing embrace of nature's waters. The act of fishing requires patience,
+																												focus, and a sense of quiet determination—qualities that cultivate a serene mind and a
+																												balanced spirit.</a></span></span>
 																								</div>
 																							</div>
 																							<h3
 																								class="blog-post_title">
 																								<a
-																									href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Rage Rooms</a>
+																									href="#">Sauna and Swimming
+																								</a>
 																							</h3>
 																							<div class="clear">
-																							</div>
-																							<div
-																								class="blog-post_footer">
-																								<div
-																									class="read-more-wrap">
-																									<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
-																										class="button-read-more "><span>read
-																											more</span>
-																									</a>
-																								</div>
-																								<div
-																									class="post_meta-wrap">
-																								</div>
 																							</div>
 																						</div>
 																					</div>
 																				</div>
 																			</div>
-																			<div
-																			class="item wgl_col-4 swiper-slide">
-																			<div
-																				class="blog-post format-standard-image">
+																			<div class="item wgl_col-4 swiper-slide">
+																			<div class="blog-post format-standard-image">
 																				<div class="blog-post_wrapper">
 																					<div
 																						class="blog-post_media">
@@ -1268,12 +824,9 @@
 																							<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
 																								class="media-link image-overlay"><img
 																									decoding="async"
-																									src="{{ asset('public/wp-content/uploads/2023/05/blog-s-7-740x540.jpg')}}"
+																									src="{{ asset('public/events/7.png')}}"
 																									alt="blog-s-7"></a>
-																						</div><span
-																							class="post_date">May
-																							30,
-																							2023</span>
+																						</div>
 																					</div>
 																					<div
 																						class="blog-post_content">
@@ -1283,7 +836,10 @@
 																								class="meta-data">
 																								<span
 																									class="post_categories"><span><a
-																											href="https://wgl-demo.net/itconf/category/conference/">conference</a></span></span>
+																											href="https://wgl-demo.net/itconf/category/conference/">
+																											Exploring the creative side in painting and pottery workshops. Engaging in artistic expression can be
+																											a powerful way to reduce stress, tap into emotions, and discover new ways of self-expression.
+																											</a></span></span>
 																							</div>
 																						</div>
 																						<h3
@@ -1295,208 +851,193 @@
 																						</h3>
 																						<div class="clear">
 																						</div>
-																						<div
-																							class="blog-post_footer">
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+
+
+																		<div class="item wgl_col-4 swiper-slide">
+																					<div
+																						class="blog-post format-standard-image">
+																						<div class="blog-post_wrapper">
 																							<div
-																								class="read-more-wrap">
-																								<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
-																									class="button-read-more "><span>read
-																										more</span>
-																								</a>
+																								class="blog-post_media">
+																								<div
+																									class="blog-post_media_part">
+																									<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
+																										class="media-link image-overlay"><img
+																											decoding="async"
+																											src="{{ asset('public/events/3.png')}}"
+																											alt="blog-s-7"></a>
+																								</div>
 																							</div>
+																							<div
+																								class="blog-post_content">
+																								<div
+																									class="post_meta-wrap">
+																									<div
+																										class="meta-data">
+																										<span
+																											class="post_categories"><span><a
+																													href="https://wgl-demo.net/itconf/category/conference/">
+																													Learning the art of plant propagation by creating a terrarium or plant arrangement. Bringing nature
+																													into the living space can promote tranquility and enhance the overall ambiance</a></span></span>
+																									</div>
+																								</div>
+																								<h3
+																									class="blog-post_title">
+																									<a
+																										href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Plant-Making</a>
+																								</h3>
+																								<div class="clear">
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</section>
+													</div>
+												</div>
+											</div>
+											
+											<div class="elementor-element elementor-element-c515136 elementor-widget elementor-widget-wgl-cases"
+											data-id="c515136" data-element_type="widget"
+											data-widget_type="wgl-cases.default">
+											<div class="elementor-element elementor-element-6b43337 elementor-widget elementor-widget-wgl-blog"
+												data-id="6b43337" data-element_type="widget"
+												data-settings="{&quot;blog_columns&quot;:&quot;4&quot;}"
+												data-widget_type="wgl-blog.default">
+												<div class="elementor-widget-container">
+													<section class="wgl_cpt_section">
+														<div class="blog-posts">
+															<div
+																class="container-grid row blog_carousel blog-style-standard">
+																<div class="wgl-carousel_wrapper">
+																	<div class="wgl-carousel swiper wgl-carousel_swiper swiper-container "
+																		data-swiper='{"mousewheel":false,"speed":400,"infinite":false,"variableWidth":false,"autoplay":false,"autoplaySpeed":null,"autoplayPause":true,"autoplayReverse":false,"watchOverflow":true,"arrows":false,"dots":false,"adaptiveHeight":true,"direction":"horizontal","responsive":[{"breakpoint":1601,"slidesToShow":"3","slidesToScroll":1},{"breakpoint":1201,"slidesToShow":"3","slidesToScroll":1},{"breakpoint":768,"slidesToShow":"2","slidesToScroll":1},{"breakpoint":280,"slidesToShow":"1","slidesToScroll":1}]}'
+																		data-item-carousel='wgl_carousel_64d49b3de688d'>
+																		<div class="swiper-wrapper">														
+																		<div class="item wgl_col-4 swiper-slide">
+																			<div
+																				class="blog-post format-standard-image">
+																				<div class="blog-post_wrapper">
+																					<div
+																						class="blog-post_media">
+																						<div
+																							class="blog-post_media_part">
+																							<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
+																								class="media-link image-overlay"><img
+																									decoding="async"
+																									src="{{ asset('public/events/8.png')}}"
+																									alt="blog-s-6"></a>
+																						</div>
+																					</div>
+																					<div
+																						class="blog-post_content">
+																						<div
+																							class="post_meta-wrap">
+																							<div
+																								class="meta-data">
+																								<span
+																									class="post_categories"><span><a
+																											href="#">Immersion in the soothing embrace of nature's waters. The act of fishing requires patience,
+																											focus, and a sense of quiet determination—qualities that cultivate a serene mind and a
+																											balanced spirit.</a></span></span>
+																							</div>
+																						</div>
+																						<h3
+																							class="blog-post_title">
+																							<a
+																								href="#">Access to Fishing Ponds
+																							</a>
+																						</h3>
+																						<div class="clear">
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="item wgl_col-4 swiper-slide">
+																		<div class="blog-post format-standard-image">
+																			<div class="blog-post_wrapper">
+																				<div
+																					class="blog-post_media">
+																					<div
+																						class="blog-post_media_part">
+																						<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
+																							class="media-link image-overlay"><img
+																								decoding="async"
+																								src="{{ asset('public/events/4.png')}}"
+																								alt="blog-s-7"></a>
+																					</div>
+																				</div>
+																				<div
+																					class="blog-post_content">
+																					<div
+																						class="post_meta-wrap">
+																						<div
+																							class="meta-data">
+																							<span
+																								class="post_categories"><span><a
+																										href="https://wgl-demo.net/itconf/category/conference/">
+																										Relaxing massages are available from certified therapists designed to relieve physical tension
+																										and promote a deep sense of relaxation.
+																									</a></span></span>
+																						</div>
+																					</div>
+																					<h3
+																						class="blog-post_title">
+																						<a
+																							href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Massage</a>
+																					</h3>
+																					<div class="clear">
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+
+																	<div class="item wgl_col-4 swiper-slide">
+																				<div
+																					class="blog-post format-standard-image">
+																					<div class="blog-post_wrapper">
+																						<div
+																							class="blog-post_media">
+																							<div
+																								class="blog-post_media_part">
+																								<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
+																									class="media-link image-overlay"><img
+																										decoding="async"
+																										src="{{ asset('public/events/2.png')}}"
+																										alt="blog-s-7"></a>
+																							</div>
+																						</div>
+																						<div
+																							class="blog-post_content">
 																							<div
 																								class="post_meta-wrap">
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</section>
-													</div>
-												</div>
-											</div>
-											<div class="elementor-element elementor-element-c515136 elementor-widget elementor-widget-wgl-cases"
-												data-id="c515136" data-element_type="widget"
-												data-widget_type="wgl-cases.default">
-												<div class="elementor-element elementor-element-6b43337 elementor-widget elementor-widget-wgl-blog"
-													data-id="6b43337" data-element_type="widget"
-													data-settings="{&quot;blog_columns&quot;:&quot;4&quot;}"
-													data-widget_type="wgl-blog.default">
-													<div class="elementor-widget-container">
-														<section class="wgl_cpt_section">
-															<div class="blog-posts">
-																<div
-																	class="container-grid row blog_carousel blog-style-standard">
-																	<div class="wgl-carousel_wrapper">
-																		<div class="wgl-carousel swiper wgl-carousel_swiper swiper-container "
-																			data-swiper='{"mousewheel":false,"speed":400,"infinite":false,"variableWidth":false,"autoplay":false,"autoplaySpeed":null,"autoplayPause":true,"autoplayReverse":false,"watchOverflow":true,"arrows":false,"dots":false,"adaptiveHeight":true,"direction":"horizontal","responsive":[{"breakpoint":1601,"slidesToShow":"3","slidesToScroll":1},{"breakpoint":1201,"slidesToShow":"3","slidesToScroll":1},{"breakpoint":768,"slidesToShow":"2","slidesToScroll":1},{"breakpoint":280,"slidesToShow":"1","slidesToScroll":1}]}'
-																			data-item-carousel='wgl_carousel_64d49b3de688d'>
-																			<div class="swiper-wrapper">
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
 																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-1-740x540.jpg')}}"
-																											alt="blog-s-1"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="https://wgl-demo.net/itconf/category/technology/">technology</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/">Plank making</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
+																									class="meta-data">
+																									<span
+																										class="post_categories"><span><a
+																												href="https://wgl-demo.net/itconf/category/conference/">
+																												Our team of compassionate psychologists will be available throughout the event to provide
+																												counselling and support for those seeking professional guidance or simply a listening ear.</a></span></span>
 																								</div>
 																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-6-740x540.jpg')}}"
-																											alt="blog-s-6"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="#">digital</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="#">Sauna and Swimming
-																									</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-7-740x540.jpg')}}"
-																											alt="blog-s-7"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="https://wgl-demo.net/itconf/category/conference/">conference</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Plant-Making</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
+																							<h3
+																								class="blog-post_title">
+																								<a
+																									href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Access to Psychologists</a>
+																							</h3>
+																							<div class="clear">
 																							</div>
 																						</div>
 																					</div>
@@ -1506,198 +1047,11 @@
 																	</div>
 																</div>
 															</div>
-														</section>
-													</div>
+														</div>
+													</section>
 												</div>
 											</div>
-											<div class="elementor-element elementor-element-c515136 elementor-widget elementor-widget-wgl-cases"
-												data-id="c515136" data-element_type="widget"
-												data-widget_type="wgl-cases.default">
-												<div class="elementor-element elementor-element-6b43337 elementor-widget elementor-widget-wgl-blog"
-													data-id="6b43337" data-element_type="widget"
-													data-settings="{&quot;blog_columns&quot;:&quot;4&quot;}"
-													data-widget_type="wgl-blog.default">
-													<div class="elementor-widget-container">
-														<section class="wgl_cpt_section">
-															<div class="blog-posts">
-																<div
-																	class="container-grid row blog_carousel blog-style-standard">
-																	<div class="wgl-carousel_wrapper">
-																		<div class="wgl-carousel swiper wgl-carousel_swiper swiper-container "
-																			data-swiper='{"mousewheel":false,"speed":400,"infinite":false,"variableWidth":false,"autoplay":false,"autoplaySpeed":null,"autoplayPause":true,"autoplayReverse":false,"watchOverflow":true,"arrows":false,"dots":false,"adaptiveHeight":true,"direction":"horizontal","responsive":[{"breakpoint":1601,"slidesToShow":"3","slidesToScroll":1},{"breakpoint":1201,"slidesToShow":"3","slidesToScroll":1},{"breakpoint":768,"slidesToShow":"2","slidesToScroll":1},{"breakpoint":280,"slidesToShow":"1","slidesToScroll":1}]}'
-																			data-item-carousel='wgl_carousel_64d49b3de688d'>
-																			<div class="swiper-wrapper">
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="{{ asset('public/wp-content/uploads/2023/05/blog-s-1-740x540.jpg')}}"
-																											alt="blog-s-1"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="https://wgl-demo.net/itconf/category/technology/">technology</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/">YOGA</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="wp-content/uploads/2023/05/blog-s-6-740x540.jpg"
-																											alt="blog-s-6"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="#">digital</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="#">Meditation</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/chatbots-and-virtual-assistants/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																				<div
-																					class="item wgl_col-4 swiper-slide">
-																					<div
-																						class="blog-post format-standard-image">
-																						<div class="blog-post_wrapper">
-																							<div
-																								class="blog-post_media">
-																								<div
-																									class="blog-post_media_part">
-																									<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
-																										class="media-link image-overlay"><img
-																											decoding="async"
-																											src="wp-content/uploads/2023/05/blog-s-7-740x540.jpg"
-																											alt="blog-s-7"></a>
-																								</div><span
-																									class="post_date">May
-																									30,
-																									2023</span>
-																							</div>
-																							<div
-																								class="blog-post_content">
-																								<div
-																									class="post_meta-wrap">
-																									<div
-																										class="meta-data">
-																										<span
-																											class="post_categories"><span><a
-																													href="https://wgl-demo.net/itconf/category/conference/">conference</a></span></span>
-																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Plant-Making</a>
-																								</h3>
-																								<div class="clear">
-																								</div>
-																								<div
-																									class="blog-post_footer">
-																									<div
-																										class="read-more-wrap">
-																										<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/"
-																											class="button-read-more "><span>read
-																												more</span>
-																										</a>
-																									</div>
-																									<div
-																										class="post_meta-wrap">
-																									</div>
-																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</section>
-													</div>
-												</div>
-											</div>
+										</div>
 											<div class="elementor-element elementor-element-162a98c elementor-widget elementor-widget-spacer"
 												data-id="162a98c" data-element_type="widget"
 												data-widget_type="spacer.default">
@@ -1728,7 +1082,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="elementor-element elementor-element-8442256 animated-slow elementor-invisible elementor-widget elementor-widget-wgl-text-path"
+											<div class="elementor-element elementor-element-8442256 animated-slow elementor-widget elementor-widget-wgl-text-path"
 												data-id="8442256" data-element_type="widget"
 												data-settings="{&quot;text&quot;:&quot;Nsansa&quot;,&quot;divider_image&quot;:{&quot;url&quot;:&quot;https:\/\/wgl-demo.net\/itconf\/wp-content\/uploads\/2023\/06\/path-div.png&quot;,&quot;id&quot;:1481,&quot;size&quot;:&quot;&quot;,&quot;alt&quot;:&quot;&quot;,&quot;source&quot;:&quot;library&quot;},&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:150,&quot;link&quot;:{&quot;url&quot;:&quot;&quot;,&quot;is_external&quot;:&quot;&quot;,&quot;nofollow&quot;:&quot;&quot;,&quot;custom_attributes&quot;:&quot;&quot;},&quot;animation_speed&quot;:30000,&quot;start_point&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:100,&quot;sizes&quot;:[]},&quot;start_point_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;start_point_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;end_point&quot;:{&quot;unit&quot;:&quot;%&quot;,&quot;size&quot;:-10,&quot;sizes&quot;:[]},&quot;end_point_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;end_point_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}"
 												data-widget_type="wgl-text-path.default">
@@ -2062,7 +1416,7 @@
 														<div class="dblh__subtitle">Excited?</div>
 														<div class="dblh__wrapper">
 															<h3 class="dblh__title-wrapper"><span
-																	class="dblh__title dblh__title-1">Book you ticket
+																	class="dblh__title dblh__title-1">Buy your ticket
 																	Below</span></h3>
 														</div>
 													</div>
@@ -2083,81 +1437,53 @@
 									</div>
 								</div>
 							</section>
-							<section
-								class="elementor-section elementor-top-section elementor-element elementor-element-e4fbd48 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
-								data-id="e4fbd48" data-element_type="section">
-								<div class="elementor-container elementor-column-gap-default">
-									<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-733707b"
-										data-id="733707b" data-element_type="column">
-										<div class="elementor-widget-wrap elementor-element-populated">
-											<div class="elementor-element elementor-element-e5317ae aleft elementor-invisible elementor-widget elementor-widget-wgl-info-box"
-												data-id="e5317ae" data-element_type="widget"
-												data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:150}"
-												data-widget_type="wgl-info-box.default">
-												<div class="elementor-widget-container">
-													<div class="wgl-infobox"><a class="wgl-infobox__link"
-															href="https://wgl-demo.net/itconf/contacts/"></a>
-														<div class="wgl-infobox_wrapper">
-															<div class="content_wrapper">
-																<div class="wgl-infobox-title_wrapper">
-																	<div class="wgl-infobox_title"><span
-																			class="wgl-infobox_title-idle">Choose Your
-																			Tickets &amp; Booking</span></div>
-																</div>
-																<div class="wgl-infobox_content">
-																	<p>Get <br />Tickets Online</p>
-																</div>
-															</div>
-															<div class="wgl-infobox-button_wrapper">
-																<div
-																	class="wgl-infobox_button button-read-more no_text align-icon-left">
-																	<i class="read-more-icon flaticon flaticon-right-arrow"
-																		aria-hidden="true"></i></div>
-															</div>
-														</div>
-													</div>
-												</div>
+							<section>
+								<div class="elementor-section elementor-widget-container elementor-top-section elementor-element elementor-section-boxed elementor-section-height-default elementor-section-height-default">
+									<div style="margin-right: 10%;margin-left: 10%;">
+										<div class="elementor-widget-container">
+										@php
+											$randomStr = Illuminate\Support\Str::random(5);
+											$transRef = Illuminate\Support\Str::random(7);
+											// UUID ID generator
+											$uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+										@endphp 
+										<form action="{{ route('pay-w-sparco') }}" method="POST" id="ticketform">
+											@csrf
+											<div class="form-group">
+												<label for="name">First name:</label>
+												<input type="text" name="customerFirstName" class="form-control" >
 											</div>
-										</div>
-									</div>
-									<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-a4d0346"
-										data-id="a4d0346" data-element_type="column">
-										<div class="elementor-widget-wrap elementor-element-populated">
-											<div class="elementor-element elementor-element-02699e8 aleft elementor-invisible elementor-widget elementor-widget-wgl-info-box"
-												data-id="02699e8" data-element_type="widget"
-												data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:400}"
-												data-widget_type="wgl-info-box.default">
-												<div class="elementor-widget-container">
-													<div class="wgl-infobox"><a class="wgl-infobox__link"
-															href="https://wgl-demo.net/itconf/contacts/"></a>
-														<div class="wgl-infobox_wrapper">
-															<div class="content_wrapper">
-																<div class="wgl-infobox-title_wrapper">
-																	<div class="wgl-infobox_title"><span
-																			class="wgl-infobox_title-idle">Please
-																			contact us
-																			to learn more</span></div>
-																</div>
-																<div class="wgl-infobox_content">
-																	<p>View<br />Schedule &amp; Venue</p>
-																</div>
-															</div>
-															<div class="wgl-infobox-button_wrapper">
-																<div
-																	class="wgl-infobox_button button-read-more no_text align-icon-left">
-																	<i class="read-more-icon flaticon flaticon-right-arrow"
-																		aria-hidden="true"></i></div>
-															</div>
-														</div>
-													</div>
-												</div>
+											<div class="form-group">
+												<label for="name">Last name:</label>
+												<input type="text" name="customerLastName" class="form-control" >
 											</div>
+											<div class="form-group">
+												<label for="name">Mobile number <small>(ex. 077XXXXXXX or 097XXXXXXX)</small>:</label>
+												<input type="text" id="contact" name="wallet" class="form-control" placeholder="077XXXXXXX / 097XXXXXXX">
+											</div>
+											<div class="form-group">
+												<label for="name">Email:</label>
+												<input type="text" name="customerEmail" class="form-control" placeholder="your@email.com">
+											</div>
+											{{-- <input type="tel" id="contact" name="customerPhone" placeholder="Mobile number"> --}}
+											<input type="hidden" name="callback" value="https://nsansawellness.com/ticket-callback/{{ $uuid }}">
+											<input type="hidden" name="uuid" value="{{ $uuid }}">
+											<input type="hidden" name="amount" value="900">
+											<input type="hidden" name="billing_id" value="0">
+											<input type="hidden" name="currency" value="ZMW">
+											<input type="hidden" name="item" value="ticket">
+											<input type="hidden" name="merchantPublicKey" value="de7afd6176bb4eff99316dcf508e5be6">
+											<input type="hidden" name="transactionName" value="{{ $randomStr }}">
+											<input type="hidden" name="transactionReference" value="{{ $transRef }}">
+											<input type="hidden" name="chargeMe" value="true">
+											<br>
+											<button id="submitBtn">Buy Now</button>
+										</form>
 										</div>
 									</div>
 								</div>
 							</section>
-							<section
-								class="elementor-section elementor-top-section elementor-element elementor-element-23bdd70 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
+							{{-- <section class="elementor-section elementor-top-section elementor-element elementor-element-23bdd70 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
 								data-id="23bdd70" data-element_type="section"
 								data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 								<div class="elementor-container elementor-column-gap-default">
@@ -2176,7 +1502,7 @@
 										</div>
 									</div>
 								</div>
-							</section>
+							</section> --}}
 						</div>
 					</div>
 				</div>
@@ -2184,6 +1510,8 @@
 		</main>
         
 	</div><!-- #page -->
+
+
 	<link rel='stylesheet' id='elementor-post-10-css'
 		href='{{ asset("public/wp-content/uploads/sites/304/elementor/css/post-10177c.css?ver=1657011659")}}' type='text/css' media='all' />
 	<link rel='stylesheet' id='magnific-popup-css'
@@ -2197,6 +1525,7 @@
 	<link rel='stylesheet' id='e-animations-css'
 		href='{{ asset("public/wp-content/plugins/elementor/assets/lib/animations/animations.min3ab2.css?ver=3.6.5")}}' type='text/css'
 		media='all' />
+
 	<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 	<script type='text/javascript' src='{{ asset("public/wp-content/themes/hello-elementor/assets/js/hello-frontend.min8a54.js?ver=1.0.0")}}'
 		id='hello-theme-frontend-js'></script>
@@ -2366,20 +1695,6 @@
 	<script type='text/javascript'
 		src='{{ asset("public/wp-content/plugins/jeg-elementor-kit/assets/js/elements/mailchimp04c6.js?ver=2.4.4-dev-1")}}'
 		id='jkit-element-mailchimp-js'></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<script type="text/javascript">
 		(function () {
 			var c = document.body.className;
@@ -32660,29 +31975,7 @@
 	</script>
 	<script type='text/javascript' src='{{ asset("public/wp-content/plugins/wgl-extensions/includes/elementor/assets/js/wgl_elementor_sectionsf801.js?ver=6.3")}}' id='wgl-parallax-js'></script>
 
-    @php
-        $randomStr = Illuminate\Support\Str::random(5);
-        $transRef = Illuminate\Support\Str::random(7);
-    @endphp
-    <form action="{{ route('pay-w-sparco') }}" method="POST" id="ticketform">
-        @csrf
-            {{-- <input type="tel" id="contact" name="customerPhone" placeholder="Mobile number"> --}}
-        <input type="hidden" id="contact" name="wallet" placeholder="Mobile number">
-    
-        <input type="hidden" name="amount" value="100">
-        <input type="hidden" name="billing_id" value="0">
-        <input type="hidden" name="currency" value="ZMW">
-        <input type="hidden" name="item" value="ticket">
-        <input type="text" name="customerFirstName" placeholder="First Name" >
-        <input type="text" name="customerLastName"  placeholder="Last Name">
-        <input type="text" name="customerEmail" placeholder="Your Email">
-        <input type="hidden" name="merchantPublicKey" value="de7afd6176bb4eff99316dcf508e5be6">
-        <input type="hidden" name="transactionName" value="{{ $randomStr }}">
-        <input type="hidden" name="transactionReference" value="{{ $transRef }}">
-        <input type="hidden" name="chargeMe" value="true">
-        <br>
-        <button id="submitBtn">Proceed to Payments</button>
-    </form>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -32711,6 +32004,10 @@
                 }
             });
         });
+		      
+		$(".scroll-button").click(function() {
+			$("html, body").animate({ scrollTop: $(document).height() }, 1000);
+		});
     });
 </script>
 <!-- Mirrored from templatekit.jegtheme.com/cognitive/pricing/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Sep 2022 18:28:41 GMT -->
