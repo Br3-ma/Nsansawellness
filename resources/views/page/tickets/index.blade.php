@@ -41,8 +41,11 @@
                         <th class="whitespace-nowrap">TCIKET CODE</th>
                         <th class="text-center whitespace-nowrap">CUSTOMER NAMES</th>
                         <th class="whitespace-nowrap">PHONE#</th>
-                        <th class="whitespace-nowrap">EMAIL</th>
-                        <th class="whitespace-nowrap">AMOUNT</th>
+                        {{-- <th class="whitespace-nowrap">EMAIL</th> --}}
+                        <th class="whitespace-nowrap">ACTUAL AMOUNT</th>
+                        <th class="whitespace-nowrap">TXN FEE</th>
+                        <th class="whitespace-nowrap">TXN RATE</th>
+                        <th class="whitespace-nowrap">TICKET AMOUNT</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,29 +61,39 @@
                                         {{ $ticket->ticketcode }}
                                     </div>
                                 </td>
-                                <td class="text-center">
+                                {{-- <td class="text-center">
                                     <div class="flex items-center justify-center whitespace-nowrap text-info"> 
                                         <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed 
                                     </div>
-                                </td>
+                                </td> --}}
                                 <td>
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
+                                    <div class="text-primary-500 font-extrabold text-md whitespace-nowrap mt-0.5">
                                         {{ $ticket->fname.' '.$ticket->lname }}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
+                                    <div class="text-primary-500 font-bold text-xs whitespace-nowrap mt-0.5">
                                         {{ $ticket->phone }}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
-                                        {{ $ticket->email }}
+                                    <div class="text-success font-extrabold text-xs whitespace-nowrap mt-0.5">
+                                        K{{ $ticket->actual_amount }}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
-                                        {{ $ticket->amount }}
+                                    <div class="text-slate-500  font-bold text-xs whitespace-nowrap mt-0.5">
+                                        K{{ $ticket->fee_amount }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-slate-500  font-bold text-xs whitespace-nowrap mt-0.5">
+                                        %{{ $ticket->trans_rate }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-slate-500  font-bold text-xs whitespace-nowrap mt-0.5">
+                                        K {{ $ticket->trans_amount }}
                                     </div>
                                 </td>
                         </tr>                        
