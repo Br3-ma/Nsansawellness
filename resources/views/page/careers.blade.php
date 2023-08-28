@@ -24,7 +24,7 @@
                   {{ route('register', ['role' => 'Clinical Social Worker', 'type' => 'counselor', 'guest_id' => ''])}}" class="jkit-button-wrapper">
                       Clinical Social Worker
                       <br>
-                      <small>(LCSW, LICSW, LISW, etc)</small>
+                      <small>(ZCC, HPC2, PA2)</small>
                   </a>
               </div>
           </div>
@@ -79,7 +79,7 @@
                   <a style="background: #840178; color:#fff" href="{{ route('register', ['role' => 'Peer Counseling', 'type' => 'counselor', 'guest_id' => ''])}}" class="jkit-button-wrapper">
                       Peer-to-Peer Counselor
                       <br>
-                      <small>(PPC, etc)</small>
+                      {{-- <small>(PPC, etc)</small> --}}
                   </a>
               </div>
           </div>
@@ -93,7 +93,7 @@
                   <a style="background: #840178; color:#fff" href="{{ route('register', ['role' => 'Psychologist', 'type' => 'counselor', 'guest_id' => ''])}}" class="jkit-button-wrapper">
                       Psychologist
                       <br>
-                      <small>(LCSW, LICSW, LISW, etc)</small>
+                      <small>(ZCC, HPC2, PA2)</small>
                   </a>
               </div>
           </div>

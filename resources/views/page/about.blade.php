@@ -79,7 +79,7 @@
     <section style="padding-top:5%;padding-bottom:2%;background-color: #940d8d;" class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default">
         <div class="elementor-widget-container">
             <div class="heading-section-title ">
-                <h2 style="text-align: center" class="heading-title">Made for everyone <br>to <span class="style-gradient"><span>feel safe and welcome</span></span></h2>
+                <h2 style="text-align: center;" class="heading-title"> <span style="color:#fff">Made for everyone </span><br>   <span class="style-gradient"> <span style="color: #0e97ba">to feel safe and welcome</span></span></h2>
             </div>
         </div>
     </section>
@@ -271,7 +271,7 @@
                                             </style>
                                             <div class="elementor-container animated-slow">
                                                 <div style="padding:10%; text-align:right;">
-                                                    <h4 style="font-family:'Eczar';color: #0096FF" class="elementor-heading-title elementor-size-default">Our Mission</h4>
+                                                    <h4 style="font-family:'Eczar';color: #ffffff" class="elementor-heading-title elementor-size-default">Our Mission</h4>
                     
                                                     <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
                                                         data-widget_type="text-editor.default">
@@ -283,7 +283,7 @@
                                             </div>
                                             <div class="elementor-container animated-slow">
                                                 <div style="padding:10%; text-align:right;">
-                                                    <h4 style="font-family:'Eczar';color: #0096FF" class="elementor-heading-title elementor-size-default">Our Vision</h4>
+                                                    <h4 style="font-family:'Eczar';color: #ffffff" class="elementor-heading-title elementor-size-default">Our Vision</h4>
                         
                                                     <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
                                                         data-widget_type="text-editor.default">
