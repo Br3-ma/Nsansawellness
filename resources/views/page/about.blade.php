@@ -1,5 +1,34 @@
 @include('layouts.head')
-
+<style>
+    /*  */
+    .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .activity-card {
+            color: #fff;
+            background-color: transparent;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            border: 3px solid #0e97ba;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .activity-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+            color: #fff;
+        }
+        .activity-description {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
 <div style="padding-top:10%;" data-elementor-type="wp-page" data-elementor-id="699" class="elementor elementor-699">
     <section class="elementor-section elementor-top-section elementor-element elementor-element-76108be elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="76108be" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
         <div class="elementor-background-overlay"></div>
@@ -55,6 +84,7 @@
         </div>
     </section>
     <section style="background-color: #940d8d;" class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="89c6fcb" data-element_type="section">
+        
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-636fb60" data-id="636fb60" data-element_type="column">
                 <div class="">
@@ -343,6 +373,11 @@
         </div>
     </section>
     <section style="background-color: #940d8d;padding-top:5%;" class="elementor-section elementor-top-section elementor-element elementor-element-12633b2 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="12633b2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+
+        <div class="container">
+            <hr style="color:#8addf1">
+        </div>
+        <br>
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-eb00803" data-id="eb00803" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
@@ -363,138 +398,51 @@
                     </div>
                     <section class="elementor-section elementor-inner-section elementor-element elementor-element-5cd5314 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5cd5314" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no container">
-                            
-                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div  style="margin-right:5%; min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #940d8d; padding: 5%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                                <div class="profile-card ">
-                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                                  
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:#ffff">Inclusivity</h4>
-                                                <h6 style="color:#ffff">
-                                                    Recognizing and respecting individual and cultural differences, promoting inclusivity, and providing culturally sensitive care that acknowledges and respects the diversity of people's backgrounds, beliefs, and values
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="grid-container">
+                            <div class="activity-card">
+                                <h4 style="color:#fff;" class="activity-title">Inclusivity</h4>
+                                <p style="color:#fff;" class="activity-description">
+                                    Recognizing and respecting individual and cultural differences, promoting inclusivity, and 
+                                    providing culturally sensitive care that acknowledges and respects the diversity of people's 
+                                    backgrounds, beliefs, and values
+                                </p>
                             </div>
-                            
-                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background:  #940d8d; padding: 5%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                                <div class="profile-card ">
-                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                                  
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-heading align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:#ffff">Empathy and Compassion</h4>
-                                                <h6 style="color:#ffff">
-                                                 Demonstrating understanding, empathy, and compassion, showing sensitivity and respect for people’s feelings, experiences, and perspectives.                                                
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="activity-card">
+                                <h4 style="color:#fff;" class="activity-title">Empathy and Compassion</h4>
+                                <p style="color:#fff;" class="activity-description">
+                                    Demonstrating understanding, empathy, and compassion, showing sensitivity and respect for 
+                                    people’s feelings, experiences, and perspectives.
+                                </p>
                             </div>
-                            
-                            
-                            
-                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="margin-left:5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #940d8d; padding: 5%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                                <div class="profile-card ">
-                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                                  
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:#ffff">Competence</h3>
-                                                <h6 style="color:#ffff">
-                                                    Continuously developing and maintaining their professional skills and knowledge through ongoing education, training, and supervision to provide the best quality of care
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="activity-card">
+                                <h4 style="color:#fff;" class="activity-title">Competence</h4>
+                                <p style="color:#fff;" class="activity-description">
+                                    Continuously developing and maintaining their professional skills and knowledge through 
+                                    ongoing education, training, and supervision to provide the best quality of care
+                                </p>
                             </div>
-                            
+                            <div class="activity-card">
+                                <h4 style="color:#fff;" class="activity-title">Confidentiality and Welfare</h4>
+                                <p style="color:#fff;" class="activity-description">
+                                    Prioritizing the well-being and best interests of clients, providing client-centered care, 
+                                    and working towards enhancing the psychological health and welfare of their clients. 
+                                </p>
+                            </div>
+                            <div class="activity-card">
+                                <h4 style="color:#fff;" class="activity-title">Collaboration</h4>
+                                <p style="color:#fff;" class="activity-description">
+                                    Collaborating with other professionals, when appropriate, to provide comprehensive and integrated care to clients, 
+                                    and recognizing the value of an interdisciplinary approach in addressing complex psychological issues.    
+                                </p>
+                            </div>
+                            <!-- Repeat the above activity-card blocks for each activity -->
+                        </div>
                         </div>
                     </section>
                     <section style="margin-top: 2%" class="elementor-section elementor-inner-section elementor-element elementor-element-5cd5314 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="5cd5314" data-element_type="section">
                         <div class="elementor-container elementor-column-gap-no container">
                             
-                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div  style="margin-left: 5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #940d8d; padding: 5%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                                <div class="profile-card ">
-                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                                  
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:#ffff">Confidentiality<br>and Welfare</h3>
-                                                <h6 style="color:#ffff">
-                                                    Prioritizing the well-being and best interests of clients, providing client-centered care, and working towards enhancing the psychological health and welfare of their clients.                                                
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             
-                            <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="margin-left: 3%; max-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #940d8d; padding: 5%">
-                                    {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
-                                                <div class="profile-card ">
-                                                    <img src="https://miro.medium.com/focal/1200/1200/47/27/1*DXHQ7GznOF85K2Yga6QKKg.jpeg" width = "300" height = "300">
-                                                  
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    <div class="elementor-element elementor-element-223e8f3 elementor-widget-mobile__width-initial elementor-widget elementor-widget-jkit_heading" data-id="223e8f3" data-element_type="widget" data-widget_type="jkit_heading.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_699_12_632ca945b4044">
-                                                <h4 style="color:#ffff">Collaboration</h4>
-                                                <h6 style="color:#ffff">
-                                                    Collaborating with other professionals, when appropriate, to provide comprehensive and integrated care to clients, and recognizing the value of an interdisciplinary approach in addressing complex psychological issues.                                                
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             
                         </div>
                     </section>

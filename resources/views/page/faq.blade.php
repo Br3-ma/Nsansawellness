@@ -190,22 +190,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-wrapper">
-                                    <div class="card-header">
-                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
-                                            <span class="title">Can Nsansa substitute traditional face-to-face therapy?</span>
-                                            <div class="right-icon-group">
-                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
-                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="card-expand" id="expand-d57356d" style="display:none">
-                                        <div class="card-body">
-                                            <p>The professionals who work through Nsansa are licensed and credentialed therapists who were certified to provide therapy. However, while the service may have similar benefits, it's not capable of substituting for traditional face-to-face therapy in every case. Please note that your provider won't be able to make any official diagnosis, to fulfil any court order or prescribe medication.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                                 <div class="card-wrapper">
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
@@ -236,13 +221,9 @@
                                     </div>
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
-                                            <p>You can get therapy in four ways:</p>
-                                            <ol>
-                                                <li>*<b>Exchanging messages</b> with your therapist</li>
-                                                <li>*<b>Chatting live</b> with your therapist</li>
-                                                <li>*<b>Video conferencing</b> with your therapist</li>
-                                            </ol>
-                                            <p>You can use different ways at different times as you wish, based on your needs, availability, and convenience.</p>
+                                            <p>You can receive therapy exclusively through video conferencing with your therapist. This single 
+                                                method allows you to access therapy based on your needs, availability, and convenience.</p>
+                                           
                                         </div>
                                     </div>
                                 </div>
