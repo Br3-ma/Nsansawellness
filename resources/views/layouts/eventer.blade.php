@@ -324,7 +324,7 @@
         font-size: var(--wp--preset--font-size--x-large) !important;
     } */
 </style>
-<link rel='stylesheet' id='template-kit-export-css'
+{{-- <link rel='stylesheet' id='template-kit-export-css'
     href='{{ asset('public/wp-content/plugins/template-kit-export/public/assets/css/template-kit-export-public.min365c.css?ver=1.0.2')}}1'
     type='text/css' media='all' />
 <link rel='stylesheet' id='hello-elementor-css' href='{{ asset('public/wp-content/themes/hello-elementor/style.min0875.css?ver=2.5.0')}}'
@@ -361,7 +361,7 @@
     type='text/css' media='all' />
 <link rel='stylesheet' id='elementor-icons-fa-solid-css'
     href='{{ asset('public/wp-content/plugins/elementor/assets/lib/font-awesome/css/solid.min52d5.css?ver=5.15.3')}}' type='text/css'
-    media='all' />
+    media='all' /> --}}
 <script type='text/javascript' src='{{ asset('public/wp-includes/js/jquery/jquery.minaf6c.js?ver=3.6.0')}}' id='jquery-core-js'>
 </script>
 <script type='text/javascript' src='{{ asset('public/wp-includes/js/jquery/jquery-migrate.mind617.js?ver=3.3.2')}}'
