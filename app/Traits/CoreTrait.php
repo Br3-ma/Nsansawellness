@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\Appointment;
 use App\Models\Chat;
 use App\Models\User;
+use Illuminate\Support\Facades\Http;
 
 trait CoreTrait {
 
@@ -41,13 +42,20 @@ trait CoreTrait {
             
             if ($counselor->count() > 0) {
                 // Get a random counselor from the collection
-                $r = $counselor->random();
-                
-                // Call assign api here
-                
+                $c = $counselor->random();
+                // Make the API call
+                $response = Http::get("/assign/".auth()->user()->id."/".$c->id);
+
+                // Check the response status and handle accordingly
+                if ($response->successful()) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 // Handle the case when no counselors are available
-                echo "No counselors available.";
+                
+                return false;
             }
         }
         

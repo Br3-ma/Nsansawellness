@@ -39,11 +39,10 @@ class PatientController extends Controller
      */
     public function index()
     {
-        // $this->autoAssign(auth()->user());
+        $this->autoAssign(auth()->user());
         // Get all chats am invited in
         $chats = $this->get_my_chats();
         $notifications = auth()->user()->unreadNotifications;
-
         return view('page.patients.home', compact('notifications', 'chats'));
     }
 
