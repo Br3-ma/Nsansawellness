@@ -19,7 +19,9 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
+.big-font {
+    font-size: 86px;
+}
 </style>
 		<div data-elementor-type="wp-page" data-elementor-id="1042" class="elementor elementor-1042">
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-387d63b elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -507,7 +509,7 @@
 									</div>
 								</div>
 							</section>
-							{{-- <section
+							<section
 								class="elementor-section elementor-top-section elementor-element elementor-element-262918c elementor-section-boxed elementor-section-height-default elementor-section-height-default"
 								data-id="262918c" data-element_type="section"
 								data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -560,68 +562,22 @@
 															</div>
 														</div>
 													</div>
-													<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-3396061"
+													<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-3396061"
 														data-id="3396061" data-element_type="column">
-														<div class="elementor-widget-wrap elementor-element-populated">
-															<div class="elementor-element elementor-element-2746acb elementor-widget__width-initial aleft elementor-widget elementor-widget-wgl-double-heading"
-																data-id="2746acb" data-element_type="widget"
-																data-widget_type="wgl-double-heading.default">
-																<div class="elementor-widget-container">
-																	<div class="wgl-double-heading">
-																		<div class="dblh__wrapper">
-																			<h3 class="dblh__title-wrapper">
-																				<span class="dblh__title dblh__title-1">
-																					To raise awareness about the importance of 
-																				</span>
-																				<span class="dblh__title dblh__title-2">mental health</span>
-																				<span class="dblh__title dblh__title-1">
-																					and provide educational resources to attendees, empowering them with knowledge about recognizing signs of 
-																				</span>
-																				
-																				<span class="dblh__title dblh__title-2">
-																					emotional distress, managing stress, and fostering emotional well-being
-																				</span>
-																			</h3>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															
-														</div>
+														<div class="countdown">
+															<span id="days" class="big-font"></span> days :
+															<span id="hours" class="big-font"></span> hours :
+															<span id="minutes" class="big-font"></span> minutes :
+															<span id="seconds" class="big-font"></span> seconds
+														</div>	
 													</div>
 												</div>
 											</section>
-											<div class="elementor-element elementor-element-4edaf3b elementor-widget elementor-widget-spacer"
-												data-id="4edaf3b" data-element_type="widget"
-												data-widget_type="spacer.default">
-												<div class="elementor-widget-container">
-													<div class="elementor-spacer">
-														<div class="elementor-spacer-inner"></div>
-													</div>
-												</div>
-											</div>
-											<div class="elementor-element elementor-element-d9b8204 aleft show_title_yes dots_style-circle elementor-widget elementor-widget-wgl-countdown"
-												data-id="d9b8204" data-element_type="widget"
-												data-widget_type="wgl-countdown.default">
-												<div class="elementor-widget-container">
-													<div id=countdown_64d49b3db12fc class="wgl-countdown has-dots"
-														data-atts="{&quot;format&quot;:&quot;dHMS&quot;,&quot;year&quot;:&quot;2023&quot;,&quot;month&quot;:&quot;12&quot;,&quot;day&quot;:&quot;31&quot;,&quot;hours&quot;:&quot;24&quot;,&quot;minutes&quot;:&quot;0&quot;,&quot;labels&quot;:[&quot;Years&quot;,&quot;Months&quot;,&quot;Weeks&quot;,&quot;Days&quot;,&quot;Hours&quot;,&quot;Minutes&quot;,&quot;Seconds&quot;],&quot;labels1&quot;:[&quot;Year&quot;,&quot;Month&quot;,&quot;Week&quot;,&quot;Day&quot;,&quot;Hour&quot;,&quot;Minute&quot;,&quot;Second&quot;]}">
-													</div>
-												</div>
-											</div>
-											<div class="elementor-element elementor-element-f0bdbac elementor-widget elementor-widget-spacer"
-												data-id="f0bdbac" data-element_type="widget"
-												data-widget_type="spacer.default">
-												<div class="elementor-widget-container">
-													<div class="elementor-spacer">
-														<div class="elementor-spacer-inner"></div>
-													</div>
-												</div>
-											</div>
+											
 										</div>
 									</div>
 								</div>
-							</section> --}}
+							</section>
 
 							<section
 								class="elementor-section elementor-top-section elementor-element elementor-element-7905243 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -32060,6 +32016,33 @@
 			$("html, body").animate({ scrollTop: $(document).height() }, 1000);
 		});
     });
+	// Function to update the countdown timer
+	function updateCountdown() {
+		const targetDate = new Date("2023-10-07T00:00:00").getTime(); // October 7, 2023
+		const currentDate = new Date().getTime();
+		const timeLeft = targetDate - currentDate;
+
+		if (timeLeft > 0) {
+			const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+			const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+			$("#days").text(days);
+			$("#hours").text(hours);
+			$("#minutes").text(minutes);
+			$("#seconds").text(seconds);
+		} else {
+			// Countdown expired
+			$(".countdown").html("Countdown expired");
+		}
+	}
+
+	// Update the countdown every second
+	setInterval(updateCountdown, 1000);
+
+	// Initial update
+	updateCountdown();
 </script>
 <!-- Mirrored from templatekit.jegtheme.com/cognitive/pricing/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Sep 2022 18:28:41 GMT -->
 
