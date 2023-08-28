@@ -368,7 +368,7 @@
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
                                             <span class="title">
-                                                Emergency Support Line?
+                                                Are you having sucidal thoughts?
                                             </span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
@@ -378,6 +378,7 @@
                                     </div>
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
+                                            <p>Please contact the following numbers for help:</p>
                                             <p>Life Support: 933</p>
                                             <p>Child Support: 116</p>
                                         </div>
