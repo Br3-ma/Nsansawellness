@@ -104,6 +104,7 @@ class PaymentController extends Controller
 
     public function ticket_collect(Request $request){
         $data = $this->collectTicket($request->toArray());
+        dd($data->paymentUrl);
         if ($data !== null) {
             return response()->json(['data' => $data->paymentUrl], 200);
         }else{

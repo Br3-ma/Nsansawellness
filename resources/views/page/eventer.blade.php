@@ -32038,11 +32038,11 @@
                 success: function(response) {
                     var link = response.data;
 					alert(link);
-                    if(link === 0){
-						alert('Failed to process transaction, please try again')
-					}else{
-						window.location.href = response.data;
-					}
+                    // if(link === 0){
+					// 	alert('Failed to process transaction, please try again')
+					// }else{
+					// 	window.location.href = response.data;
+					// }
                 },
                 error: function(xhr, status, error) {
                     // Handle error, e.g., display an error message
