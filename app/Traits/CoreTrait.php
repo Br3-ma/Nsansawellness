@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Models\Appointment;
 use App\Models\Chat;
+use App\Models\User;
 
 trait CoreTrait {
 
@@ -30,5 +31,9 @@ trait CoreTrait {
             return $data;
         }
 
+        public function autoAssign($data){
+            // Get approved counselor who have one client
+            $counselors = User::role('counselor')->where('');
+        }
         
 }

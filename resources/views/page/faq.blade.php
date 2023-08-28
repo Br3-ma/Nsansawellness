@@ -367,7 +367,7 @@
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
                                             <span class="title">
-                                                Can I be reimbursed by my insurance?
+                                                Can I use my insurance?
                                             </span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
@@ -378,24 +378,7 @@
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
                                             <p>
-                                                * Neither Nsansa nor Therapists on the Nsansa Platform submit claims to Prudential, One life or health insurers. Services offered using this site are generally not covered by health insurance.
-                                            </p>
-
-                                            <p>
-                                                * Coverage and benefits for traditional therapy and therapy services change from one health insurance company to another and from plan to plan, but generally the following rules apply:
-                                            </p>
-                                            <ol>
-                                                <li>
-                                                    * With many health insurance plans, coverage can be partial or very limited.
-                                                </li>
-                                                <li>    
-                                                    * Even if your plan covers all your costs, the co-pay that you would be required to contribute may be higher than the entire cost of Nsansa.
-                                                </li>
-                                                <li>    
-                                                    * In many cases, before you can get reimbursed by your insurance company, your therapist would have to diagnose you with a mental disorder or issue. This diagnosis would be sent to the insurance company and recorded in your medical file. In some cases the therapist would also have to provide additional clinical information to the insurance company, such as treatment plans, summaries or copies of the entire record.                                                    
-                                                </li>
-                                            </ol>
-                                            <p>* Please note that Nsansa Wellness offers very affordable pricing options which are typically comparable with the co-pays of most insurance plans</p>
+                                                Nsansawellness does not provide any insurance packages but offers very affordable pricing options.</p>
                                         </div>
                                     </div>
                                 </div>

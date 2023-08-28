@@ -10,6 +10,7 @@ use App\Models\UserFile;
 use App\Notifications\NewUserNotification;
 use App\Notifications\NsansaWellnessCounselor;
 use App\Notifications\Welcome;
+use App\Traits\CoreTrait;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -20,6 +21,7 @@ use Pusher\Pusher;
 
 class RegisterController extends Controller
 {
+    use CoreTrait;
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -151,6 +153,8 @@ class RegisterController extends Controller
                 $user->assignRole('patient');
                 $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
                 // Send a notification to Admin about the new patient
+
+                $this->autoAssign($user->toArray());
                 $user->notify(new Welcome($payload));
             }else{
                 $user->assignRole('counselor');
@@ -162,7 +166,7 @@ class RegisterController extends Controller
             // Send a notification to Admin about the new user
             $admin->notify(new NewUserNotification($payload));
             // DB::commit();
-        return $user;
+            return $user;
         } catch (\Throwable $th) {
             dd($th);
             // DB::rollBack();
