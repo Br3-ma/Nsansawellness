@@ -136,6 +136,7 @@ Route::group(['middleware' => ['auth']], function() {
     // ==== Payment Processing
     Route::post('/transaction-processing', [PaymentController::class, 'gateway'])->name('make-payment');
     Route::get('/make-payments', [PaymentController::class, 'index'])->name('pay');
+    
     Route::get('/payment-details/{id}', [PaymentController::class, 'show'])->name('payments.show');
     Route::post('/processing-your-transaction', [PaymentController::class, 'sparco_collect'])->name('pay-w-sparco');
 
@@ -322,4 +323,5 @@ Route::get('/get-child-started', [GetStartedPage::class, 'child'])->name('child-
 Route::resource('results', ResultsController::class);
 Route::resource('patient-results', PatientQAnswerController::class);
 Route::get('/choose-payment-method/{id}', [PaymentController::class, 'bill'])->name('bill-patient');
+Route::get('/pricing', [PaymentController::class, 'index'])->name('price');
 

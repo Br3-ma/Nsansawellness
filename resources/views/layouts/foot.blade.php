@@ -758,8 +758,7 @@
                                                         </a>
                                                     </li> --}}
                                                     <li class="elementor-icon-list-item">
-                                                        <a href="{{ route('make-payment') }}">
-
+                                                        <a href="{{ route('price') }}">
                                                             <span class="elementor-icon-list-text">Pricing</span>
                                                         </a>
                                                     </li>

@@ -97,6 +97,8 @@ class PaymentController extends Controller
         $data = $this->collect2($request->toArray());
         if ($data !== null) {
             return response()->json(['data' => $data->paymentUrl], 200);
+        }else{
+            return response()->json(['data' => 0], 200);
         }
     }
 

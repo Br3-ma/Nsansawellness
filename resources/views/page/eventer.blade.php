@@ -1,5 +1,26 @@
 @include('layouts.head')
 @include('layouts.eventer')
+<style>
+	.hidden {
+  display: none;
+}
+
+#loadingSpinner {
+  width: 20px;
+  height: 20px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</style>
 		<div data-elementor-type="wp-page" data-elementor-id="1042" class="elementor elementor-1042">
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-387d63b elementor-section-boxed elementor-section-height-default elementor-section-height-default"
 				data-id="387d63b" data-element_type="section"
@@ -650,6 +671,9 @@
 																								</div>
 																							</div>
 																							<div class="blog-post_content">
+																								<h3 class="blog-post_title">
+																									<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/">YOGA</a>
+																								</h3>
 																								<div class="post_meta-wrap">
 																									<div class="meta-data">
 																										<span class="post_categories">
@@ -662,9 +686,6 @@
 																										</span>
 																									</div>
 																								</div>
-																								<h3 class="blog-post_title">
-																									<a href="https://wgl-demo.net/itconf/ai-revolutionizing-industries-2/">YOGA</a>
-																								</h3>
 																							</div>
 																						</div>
 																					</div>
@@ -688,6 +709,11 @@
 																							</div>
 																							<div
 																								class="blog-post_content">
+																								<h3
+																									class="blog-post_title">
+																									<a
+																										href="#">Meditation</a>
+																								</h3>
 																								<div
 																									class="post_meta-wrap">
 																									<div
@@ -703,13 +729,6 @@
 																											</span>
 																										</span>
 																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="#">Meditation</a>
-																								</h3>
-																								<div class="clear">
 																								</div>
 																							</div>
 																						</div>
@@ -733,6 +752,10 @@
 																							</div>
 																							<div
 																								class="blog-post_content">
+																								<h3
+																									class="blog-post_title">
+																									<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">RAGE
+																										ROOM</a></h3>
 																								<div
 																									class="post_meta-wrap">
 																									<div
@@ -747,12 +770,6 @@
 																												</span>
 																											</span>
 																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">RAGE
-																										ROOM</a></h3>
-																								<div class="clear">
 																								</div>
 																							</div>
 																						</div>
@@ -803,6 +820,12 @@
 																						</div>
 																						<div
 																							class="blog-post_content">
+																							<h3
+																								class="blog-post_title">
+																								<a
+																									href="#">Sauna and Swimming
+																								</a>
+																							</h3>
 																							<div
 																								class="post_meta-wrap">
 																								<div
@@ -813,14 +836,6 @@
 																												focus, and a sense of quiet determination—qualities that cultivate a serene mind and a
 																												balanced spirit.</a></span></span>
 																								</div>
-																							</div>
-																							<h3
-																								class="blog-post_title">
-																								<a
-																									href="#">Sauna and Swimming
-																								</a>
-																							</h3>
-																							<div class="clear">
 																							</div>
 																						</div>
 																					</div>
@@ -842,6 +857,13 @@
 																					</div>
 																					<div
 																						class="blog-post_content">
+																						<h3
+																							class="blog-post_title">
+																							<a
+																								href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Painting
+																								and Pottery
+																								Sessions</a>
+																						</h3>
 																						<div
 																							class="post_meta-wrap">
 																							<div
@@ -853,15 +875,6 @@
 																											a powerful way to reduce stress, tap into emotions, and discover new ways of self-expression.
 																											</a></span></span>
 																							</div>
-																						</div>
-																						<h3
-																							class="blog-post_title">
-																							<a
-																								href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Painting
-																								and Pottery
-																								Sessions</a>
-																						</h3>
-																						<div class="clear">
 																						</div>
 																					</div>
 																				</div>
@@ -886,6 +899,11 @@
 																							</div>
 																							<div
 																								class="blog-post_content">
+																								<h3
+																									class="blog-post_title">
+																									<a
+																										href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Plant-Making</a>
+																								</h3>
 																								<div
 																									class="post_meta-wrap">
 																									<div
@@ -896,13 +914,6 @@
 																													Learning the art of plant propagation by creating a terrarium or plant arrangement. Bringing nature
 																													into the living space can promote tranquility and enhance the overall ambiance</a></span></span>
 																									</div>
-																								</div>
-																								<h3
-																									class="blog-post_title">
-																									<a
-																										href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Plant-Making</a>
-																								</h3>
-																								<div class="clear">
 																								</div>
 																							</div>
 																						</div>
@@ -952,6 +963,12 @@
 																					</div>
 																					<div
 																						class="blog-post_content">
+																						<h3
+																							class="blog-post_title">
+																							<a
+																								href="#">Access to Fishing Ponds
+																							</a>
+																						</h3>
 																						<div
 																							class="post_meta-wrap">
 																							<div
@@ -962,14 +979,6 @@
 																											focus, and a sense of quiet determination—qualities that cultivate a serene mind and a
 																											balanced spirit.</a></span></span>
 																							</div>
-																						</div>
-																						<h3
-																							class="blog-post_title">
-																							<a
-																								href="#">Access to Fishing Ponds
-																							</a>
-																						</h3>
-																						<div class="clear">
 																						</div>
 																					</div>
 																				</div>
@@ -991,6 +1000,11 @@
 																				</div>
 																				<div
 																					class="blog-post_content">
+																					<h3
+																						class="blog-post_title">
+																						<a
+																							href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Massage</a>
+																					</h3>
 																					<div
 																						class="post_meta-wrap">
 																						<div
@@ -1002,13 +1016,6 @@
 																										and promote a deep sense of relaxation.
 																									</a></span></span>
 																						</div>
-																					</div>
-																					<h3
-																						class="blog-post_title">
-																						<a
-																							href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Massage</a>
-																					</h3>
-																					<div class="clear">
 																					</div>
 																				</div>
 																			</div>
@@ -1033,6 +1040,10 @@
 																						</div>
 																						<div
 																							class="blog-post_content">
+																							<h3
+																								class="blog-post_title">
+																								<a href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Access to Psychologists</a>
+																							</h3>
 																							<div
 																								class="post_meta-wrap">
 																								<div
@@ -1043,13 +1054,6 @@
 																												Our team of compassionate psychologists will be available throughout the event to provide
 																												counselling and support for those seeking professional guidance or simply a listening ear.</a></span></span>
 																								</div>
-																							</div>
-																							<h3
-																								class="blog-post_title">
-																								<a
-																									href="https://wgl-demo.net/itconf/navigating-the-complexities-of-ai/">Access to Psychologists</a>
-																							</h3>
-																							<div class="clear">
 																							</div>
 																						</div>
 																					</div>
@@ -1489,6 +1493,7 @@
 											<br>
 											<button id="submitBtn">Buy Now</button>
 										</form>
+										<div id="loadingSpinner" class="hidden"></div>
 										</div>
 									</div>
 								</div>
@@ -31990,8 +31995,14 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
+		const submitBtn = document.getElementById('submitBtn');
+		const loadingSpinner = document.getElementById('loadingSpinner');
         $('#submitBtn').click(function() {
+
             event.preventDefault();
+
+			submitBtn.classList.add('hidden');; // Disable the button
+			loadingSpinner.classList.remove('hidden'); 
             const form = $('#ticketform')[0];
             const formData = new FormData(form);
             
@@ -32003,13 +32014,16 @@
                 contentType: false,
                 success: function(response) {
                     var link = response.data;
-                    // Redirect the user to the external URL
-                    window.location.href = response.data;
-                    // Handle success, e.g., redirect or display a success message
-                    console.log('Payment successful!');
+                    if(link === 0){
+						alert('Failed to process transaction, please try again')
+					}else{
+						window.location.href = response.data;
+					}
                 },
                 error: function(xhr, status, error) {
                     // Handle error, e.g., display an error message
+					submitBtn.classList.remove('hidden'); // Re-enable the button
+    				loadingSpinner.classList.add('hidden');
                     console.error('Payment failed', error);
                 }
             });
