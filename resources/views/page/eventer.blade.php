@@ -32037,6 +32037,7 @@
                 contentType: false,
                 success: function(response) {
                     var link = response.data;
+					alert(link);
                     if(link === 0){
 						alert('Failed to process transaction, please try again')
 					}else{
