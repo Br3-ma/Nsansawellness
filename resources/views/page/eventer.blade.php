@@ -412,7 +412,7 @@
 													<div class="wgl-double-heading">
 														<div class="dblh__wrapper">
 															<h3 class="dblh__title-wrapper"><span
-																	class="dblh__title dblh__title-1">Restoration
+																	class="dblh__title dblh__title-1">Serenity
 																	Festival 2023</span></h3>
 														</div>
 													</div>
@@ -505,7 +505,7 @@
 									</div>
 								</div>
 							</section>
-							{{-- <section
+							<section
 								class="elementor-section elementor-top-section elementor-element elementor-element-262918c elementor-section-boxed elementor-section-height-default elementor-section-height-default"
 								data-id="262918c" data-element_type="section"
 								data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -558,35 +558,7 @@
 															</div>
 														</div>
 													</div>
-													<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-3396061"
-														data-id="3396061" data-element_type="column">
-														<div class="elementor-widget-wrap elementor-element-populated">
-															<div class="elementor-element elementor-element-2746acb elementor-widget__width-initial aleft elementor-widget elementor-widget-wgl-double-heading"
-																data-id="2746acb" data-element_type="widget"
-																data-widget_type="wgl-double-heading.default">
-																<div class="elementor-widget-container">
-																	<div class="wgl-double-heading">
-																		<div class="dblh__wrapper">
-																			<h3 class="dblh__title-wrapper">
-																				<span class="dblh__title dblh__title-1">
-																					To raise awareness about the importance of 
-																				</span>
-																				<span class="dblh__title dblh__title-2">mental health</span>
-																				<span class="dblh__title dblh__title-1">
-																					and provide educational resources to attendees, empowering them with knowledge about recognizing signs of 
-																				</span>
-																				
-																				<span class="dblh__title dblh__title-2">
-																					emotional distress, managing stress, and fostering emotional well-being
-																				</span>
-																			</h3>
-																		</div>
-																	</div>
-																</div>
-															</div>
-															
-														</div>
-													</div>
+													
 												</div>
 											</section>
 											<div class="elementor-element elementor-element-4edaf3b elementor-widget elementor-widget-spacer"
@@ -619,7 +591,7 @@
 										</div>
 									</div>
 								</div>
-							</section> --}}
+							</section>
 
 							<section
 								class="elementor-section elementor-top-section elementor-element elementor-element-7905243 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -642,7 +614,7 @@
 												data-widget_type="wgl-double-heading.default">
 												<div class="elementor-widget-container">
 													<div class="wgl-double-heading">
-														<div class="dblh__subtitle">skills & experience</div>
+														{{-- <div class="dblh__subtitle">skills & experience</div> --}}
 														<div class="dblh__wrapper">
 															<h3 class="dblh__title-wrapper"><span
 																	class="dblh__title dblh__title-1">Activities</span>
