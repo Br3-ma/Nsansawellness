@@ -9,7 +9,7 @@
                         <div class="elementor-container elementor-column-gap-no">
                             <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-3701fb8" data-id="3701fb8" data-element_type="column">
                                 <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-fe680d4 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="fe680d4" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="jkit_heading.default">
+                                    <div class="elementor-element elementor-element-fe680d4 animated-slow elementor-widget elementor-widget-jkit_heading" data-id="fe680d4" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-heading ">
                                                 <div class="heading-section-title ">
@@ -22,7 +22,7 @@
                             </div>
                             <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-2e53fd4" data-id="2e53fd4" data-element_type="column">
                                 <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-98196db elementor-icon-list--layout-inline elementor-widget__width-auto animated-slow elementor-mobile-align-center elementor-list-item-link-full_width elementor-invisible elementor-widget elementor-widget-icon-list"
+                                    <div class="elementor-element elementor-element-98196db elementor-icon-list--layout-inline elementor-widget__width-auto animated-slow elementor-mobile-align-center elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list"
                                         data-id="98196db" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:300}" data-widget_type="icon-list.default">
                                         <div class="elementor-widget-container">
                                             <link rel="stylesheet" href="plugins/elementor/assets/css/widget-icon-list.min.css">
