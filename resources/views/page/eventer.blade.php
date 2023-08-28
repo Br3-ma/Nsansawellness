@@ -32037,12 +32037,12 @@
                 contentType: false,
                 success: function(response) {
                     var link = response;
-					console.log(link);
-                    // if(response === null){
-					// 	alert('Failed to process transaction, please try again')
-					// }else{
-					// 	window.location.href = response;
-					// }
+					console.log(link.data);
+                    if(link.data === null){
+						alert('Failed to process transaction, please try again')
+					}else{
+						window.location.href = link.data;
+					}
                 },
                 error: function(xhr, status, error) {
                     // Handle error, e.g., display an error message
