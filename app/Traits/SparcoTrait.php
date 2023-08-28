@@ -144,9 +144,8 @@ trait SparcoTrait {
     public function collectTicket(array $request){
         try {
             $curl = curl_init();
+            $var = true;
     
-            $uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
-            
             curl_setopt_array($curl, array(
                 // CURLOPT_URL => 'https://live.sparco.io/gateway/api/v1/momo/debit',
                 CURLOPT_URL => 'https://checkout.sparco.io/gateway/api/v1/checkout',
@@ -168,13 +167,13 @@ trait SparcoTrait {
                     "customerState": "Lusaka",
                     "customerCountryCode": "ZM",
                     "customerPostalCode": "10101",
-                    "transactionReference": "'.$uuid.'",
+                    "transactionReference": "'.$request['uuid'].'",
                     "customerFirstName": "'.$request['customerFirstName'].'",
                     "customerLastName": "'.$request['customerLastName'].'",
                     "customerEmail": "'.$request['customerEmail'].'",
                     "customerPhone": "'.$request['wallet'].'",
-                    "returnUrl": "https://nsansawellness.com/ticket-callback/"'.$uuid.'",
-                    "autoReturn": "true",
+                    "returnUrl": "'.$request['callback'].'",
+                    "autoReturn": '.$var.',
                     "webhookUrl": "https://2150-165-58-129-124.ngrok.io/webhook?src=test",
                     "merchantPublicKey": "de7afd6176bb4eff99316dcf508e5be6"
                 }',

@@ -364,6 +364,25 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">
+                                                Emergency Support Line?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Life Support: 933</p>
+                                            <p>Child Support: 116</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
