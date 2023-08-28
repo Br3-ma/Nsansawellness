@@ -8,6 +8,7 @@ use App\Models\PatientActivity;
 use App\Models\User;
 use App\Notifications\NewActivity;
 use App\Traits\ActivityTrait;
+use App\Traits\CoreTrait;
 use App\Traits\CounselorTrait;
 use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ use Session;
 
 class ActivityController extends Controller
 {    
-    use PatientTrait, CounselorTrait, ActivityTrait;
+    use PatientTrait, CounselorTrait, ActivityTrait, CoreTrait;
     public $activity, $user, $pushConfs, $pusher, $assigned_patients;
     /**
      * Display a listing of the resource.
@@ -46,6 +47,9 @@ class ActivityController extends Controller
      */
     public function index()
     {
+        if($this->my_role() == 'patient'){
+            $this->autoAssign();
+        }
         $notifications = auth()->user()->notifications;
         if(auth()->user()->hasRole('counselor')){
             $activities = $this->getActivitiesForCounselor();

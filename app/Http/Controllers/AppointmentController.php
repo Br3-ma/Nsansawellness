@@ -11,6 +11,7 @@ use App\Models\UserAppointment;
 use App\Notifications\MyNewAppointment;
 use App\Notifications\NewAppointment;
 use App\Traits\ChatTrait;
+use App\Traits\CoreTrait;
 use App\Traits\CounselorTrait;
 use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ use Session;
 
 class AppointmentController extends Controller
 {    
-    use PatientTrait, CounselorTrait, ChatTrait;
+    use PatientTrait, CounselorTrait, ChatTrait, CoreTrait;
     public $appointment, $user_appointment, $user, $pushConfs, $pusher;
     /**
      * Display a listing of the resource.
@@ -51,6 +52,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
+        if($this->my_role() == 'patient'){
+            $this->autoAssign();
+        }
         $events = [];
         $this->mark_as_seen();
         $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();

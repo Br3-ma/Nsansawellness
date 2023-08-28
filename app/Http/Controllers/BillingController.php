@@ -6,13 +6,14 @@ use App\Models\Billing;
 use App\Models\Plan;
 use App\Models\PlanItem;
 use App\Traits\BillingTrait;
+use App\Traits\CoreTrait;
 use App\Traits\SubscriptionTrait;
 use Illuminate\Http\Request;
 use Session;
 
 class BillingController extends Controller
 {
-    use BillingTrait, SubscriptionTrait;
+    use BillingTrait, SubscriptionTrait, CoreTrait;
     /**
      * Display a listing of the resource.
      *
@@ -32,6 +33,9 @@ class BillingController extends Controller
      }
     public function index()
     {
+        if($this->my_role() == 'patient'){
+            $this->autoAssign();
+        }
         $bills = $this->get_my_billings();
         return view('page.billing.index', compact('bills'));
     }

@@ -3,8 +3,11 @@
 namespace App\Traits;
 
 use App\Models\Appointment;
+use App\Models\AssignCounselor;
 use App\Models\Chat;
 use App\Models\User;
+use App\Notifications\CounselorAssigned;
+use App\Notifications\NewPatientAssigned;
 use Illuminate\Support\Facades\Http;
 
 trait CoreTrait {
@@ -32,30 +35,70 @@ trait CoreTrait {
             return $data;
         }
 
-        public function autoAssign($data){
-            // Get approved counselor who have one client
-            $counselor = User::role('counselor')
-            ->whereHas('myfiles')
-            ->where('status', 1)
-            ->whereNotNull('department')
-            ->get();
+        public function autoAssign(){
             
-            if ($counselor->count() > 0) {
-                // Get a random counselor from the collection
-                $c = $counselor->random();
-                // Make the API call
-                $response = Http::get("/assign/".auth()->user()->id."/".$c->id);
+            $check = Chat::where('receiver_id', auth()->user()->id)
+            ->orWhere('status', 1)
+            ->orWhere('status', 3)
+            ->first();
+            // dd($check == null);
+            if($check == null){
+                // Get approved counselor who have one client
+                $counselor = User::role('counselor')
+                ->whereHas('myfiles')
+                ->where('status', 1)
+                ->whereNotNull('department')
+                ->get();
+                
+                if ($counselor->count() > 0) {
+                    // Get a random counselor from the collection
+                    $c = $counselor->random();
+                    // Make the API call
+                    $response = $this->assignCounselor(auth()->user()->id, $c->id);
 
-                // Check the response status and handle accordingly
-                if ($response->successful()) {
-                    return true;
+                    // Check the response status and handle accordingly
+                    return $response;
                 } else {
+                    // Handle the case when no counselors are available
                     return false;
                 }
-            } else {
-                // Handle the case when no counselors are available
-                
+            }else{
                 return false;
+            }
+        }
+
+        public function assignCounselor($patient_id, $counselor_id){
+            // dd($patient_id.' '.$counselor_id);
+            // Save the new message
+            $check = AssignCounselor::where('patient_id', $patient_id)->first();
+            if($check != null){
+                AssignCounselor::where('patient_id', $patient_id)->delete();
+            }
+            $assign = AssignCounselor::create([
+                'patient_id'=>$patient_id,
+                'counselor_id'=>$counselor_id
+            ]);
+            Chat::create([
+                'sender_id' => $counselor_id,
+                'receiver_id' => $patient_id,
+                'status' => 3, //Not accepted yet
+                'assign_id' => $assign->id //Not accepted yet
+            ]);
+            $message = [
+                'sender_id' => $counselor_id,
+                'patient_id' => $patient_id,
+                'name' => 'Nsansa wellness',
+                'sender' => 'Nsansa Wellness Group'
+            ];
+    
+            try {
+                User::find($counselor_id)->notify(new NewPatientAssigned($message));
+                User::find($patient_id)->notify(new CounselorAssigned($message));
+                return true;
+            } catch (\Throwable $th) {
+                dd($th);                        
+                return false;
+    
             }
         }
         
