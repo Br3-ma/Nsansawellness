@@ -139,7 +139,8 @@ Route::group(['middleware' => ['auth']], function() {
     
     Route::get('/payment-details/{id}', [PaymentController::class, 'show'])->name('payments.show');
     Route::post('/processing-your-transaction', [PaymentController::class, 'sparco_collect'])->name('pay-w-sparco');
-
+    Route::post('/processing-your-ticket', [PaymentController::class, 'ticket_collect'])->name('pay-ticket');
+    
     Route::get('update-user-status', [UserController::class, 'updateStatus'])->name('user.status');
     Route::post('upload-files', [UserController::class, 'uploadMyFiles'])->name('user.files');
     Route::post('update-question-type', [QuestionaireController::class, 'updateQType'])->name('update.questiontype');

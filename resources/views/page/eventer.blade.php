@@ -1484,7 +1484,7 @@
 											// UUID ID generator
 											$uuid = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
 										@endphp 
-										<form action="{{ route('pay-w-sparco') }}" method="POST" id="ticketform">
+										<form action="{{ route('pay-ticket') }}" method="POST" id="ticketform">
 											@csrf
 											<div class="form-group">
 												<label for="name">First name:</label>
