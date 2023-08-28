@@ -1505,7 +1505,7 @@
 											{{-- <input type="tel" id="contact" name="customerPhone" placeholder="Mobile number"> --}}
 											<input type="hidden" name="callback" value="https://nsansawellness.com/ticket-callback/{{ $uuid }}">
 											<input type="hidden" name="uuid" value="{{ $uuid }}">
-											<input type="hidden" name="amount" value="900">
+											<input type="hidden" name="amount" value="1">
 											<input type="hidden" name="billing_id" value="0">
 											<input type="hidden" name="currency" value="ZMW">
 											<input type="hidden" name="item" value="ticket">
