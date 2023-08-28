@@ -21,7 +21,6 @@ use Pusher\Pusher;
 
 class RegisterController extends Controller
 {
-    use CoreTrait;
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -154,7 +153,7 @@ class RegisterController extends Controller
                 $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
                 // Send a notification to Admin about the new patient
 
-                $this->autoAssign($user->toArray());
+                // $this->autoAssign($user->toArray());
                 $user->notify(new Welcome($payload));
             }else{
                 $user->assignRole('counselor');
