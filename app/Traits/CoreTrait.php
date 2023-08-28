@@ -33,11 +33,22 @@ trait CoreTrait {
 
         public function autoAssign($data){
             // Get approved counselor who have one client
-            $counselors = User::role('counselor')
+            $counselor = User::role('counselor')
             ->whereHas('myfiles')
-            ->with('availability')
+            ->where('status', 1)
+            ->whereNotNull('department')
             ->get();
-            dd($counselors);
+            
+            if ($counselor->count() > 0) {
+                // Get a random counselor from the collection
+                $r = $counselor->random();
+                
+                // Call assign api here
+                
+            } else {
+                // Handle the case when no counselors are available
+                echo "No counselors available.";
+            }
         }
         
 }

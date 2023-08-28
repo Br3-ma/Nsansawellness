@@ -352,7 +352,7 @@
                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet- align-mobile- jeg_module_699_10_632ca945aadd0">
                                 {{-- <h5 class="heading-section-subtitle  style-color">O</h5> --}}
                                 <div class="heading-section-title ">
-                                    <h2 class="heading-title" style="color:#0e97ba">Core Values</span>
+                                    <h2 class="heading-title" ><span style="color:#fff">Core</span> <span style="color:#0e97ba">Values</span></span>
                                     </h2>
                                 </div>
                                 <div class="heading-section-description">

@@ -35,6 +35,7 @@ class AssignCounselor extends Model
             ->where('status', 3)->first(); 
             $assign = AssignCounselor::with('patient')
                         ->where('id', $chat->assign_id)->first(); 
+                        
             return $assign;
         } catch (\Throwable $th) {
             return 0;
