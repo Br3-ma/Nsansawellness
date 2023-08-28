@@ -461,7 +461,7 @@
 									</div>
 								</div>
 							</section>
-							<section
+							{{-- <section
 								class="elementor-section elementor-top-section elementor-element elementor-element-262918c elementor-section-boxed elementor-section-height-default elementor-section-height-default"
 								data-id="262918c" data-element_type="section"
 								data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
@@ -575,7 +575,7 @@
 										</div>
 									</div>
 								</div>
-							</section>
+							</section> --}}
 
 							<section
 								class="elementor-section elementor-top-section elementor-element elementor-element-7905243 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -1425,7 +1425,7 @@
 												data-widget_type="wgl-double-heading.default">
 												<div class="elementor-widget-container">
 													<div class="wgl-double-heading">
-														<div class="dblh__subtitle">Excited?</div>
+														{{-- <div class="dblh__subtitle">Excited?</div> --}}
 														<div class="dblh__wrapper">
 															<h3 class="dblh__title-wrapper"><span
 																	class="dblh__title dblh__title-1">Buy your ticket

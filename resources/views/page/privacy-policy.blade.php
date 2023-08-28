@@ -51,8 +51,8 @@
             {{-- <div class="heading-section-title ">
                 <h2 style="text-align: center" class="heading-title">Made for everyone <br>to <span class="style-gradient"><span>feel safe and welcome</span></span></h2>
             </div> --}}
-            <div class="elementor-widget-container">
-                1. Contractual Relationship
+            <div style="margin-right:5%;margin-left:5%;" class="elementor-widget-container">
+                <h4>1. Contractual Relationship</h4>
 These Terms of Use (“Terms”) govern the access or use by you, an individual, from within Zambia of
 applications, websites, content, products, and services (the “Services”) made available by Nsansa
 Wellness, a private limited liability company established in the Zambia, having its offices in Woodlands,
@@ -74,7 +74,7 @@ Nsansa Wellness may amend the Terms related to the Services from time to time. A
 effective upon Nsansa Wellness’s posting of such updated Terms at this location or the amended policies
 or supplemental terms on the applicable Service. Your continued access or use of the Services after such
 posting constitutes your consent to be bound by the Terms, as amended.
-2. The Services
+<h4>2. The Services</h4>
 The Services constitute a technology platform that enables users of Nsansa Wellness’s mobile applications
 or websites provided as part of the Services (each, an “Application”) to arrange and schedule therapy/and
 or counseling sessions with independent third party providers of such services (freelance psychologists),
@@ -172,7 +172,7 @@ updating compatible hardware or devices necessary to access and use the Services
 any updates thereto. Nsansa Wellness does not guarantee that the Services, or any portion thereof, will
 function on any particular hardware or devices. In addition, the Services may be subject to malfunctions
 and delays inherent in the use of the Internet and electronic communications.
-4. Payment
+<h4>4. Payment</h4>
 For satisfactory performance of the Services hereunder, Nsansa Wellness shall pay Third party service
 providers (Pschologists) for the performance of the services detailed in this Agreement, 50-50 split on
 therapy session payment. The Freelance Psychologist will receive 50% of the total payment made by each
@@ -191,7 +191,7 @@ Payment pursuant to this Agreement, whether in whole or in part, is subject to a
 continuing availability of Nsansa Wellness funds for purposes hereof. In the event that said funds, or any
 part thereof, become unavailable as determined by the Nsansa Wellness, Nsansa Wellness may
 immediately terminate this Agreement or amend it accordingly.
-5. Disclaimers; Limitation of Liability; Indemnity.
+<h4>5. Disclaimers; Limitation of Liability; Indemnity.</h4>
 DISCLAIMER.
 THE SERVICES ARE PROVIDED “AS IS” AND “AS AVAILABLE.” NSANSA WELLNESS DISCLAIMS ALL
 REPRESENTATIONS AND WARRANTIES, EXPRESS, IMPLIED OR STATUTORY, NOT EXPRESSLY SET OUT IN
@@ -228,7 +228,7 @@ arising out of or in connection with:
 (ii) your breach or violation of any of these Terms;
 (iii) Nsansa Wellness’s use of your User Content; or
 (iv) your violation of the rights of any third party, including Third Party Providers.
-6. Governing Law; Arbitration.
+<h4>6. Governing Law; Arbitration.</h4>
 Except as otherwise set forth in these Terms, these Terms shall be exclusively governed by and construed
 in accordance with the laws of Zambia, excluding its rules on conflicts of laws. Any dispute, conflict, claim
 or controversy arising out of or broadly in connection with or relating to the Services or these Terms,
@@ -247,7 +247,7 @@ without the express written consent from the other party unless: (i) the disclos
 reasonably required in the context of conducting the mediation or arbitration proceedings; and (ii) the
 third party agrees unconditionally in writing to be bound by the confidentiality obligation
 stipulated herein.
-7. Other Provisions
+<h4>7. Other Provisions</h4>
 Claims of Copyright Infringement.
 Claims of copyright infringement should be sent to Nsansa Wellness’s designated agent. Please visit
 Nsansa Wellness’s web page for the designated address and additional information.

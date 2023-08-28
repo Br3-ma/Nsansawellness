@@ -342,7 +342,7 @@
             </div>
         </div>
     </section>
-    <section style="background-color: #0e97ba;margin-top:5px;" class="elementor-section elementor-top-section elementor-element elementor-element-12633b2 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="12633b2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+    <section style="background-color: #940d8d;margin-top:5px;" class="elementor-section elementor-top-section elementor-element elementor-element-12633b2 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="12633b2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-eb00803" data-id="eb00803" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
@@ -352,7 +352,7 @@
                             <div class="jeg-elementor-kit jkit-heading  align-center align-tablet- align-mobile- jeg_module_699_10_632ca945aadd0">
                                 {{-- <h5 class="heading-section-subtitle  style-color">O</h5> --}}
                                 <div class="heading-section-title ">
-                                    <h2 class="heading-title" style="color:#fff">Core <span class="style-gradient"><span>Values</span></span>
+                                    <h2 class="heading-title" style="color:#0e97ba">Core Values</span>
                                     </h2>
                                 </div>
                                 <div class="heading-section-description">
@@ -365,7 +365,7 @@
                         <div class="elementor-container elementor-column-gap-no container">
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div  style="margin-right:5%; min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #47c7e7; padding: 5%">
+                                <div  style="margin-right:5%; min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #940d8d; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -390,7 +390,7 @@
                             </div>
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background:  #47c7e7; padding: 5%">
+                                <div style="min-width:80%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background:  #940d8d; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -417,7 +417,7 @@
                             
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="margin-left:5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #47c7e7; padding: 5%">
+                                <div style="margin-left:5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #940d8d; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -447,7 +447,7 @@
                         <div class="elementor-container elementor-column-gap-no container">
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div  style="margin-left: 5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #47c7e7; padding: 5%">
+                                <div  style="margin-left: 5%; min-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #940d8d; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
@@ -472,7 +472,7 @@
                             </div>
                             
                             <div class="elementor-column elementor-col-35 elementor-inner-column elementor-element elementor-element-9b113da elementor-invisible" data-id="9b113da" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;}">
-                                <div style="margin-left: 3%; max-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #47c7e7; padding: 5%">
+                                <div style="margin-left: 3%; max-width:90%; box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;background: #940d8d; padding: 5%">
                                     {{-- <div class="elementor-element elementor-element-231ca7c elementor-widget elementor-widget-jkit_team" data-id="231ca7c" data-element_type="widget" data-widget_type="jkit_team.default">
                                         <div class="elementor-widget-container">
                                             <div class="jeg-elementor-kit jkit-team style-overlay overlay-bottom jeg_module_699_11_632ca945b0789">
