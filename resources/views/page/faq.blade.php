@@ -218,7 +218,9 @@
                                     </div>
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
-                                            <p>This process can take a few hours or a few days, depending on therapist availability. Don't worry, your subscription period starts when you are matched with a therapist.</p>
+                                            <p>
+                                                This process is virtually instantaneous and typically takes only a few moments, thanks to our swift therapist availability. Rest assured, your subscription period begins as soon as you're matched with a therapist.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -244,7 +246,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-wrapper">
+                                {{-- <div class="card-wrapper">
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
                                             <span class="title">How do live chat sessions work?
@@ -263,7 +265,7 @@
                                             </p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="card-wrapper">
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
@@ -377,8 +379,7 @@
                                     </div>
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
-                                            <p>
-                                                Nsansawellness does not provide any insurance packages but offers very affordable pricing options.</p>
+                                            <p>Nsansawellness does not provide any insurance packages but offers very affordable pricing options.</p>
                                         </div>
                                     </div>
                                 </div>

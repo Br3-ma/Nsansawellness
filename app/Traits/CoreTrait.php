@@ -33,7 +33,11 @@ trait CoreTrait {
 
         public function autoAssign($data){
             // Get approved counselor who have one client
-            $counselors = User::role('counselor')->where('');
+            $counselors = User::role('counselor')
+            ->whereHas('myfiles')
+            ->with('availability')
+            ->get();
+            dd($counselors);
         }
         
 }
