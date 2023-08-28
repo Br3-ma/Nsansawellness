@@ -47,14 +47,14 @@
             </div>
         </div>
     </section>
-    <section style="margin-top:5%;margin-bottom:2%;" class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default">
+    <section style="padding-top:5%;padding-bottom:2%;background-color: #940d8d;" class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default">
         <div class="elementor-widget-container">
             <div class="heading-section-title ">
                 <h2 style="text-align: center" class="heading-title">Made for everyone <br>to <span class="style-gradient"><span>feel safe and welcome</span></span></h2>
             </div>
         </div>
     </section>
-    <section class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="89c6fcb" data-element_type="section">
+    <section style="background-color: #940d8d;" class="elementor-section elementor-top-section elementor-element elementor-element-89c6fcb elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="89c6fcb" data-element_type="section">
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-33 elementor-top-column elementor-element elementor-element-636fb60" data-id="636fb60" data-element_type="column">
                 <div class="">
@@ -64,7 +64,7 @@
                             <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile- jeg_module_699_6_632ca945830dc">
                                 {{-- <h5 class="heading-section-subtitle  style-color">Why Choose</h5> --}}
                             
-                                <div class="heading-section-description" style="margin-top:-15%;padding:15%">
+                                <div class="heading-section-description" style="color:#fff;margin-top:-15%;padding:15%">
                                     At Nsansa Wellness, we’re on a mission to make therapy accessible. 
                                     We want to put the power of change back into each and every person’s hands, 
                                     through quality therapy services. By providing immediate access to our 
@@ -246,7 +246,7 @@
                                                     <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
                                                         data-widget_type="text-editor.default">
                                                         <div class="elementor-widget-container">
-                                                            <p>To improve accessibility of quality mental health services for all across Zambia</p>
+                                                            <p style="color:#fff">To improve accessibility of quality mental health services for all across Zambia</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -258,7 +258,7 @@
                                                     <div class="elementor-element elementor-element-73bb950 animated-slow elementor-invisible elementor-widget elementor-widget-text-editor" data-id="73bb950" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInRight&quot;,&quot;_animation_delay&quot;:400}"
                                                         data-widget_type="text-editor.default">
                                                         <div class="elementor-widget-container">
-                                                            <p> Be a medium for transformative mental health services in Zambia</p>
+                                                            <p style="color:#fff"> Be a medium for transformative mental health services in Zambia</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -342,7 +342,7 @@
             </div>
         </div>
     </section>
-    <section style="background-color: #940d8d;margin-top:5px;" class="elementor-section elementor-top-section elementor-element elementor-element-12633b2 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="12633b2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+    <section style="background-color: #940d8d;padding-top:5%;" class="elementor-section elementor-top-section elementor-element elementor-element-12633b2 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="12633b2" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
         <div class="elementor-container elementor-column-gap-no">
             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-eb00803" data-id="eb00803" data-element_type="column">
                 <div class="elementor-widget-wrap elementor-element-populated">
