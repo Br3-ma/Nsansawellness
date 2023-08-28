@@ -11,9 +11,9 @@
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-fe680d4 animated-slow elementor-invisible elementor-widget elementor-widget-jkit_heading" data-id="fe680d4" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="jkit_heading.default">
                                         <div class="elementor-widget-container">
-                                            <div class="jeg-elementor-kit jkit-heading  align-left align-tablet- align-mobile-center jeg_module_699_3_632ca94570f46">
+                                            <div class="jeg-elementor-kit jkit-heading ">
                                                 <div class="heading-section-title ">
-                                                    <h2 class="heading-title"><span class="style-gradient"><span>Privacy Policy</span></span> Us</h2>
+                                                    <h2 class="heading-title"><span class="style-gradient"><span>Terms and  </span></span> Conditions</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -122,7 +122,7 @@ rights:
 (i) in or related to the Services except for the limited license granted above; or
 (ii) to use or reference in any manner Nsansa Wellness’s company names, logos, product and
 service names, trademarks or services marks or those of Nsansa Wellness’s licensors.
-3. Your Use of the Services
+<h4>3. Your Use of the Services</h4>
 User Accounts.In order to use aspects of the Services, you must apply for an active professional user Services account
 (“Account”). You must be at least 18 years of age, to obtain an Account. Account registration requires you
 to submit to Nsansa Wellness certain personal information, such as your name, address, mobile phone
