@@ -195,7 +195,7 @@ class AppointmentController extends Controller
                 ];
                 $user->notify(new NewAppointment($payload));
             }
-            $admin->notify(new MyNewAppointment($payload));
+            // $admin->notify(new MyNewAppointment($payload));
             Session::flash('attention', "Appointment has been scheduled successfully.");
             return redirect()->route('appointment');
         } catch (\Throwable $th) {

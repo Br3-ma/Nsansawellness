@@ -1180,7 +1180,8 @@
                     success: function (response) {
                         button.html('<small>Setting Up Session</small>');
                         button.prop("disabled", true);
-                        window.location.reload();
+                        
+                        window.location.href = "{{ route('appointment') }}";
                     },
                     error: function (error) {
                         // Handle any errors here

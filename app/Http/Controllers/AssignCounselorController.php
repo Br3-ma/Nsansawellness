@@ -199,7 +199,6 @@ class AssignCounselorController extends Controller
     {
         try {
             $chat = Chat::where('assign_id', $request->input('assign_id'))->update(['status' => 1]);
-            return response()->json(['message' => 'ok'], 200);
             $message = [
                 'sender_id' => $chat->sender_id,
                 'patient_id' => $chat->receiver_id,
@@ -207,9 +206,11 @@ class AssignCounselorController extends Controller
                 'sender' => 'Nsansa Wellness Group'
             ];
                 
-            User::find($chat->receiver_id)
+            User::where('id', $chat->receiver_id)
             ->notify(new CounselorAssigned($message));
+            return response()->json(['message' => 'ok'], 200);
         } catch (\Throwable $th) {
+            dd($th);
             return redirect()->back();
         }
     }
