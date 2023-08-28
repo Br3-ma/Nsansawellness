@@ -189,7 +189,7 @@ trait SparcoTrait {
             curl_close($curl);
     
             // Checkout link
-            dd($result);
+            // dd($result);
             // Return checkout link or json data
             return $result;
         } catch (\Throwable $th) {
