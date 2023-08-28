@@ -32036,18 +32036,19 @@
                 processData: false,
                 contentType: false,
                 success: function(response) {
-                    var link = response.data;
-					console.log(response);
-                    // if(link === 0){
-					// 	alert('Failed to process transaction, please try again')
-					// }else{
-					// 	window.location.href = response.data;
-					// }
+                    var link = response;
+					
+                    if(response === null){
+						alert('Failed to process transaction, please try again')
+					}else{
+						window.location.href = response;
+					}
                 },
                 error: function(xhr, status, error) {
                     // Handle error, e.g., display an error message
 					submitBtn.classList.remove('hidden'); // Re-enable the button
     				loadingSpinner.classList.add('hidden');
+					alert('Failed to process transaction, please try again')
                     console.error('Payment failed', error);
                 }
             });
