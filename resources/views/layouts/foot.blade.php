@@ -853,12 +853,12 @@
                                                             <span class="elementor-icon-list-text">Contact</span>
                                                         </a>
                                                     </li>
-                                                    <li class="elementor-icon-list-item">
+                                                    {{-- <li class="elementor-icon-list-item">
                                                         <a href="{{ route('privacy-policy') }}">
 
                                                             <span class="elementor-icon-list-text">Privacy Policy</span>
                                                         </a>
-                                                    </li>
+                                                    </li> --}}
                                                     <li class="elementor-icon-list-item">
                                                         <a href="{{ route('terms') }}">
 
