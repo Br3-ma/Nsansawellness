@@ -249,11 +249,15 @@
                 <div class="form-help text-right">Maximum character 0/70</div>
                 <input type="hidden" id="_peer_link_id" name="video_link" />
             </div>
-            <div class="flex">
+            <br>
+            <label for="timepicker" class="block text-sm font-medium text-gray-700">Pick a date below:</label>
+
+            <div class="flex py-4">
+
                 @if(!empty($av_dates))
                     @forelse ($av_dates as $index => $adate)
                     {{-- @dd($av_dates) --}}
-                    <label class="w-1/4 relative inline-flex items-center cursor-pointer">
+                    <label class="w-1/4 relative border inline-flex items-center cursor-pointer">
                         <input type="checkbox" name="setdate[]" value="{{ $adate->id }}" class="hidden absolute h-5 w-5 appearance-none bg-white border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none">
                         <span class="pl-2 transition-colors duration-300" id="thur-text">
                             <h3 class="font-bold">
@@ -274,7 +278,8 @@
                     <p>You have not been assigned to any counselor yet. </p>
                 @endif
             </div>
-            
+            <br>
+            <br>
             <div class="w-full">
                 <button type="submit" class="btn btn-primary">Create</button>
             </div>
