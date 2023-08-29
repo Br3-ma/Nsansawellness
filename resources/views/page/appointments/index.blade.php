@@ -257,7 +257,7 @@
                 @if(!empty($av_dates))
                     @forelse ($av_dates as $index => $adate)
                     {{-- @dd($av_dates) --}}
-                    <label class="w-1/4 relative border inline-flex items-center cursor-pointer">
+                    <label class="w-1/4 relative border inline-flex items-center cursor-pointer p-3">
                         <input type="checkbox" name="setdate[]" value="{{ $adate->id }}" class="hidden absolute h-5 w-5 appearance-none bg-white border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none">
                         <span class="pl-2 transition-colors duration-300" id="thur-text">
                             <h3 class="font-bold">
