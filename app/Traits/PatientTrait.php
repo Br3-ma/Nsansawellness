@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\AssignCounselor;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\Chat;
 use App\Models\PatientFile;
 use App\Models\User;
 
@@ -60,6 +61,14 @@ trait PatientTrait {
             $total = AssignCounselor::where('counselor_id', $u->id)->get()->count();
         }
         return $total;
+    }
+
+
+    public function myCurrentCounselor(){
+        // Get my current counselor
+        $data = Chat::where('receiver_id', auth()->user()->id)->where('status', 1)->first();
+        // dd($data);
+        return $data;
     }
 
 }

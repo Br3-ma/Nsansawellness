@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateAppointmentRequest;
 use App\Http\Requests\UpdateAppointmentRequest;
 use App\Models\Appointment;
+use App\Models\Availability;
 use App\Models\PushAlert;
 use App\Models\User;
 use App\Models\UserAppointment;
@@ -60,10 +61,12 @@ class AppointmentController extends Controller
         $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         
-
+        $my_counselor = $this->myCurrentCounselor();
+        $av_dates = Availability::where('user_id', $my_counselor->sender_id ?? [])->get();
+        // dd($av_dates);
         $notifications = auth()->user()->unreadNotifications;
+
         try {
-            // dd(!empty($appointments->toArray()));
             if(!empty($appointments->toArray())){
                 foreach($appointments as $a){
                     $x = [
@@ -73,11 +76,9 @@ class AppointmentController extends Controller
                     ];
                     array_push($events, $x);
                 }
-                // $calendar = $events[0];
                 $calendar = $events;
             }else{
                 foreach($incoming_appointments as $a){
-                    // dd($a);
                     $x = [
                         'title' => $a->appointment->title,
                         'start' =>$this->changeDate($a->appointment->start_date),
@@ -85,13 +86,12 @@ class AppointmentController extends Controller
                     ];
                     array_push($events, $x);
                 }
-                // $calendar = $events[0]; 
                 $calendar = $events; 
             }
-            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications'));
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates'));
         } catch (\Throwable $th) {
             $calendar = [];
-            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications'));
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates'));
         }
 
 
@@ -171,6 +171,53 @@ class AppointmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function storedByPatient(Request $request)
+    {
+        try {
+            $data = $request->toArray();
+            foreach($data['setdate'] as $d){
+                $admin = $this->user->find(1);
+                $avdates = Availability::where('id', $d)->first();
+                $humanReadableDate = date("d M, Y", strtotime($avdates->av_date));
+                $appointment = Appointment::create([
+                    'title' => $data['title'],
+                    'start_date' => $humanReadableDate,
+                    'end_date' => $humanReadableDate,
+                    'video_link' => $data['video_link'],
+                    'type'=> 'video',
+                    'status' => 1,
+                    'start_time' => $avdates->av_date,
+                    'end_time' => $avdates->closing_time
+                ]);
+                $chat = $this->active_chat_data(auth()->user()->id);
+                $this->user_appointment->create([
+                    'guest_id' => auth()->user()->id,
+                    'appointment_id' => $appointment->id,
+                    'status' => 1,
+                    'chat_id' => $chat->id
+                ]);
+            }
+            $payload = [
+                'sender_id' => auth()->user()->id,
+                'name' => auth()->user()->fname.' '.auth()->user()->lname,
+                'type' => $request->type,
+                'title' => $request->title,
+                'appointment_id' => $chat->id, 
+                'link' => $appointment->video_link
+            ];
+            $user = $this->user->where('id', $chat->sender_id)->first();
+            $user->notify(new NewAppointment($payload));
+            $admin->notify(new MyNewAppointment($payload));
+            Session::flash('attention', "Appointment has been scheduled successfully.");
+            return redirect()->route('appointment');
+        } catch (\Throwable $th) {
+            dd($th);
+            Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
+            return redirect()->route('appointment');
+        }
+    }
+
+
     public function store(CreateAppointmentRequest $request)
     {
         try {

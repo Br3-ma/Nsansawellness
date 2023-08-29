@@ -326,6 +326,7 @@
 
 <?php
     $u_paid = auth()->user()->has_paid;    
+   
 ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
@@ -354,7 +355,7 @@
 
     var APP_URL = {!! json_encode(url('/')) !!};
     var user = {!! auth()->user()->toJson() ?? '' !!};
-    var hasPaid = "{{ $u_paid }}"
+    var hasPaid = "{{ $u_paid }}";
     var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
 
     var chat_id; 
@@ -367,7 +368,7 @@
 
   
     function startChat(id, who, names, role){
-        // alert(hasPaid);
+        alert(hasPaid);
         if(hasPaid === 1){
         $('#nsansa_app').hide();
         $('#sessionPreloader').show();

@@ -103,17 +103,24 @@
                             @if ($bill->user !== null)
                             <a href="" class="font-medium whitespace-nowrap">{{ $bill->user->fname.' '.$bill->user->lname }}</a> 
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $bill->user->address }}</div>
+                            
+                            @else
+                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Invalid.</div>
                             @endif
                         </td>
                         <td class="w-40">
-                            @if(App\Models\PatientFile::counselorAssigned($bill->user->id) !== null)
-                                @if(App\Models\PatientFile::counselorAssigned($bill->user->id)->counselor !== null)
-                                    {{App\Models\PatientFile::counselorAssigned($bill->user->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($bill->user->id)->counselor->lname}}<br>
+                            @if($bill->user !== null)
+                                @if(App\Models\PatientFile::counselorAssigned($bill->user->id) !== null)
+                                    @if(App\Models\PatientFile::counselorAssigned($bill->user->id)->counselor !== null)
+                                        {{App\Models\PatientFile::counselorAssigned($bill->user->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($bill->user->id)->counselor->lname}}<br>
+                                    @else
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor assigned yet.</div>
+                                    @endif
                                 @else
-                                <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor assigned yet.</div>
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor assigned yet.</div>
                                 @endif
                             @else
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">No Counselor assigned yet.</div>
+                                <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Invalid.</div>
                             @endif
                         </td>
                         @endhasanyrole

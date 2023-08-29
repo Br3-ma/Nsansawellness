@@ -1,5 +1,15 @@
 @extends('layouts.app')
 @section('content')
+<style>
+    /* Add visible effects for checked checkboxes */
+    input[type="checkbox"]:checked + span {
+        color: white; /* Change text color when checked */
+        background-color: #d7cddf; /* Change background color when checked */
+        border: 1px solid #628caf;
+        padding:4%;
+        border-radius:2px;
+    }
+</style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <div class="content">
     <div class="intro-y mt-8 flex justify-content-between justify-center">
@@ -40,6 +50,9 @@
                 @hasanyrole(['counselor', 'admin'])
                 <a href="{{ route('appointment.create', ['type' => 'video']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Add New Video Call Appointment </a>
                 {{-- <a href="{{ route('appointment.create', ['type' => 'phone']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </a> --}}
+                @endhasanyrole
+                @hasrole('patient')
+                <button data-sidebar="check-time-sidebar" data-sidebar="check-time-sidebar" href="#" class="check-time-trigger btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Make an Appointment <button>
                 @endhasanyrole
                 <div class="border-t border-b border-slate-200/60 dark:border-darkmode-400 mt-6 mb-5 py-3" id="calendar-events">
                     
@@ -100,6 +113,7 @@
 
                     
                     @if(!empty($incoming_appointments->toArray()))
+                    {{-- @dd($incoming_appointments->toArray()) --}}
                     @forelse ($incoming_appointments as $app)
                     @if($app->appointment != null)
                     <div class="relative items-center flex transition rounded-md p-2">
@@ -142,6 +156,10 @@
                             <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $app->chat_id ?? 0 }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white">
                                 <i data-lucide="video" class="w-4 h-4 text-white"></i> 
                             </a>
+                            @else
+                            <a href="#" style="background-color: #393b3b" title="Waiting for counselor to accept" class="btn btn-secondary text-white">
+                                <i data-lucide="video" class="w-4 h-4 text-white"></i> 
+                            </a>
                             @endif
                         </div>
                     </div>
@@ -174,7 +192,9 @@
         <!-- END: Calendar Content -->
     </div>
 </div>
-<!-- Sidebar -->
+
+
+<!-- Add Availability Sidebar -->
 <div class="sidebar" id="add-time-sidebar">
     <!-- Close button for the sidebar -->
     <div class="close-sidebar">
@@ -209,8 +229,61 @@
 
         </ul>
     </div>
-    
-    <!-- Add your form or content for adding available time here -->
+</div>
+
+<!-- Check Availability Sidebar -->
+<div class="sidebar" id="check-time-sidebar">
+    <!-- Close button for the sidebar -->
+    <div class="close-sidebar">
+        <button class="btn btn-primary" id="close-sidebar2">Close</button>
+    </div>
+    <!-- Sidebar content goes here -->
+    <div class="px-10 container mt-10 pt-8">
+        <h2 class="text-lg font-semibold mb-4">Setup An Appointment</h2>
+        <h6 class="text-xs mb-4">Fill up all the fields below:</h6>
+        <form action="{{ route('appointment.save') }}" method="POST" id="formAvailability">
+            @csrf
+            
+            <div class="w-full mt-3 xl:mt-0 flex-1">
+                <input id="appointment-name" name="title" type="text" class="form-control" placeholder="Appointment Title">
+                <div class="form-help text-right">Maximum character 0/70</div>
+                <input type="hidden" id="_peer_link_id" name="video_link" />
+            </div>
+            <div class="flex">
+                @if(!empty($av_dates))
+                    @forelse ($av_dates as $index => $adate)
+                    {{-- @dd($av_dates) --}}
+                    <label class="w-1/4 relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" name="setdate[]" value="{{ $adate->id }}" class="hidden absolute h-5 w-5 appearance-none bg-white border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none">
+                        <span class="pl-2 transition-colors duration-300" id="thur-text">
+                            <h3 class="font-bold">
+                                @php 
+                                    $humanReadableDate = date("F j, Y", strtotime($adate->av_date));
+                                    echo $humanReadableDate;
+                                @endphp
+                            </h3>
+                            <p>{{ $adate->opening_time.' to '.$adate->closing_time }}</p>
+                        </span>
+                        {{-- <span class="pl-2 transition-colors duration-300" id="thur-text{{ $index }}">THUR 24/2023</span> --}}
+                    </label>
+                    @empty
+                        <p>Seems the counselor is a bit preoccupied at the moment. </p>
+                    @endforelse
+                    <br><br>
+                @else
+                    <p>You have not been assigned to any counselor yet. </p>
+                @endif
+            </div>
+            
+            <div class="w-full">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+
+        <ul id="checkAvailabilityList" class="mt-4 space-y-2">
+
+        </ul>
+    </div>
 </div>
 {{-- @include('page.modals.create-appointment-modal') --}}
 <script>
@@ -218,8 +291,26 @@
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>
-    $(document).ready(function () {
+<script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+<script th:inline="javascript">
+$(document).ready(function() {
+      
+        const peer_field = document.getElementById('_peer_link_id');
+        var peer = new Peer();
+        
+
+        navigator.mediaDevices.getUserMedia({ video: false, audio: false}).then(stream =>{
+            localStream = stream;
+            localVideo.srcObject = localStream;
+            localVideo.onloadedmetadata = () => localVideo.play();
+        });
+
+        // Generate an ID (Link)
+        peer.on('open', id => {
+            // Save the ID for Later User
+            peer_field.value = id;
+
+        });
         // Open the sidebar when clicking "Add Available Time"
         $(".add-time-trigger").on("click", function (e) {
             e.preventDefault();
@@ -229,6 +320,19 @@
 
         // Close the sidebar when clicking the close button
         $("#close-sidebar").on("click", function () {
+            var sidebarId = $(this).closest(".sidebar").attr("id");
+            $("#" + sidebarId).css("transform", "translateX(100%)");
+        });
+
+        // Open the sidebar when clicking "Add Available Time"
+        $(".check-time-trigger").on("click", function (e) {
+            e.preventDefault();
+            var sidebarId = $(this).data("sidebar");
+            $("#" + sidebarId).css("transform", "translateX(0)");
+        });
+
+        // Close the sidebar when clicking the close button
+        $("#close-sidebar2").on("click", function () {
             var sidebarId = $(this).closest(".sidebar").attr("id");
             $("#" + sidebarId).css("transform", "translateX(100%)");
         });

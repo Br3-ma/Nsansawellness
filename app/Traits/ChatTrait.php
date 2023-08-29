@@ -16,6 +16,12 @@ trait ChatTrait {
         ->first()
         ->id;
     }
+
+    public function active_chat_data($id){
+        return Chat::where('receiver_id', $id)
+        ->where('status', 1)
+        ->first();
+    }
     
     public function active_chat_info($id){
         return Chat::where('receiver_id', auth()->user()->id)
