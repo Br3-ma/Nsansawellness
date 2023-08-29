@@ -1119,6 +1119,7 @@ li{
 
                     </li>
                     {{-- <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a> --}}
+                    <li id="menu-item-17" class="@if(Request::route()->uri == 'events') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('events')}}">Events</a>
                     
                      @if(!Auth::user())
                         </li>
