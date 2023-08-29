@@ -252,7 +252,7 @@
             <br>
             <label for="timepicker" class="block text-sm font-medium text-gray-700">Pick a date below:</label>
 
-            <div class="flex py-4">
+            <div class="flex py-4 gap-2">
 
                 @if(!empty($av_dates))
                     @forelse ($av_dates as $index => $adate)
