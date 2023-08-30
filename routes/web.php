@@ -144,7 +144,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('update-user-status', [UserController::class, 'updateStatus'])->name('user.status');
     Route::post('upload-files', [UserController::class, 'uploadMyFiles'])->name('user.files');
     Route::post('update-question-type', [QuestionaireController::class, 'updateQType'])->name('update.questiontype');
-
+    Route::get('add-questions/{qid}', [QuestionaireController::class, 'addQuestions'])->name('questionaires.new_question');
+    Route::post('save-questions', [QuestionaireController::class, 'saveQuestions'])->name('questionaires.save_questions');
+    
     Route::resource('availabilities', AvailabilityController::class);
     Route::post('stored-by-administrator', [AppointmentController::class, 'storedByAdmin'])->name('appointment.proxy');
     Route::post('stored-by-patient', [AppointmentController::class, 'storedByPatient'])->name('appointment.save');

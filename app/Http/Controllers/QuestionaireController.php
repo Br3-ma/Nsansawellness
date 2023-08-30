@@ -103,6 +103,27 @@ class QuestionaireController extends Controller
         }
     }
 
+    public function addQuestions($qid){
+        return view('page.questionaires.create-question',[
+            'questionnaire_id'=> $qid
+        ]);
+    }
+
+    public function saveQuestions(Request $request){
+try {
+            foreach ($request->question as $key => $value) {
+                Question::create([
+                    'question' => $value,
+                    'type' => $request->type[$key],
+                    'questionaire_id' => $request->questionnaire_id    
+                ]);
+            }
+            return redirect()->route('questionaires.show', $request->questionnaire_id);
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+    }
+
     /**
      * Display the specified resource.
      *

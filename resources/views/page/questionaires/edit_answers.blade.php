@@ -4,9 +4,11 @@
 <div class="content">
     <div class="flex items-center mt-8">
         <h2 class="intro-y text-lg font-medium mr-auto">
-            Survey Questions
+            <a href="{{ route('questionaires.index') }}" class="intro-x btn shadow-md mr-2">
+                <i data-lucide="chevron-left" class="w-4 h-4 mr-2"></i> 
+            </a> <span>Survey Questions</span>
         </h2>
-        <a href="{{ route('questionaires.index') }}" class="intro-x btn shadow-md mr-2">Back to Questionnaires</a>
+        <a href="{{ route('questionaires.new_question', $questionaires->id) }}" class="intro-x btn shadow-md mr-2">New Question</a>
     </div>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <!-- BEGIN: Data List -->
