@@ -14,13 +14,16 @@
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <div class="content">
-    <div class="intro-y mt-8 flex justify-content-between justify-center">
+    <div class="intro-y mt-8 lg:flex justify-content-between justify-center">
         <h2 class="text-lg font-medium mr-auto flex space-x-6">
             <i data-lucide="calendar" class="w-6 h-6"></i>
             &nbsp;
             <span>Appointments</span>
         </h2>
         @hasrole('admin')
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <button  class="add-time-trigger btn btn-primary shadow-md mr-2" data-sidebar="setapp-sidebar" data-sidebar="setapp-sidebar"><i data-lucide="plus" class="w-4 h-4 mr-2"></i>Manage Appointments</button>
+        </div>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <button  class="add-time-trigger btn btn-danger shadow-md mr-2" data-sidebar="setapp-sidebar" data-sidebar="setapp-sidebar"><i data-lucide="plus" class="w-4 h-4 mr-2"></i>Set Appointment</button>
         </div>
@@ -87,7 +90,7 @@
 <!-- Add Availability Sidebar -->
 <div class="sidebar" id="add-time-sidebar">
     <!-- Close button for the sidebar -->
-    <div class="close-sidebar">
+    <div class="">
         <button class="btn btn-primary" id="close-sidebar">Close</button>
     </div>
     <!-- Sidebar content goes here -->
@@ -124,7 +127,7 @@
 <!-- Check Availability Sidebar -->
 <div class="sidebar" id="check-time-sidebar">
     <!-- Close button for the sidebar -->
-    <div class="close-sidebar">
+    <div class="">
         <button class="btn btn-primary" id="close-sidebar2">Close</button>
     </div>
     <!-- Sidebar content goes here -->

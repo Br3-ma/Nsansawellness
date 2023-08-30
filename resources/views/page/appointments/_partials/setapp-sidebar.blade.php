@@ -1,22 +1,22 @@
 <div class="sidebar w-full" id="setapp-sidebar">
     <!-- Close button for the sidebar -->
-    <div class="close-sidebar">
-        <button class="btn btn-primary rounded-full" id="close-sidebar">X</button>
+    <div class="">
+        <button class="btn btn-primary rounded-full" id="close-sidebar3">X</button>
     </div>
     <!-- Sidebar content goes here -->
-    <div class="px-10 container mt-10 pt-8">
+    <div class="px-10 container pt-8">
         <h2 class="text-lg font-semibold">Create Appointments</h2>
         <small>Make appointment on behalf of counselors and patients</small>
         <br>
         <form action="{{ route('appointment.proxy') }}" method="POST" id="formAvailability">
             @csrf
             
-            <div class="w-full mt-3 xl:mt-0 flex-1">
+            <div class="w-full mt-2 flex-1">
                 <input id="appointment-name" name="title" type="text" class="form-control" placeholder="Appointment Title">
                 <div class="form-help text-right">Maximum character 0/70</div>
             </div>
             
-            <div class="w-full mt-3 xl:mt-0 flex-1">
+            <div class="w-full mt-2 flex-1">
                 <label for="datepicker" class="block text-sm font-medium text-gray-700">Find Patient</label>
                 <select name="guest_id" id="subcategory" data-placeholder="Guest" class="tom-select w-full">
                     {{-- <option value="Fashion &amp; Make Up">Fashion &amp; Make Up</option> --}}
@@ -30,7 +30,7 @@
                 </select>
             </div>
             
-            <div class="w-full mt-3 xl:mt-0 flex-1">
+            <div class="w-full mt-2 flex-1">
                 <label for="datepicker" class="block text-sm font-medium text-gray-700">Find Counselor</label>
                 <select name="counselor_id" id="subcategory" data-placeholder="Guest" class="tom-select w-full">
                     {{-- <option value="Fashion &amp; Make Up">Fashion &amp; Make Up</option> --}}
@@ -44,7 +44,7 @@
                 </select>
             </div>
 
-            <div class="w-full mt-3 xl:mt-0 flex-1">
+            <div class="w-full mt-2 flex-1">
                 <label for="datepicker" class="block text-sm font-medium text-gray-700">Start Time</label>
                 <select name="start_time" id="start_time" class="form-control w-full">
                     <option value="00:00">00:00</option>
@@ -146,7 +146,7 @@
                 </select>
             </div>
 
-            <div class="w-full mt-3 xl:mt-0 flex-1">
+            <div class="w-full mt-2 flex-1">
                 <label for="datepicker" class="block text-sm font-medium text-gray-700">End Time</label>
                 <select name="end_time" id="end_time" class="form-control w-full">
                     <option value="00:00">00:00</option>
@@ -247,7 +247,7 @@
                     <option value="23:45">23:45</option>
                 </select>                                
             </div>
-            <div class="w-full mt-3 xl:mt-0 flex-1">
+            <div class="w-full mt-2 flex-1">
                 <label for="datepicker" class="block text-sm font-medium text-gray-700">Start Date</label>
                 <div id="basic-datepicker">
                     <div class="preview">
@@ -255,7 +255,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full mt-3 xl:mt-0 flex-1">
+            <div class="w-full mt-2 flex-1">
                 <label for="datepicker" class="block text-sm font-medium text-gray-700">End Date</label>
                 <div id="basic-datepicker">
                     <div class="preview">
@@ -269,8 +269,11 @@
                 <div class="form-help text-right">Maximum character 0/2000</div>
             </div> --}}
             <input type="hidden" name="video_link" id="peer_link_id">
-            <div class="flex justify-end">
-                <button type="submit" class="btn btn-primary">Save</button>
+            <div class="flex justify-end mt-3">
+                <button type="submit" class="btn btn-primary"> 
+                    <i data-lucide="save" class="w-4 h-4"></i>
+                    &nbsp;Save
+                </button>
             </div>
         </form>
 
