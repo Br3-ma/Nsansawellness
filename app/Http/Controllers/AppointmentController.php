@@ -59,7 +59,7 @@ class AppointmentController extends Controller
         $events = [];
         $this->mark_as_seen();
         $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
-        $adminapps =  $this->appointment->with('guests')->where('setter', 'true')->get();
+        $adminapps =  $this->appointment->with('guests')->orWhere('setter', 1)->orWhere('setter', 'true')->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         $patients = $this->user->role('patient')->get();
         $counselors = $this->user->role('counselor')->get();
@@ -236,22 +236,33 @@ class AppointmentController extends Controller
                 'end_time' => $data['end_time']
             ]);
             $chat = $this->active_chat_data($data['guest_id']);
+            $counselor = $this->user->where('id', $chat->sender_id)->first();
+            $patient = $this->user->where('id', $chat->receiver_id)->first();
             $this->user_appointment->create([
                 'guest_id' => $data['guest_id'],
                 'appointment_id' => $appointment->id,
                 'status' => 1,
                 'chat_id' => $chat->id
             ]);
-            $payload = [
+            $cp = [
                 'sender_id' => $data['counselor_id'],
-                'name' => $data['counselor_id'],
+                'name' => $counselor->fname.' '.$counselor->lname,
                 'type' => 'video',
                 'title' => $data['title'],
                 'appointment_id' => $chat->id, 
                 'link' => $appointment->video_link
             ];
-            $user = $this->user->where('id', $chat->sender_id)->first();
-            $user->notify(new NewAppointment($payload));
+            $pp = [
+                'sender_id' => $data['counselor_id'],
+                'name' => $patient->fname.' '.$patient->lname,
+                'type' => 'video',
+                'title' => $data['title'],
+                'appointment_id' => $chat->id, 
+                'link' => $appointment->video_link
+            ];
+            
+            $counselor->notify(new NewAppointment($pp));
+            $patient->notify(new NewAppointment($cp));
             // $admin->notify(new MyNewAppointment($payload));
             Session::flash('attention', "Appointment has been scheduled successfully.");
             return redirect()->route('appointment');
@@ -266,7 +277,7 @@ class AppointmentController extends Controller
     public function store(CreateAppointmentRequest $request)
     {
         try {
-            $admin = $this->user->find(1);
+            $counselor = $this->user->where('id', auth()->user()->id)->first();
             $appointment = $this->appointment->create($request->toArray());
             foreach($request->guest_id as $guest){
                 $user = $this->user->where('id',$guest)->first();
@@ -287,6 +298,7 @@ class AppointmentController extends Controller
                 ];
                 $user->notify(new NewAppointment($payload));
             }
+            $counselor->notify(new MyNewAppointment($payload));
             // $admin->notify(new MyNewAppointment($payload));
             Session::flash('attention', "Appointment has been scheduled successfully.");
             return redirect()->route('appointment');
