@@ -110,7 +110,7 @@ class QuestionaireController extends Controller
     }
 
     public function saveQuestions(Request $request){
-try {
+        try {
             foreach ($request->question as $key => $value) {
                 Question::create([
                     'question' => $value,
