@@ -8,7 +8,7 @@
         <h2 class="text-lg font-semibold">Create Appointments</h2>
         <small>Make appointment on behalf of counselors and patients</small>
         <br>
-        <form action="{{ route('appointment.proxy') }}" method="POST" id="formAvailability" onsubmit="submitForm(); return false;">
+        <form action="{{ route('appointment.proxy') }}" method="POST" id="formAvailability">
             @csrf
             
             <div class="w-full mt-3 xl:mt-0 flex-1">
@@ -18,7 +18,7 @@
             
             <div class="w-full mt-3 xl:mt-0 flex-1">
                 <label for="datepicker" class="block text-sm font-medium text-gray-700">Find Patient</label>
-                <select name="guest_id" id="subcategory" data-placeholder="Guest" class="tom-select w-full" multiple>
+                <select name="guest_id" id="subcategory" data-placeholder="Guest" class="tom-select w-full">
                     {{-- <option value="Fashion &amp; Make Up">Fashion &amp; Make Up</option> --}}
                     @forelse ($patients as $u)
                         @if($u->id != auth()->user()->id)
@@ -32,7 +32,7 @@
             
             <div class="w-full mt-3 xl:mt-0 flex-1">
                 <label for="datepicker" class="block text-sm font-medium text-gray-700">Find Counselor</label>
-                <select name="counselor_id" id="subcategory" data-placeholder="Guest" class="tom-select w-full" multiple>
+                <select name="counselor_id" id="subcategory" data-placeholder="Guest" class="tom-select w-full">
                     {{-- <option value="Fashion &amp; Make Up">Fashion &amp; Make Up</option> --}}
                     @forelse ($counselors as $u)
                         @if($u->id != auth()->user()->id)
@@ -263,11 +263,11 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full mt-3 xl:mt-0 flex-1">
+            {{-- <div class="w-full mt-3 xl:mt-0 flex-1">
                 <label for="datepicker" class="block text-sm font-medium text-gray-700">Remarks</label>
                 <textarea name="comments" class="editor"></textarea>
-                {{-- <div class="form-help text-right">Maximum character 0/2000</div> --}}
-            </div>
+                <div class="form-help text-right">Maximum character 0/2000</div>
+            </div> --}}
             <input type="hidden" name="video_link" id="peer_link_id">
             <div class="flex justify-end">
                 <button type="submit" class="btn btn-primary">Save</button>

@@ -59,14 +59,15 @@ class AppointmentController extends Controller
         $events = [];
         $this->mark_as_seen();
         $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
+        $adminapps =  $this->appointment->with('guests')->where('setter', 'true')->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
-        $patients = $this->user->role('patient');
-        $counselors = $this->user->role('counselor');
+        $patients = $this->user->role('patient')->get();
+        $counselors = $this->user->role('counselor')->get();
         $my_counselor = $this->myCurrentCounselor();
         $av_dates = Availability::where('user_id', $my_counselor->sender_id ?? [])->get();
-        // dd($av_dates);
+        
         $notifications = auth()->user()->unreadNotifications;
-
+// dd($adminapps);
         try {
             if(!empty($appointments->toArray())){
                 foreach($appointments as $a){
@@ -89,10 +90,10 @@ class AppointmentController extends Controller
                 }
                 $calendar = $events; 
             }
-            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients'));
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients', 'adminapps'));
         } catch (\Throwable $th) {
             $calendar = [];
-            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients'));
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients', 'adminapps'));
         }
 
 
@@ -221,6 +222,7 @@ class AppointmentController extends Controller
     public function storedByAdmin(Request $request){
         try {
             $data = $request->toArray();
+            // dd($data);
             $appointment = Appointment::create([
                 'title' => $data['title'],
                 'start_date' => $data['start_date'],
@@ -228,13 +230,14 @@ class AppointmentController extends Controller
                 'video_link' => $data['video_link'],
                 'type'=> 'video',
                 'status' => 1,
+                'setter' => true,
                 'user_id' => $data['counselor_id'],
                 'start_time' => $data['start_time'],
                 'end_time' => $data['end_time']
             ]);
-            $chat = $this->active_chat_data($data['patient_id']);
+            $chat = $this->active_chat_data($data['guest_id']);
             $this->user_appointment->create([
-                'guest_id' => $data['patient_id'],
+                'guest_id' => $data['guest_id'],
                 'appointment_id' => $appointment->id,
                 'status' => 1,
                 'chat_id' => $chat->id
@@ -242,7 +245,7 @@ class AppointmentController extends Controller
             $payload = [
                 'sender_id' => $data['counselor_id'],
                 'name' => $data['counselor_id'],
-                'type' => $data['type'],
+                'type' => 'video',
                 'title' => $data['title'],
                 'appointment_id' => $chat->id, 
                 'link' => $appointment->video_link
