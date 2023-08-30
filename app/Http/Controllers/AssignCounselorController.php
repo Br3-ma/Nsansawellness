@@ -207,8 +207,8 @@ class AssignCounselorController extends Controller
                 'sender' => 'Nsansa Wellness Group'
             ];
                 
-            User::where('id', $chat->receiver_id)
-            ->notify(new CounselorAssigned($message));
+            $patient = User::where('id', $chat->receiver_id)->first();
+            $patient->notify(new CounselorAssigned($message));
             return response()->json(['message' => 'ok'], 200);
         } catch (\Throwable $th) {
             dd($th);
