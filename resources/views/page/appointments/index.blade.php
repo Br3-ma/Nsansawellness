@@ -3,10 +3,12 @@
 <style>
     /* Add visible effects for checked checkboxes */
     input[type="checkbox"]:checked + span {
+        padding: 4%;
+    }
+    input[type="checkbox"]:checked + span {
         color: white; /* Change text color when checked */
-        background-color: #d7cddf; /* Change background color when checked */
-        border: 1px solid #628caf;
-        padding:4%;
+        background-color: #065777; 
+        padding: 4%;
         border-radius:2px;
     }
 </style>
@@ -18,13 +20,16 @@
             &nbsp;
             <span>Appointments</span>
         </h2>
-        
-        @hasanyrole(['counselor', 'admin'])
+        @hasrole('admin')
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <button  class="add-time-trigger btn btn-primary shadow-md mr-2" data-sidebar="add-time-sidebar" data-sidebar="add-time-sidebar"><i data-lucide="share-2" class="w-4 h-4 mr-2"></i>Add Available Time</button>
-
+            <button  class="add-time-trigger btn btn-danger shadow-md mr-2" data-sidebar="setapp-sidebar" data-sidebar="setapp-sidebar"><i data-lucide="plus" class="w-4 h-4 mr-2"></i>Set Appointment</button>
         </div>
-        @endhasanyrole
+        @endhasrole
+        @hasrole('counselor')
+        <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
+            <button  class="add-time-trigger btn btn-primary shadow-md mr-2" data-sidebar="add-time-sidebar" data-sidebar="add-time-sidebar"><i data-lucide="plus" class="w-4 h-4 mr-2"></i>Add Available Time</button>
+        </div>
+        @endhasrole
     </div>
     @if (Session::has('attention'))
     <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
@@ -47,8 +52,8 @@
         <!-- BEGIN: Calendar Side Menu -->
         <div class="col-span-12 xl:col-span-4 2xl:col-span-3">
             <div class="box p-5 intro-y">
-                @hasanyrole(['counselor', 'admin'])
-                <a href="{{ route('appointment.create', ['type' => 'video']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Add New Video Call Appointment </a>
+                @hasanyrole(['counselor'])
+                <a href="{{ route('appointment.create', ['type' => 'video']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> New Video Call Appointment </a>
                 {{-- <a href="{{ route('appointment.create', ['type' => 'phone']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </a> --}}
                 @endhasanyrole
                 @hasrole('patient')
@@ -221,7 +226,7 @@
                
             </div>
             <div class="flex justify-end">
-                <button type="submit" class="btn btn-primary">Add</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
 
