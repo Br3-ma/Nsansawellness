@@ -60,7 +60,8 @@ class AppointmentController extends Controller
         $this->mark_as_seen();
         $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
-        
+        $patients = $this->user->role('patient');
+        $counselors = $this->user->role('counselor');
         $my_counselor = $this->myCurrentCounselor();
         $av_dates = Availability::where('user_id', $my_counselor->sender_id ?? [])->get();
         // dd($av_dates);
@@ -88,10 +89,10 @@ class AppointmentController extends Controller
                 }
                 $calendar = $events; 
             }
-            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates'));
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients'));
         } catch (\Throwable $th) {
             $calendar = [];
-            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates'));
+            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients'));
         }
 
 
@@ -207,14 +208,55 @@ class AppointmentController extends Controller
             ];
             $user = $this->user->where('id', $chat->sender_id)->first();
             $user->notify(new NewAppointment($payload));
-            $admin->notify(new MyNewAppointment($payload));
+            // $admin->notify(new MyNewAppointment($payload));
+            Session::flash('attention', "Appointment has been scheduled successfully.");
+            return redirect()->route('appointment');
+        } catch (\Throwable $th) {
+            Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
+            return redirect()->route('appointment');
+        }
+    }
+
+
+    public function storedByAdmin(Request $request){
+        try {
+            $data = $request->toArray();
+            $appointment = Appointment::create([
+                'title' => $data['title'],
+                'start_date' => $data['start_date'],
+                'end_date' => $data['end_date'],
+                'video_link' => $data['video_link'],
+                'type'=> 'video',
+                'status' => 1,
+                'user_id' => $data['counselor_id'],
+                'start_time' => $data['start_time'],
+                'end_time' => $data['end_time']
+            ]);
+            $chat = $this->active_chat_data($data['patient_id']);
+            $this->user_appointment->create([
+                'guest_id' => $data['patient_id'],
+                'appointment_id' => $appointment->id,
+                'status' => 1,
+                'chat_id' => $chat->id
+            ]);
+            $payload = [
+                'sender_id' => $data['counselor_id'],
+                'name' => $data['counselor_id'],
+                'type' => $data['type'],
+                'title' => $data['title'],
+                'appointment_id' => $chat->id, 
+                'link' => $appointment->video_link
+            ];
+            $user = $this->user->where('id', $chat->sender_id)->first();
+            $user->notify(new NewAppointment($payload));
+            // $admin->notify(new MyNewAppointment($payload));
             Session::flash('attention', "Appointment has been scheduled successfully.");
             return redirect()->route('appointment');
         } catch (\Throwable $th) {
             dd($th);
             Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
             return redirect()->route('appointment');
-        }
+        } 
     }
 
 

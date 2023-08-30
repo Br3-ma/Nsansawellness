@@ -295,6 +295,8 @@
         </ul>
     </div>
 </div>
+
+@include('page.appointments._partials.setapp-sidebar')
 {{-- @include('page.modals.create-appointment-modal') --}}
 <script>
     var evnt = @json($calendar);
@@ -321,7 +323,7 @@ $(document).ready(function() {
             peer_field.value = id;
 
         });
-        // Open the sidebar when clicking "Add Available Time"
+        // -------------------- Open the sidebar when clicking "Add Available Time"
         $(".add-time-trigger").on("click", function (e) {
             e.preventDefault();
             var sidebarId = $(this).data("sidebar");
@@ -334,7 +336,7 @@ $(document).ready(function() {
             $("#" + sidebarId).css("transform", "translateX(100%)");
         });
 
-        // Open the sidebar when clicking "Add Available Time"
+        // ------------------ Open the sidebar when clicking "Add Available Time"
         $(".check-time-trigger").on("click", function (e) {
             e.preventDefault();
             var sidebarId = $(this).data("sidebar");
@@ -347,7 +349,20 @@ $(document).ready(function() {
             $("#" + sidebarId).css("transform", "translateX(100%)");
         });
 
-        // Initialize Flatpickr for the time input field
+        // ------------------ Open the sidebar when clicking "Set Appointment"
+        $(".setapp-trigger").on("click", function (e) {
+            e.preventDefault();
+            var sidebarId = $(this).data("sidebar");
+            $("#" + sidebarId).css("transform", "translateX(0)");
+        });
+
+        // Close the sidebar when clicking the close button
+        $("#close-sidebar3").on("click", function () {
+            var sidebarId = $(this).closest(".sidebar").attr("id");
+            $("#" + sidebarId).css("transform", "translateX(100%)");
+        });
+
+        // ---------------------- Initialize Flatpickr for the time input field
         flatpickr("#timepicker", {
             enableTime: true,
             noCalendar: true,

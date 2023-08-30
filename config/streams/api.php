@@ -8,12 +8,12 @@ return [
      * This is disabled by default because
      * The API is public by default.
      */
-    'enabled' => env('STREAMS_API_ENABLED', false),
+    'enabled' => env('STREAMS_API_ENABLED', true),
 
     /*
      * Specify the API prefix.
      */
-    'prefix' => env('STREAMS_API_PREFIX', 'api'),
+    'prefix' => env('STREAMS_API_PREFIX', 'api/streams/'),
 
     /*
      * Specify the API group middleware.

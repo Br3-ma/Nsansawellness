@@ -11,6 +11,7 @@ class Appointment extends Model
 
     protected $fillable = [
         'title',
+        'setter',   
         'start_date',
         'end_date',
         'video_link',
