@@ -368,8 +368,9 @@
 
   
     function startChat(id, who, names, role){
-        alert(hasPaid);
-        if(hasPaid === 1){
+        // alert(hasPaid);
+        // if(hasPaid === 1){
+        if(true){
         $('#nsansa_app').hide();
         $('#sessionPreloader').show();
         open_chat(id, who, names, role);

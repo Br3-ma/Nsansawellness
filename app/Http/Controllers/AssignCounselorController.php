@@ -198,7 +198,8 @@ class AssignCounselorController extends Controller
     public function acceptReq(Request $request)
     {
         try {
-            $chat = Chat::where('assign_id', $request->input('assign_id'))->update(['status' => 1]);
+            Chat::where('assign_id', $request->input('assign_id'))->update(['status' => 1]);
+            $chat = Chat::where('assign_id', $request->input('assign_id'))->first();
             $message = [
                 'sender_id' => $chat->sender_id,
                 'patient_id' => $chat->receiver_id,
