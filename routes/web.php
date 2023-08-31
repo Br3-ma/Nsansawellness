@@ -148,6 +148,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('save-questions', [QuestionaireController::class, 'saveQuestions'])->name('questionaires.save_questions');
     
     Route::resource('availabilities', AvailabilityController::class);
+    Route::get('manage-appointments', [AppointmentController::class, 'manage'])->name('appointments.manage');
+    Route::get('manage-appointments-filter', [AppointmentController::class, 'manageFilter'])->name('appointments.filter');
     Route::post('stored-by-administrator', [AppointmentController::class, 'storedByAdmin'])->name('appointment.proxy');
     Route::post('stored-by-patient', [AppointmentController::class, 'storedByPatient'])->name('appointment.save');
     Route::post('accept-assigmnent', [AssignCounselorController::class, 'acceptReq'])->name('accept-assign');

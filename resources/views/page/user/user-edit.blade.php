@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="content">
-    <h2 class="intro-y text-lg font-medium mt-10">
-        Edit 
+    <h2 class="intro-y flex text-lg font-medium mt-10">
+        <i data-lucide="edit"></i>&nbsp; Edit 
         @hasanyrole('admin')
             User 
         @else
@@ -18,7 +18,7 @@
             @method('patch')
             @csrf
             <div class="grid grid-cols-12 gap-2 mt-5">
-                @if($user->id == auth()->user()->id)
+                {{-- @if($user->id == auth()->user()->id) --}}
                 <div class="intro-y col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4">
                     <div class="w-full">
                         <h1 class="text-lg ">Personal Information</h1>
@@ -149,7 +149,7 @@
                     </div>
                 </div>
 
-                @hasanyrole('patient')
+                @hasanyrole(['patient', 'admin'])
                 <div class="intro-y col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4">
                     <div class="w-full">
                         <h1 class="text-lg ">Medical Information</h1>
@@ -248,13 +248,13 @@
                             name="department">
                             <option value="None">None</option>
                             <option value="Clinical Social Worker">Clinical Social Worker</option>
-                            <option value="Marriage & Family Therapist">Marriage & Family Therapist</option>
-                            <option value="Mental Health Counselor">Mental Health Counselor</option>
-                            <option value="Professional Counselor">Professional Counselor</option>
+                            {{-- <option value="Marriage & Family Counselor">Couples, Marriage & Family Counselor</option> --}}
+                            <option value="Peer-to-Peer Counselor">Peer-to-Peer Counselor</option>
+                            {{-- <option value="Professional Counselor">Professional Counselor</option> --}}
                             <option value="Psychologist">Psychologist</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="hourly_charge" class="form-label">Hourly Charge</label>
                         <small>Your charge per hour</small>
                         <input value="{{ old('hourly_charge') }}" 
@@ -266,7 +266,7 @@
                         @if ($errors->has('hourly_charge'))
                             <span class="text-danger text-left">{{ $errors->first('hourly_charge') }}</span>
                         @endif
-                    </div>                       
+                    </div>                        --}}
                     <div class="mb-3">
                         <label for="patient_limit" class="form-label">Patient Limit</label>
                         <select name="patient_limit" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
@@ -294,7 +294,6 @@
                     </div>
                 </div>
                 @endhasanyrole
-                @endif
 
                 @hasanyrole('admin')
                 <div class="intro-y col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4">
@@ -325,8 +324,10 @@
 
             </div>
 
-            <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
-                <button type="submit" class="btn btn-primary w-24 ml-2">Update Profile</button>
+            <div class="intro-y col-span-12 w-full">
+                <button type="submit" class="btn btn-primary w-24 ml-2">
+                    <i data-lucide="save"></i>&nbsp;Update Profile
+                </button>
             </div>
             {{-- <a href="{{ route('users.index') }}" class="btn btn-default">Cancel</a> --}}
         </form>

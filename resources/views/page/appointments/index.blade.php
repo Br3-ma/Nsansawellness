@@ -22,7 +22,7 @@
         </h2>
         @hasrole('admin')
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-            <button  class="add-time-trigger btn btn-primary shadow-md mr-2" data-sidebar="setapp-sidebar" data-sidebar="setapp-sidebar"><i data-lucide="plus" class="w-4 h-4 mr-2"></i>Manage Appointments</button>
+            <a href="{{ route('appointments.manage') }}" class="btn btn-primary shadow-md mr-2"><i data-lucide="calendar" class="w-4 h-4 mr-2"></i>Manage Appointments</a>
         </div>
         <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
             <button  class="add-time-trigger btn btn-danger shadow-md mr-2" data-sidebar="setapp-sidebar" data-sidebar="setapp-sidebar"><i data-lucide="plus" class="w-4 h-4 mr-2"></i>Set Appointment</button>

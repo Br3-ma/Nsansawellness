@@ -42,9 +42,9 @@
                 <div class="ml-5">
                     <div class="capitalize w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{ $user->fname.' '.$user->lname}}</div>
                     <div class="capitalize text-slate-500"> {{ $user->gender ?? '' }}</div>
-                    @can('users.edit')
+                    {{-- @can('users.edit') --}}
                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-xs p-2 w-full"><i data-lucide="edit"></i>&nbsp;Assign Role</a>
-                    @endcan
+                    {{-- @endcan --}}
                 </div>
 
             </div>
@@ -133,6 +133,7 @@
                 <!-- END: Top Categories -->
                
                 <!-- BEGIN: Daily Sales -->
+                @if ($user->type == 'patient')
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">
@@ -165,6 +166,7 @@
                         
                     </div>
                 </div>
+                @endif
                 <!-- END: Daily Sales -->
                 <!-- BEGIN: Latest Tasks -->
                 <div class="intro-y box col-span-12 lg:col-span-6">

@@ -15,6 +15,7 @@ use App\Traits\ChatTrait;
 use App\Traits\CoreTrait;
 use App\Traits\CounselorTrait;
 use App\Traits\PatientTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Pusher\Pusher;
@@ -67,7 +68,6 @@ class AppointmentController extends Controller
         $av_dates = Availability::where('user_id', $my_counselor->sender_id ?? [])->get();
         
         $notifications = auth()->user()->unreadNotifications;
-// dd($adminapps);
         try {
             if(!empty($appointments->toArray())){
                 foreach($appointments as $a){
@@ -95,9 +95,42 @@ class AppointmentController extends Controller
             $calendar = [];
             return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients', 'adminapps'));
         }
-
-
     }
+
+    public function manage(){
+        $appointments = $this->appointment->get();
+        return view('page.appointments.manage', [
+            'appointments' => $appointments
+        ]);
+    }
+
+    public function manageFilter(Request $request){
+
+        $startDate = $request->query('start_date');
+        $endDate = $request->query('end_date');
+    
+        // Convert the provided dates to the format 'd M, Y'
+        $formattedStartDate = Carbon::createFromFormat('Y-m-d', $startDate)->format('d M, Y');
+        $formattedEndDate = Carbon::createFromFormat('Y-m-d', $endDate)->format('d M, Y');
+        
+        $filtered_appointments = [];
+        foreach ($this->appointment->get() as $app) {
+            $app_date1 = Carbon::createFromFormat('d M, Y', $app->start_date);
+            $app_date2 = Carbon::createFromFormat('d M, Y', $app->end_date);
+            $fltr_date1 = Carbon::createFromFormat('d M, Y', $formattedStartDate);
+            $fltr_date2 = Carbon::createFromFormat('d M, Y', $formattedEndDate);
+
+            if ($app_date1->gte($fltr_date1) && $app_date2->lte($fltr_date2)) {
+                // $date1 is less than or equal to $date2
+                $filtered_appointments[] = $app;
+            }
+        }
+        // dd($filtered_appointments);
+        return view('page.appointments.manage-filtered', [
+            'appointments' => $filtered_appointments
+        ]);
+    }
+
 
     public function changeDate($d){
         $ms = array(
@@ -177,6 +210,7 @@ class AppointmentController extends Controller
     {
         try {
             $data = $request->toArray();
+            $chat = $this->active_chat_data(auth()->user()->id);
             foreach($data['setdate'] as $d){
                 $admin = $this->user->find(1);
                 $avdates = Availability::where('id', $d)->first();
@@ -188,10 +222,11 @@ class AppointmentController extends Controller
                     'video_link' => $data['video_link'],
                     'type'=> 'video',
                     'status' => 1,
+                    'user_id' => $chat->sender_id,
                     'start_time' => $avdates->av_date,
                     'end_time' => $avdates->closing_time
                 ]);
-                $chat = $this->active_chat_data(auth()->user()->id);
+                
                 $this->user_appointment->create([
                     'guest_id' => auth()->user()->id,
                     'appointment_id' => $appointment->id,

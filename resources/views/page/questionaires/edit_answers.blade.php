@@ -8,7 +8,7 @@
                 <i data-lucide="chevron-left" class="w-4 h-4 mr-2"></i> 
             </a> <span>Survey Questions</span>
         </h2>
-        <a href="{{ route('questionaires.new_question', $questionaires->id) }}" class="intro-x btn shadow-md mr-2">New Question</a>
+        <a href="{{ route('questionaires.new_question', $questionaires->id) }}" class="intro-x btn btn-primary shadow-md mr-2">New Question</a>
     </div>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <!-- BEGIN: Data List -->

@@ -83,6 +83,7 @@
                             <div class="dropdown-content">
                                 <a href="{{ route('all-patient-files', $file->id) }}" class="dropdown-item"> <i data-lucide="edit-2" class="w-4 h-4 mr-2"></i> Manage Records </a>
                                 @hasanyrole('admin')
+                                    
                                     @if($file->assignedCounselor != null && $file->assignedCounselor->status == 1)
                                     <a href="{{ route('manual.remove.counselor', $file->assignedCounselor->id) }}" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Disable Counselor </a>
                                     @elseif($file->assignedCounselor != null && $file->assignedCounselor->status == 0)
@@ -105,6 +106,10 @@
                     <a target="_blank" title="View response to questionnaire" href="{{ route('user-survey-response', $file->guest_id) }}" class="tooltip btn btn-secondary text-primary py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
                         Survey
+                    </a>
+                    <a href="{{ route('users.edit', $file->id) }}" class="btn py-1 px-2">
+                        <i data-lucide="pencil" class="w-3 h-3 mr-2"></i>
+                        Edit
                     </a>
                     <a title="View commissions" href="{{ route('counselor.details', $file->id) }}" class="tooltip btn btn-warning text-white py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
