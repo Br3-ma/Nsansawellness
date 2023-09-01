@@ -208,6 +208,7 @@ class AppointmentController extends Controller
      */
     public function storedByPatient(Request $request)
     {
+        dd($request);
         try {
             $data = $request->toArray();
             $chat = $this->active_chat_data(auth()->user()->id);
@@ -223,7 +224,7 @@ class AppointmentController extends Controller
                     'type'=> 'video',
                     'status' => 1,
                     'user_id' => $chat->sender_id,
-                    'start_time' => $avdates->av_date,
+                    'start_time' => $avdates->opening_time,
                     'end_time' => $avdates->closing_time
                 ]);
                 
