@@ -208,12 +208,11 @@ class AppointmentController extends Controller
      */
     public function storedByPatient(Request $request)
     {
-        dd($request);
         try {
             $data = $request->toArray();
             $chat = $this->active_chat_data(auth()->user()->id);
-            foreach($data['setdate'] as $d){
-                $admin = $this->user->find(1);
+            foreach($data['setdate'] as $key => $d){
+                // $admin = $this->user->find(1);
                 $avdates = Availability::where('id', $d)->first();
                 $humanReadableDate = date("d M, Y", strtotime($avdates->av_date));
                 $appointment = Appointment::create([
@@ -224,8 +223,8 @@ class AppointmentController extends Controller
                     'type'=> 'video',
                     'status' => 1,
                     'user_id' => $chat->sender_id,
-                    'start_time' => $avdates->opening_time,
-                    'end_time' => $avdates->closing_time
+                    'start_time' => $data['setstarttym'][$key],
+                    'end_time' => $data['setstoptym'][$key]
                 ]);
                 
                 $this->user_appointment->create([
@@ -451,4 +450,20 @@ class AppointmentController extends Controller
     public function mark_as_seen(){
         PushAlert::where('for_user_id', auth()->user()->id)->update(['is_seen' => 1]);
     }
+
+    public function availableTimeSlots(Request $request){
+        $dateId = request()->input('dateId');
+        $data = Availability::where('id', $dateId)->first();
+        $start = $data->opening_time;
+        $stop = $data->closing_time;
+        $slots = [];
+        $current = $start;
+        
+        while ($current < $stop) {
+            $slots[] = $current;
+            $current = date('H:i', strtotime($current . ' +15 minutes'));
+        }
+        return response()->json(['data' => $slots], 200);
+    }
 }
+

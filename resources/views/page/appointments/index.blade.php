@@ -2,14 +2,16 @@
 @section('content')
 <style>
     /* Add visible effects for checked checkboxes */
-    input[type="checkbox"]:checked + span {
-        padding: 4%;
+    input[type="checkbox"] + span {
+        padding: 1.5%;
+        background-color: #cdd2d4; 
+        border-radius:3px;
     }
     input[type="checkbox"]:checked + span {
         color: white; /* Change text color when checked */
         background-color: #065777; 
-        padding: 4%;
-        border-radius:2px;
+        padding: 1.5%;
+        border-radius:3px;
     }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -87,102 +89,9 @@
 </div>
 
 
-<!-- Add Availability Sidebar -->
-<div class="sidebar" id="add-time-sidebar">
-    <!-- Close button for the sidebar -->
-    <div class="">
-        <button class="btn btn-primary" id="close-sidebar">Close</button>
-    </div>
-    <!-- Sidebar content goes here -->
-    <div class="px-10 container mt-10 pt-8">
-        <h2 class="text-lg font-semibold mb-4">Add Available Time</h2>
-        <form action="{{ route('availabilities.store') }}" method="POST" id="formAvailability" onsubmit="submitForm(); return false;">
-            @csrf
-            <div class="mb-4">
-                <label for="datepicker" class="block text-sm font-medium text-gray-700">Select a Date:</label>
-                <input type="date" id="datepicker" name="av_date" class="mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                
-            </div>
-            <div class="mb-4">
-                <label for="timepicker" class="block text-sm font-medium text-gray-700">Select a Opening Time:</label>
-                <input type="text" id="timepicker" name="opening_time" class="flatpickr mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-            </div>
-            <div class="mb-4">
-                <label for="timepicker" class="block text-sm font-medium text-gray-700">Select a Closing Time:</label>
-                <input type="text" id="timepicker" name="closing_time" class="flatpickr mt-1 p-2 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-               
-            </div>
-            <div class="flex justify-end">
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-        </form>
+@include('page.appointments._partials.add-availability-sidebar')
 
-        <ul id="availabilityList" class="mt-4 space-y-2">
-
-        </ul>
-    </div>
-</div>
-
-<!-- Check Availability Sidebar -->
-<div class="sidebar" id="check-time-sidebar">
-    <!-- Close button for the sidebar -->
-    <div class="">
-        <button class="btn btn-primary" id="close-sidebar2">Close</button>
-    </div>
-    <!-- Sidebar content goes here -->
-    <div class="px-10 container mt-10 pt-8">
-        <h2 class="text-lg font-semibold mb-4">Setup An Appointment</h2>
-        <h6 class="text-xs mb-4">Fill up all the fields below:</h6>
-        <form action="{{ route('appointment.save') }}" method="POST" id="formAvailability">
-            @csrf
-            
-            <div class="w-full mt-3 xl:mt-0 flex-1">
-                <input id="appointment-name" name="title" type="text" class="form-control" placeholder="Appointment Title">
-                <div class="form-help text-right">Maximum character 0/70</div>
-                <input type="hidden" id="_peer_link_id" name="video_link" />
-            </div>
-            <br>
-            <label for="timepicker" class="block text-sm font-medium text-gray-700">Pick a date below:</label>
-
-            <div class="flex py-4 gap-2">
-
-                @if(!empty($av_dates))
-                    @forelse ($av_dates as $index => $adate)
-                    {{-- @dd($av_dates) --}}
-                    <label class="w-1/4 relative border inline-flex items-center cursor-pointer p-3">
-                        <input type="checkbox" name="setdate[]" value="{{ $adate->id }}" class="hidden absolute h-5 w-5 appearance-none bg-white border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none">
-                        <span class="pl-2 transition-colors duration-300" id="thur-text">
-                            <h3 class="font-bold">
-                                @php 
-                                    $humanReadableDate = date("F j, Y", strtotime($adate->av_date));
-                                    echo $humanReadableDate;
-                                @endphp
-                            </h3>
-                            <p>{{ $adate->opening_time.' to '.$adate->closing_time }}</p>
-                        </span>
-                        {{-- <span class="pl-2 transition-colors duration-300" id="thur-text{{ $index }}">THUR 24/2023</span> --}}
-                    </label>
-                    @empty
-                        <p>Seems the counselor is a bit preoccupied at the moment. </p>
-                    @endforelse
-                    <br><br>
-                @else
-                    <p>You have not been assigned to any counselor yet. </p>
-                @endif
-            </div>
-            <br>
-            <br>
-            <div class="w-full">
-                <button type="submit" class="btn btn-primary">Create</button>
-            </div>
-        </form>
-
-        <ul id="checkAvailabilityList" class="mt-4 space-y-2">
-
-        </ul>
-    </div>
-</div>
+@include('page.appointments._partials.patient-make-appointment')
 
 @include('page.appointments._partials.setapp-sidebar')
 {{-- @include('page.modals.create-appointment-modal') --}}
@@ -193,7 +102,7 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
 <script th:inline="javascript">
-$(document).ready(function() {
+    $(document).ready(function() {
       
         const peer_field = document.getElementById('_peer_link_id');
         var peer = new Peer();
@@ -256,6 +165,85 @@ $(document).ready(function() {
             noCalendar: true,
             dateFormat: "H:i", // Format for displaying time (hours and minutes)
             time_24hr: true // Use 24-hour format
+        });
+                
+        // Function to populate time slots based on the selected date
+        function populateTimeSlots(dateId) {
+            // Replace this with an actual AJAX request to fetch available time slots
+            $.ajax({
+                url: 'get-available-time-slots', // Replace with your API endpoint
+                method: 'GET',
+                data: { dateId: dateId }, // Include any necessary data
+                dataType: 'json',
+                success: function(response) {
+                        console.log(response.data);
+                        var availableTimeSlots = response.data; // Assuming the response contains an array of time slots
+
+                        var selectStartTime = $("select[id=start_time_" + dateId + "]");
+                        var selectStopTime = $("select[id=stop_time_" + dateId + "]");
+
+                        // Clear previous options
+                        selectStartTime.empty();
+                        selectStopTime.empty();
+
+                        // Populate start time options
+                        $.each(availableTimeSlots, function(index, timeSlot) {
+                            selectStartTime.append($('<option>', {
+                                value: timeSlot,
+                                text: timeSlot
+                            }));
+                        });
+
+                        // Populate stop time options
+                        $.each(availableTimeSlots, function(index, timeSlot) {
+                            selectStopTime.append($('<option>', {
+                                value: timeSlot,
+                                text: timeSlot
+                            }));
+                        });
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Error: " + error);
+                }
+            });
+        }
+
+
+        // Event listener for checkbox changes
+        $("input[type=checkbox]").change(function() {
+            var dateId = $(this).val();
+            alert(dateId);
+            populateTimeSlots(dateId);
+        });
+
+        // Function to toggle visibility of date_selector divs
+        function toggleDateSelectors(dateId) {
+            var checkbox = $("#date_picked" + dateId);
+            var dateSelector1 = $("#date_selector" + dateId);
+            var dateSelector2 = $("#date_selector2" + dateId);
+
+            if (checkbox.prop("checked")) {
+                dateSelector1.show();
+                dateSelector2.show();
+            } else {
+                dateSelector1.hide();
+                dateSelector2.hide();
+            }
+        }
+
+        // Event listener for checkbox changes
+        $("input[type=checkbox]").change(function() {
+            var dateId = $(this).val();
+            toggleDateSelectors(dateId);
+        });
+
+        // Initially hide all date_selector divs
+        $("div[id^='date_selector']").hide();
+
+        // Optionally, toggle visibility for any pre-checked checkboxes
+        $("input[type=checkbox]:checked").each(function() {
+            var dateId = $(this).val();
+            toggleDateSelectors(dateId);
         });
     });
 

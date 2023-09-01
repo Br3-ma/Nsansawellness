@@ -277,9 +277,11 @@
                     top: 0;
                     right: 0;
                     height: 100%;
+                    max-height: 100vh; /* Set a maximum height equal to the viewport height */
                     background-color: #fff;
                     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
                     z-index: 9999; /* Set a high z-index value */
+                    overflow-y: auto;
                 }
 
                 /* Add a close button for the sidebar */

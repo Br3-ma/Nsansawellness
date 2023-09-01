@@ -154,6 +154,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('stored-by-patient', [AppointmentController::class, 'storedByPatient'])->name('appointment.save');
     Route::post('accept-assigmnent', [AssignCounselorController::class, 'acceptReq'])->name('accept-assign');
     Route::post('delete-assigment', [AssignCounselorController::class, 'deleteReq'])->name('delete-assign');
+
+    Route::get('get-available-time-slots', [AppointmentController::class, 'availableTimeSlots']);
 });
 
 // Notifications

@@ -123,4 +123,8 @@ class CoreController extends Controller
 
         }
     }
+
+    public function availableTimeSlots(Request $request){
+        dd($request);
+    }
 }

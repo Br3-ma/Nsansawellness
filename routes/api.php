@@ -54,6 +54,8 @@ Route::get('/counselors', [CoreController::class, 'getCounselors']);
 Route::get('/departments', [CoreController::class, 'getDepartments']);
 Route::get('/assign/{patient_id}/{counselor_id}', [CoreController::class, 'assignCounselor']);
 
+Route::get('get-available-time-slots', [CoreController::class, 'availableTimeSlots']);
+
 Route::middleware('auth:sanctum')->post('logout', function (Request $request) {
     Auth::guard('web')->logout();
     $request->session()->invalidate();
