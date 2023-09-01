@@ -380,13 +380,16 @@ class AppointmentController extends Controller
      */
     public function update(UpdateAppointmentRequest $request)
     {
-        $this->appointment->update($request->validated());
-        foreach($request->guest_id as $guest){
-            $this->user_appointment->create([
-                'guest_id' => $guest,
-                'appointment_id' => $request->app_id,
-                'status' => 1
-            ]);
+        $data = $this->appointment->findOrFail($request->input('id'));
+        $data->update($request->validated());
+        if ($request->guest_id !== null) {
+            foreach($request->guest_id as $guest){
+                $this->user_appointment->create([
+                    'guest_id' => $guest,
+                    'appointment_id' => $request->app_id,
+                    'status' => 1
+                ]);
+            }
         }
         // return redirect()->route('appointment.edit', ['id'=>$request->app_id]);
         Session::flash('attention', "Appointment updated successfully.");
