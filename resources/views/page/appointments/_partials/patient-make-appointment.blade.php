@@ -25,6 +25,7 @@
                     <div class="flex gap-2">
                         <label class="w-1/4 relative inline-flex items-center cursor-pointer">
                             <label for="date_picked{{ $adate->id }}" class="block text-sm font-medium text-gray-700">Date</label>
+                            <br>
                             <input id="date_picked{{ $adate->id }}" type="checkbox" name="setdate[]" value="{{ $adate->id }}" class="hidden absolute h-5 w-5 appearance-none bg-white border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none">
                             <span class="pl-2 w-full transition-colors duration-300" id="thur-text">
                                 <h3 class="font-bold">

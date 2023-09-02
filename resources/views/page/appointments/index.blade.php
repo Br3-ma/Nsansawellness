@@ -136,8 +136,17 @@
         // ------------------ Open the sidebar when clicking "Add Available Time"
         $(".check-time-trigger").on("click", function (e) {
             e.preventDefault();
-            var sidebarId = $(this).data("sidebar");
-            $("#" + sidebarId).css("transform", "translateX(0)");
+
+            // HasPaid  
+            var hasPaid = "{{ App\Models\Billing::has_no_bill() }}";
+            if(hasPaid !== 1){
+                var sidebarId = $(this).data("sidebar");
+                $("#" + sidebarId).css("transform", "translateX(0)");
+            }else{
+                window.location.href = "{{ route('pay') }}";
+            }
+
+
         });
 
         // Close the sidebar when clicking the close button
@@ -212,7 +221,6 @@
         // Event listener for checkbox changes
         $("input[type=checkbox]").change(function() {
             var dateId = $(this).val();
-            alert(dateId);
             populateTimeSlots(dateId);
         });
 

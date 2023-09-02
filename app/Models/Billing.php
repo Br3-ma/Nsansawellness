@@ -36,7 +36,7 @@ class Billing extends Model
                     // dd($isActive);
                     if($isthere){
                         if($isbilled){
-                            return false;
+                            return false;   
                         }
                         if($isActive){
                             return false;
