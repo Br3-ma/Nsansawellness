@@ -109,6 +109,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $x->count() > 0 && $x->count() < 2  ?  true :  false; 
     }
 
+    public static function has_appointment(){
+        $asGuest = UserAppointment::where('guest_id', auth()->user()->id)->exists();
+        $asHost = Appointment::where('user_id', auth()->user()->id)->exists();
+        if($asHost){
+            return true;
+        }
+        if($asGuest){
+            return true;
+        }
+        return false;
+    }
+
     public static function hasNotUploaded(){
         try {
             $mf = MyFile::where('user_id', auth()->user()->id)->latest()->first()->toArray();
