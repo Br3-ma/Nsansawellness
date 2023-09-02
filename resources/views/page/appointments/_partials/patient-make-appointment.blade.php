@@ -2,7 +2,7 @@
 <div class="sidebar sm:w-full w-1/2" id="check-time-sidebar">
     <!-- Close button for the sidebar -->
     <div class="">
-        <button class="btn btn-primary" id="close-sidebar2">Close</button>
+        <button class="btn btn-primary" id="close-sidebar2">X</button>
     </div>
     <!-- Sidebar content goes here -->
     <div class="px-10 container mt-10 pt-8">
@@ -23,9 +23,8 @@
                 @if(!empty($av_dates))
                     @forelse ($av_dates as $index => $adate)
                     <div class="flex gap-2">
-                        <label class="w-1/4 relative inline-flex items-center cursor-pointer">
-                            <label for="date_picked{{ $adate->id }}" class="block text-sm font-medium text-gray-700">Date</label>
-                            <br>
+                        <label class="w-1/4 relative inline-flex mt-5 items-center cursor-pointer">
+                            
                             <input id="date_picked{{ $adate->id }}" type="checkbox" name="setdate[]" value="{{ $adate->id }}" class="hidden absolute h-5 w-5 appearance-none bg-white border border-gray-300 rounded-md checked:bg-blue-500 checked:border-transparent focus:outline-none">
                             <span class="pl-2 w-full transition-colors duration-300" id="thur-text">
                                 <h3 class="font-bold">
@@ -67,8 +66,8 @@
             </div>
             <br>
             <br>
-            <div class="w-full">
-                <button type="submit" class="btn btn-primary">Create</button>
+            <div class="w-full justify-content-left items-left justify-center">
+                <button type="submit" class="fl-right btn btn-primary">Submit Schedule</button>
             </div>
         </form>
 

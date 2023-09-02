@@ -3,14 +3,15 @@
 <style>
     /* Add visible effects for checked checkboxes */
     input[type="checkbox"] + span {
-        padding: 1.5%;
-        background-color: #cdd2d4; 
+        padding: 2.5%;
+        background-color: #eeeeee; 
         border-radius:3px;
+        border:1px solid #065777
     }
     input[type="checkbox"]:checked + span {
         color: white; /* Change text color when checked */
         background-color: #065777; 
-        padding: 1.5%;
+        padding: 2.5%;
         border-radius:3px;
     }
 </style>

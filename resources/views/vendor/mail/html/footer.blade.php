@@ -1,4 +1,5 @@
-<tr>
+<tr style="
+background-color: #911380;">
 <td>
 <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
 <tr>

@@ -7,6 +7,9 @@
 <meta name="supported-color-schemes" content="light">
 <link href='https://fonts.googleapis.com/css?family=Eczar' rel='stylesheet'>
 <style>
+*{
+    font-family: sans-serif, 'Eczar';
+}
 @media only screen and (max-width: 600px) {
 .inner-body {
 width: 100% !important;
