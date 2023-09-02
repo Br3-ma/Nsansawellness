@@ -310,7 +310,10 @@
 
                 const newAssignment = tailwind.Modal.getInstance(document.querySelector("#new-assignment-modal"));
                 newAssignment.show();
-                            
+                        
+                const myModal = tailwind.Modal.getInstance(document.querySelector("#appointment-remainder-modal"));
+                myModal.show();
+
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -378,14 +381,14 @@
 
                 // ******* Custom Methods 
                 // *** Checks payment status
-                // console.log("Have you paid: "+paid);
+                console.log("DO YOU HAVE APPOINTMENT: "+paid);
                 let rand1 = Math.floor(Math.random() * 21);
                 let rand2 = Math.floor(Math.random() * 21);
                 if(user_role === 'patient'){
                     if(rand1 % 2 != 0 && rand2 % 2 != 0){
                         if(paid){
-                            const myModal = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
-                            myModal.show();
+                            // const myModal = tailwind.Modal.getInstance(document.querySelector("#appointment-remainder-modal"));
+                            // myModal.show();
                         }
                     }
                 }
@@ -904,31 +907,23 @@
                 Check your notifications
             </div>
         </div>
-        {{-- <div class="text-center"> <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#static-backdrop-modal-preview" class="btn btn-primary">Show Modal</a> </div> <!-- END: Modal Toggle --> --}}
-        <!-- BEGIN: Modal Content -->
-         {{-- @dd(App\Models\AssignCounselor::has_new_assignment()   ) --}}
-        @hasanyrole('patient')
+        
+        {{-- @hasanyrole('patient')
             @if(App\Models\Billing::has_no_bill())
-                @include('page.common.payment-notice')
+                @include('page.common.pay-notice')
             @endif
+        @endhasanyrole  --}}
+        @hasanyrole('patient')
+            {{-- @if(App\Models\Billing::has_no_appointment()) --}}
+                @include('page.common.make-appointment-notice')
+            {{-- @endif --}}
         @endhasanyrole        
         @hasanyrole('counselor')
             @if(App\Models\AssignCounselor::has_new_assignment())
                 @include('page.common.assignment-notice')
             @endif
         @endhasanyrole
-    {{-- @endif --}}
-    <!-- BEGIN: Dark Mode Switcher-->
-    {{-- <div data-url="side-menu-dark-dashboard-overview-2.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
-        <a href="side-menu-light-chat.html">
-            <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
-        </a>
-    </div> --}}
-
-    {{-- <div data-url="side-menu-dark-dashboard-overview-2.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
-        <div class="mr-4 text-gray-700 dark:text-gray-300">Dark Mode</div>
-        <div class="dark-mode-switcher__toggle border"></div>
-    </div> --}}
+        
     <!-- END: Dark Mode Switcher-->
     <div id="rating_preloader" class="fixed hide top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
         {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
@@ -982,9 +977,9 @@
             <h1 class="text-lg font-bold text-success" id="flash"></h1>
             <a href="#" class="btn btn-primary item-center" id="doneRating" onclick="reloadPage()">Back</a>
     </div>
-    {{-- <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
+    <div id="main_preloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
         <img src="{{ asset('public/img/1.gif') }}">
-    </div> --}}
+    </div>
     
     
     <script src="https://unpkg.com/@sjmc11/tourguidejs/dist/tour.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
