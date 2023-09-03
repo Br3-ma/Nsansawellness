@@ -137,7 +137,6 @@
         // ------------------ Open the sidebar when clicking "Add Available Time"
         $(".check-time-trigger").on("click", function (e) {
             e.preventDefault();
-
             // HasPaid  
             var hasPaid = "{{ App\Models\Billing::has_no_bill() }}";
             if(hasPaid !== 1){
@@ -146,8 +145,6 @@
             }else{
                 window.location.href = "{{ route('pay') }}";
             }
-
-
         });
 
         // Close the sidebar when clicking the close button

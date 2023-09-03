@@ -78,7 +78,7 @@
                         {{-- <th class="text-right whitespace-nowrap">
                             <div class="pr-16">REMARKS</div>
                         </th> --}}
-                        {{-- <th class="text-center whitespace-nowrap">ACTIONS</th> --}}
+                        <th class="text-center whitespace-nowrap">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -126,8 +126,15 @@
                                         @endif
                                     </div>
                                 </td>
-                                <td title="Mark as Complete" class="flex tooltip justify-center items-center">
-                                    Comments here
+                                <td class="table-report__appion flex tooltip justify-center items-center space-x-3 justify-end">
+                                    @if($appointment->status !== 0)
+                                        <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="tooltip btn btn-secondary text-white">
+                                            <i data-lucide="trash" class="w-4 h-4 text-danger"></i> 
+                                        </a>
+                                        <a title="Edit Appointment" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="tooltip btn mx-1">
+                                            <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
+                                        </a>
+                                    @endif
                                 </td>
                             </a>
                         </tr>                        
