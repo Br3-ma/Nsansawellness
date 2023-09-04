@@ -1,7 +1,7 @@
 @php
     $currRequest = App\Models\AssignCounselor::currrentAssignReq();
 @endphp
-@if($currRequest !== 0)
+@if($currRequest !== null || $currRequest !== 0)
 <div id="new-assignment-modal" class="modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl intro-y" id="payment-modal-dialog">
         <div class="modal-content">
@@ -9,7 +9,10 @@
                 <small>
                     <b>Hi {{ Auth::user()->fname.' '.Auth::user()->lname }},</b>
                     <br>
-                    <p>You have a new patient {{ $currRequest->patient->fname.' '.$currRequest->patient->lname }} </p>
+                    <p>
+                        You have a new patient {{$currRequestz->patient->fname.' '.$currRequest->patient->lname}}
+                        
+                    </p>
                 
                     <a href="{{ route('users.show', $currRequest->patient->id) }}" >
                         View details

@@ -60,7 +60,7 @@
             <div class="box p-5 intro-y">
                 @hasanyrole(['counselor'])
                 <a href="{{ route('appointment.create', ['type' => 'video']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> New Video Call Appointment </a>
-                {{-- <a href="{{ route('appointment.create', ['type' => 'phone']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </a> --}}
+                <a href="{{ route('appointment.create', ['type' => 'phone']) }}" class="btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="phone-call"></i> Add New Phone Call Appointment </a>
                 @endhasanyrole
                 @hasrole('patient')
                 <button data-sidebar="check-time-sidebar" data-sidebar="check-time-sidebar" href="#" class="check-time-trigger btn btn-primary w-full mt-2"> <i class="w-4 h-4 mr-2" data-lucide="video"></i> Make an Appointment <button>
