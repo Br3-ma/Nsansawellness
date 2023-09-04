@@ -139,11 +139,12 @@
             e.preventDefault();
             // HasPaid  
             var hasPaid = "{{ App\Models\Billing::has_no_bill() }}";
+            // alert(hasPaid !== 1);
             if(hasPaid !== 1){
+                window.location.href = "{{ route('pay') }}";
+            }else{
                 var sidebarId = $(this).data("sidebar");
                 $("#" + sidebarId).css("transform", "translateX(0)");
-            }else{
-                window.location.href = "{{ route('pay') }}";
             }
         });
 
