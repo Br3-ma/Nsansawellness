@@ -1,8 +1,8 @@
 <!-- Add Availability Sidebar -->
-<div class="sidebar" id="add-time-sidebar">
+<div class="sidebar w-full" id="add-time-sidebar">
     <!-- Close button for the sidebar -->
     <div class="">
-        <button class="btn btn-primary" id="close-sidebar">Close</button>
+        <button class="btn btn-primary" id="close-sidebar">X</button>
     </div>
     <!-- Sidebar content goes here -->
     <div class="px-10 container mt-10 pt-8">

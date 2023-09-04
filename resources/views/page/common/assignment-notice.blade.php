@@ -27,8 +27,8 @@
                     <img src="loading.gif" id="loading-gif" style="display: none;">
                 </form>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" onclick="deleteCurrentRequest('{{ $currRequest->id }}')" target="_blank" href="#" class="text-primary btn btn-sm"> 
-                    <small>Delete</small>
+                <button type="button" onclick="deleteCurrentRequest('{{ $currRequest->id }}')" target="_blank" href="#" class="text-primary btn btn-danger btn-sm"> 
+                    <small>Reject</small>
                 </button> 
             </div>
         </div>
