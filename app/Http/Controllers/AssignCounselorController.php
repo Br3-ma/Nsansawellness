@@ -73,38 +73,43 @@ class AssignCounselorController extends Controller
      */
     public function store(Request $request)
     {
-            // Save the new message
-            $check = AssignCounselor::where('patient_id', $request->toArray()['patient_id'])->first();
-            if($check != null){
-                AssignCounselor::where('patient_id', $request->toArray()['patient_id'])->delete();
-            }
-            $assign = AssignCounselor::create($request->toArray());
-            Chat::create([
-                'sender_id' => $request->toArray()['counselor_id'],
-                'receiver_id' => $request->toArray()['patient_id'],
-                'status' => 3, //Not accepted yet
-                'assign_id' => $assign->id
-            ]);
-            $message = [
-                'sender_id' => $request->toArray()['counselor_id'],
-                'patient_id' => $request->toArray()['patient_id'],
-                'name' => 'Nsansa wellness',
-                'sender' => 'Nsansa Wellness Group'
-            ];
+        // Save the new message
+        $check = AssignCounselor::where('patient_id', $request->toArray()['patient_id'])->first();
+        if($check != null){
+            AssignCounselor::where('patient_id', $request->toArray()['patient_id'])->delete();
+        }
+        $assign = AssignCounselor::create($request->toArray());
+        Chat::create([
+            'sender_id' => $request->toArray()['counselor_id'],
+            'receiver_id' => $request->toArray()['patient_id'],
+            'status' => 1, //Accepted right away, put 3 to enable accept/reject counselor confirmation
+            'assign_id' => $assign->id
+        ]);
+        $message = [
+            'sender_id' => $request->toArray()['counselor_id'],
+            'patient_id' => $request->toArray()['patient_id'],
+            'name' => 'Nsansa wellness',
+            'sender' => 'Nsansa Wellness Group'
+        ];
 
-            try {
-                User::find($request->toArray()['counselor_id'])
-                ->notify(new NewPatientAssigned($message));;
+        try {
+            // Send email to Counselor about the assigned patient
+            User::find($request->toArray()['counselor_id'])
+            ->notify(new NewPatientAssigned($message));;
 
-                Session::flash('attention', "Counselor has been assign successfully");
-                return redirect()->back();
-            } catch (\Throwable $th) {
-                // dd($th);
-                Session::flash('attention', "Counselor has been assign successfully");
-                Session::flash('err_msg', "Email notification was not sent.");
-                return redirect()->back();
-            }
+            // Send email to Patient about the assigned Counselor
+            // ::Remove it later in the future
+            $patient = User::where('id', $request->toArray()['counselor_id'])->first();
+            $patient->notify(new CounselorAssigned($message));
 
+            Session::flash('attention', "Counselor has been assign successfully");
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            // dd($th);
+            Session::flash('attention', "Counselor has been assign successfully");
+            Session::flash('err_msg', "Email notification was not sent.");
+            return redirect()->back();
+        }
     }
 
     /**
