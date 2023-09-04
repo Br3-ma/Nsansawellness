@@ -33,9 +33,9 @@ class BillingController extends Controller
      }
     public function index()
     {
-        if($this->my_role() == 'patient'){
-            $this->autoAssign();
-        }
+        // if($this->my_role() == 'patient'){
+        //     $this->autoAssign();
+        // }
         $bills = $this->get_my_billings();
         return view('page.billing.index', compact('bills'));
     }

@@ -39,9 +39,9 @@ class PatientController extends Controller
      */
     public function index()
     {
-        if($this->my_role() == 'patient'){
-            $this->autoAssign();
-        }
+        // if($this->my_role() == 'patient'){
+        //     $this->autoAssign();
+        // }
         // Get all chats am invited in
         $chats = $this->get_my_chats();
         $notifications = auth()->user()->unreadNotifications;

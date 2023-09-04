@@ -54,9 +54,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        if($this->my_role() == 'patient'){
-            $this->autoAssign();
-        }
+        // if($this->my_role() == 'patient'){
+        //     $this->autoAssign();
+        // }
         $events = [];
         $this->mark_as_seen();
         $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();

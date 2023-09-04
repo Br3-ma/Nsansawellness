@@ -126,7 +126,7 @@
                                         @endif
                                     </div>
                                 </td>
-                                <td class="table-report__appion flex tooltip justify-center items-center space-x-3 justify-end">
+                                <td class="table-report__appion flex justify-center items-center space-x-3 justify-end">
                                     @if($appointment->status !== 0)
                                         <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $appointment->id ]) }}" class="tooltip btn btn-secondary text-white">
                                             <i data-lucide="trash" class="w-4 h-4 text-danger"></i> 
