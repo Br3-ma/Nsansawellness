@@ -38,6 +38,7 @@ trait BillingTrait {
                         'user_id' => auth()->user()->id,
                         'charge_amount' => $plan->price,
                         'plan_id' => $plan->id,
+                        'can_video_call' => 'false',
                         'remainder_count' => 0,
                         'balance' => $plan->price,
                         'desc' => $plan->name,
@@ -52,6 +53,7 @@ trait BillingTrait {
                         $update->charge_amount = $plan->price;
                         $update->plan_id = $plan->id;
                         $update->balance = $plan->price;
+                        $update->can_video_call = 'false';
                         $update->desc = $plan->name;
                         $update->save();
                         return $update;

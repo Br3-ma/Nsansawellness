@@ -59,9 +59,20 @@ class AppointmentController extends Controller
         // }
         $events = [];
         $this->mark_as_seen();
-        $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
+        // $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
+        $appointments = $this->appointment
+                    ->with('guests')
+                    ->where('user_id', Auth::user()->id)
+                    ->whereRaw('STR_TO_DATE(end_date, "%d %b, %Y") > NOW()')
+                    ->get();
         $adminapps =  $this->appointment->with('guests')->orWhere('setter', 1)->orWhere('setter', 'true')->get();
-        $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
+        // $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
+        $incoming_appointments = UserAppointment::with('appointment')
+                    ->where('guest_id', Auth::user()->id)
+                    ->whereHas('appointment', function ($query) {
+                        $query->whereRaw('STR_TO_DATE(end_date, "%d %b, %Y") > NOW()');
+                    })
+                    ->get();
         $patients = $this->user->role('patient')->get();
         $counselors = $this->user->role('counselor')->get();
         $my_counselor = $this->myCurrentCounselor();
@@ -220,7 +231,7 @@ class AppointmentController extends Controller
                     'start_date' => $humanReadableDate,
                     'end_date' => $humanReadableDate,
                     'video_link' => $data['video_link'],
-                    'type'=> 'video',
+                    'type'=> $data['type'],
                     'status' => 1,
                     'user_id' => $chat->sender_id,
                     'start_time' => $data['setstarttym'][$key],
@@ -237,7 +248,7 @@ class AppointmentController extends Controller
             $payload = [
                 'sender_id' => auth()->user()->id,
                 'name' => auth()->user()->fname.' '.auth()->user()->lname,
-                'type' => $request->type,
+                'type' => $data['type'],
                 'title' => $request->title,
                 'appointment_id' => $chat->id, 
                 'link' => $appointment->video_link

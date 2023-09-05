@@ -7,10 +7,7 @@
     <title>Nsansa Wellness | Video Session</title>
 
     <!-- Add Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="{{ asset('public/dist/css/meet.css ')}}" />
   </head>
 

@@ -151,6 +151,41 @@ class VideoCallController extends Controller
         }
     }
 
+    public function startPhoneCallPeer2($id, $chat_id, $receiver, $role, $peer_id){
+        
+        try {
+            $notes = SessionNote::where('chat_id', $chat_id)->where('status', 1)->first();
+            if($notes !== null){
+                $nts = $notes->notes;
+            }
+            $data = [
+                'id' => $id,
+                'chat_id' => $chat_id,
+                'source' => $receiver,
+                'role' => $role,
+                'notes' => $nts ?? '',
+                'token' =>  csrf_token(),
+                'peer_id' => $peer_id
+            ];
+            if($this->my_role() == 'patient'){
+                
+                if(Billing::can_video_call()){
+                    // dd($data);
+                    return view('page.chat.phone-appointment_', compact('data'));
+                }else{
+                    Session::flash('error_msg', "You may have no active subscription package.");
+                    return redirect()->back();
+                }
+            }else{
+                return view('page.chat.phone-appointment_', compact('data'));
+            }
+        } catch (\Throwable $th) {
+            dd($th);
+            Session::flash('attention', "Try again now.");
+            return redirect()->back();
+        }
+    }
+
     public function activeVideoCall(){
         return view('page.chat.video_chat');
     }

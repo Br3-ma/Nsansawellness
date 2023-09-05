@@ -96,7 +96,9 @@
               }else{
                   $('.joinloader').hide();
                   $('.joinmessage').show();
-              }
+              }            
+              const threeHours = 3 * 60 * 60 * 1000; // 3 hours in milliseconds
+              setTimeout(endCall, threeHours);
           });
 
           call.on('error', error => {

@@ -19,9 +19,11 @@ trait PaymentTrait {
           if($data->status == 'TXN_AUTH_SUCCESSFUL' || $data->status == 'TXN_SUCCESSFUL' || $data->status == 'TXN_PROCESSING'){
             $status = $data->status ;
             $bool = 2;
+            $can_peer = 'true';
           }else{
             $status = $data->status ;
             $bool = 3;
+            $can_peer = 'false';
           }
           
           Payment::create([
@@ -41,6 +43,7 @@ trait PaymentTrait {
           // Update billing status
           $billing = Billing::where('id', $billing_id)->first();
           $billing->status = $bool;
+          $billing->can_video_call = $can_peer;
           $billing->balance = $billing->charge_amount - $amount;
           $billing->save();
 

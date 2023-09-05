@@ -8,7 +8,7 @@
                             <div class="w-2 h-2 bg-pending rounded-full mr-3"></div>
                             @endif --}}
                             <a target="_blank" href="{{ route('appointment.show', ['id' => $app->appointment->id ]) }}">
-                                <div class="pr-10">
+                                <div class="pr-10 text-left items-start">
                                     <div class="event__title">
                                         {{ $app->appointment->title }}
                                         @if($app->appointment->status == 0)
@@ -33,15 +33,22 @@
                             </a>
                             @endif --}}
                             @if($app->appointment->status == 1)
-                            {{-- <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="btn btn-secondary text-white">
+                            <a title="Delete Permanently"  href="{{ route('appointment.destroy', ['id' => $app->appointment->id ]) }}" class="btn btn-secondary text-white">
                                 <i data-lucide="trash" class="w-4 h-4 text-danger"></i> 
-                            </a> --}}
-                            {{-- <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="btn mx-1">
-                                <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
-                            </a> --}}
-                            <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $app->chat_id ?? 0 }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white fl-right items-end">
-                                <i data-lucide="video" class="w-4 h-4 text-white"></i> 
                             </a>
+                            <a title="Edit" href="{{ route('appointment.edit', ['id' => $app->appointment->id ]) }}" class="btn mx-1">
+                                <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
+                            </a>
+                            
+                                @if($app->appointment->type == 'video')
+                                <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $app->chat_id ?? 0 }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Video Call" class="btn btn-danger text-white fl-right items-end">
+                                    <i data-lucide="video" class="w-4 h-4 text-white"></i> 
+                                </a>
+                                @else
+                                <a href="/phone-appointment/{{ auth()->user()->id }}/{{ $app->appointment->guests->first()->chat_id ?? 0 }}/receiver/patient/{{ $app->appointment->video_link }}" title="Join Phone Call" class="tooltip btn btn-success text-white">
+                                    <i data-lucide="phone" class="w-4 h-4 text-white"></i> 
+                                </a>
+                                @endif
                             @else
                             <a href="#" style="background-color: #393b3b" title="Waiting for counselor to accept" class="btn btn-secondary text-white">
                                 <i data-lucide="video" class="w-4 h-4 text-white"></i> 

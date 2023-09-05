@@ -80,7 +80,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/video-session/{id}/{chat_id}/{receiver}/{role}', [VideoCallController::class, 'startVideoCall'])->name('video-call');
     Route::get('/phone-session/{id}/{chat_id}/{receiver}/{role}', [VideoCallController::class, 'startPhoneCall'])->name('phone-call');
     Route::get('/therapy-session/{id}/{chat_id}/{receiver}/{role}/{peer_id}', [VideoCallController::class, 'startVideoCallPeer'])->name('video-call-peer');
-    Route::get('/therapy-session-appointment/{id}/{chat_id}/{receiver}/{role}/{peer_id}', [VideoCallController::class, 'startVideoCallPeer2'])->name('video-call-peer');
+    Route::get('/therapy-session-appointment/{id}/{chat_id}/{receiver}/{role}/{peer_id}', [VideoCallController::class, 'startVideoCallPeer2'])->name('phone-call-peer');
+    Route::get('/phone-appointment/{id}/{chat_id}/{receiver}/{role}/{peer_id}', [VideoCallController::class, 'startPhoneCallPeer2'])->name('video-call-peer');
     Route::post('/share-peer-id', [VideoCallController::class, 'sharePeerId'])->name('send.remote_id');
     Route::get('/get-video-link', [VideoCallController::class, 'getVideoLink'])->name('get.remote_id');
     Route::get('/live-video-call', [VideoCallController::class, 'activeVideoCall'])->name('video-call-runner');

@@ -15,6 +15,17 @@
                 <input id="appointment-name" name="title" type="text" class="form-control" placeholder="Appointment Title">
                 <div class="form-help text-right">Maximum character 0/70</div>
                 <input type="hidden" id="_peer_link_id" name="video_link" />
+                <input type="hidden" id="type" value="{{ request()->get('type') }}" name="type" class="form-control"/>
+            </div>
+            <div class="w-full mt-3 xl:mt-0 flex gap-2">
+                <div class="w-1/4 border p-3 rounded">
+                    <label for="video-option">Video Call</label>
+                    <input type="radio" id="video-option" name="type" value="video" checked>
+                </div>
+                <div class="w-1/4 border p-3 rounded">
+                    <label for="phone-option">Phone Call</label>
+                    <input type="radio" id="phone-option" name="type" value="phone">
+                </div>
             </div>
             <br>
             <label for="timepicker" class="block text-sm font-medium text-gray-700">Pick Date and Time:</label>

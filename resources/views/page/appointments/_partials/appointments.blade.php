@@ -39,9 +39,13 @@
                 <a title="Edit Appointment" href="{{ route('appointment.edit', ['id' => $appointment->id ]) }}" class="tooltip btn mx-1">
                     <i data-lucide="edit-2" class="w-4 h-4 text-green-500"></i> 
                 </a>
-                @if($appointment->guests !== null)
+                @if($appointment->guests !== null && $appointment->type == 'video')
                 <a href="/therapy-session-appointment/{{ auth()->user()->id }}/{{ $appointment->guests->first()->chat_id ?? 0 }}/sender/patient/{{ $appointment->video_link }}" title="Join Video Call" class="tooltip btn btn-danger text-white">
                     <i data-lucide="video" class="w-4 h-4 text-white"></i> 
+                </a>
+                @else
+                <a href="/phone-appointment/{{ auth()->user()->id }}/{{ $appointment->guests->first()->chat_id ?? 0 }}/sender/patient/{{ $appointment->video_link }}" title="Join Video Call" class="tooltip btn btn-success text-white">
+                    <i data-lucide="phone" class="w-4 h-4 text-white"></i> 
                 </a>
                 @endif
             @endif
