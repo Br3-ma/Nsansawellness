@@ -914,7 +914,7 @@
             @endif
         @endhasanyrole  --}}
         @hasanyrole('patient')
-            @if(App\Models\Billing::has_no_appointment())
+            @if(App\Models\User::has_appointment())
                 @include('page.common.make-appointment-notice')
             @endif
         @endhasanyrole        
