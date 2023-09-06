@@ -268,7 +268,7 @@
                 <textarea name="comments" class="editor"></textarea>
                 <div class="form-help text-right">Maximum character 0/2000</div>
             </div> --}}
-            <input type="hidden" name="video_link" id="peer_link_id">
+            <input type="hidden" name="video_link" id="peer2_link_id">
             <div class="flex justify-end mt-3">
                 <button type="submit" class="btn btn-primary"> 
                     <i data-lucide="save" class="w-4 h-4"></i>

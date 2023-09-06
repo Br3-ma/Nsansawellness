@@ -106,6 +106,7 @@
     $(document).ready(function() {
       
         const peer_field = document.getElementById('_peer_link_id');
+        const peer2_field = document.getElementById('peer2_link_id');
         var peer = new Peer();
         
 
@@ -119,6 +120,7 @@
         peer.on('open', id => {
             // Save the ID for Later User
             peer_field.value = id;
+            peer2_field.value = id;
 
         });
         // -------------------- Open the sidebar when clicking "Add Available Time"
