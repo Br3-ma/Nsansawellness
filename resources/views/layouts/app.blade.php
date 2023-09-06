@@ -914,15 +914,15 @@
             @endif
         @endhasanyrole  --}}
         @hasanyrole('patient')
-            {{-- @if(App\Models\Billing::has_no_appointment()) --}}
+            @if(App\Models\Billing::has_no_appointment())
                 @include('page.common.make-appointment-notice')
-            {{-- @endif --}}
+            @endif
         @endhasanyrole        
         @hasanyrole('counselor')
-            @if(App\Models\AssignCounselor::has_new_assignment())
+            {{-- @if(App\Models\AssignCounselor::has_new_assignment())
                 @include('page.common.assignment-notice')
-            @endif
-        @endhasanyrole
+            @endif --}}
+        @endhasanyrole 
         
     <!-- END: Dark Mode Switcher-->
     <div id="rating_preloader" class="fixed hide top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
