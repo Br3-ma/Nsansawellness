@@ -10,7 +10,7 @@
                     <b>Hi {{ Auth::user()->fname.' '.Auth::user()->lname }},</b>
                     <br>
                     <p>
-                        You have a new patient {{$currRequestz->patient->fname.' '.$currRequest->patient->lname}}
+                        You have a new patient {{$currRequest->patient->fname.' '.$currRequest->patient->lname}}
                         
                     </p>
                 
