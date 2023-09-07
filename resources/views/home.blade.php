@@ -31,7 +31,9 @@
                                     <div class="box sm:flex">
                                         <div class="px-8 py-12 flex flex-col justify-center flex-1">
                                             <i data-lucide="shopping-bag" class="w-10 h-10 text-warning"></i> 
-                                            <div class="relative text-3xl font-medium mt-12 pl-4 ml-0.5"> <span class="absolute text-2xl font-medium top-0 left-0 -ml-0.5">K</span> 0.00 </div>
+                                            <div class="relative text-3xl font-medium mt-12 pl-4 ml-0.5"> <span class="absolute text-2xl font-medium top-0 left-0 -ml-0.5">
+                                                K</span> {{ $total_income }} 
+                                            </div>
                                             <div class="report-box-2__indicator bg-success tooltip cursor-pointer" title="47% Higher than last month"> 0% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             <div class="mt-4 text-slate-500">Therapy earnings this month after associated author fees, & before taxes.</div>
                                             <button class="btn btn-outline-secondary relative justify-start rounded-full mt-12">

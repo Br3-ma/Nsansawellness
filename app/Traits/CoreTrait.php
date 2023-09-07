@@ -4,16 +4,53 @@ namespace App\Traits;
 
 use App\Models\Appointment;
 use App\Models\AssignCounselor;
+use App\Models\Billing;
 use App\Models\Chat;
+use App\Models\Payment;
 use App\Models\User;
 use App\Notifications\CounselorAssigned;
 use App\Notifications\NewPatientAssigned;
 use Illuminate\Support\Facades\Http;
+use React\Http\Io\Transaction;
 
 trait CoreTrait {
 
         public function my_role(){            
             return auth()->user()->roles->pluck('name')->first();
+        }
+
+        public function total_income(){
+            if($this->role() == 'patient'){
+               
+            }elseif($this->role() == 'counselor'){
+                
+            }else{
+                $billings = Billing::with('payments')->where('status', 2)->get();
+                $total = 0;
+                
+                foreach ($billings as $billing) {
+                    $total += $billing->payments->sum('amount');
+                }
+                
+                return $total;
+            }
+        }        }
+
+        public function total_transactions(){
+            if($this->role() == 'patient'){
+               
+            }elseif($this->role() == 'counselor'){
+                
+            }else{
+                $billings = Billing::with('payments')->where('status', 2)->get();
+                $total = 0;
+                
+                foreach ($billings as $billing) {
+                    $total += $billing->payments->sum('amount');
+                }
+                
+                return $total;
+            }
         }
 
         public function get_my_chats(){

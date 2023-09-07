@@ -562,12 +562,21 @@
 															</div>
 														</div>
 													</div>
-													<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-3396061"
+													<div style="padding-top:8%;" class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-3396061"
 														data-id="3396061" data-element_type="column">
 														<div class="countdown">
-															<span id="days" class="big-font"></span> days :
-															<span id="hours" class="big-font"></span> hours :
-															<span id="minutes" class="big-font"></span> minutes :
+															<span id="days" class="big-font"></span> days <span style="
+															font-size:80px;
+															font-weight:bold;
+															">:</span>
+															<span id="hours" class="big-font"></span> hours <span style="
+															font-size:80px;
+															font-weight:bold;
+															">:</span>
+															<span id="minutes" class="big-font"></span> minutes <span style="
+															font-size:80px;
+															font-weight:bold;
+															">:</span>
 															<span id="seconds" class="big-font"></span> seconds
 														</div>	
 													</div>

@@ -29,6 +29,10 @@ trait BillingTrait {
             return $this->com_set->where('desc', 'global-commission')->where('status', 1)->first();
         }
 
+        public function getTotalPayments(){
+            
+        }
+
         public function create_billing($id){
             try {
                 $plan = $this->get_plan($id);
