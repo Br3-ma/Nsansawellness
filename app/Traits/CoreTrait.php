@@ -34,23 +34,6 @@ trait CoreTrait {
                 
                 return $total;
             }
-        }        }
-
-        public function total_transactions(){
-            if($this->role() == 'patient'){
-               
-            }elseif($this->role() == 'counselor'){
-                
-            }else{
-                $billings = Billing::with('payments')->where('status', 2)->get();
-                $total = 0;
-                
-                foreach ($billings as $billing) {
-                    $total += $billing->payments->sum('amount');
-                }
-                
-                return $total;
-            }
         }
 
         public function get_my_chats(){

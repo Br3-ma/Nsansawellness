@@ -51,7 +51,8 @@ class HomeController extends Controller
         $chats = $this->get_my_chats();
         $counselors =  $this->users->role('counselor')->get();
         $total_patients =  $this->getMyTotalPatients(auth()->user());
-        $total_income = $this->total_income();
+        $total_income = 0;
+        // $total_income = $this->total_income();
         
         return view('home', compact('notifications', 'chats', 'counselors', 'total_patients','total_income'));
     }
