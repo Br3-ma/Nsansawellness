@@ -15,7 +15,7 @@
 												<span style="color: #02136d;"><span>healthier&nbsp;</span></span>
 												mind
 											</h1>
-											{{-- <h1 class="heading-title">An Empowered <span class="style-gradient"><span>Mental Health</span></span> For a Better Life</h1> --}}
+											{{-- <h1 class="heading-title">An Empowered <span class="style-gradient"><span>Well-being</span></span> For a Better Life</h1> --}}
 										</div>
 										<div style="color:#fff;" class="heading-section-description">
 											<p>Don't face life's challenges alone! From managing work stress to coping with difficult emotions, our online therapy can help you live a healthier, happier life. Let Nsansa Wellness therapists empower you to thrive again</p>
@@ -508,8 +508,250 @@
 					</div>
 				</div> --}}
 			</section>
-			
-			
+			<section class="elementor-section elementor-top-section elementor-element elementor-element-f8c0f27 elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="f8c0f27" data-element_type="section">
+				<div class="elementor-container elementor-column-gap-no">
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-11f97dc" data-id="11f97dc" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="elementor-widget-wrap elementor-element-populated">
+					<div style="background: white;" class="elementor-background-overlay"></div>
+					<div class="elementor-element elementor-element-5408d36 animated-slow elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-jkit_heading animated fadeInUp" data-id="5408d36" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="jkit_heading.default">
+						<div class="elementor-widget-container">
+						<div class="jeg-elementor-kit jkit-heading align-left align-tablet- align-mobile- jeg_module_6_3_632ca6974d304">
+							<h5 class="heading-section-subtitle style-color">
+							Video Tutorial
+							</h5>
+							<div class="heading-section-title">
+							<h1 class="heading-title">
+								How to use the <span class="style-gradient"><span>Nsansawellness Platform</span></span>
+							</h1>
+							</div>
+							<div class="heading-section-description">
+							<p>
+								Its as easy as one to three! click the button below to see video tutorial.
+							</p>
+							</div>
+						</div>
+						</div>
+					</div>
+					<div class="elementor-element elementor-element-0077e9a elementor-widget__width-auto e-transform animated-slow elementor-widget-mobile__width-inherit elementor-widget elementor-widget-jkit_button animated fadeInUp" data-id="0077e9a" data-element_type="widget" data-settings="{&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:5,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:0,&quot;sizes&quot;:[]},&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:200,&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_button.default">
+						
+					</div>
+					<div class="elementor-element elementor-element-57d7219 elementor-widget__width-auto e-transform e-transform animated-slow elementor-widget elementor-widget-jkit_video_button animated fadeInUp" data-id="57d7219" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:300,&quot;_transform_translateX_effect&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateX_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_translateY_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="jkit_video_button.default">
+						<div class="elementor-widget-container">
+						<div class="jeg-elementor-kit jkit-video-button jeg_module_6_5_632ca69751aca" data-autoplay="0" data-loop="0" data-controls="0" data-type="youtube" data-start="0" data-end="0">
+							<a href="https://www.youtube.com/watch?v=MLpWrANjFbI" class="jkit-video-popup-btn glow-enable"><span class="icon-position-before"><i aria-hidden="true" class="jki jki-play-button"></i></span></a>
+						</div>
+						</div>
+					</div>
+					<div class="elementor-element elementor-element-c608321 elementor-widget__width-auto animated-slow elementor-widget elementor-widget-jkit_button animated fadeInUp" data-id="c608321" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="jkit_button.default">
+						<div class="elementor-widget-container">
+						<div class="jeg-elementor-kit jkit-button icon-position-after jeg_module_6_6_632ca69752e5a">
+							<a href="#" class="jkit-button-wrapper">Watch Video</a>
+						</div>
+						</div>
+					</div>
+					<section class="elementor-section elementor-inner-section elementor-element elementor-element-7ce5c38 elementor-hidden-mobile elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7ce5c38" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-no">
+						<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-e3ea47b animated-slow animated fadeInUp" data-id="e3ea47b" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:700}">
+							
+						</div>
+						<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-a0d0671 animated-slow animated fadeInUp" data-id="a0d0671" data-element_type="column" data-settings="{&quot;animation&quot;:&quot;fadeInUp&quot;,&quot;animation_delay&quot;:800}">
+							<div class="elementor-widget-wrap elementor-element-populated">
+							<div class="elementor-element elementor-element-0398cbb elementor-star-rating-tablet--align-left elementor--star-style-star_unicode elementor-widget elementor-widget-star-rating" data-id="0398cbb" data-element_type="widget" data-widget_type="star-rating.default">
+								<div class="elementor-widget-container">
+								<style>
+									/*! elementor - v3.6.5 - 27-04-2022 */
+									.elementor-star-rating {
+									color: #ccd6df;
+									font-family: eicons;
+									display: inline-block;
+									}
+									.elementor-star-rating i {
+									display: inline-block;
+									position: relative;
+									font-style: normal;
+									cursor: default;
+									}
+									.elementor-star-rating i:before {
+									content: "\e934";
+									display: block;
+									font-size: inherit;
+									font-family: inherit;
+									position: absolute;
+									overflow: hidden;
+									color: #f0ad4e;
+									top: 0;
+									left: 0;
+									}
+									.elementor-star-rating
+									.elementor-star-empty:before {
+									content: none;
+									}
+									.elementor-star-rating .elementor-star-1:before {
+									width: 10%;
+									}
+									.elementor-star-rating .elementor-star-2:before {
+									width: 20%;
+									}
+									.elementor-star-rating .elementor-star-3:before {
+									width: 30%;
+									}
+									.elementor-star-rating .elementor-star-4:before {
+									width: 40%;
+									}
+									.elementor-star-rating .elementor-star-5:before {
+									width: 50%;
+									}
+									.elementor-star-rating .elementor-star-6:before {
+									width: 60%;
+									}
+									.elementor-star-rating .elementor-star-7:before {
+									width: 70%;
+									}
+									.elementor-star-rating .elementor-star-8:before {
+									width: 80%;
+									}
+									.elementor-star-rating .elementor-star-9:before {
+									width: 90%;
+									}
+									.elementor-star-rating__wrapper {
+									display: -webkit-box;
+									display: -ms-flexbox;
+									display: flex;
+									-webkit-box-align: center;
+									-ms-flex-align: center;
+									align-items: center;
+									}
+									.elementor-star-rating__title {
+									margin-right: 10px;
+									}
+									.elementor-star-rating--align-right
+									.elementor-star-rating__wrapper {
+									text-align: right;
+									-webkit-box-pack: end;
+									-ms-flex-pack: end;
+									justify-content: flex-end;
+									}
+									.elementor-star-rating--align-left
+									.elementor-star-rating__wrapper {
+									text-align: left;
+									-webkit-box-pack: start;
+									-ms-flex-pack: start;
+									justify-content: flex-start;
+									}
+									.elementor-star-rating--align-center
+									.elementor-star-rating__wrapper {
+									text-align: center;
+									-webkit-box-pack: center;
+									-ms-flex-pack: center;
+									justify-content: center;
+									}
+									.elementor-star-rating--align-justify
+									.elementor-star-rating__title {
+									margin-right: auto;
+									}
+									@media (max-width: 1024px) {
+									.elementor-star-rating-tablet--align-right
+										.elementor-star-rating__wrapper {
+										text-align: right;
+										-webkit-box-pack: end;
+										-ms-flex-pack: end;
+										justify-content: flex-end;
+									}
+									.elementor-star-rating-tablet--align-left
+										.elementor-star-rating__wrapper {
+										text-align: left;
+										-webkit-box-pack: start;
+										-ms-flex-pack: start;
+										justify-content: flex-start;
+									}
+									.elementor-star-rating-tablet--align-center
+										.elementor-star-rating__wrapper {
+										text-align: center;
+										-webkit-box-pack: center;
+										-ms-flex-pack: center;
+										justify-content: center;
+									}
+									.elementor-star-rating-tablet--align-justify
+										.elementor-star-rating__title {
+										margin-right: auto;
+									}
+									}
+									@media (max-width: 767px) {
+									.elementor-star-rating-mobile--align-right
+										.elementor-star-rating__wrapper {
+										text-align: right;
+										-webkit-box-pack: end;
+										-ms-flex-pack: end;
+										justify-content: flex-end;
+									}
+									.elementor-star-rating-mobile--align-left
+										.elementor-star-rating__wrapper {
+										text-align: left;
+										-webkit-box-pack: start;
+										-ms-flex-pack: start;
+										justify-content: flex-start;
+									}
+									.elementor-star-rating-mobile--align-center
+										.elementor-star-rating__wrapper {
+										text-align: center;
+										-webkit-box-pack: center;
+										-ms-flex-pack: center;
+										justify-content: center;
+									}
+									.elementor-star-rating-mobile--align-justify
+										.elementor-star-rating__title {
+										margin-right: auto;
+									}
+									}
+									.last-star {
+									letter-spacing: 0;
+									}
+									.elementor--star-style-star_unicode
+									.elementor-star-rating {
+									font-family: Arial, Helvetica, sans-serif;
+									}
+									.elementor--star-style-star_unicode
+									.elementor-star-rating
+									i:not(.elementor-star-empty):before {
+									content: "\002605";
+									}
+								</style>
+								
+								</div>
+							</div>
+							
+							</div>
+						</div>
+						</div>
+					</section>
+					</div>
+				</div>
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-effb22f" data-id="effb22f" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="elementor-widget-wrap elementor-element-populated" style="
+							background: url('https://nsansawellness.com/uploads/sites/304/2022/…-woman-talking-to-psychologist-e1656397566105.jpg');
+							">
+					<div class="elementor-background-overlay"></div>
+					<div class="elementor-element elementor-element-612230d elementor-widget elementor-widget-spacer" data-id="612230d" data-element_type="widget" data-widget_type="spacer.default">
+						<div class="elementor-widget-container">
+						<style>
+							/*! elementor - v3.6.5 - 27-04-2022 */
+							.e-container.e-container--row .elementor-spacer-inner {
+							width: var(--spacer-size);
+							}
+							.e-container.e-container--column .elementor-spacer-inner,
+							.elementor-column .elementor-spacer-inner {
+							height: var(--spacer-size);
+							}
+						</style>
+						<div class="elementor-spacer">
+							<div class="elementor-spacer-inner"></div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+			</section>
 			{{-- <section class="elementor-section elementor-top-section elementor-element elementor-element-89845c3 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="89845c3" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 				<div class="elementor-background-overlay"></div>
 				<div class="elementor-container elementor-column-gap-no">
@@ -1028,9 +1270,9 @@
 												<div class="elementor-widget-container">
 													<div class="jeg-elementor-kit jkit-heading  align-center align-tablet-center align-mobile-center jeg_module_6_29_632ca697cd853">
 														<div class="heading-section-title ">
-															<h5 class="heading-title">Andrew Smith </h5>
+															<h5 class="heading-title">Video Tutorial</h5>
 														</div>
-														<h5 class="heading-section-subtitle  style-color">Psychologist</h5>
+														<h5 class="heading-section-subtitle style-color">online</h5>
 													</div>
 												</div>
 											</div>

@@ -32,9 +32,7 @@ class CreateAdminUserSeeder extends Seeder
         $role3 = Role::create(['name' => 'patient']);
      
         $permissions = Permission::pluck('id','id')->all();
-   
         $role->syncPermissions($permissions);
-     
         $user->assignRole([$role->id]);
     }
 }

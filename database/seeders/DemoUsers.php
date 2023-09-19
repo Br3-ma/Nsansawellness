@@ -15,7 +15,6 @@ class DemoUsers extends Seeder
      */
     public function run()
     {
-
         $user = User::create([
             'fname' => 'Patient', 
             'lname' => 'Tester', 
