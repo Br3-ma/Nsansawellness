@@ -177,10 +177,40 @@
         outline: none;
         border-color: #005aa5;
         }
-        </style>
-           
+
+    /* Add CSS styles for the preloader */
+    #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.7);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    #loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 </head>
 <body>
+    <div id="preloader">
+        <div id="loader"></div>
+    </div>
     <div class="pricing-card">
         <div class="card-header">
             <div class="card-btn-parent">
@@ -220,7 +250,7 @@
                             {{-- <input type="tel" id="contact" name="customerPhone" placeholder="Mobile number"> --}}
                         <input type="hidden" id="contact" name="wallet" placeholder="Mobile number">
                     
-                        <input type="hidden" name="callback" value="{{'https://nsansawellness.com/transaction-summary/'.auth()->user()->id.'/'.$billing->id.'/'.$uuid.''}}">
+                        <input type="hidden" name="callback" value="{{'http://localhost/nsansawellness/transaction-summary/'.auth()->user()->id.'/'.$billing->id.'/'.$uuid.''}}">
                         <input type="hidden" name="uuid" value="{{ $uuid }}">
                         <input type="hidden" name="amount" value="{{ $billing->charge_amount }}">
                         <input type="hidden" name="billing_id" value="{{ $billing->id }}">
@@ -346,30 +376,42 @@ ref();
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#submitBtn').click(function() {
-            event.preventDefault();
-            const form = $('#airtelform')[0];
-            const formData = new FormData(form);
-            
-            $.ajax({
-                type: 'POST',
-                url: form.action,
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    var link = response.data;
-                    // Redirect the user to the external URL
-                    window.location.href = response.data;
-                    // Handle success, e.g., redirect or display a success message
-                    console.log('Payment successful!');
-                },
-                error: function(xhr, status, error) {
-                    // Handle error, e.g., display an error message
-                    console.error('Payment failed', error);
-                }
-            });
-        });
+        $('#submitBtn').click(function(event) {
+    event.preventDefault();
+
+    // Show the preloader
+    $('#preloader').show();
+
+    const form = $('#airtelform')[0];
+    const formData = new FormData(form);
+
+    $.ajax({
+        type: 'POST',
+        url: form.action,
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            var link = response.data;
+
+            // Redirect the user to the external URL
+            window.location.href = response.data;
+
+            // Hide the preloader on success
+            $('#preloader').hide();
+
+            // Handle success, e.g., redirect or display a success message
+            console.log('Payment successful!');
+        },
+        error: function(xhr, status, error) {
+            // Hide the preloader on error
+            $('#preloader').hide();
+
+            // Handle error, e.g., display an error message
+            console.error('Payment failed', error);
+        }
+    });
+});
     });
 </script>
 

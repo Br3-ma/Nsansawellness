@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 trait PaymentTrait {
 
-    public function recordSparcoTransaction($data, $user_id, $billing_id){
+    public function recordSparcoTransaction($user_id, $billing_id, $data){
           // Get the last two elements from the array
           // dd($data);
       try{
           // Remove the comma from the string
           $numericValue = str_replace(',', '', $data->amount);
           $amount = (float) $numericValue;
-          if($data->status == 'TXN_AUTH_SUCCESSFUL' || $data->status == 'TXN_SUCCESSFUL' || $data->status == 'TXN_PROCESSING'){
+          if($data->status == 'TXN_AUTH_SUCCESSFUL' || $data->status == 'TXN_SUCCESSFUL' || $data->status == 'TXN_PROCESSING' || $data->status != 'TXN_AUTH_UNSUCCESSFUL'){
             $status = $data->status ;
             $bool = 2;
             $can_peer = 'true';

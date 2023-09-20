@@ -19,7 +19,6 @@ class TicketController extends Controller
     {
         try {
             $data = $this->verifyTransaction($uuid);
-            // dd($data);
             // if($data->status == 'TXN_AUTH_SUCCESSFUL' || $data->status == 'TXN_SUCCESSFUL' || $data->status == 'TXN_PROCESSING'){
                 $ticket = Ticket::create([
                     'fname' => $data->customerFirstName,
@@ -34,7 +33,6 @@ class TicketController extends Controller
                     'msg' => $data->message,
                     'status' => $data->status
                 ]);
-                
             // }
             return redirect()->route('ticket-status',  $ticket->ticketcode);
         } catch (\Throwable $th) {

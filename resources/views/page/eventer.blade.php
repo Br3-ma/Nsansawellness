@@ -333,7 +333,8 @@
 																aria-hidden="true"></i></span></div><span
 														class="button__text">buy tickets</span>
 												</div>
-											</a> </div>
+											</a> 
+										</div>
 									</div>
 								</div>
 							</div>
@@ -1455,11 +1456,11 @@
 											@csrf
 											<div class="form-group">
 												<label for="name">First name:</label>
-												<input type="text" name="customerFirstName" class="form-control" >
+												<input type="text" name="customerFirstName" class="form-control">
 											</div>
 											<div class="form-group">
 												<label for="name">Last name:</label>
-												<input type="text" name="customerLastName" class="form-control" >
+												<input type="text" name="customerLastName" class="form-control">
 											</div>
 											<div class="form-group">
 												<label for="name">Mobile number <small>(ex. 077XXXXXXX or 097XXXXXXX)</small>:</label>
@@ -1469,20 +1470,31 @@
 												<label for="name">Email:</label>
 												<input type="text" name="customerEmail" class="form-control" placeholder="your@email.com">
 											</div>
-											{{-- <input type="tel" id="contact" name="customerPhone" placeholder="Mobile number"> --}}
-											<input type="hidden" name="callback" value="https://nsansawellness.com/ticket-callback/{{ $uuid }}">
+											
+											<!-- Add the select dropdown field -->
+											<div class="form-group">
+												<label for="paymentMethod">For the Event On:</label>
+												<select name="for_event_date" class="form-control">
+													<option value="24th October, 2023">24th October, 2023</option>
+													<option value="25th October, 2023">25th October, 2023</option>
+													<!-- Add more payment options as needed -->
+												</select>
+											</div>
+											
+											<input type="hidden" name="callback" value="{{ 'http://localhost/nsansawellness/ticket-callback/'.$uuid.'' }}">
 											<input type="hidden" name="uuid" value="{{ $uuid }}">
 											<input type="hidden" name="amount" value="900">
 											<input type="hidden" name="billing_id" value="0">
 											<input type="hidden" name="currency" value="ZMW">
 											<input type="hidden" name="item" value="ticket">
 											<input type="hidden" name="merchantPublicKey" value="de7afd6176bb4eff99316dcf508e5be6">
-											<input type="hidden" name="transactionName" value="{{ $randomStr }}">
+											<input type="hidden" name="transactionName" value="NSANSTR#"{{ $randomStr }}>
 											<input type="hidden" name="transactionReference" value="{{ $transRef }}">
 											<input type="hidden" name="chargeMe" value="true">
 											<br>
 											<button id="submitBtn">Buy Now</button>
 										</form>
+
 										<div id="loadingSpinner" class="hidden"></div>
 										</div>
 									</div>

@@ -13,7 +13,7 @@ class PaymentCallbackController extends Controller
     public function index($id, $billing_id, $uuid){
         // dd($billing_id);
         $data = $this->verifyTransaction($uuid);
-        $data = $this->recordSparcoTransaction($data, $id, $billing_id);
+        $data = $this->recordSparcoTransaction($id, $billing_id, $data);
         return redirect()->route('patient');
     }
 }
