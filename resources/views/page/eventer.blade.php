@@ -22,6 +22,38 @@
 .big-font {
     font-size: 86px;
 }
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+	border-color: #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7); /* Set the background color with alpha (opacity) */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
 </style>
 		<div data-elementor-type="wp-page" data-elementor-id="1042" class="elementor elementor-1042">
 			<section class="elementor-section elementor-top-section elementor-element elementor-element-387d63b elementor-section-boxed elementor-section-height-default elementor-section-height-default"
@@ -436,6 +468,25 @@
 														and a celebration of the strength that emerges from open
 														conversations and supportive communities.</p>
 												</div>
+												<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-11f97dc" data-id="11f97dc" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+													<!-- Add button here -->
+													<button id="watchButton">Watch Video</button>
+
+													<!-- The modal -->
+													<div id="videoModal" class="modal">
+														<div class="modal-content">
+															<span class="close">&times;</span>
+															<div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+																padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+																border-radius: 8px; will-change: transform;">
+																<iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+																	src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFud4HWkTE&#x2F;watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+																</iframe>
+															</div>
+															<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFud4HWkTE&#x2F;watch?utm_content=DAFud4HWkTE&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">THE RESTORATION</a> by Greenwebb
+														</div>
+													</div>
+												</div>
 											</div>
 											<div class="elementor-element elementor-element-d4e3e90 elementor-widget elementor-widget-spacer"
 												data-id="d4e3e90" data-element_type="widget"
@@ -453,6 +504,7 @@
 							<section
 								class="elementor-section elementor-top-section elementor-element elementor-element-be5c0b8 elementor-section-full_width hover_links elementor-section-height-default elementor-section-height-default"
 								data-id="be5c0b8" data-element_type="section">
+							
 								<div class="elementor-container elementor-column-gap-no">
 									<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-e359882"
 										data-id="e359882" data-element_type="column">
@@ -463,13 +515,13 @@
 												data-widget_type="text-editor.default">
 												<div class="elementor-widget-container">
 													<p>
-													<a href="#">
-														<svg style="margin-top:-2px" xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-															<path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
-															<path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-														  </svg>
-														T3C Gardens, Lilayi Rd, Lilayi
-													</a>
+														<a href="#">
+															<svg style="margin-top:-2px" xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+																<path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+																<path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+															</svg>
+															T3C Gardens, Lilayi Rd, Lilayi
+														</a>
 													</p>
 												</div>
 											</div>
@@ -1527,8 +1579,7 @@
 		</main>
         
 	</div><!-- #page -->
-
-
+	
 	<link rel='stylesheet' id='elementor-post-10-css'
 		href='{{ asset("public/wp-content/uploads/sites/304/elementor/css/post-10177c.css?ver=1657011659")}}' type='text/css' media='all' />
 	<link rel='stylesheet' id='magnific-popup-css'
@@ -32067,6 +32118,29 @@
 
 	// Initial update
 	updateCountdown();
+
+	// Get references to the button, modal, and close button
+	const watchButton = document.getElementById("watchButton");
+	const videoModal = document.getElementById("videoModal");
+	const closeBtn = document.getElementsByClassName("close")[0];
+
+	// Function to open the modal
+	watchButton.addEventListener("click", function() {
+		videoModal.style.display = "block";
+	});
+
+	// Function to close the modal when the close button is clicked
+	closeBtn.addEventListener("click", function() {
+		videoModal.style.display = "none";
+	});
+
+	// Function to close the modal when clicking outside of it
+	window.addEventListener("click", function(event) {
+		if (event.target == videoModal) {
+			videoModal.style.display = "none";
+		}
+	});
+
 </script>
 <!-- Mirrored from templatekit.jegtheme.com/cognitive/pricing/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Sep 2022 18:28:41 GMT -->
 
