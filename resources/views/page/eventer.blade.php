@@ -483,7 +483,7 @@
 																	src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFud4HWkTE&#x2F;watch?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
 																</iframe>
 															</div>
-															<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFud4HWkTE&#x2F;watch?utm_content=DAFud4HWkTE&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">THE RESTORATION</a> by Greenwebb
+															<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFud4HWkTE&#x2F;watch?utm_content=DAFud4HWkTE&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">SERENITY FESTIVAL 2023</a> 
 														</div>
 													</div>
 												</div>
@@ -582,7 +582,8 @@
 											<section
 												class="elementor-section elementor-inner-section elementor-element elementor-element-fd721a1 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
 												data-id="fd721a1" data-element_type="section">
-												<div class="elementor-container elementor-column-gap-default">
+												<div class="elementor-container elementor-column-gap-default"  style="padding-bottom:9%;" >
+													
 													<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-72fa16b"
 														data-id="72fa16b" data-element_type="column">
 														<div class="elementor-widget-wrap elementor-element-populated">
@@ -615,6 +616,7 @@
 															</div>
 														</div>
 													</div>
+
 													<div style="padding-top:8%;" class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-3396061"
 														data-id="3396061" data-element_type="column">
 														<div class="countdown">
@@ -633,6 +635,7 @@
 															<span id="seconds" class="big-font"></span> seconds
 														</div>	
 													</div>
+
 												</div>
 											</section>
 											
