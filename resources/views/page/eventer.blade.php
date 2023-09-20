@@ -31991,7 +31991,7 @@
 
             event.preventDefault();
 
-			submitBtn.classList.add('hidden');; // Disable the button
+			submitBtn.classList.add('hidden'); // Disable the button
 			loadingSpinner.classList.remove('hidden'); 
             const form = $('#ticketform')[0];
             const formData = new FormData(form);
@@ -32007,6 +32007,8 @@
 					console.log(link.data);
                     if(link.data === null){
 						alert('Failed to process transaction, please try again')
+    					loadingSpinner.classList.add('hidden');
+						submitBtn.classList.remove('hidden');
 					}else{
 						window.location.href = link.data;
 					}
@@ -32025,6 +32027,7 @@
 			$("html, body").animate({ scrollTop: $(document).height() }, 1000);
 		});
     });
+
 	// Function to update the countdown timer
 	function updateCountdown() {
 		const targetDate = new Date("2023-10-07T00:00:00").getTime(); // October 7, 2023
