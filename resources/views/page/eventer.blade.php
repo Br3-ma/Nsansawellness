@@ -1530,8 +1530,8 @@
 											<div class="form-group">
 												<label for="paymentMethod">For the Event On:</label>
 												<select name="for_event_date" class="form-control">
-													<option value="24th October, 2023">24th October, 2023</option>
-													<option value="25th October, 2023">25th October, 2023</option>
+													<option value="7th October, 2023">7th October, 2023</option>
+													<option value="8th October, 2023">8th October, 2023</option>
 													<!-- Add more payment options as needed -->
 												</select>
 											</div>

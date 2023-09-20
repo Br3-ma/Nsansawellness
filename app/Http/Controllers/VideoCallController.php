@@ -136,7 +136,8 @@ class VideoCallController extends Controller
 
 
             if($this->my_role() == 'patient'){
-                if(Billing::can_video_call()){
+                // Allow patient only if there have paid
+                if(true){
                     return view('page.chat.video-appointment_', compact('data'));
                 }else{
                     Session::flash('error_msg', "You may have no active subscription package.");
@@ -168,9 +169,8 @@ class VideoCallController extends Controller
                 'peer_id' => $peer_id
             ];
             if($this->my_role() == 'patient'){
-                
-                if(Billing::can_video_call()){
-                    // dd($data);
+                // Allow patient only if there have paid
+                if(true){
                     return view('page.chat.phone-appointment_', compact('data'));
                 }else{
                     Session::flash('error_msg', "You may have no active subscription package.");
@@ -180,7 +180,6 @@ class VideoCallController extends Controller
                 return view('page.chat.phone-appointment_', compact('data'));
             }
         } catch (\Throwable $th) {
-            dd($th);
             Session::flash('attention', "Try again now.");
             return redirect()->back();
         }
@@ -270,13 +269,13 @@ class VideoCallController extends Controller
     public function closeCall(Request $request){
         $chat = Chat::where('id', $request->toArray()['chat_id'])->with('receiver')->first();
         $b = Billing::current_bill();
-        $p = Plan::with('feature')->where('id', $b->package_id)->first();
+        $p = Plan::with('feature')->where('id', $b->plan_id)->first();
         $data = SessionUsage::create([
             // 'time' => $chat->id,
             'chat_id' => $chat->id,
             'patient_id' => $chat->receiver_id,
             'counselor_id' => $chat->sender_id,
-            'package_id' => $b->package_id
+            'package_id' => $b->plan_id
         ]);
 
         // Close video package
@@ -287,8 +286,8 @@ class VideoCallController extends Controller
             return $matches[0] ?? null;
         })->filter(); 
         
-        $s = SessionUsage::where('package_id', $b->package_id)->count();
-        if($filteredFeatures >= $s){
+        $s = SessionUsage::where('package_id', $b->plan_id)->count();
+        if((int)$filteredFeatures[1] >= $s){
             $b->can_video_call = false;
             $b->save();
         }

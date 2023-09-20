@@ -23,7 +23,7 @@ class TicketController extends Controller
                 $ticket = Ticket::create([
                     'fname' => $data->customerFirstName,
                     'lname' => $data->customerLastName,
-                    // 'email' => $data->customerEmail,
+                    // 'email' =>    $data->customerEmail,
                     'phone' => $data->customerMobileWallet,
                     'trans_amount' => $data->transactionAmount,
                     'fee_amount' => $data->feeAmount,

@@ -280,25 +280,25 @@
           $('.end-call-card').show();
           closeTransaction();
         }else{
-          
+          $('.end-call-card').show();
         }
       }
 
 
       function closeTransaction(){
         const user = {!! auth()->user()->toJson() ?? '' !!};
-        const formData = new FormData();
-        formData.append('counselor_id', user['id']);
-        formData.append('chat_id', info['chat_id']);
+        const formDatas = new FormData();
+        formDatas.append('counselor_id', user['id']);
+        formDatas.append('chat_id', info['chat_id']);
         // formData.append('time', info['chat_id']);
         // Make the POST request to your Laravel backend
         fetch("{{ route('close-session-call') }}", {
           method: 'POST',
-          body: formData
+          body: formDatas
         })
         .then(response => {
           console.log(response);
-          $('#su_id').val() = response.data.su_id;
+          $('#su_id').val(response.data.su_id);
         })
         .catch(error => {
           console.error('Error uploading video:', error);
@@ -330,17 +330,17 @@
         const my_notes = $('#taking-notes-textarea').val();
         $('#notes_status').html('<span>Saving...</span>');
 
-        const formData = new FormData();
-        formData.append('chat_id', info['chat_id']);
-        formData.append('notes', my_notes);
-        formData.append('status', 1);
-        formData.append('user_id', user['id']);
+        const formDatax = new FormData();
+        formDatax.append('chat_id', info['chat_id']);
+        formDatax.append('notes', my_notes);
+        formDatax.append('status', 1);
+        formDatax.append('user_id', user['id']);
         
         console.log('Typing...');
 
         fetch("{{ route('save-notes') }}", {
           method: 'POST',
-          body: formData
+          body: formDatax
         })
         .then(response => {
           console.log(response);
@@ -356,35 +356,41 @@
       }
 
 
-      function sessionTimer(){
-        var input = {
-            year: 0,
-            month: 0,
-            day: 0,
+      // Countdown Timer
+      function sessionTimer() {
+        const input = {
             hours: 3,
-            minutes: 10,
-            seconds: 30
+            minutes: 0,
+            seconds: 0
         };
 
-        var timestamp = new Date(input.year, input.month, input.day,
-        input.hours, input.minutes, input.seconds);
+        const timestamp = new Date().getTime() + (input.hours * 60 * 60 * 1000);
+        let interval;
 
-        var interval = 1;
-        setInterval(function () {
-            timestamp = new Date(timestamp.getTime() + interval * 1000);
-            document.getElementById('session-timer').innerHTML = timestamp.getHours() + 'h:' + timestamp.getMinutes() + 'm:' + timestamp.getSeconds() + 's';
-        }, Math.abs(interval) * 1000);
-      }
+        function updateTimer() {
+            const currentTime = new Date().getTime();
+            const timeDifference = timestamp - currentTime;
 
-      function recorderTimer(){
-        // Start a timer
-        const startTime = Date.now();
+            if (timeDifference <= 0) {
+                clearInterval(interval);
+                document.getElementById('session-timer').innerHTML = "Session Expired";
+                endCall();
+            } else {
+                const remainingHours = Math.floor(timeDifference / (60 * 60 * 1000));
+                const remainingMinutes = Math.floor((timeDifference % (60 * 60 * 1000)) / (60 * 1000));
+                const remainingSeconds = Math.floor((timeDifference % (60 * 1000)) / 1000);
 
-        // Update the timer every second
-        const timerInterval = setInterval(() => {
-          const elapsedTime = Date.now() - startTime;
-          const formattedTime = formatTime(elapsedTime);
-          document.getElementById('recorder-timer').innerHTML = formattedTime;
-        }, 1000);
-      }
+                document.getElementById('session-timer').innerHTML =
+                    ('0' + remainingHours).slice(-2) + 'h:' +
+                    ('0' + remainingMinutes).slice(-2) + 'm:' +
+                    ('0' + remainingSeconds).slice(-2) + 's';
+            }
+        }
+
+        updateTimer(); // Initial update
+
+        interval = setInterval(updateTimer, 1000); // Update the timer every second
+    }
+
+
 </script>

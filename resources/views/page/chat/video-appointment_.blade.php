@@ -81,7 +81,12 @@
 
         </div>
 
-        <span style="color: #0c709e; text-align:center" id="session-timer"></span>
+        <span>
+          <span>
+            
+          </span>
+          <span style="color: #0c709e; text-align:center" id="session-timer"></span>
+        </span>
         <div class="video-call-actions">
           @hasanyrole(['admin', 'counselor', 'therapist'])
           <button title="Download audio" style="background:#002f44" class="video-action-button" id="downloadButton"> 

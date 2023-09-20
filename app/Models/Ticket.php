@@ -20,7 +20,10 @@ class Ticket extends Model
         'actual_amount',
         'ref',
         'status',
-        'msg'
+        'msg',
+        'ticketnum',
+        'email',
+        'for_event_on'
     ];
 }
 

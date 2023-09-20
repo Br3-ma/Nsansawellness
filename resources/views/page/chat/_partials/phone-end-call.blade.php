@@ -161,7 +161,7 @@
             })
             .then(response => {
               console.log(response);
-              $('#su_id').val() = response.data.su_id;
+              $('#su_id').val(response.data.su_id);
             })
             .catch(error => {
               console.error('Error uploading video:', error);
