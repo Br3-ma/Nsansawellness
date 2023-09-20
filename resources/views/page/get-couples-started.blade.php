@@ -16,22 +16,30 @@
                         @if(!empty($questionaires->questions))
                           @foreach ($questionaires->questions as $key => $q)
                             <div class="tab">
-                              <h2>{{ $q->question }}</h2>
+                              <h4>{{ $q->question }}</h4>
 
-                              @forelse($q->answers as $ans)
-                              <label>
-                                <input type="radio" name="radio"/>
-                                <span id="ans{{ $q->id }}" onclick="nextPrev(1, '{{ $q->id }}', '{{ $ans->answer }}','{{ $session }}')">{{ $ans->answer }}</span>
-                              </label>
-                              @empty
-
-                              @endforelse
+                              @if ($q->type == 'Custom')
+                              <textarea id="gx_custom_answer_{{$q->id}}" rows="4" cols="50"></textarea>
+                              <a type="button" onclick="nextStep('{{$q->id}}', '{{ $session }}')">NEXT</a>
+                              {{-- <p id="result">The value will appear here after clicking the button.</p> --}}
+                              @else
+                                @forelse($q->answers as $ans)
+                                <label>
+                                  <input type="radio" name="radio"/>
+                                  <span id="ans{{ $q->id }}" onclick="nextPrev(1, '{{ $q->id }}', '{{ $ans->answer }}','{{ $session }}')">{{ $ans->answer }}</span>
+                                </label>
+                                @empty
+                                @endforelse
+                              @endif
+                              
                             </div>
                           @endforeach
                           <div style="overflow:auto;">
                             <div style="float:right;">
                               <button type="button" class="btn btn-outline-warning" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                              {{-- <button type="button" id="nextBtn" onclick="nextPrev(1, '{{ $q->id }}','{{ $session }}')">Next</button> --}}
+                              @if ($q->type == 'Custom')
+                                <button type="button" class="btn btn-outline-warning" id="nextBtn">Next</button>
+                              @endif
                             </div>
                           </div>
                         @else
@@ -157,10 +165,37 @@
         alert('yeas');
     }
 
+    function nextStep(qid, session) {
+        // Check if the element exists
+        const customAnswer = document.getElementById(`gx_custom_answer_${qid}`);
+        if (customAnswer) {
+            // Use the value property to get the text entered in the textarea
+            const answer = customAnswer.value;
+            nextPrev(1, qid, answer, session);
+        } else {
+            // alert(`Element not found for qid: ${qid}`);
+        }
+    }
+
     $('#getStartedForm').submit(function(e){
         alert('yeas');
         e.preventDefault();
         let url = "{{ route('register', ['role' => 'patient', 'type' => 'patient'])}}";
         document.location.href=url;
     });
+
+    // // Get references to the textarea, button, and result element
+    // const textarea = document.getElementById("myTextarea");
+    // const captureButton = document.getElementById("captureButton");
+    // const resultElement = document.getElementById("result");
+
+    // // Function to capture the textarea value
+    // function captureTextareaValue() {
+    //     const textareaValue = textarea.value;
+    //     resultElement.textContent = "Textarea value after clicking the button: " + textareaValue;
+    // }
+
+    // // Add a click event listener to the button
+    // captureButton.addEventListener("click", captureTextareaValue);
+
     </script>

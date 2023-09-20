@@ -1,5 +1,27 @@
+
+<?php
+ $u_paid = auth()->user()->has_paid; 
+ 
+?>
 @extends('layouts.app')
 @section('content')
+<style>
+.pulse {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+</style>
 <div class="chatPage" style="">
     <div class="intro-y">
         <!-- BEGIN: Chat Side Menu -->
@@ -11,7 +33,6 @@
             </div>
             {{-- @endhasanyrole --}}
             <div class="tab-content h-full">
-
                 <div id="chats" class="tab-pane active h-full" role="tabpanel" aria-labelledby="chats-tab">
                     <div style="margin-bottom:0px; padding-bottom:0px;" class="chat__chat-list h-full overflow-y-auto scrollbar-hidden pr-1 pt-1 mt-4 px-4">
                        
@@ -20,178 +41,87 @@
                             &nbsp;
                             <span>Counseling Sessions</span>
                         </h2>
-                        
                         @forelse($chats as $chat)
                             {{-- If I Started the Chat --}}
-                            @if($chat->sender_id == auth()->user()->id)
-                                <div onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')"
-                                    class="intro-x chat-list-item cursor-pointer rounded-lg bg-white mr-10 relative flex items-center p-5">
+                            @if($chat->sender_id == auth()->user()->id && $chat->receiver !== null)
+                                <div data-tg-tour="Continue to a chat session with patient."
+                                data-tg-title="Chat Session"
+                                data-tg-group="my-ninth-tour"
+                                data-tg-scroll-margin="0"
+                                data-tg-fixed onclick="startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}')"
+                                    class="intro-x chat-list-item cursor-pointer w-full mt-2 rounded-lg bg-white mr-10 relative flex items-center p-5">
 
                                     <div class="w-12 h-12 flex-none image-fit mr-1">
                                         @if($chat->sender->image_path != null) 
                                             <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->receiver->image_path) }}" class="attachment-full rounded-full size-full" alt="" loading="lazy" />
                                         @else
-                                            <div class="font-bolder text-xs text-white w-10 h-10 bg-primary rounded-full flex items-center justify-center zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                                            <div class="font-bolder capitalize text-xs text-white w-10 h-10 bg-primary rounded-full flex items-center justify-center zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
                                                 {{ $chat->receiver->fname[0].' '.$chat->receiver->lname[0] }}
                                             </div>
                                         @endif
                                     </div>
                                     <div class="ml-2 overflow-hidden">
                                         <div class="flex items-center">
-                                            <a href="javascript:;" class="font-medium">{{ $chat->receiver->fname.' '.$chat->receiver->lname }}</a> 
+                                            <a href="javascript:;" class="font-medium capitalize">{{ $chat->receiver->fname.' '.$chat->receiver->lname }}</a> 
                                         </div>
                                         <div class="w-full truncate text-slate-500 mt-0.5">{{ $chat->name}}</div>
                                         <small>{{ $chat->created_at->toFormattedDateString() }}</small>
                                     </div>
+                                    
                                     {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
                                 </div>
                             @else 
-                            {{-- If They Started the Chat --}}
-                                <div onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" 
-                                    class="intro-x cursor-pointer rounded-lg bg-white mr-10 chat-list-item relative flex items-center p-5 mt-3">
-                                    <div class="w-12 h-12 flex-none image-fit mr-1">
-                                        @if($chat->sender->image_path != null)
-                                            <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="rounded-full attachment-full size-full" alt="" loading="lazy" />
-                                        @else
-                                            <div class="font-bolder text-xs text-white w-10 h-10 bg-warning rounded-full flex items-center justify-center zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
-                                                {{ $chat->sender->fname[0].' '.$chat->sender->lname[0] }}
-                                            </div>
-                                        @endif
-                                    </div>
-                                    <div class="ml-2 overflow-hidden">
-                                        <div class="flex items-center">
-                                            <a href="javascript:;" class="font-medium">{{ $chat->sender->fname.' '.$chat->sender->lname }}</a> 
+                                {{-- If They Started the Chat --}}
+                                @if($chat->sender !== null)
+                                    @if ($chat->sender->id !== auth()->user()->id)
+                                    <div data-tg-tour="Continue to a chat session with your counselor."
+                                    data-tg-title="Chat Session"
+                                    data-tg-group="my-ninth-tour"
+                                    data-tg-scroll-margin="0"
+                                    data-tg-fixed onclick="startChat('{{ $chat->id }}', 'receiver', '{{ $chat->sender->fname.' '.$chat->sender->lname }}', '{{ $chat->sender->roles->pluck('name') }}')" 
+                                        class="intro-x cursor-pointer rounded-lg bg-white mr-10 chat-list-item relative flex items-center p-5 mt-3">
+                                        <div class="w-12 h-12 flex-none image-fit mr-1">
+                                            @if($chat->sender->image_path != null)
+                                                <img width="56" onerror="handleError(this);" height="5" src="{{ asset('public/storage/'.$chat->sender->image_path) }}" class="rounded-full attachment-full size-full" alt="" loading="lazy" />
+                                            @else
+                                                <div class="font-bolder text-xs capitalize text-white w-10 h-10 bg-warning rounded-full flex items-center justify-center zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                                                    {{ $chat->sender->fname[0].' '.$chat->sender->lname[0] }}
+                                                </div>
+                                            @endif
                                         </div>
-                                        <div class="w-full truncate text-slate-500 mt-0.5">{{ $chat->name}}</div>
-                                        <small>{{ $chat->created_at->toFormattedDateString() }}</small>
+                                        <div class="ml-2 overflow-hidden">
+                                            <div class="flex items-center">
+                                                <a href="javascript:;" class="font-medium capitalize">{{ $chat->sender->fname.' '.$chat->sender->lname }}</a> 
+                                            </div>
+                                            <div class="w-full truncate text-slate-500 mt-0.5">{{ $chat->name}}</div>
+                                            <small>{{ $chat->created_at->toFormattedDateString() }}</small>
+                                        </div>
+                                        {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
                                     </div>
-                                    {{-- <img width="56" height="5" src="uploads/sites/304/2022/06/logos.svg" class="attachment-full size-full" alt="" loading="lazy" /> --}}
-                                </div>
+                                    @else                        
+                                        {{-- Welcome Banners --}}
+                                    @endif
+                                @else
+                                    {{-- Welcome Counselor No Assignment Banner --}}
+                                    @include('page.patients._partials.welcome-counselor')
+                                    
+                                    {{-- Welcome Patient's No Assignment Banner --}}
+                                    @include('page.patients._partials.welcome-patient')
+                                @endif
                             @endif
                         @empty
 
-                        @hasrole('counselor')
-                        <div class="intro-x px-6 w-full mb-2">
-                            <div class="lg:flex ">
-                                <div class="box w-full lg:mb-0 mb-2 lg:pb-4 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/no-patients.jpg") }}'); background-size:cover; background-color:#9374AD;">
-                                    <h4 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
-                                        No Patients Assigned to You
-                                    </h4>
-                                    
-                                    <p>Make Online and Live Consultation Easily Easily with Nsansa Wellness</p>
-    
-                                    <button class="mt-10 btn btn-primary btn-sm">Request for a Patient</button>
-                                </div>
-                                <div class="lg:w-1/2 lg:px-2 sm:px-2">
-                                    <div class="w-full">
-                                        <div class="flex box w-full py-8 p-3 lg:m-3 text-white" style="background-color:#9374AD">
-                                            <span class="mr-2">
-                                                <img width="30px" src="https://cdn.iconscout.com/icon/free/png-256/ecosystem-2871958-2383613.png">
-                                            </span>
-                                            <span>
-                                                A Complete mental health ecosystem
-                                                <br>
-                                                <small>
-                                                    Earn ZMW 3000 as an online therapist
-                                                </small>
-                                            </span>
-                                            <i data-lucide="chevron-right"></i>
-                                        </div>
-                                        <div class="box flex mt-2 py-8 p-3 m-3 text-white" style="background-color:#22A89C">
-                                            <span class="mr-2">
-                                                <img width="30px" class="rounded-full" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/files-1433950-1211984.png?f=avif">
-                                            </span>
-                                            <span>
-                                                Patient Record Management
-                                                <br>
-                                                <small>
-                                                    Manage your patient medical information
-                                                </small>
-                                            </span>
-                                            <i data-lucide="chevron-right"></i>
-                                        </div>
-                                        <div class="box flex mt-2 py-8 p-3 m-3" style="background-color:#e9f7ff">
-                                            <span class="mr-2">
-                                                <img width="30px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/activity-4-185786.png?f=avif">
-                                            </span>
-                                            <span>
-                                                Assign Homework Activities and Actions
-                                                <br>
-                                                <small>
-                                                    Create and assign homework activities for your patients.s
-                                                </small>
-                                            </span>
-                                            <i data-lucide="chevron-right"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endhasrole
-
-                        @hasrole('patient')
-                            <div class="intro-x px-6">
-                                <div class="my-6">
-                                    <h2 class="text-lg font-medium mr-auto flex space-x-6 py-autox">
-                                        <span>Get Help. Get Better</span>
-                                    </h2>
-                                    <div class="w-full">Get the Guidance you need from top Exprts right away.</div>
-                                </div>
-                                <div class="lg:flex ">
-                                    <div class="lg:w-1/2 lg:px-2 sm:px-2">
-                                        <div class="w-full">
-                                            <div class="flex box w-full py-6 p-3 lg:m-3 text-white" style="background-color:#9374AD">
-                                                <span class="mr-2">
-                                                    <img width="30px" src="https://cdn.iconscout.com/icon/free/png-256/chatting-418-530377.png?f=avif">
-                                                </span>
-                                                <span>
-                                                    Online Chat Sessions
-                                                    <br>
-                                                    <small>
-                                                        Chat anonymously with an expert 
-                                                    </small>
-                                                </span>
-                                                <i data-lucide="chevron-right"></i>
-                                            </div>
-                                            <div class="box flex mt-2 py-6 p-3 m-3 text-white" style="background-color:#AE04B4">
-                                                <span class="mr-2">
-                                                    <img width="30px" class="rounded-full" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/video-call-103-772229.png?f=avif">
-                                                </span>
-                                                <span>
-                                                    Voice and Video Calls
-                                                    <br>
-                                                    <small>
-                                                        Speak to an expert or get on a call with them
-                                                    </small>
-                                                </span>
-                                                <i data-lucide="chevron-right"></i>
-                                            </div>
-                                            <div class="box flex mt-2 py-6 p-3 m-3" style="background-color:#05C3E5">
-                                                <span class="mr-2">
-                                                    <img width="30px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/doctor-615-1178523.png?f=avif">
-                                                </span>
-                                                <span>
-                                                    Face to Face Sessions
-                                                    <br>    
-                                                    <small>
-                                                        Connect to 1-on-1 in-person with an expert.
-                                                    </small>
-                                                </span>
-                                                <i data-lucide="chevron-right"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="text-white box w-full lg:mb-0 mb-2 lg:w-1/2 p-4" style="padding:6%; background-image:url('{{ asset("/public/dist/memes/remote.jpg") }}'); background-size:cover; background-color:#9374AD;">
-
-                                        
-                                        <h3>Making through life's toughest times. Together.</h3>
-        
-                                        <button class="mt-20 btn btn-warning btn-sm">Take a Quiz</button>
-                                    </div>
-                                </div>
-                            </div>
-                        @endhasrole
+                        {{-- Welcome Counselor No Assignment Banner --}}
+                        @if (auth()->user()->status == 1)
+                        @include('page.patients._partials.welcome-counselor')
+                        @else
+                        @include('page.patients._partials.not-approved  ')
+                        @endif
                         
+                        {{-- Welcome Patient's No Assignment Banner --}}
+                        @include('page.patients._partials.welcome-patient')
+                        
+
                         @hasanyrole(['admin', 'administrator'])
                             <div class="intro-x cursor-pointer box relative flex items-center p-5 ">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
@@ -234,35 +164,65 @@
                                 <i data-lucide="undo" class="w-5 h-5"></i>
                             </button>
                         </div>
-                        <div class="flex items-center sm:ml-auto mt-5 sm:mt-0 border-t sm:border-0 border-slate-200/60 pt-3 sm:pt-0 -mx-5 sm:mx-0 px-5 sm:px-0">
-                            
-                            <button class="mr-2" id="btnback" onclick="back()">
-                                <i data-lucide="undo" class="w-5 h-5"></i>
-                            </button>
+                        <div class="flex items-center justify-between justify-content-between sm:ml-auto mt-5 sm:mt-0 border-t sm:border-0 border-slate-200/60 pt-3 sm:pt-0 -mx-5 sm:mx-0 px-5 sm:px-0">
+                           
                             {{-- startChat('{{ $chat->id }}', 'sender', '{{ $chat->receiver->fname.' '.$chat->receiver->lname }}', '{{ $chat->receiver->roles->pluck('name') }}' --}}
                             @hasanyrole(['admin', 'counselor'])
                                 @if(!empty($chats->toArray()))
-                                <a target="_blank" onclick="startVideoSession()" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
-                                    <i data-lucide="video" class="w-5 h-5"></i>
+                                
+                                <a target="_blank" onclick="CheckNotes()" class="btn btn-primary" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-bookmark" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M6 8V1h1v6.117L8.743 6.07a.5.5 0 0 1 .514 0L11 7.117V1h1v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"/>
+                                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                                    </svg>&nbsp;
+                                    <span>Session Notes</span>
                                 </a>
+                                &nbsp;
+                                   
+                                <a data-tg-tour="Create a video call meeting with patient."
+                                data-tg-title="Video Call Appointment"
+                                data-tg-group="my-ninth-tour"
+                                data-tg-scroll-margin="0"
+                                data-tg-fixed  target="_blank" href="{{ route('appointment.create', ['type' => 'video']) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
+                                    <i data-lucide="video" class="w-5 h-5"></i>
+                                    &nbsp;
+                                    <span>Create Video Appointment</span>
+                                </a>
+                                {{-- <a target="_blank" onclick="startVideoSession()" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-danger shadow-md rounded-full mr-2">
+                                    <i data-lucide="video" class="w-5 h-5"></i>
+                                    &nbsp;
+                                    <span>Start Call</span>
+                                </a> --}}
+                                &nbsp;
+                                
                                 {{-- <a target="_blank" href="{{ route('phone-call', ['id'=> auth()->user()->id, 'chat_id' => $chats->first()->id, 'receiver' => $chats->first()->receiver->fname.' '.$chats->first()->receiver->lname, 'role' => preg_replace('/[^A-Za-z0-9. -]/', '', $chats->first()->receiver->roles->pluck('name')) ]) }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-success shadow-md mr-2">
                                     <i data-lucide="phone" class="w-5 h-5"></i>
                                 </a> --}}
                                 @endif
                             @else
-                                <span id="patient_video_btn">
+                                <a target="_blank" href="{{ route('appointment') }}" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" class="btn btn-light text-black shadow-md rounded-full mr-2">
+                                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                                    &nbsp;
+                                    <span>Appointments</span>
+                                </a>
+                                &nbsp;
+                                {{-- <span id="patient_video_btn">
                                     
-                                </span>
-                                <span id="patient_phone_btn">
-                                    {{-- /phone-session/{id}/{chat_id}/{receiver}/{role} --}}
+                                </span> --}}
+                                {{-- <span id="patient_phone_btn">
+                                    /phone-session/{id}/{chat_id}/{receiver}/{role}
                                     <a onclick="startPhoneCall()" target="_blank" class="btn btn-success rounded-full shadow-md mr-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
                                         </svg>
                                     </a>
-                                </span>
+                                </span> --}}
                             @endhasanyrole
-                            
+                             
+                            <button class="mr-2 rounded-full btn bg-gray hover:bg-white hover:text-black" id="btnback" onclick="back()">
+                                <i data-lucide="undo" class="w-5 h-5"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -315,8 +275,7 @@
     </div>
 </div>
 
-<div id="sessionPreloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 bg-white flex flex-col items-center justify-center">
-    {{-- <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div> --}}
+{{-- <div id="sessionPreloader" class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 bg-white flex flex-col items-center justify-center">
     <img src="{{ asset('public/img/1.gif') }}">
     <h2 class="text-center text-primary text-xl mt-10 font-semibold">Setting Up Session</h2>
     @hasanyrole(['admin', 'counselor'])
@@ -324,12 +283,13 @@
     @else
     <p id="hint1" class="w-1/3 text-center text-gray-200">Notifying the counselor, please wait..</p>
     @endhasanyrole
-</div>
+</div> --}}
+@hasanyrole('patient')
+@include('page.common.make-appointment-notice')
+@endhasrole
 @endsection
 
-<?php
-    $u_paid = auth()->user()->has_paid;    
-?>
+    
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
 <script>
@@ -348,11 +308,17 @@
         }else{
             chatPage.style.cssText += "height:100%; min-height:100%; device-height: 100%; padding-top:6px; padding-left:0px; padding-right:0px;; padding-bottom:0px; margin:0px;"
         }
+
+                
+        setInterval(function() {
+            $('.pulse-effect').toggleClass('pulse');
+        }, 3000); // Toggle class every 1 second (1000 milliseconds)
     });
 
     var APP_URL = {!! json_encode(url('/')) !!};
     var user = {!! auth()->user()->toJson() ?? '' !!};
-    var hasPaid = "{{ $u_paid }}"
+    var hasAppointment = "{{ App\Models\User::has_appointment() }}";
+    
     var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
 
     var chat_id; 
@@ -365,19 +331,18 @@
 
   
     function startChat(id, who, names, role){
-        // if(hasPaid){
-        // $('#nsansa_app').hide();
-        $('#sessionPreloader').show();
-        open_chat(id, who, names, role);
-
-        // }else{
-        //     if(user_role === 'counselor'){
-        //         open_chat(id, who, names, role);
-        //     }else{
-        //         const pay_notice = tailwind.Modal.getInstance(document.querySelector("#payment-remainder-modal"));
-        //         pay_notice.show();
-        //     }
-        // }
+        if(hasAppointment == 1){
+            $('#nsansa_app').hide();
+            $('#sessionPreloader').show();
+            open_chat(id, who, names, role);
+        }else{
+            if(user_role === 'counselor'){
+                open_chat(id, who, names, role);
+            }else{
+                const pay_notice = tailwind.Modal.getInstance(document.querySelector("#appointment-remainder-modal"));
+                pay_notice.show();
+            }
+        }
     }
 
     function open_chat(id, who, names, role){
@@ -390,54 +355,32 @@
         $('#chat_receiver_role').text(role.toString().replace(/[^a-zA-Z ]/g, "").toUpperCase());
         $('#message_thread').empty();
         $.ajax({
-                type:'GET',
-                url:'{{ route("chat.index") }}',
-                data: {
-                    id,owner
-                },
-                success:function(data) {
-                    // State changes
-                    $('.convoBody').show();
-                    $('#chatList').hide(); 
+            type:'GET',
+            url:'{{ route("chat.index") }}',
+            data: {
+                id,owner
+            },
+            success:function(data) {
+                // State changes
+                $('.convoBody').show();
+                $('#chatList').hide(); 
 
-                    let messages = data.chat_session.chat_messages;
-                    
-                    // UPDATED
-                    for (const message of messages){
+                let messages = data.chat_session.chat_messages;
+                
+                // UPDATED
+                for (const message of messages){
 
-                        if(user['id'] != message.user_id){
-                            $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
-                                <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                    <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
-                                    </div>\
-                                <div class="bg-slate-100 mt-2 dark:bg-darkmode-400 px-4 py-3 text-dark rounded-r-md rounded-t-md">\
-                                                '+ message.message +'\
-                                    <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
-                                            </div>\
-                                            <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                        <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
-                                        <div class="dropdown-menu w-40">\
-                                            <ul class="dropdown-content">\
-                                                <li>\
-                                                    <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
-                                                </li>\
-                                                <li>\
-                                                    <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
-                                                </li>\
-                                            </ul>\
-                                        </div>\
-                                    </div>\
+                    if(user['id'] != message.user_id){
+                        $('#message_thread').append('<div class="intro-y chat__box__text-box flex justify-start float-left mb-4">\
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
                                 </div>\
-                                <div class="clear-both"></div>\
-                            ');
-                        }else{
-                            $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
-                            <div  style="background-color:#9ABCC3;" class="mt-2 dark:bg-darkmode-400 px-4 py-3 text-slate-500 rounded-r-md rounded-t-md">\
+                            <div class="bg-slate-100 mt-2 px-4 py-3 text-black rounded-r-md rounded-t-md">\
                                             '+ message.message +'\
                                 <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
                                         </div>\
                                         <div class="hidden sm:block dropdown ml-3 my-auto">\
-                                    <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-dark" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                    <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-slate-500" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
                                     <div class="dropdown-menu w-40">\
                                         <ul class="dropdown-content">\
                                             <li>\
@@ -449,24 +392,46 @@
                                         </ul>\
                                     </div>\
                                 </div>\
-                                <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
-                                    <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
-                                </div>\
                             </div>\
                             <div class="clear-both"></div>\
-                            ');
-                        }
-                    } 
-                    $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
-                    $('#sessionPreloader').hide();
-                    $('#nsansa_app').show();
-                },
-                
-                error: function (msg) {
-                    console.log(msg);
-                    var errors = msg.responseJSON;
-                }
-            });
+                        ');
+                    }else{
+                        $('#message_thread').append('<div class="intro-y chat__box__text-box flex items-end float-right mb-4">\
+                        <div  style="background-color:#9ABCC3;" class="mt-2 px-4 py-3 text-black rounded-r-md rounded-t-md">\
+                                        '+ message.message +'\
+                            <div class="mt-1 text-xs text-slate-500">'+timeSince(new Date(message.created_at))+'</div>\
+                                    </div>\
+                                    <div class="hidden sm:block dropdown ml-3 my-auto">\
+                                <a href="javascript:;" class="dropdown-toggle w-4 h-4 text-dark" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-vertical" class="w-4 h-4"></i> </a>\
+                                <div class="dropdown-menu w-40">\
+                                    <ul class="dropdown-content">\
+                                        <li>\
+                                            <a href="" class="dropdown-item"> <i data-lucide="corner-up-left" class="w-4 h-4 mr-2"></i> Reply </a>\
+                                        </li>\
+                                        <li>\
+                                            <a href="" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Delete </a>\
+                                        </li>\
+                                    </ul>\
+                                </div>\
+                            </div>\
+                            <div class="w-10 h-10 hidden sm:block flex-none image-fit relative mr-5">\
+                                <img alt="'+ message.user.fname +'" class="rounded-full"  onerror="handleError(this);" src="">\
+                            </div>\
+                        </div>\
+                        <div class="clear-both"></div>\
+                        ');
+                    }
+                } 
+                $('#message_thread').scrollTop($('#message_thread')[0].scrollHeight);
+                $('#sessionPreloader').hide();
+                $('#nsansa_app').show();
+            },
+            
+            error: function (msg) {
+                console.log(msg);
+                var errors = msg.responseJSON;
+            }
+        });
     }
 
     function send(){
@@ -499,8 +464,6 @@
                 var errors = msg.responseJSON;
             }
         });
-
-
     }
 
     // // Execute a function when the user presses a key on the keyboard
@@ -616,6 +579,7 @@
         $('.convoBody').hide();
         $('.chatList').show();
     }
+
     function timeSince(timeStamp) {
         var now = new Date(), secondsPast = (now.getTime() - timeStamp) / 1000;
         if (secondsPast < 60) {
@@ -635,14 +599,18 @@
         }
     }
 
-
+    
+    function CheckNotes(){
+        var url = '/session-notes/' + chat_id; 
+        window.location.href = url;
+    }
     function startVideoSession(){
-        var url = '/nsansawellness/video-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
+        var url = '/video-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
         window.location.href = url;
     }
 
     function startPhoneCall(){
-        var url = '/nsansawellness/phone-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
+        var url = '/phone-session/' + user['id'] + '/' + chat_id+'/'+receiver_name+'/'+receiver_role; 
         window.location.href = url;
     }
     
@@ -688,5 +656,4 @@
             }
         }
     }, 1000);
-
 </script>

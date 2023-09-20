@@ -7,6 +7,8 @@ use App\Models\Activity;
 use App\Models\PatientActivity;
 use App\Models\User;
 use App\Notifications\NewActivity;
+use App\Traits\ActivityTrait;
+use App\Traits\CoreTrait;
 use App\Traits\CounselorTrait;
 use App\Traits\PatientTrait;
 use Illuminate\Http\Request;
@@ -15,7 +17,7 @@ use Session;
 
 class ActivityController extends Controller
 {    
-    use PatientTrait, CounselorTrait;
+    use PatientTrait, CounselorTrait, ActivityTrait, CoreTrait;
     public $activity, $user, $pushConfs, $pusher, $assigned_patients;
     /**
      * Display a listing of the resource.
@@ -45,8 +47,16 @@ class ActivityController extends Controller
      */
     public function index()
     {
+        if($this->my_role() == 'patient'){
+            $this->autoAssign();
+        }
         $notifications = auth()->user()->notifications;
-        $activities = $this->activity->with('patient_activities.users')->paginate(7);;
+        if(auth()->user()->hasRole('counselor')){
+            $activities = $this->getActivitiesForCounselor();
+        }else{
+            $activities = $this->getActivitiesForPatient();
+        }
+        
         return view('page.activity.index', compact('activities', 'notifications'));
     }
 
@@ -75,9 +85,7 @@ class ActivityController extends Controller
      */
     public function store(CreateActivityRequest $request)
     {
-
         try {
-            // dd('here');
             $activity = $this->activity->create($request->validated());
             // dd($activity);
             foreach($request->patient_ids as $patient){
@@ -85,8 +93,8 @@ class ActivityController extends Controller
     
                 $this->assigned_patients->create([
                     'activity_id' => $activity->id,
-                    'user_id' => 
-                    $patient,
+                    'user_id' => $patient,
+                    'counselor_id' => auth()->user()->id,
                 ]);
     
                 $payload = [
@@ -97,9 +105,9 @@ class ActivityController extends Controller
                 ];
                 // Send a notification to Guest about the new homework
                 // $message = 'You have a new homework with'.auth()->user()->fname.' '.auth()->user()->lname;
-                $user->notify(new NewActivity($payload));
+                // $user->notify(new NewActivity($payload));
                 $this->pusher->trigger('popup-channel', 'new-activity', $patient);
-                Session::flash('attention', "Failed to create user, Email could not be found");
+                Session::flash('attention', "Activity successfully created.");
                 return redirect()->route('activities.index');
             }
         } catch (\Throwable $th) {
@@ -144,6 +152,12 @@ class ActivityController extends Controller
         //
     }
 
+    public function updateStatus(Request $request){
+        $q = $this->activity->where('id',$request->act_id)->first();
+        $q->status_id = $request->status;
+        $q->save();
+        return response()->json(['message' => 'Activity status updated successfully.']);
+    }
     /**
      * Remove the specified resource from storage.
      *

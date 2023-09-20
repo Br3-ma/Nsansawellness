@@ -26,6 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'mother_name',
         'type',
         'role',
+        'status',
         'liecense_number',
         'country',
         'mobile_no',
@@ -92,14 +93,8 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function getHasPaidAttribute(){
-        if($this->new_paid()){
-            return true;
-        }else{
-            if($this->old_paid()){
-                return true;
-            }
-        }
-        return false;
+        // dd(Billing::has_no_bill());
+        return Billing::has_no_bill();
     }
 
     public function getNewClientAttribute(){
@@ -112,6 +107,36 @@ class User extends Authenticatable implements MustVerifyEmail
                     ->where('status', 1)->get();
                     // ->where('counselor_id', 1)->get();
         return $x->count() > 0 && $x->count() < 2  ?  true :  false; 
+    }
+
+    public static function has_appointment(){
+        $asGuest = UserAppointment::where('guest_id', auth()->user()->id)->exists();
+        $asHost = Appointment::where('user_id', auth()->user()->id)->exists();
+        if($asHost){
+            return true;
+        }
+        if($asGuest){
+            return true;
+        }
+        return false;
+    }
+
+    public static function hasNotUploaded(){
+        try {
+            $mf = MyFile::where('user_id', auth()->user()->id)->latest()->first()->toArray();
+            // dd(empty($mf['nrc_file']));
+            if(
+                empty($mf['nrc_file']) ||
+                empty($mf['cv_file']) ||
+                empty($mf['cert_file'])  
+            ){
+                return true;
+            }else{
+                return false;
+            }
+        } catch (\Throwable $th) {
+            return true;
+        }
     }
 
     // Return true or false if paid, if its user's return session to counselor
@@ -128,13 +153,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $x->count() > 0 && $x->count() < 2  ?  true :  false; 
     }
 
-    // // Return true or false if paid, if its user's return session to counselor
-    // public function old_client(){
-    //     $x = $this->hasMany(Billing::class)
-    //                 ->where('status', 1)->get();
-    //                 // ->where('counselor_id', 1)->get();
-    //     return $x->count() > 1 ?  true :  false; 
-    // }
+    public static function fullNames($id){
+        $u = User::where('id', $id)->first();
+        if($u !== null){
+            return $u->fname.' '.$u->lname;
+        }
+    }
     public function site_rating(){
         return $this->hasMany(SiteRating::class);
     }
@@ -155,10 +179,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function assignedCounselor(){
-        // Change to:
-        // Has One Through (has one USER through AssignCounselor)
         return $this->hasOne(AssignCounselor::class, 'patient_id');
-        // return $this->hasOne(AssignCounselor::class, 'counselor_id');
     }
 
     public function billing(){
@@ -176,5 +197,30 @@ class User extends Authenticatable implements MustVerifyEmail
     // Patient has many payments
     public function payments(){
         return $this->hasMany(Payment::class);
+    }
+
+
+    public function patient_questionaires(){
+        return $this->hasMany(PatientQuestionnaires::class);
+    }
+    
+    public function push_alerts(){
+        return $this->hasMany(PushAlert::class);
+    }
+
+    public function unseen_push_alerts(){
+        return $this->hasMany(PushAlert::class)->where('is_seen', 1);
+    }
+
+    public function videos(){
+        return $this->hasMany(Video::class);
+    }
+
+    public function myfiles(){
+        return $this->hasMany(MyFile::class);
+    }
+
+    public function availability(){
+        return $this->hasMany(Availability::class);
     }
 }

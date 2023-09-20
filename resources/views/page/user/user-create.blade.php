@@ -262,8 +262,9 @@
                                 <label for="department" class="form-label">Department</label>
                                 <select name="department" id="update-profile-form-2" data-search="true" class="tom-select w-full multiple">
                                     <option value="None">None</option>
+                                    <option value="Peer Counseling">Peer Counseling</option>
                                     <option value="Clinical Social Worker">Clinical Social Worker</option>
-                                    <option value="Marriage & Family Therapist">Marriage & Family Therapist</option>
+                                    <option value="Marriage and Couples Couseling">Marriage and Couples Couseling</option>
                                     <option value="Mental Health Counselor">Mental Health Counselor</option>
                                     <option value="Professional Counselor">Professional Counselor</option>
                                     <option value="Psychologist">Psychologist</option>
@@ -287,7 +288,7 @@
                             </div>
                         </div>
 
-                        <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2 ml-2">                 
+                        {{-- <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2 ml-2">                 
                             
                             <div class="mb-3">
                                 <label for="hourly_charge" class="form-label">Hourly Charge</label>
@@ -301,7 +302,7 @@
                                     <span class="text-danger text-left">{{ $errors->first('hourly_charge') }}</span>
                                 @endif
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="col-span-12 xl:col-span-6 md:col-span-6 p-2 ml-2">        
                             
@@ -358,12 +359,6 @@ $(document).ready(function (e) {
             $('#professional_details').show();
             $('#medical_details').hide();
         }
-
-        // // 👇️ get selected VALUE even outside event handler
-        // console.log(select.options[select.selectedIndex].value);
-
-        // // 👇️ get selected TEXT in or outside event handler
-        // console.log(select.options[select.selectedIndex].text);
     });
 });
 

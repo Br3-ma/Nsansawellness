@@ -1021,17 +1021,18 @@ li{
                                                             <ul id="menu-menu" class="jkit-menu jkit-menu-direction-flex jkit-submenu-position-top">
                                                                 <li id="menu-item-14" class="@if(Request::route()->uri == 'home') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-6 current_page_item menu-item-14"><a href="{{ route('welcome') }}" aria-current="page">Home</a></li>
                                                                 {{-- <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home page_item page-item-6 menu-item-13"><a href="index.php" aria-current="page">Business</a></li> --}}
-                                                                <li id="menu-item-1431" class=" @if(Request::route()->uri == 'about') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-1431"><a href="{{ route('about') }}">About</a></li>
-                                                                <li id="menu-item-16" class="@if(Request::route()->uri == 'frequently-asked-question') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-16"><a href="{{  route('faq')}}">FAQ</a>
-
+                                                                <li id="menu-item-1431" class=" @if(Request::route()->uri == 'about') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-1431"><a href="{{ route('about') }}" @if(Request::route()->uri == 'contact') style="text-decoration:none; color:black" @endif>About</a></li>
+                                                                <li id="menu-item-16" class="@if(Request::route()->uri == 'frequently-asked-question') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-16">
+                                                                    <a href="{{  route('faq')}}">FAQ</a>
                                                                 </li>
-                                                                {{-- <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a> --}}
                                                                 @if(!Auth::user())
                                                                 </li>
                                                                 <li id="menu-item-24" class="@if(Request::route()->uri == 'start-your-career') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-24"><a href="{{ route('careers')}}">Therapist Jobs</a>
                                                                 @endif
                                                                 </li>
                                                                 <li id="menu-item-1440" class="@if(Request::route()->uri == 'contact') current-menu-item @endif menu-item menu-item-type-post_type menu-item-object-page menu-item-1440"><a href="{{  route('contact')}}">Contact Us</a></li>
+                                                                {{-- <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Events</a> --}}
+                                                                    <li id="menu-item-17" class="@if(Request::route()->uri == 'events') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('events')}}">Events</a>
                                                             </ul>
                                                         </div>
                                                         <div class="jkit-nav-identity-panel">
@@ -1118,6 +1119,7 @@ li{
 
                     </li>
                     {{-- <li id="menu-item-17" class="@if(Request::route()->uri == 'reviews') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('reviews')}}">Reviews</a> --}}
+                    <li id="menu-item-17" class="@if(Request::route()->uri == 'events') current-menu-item @endif menu-item menu-item-type-custom menu-item-object-custom menu-item-17"><a href="{{  route('events')}}">Events</a>
                     
                      @if(!Auth::user())
                         </li>

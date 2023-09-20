@@ -7,7 +7,7 @@
         <span>Activities</span>
     </h2>
     @if (Session::has('attention'))
-    <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('attention') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -15,7 +15,7 @@
         </button> 
     </div>
     @elseif (Session::has('error_msg'))
-    <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="intro-x alert alert-danger w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('error_msg') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -38,22 +38,21 @@
             </div> --}}
             {{-- <div class="hidden xl:block mx-auto text-slate-500">Showing 1 to 2 of 2 entries</div> --}}
             <div class="w-full xl:w-auto flex items-center mt-3 xl:mt-0">
-                @can('activities.create')
+                @hasrole('counselor')
                 <a href="{{ route('activities.create') }}" class="btn btn-primary shadow-md mr-2"> <i data-lucide="plus" class="w-4 h-4 mr-2"></i> New Activity </a>
-                {{-- <button class="btn btn-primary shadow-md mr-2"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Download PDF </button> --}}
-                @endcan
+                @endhasrole
             </div>
         </div>
         {{-- @dd($activities  == []) --}}
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
-            @if($activities->toArray()['data'] != [])
+            @if(!empty($activities->toArray()))
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">
+                        {{-- <th class="whitespace-nowrap">
                             <input class="form-check-input" type="checkbox">
-                        </th>
+                        </th> --}}
                         {{-- <th class="whitespace-nowrap">INVOICE</th> --}}
                         <th class="whitespace-nowrap">ACTIVITY</th>
                         <th class="text-center whitespace-nowrap">STATUS</th>
@@ -69,42 +68,58 @@
                     @forelse ($activities as $act)
                     
                         <tr class="intro-x">
-                            <td class="w-10">
+                            {{-- <td class="w-10">
                                 <input class="form-check-input" type="checkbox">
-                            </td>
-                            <td class="w-40">
-                                <a href="" class="font-medium whitespace-nowrap">{{ $act->desc}}</a> 
-                                {{-- <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div> --}}
-                            </td>
-                            <td class="text-center">
-                                <div class="flex items-center justify-center whitespace-nowrap text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> In Progress </div>
-                            </td>
-                            {{-- <td class="w-40 !py-4"> <a href="" class="underline decoration-dotted whitespace-nowrap">#INV-25807556</a> </td> --}}
-            
-                             <td>
-                                @forelse($act->patient_activities as $user)
-                                    @if($user->users != null)
-                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $user->users->fname ?? ''.' '.$user->users->lname ?? '' }}</div>
+                            </td> --}}
+                            <a href="{{ route('activities.show', $act->activities->id) }}">
+                                <td class="w-40">
+                                    <a href="{{ route('activities.show', $act->activities->id) }}" title="View details" class="tooltip font-medium whitespace-nowrap">{{ $act->activities->desc}}</a> 
+                                    {{-- <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Ohio, Ohio</div> --}}
+                                </td>
+                                <td class="text-center">
+                                    @if ($act->activities->status_id == 1)
+                                        <div class="flex items-center justify-center whitespace-nowrap text-success"> 
+                                            <i data-lucide="clock" class="w-4 h-4 mr-2"></i> In Progress 
+                                        </div>
+                                    @else
+                                        <div class="flex items-center justify-center whitespace-nowrap text-info"> 
+                                            <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed 
+                                        </div>
                                     @endif
-                                @empty
-                                <div class="text-slate-400 text-xs whitespace-nowrap">No Patients Assigned</div>
-                                @endforelse
-                            </td>
-                            
-                            {{-- <td class="w-40 text-right">
-                                <div class="pr-16">$25,000,00</div>
-                            </td>  --}}
-                            <td class="table-report__action">
-                                <div class="flex justify-center items-center">
-                                    <a href="{{ route('activities.show', $act->id) }}" title="View details" class="flex tooltip zoom-out items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
-                                    
-                                    @can('activities.destroy')
-                                    {!! Form::open(['method' => 'DELETE','route' => ['activities.destroy', $act->id],'style'=>'display:inline']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2 tooltip zoom-out', 'title' => 'Delete Activity']) !!}
-                                    {!! Form::close() !!}    
-                                    @endcan                            
-                                </div>
-                            </td>
+                                </td>
+                                {{-- <td class="w-40 !py-4"> <a href="" class="underline decoration-dotted whitespace-nowrap">#INV-25807556</a> </td> --}}
+                
+                                <td>
+                                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
+                                        @forelse (App\Models\Activity::assignedPatients($act->activities->id) as $user)
+                                            {{ $user->users->fname.' '.$user->users->lname }}
+                                        @empty
+                                            
+                                        @endforelse
+                                    </div>
+                                </td>
+                                
+                                {{-- <td class="w-40 text-right">
+                                    <div class="pr-16">$25,000,00</div>
+                                </td>  --}}
+                                @hasrole('counselor')
+                                <td class="table-report__action">
+                                    <div class="flex justify-center items-center">
+                                        
+                                        @can('activities.destroy')
+                                        {!! Form::open(['method' => 'DELETE','route' => ['activities.destroy', $act->activities->id],'style'=>'display:inline']) !!}
+                                        {!! Form::submit('Delete', ['class' => 'btn btn-sm mt-2 btn-danger mr-2 tooltip zoom-out', 'title' => 'Delete Activity']) !!}
+                                        {!! Form::close() !!}    
+                                        @endcan                            
+                                    </div>
+                                </td>
+                                @endhasrole
+                                @hasrole('patient')
+                                <td title="Mark as Complete" class="flex tooltip justify-center items-center">
+                                    <input type="checkbox" data-id="{{ $act->activities->id }}" name="status" class="js-switch" {{ $act->activities->status_id == 0 ? 'checked' : '' }}>
+                                </td>
+                                @endhasrole
+                            </a>
                         </tr>                        
                     @empty
                  
@@ -125,7 +140,7 @@
         <div class="intro-y col-span-12 block">
             <nav class="w-full sm:w-auto sm:mr-auto block">
                 <ul class="pagination">
-                    {!! $activities->links('pagination::tailwind') !!}
+                    {{-- {!! $activities->links('pagination::tailwind') !!} --}}
                     {{-- <li class="page-item">
                         <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>
                     </li>
@@ -180,3 +195,24 @@
     <!-- END: Delete Confirmation Modal -->
 </div>
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.js-switch').change(function () {
+        let status = $(this).prop('checked') === true ? 0 : 1;
+        let activity_id = $(this).data('id');
+
+        console.log(activity_id);
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            cache: false,
+            url: '{{ route('activity.status') }}',
+            data: {'status': status, 'act_id': activity_id},
+            success: function (data) {
+                console.log(data.message);
+            }
+        });
+    });
+});
+</script>

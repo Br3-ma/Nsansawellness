@@ -21,12 +21,7 @@
             {!! Form::close() !!}
             {{-- <a class="btn btn-primary shadow-md mr-2"  href="{{ route('roles.create') }}"> <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Add Role </a> --}}
             @endcan
-                {{-- <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
-                    <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
-                </button> --}}
-            @can('users.edit')
-            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-md p-2 w-20"><i data-lucide="edit"></i>Assign Role</a>
-            @endcan
+        
         </div>
     </div>
     <!-- BEGIN: Profile Info -->
@@ -36,7 +31,7 @@
             <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
                 <div class="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">  
                     @if($user->image_path == null)
-                        <div class="font-bolder bg-primary text-white w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 text-slate-400 zoom-in tooltip" title="{{ $user->fname.' '.$user->lname  }}">
+                        <div style="width: 80%; height: 15vh;" class="font-bolder text-lg bg-success text-white w-16 h-16 sm:w-10 sm:h-10 rounded-full flex items-center justify-center border dark:border-darkmode-400 ml-2 zoom-in tooltip" title="{{ $user->fname.' '.$user->lname  }}">
                             {{ $user->fname[0].' '.$user->lname[0] }}
                         </div>
                     @else
@@ -46,47 +41,52 @@
                 </div>
                 <div class="ml-5">
                     <div class="capitalize w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">{{ $user->fname.' '.$user->lname}}</div>
-                    <div class="capitalize text-slate-500"> {{ $user->lname.' '.$user->lname }}</div>
+                    <div class="capitalize text-slate-500"> {{ $user->gender ?? '' }}</div>
+                    {{-- @can('users.edit') --}}
+                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-xs p-2 w-full"><i data-lucide="edit"></i>&nbsp;Assign Role</a>
+                    {{-- @endcan --}}
                 </div>
+
             </div>
             <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
-                <div class="font-medium text-center lg:text-left lg:mt-3">Contact Details</div>
-                <div class="flex flex-col justify-center items-center lg:items-start mt-4">
-                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{ $user->email }} </div>
-                    <div class="truncate sm:whitespace-normal flex items-center mt-3"> <i data-lucide="instagram" class="w-4 h-4 mr-2"></i> Instagram {{ $user->fname.' '.$user->lname}} </div>
-                    <div class="truncate sm:whitespace-normal flex items-center mt-3"> <i data-lucide="twitter" class="w-4 h-4 mr-2"></i> Twitter {{ $user->fname.' '.$user->lname}} </div>
+                <div class="font-medium text-center lg:text-left lg:mt-3">Personal Details</div>
+                <div class="flex flex-col justify-center items-center lg:items-start mt-2">
+                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="hash" class="w-4 h-4 mr-2"></i> {{ $user->nrc_id ?? 'No NRC ID' }} </div>
+                    <a href="mailto:{{$user->email}}" class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="mail" class="w-4 h-4 mr-2"></i> {{ $user->email ?? '' }} </a>
+                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="map" class="w-4 h-4 mr-2"></i> {{ $user->address ?? 'No Address' }} </div>
                 </div>
             </div>
-            <div class="mt-6 lg:mt-0 flex-1 px-5 border-t lg:border-0 border-slate-200/60 dark:border-darkmode-400 pt-5 lg:pt-0">
-                <div class="font-medium text-center lg:text-left lg:mt-5">Service Growth</div>
-                <div class="flex items-center justify-center lg:justify-start mt-2">
-                    <div class="mr-2 w-20 flex"> Counseling: <span class="ml-3 font-medium text-success">+23%</span> </div>
-                    <div class="w-3/4">
-                        <div class="h-[55px]">
-                            <canvas class="simple-line-chart-1 -mr-5"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center justify-center lg:justify-start">
-                    <div class="mr-2 w-20 flex"> STP: <span class="ml-3 font-medium text-danger">-2%</span> </div>
-                    <div class="w-3/4">
-                        <div class="h-[55px]">
-                            <canvas class="simple-line-chart-2 -mr-5"></canvas>
-                        </div>
-                    </div>
+            @if ($user->type == 'patient')
+            <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+                <div class="font-medium text-center lg:text-left lg:mt-3">Medical Details</div>
+                <div class="flex flex-col justify-center items-center lg:items-start mt-2">
+                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="thermometer" class="w-4 h-4 mr-2"></i> {{ $user->blood_group ?? 'No Blood Group' }} </div>
+                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="user" class="w-4 h-4 mr-2"></i> {{ $user->father_name ?? 'No Father Name' }} </div>
+                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="user" class="w-4 h-4 mr-2"></i> {{ $user->mother_name ?? 'No Mother Name' }} </div>
                 </div>
             </div>
+            @else
+            <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+                <div class="font-medium text-center lg:text-left lg:mt-3">Professional Details</div>
+                <div class="flex flex-col justify-center items-center lg:items-start mt-2">
+                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="thermometer" class="w-4 h-4 mr-2"></i> {{ $user->occupation ?? 'No Occupation' }} </div>
+                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="building" class="w-4 h-4 mr-2"></i> {{ $user->department ?? 'No Department' }} </div>
+                    <div class="truncate sm:whitespace-normal flex items-center"> <i data-lucide="shield" class="w-4 h-4 mr-2"></i> {{ $user->liecense_number ?? 'No Liecense Number' }} </div>
+                </div>
+            </div>
+            @endif
+      
         </div>
-        <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist" >
+        {{-- <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist" >
             <li id="dashboard-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#dashboard" aria-controls="dashboard" aria-selected="true" role="tab" > Dashboard </a> </li>
             <li id="appointment-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#appointments" aria-selected="false" role="tab" > Appointments </a> </li>
             <li id="billing-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#billing" aria-selected="false" role="tab" > Billing </a> </li>
             <li id="payment-history-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#payment-history" aria-selected="false" role="tab" > Payment History </a> </li>
-            {{-- <li id="account-and-profile-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#account-and-profile" aria-selected="false" role="tab" > Account & Profile </a> </li>
+            <li id="account-and-profile-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#account-and-profile" aria-selected="false" role="tab" > Account & Profile </a> </li>
             <li id="activities-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#activities" aria-selected="false" role="tab" > Activities </a> </li>
-            <li id="tasks-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#tasks" aria-selected="false" role="tab" > Tasks </a> </li> --}}
+            <li id="tasks-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-4" data-tw-target="#tasks" aria-selected="false" role="tab" > Tasks </a> </li> 
            
-        </ul>
+        </ul> --}}
     </div>
     <!-- END: Profile Info -->
     <div class="intro-y tab-content mt-5">
@@ -103,17 +103,14 @@
                             <div class="dropdown-menu w-40">
                                 <ul class="dropdown-content">
                                     <li>
-                                        <a href="#" class="dropdown-item"> <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Schedule Session </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-item"> <i data-lucide="settings" class="w-4 h-4 mr-2"></i> Settings </a>
+                                        <a href="{{  route('appointment') }}" class="dropdown-item"> <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Schedule Session </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="p-5">
-                        <div class="flex flex-col sm:flex-row">
+                        {{-- <div class="flex flex-col sm:flex-row">
                             <div class="mr-auto">
                                 <a href="#" class="font-medium">Stress Management Therapy</a> 
                                 <div class="text-slate-500 mt-1">Individual Patients</div>
@@ -129,46 +126,14 @@
                                     <div class="bg-success/20 text-success rounded px-2 mt-1.5">+150</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex flex-col sm:flex-row mt-5">
-                            <div class="mr-auto">
-                                <a href="#" class="font-medium">Anger Mangement</a> 
-                                <div class="text-slate-500 mt-1">Group Counseling</div>
-                            </div>
-                            <div class="flex">
-                                <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
-                                    <div class="h-[30px]">
-                                        <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-medium">2.5k</div>
-                                    <div class="bg-pending/10 text-pending rounded px-2 mt-1.5">+150</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex flex-col sm:flex-row mt-5">
-                            <div class="mr-auto">
-                                <a href="" class="font-medium">Family & Marriage Counseling</a> 
-                                <div class="text-slate-500 mt-1">Couples</div>
-                            </div>
-                            <div class="flex">
-                                <div class="w-32 -ml-2 sm:ml-0 mt-5 mr-auto sm:mr-5">
-                                    <div class="h-[30px]">
-                                        <canvas class="simple-line-chart-1" data-random="true"></canvas>
-                                    </div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="font-medium">3.4k</div>
-                                    <div class="bg-primary/10 text-primary rounded px-2 mt-1.5">+150</div>
-                                </div>
-                            </div>
-                        </div>
+                        </div> --}}
+                        
                     </div>
                 </div>
                 <!-- END: Top Categories -->
                
                 <!-- BEGIN: Daily Sales -->
+                @if ($user->type == 'patient')
                 <div class="intro-y box col-span-12 lg:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-3 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">
@@ -179,47 +144,29 @@
                             <div class="dropdown-menu w-40">
                                 <ul class="dropdown-content">
                                     <li>
-                                        <a href="javascript:;" class="dropdown-item"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download Excel </a>
+                                        <a href="{{  route('billing') }}" class="dropdown-item"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> View More </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                        <button class="btn btn-outline-secondary hidden sm:flex"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download Excel </button>
+                        <a href="{{  route('billing') }}" class="btn btn-outline-secondary hidden sm:flex"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> View More  </a>
                     </div>
                     <div class="p-5">
-                        <div class="relative flex items-center">
+                        {{-- <div class="relative flex items-center">
                             <div class="w-12 h-12 flex-none image-fit">
-                                {{-- <i data-lucide="f/ile"> --}}
-                                {{-- <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-14.jpg"> --}}
+                                <i data-lucide="f/ile">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-14.jpg">
                             </div>
                             <div class="ml-4 mr-auto">
                                 <a href="" class="font-medium">{{$user->fname. ' '.$user->lname}}</a> 
                                 <div class="text-slate-500 mr-5 sm:mr-5">Grieving and Depression</div>
                             </div>
                             <div class="font-medium text-slate-600 dark:text-slate-500">K1900</div>
-                        </div>
-                        <div class="relative flex items-center mt-5">
-                            <div class="w-12 h-12 flex-none image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-2.jpg">
-                            </div>
-                            <div class="ml-4 mr-auto">
-                                <a href="" class="font-medium">{{$user->fname. ' '.$user->lname}}</a> 
-                                <div class="text-slate-500 mr-5 sm:mr-5">Anxiety</div>
-                            </div>
-                            <div class="font-medium text-slate-600 dark:text-slate-500">K2500</div>
-                        </div>
-                        <div class="relative flex items-center mt-5">
-                            <div class="w-12 h-12 flex-none image-fit">
-                                <img alt="" class="rounded-full" src="dist/images/profile-6.jpg">
-                            </div>
-                            <div class="ml-4 mr-auto">
-                                <a href="" class="font-medium">{{$user->fname. ' '.$user->lname}}</a> 
-                                <div class="text-slate-500 mr-5 sm:mr-5">Stress Management</div>
-                            </div>
-                            <div class="font-medium text-slate-600 dark:text-slate-500">K1100</div>
-                        </div>
+                        </div> --}}
+                        
                     </div>
                 </div>
+                @endif
                 <!-- END: Daily Sales -->
                 <!-- BEGIN: Latest Tasks -->
                 <div class="intro-y box col-span-12 lg:col-span-6">
@@ -227,24 +174,25 @@
                         <h2 class="font-medium text-base mr-auto">
                             Latest Appointments
                         </h2>
-                        <div class="dropdown ml-auto sm:hidden">
-                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                            <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
-                                <ul class="dropdown-content">
-                                    <li> <a id="latest-tasks-mobile-new-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#latest-tasks-new" class="dropdown-item" role="tab" aria-controls="latest-tasks-new" aria-selected="true">New</a> </li>
-                                    <li> <a id="latest-tasks-mobile-last-week-tab" href="javascript:;" data-tw-toggle="tab" data-tw-target="#latest-tasks-last-week" class="dropdown-item" role="tab" aria-selected="false">Last Week</a> </li>
-                                </ul>
-                            </div>
-                        </div>
                         <ul class="nav nav-link-tabs w-auto ml-auto hidden sm:flex" role="tablist" >
                             <li id="latest-tasks-new-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-5 active" data-tw-target="#latest-tasks-new" aria-controls="latest-tasks-new" aria-selected="true" role="tab" > New </a> </li>
                             <li id="latest-tasks-last-week-tab" class="nav-item" role="presentation"> <a href="javascript:;" class="nav-link py-5" data-tw-target="#latest-tasks-last-week" aria-selected="false" role="tab" > Last Week </a> </li>
                         </ul>
+                        <div class="dropdown ml-auto">
+                            <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
+                            <div class="nav nav-tabs dropdown-menu w-40" role="tablist">
+                                <ul class="dropdown-content">
+                                    <li> 
+                                        <a href="{{  route('appointment') }}" class="dropdown-item"> <i data-lucide="plus" class="w-4 h-4 mr-2"></i> Schedule Session </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="p-5">
                         <div class="tab-content">
                             <div id="latest-tasks-new" class="tab-pane active" role="tabpanel" aria-labelledby="latest-tasks-new-tab">
-                                <div class="flex items-center">
+                                {{-- <div class="flex items-center">
                                     <div class="border-l-2 border-primary dark:border-primary pl-4">
                                         <a href="" class="font-medium">Create New Campaign</a> 
                                         <div class="text-slate-500">10:00 AM</div>
@@ -252,25 +200,8 @@
                                     <div class="form-check form-switch ml-auto">
                                         <input class="form-check-input" type="checkbox">
                                     </div>
-                                </div>
-                                <div class="flex items-center mt-5">
-                                    <div class="border-l-2 border-primary dark:border-primary pl-4">
-                                        <a href="" class="font-medium">Meeting With Client</a> 
-                                        <div class="text-slate-500">02:00 PM</div>
-                                    </div>
-                                    <div class="form-check form-switch ml-auto">
-                                        <input class="form-check-input" type="checkbox">
-                                    </div>
-                                </div>
-                                <div class="flex items-center mt-5">
-                                    <div class="border-l-2 border-primary dark:border-primary pl-4">
-                                        <a href="" class="font-medium">Create New Repository</a> 
-                                        <div class="text-slate-500">04:00 PM</div>
-                                    </div>
-                                    <div class="form-check form-switch ml-auto">
-                                        <input class="form-check-input" type="checkbox">
-                                    </div>
-                                </div>
+                                </div> --}}
+                          
                             </div>
                         </div>
                     </div>
@@ -300,7 +231,7 @@
                     <div class="p-5">
                         <div class="tab-content">
                             <div id="work-in-progress-new" class="tab-pane active" role="tabpanel" aria-labelledby="work-in-progress-new-tab">
-                                <div>
+                                {{-- <div>
                                     <div class="flex">
                                         <div class="mr-auto">Pending Tasks</div>
                                         <div>20%</div>
@@ -308,26 +239,10 @@
                                     <div class="progress h-1 mt-2">
                                         <div class="progress-bar w-1/2 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                </div>
-                                <div class="mt-5">
-                                    <div class="flex">
-                                        <div class="mr-auto">Completed Tasks</div>
-                                        <div>2 / 20</div>
-                                    </div>
-                                    <div class="progress h-1 mt-2">
-                                        <div class="progress-bar w-1/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="mt-5">
-                                    <div class="flex">
-                                        <div class="mr-auto">Tasks In Progress</div>
-                                        <div>42</div>
-                                    </div>
-                                    <div class="progress h-1 mt-2">
-                                        <div class="progress-bar w-3/4 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <a href="" class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a> 
+                                </div> --}}
+                                @if ($user->type == 'patient')
+                                    <a title="View medical and therapy information" href="{{ route('all-patient-files', $user->id) }}" class="btn btn-warning block w-40 mx-auto mt-5 tooltip">Patient Records</a> 
+                                @endif
                             </div>
                         </div>
                     </div>

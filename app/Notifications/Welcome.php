@@ -41,7 +41,7 @@ class Welcome extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Hi '.$this->data['name'].'. Welcome to Nsansawellness online therapy.')
+                    ->line('Hi '.$this->data['name'].'. Welcome to Nsansawellness online therapy. Please wait while a counselor is assigned to you. An email will be sent once a counselor has been assigned to you.')
                     ->action('My Account', url('/counseling-center'))
                     ->line('Thank you!');
     }
@@ -57,7 +57,7 @@ class Welcome extends Notification
         return [
             'sender_id' => $this->data['sender_id'],
             'name' => $this->data['name'],
-            'message' => 'Hi '.$this->data['name'].'. Welcome to Nsansawellness online therapy.',
+            'message' => 'Hi '.$this->data['name'].'. Welcome to Nsansawellness online therapy. An email will be sent once a counselor has been assigned to you.',
             'sender' => 'Nsansa Wellness',
             'type' =>  'welcome',
             'ispopped' =>  0,

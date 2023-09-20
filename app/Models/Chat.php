@@ -16,8 +16,15 @@ class Chat extends Model
         'receiver_id',
         'third_party_id',
         'appointment_id',
+        'assign_id',
+        'room_id',
+        'is_active',
         'status'
     ];
+
+    public static function getChatId($id){
+        $guest = UserAppointment::where('appointment_id', $id);
+    }
 
     public function sender(){
         return $this->belongsTo(User::class, 'sender_id');

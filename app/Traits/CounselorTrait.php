@@ -2,33 +2,20 @@
 
 namespace App\Traits;
 
-use App\Models\AssignCounselor;
-use Illuminate\Http\Request;
-use App\Models\Appointment;
-use App\Models\PatientFile;
 use App\Models\User;
 
 trait CounselorTrait {
-    public $users, $u, $pf, $ac, $appointment;
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct(User $users, PatientFile $pf, Appointment $app, AssignCounselor $ac)
-    {
-        $this->middleware('auth');
-        $this->appointment = $app;
-        $this->user = $users;
-        $this->pf = $pf;
-        $this->ac = $ac;
-    }
+    use ChatTrait;
 
     public function getMyCounselor($u){
-        $counselor = $this->user->role('counselor')->whereHas('assignedCounselor', function ($query) use ($u) {
-            $query->where('patient_id', $u->id);
-        })->get();
-        return $counselor;
+        $my_active_chat = $this->active_chat_info($u);
+
+        if ($my_active_chat !== null) {
+            $counselor = User::role('counselor')->where('id', $my_active_chat->sender_id)->get();
+            return $counselor;
+        }
+        return null;
+
     }
 
     public function meetingRecordings($u){

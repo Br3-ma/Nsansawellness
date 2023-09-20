@@ -5,6 +5,7 @@ namespace App\Traits;
 use App\Models\AssignCounselor;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\Chat;
 use App\Models\PatientFile;
 use App\Models\User;
 
@@ -27,12 +28,12 @@ trait PatientTrait {
     // Return all your patients with their user info, file records
     public function getMyPatients($u){
         if($u->hasAnyRole(['admin','administrator'])){
-            $my_patients = $this->user->role('patient')->with('assignedCounselor')->paginate(6);
+            $my_patients = $this->user->role('patient')->with('assignedCounselor')->orderBy('fname', 'asc')->paginate(6);
         }else{
             $my_patients = $this->user->role('patient')->whereHas('assignedCounselor', function ($query) use ($u) {
                 $query->where('counselor_id', $u->id);
                 $query->where('status', 1);
-            })->paginate(6);
+            })->orderBy('fname', 'asc')->paginate(6);
         }
         return $my_patients;
     }
@@ -62,7 +63,12 @@ trait PatientTrait {
         return $total;
     }
 
-    
 
+    public function myCurrentCounselor(){
+        // Get my current counselor
+        $data = Chat::where('receiver_id', auth()->user()->id)->where('status', 1)->first();
+        // dd($data);
+        return $data;
+    }
 
 }

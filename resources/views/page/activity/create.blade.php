@@ -30,7 +30,7 @@
         </div>
     @endif
     <div class="grid grid-cols-11 gap-x-6 mt-5 pb-20">
-        <form class="col-span-12" method="POST" action="{{ route('activities.store') }}">
+        <form style="max-width: 100%" class="col-span-12" method="POST" action="{{ route('activities.store') }}">
             @csrf
             <div class="intro-y col-span-11 2xl:col-span-9">
                 <!-- BEGIN: Product Information -->

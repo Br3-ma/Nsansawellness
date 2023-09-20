@@ -11,6 +11,7 @@
         <!-- BEGIN: Profile Menu -->
         <div class="col-span-12 lg:col-span-4 2xl:col-span-3 flex lg:block flex-col-reverse">
             <div class="intro-y box mt-5 lg:mt-0">
+                @hasrole('counselor')
                 <div class="relative flex items-center p-5">
                     <h2>Patients Assigned</h2>
                     {{-- <div class="dropdown">
@@ -55,17 +56,31 @@
                 </div>
                 <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
                     @forelse($activity->patient_activities as $u)
-                        <a class="flex items-center mt-5" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i>{{ $u->users->fname.' '.$u->users->lname }} </a>
+                        <div class="flex">
+                            <a class="flex items-center mt-0" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i>{{ $u->users->fname.' '.$u->users->lname }} </a>
+                            <a href="{{ route('show-patient-file', $u->users->id) }}" class="btn btn-xs btn-secondary py-1 px-2 sm:ml-auto mt-3 sm:mt-0sm:ml-auto mt-3 sm:mt-0">View Diagnosis</a>
+                        </div>
                     @empty
                         <p>No Patients Assigned</p>
                     @endforelse
                 </div>
+
+                
                 <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400 flex">
                     {!! Form::open(['method' => 'DELETE','route' => ['activities.destroy', $activity->id],'style'=>'display:inline']) !!}
                     {!! Form::submit('Delete Activity', ['class' => 'btn btn-sm btn-danger py-1 px-2']) !!}
                     {!! Form::close() !!} 
-                    {{-- <button type="button" class="btn btn-outline-secondary py-1 px-2 ml-auto">New Quick Link</button> --}}
                 </div>
+                @endhasrole
+
+                @hasrole('patient')
+                <div class="p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                    <a class="flex items-center mt-0" href=""> <i data-lucide="user" class="w-4 h-4 mr-2"></i> Me </a>  
+                </div>
+                <div class="my-2">
+                    <input type="checkbox" data-id="{{ $activity->id }}" name="status" class="js-switch" {{ $activity->status_id == 0 ? 'checked' : '' }}>
+                </div>
+                @endhasrole
             </div>
         </div>
         <!-- END: Profile Menu -->
@@ -76,8 +91,8 @@
                         <h2 class="font-medium text-base mr-auto">
                             Activity Details
                         </h2>
-                        <button data-carousel="today-schedule" data-target="prev" class="tiny-slider-navigator btn btn-outline-secondary px-2 mr-2"> <i data-lucide="chevron-left" class="w-4 h-4"></i> </button>
-                        <button data-carousel="today-schedule" data-target="next" class="tiny-slider-navigator btn btn-outline-secondary px-2"> <i data-lucide="chevron-right" class="w-4 h-4"></i> </button>
+                        {{-- <button data-carousel="today-schedule" data-target="prev" class="tiny-slider-navigator btn btn-outline-secondary px-2 mr-2"> <i data-lucide="chevron-left" class="w-4 h-4"></i> </button>
+                        <button data-carousel="today-schedule" data-target="next" class="tiny-slider-navigator btn btn-outline-secondary px-2"> <i data-lucide="chevron-right" class="w-4 h-4"></i> </button> --}}
                     </div>
                     <div class="tiny-slider py-5" id="today-schedule">
                         <div class="px-5 text-center sm:text-left">
@@ -86,7 +101,6 @@
                             <div class="mt-2 text-info">{{ $activity->created_at->toFormattedDateString() }}</div>
                             <div class="flex flex-col sm:flex-row items-center mt-5">
                                 <div class="flex items-center text-slate-500"> <i data-lucide="map-pin" class="hidden sm:block w-4 h-4 mr-2"></i> Location </div>
-                                <button class="btn btn-secondary py-1 px-2 sm:ml-auto mt-3 sm:mt-0sm:ml-auto mt-3 sm:mt-0">View Diagnosis</button>
                             </div>
                         </div>
                         {{-- <div class="px-5 text-center sm:text-left">
@@ -109,7 +123,7 @@
                         </div> --}}
                     </div>
                 </div>
-                <div class="intro-y box col-span-12 2xl:col-span-6">
+                {{-- <div class="intro-y box col-span-12 2xl:col-span-6">
                     <div class="flex items-center px-5 py-5 sm:py-0 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">
                             Work In Progress
@@ -143,7 +157,7 @@
                                 </div>
                                 @empty
                                 @endforelse
-                                {{-- <div class="mt-5">
+                                <div class="mt-5">
                                     <div class="flex">
                                         <div class="mr-auto">Completed Tasks</div>
                                         <div>2 / 20</div>
@@ -170,7 +184,7 @@
                                         <div class="progress-bar w-4/5 bg-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                                <a href="" class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a>  --}}
+                                <a href="" class="btn btn-secondary block w-40 mx-auto mt-5">View More Details</a> 
                             </div>
                         </div>
                     </div>
@@ -219,10 +233,10 @@
                                 @empty
                                 @endforelse
                                
-                                {{-- <div class="flex items-center mr-5 mb-1 sm:mb-0">
+                                <div class="flex items-center mr-5 mb-1 sm:mb-0">
                                     <div class="w-2 h-2 bg-primary rounded-full mr-3"></div>
                                     <span>Product Profit</span> 
-                                </div> --}}
+                                </div>
                             </div>
                             <div class="dropdown mt-3 sm:mt-0 mr-auto sm:mr-0">
                                 <button class="dropdown-toggle btn btn-outline-secondary font-normal" aria-expanded="false" data-tw-toggle="dropdown"> Filter by Month <i data-lucide="chevron-down" class="w-4 h-4 ml-2"></i> </button>
@@ -243,10 +257,31 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: General Statistics -->
             </div>
         </div>
     </div>
 </div>
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.js-switch').change(function () {
+        let status = $(this).prop('checked') === true ? 1 : 0;
+        let activity_id = $(this).data('id');
+
+        console.log(activity_id);
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            cache: false,
+            url: '{{ route('activity.status') }}',
+            data: {'status': status, 'act_id': activity_id},
+            success: function (data) {
+                console.log(data.message);
+            }
+        });
+    });
+});
+</script>

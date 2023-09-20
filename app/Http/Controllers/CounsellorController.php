@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SessionUsage;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CounsellorController extends Controller
@@ -27,12 +29,28 @@ class CounsellorController extends Controller
         return view('home');
 
     }
+    public function profiles()
+    {
+        
+        $counselors = User::role('counselor')->get();
+        return view('page.counselors.index', compact('counselors'));
+
+    }
 
     public function patient_files()
     {
         return view('page.common.patient_files');
     }
 
+    public function details($id) 
+    {
+        $videocalls = SessionUsage::where('counselor_id', $id)->get();
+        $user = User::with('myfiles')->where('id', $id)->first();
+        return view('page.counselors.details', [
+            'user' => $user,
+            'videocalls' => $videocalls,
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

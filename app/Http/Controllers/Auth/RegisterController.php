@@ -3,14 +3,19 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\MyFile;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\UserFile;
 use App\Notifications\NewUserNotification;
 use App\Notifications\NsansaWellnessCounselor;
 use App\Notifications\Welcome;
+use App\Traits\CoreTrait;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Pusher\Pusher;
 
@@ -75,58 +80,96 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $pushConfs = array(
-            'cluster' => 'ap2',
-            'useTLS' => true
-        );
-        $pusher = new Pusher(
-            '033c1fdbd94861470759',
-            '779dcdbbdd308d0dd9e9',
-            '1507438',
-            $pushConfs
-        );
+        
+        // DB::beginTransaction();
+        try {
+            $admin = User::first();
+            $user = User::create([
+                'fname' => $data['fname'],
+                'lname' => $data['lname'],
+                'email' => $data['email'],
+                'username' => $data['email'],
+                'type' => $data['type'],
+                'guest_id' => $data['guest_id'],
+                'password' => bcrypt($data['password']),
+                'liecense_number' => $data['liecense'] ?? 000000,
+                'department' => $data['role']
+                // 'mobile_no' => $data['mobile_no'],
+                // 'state' => $data['state'],
+                // 'active' => 0,
+                // 'password' => Hash::make($data['password']),
+                // 'password' => Hash::make($data['password']),
+            ]);
 
-        $admin = User::first();
-        $user = User::create([
-            'fname' => $data['fname'],
-            'lname' => $data['lname'],
-            'email' => $data['email'],
-            'username' => $data['email'],
-            'type' => $data['type'],
-            'guest_id' => $data['guest_id'],
-            'password' => bcrypt($data['password']),
-            'liecense_number' => $data['liecense'] ?? 000000,
-            'department' => $data['role']
-            // 'mobile_no' => $data['mobile_no'],
-            // 'state' => $data['state'],
-            // 'active' => 0,
-            // 'password' => Hash::make($data['password']),
-            // 'password' => Hash::make($data['password']),
-        ]);
+            if($data['type'] != 'patient'){
+                $mf = MyFile::create([
+                    'user_id' => $user->id
+                ]);
 
-        $payload = [
-            'sender_id' => $user->id,
-            'name' => $user->fname.' '.$user->lname,
-            'sender' => 'Nsansa Wellness Group'
-        ];
+                if (array_key_exists('nrc_doc', $data)) {
+                    $nrcDoc = $data['nrc_doc'];
+        
+                    if ($nrcDoc instanceof \Illuminate\Http\UploadedFile && $nrcDoc->isValid()) {
+                        $path = Storage::disk('public')->putFile('ufiles', $nrcDoc);
+        
+                        // Store the $path in your database or perform other actions related to the uploaded file
+                        $mf->nrc_file = $path;
+                        $mf->save();
+                    }
+                }
+                if (array_key_exists('cv_doc', $data)) {
+                    $cvDoc = $data['cv_doc'];
+        
+                    if ($cvDoc instanceof \Illuminate\Http\UploadedFile && $cvDoc->isValid()) {
+                        $path = Storage::disk('public')->putFile('ufiles', $cvDoc);
+        
+                        // Store the $path in your database or perform other actions related to the uploaded file
+                        $mf->cv_file = $path;
+                        $mf->save();
+                    }
+                }
+                if (array_key_exists('cert_doc', $data)) {
+                    $certDoc = $data['cert_doc'];
+        
+                    if ($certDoc instanceof \Illuminate\Http\UploadedFile && $certDoc->isValid()) {
+                        $path = Storage::disk('public')->putFile('ufiles', $certDoc);
+        
+                        // Store the $path in your database or perform other actions related to the uploaded file
+                        $mf->cert_file = $path;
+                        $mf->save();
+                    }
+                }
+            }
+            
+            
+            $payload = [
+                'sender_id' => $user->id,
+                'name' => $user->fname.' '.$user->lname,
+                'sender' => 'Nsansa Wellness Group'
+            ];
 
-        if($data['type'] == 'patient'){
-            $user->assignRole('patient');
-            // Broadcast a notifications
-            $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
-            // $pusher->trigger('popup-channel', 'user-register', $message); 
-            // Send a notification to Admin about the new patient
-            $user->notify(new Welcome($payload));
-        }else{
-            $user->assignRole('counselor');
-            $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
-            // $pusher->trigger('popup-channel', 'user-register', $message);
-             // Send a notification to Admin about the new counselor
-            $user->notify(new NsansaWellnessCounselor($payload));
+            if($data['type'] == 'patient'){
+                $user->assignRole('patient');
+                $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
+                // Send a notification to Admin about the new patient
+
+                // $this->autoAssign($user->toArray());
+                $user->notify(new Welcome($payload));
+            }else{
+                $user->assignRole('counselor');
+                $message = 'Welcome '.$user->fname.' '.$user->lname.' Thank you for joining';
+                // Send a notification to Admin about the new counselor
+                $user->notify(new NsansaWellnessCounselor($payload));
+            }
+        
+            // Send a notification to Admin about the new user
+            $admin->notify(new NewUserNotification($payload));
+            // DB::commit();
+            return $user;
+        } catch (\Throwable $th) {
+            dd($th);
+            // DB::rollBack();
+            return redirect()->back()->with('message', 'An email could not be sent you. please check again');
         }
-    
-        // Send a notification to Admin about the new user
-        $admin->notify(new NewUserNotification($payload));
-        return $user;
     }
 }

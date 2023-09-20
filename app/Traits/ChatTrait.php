@@ -2,11 +2,31 @@
 
 namespace App\Traits;
 
+use App\Models\Chat;
 use App\Models\ChatMessages;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 trait ChatTrait {
+
+    public function active_chat($id){
+        return Chat::where('receiver_id', $id)
+        ->where('status', 1)
+        ->orderByDesc('id')
+        ->first()
+        ->id;
+    }
+
+    public function active_chat_data($id){
+        return Chat::where('receiver_id', $id)
+        ->where('status', 1)
+        ->first();
+    }
+    
+    public function active_chat_info($id){
+        return Chat::where('receiver_id', auth()->user()->id)
+                        ->where('status', 1)->first();
+    }
 
     public function getChatMessages($req){
        

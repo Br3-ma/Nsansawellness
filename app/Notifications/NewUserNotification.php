@@ -41,8 +41,8 @@ class NewUserNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New Registered Patient.')
-                    ->action('View Patient', url('/'))
+                    ->line('You have a new registered patient '.$this->data['name'].', please goto visit nsansawellness.com/patient-files and assign a counselor.')
+                    ->action('Assign a Counselor', url('/patient-files'))
                     ->line('Thank you for using our application!');
     }
 

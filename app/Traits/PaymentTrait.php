@@ -3,147 +3,118 @@
 namespace App\Traits;
 
 use App\Models\Billing;
+use App\Models\Payment;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 trait PaymentTrait {
-    public $users, $pf, $appointment, $chat, $billing;
 
-        public function __construct(User $users, Billing $billing)
-        {
-            $this->middleware('auth');
-            $this->users = $users;
-            $this->billing = $billing;
-            $this->middleware(['auth', 'verified']);
-        }
+    public function recordSparcoTransaction($data, $user_id, $billing_id){
+          // Get the last two elements from the array
+          // dd($data);
+      try{
+          // Remove the comma from the string
+          $numericValue = str_replace(',', '', $data->amount);
+          $amount = (float) $numericValue;
+          if($data->status == 'TXN_AUTH_SUCCESSFUL' || $data->status == 'TXN_SUCCESSFUL' || $data->status == 'TXN_PROCESSING'){
+            $status = $data->status ;
+            $bool = 2;
+            $can_peer = 'true';
+          }else{
+            $status = $data->status ;
+            $bool = 3;
+            $can_peer = 'false';
+          }
+          
+          Payment::create([
+            'settled_amount' => $amount,
+            'amount' => $data->amount,
+            // 'transaction_ref' => $data->merchantReference,
+            'paymentReference' => $data->reference,
+            'payment_method' => $data->customerMobileWallet,
+            'paymentType' => 'Mobile Money',
+            'user_id' => (int) $user_id,
+            'billing_id' => $billing_id,
+            'desc' => 'Nsansa Wellness Counseling Services',
+            'transaction_status'=> $status
+            // 'is_paid'=> 'F'
+          ]);
 
-        public function getToken($creditials){
-            $curl = curl_init();
-            
-            curl_setopt_array($curl, array(
-              CURLOPT_URL => 'https://tiltafrica.eu.auth0.com/oauth/token',
-              CURLOPT_RETURNTRANSFER => true,
-              CURLOPT_ENCODING => '',
-              CURLOPT_MAXREDIRS => 10,
-              CURLOPT_TIMEOUT => 0,
-              CURLOPT_FOLLOWLOCATION => true,
-              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-              CURLOPT_CUSTOMREQUEST => 'POST',
-              CURLOPT_POSTFIELDS =>'{
-              "username": "joe@example.com",
-              "password": "blowfish-t#ought4l-3ostly-conceal",
-              "audience": "https://api.tiltafrica.com/tilt-pay",
-              "grant_type": "password",
-              "client_id": "hK20skkNQKl123m22duNSJ"
-            }',
-              CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'Authorization: Bearer {{bearerToken}}',
-                'Cookie: __cf_bm=irvUj2a5f7mSLECShb5YI1_0JLd3VHoHU3Zdwp2hfjY-1674135173-0-AWRRAKC8vEYSzT/18/gv9ar1qXMovGDyjvB7MR8OX/JHrhVPKP7LK2IQplsH2/9S+z/zhPIXxCsb7m+E2f7aHKc=; did=s%3Av0%3A1b034250-97fa-11ed-ac70-910eed14fd87.3oxwG1TE9qVchHyLRUFPb1EGcR0WfDODxEjaY%2Bt86W4; did_compat=s%3Av0%3A1b034250-97fa-11ed-ac70-910eed14fd87.3oxwG1TE9qVchHyLRUFPb1EGcR0WfDODxEjaY%2Bt86W4'
-              ),
-            ));
-            
-            $response = curl_exec($curl);
-            
-            curl_close($curl);
-            echo $response;
-            
-        }
+          // Update billing status
+          $billing = Billing::where('id', $billing_id)->first();
+          $billing->status = $bool;
+          $billing->can_video_call = $can_peer;
+          $billing->balance = $billing->charge_amount - $amount;
+          $billing->save();
 
-        public function makePayments($req){
-            $curl = curl_init();
+          return true;
+      } catch (\Throwable $th) {
+        // dd($th);
+        return false;
+      }
+    }
 
-            curl_setopt_array($curl, array(
-              CURLOPT_URL => 'https://tiltafrica.stoplight.io/mocks/tiltafrica/tilt-pay/2826742/v1/payments',
-              CURLOPT_RETURNTRANSFER => true,
-              CURLOPT_ENCODING => '',
-              CURLOPT_MAXREDIRS => 10,
-              CURLOPT_TIMEOUT => 0,
-              CURLOPT_FOLLOWLOCATION => true,
-              CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-              CURLOPT_CUSTOMREQUEST => 'POST',
-              CURLOPT_POSTFIELDS =>'{
-              "instruction": {
-                "payment_scheme": "pay_later",
-                "external_transaction_id": "8e7fdb73-6b67-4d7e-8e1d-603545abe756",
-                "recipient": {
-                  "name": "John Snow",
-                  "mobile_number": "260961234567",
-                  "notify_recipient": false
-                },
-                "recipient_verification": {
-                  "require_otp": false,
-                  "require_password": false,
-                  "password_description": "",
-                  "password_value": ""
-                },
-                "creditor_display_name": "My Company Name",
-                "display_reference": "January 2021 Rent",
-                "internal_reference": "INV123456",
-                "amount": 50,
-                "country": "zm",
-                "currency": "zmw",
-                "valid_until": "2021-02-01T00:00:00+0200"
-              }
-            }',
-              CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json',
-                'Authorization: Bearer {{bearerToken}}'
-              ),
-            ));
-            
-            $response = curl_exec($curl);
-            
-            curl_close($curl);
-            echo $response;
-            
-        }
+    public function recordTransaction($data){
+      try {
+        // dd($data);
+          // Explode the string by slashes
+          $segments = explode('/', $data->getRequestUri());
 
-        public function __verfiyPayment($id){
-            $curl = curl_init();
+          // Get the last two elements from the array
+          $billing_id = end($segments);
+          $user_id = prev($segments);
+          // Remove the comma from the string
+          $numericValue = str_replace(',', '', $data['amount']);
+          $amount = (float) $numericValue;
+          if($data['paymentStatus'] == 'S' || $data['paymentStatus'] == 's'){
+            $status = 'Success';
+            $bool = 2;
+          }else{
+            $status = 'Failed';
+            $bool = 3;
+          }
+          Auth::loginUsingId($user_id);
+          Payment::create([
+            'settled_amount' => $amount,
+            'amount' => $data['amount'],
+            // 'transaction_ref' => $data['paymentReference'],
+            'paymentReference' => $data['paymentReference'],
+            'payment_method' => $data['paymentChannel'],
+            'paymentType' => $data['paymentChannel'],
+            'user_id' => (int) $user_id,
+            'billing_id' => $billing_id,
+            'desc' => 'Nsansa Wellness Counseling Services',
+            'transaction_status'=> $status
+            // 'is_paid'=> 'F'
+          ]);
 
-            curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://tiltafrica.stoplight.io/mocks/tiltafrica/tilt-pay/2826742/v1/payments/verify/94ce4401-00fa-4482-8fa5-0d91671fe8c2',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer {{bearerToken}}'
-            ),
-            ));
+          // Update billing status
+          $billing = Billing::where('id', (int) $billing_id)->first();
+          $billing->status = $bool;
+          $billing->balance = $billing->charge_amount - $amount;
+          $billing->save();
 
-            $response = curl_exec($curl);
-
-            curl_close($curl);
-            echo $response;
-
-        }
-
-        public function __fetchPayments($id){
-            $curl = curl_init();
-
-            curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://tiltafrica.stoplight.io/mocks/tiltafrica/tilt-pay/2826742/v1/payments/cb849a50-d80f-476c-b22e-803d4032f05c',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer {{bearerToken}}'
-            ),
-            ));
-
-            $response = curl_exec($curl);
-
-            curl_close($curl);
-            echo $response;
-
-        }
-        
+          return redirect()->route('patient');
+      } catch (\Throwable $th) {
+        dd($th);
+      }
+    }
 }
+
+// "",
+// "companyName",
+// "firstName",
+// "lastName",
+// "customerType",
+// "email",
+// "expiryDate",
+// "mobile",
+// "responseMethod",
+// "sourceInstitution",
+// "paymentDescription",
+// "paymentReference",
+// "",
+// "redirectUrl",  
+// "systemId",
+// "password",
+// "tpin"

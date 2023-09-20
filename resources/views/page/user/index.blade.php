@@ -70,7 +70,7 @@
                     <div class="w-8 h-8 lg:w-12 lg:h-12 image-fit mr-1">
                         @if($user->image_path == null)
                             <div class="w-8 h-8 bg-primary text-center px-1 py-2 rounded-full zoom-in tooltip" title="{{ $user->fname.' '.$user->lname  }}">
-                                <span class="text-white">{{ $user->fname[0].' '.$user->lname[0] }}</span>
+                                <span class="text-white capitalize">{{ $user->fname[0].' '.$user->lname[0] }}</span>
                             </div>
                         @else
                             <img alt="User" class="w-8 h-8 rounded-full" src="{{ asset('public/storage/'.$user->image_path) }}">
@@ -80,6 +80,8 @@
                     <div class="lg:ml-2 w-3/4 lg:w-full lg:mr-auto text-left mt-0">
                         <a href="{{ route('users.show', $user->id) }}" class="capitalize font-medium">{{ $user->fname.' '.$user->lname }}</a> 
                         <div class="text-slate-500 text-xs mt-0 lg:mt-0.5">
+                            <span>{{ $user->email }}</span>
+                            <br>
                             @foreach($user->roles as $role)
                                 <span class="capitalize">{{ $role->name }}</span>
                             @endforeach
@@ -120,8 +122,11 @@
                             {{-- <div>20%</div> --}}
                         </div>
                     </div>
-                    {{-- <div class="w-20 h-10"> --}} 
-                    <a href={{ url('auto-assign/'.$user->guest_id) }} class="btn btn-warning text-white py-1 px-2 mr-2">Auto Assign</a>
+                    @foreach($user->roles as $role)
+                        @if($role->name == 'patient')
+                            <a href="{{ route('all-patient-files', $user->id) }}" class="btn btn-warning text-white py-1 px-2 mr-2">Patient Files</a>   
+                        @endif
+                    @endforeach
                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-outline-secondary py-1 px-2">Profile</a>
                     
                 </div>
@@ -135,22 +140,14 @@
         </div>
         @endforelse
         
-        <!-- END: Users Layout -->
-        <!-- BEGIN: Pagination -->
-        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap items-center"></div>
-            <nav class="w-full sm:w-1/2 sm:mr-auto">
-                <ul class="pagination w-1/2">
-                    {!! $users->links('pagination::tailwind') !!}
+
+        <div class="intro-y col-span-12 flex flex-wrap sm:flex-row sm:flex-nowrap w-full"></div>
+            <nav class="w-full">
+                <ul class="w-full" style="width:100%">
+                    {!! $users->links() !!}
                 </ul>
             </nav>
-            {{-- <select class="w-20 form-select box mt-3 sm:mt-0">
-                <option>10</option>
-                <option>25</option>
-                <option>35</option>
-                <option>50</option>
-            </select> --}}
         </div>
-        <!-- END: Pagination -->
     </div>
 </div>
 <!-- BEGIN: Delete Confirmation Modal -->

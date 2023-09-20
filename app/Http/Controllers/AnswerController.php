@@ -92,7 +92,15 @@ class AnswerController extends Controller
      */
     public function update(Request $request, Answer $answer)
     {
-        //
+        // dd($request);
+        try {
+            $answer->answer = $request->toArray()['edited_answer'];
+            $answer->save();
+            return response()->json(['message' => 'success.']);
+        } catch (\Throwable $th) {
+            return response()->json(['message' => 'failed.']);
+            //throw $th;
+        }
     }
 
     /**

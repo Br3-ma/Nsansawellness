@@ -89,7 +89,26 @@
                                                     <span class="elementor-icon-list-text"><a href="https://templatekit.jegtheme.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4d7dbd3daddc0ddc2d1f4d0dbd9d5ddda9ad7dbd9"></a>info@nsansawellness.com</a></span>
                                                 </li>
                                             </ul>
+
+                                            <br>
+                                            <br>
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="name">Name:</label>
+                                                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="email">Email:</label>
+                                                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message">Message:</label>
+                                                    <textarea class="form-control" id="message" placeholder="Enter your message"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </form>
                                         </div>
+                                        
                                     </div>
                                     <div class="elementor-element elementor-element-557ae33 elementor-widget elementor-widget-spacer" data-id="557ae33" data-element_type="widget" data-widget_type="spacer.default">
                                         <div class="elementor-widget-container">

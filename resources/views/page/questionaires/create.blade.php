@@ -10,7 +10,7 @@
         <a href="{{ route('questionaires.index') }}" class="intro-x btn shadow-md mr-2">Back to Questionnaires</a>
     </div>
     <!-- BEGIN: Wizard Layout -->
-    <div class="intro-y box py-4 sm:py-20 mt-2">
+    <div class="intro-y sm:py-20">
         <div class="flex justify-center">
             <button id="stp1_indicator" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2">1</button>
             <button id="stp2_indicator" class="intro-y w-10 h-10 rounded-full btn  mx-2">2</button>
@@ -20,7 +20,7 @@
             <div class="font-medium text-center text-lg">Make a Questionnaire</div>
             <div class="text-slate-500 text-center mt-2">To start off, set the questionaire preferences.</div>
         </div>
-        <form method="POST" action="{{ route('questionaires.store') }}" id="wiz-questionaire" class="wizard">
+        <form style="max-width: 100%"  method="POST" action="{{ route('questionaires.store') }}" id="wiz-questionaire" class="wizard">
             @csrf
             <ul class="wizard-steps" role="tablist">
                 <li class="tab1" role="tab">
@@ -60,8 +60,9 @@
                                 <span class="intro-y col-span-2 sm:col-span-2">
                                     <label for="input-wizard-6" class="form-label">Answer Type</label>
                                     <select name="type[]" id="input-wizard-6" class="form-select">
-                                        <option>Select One</option>
-                                        <option>Select Many</option>
+                                        <option value="Select One">Select One</option>
+                                        <option value="Custom">Custom</option>
+                                        <option value="Select Many">Select Many</option>
                                     </select>
                                 </span>
                                 <span class="intro-y col-span-3 sm:col-span-2 mt-5">
@@ -134,7 +135,7 @@ $(document).ready(function(){
     // var fieldWRPPR ='';
     var ansNewField = '<div class="intro-y col-span-6 sm:col-span-6"><label for="input-wizard-1" class="form-label font-bold">Answers</label><input id="input-wizard-1" name="answer[]" type="text" class="form-control" placeholder="Description"></div><div class="intro-y col-span-3 sm:col-span-3 md: mt-5"><a href="javascript:void(0)" class="add_ans_button btn btn-secondary w-20 text-xs">Add Answer</a></div>';
     var ansField = '<div class="intro-y col-span-6 sm:col-span-6"><label for="input-wizard-1" class="form-label font-bold">Answers</label><input id="input-wizard-1" name="answer[]" type="text" class="form-control" placeholder="Description"></div><div class="intro-y col-span-3 sm:col-span-3 md: mt-5"><a href="javascript:void(0)" class="remove_ans_button btn btn-secondary w-20 text-xs">Remove Answer</a></div>';
-    var fieldHTML ='<div class="grid grid-cols-12 gap-4 gap-y-5 mt-5"><span class="intro-y col-span-4 sm:col-span-6"><label for="input-wizard-1" class="form-label">Description</label><input id="input-wizard-1" name="question[]" type="text" class="form-control" required placeholder="Description"></span><span class="intro-y col-span-2 sm:col-span-2"><label for="input-wizard-6" class="form-label">Answer Type</label><select name="type[]" id="input-wizard-6" class="form-select"><option>Select One</option><option>Select Many</option></select></span><span class="intro-y col-span-3 sm:col-span-2 mt-5"><a href="javascript:void(0)" class="btn btn-secondary w-20 text-xs remove_button">Remove Question</a></span></div>';
+    var fieldHTML ='<div class="grid grid-cols-12 gap-4 gap-y-5 mt-5"><span class="intro-y col-span-4 sm:col-span-6"><label for="input-wizard-1" class="form-label">Description</label><input id="input-wizard-1" name="question[]" type="text" class="form-control" required placeholder="Description"></span><span class="intro-y col-span-2 sm:col-span-2"><label for="input-wizard-6" class="form-label">Answer Type</label><select name="type[]" id="input-wizard-6" class="form-select"><option value="Select One">Select One</option><option value="Custom">Custom</option><option value="Select Many">Select Many</option></select></span><span class="intro-y col-span-3 sm:col-span-2 mt-5"><a href="javascript:void(0)" class="btn btn-secondary w-20 text-xs remove_button">Remove Question</a></span></div>';
     var x = 1; //Initial field counter is 1
     
     //Once add sub answer

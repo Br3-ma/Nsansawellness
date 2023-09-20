@@ -41,8 +41,8 @@ class CounselorAssigned extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('You have been assigned a counselor')
-                    // ->action('Start your conversation', url('view-appointment/'.$this->data['appointment_id']))
+                    ->line('We are pleased to inform you that you have been assigned a counselor. Please log in to your Nsansawellness account to schedule an appointment at your earliest convenience.')
+                    ->action('Make an Appointment', url('/schedule-appointments'))
                     ->line('Thank you!');
     }
 

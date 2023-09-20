@@ -4373,6 +4373,13 @@ select{
    | https://tailwindcss.com/docs/theme
    |
    */
+@font-face {
+    font-family: 'Eczar';
+    src: url('dist/fonts/static/Eczar-SemiBold.ttf') format('truetype'),
+          url('dist/fonts/static/eczar-semiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
 /* cyrillic-ext */
 @font-face {
   font-family: "Roboto";

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Chat;
 use App\Models\ChatMessages;
+use App\Models\SessionNote;
+use App\Models\User;
 use App\Traits\ChatTrait;
 use Illuminate\Http\Request;
 use Session;
@@ -22,8 +24,8 @@ class ChatController extends Controller
         $id = $req->toArray()['id'];
         $owner = $req->toArray()['owner'];
 
-        // Get the chat sessions
-        $chat_session = Chat::with('chat_messages.user')->where('id', $id)->get()->toArray()[0];
+  // Get the chat sessions
+        $chat_session = Chat::with('chat_messages.user')->where('id', $id)->get()->toArray()[0];      
 
         // Set that either parties have seen the message
         // The last message has appeared in either parties chat
@@ -41,6 +43,15 @@ class ChatController extends Controller
             ]);
         }
         return response()->json(['chat_session' => $chat_session], 200);
+    }
+    
+    public function session_notes($id)
+    {
+        $chat =Chat::where('id', $id)->where('status', 1)->first();
+        $notes = SessionNote::where('chat_id', $id)->where('status', 1)->first();
+        $user = User::where('id', $chat->receiver_id)->first();
+
+        return view('page.patients.session_notes', compact('notes', 'user'));
     }
 
     /**
@@ -61,8 +72,13 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        // Save the new message
-        ChatMessages::firstOrCreate($request->toArray());
+        try {
+            // Save the new message
+            ChatMessages::firstOrCreate($request->toArray());
+            return response()->json(200);
+        } catch (\Throwable $th) {
+            return response()->json(500);
+        }
     }
 
     /**
@@ -92,7 +108,6 @@ class ChatController extends Controller
                 $chat_session = ChatMessages::with('user')->where('chat_id', $chat_id)->where('status', 1)->get();
                 
                 if($chat_session->isNotEmpty()){
-                    
                     // The sender has seen the message
                     ChatMessages::where('chat_id', $chat_id)
                     ->update([
@@ -103,7 +118,6 @@ class ChatController extends Controller
                 return response()->json(['chat_messages' => 0], 200);
     
             }elseif($owner == 'receiver'){
-                
                 $chat_session = ChatMessages::with('user')->where('chat_id', $chat_id)->where('status_received', 0)->get();
                 
                 if($chat_session->isNotEmpty()){
@@ -116,7 +130,6 @@ class ChatController extends Controller
                     return response()->json(['chat_messages' => $chat_session->toArray()], 200);
                 }
                 return response()->json(['chat_messages' => 0], 200);
-    
             }  
         }
         return response()->json(['chat_messages' => 0], 200);
@@ -140,9 +153,17 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        try {
+            $chat = Chat::where('id', $request->toArray()['chat_id'])->first();
+            $chat->room_id = $request->toArray()['room_id'];
+            $chat->save();
+            return response()->json(200);
+        } catch (\Throwable $th) {
+            return response()->json(500);
+        }
+
     }
 
     /**
@@ -153,6 +174,13 @@ class ChatController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        try {
+            $chat = Chat::where('id', $id)->first();
+            $chat->is_active = 0;
+            $chat->save();
+            return response()->json(200);
+        } catch (\Throwable $th) {
+            return response()->json(500);
+        }
     }
 }

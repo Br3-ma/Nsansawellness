@@ -8,10 +8,13 @@
 	<link rel="pingback" href="xmlrpc.html" />
 	<title>{{ $title ?? 'Home' }}  &#8211; Nsansa Psychology and Counseling </title>
 	<meta name='robots' content='max-image-preview:large' />
+	<link rel="icon" type="image/png" href="{{ asset('favicon.svg') }}">
 	<link rel='dns-prefetch' href='http://s.w.org/' />
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Feed" href="feed/index.html" />
 	<link rel="alternate" type="application/rss+xml" title="Cognitive &raquo; Comments Feed" href="comments/feed/index.html" />
 	<link href='https://fonts.googleapis.com/css?family=Eczar' rel='stylesheet'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&display=swap">
+
 	{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 	<script type="text/javascript">
 		window._wpemojiSettings = {

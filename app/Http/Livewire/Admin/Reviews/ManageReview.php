@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\Reviews;
 
 use App\Models\SiteRating;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
 class ManageReview extends Component
@@ -11,7 +12,9 @@ class ManageReview extends Component
 
     public function render()
     {
-        $reviews = SiteRating::with('user')->paginate(10);
+        $reviews = Cache::remember('review_list', 60 * 60, function(){
+            return SiteRating::with('user')->paginate(10);
+        });
         return view('livewire.admin.reviews.manage-review',[
             'reviews' => $reviews
         ]);

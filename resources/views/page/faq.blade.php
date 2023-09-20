@@ -33,7 +33,8 @@
                                                 </li>
                                                 <li class="elementor-icon-list-item elementor-inline-item">
                                                     <span class="elementor-icon-list-icon">
-                    <i aria-hidden="true" class="jki jki-chevron-right-solid"></i>						</span>
+                                                        <i aria-hidden="true" class="jki jki-chevron-right-solid"></i>						
+                                                    </span>
                                                     <span class="elementor-icon-list-text">FAQs</span>
                                                 </li>
                                             </ul>
@@ -99,7 +100,7 @@
                                 <div class="card-wrapper expand">
                                     <div class="card-header">
                                         <a href="#expand-9f0600c" class="card-header-button" aria-expanded="false" data-target="#expand-9f0600c" aria-controls="expand-9f0600c">
-                                            <span class="title">What can a psychologist help with?</span>
+                                            <span class="title">What is Nsansa wellness?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
@@ -108,15 +109,16 @@
                                     </div>
                                     <div class="card-expand" id="expand-9f0600c" style="display:block">
                                         <div class="card-body">
-                                            <p>Psychologists can help people learn to cope with stressful situations, overcome addictions, manage their chronic illnesses, 
-                                                and tests and assessments that can help diagnose a condition or tell more about the way a person thinks, feels, and behaves.</p>
+                                            <p>
+                                                Nsansa is one of Zambian owned teletherapy platforms. We change the way people approach their mental health and help them tackle life’s challenges by providing accessible and affordable care. With Nsansawellness, you can message a professional therapist anytime, anywhere.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-wrapper ">
                                     <div class="card-header">
                                         <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
-                                            <span class="title">Do I need a referral to see a psychologist?</span>
+                                            <span class="title">Who will be helping me?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
@@ -125,15 +127,16 @@
                                     </div>
                                     <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
-                                            <p>but to see a psychiatrist, you will need a referral from your doctor. However, if you enter a mental 
-                                                health treatment program, you will likely have access to both types of professionals</p>
+                                            <p>
+                                                After you sign up, we will match you to an available therapist who fits your objectives, preferences, and the type of issues you are dealing with. Different therapists have different approaches and areas of focus, so it's important to find the right person who can achieve the best results for you. 
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-wrapper ">
                                     <div class="card-header">
                                         <a href="#expand-9f158ba" class="card-header-button" aria-expanded="false" data-target="#expand-9f158ba" aria-controls="expand-9f158ba">
-                                            <span class="title">What are 3 things psychologist do?</span>
+                                            <span class="title">Who are the therapists?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
@@ -142,15 +145,16 @@
                                     </div>
                                     <div class="card-expand" id="expand-9f158ba" style="display:none">
                                         <div class="card-body">
-                                            <p>Psychologists also play a vital role in health care by caring for individuals experiencing mental health issues, performing psychotherapy, 
-                                                investigating treatment options, and teaching patients how to manage their symptoms effectively.</p>
+                                            <p>
+                                                Therapists on Nsansa are licensed, trained, experienced, and accredited psychologists (PhD / PsyD), licensed marriage and family therapists (LMFT), licensed clinical social workers (LCSW / LICSW), or licensed professional counselors (LPC). They have been qualified and certified by the country’s professional board after successfully completing the necessary education, exams, training and practice. While their experience, expertise, and background vary. 
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card-wrapper ">
                                     <div class="card-header">
                                         <a href="#expand-5b1a793" class="card-header-button" aria-expanded="false" data-target="#expand-5b1a793" aria-controls="expand-5b1a793">
-                                            <span class="title">What are good questions about psychology?</span>
+                                            <span class="title">How are the therapists verified?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
@@ -159,33 +163,224 @@
                                     </div>
                                     <div class="card-expand" id="expand-5b1a793" style="display:none">
                                         <div class="card-body">
-                                            <p>Would you open an envelope that has the date of your death inside?</p>
-                                            <p>Would you be friends with yourself?</p>
-                                            <p>If you could see a measuring scale above people's heads, what would you want this scale to measure?</p>
-                                            <p>What do you do differently from other people?</p>
+                                            <p>
+                                                Our team ensures that every provider we bring to the platform is fully licensed and in good standing. Providers who apply are required to provide proper licensure documentation and proof of identity. We then cross-check their licensure information with their respective state licensing board.
+                                                In addition to checking credentials, each potential provider needs to complete a case study exam graded by a licensed clinician and be evaluated in a video interview. 
+                                            </p>
+                                            <p>
+                                                The result of this rigorous process is that only about 25% of applicants who apply to work as therapists through Nsansawellness are accepted to the platform.
+                                                We also show the full licensing information for each provider to make it easy for you to do your own due diligence on your therapist.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-wrapper ">
+                                <div class="card-wrapper">
                                     <div class="card-header">
-                                        <a href="#expand-4a50248" class="card-header-button" aria-expanded="false" data-target="#expand-4a50248" aria-controls="expand-4a50248">
-                                            <span class="title">What are the basics for psychology?</span>
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">How much does it cost?</span>
                                             <div class="right-icon-group">
                                                 <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
                                                 <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="card-expand" id="expand-4a50248" style="display:none">
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
                                         <div class="card-body">
-                                            <p>Psychology Is the Study of the Mind and Behavior.</p>
-                                            <p>Psychology Relies on Scientific Methods.</p>
-                                            <p>Psychologists Take Multiple Perspectives.</p>
-                                            <p> Psychology Has Subfields.</p>
-                                            <p>Psychology Is More Than Mental Health.</p>
-                                            <p>Psychology Is All Around You.</p>
-                                            <p>Psychology Has Many Career Paths.</p>
-                                            <p> Psychologists Make Human Lives Better.</p>
+                                            <p>The cost of therapy through Nsansa ranges from K150 to K1,200 and it is based on your subscription, preferences, and therapist availability.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">I signed up. How long until I get matched with a therapist?</span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>
+                                                This process is virtually instantaneous and typically takes only a few moments, thanks to our swift therapist availability. Rest assured, your subscription period begins as soon as you're matched with a therapist.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">How does messaging work?</span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>You can receive therapy exclusively through video conferencing with your therapist. This single 
+                                                method allows you to access therapy based on your needs, availability, and convenience.</p>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">How do live chat sessions work?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>
+                                                You will sometimes want to have a text conversation with your therapist in real-time. This way you can still enjoy the convenience of messaging but also enjoy a "live" interaction that allows instant response and feedback from your therapist.
+                                               
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">How do live video sessions work?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>
+                                                You can also have a video session with your therapist where you see each other and talk with each other in a virtual face-to-face setting (similar to Skype).
+                                                To talk with your therapist via video, your counselor will schedule an appointment with you, then, your will receive an email notification. Login to the platform. 
+                                                From the appointments section you will view and click on the appointment to join the video call.
+                                                </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">How do live phone sessions work?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>
+                                                Phone sessions are a great way to conveniently speak with your therapist by simply using your landline or cell phone, no matter where you are.
+                                                To talk with your therapist over the phone, you will need to schedule a time with your therapist and log in to your therapy room at that time. The therapist will prompt you to start the phone session and the system will ask you for your phone number. The system will then call you at that number and connect you with your therapist to start the phone session. Please note that the phone number you enter will not be shared with the therapist.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">
+                                                Can I go back and read the therapist’s previous messages?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Yes. You can always login to your account and read all the therapist's messages to you. This may help you in reflecting and remembering some of the guidance and input that you received. This is one of the main advantages of e-therapy.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">
+                                                How long can I use Nsansa Wellness?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>This depends on your needs and varies a lot from one person to another. Some people feel they get most of the value after just a few weeks, while others prefer to stick to the program for an extended period of time. This is completely up to you.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">
+                                                How will I pay for my Nsansa membership?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>
+                                                Your membership payments will be charged to a credit card or Mobile money. 
+                                                If you accomplish your goals or if you find therapy with Nsansa wellness to 
+                                                no longer be helpful for any reason, you can simply cancel the subscription.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">
+                                                Can I use my insurance?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Nsansawellness does not provide any insurance packages but offers very affordable pricing options.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-wrapper">
+                                    <div class="card-header">
+                                        <a href="#expand-d57356d" class="card-header-button" aria-expanded="false" data-target="#expand-d57356d" aria-controls="expand-d57356d">
+                                            <span class="title">
+                                                Are you having sucidal thoughts?
+                                            </span>
+                                            <div class="right-icon-group">
+                                                <div class="normal-icon"><i aria-hidden="true" class="fas fa-chevron-circle-down"></i></div>
+                                                <div class="active-icon"><i aria-hidden="true" class="fas fa-chevron-circle-up"></i></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="card-expand" id="expand-d57356d" style="display:none">
+                                        <div class="card-body">
+                                            <p>Please contact the following numbers for help:</p>
+                                            <p>Life Support: 933</p>
+                                            <p>Child Support: 116</p>
                                         </div>
                                     </div>
                                 </div>

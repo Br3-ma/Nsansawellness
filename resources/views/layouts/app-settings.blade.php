@@ -406,9 +406,9 @@
                     @hasanyrole(['admin', 'administrator'])
                     <li>
                         <a href="{{ route('settings.index') }}" class="side-menu side-menu--active">
-                            <div class="side-menu__icon"> <i data-lucide="settings"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="package"></i> </div>
                             <div class="side-menu__title">
-                                General Settings 
+                                Subscription Plans
                             </div>
                         </a>
                     </li>
@@ -428,6 +428,15 @@
                         <a href="{{ route('settings.departments') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="shield-check"></i> </div>
                             <div class="side-menu__title"> Medical Departments </div>
+                        </a>
+                    </li>
+                    @endhasanyrole
+
+                    @hasanyrole(['admin', 'administrator'])
+                    <li>
+                        <a href="{{ route('settings.configs') }}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="shield-check"></i> </div>
+                            <div class="side-menu__title"> Configurations </div>
                         </a>
                     </li>
                     @endhasanyrole

@@ -71,8 +71,9 @@ class LoginController extends Controller
                 if($request->wantsJson()){
                     auth()->login($user);
                     $token = $user->createToken('LaravelAuthApp')->accessToken;
-                    return response()->json(['token' => $token], 200);
+                    return response()->json(['token' => $token, 'user'=> $user], 200);
                 }else{
+                    // dd('here');
                     if ($user->role == 'patient') {
                         return redirect('/counseling-center');
                     }else{
@@ -82,6 +83,38 @@ class LoginController extends Controller
                     //     "email" => "Sorry we couldn't find an account with that username. Try again",
                     // ])->onlyInput('email');
                 }
+            }
+        }else{
+            return back()->withErrors([
+                "email" => "Sorry we couldn't find an account with that username. Try again",
+            ])->onlyInput('email'); 
+        }
+    }
+
+
+    
+
+    public function loginApi(Request $request)
+    {
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+        $user = User::where('email',$request->email)->first();
+        if(!empty($user)){
+            if (!Auth::attempt($data)) {
+                if($request->wantsJson()){
+                    return response()->json(['error' => 'Unauthorised'], 401);
+                }else{
+                    return back()->withErrors([
+                        "email" => "Sorry, incorrect password or username. Try again",
+                    ])->onlyInput('email');
+                }
+
+            } else {
+                auth()->login($user);
+                $token = $user->createToken('LaravelAuthApp')->accessToken;
+                return response()->json(['token' => $token, 'user'=> $user], 200);
             }
         }else{
             return back()->withErrors([

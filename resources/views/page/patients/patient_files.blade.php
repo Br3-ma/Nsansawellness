@@ -5,32 +5,34 @@
     <div class="modal-dialog" id="modalMobile" style="margin-top:20%">
         <div class="modal-content">
             <!-- BEGIN: Modal Header -->
-            <div class="modal-header">
-                <h2 class="font-medium text-base mr-auto">Assign Counselor</h2> 
+            <div class="modal-header bg-primary">
+                <h2 class="font-extrabold text-white mr-auto">Assign Counselor</h2> 
                 {{-- <button class="btn btn-outline-secondary hidden sm:flex"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download Docs </button> --}}
                 
             </div> <!-- END: Modal Header -->
             <!-- BEGIN: Modal Body -->
             <form method="POST" action="{{ route('manual.assign.counselor') }}">
                 @csrf
-            <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+            <div class="modal-body">
                 {{-- <div class="col-span-12 sm:col-span-6"> <label for="modal-form-1" class="form-label">From</label> <input id="modal-form-1" type="text" class="form-control" placeholder="example@gmail.com"> </div>
                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-2" class="form-label">To</label> <input id="modal-form-2" type="text" class="form-control" placeholder="example@gmail.com"> </div>
                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-3" class="form-label">Subject</label> <input id="modal-form-3" type="text" class="form-control" placeholder="Important Meeting"> </div>
                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-4" class="form-label">Has the Words</label> <input id="modal-form-4" type="text" class="form-control" placeholder="Job, Work, Documentation"> </div> --}}
                 <div class="col-span-12 sm:col-span-6"> 
-                    <label for="modal-form-6" class="form-label">Profession</label> 
+                    <label for="modal-form-6" class="form-label font-extrabold">Profession</label> 
                     <select onchange="getval(this);" id="personel" class="form-select">
                         <option value="None">None</option>
+                        <option value="Peer Counseling">Peer Counseling</option>
                         <option value="Clinical Social Worker">Clinical Social Worker</option>
-                        <option value="Marriage Family Therapist">Marriage & Family Therapist</option>
+                        <option value="Marriage and Couples Couseling">Marriage and Couples Couseling</option>
                         <option value="Mental Health Counselor">Mental Health Counselor</option>
                         <option value="Professional Counselor">Professional Counselor</option>
                         <option value="Psychologist">Psychologist</option>
                     </select>
                 </div>
+                <br>
                 <div class="col-span-12 sm:col-span-6"> 
-                    <label for="modal-form-5" class="form-label">Counselor/ Therapist</label> 
+                    <label for="modal-form-5" class="form-label font-extrabold">Counselor/ Therapist</label> 
                     <select name="counselor_id" id="these_counselors" data-search="true" class="form-select w-full">
                     </select>               
                     <input id="inputID" name="patient_id" type="hidden" /> 
@@ -62,7 +64,7 @@
         </div>
     </div>
     @if (Session::has('attention'))
-    <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('attention') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -70,7 +72,7 @@
         </button> 
     </div>
     @elseif (Session::has('err_msg'))
-    <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="intro-x alert alert-danger w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('err_msg') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -120,7 +122,7 @@
                             @endif
                         </div>
                         <div class="lg:ml-4 text-center lg:text-left mt-3 lg:mt-0">
-                            <a href="" class="capitalize font-medium">{{$file->fname.' '.$file->lname}}</a> 
+                            <a target="_blank" href="{{ route('users.show', $file->id) }}" class="capitalize font-medium">{{$file->fname.' '.$file->lname}}</a> 
                             <div class="text-slate-500 text-xs mt-0.5">Patient</div>
                         </div>
                     </div>
@@ -134,6 +136,8 @@
                                     <a href="{{ route('manual.remove.counselor', $file->assignedCounselor->id) }}" class="dropdown-item"> <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Disable Counselor </a>
                                     @elseif($file->assignedCounselor != null && $file->assignedCounselor->status == 0)
                                     <a href="{{ route('manual.remove.counselor', $file->assignedCounselor->id) }}" class="dropdown-item"> <i data-lucide="recycle" class="w-4 h-4 mr-2"></i> Recover Counselor </a>
+                                    <a href="{{ route('manual.delete.counselor', $file->assignedCounselor->id) }}" class="dropdown-item"> <i data-lucide="recycle" class="w-4 h-4 mr-2 text-danger text-red-500"></i> Remove Counselor </a>
+                                    
                                     @endif
                                 @endhasanyrole
                             </div>
@@ -142,24 +146,57 @@
                 </div>
                 <div class="text-center lg:text-left p-5">
                     {{-- <div>Condition</div> --}}
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file->email }}</div>
-                    <div class="flex items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class="w-3 h-3 mr-2"></i> {{ $file->created_at }} </div>
+                    <a title="Send an email to {{ $file->fname.' '.$file->lname  }}" href="mailto:{{ $file->email }}" class="flex tooltip items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file->email }}</a>
+                    <div title="View counselor" class="flex tooltip items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class=" w-3 h-3 mr-2"></i> {{ $file->created_at }} </div>
+                    @hasrole('admin')
+                        @if (App\Models\PatientFile::counselorAssigned($file->id) !== null)
+                            @if (App\Models\PatientFile::counselorAssigned($file->id)->counselor !== null)
+                                <div class="bg-primary p-2 rounded-md text-white mt-1"> 
+                                    {{App\Models\PatientFile::counselorAssigned($file->id)->counselor->fname.' '.App\Models\PatientFile::counselorAssigned($file->id)->counselor->lname}}<br>
+                                    <small>{{App\Models\PatientFile::counselorAssigned($file->id)->counselor->department }}</small>
+                                    @if (App\Models\PatientFile::counselorAssigned($file->id)->status == 0)
+                                        <h2 class="text-red-600 d-flex items-center justify-content-center justify-center">
+                                            <span>Disabled</span>
+                                        </h2>
+                                    @endif
+                                </div>
+                            @else
+                            <div class="text-warning rounded-md mt-1">
+                                <button title="Assign Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip text-primary btn btn-outline-success py-1 px-2">
+                                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                                    &nbsp; Re-assign Counselor
+                                </button>
+                            </div>
+                            @endif
+                        @else
+                            <div class="text-primary rounded-md mt-1">
+                                <button title="Assign Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip text-primary btn btn-outline-success py-1 px-2">
+                                    <i data-lucide="shield-check" class="w-3 h-3"></i>
+                                    &nbsp; Assign Counselor
+                                </button>
+                            </div>
+                        @endif
+                    @endhasrole
                 </div>
-                <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
-                    <a href="{{ route('all-patient-files', $file->id) }}" class="btn btn-warning text-white py-1 px-2 mr-2">
+                <div class="text-center w-full lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+                    <a target="_blank" title="View response to questionnaire" href="{{ route('user-survey-response', $file->guest_id) }}" class="tooltip btn btn-secondary text-primary py-1 px-2 mr-2">
                         <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
-                        View All Files
+                        Survey
+                    </a>
+                    <a title="View medical and therapy information" href="{{ route('all-patient-files', $file->id) }}" class="tooltip btn btn-warning text-white py-1 px-2 mr-2">
+                        <i data-lucide="folder-open" class="w-3 h-3 mr-2"></i>
+                        Records
                     </a>
                     @hasanyrole('admin')
                         @if($file->assignedCounselor == null)
-                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-secondary py-1 px-2">
-                            <i data-lucide="shield-check" class="w-3 h-3 mr-2"></i>
-                            Assign Counselor
+                        <button title="Assign Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip text-white btn btn-success py-1 px-2">
+                            <i data-lucide="shield-check" class="w-3 h-3"></i>
+                            {{-- Assign --}}
                         </button>
                         @else
-                        <button onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-outline-secondary py-1 px-2">
-                            <i data-lucide="refresh-cw" class="w-3 h-3 mr-2"></i>
-                            Re-assign
+                        <button title="Re-assign new Counselor" onclick="getId('{{ $file->id }}')" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="tooltip btn btn-outline-danger py-1 px-2">
+                            <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+                            {{-- Re-assign --}}
                         </button>
                         @endif
                     @endhasanyrole
@@ -198,20 +235,17 @@
     </div>
 
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
 <script>
-    // callback-message
-    // Toastify({ 
-    //     node: $("#callback-message").clone().removeClass("hidden")[0], 
-    //     duration: 9000, 
-    //     newWindow: true, 
-    //     close: true,
-    //     gravity: "top", 
-    //     position: "right", 
-    //     backgroundColor: "white", 
-    //     stopOnFocus: true, 
-    // }).showToast(); 
-
+//   $(document).ready(function () {
+//       $('select').selectize({
+//           sortField: 'text'
+//       });
+//   });
     var counselor_id = 0;
     var patient_id = 0;
 

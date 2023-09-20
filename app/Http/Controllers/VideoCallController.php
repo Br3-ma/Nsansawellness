@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Async;
+use App\Models\Billing;
+use App\Models\Chat;
+use App\Models\Plan;
+use App\Models\SessionNote;
+use App\Models\SessionUsage;
 use Illuminate\Http\Request;
-use PhpJunior\LaravelVideoChat\Facades\Chat;
-use PhpJunior\LaravelVideoChat\Models\File\File;
-use PhpJunior\LaravelVideoChat\Models\Conversation\Conversation;
-use PhpJunior\LaravelVideoChat\Models\Group\Conversation\GroupConversation;
+use App\Models\Video;
+use App\Traits\CoreTrait;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Audio\Mp3;
 
 class VideoCallController extends Controller
 {
+    use CoreTrait;
     /**
      * Create a new controller instance.
      */
@@ -25,47 +32,40 @@ class VideoCallController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function takeNote(Request $req)
     {
-        $groups = Chat::getAllGroupConversations();
-        $threads = Chat::getAllConversations();
-
-        return view('home')->with([
-            'threads' => $threads,
-            'groups'  => $groups
-        ]);
-    }
-
-    public function chat($id)
-    {
-        $conversation = Chat::getConversationMessageById($id);
-
-
-        return view('page.chat.chat')->with([
-            'conversation' => $conversation
-        ]);
-    }
-
-    public function startVideo($id){
-        $conversation = Chat::getConversationMessageById($id);
-
-        return view('page.common.video-call')->with([
-            'conversation' => $conversation
-        ]);
+        
+        DB::beginTransaction();
+        try {
+            // SessionNote::create($req->toArray);
+            SessionNote::updateOrCreate(
+                ['chat_id' => $req->toArray()['chat_id']], // Condition to find an existing record (e.g., based on 'id')
+                $req->toArray() // Data to be saved or updated
+            );
+            DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollback();
+            dd($th);
+        }
     }
 
     public function startVideoCall($id, $chat_id, $receiver, $role){
         try {
+            $notes = SessionNote::where('chat_id', $chat_id)->where('status', 1)->first();
+            if($notes !== null){
+                $nts = $notes->notes;
+            }
             $data = [
                 'id' => $id,
                 'chat_id' => $chat_id,
                 'receiver' => $receiver,
                 'role' => $role,
+                'notes' => $nts ?? '',
                 'token' =>  csrf_token()
             ];
             return view('page.chat.video_', compact('data'));
         } catch (\Throwable $th) {
-            dd('Refresh the Page');
+            dd($th);
         }
     }
 
@@ -117,66 +117,190 @@ class VideoCallController extends Controller
         }
     }
 
+    public function startVideoCallPeer2($id, $chat_id, $receiver, $role, $peer_id){
+        try {
+            $notes = SessionNote::where('chat_id', $chat_id)->where('status', 1)->first();
+            // $
+            if($notes !== null){
+                $nts = $notes->notes;
+            }
+            $data = [
+                'id' => $id,
+                'chat_id' => $chat_id,
+                'source' => $receiver,
+                'role' => $role,
+                'notes' => $nts ?? '',
+                'token' =>  csrf_token(),
+                'peer_id' => $peer_id
+            ];
+
+
+            if($this->my_role() == 'patient'){
+                if(Billing::can_video_call()){
+                    return view('page.chat.video-appointment_', compact('data'));
+                }else{
+                    Session::flash('error_msg', "You may have no active subscription package.");
+                    return redirect()->back();
+                }
+            }else{
+                return view('page.chat.video-appointment_', compact('data'));
+            }
+        } catch (\Throwable $th) {
+            Session::flash('attention', "Try again now.");
+            return redirect()->back();
+        }
+    }
+
+    public function startPhoneCallPeer2($id, $chat_id, $receiver, $role, $peer_id){
+        
+        try {
+            $notes = SessionNote::where('chat_id', $chat_id)->where('status', 1)->first();
+            if($notes !== null){
+                $nts = $notes->notes;
+            }
+            $data = [
+                'id' => $id,
+                'chat_id' => $chat_id,
+                'source' => $receiver,
+                'role' => $role,
+                'notes' => $nts ?? '',
+                'token' =>  csrf_token(),
+                'peer_id' => $peer_id
+            ];
+            if($this->my_role() == 'patient'){
+                
+                if(Billing::can_video_call()){
+                    // dd($data);
+                    return view('page.chat.phone-appointment_', compact('data'));
+                }else{
+                    Session::flash('error_msg', "You may have no active subscription package.");
+                    return redirect()->back();
+                }
+            }else{
+                return view('page.chat.phone-appointment_', compact('data'));
+            }
+        } catch (\Throwable $th) {
+            dd($th);
+            Session::flash('attention', "Try again now.");
+            return redirect()->back();
+        }
+    }
+
     public function activeVideoCall(){
         return view('page.chat.video_chat');
     }
 
-    public function getConversationDetails($conversation_id, $user_id){
-        $conversation = Chat::getConversationMessageById($conversation_id);
-        $user = User::where('id', $user_id)->first();
-        return response()->json($conversation);
-    }
 
-
-    public function groupChat($id)
-    {
-        $conversation = Chat::getGroupConversationMessageById($id);
-
-        return view('page.chat.group_chat')->with([
-            'conversation' => $conversation
-        ]);
-    }
-
-    public function send(Request $request)
+    public function upload(Request $request)
     {
         try {
-            Chat::sendConversationMessage($request->input('conversationId'), $request->input('text'));
+            // Validate the request
+            $request->validate([
+                'video' => 'required|mimetypes:video/webm|max:500000', // Adjust max size as per your requirement
+            ]);
 
+            // Store the uploaded file -- OLD
+            $path = $request->file('video')->store('videos');
+            $chat = Chat::where('id', $request->toArray()['chat_id'])->with('receiver')->first();
+            // Create a new video record in the database
+            Video::create([
+                'file_name' => $request->file('video')->getClientOriginalName(),
+                'file_path' => $path,
+                'user_id' => auth()->id(),
+                'user_id' => auth()->id(),
+                'chat_id' => $request->toArray()['chat_id'],
+                'description' => $chat->receiver->fname.' '.$chat->receiver->lname.' Session'
+            ]);
+            
+            // NEW
+            // Store the uploaded file
+            // $path = $request->file('video')->store('videos');
+
+            // Convert the video to MP3 format
+            // $audioPath = $this->convertToMp3($path);
+
+
+            // $chat = Chat::where('id', $request->toArray()['chat_id'])->with('receiver')->first();
+            
+            // // Create a new video record in the database
+            // Video::create([
+            //     'file_name' => pathinfo($audioPath, PATHINFO_BASENAME), // Using the converted audio file name
+            //     'file_path' => $audioPath,
+            //     'user_id' => auth()->id(),
+            //     'user_id' => auth()->id(),
+            //     'chat_id' => $request->toArray()['chat_id'],
+            //     'description' => $chat->receiver->fname.' '.$chat->receiver->lname.' Session'
+            // ]);
+
+            // Return a response or redirect as needed
+            return response()->json([
+                'message' => 'Video uploaded successfully',
+            ]);
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
+            return response()->json([
+                'message' => 'Video upload failed',
+            ]);
         }
     }
 
-    public function groupSend(Request $request)
-    {
-        Chat::sendGroupConversationMessage($request->input('groupConversationId'), $request->input('text'));
+
+    // public function convertToMp3($videoPath)
+    // {
+        
+    //     $ffmpeg = FFMpeg::create();
+    //     $video = $ffmpeg->open(storage_path('app/' . $videoPath));
+    //     $audioPath = 'audios/' . pathinfo($videoPath, PATHINFO_FILENAME) . '.mp3'; // Adjust the output path as needed
+    
+    //     $format = new Mp3();
+    //     $format->setAudioChannels(2)
+    //            ->setAudioKiloBitrate(256);
+    
+    //     $video->save($format, storage_path('app/' . $audioPath));
+    
+    //     return $audioPath;
+    // }
+
+    public function view_recordings(Request $request){
+        
+        $videos = Video::where('user_id', auth()->user()->id)->get();
+        return view('page.patients.recordings', compact('videos'));
     }
 
-    public function sendFilesInConversation(Request $request)
-    {
-        Chat::sendFilesInConversation($request->input('conversationId') , $request->file('files'));
-    }
-
-    public function sendFilesInGroupConversation(Request $request)
-    {
-        Chat::sendFilesInGroupConversation($request->input('groupConversationId') , $request->file('files'));
-    }
-
-    public function store(){
-        $conversation = new Conversation();
-        $conversation->first_user_id = 1;
-        $conversation->second_user_id = 2;
-        $conversation->save();
-
-        $conversation->messages()->create([
-            'user_id'   => 1,
-            'text'      => 'Hello'
+    public function closeCall(Request $request){
+        $chat = Chat::where('id', $request->toArray()['chat_id'])->with('receiver')->first();
+        $b = Billing::current_bill();
+        $p = Plan::with('feature')->where('id', $b->package_id)->first();
+        $data = SessionUsage::create([
+            // 'time' => $chat->id,
+            'chat_id' => $chat->id,
+            'patient_id' => $chat->receiver_id,
+            'counselor_id' => $chat->sender_id,
+            'package_id' => $b->package_id
         ]);
 
-        $group = new GroupConversation();
-        $group->name = 'Test';
-        $group->save();
+        // Close video package
+        $filteredFeatures = $p->feature->filter(function ($item) {
+            return str_contains(strtolower($item->desc), 'session');
+        })->map(function ($item) {
+            preg_match('/\d+/', $item->desc, $matches);
+            return $matches[0] ?? null;
+        })->filter(); 
+        
+        $s = SessionUsage::where('package_id', $b->package_id)->count();
+        if($filteredFeatures >= $s){
+            $b->can_video_call = false;
+            $b->save();
+        }
 
-        $group->users()->attach([ 1,2,3,4 ]);
+        return response()->json(['su_id' => $data->id]);
     }
+
+    public function rateCall(Request $request){
+        $data = SessionUsage::where('patient_id', auth()->user()->id)
+                ->orderBy('id', 'desc')->first();
+        $data->rating = $request->toArray()['rating'];
+        $data->save();
+    }
+    
 }

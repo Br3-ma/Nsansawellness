@@ -15,10 +15,32 @@ class AssignCounselor extends Model
         'status_id', // 1 / 2
         'comments',
         'status', // paid / unpaid
-        'rate', //ammount
+        'rate', // amount
         'end_date'
     ];
 
+    public static function has_new_assignment(){
+        try {
+            $chat = Chat::where('sender_id', auth()->user()->id)
+            ->where('status', 3)->exists(); 
+            return $chat;
+        } catch (\Throwable $th) {
+            return false;
+        }
+    }
+    public static function currrentAssignReq(){
+    
+        try {
+            $chat = Chat::where('sender_id', auth()->user()->id)
+            ->where('status', 3)->first(); 
+            $assign = AssignCounselor::with('patient')
+                        ->where('id', $chat->assign_id)->first(); 
+                        
+            return $assign;
+        } catch (\Throwable $th) {
+            return 0;
+        }
+    }
     public function counselor(){
         return $this->belongsTo(User::class, 'counselor_id');
     }

@@ -8,7 +8,7 @@
         </h2>
     </div>
     @if (Session::has('attention'))
-    <div class="intro-x alert alert-secondary w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="intro-x alert alert-secondary w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('attention') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -16,7 +16,7 @@
         </button> 
     </div>
     @elseif (Session::has('error_msg'))
-    <div class="intro-x alert alert-danger w-1/2 alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
+    <div class="intro-x alert alert-danger w-full alert-dismissible justify-center show flex items-center mb-2" role="alert"> 
         <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> 
         {{ Session::get('error_msg') }}
         <button type="button" class="btn-close" data-tw-dismiss="alert" aria-label="Close"> 
@@ -54,15 +54,16 @@
             </div> --}}
         </div>
         <!-- BEGIN: Data List -->
+
         <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">QUESTIONNAIRE</th>
-                        <th class="whitespace-nowrap">AUDIENCE</th>
-                        <th class="text-center whitespace-nowrap">QUESTIONS</th>
-                        <th class="text-center whitespace-nowrap">STATUS</th>
-                        <th class="text-center whitespace-nowrap">ACTIONS</th>
+                        <th class="whitespace-nowrap font-extrabold">QUESTIONNAIRE</th>
+                        <th class="whitespace-nowrap font-extrabold">AUDIENCE</th>
+                        <th class="text-center whitespace-nowrap font-extrabold">QUESTIONS</th>
+                        <th class="text-center whitespace-nowrap font-extrabold">STATUS</th>
+                        <th class="text-center whitespace-nowrap font-extrabold">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,18 +79,21 @@
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">Group</div>
                         </td>
                         <td class="text-center">{{ $q->questions->count() }}</td>
-                        <td class="w-40">
-                            <input type="checkbox" data-id="{{ $q->id }}" name="status" class="js-switch" {{ $q->status_id == 1 ? 'checked' : '' }}>
+                        <td class="w-40 items-center" >
+                            <input title="Activate/ Deactivate Questionnaire" type="checkbox" data-id="{{ $q->id }}" name="status" class="js-switch tooltip" {{ $q->status_id == 1 ? 'checked' : '' }}>
                             {{-- <div id="item{{ $q->id }}" onclick="changeQuestionaireStatus('{{ $q->id }}')" class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Activate </div> --}}
                         </td>
-                        <td class="table-report__action w-56">
-                            <div class="flex justify-center items-center">
-                                <a class="flex items-center text-sm mr-3" href="{{ route('questionaires.show', $q->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit Questions </a>
-                                {!! Form::open(['method' => 'DELETE','route' => ['questionaires.destroy', $q->id],'style'=>'display:inline']) !!}
-                                {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger mr-2']) !!}
-                                {!! Form::close() !!}
-                                {{-- <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a> --}}
-                            </div>
+                        <td class="w-full flex">
+                            <a title="Add answers to the Questions" class="flex tooltip items-center text-xs btn btn-primary btn-xs text-white mr-3" href="{{ route('questionaires.show', $q->id) }}"> 
+                                Manage Questions 
+                            </a>
+                            
+                            <button title="Change who should answer this questionnaire" onclick="getID('{{ $q->id }}');"  data-tw-toggle="modal" data-tw-target="#change-survey-audience-modal" class="flex tooltip items-center text-xs btn btn-success btn-xs text-white mr-3"> 
+                                Change Audience 
+                            </button>
+                            {!! Form::open(['method' => 'DELETE','route' => ['questionaires.destroy', $q->id],'style'=>'display:inline']) !!}
+                            {!! Form::submit('Delete', ['class' => 'mt-2.5 tooltip text-danger cursor', 'title'=> 'Are you sure you want to permanently delete questionnaire']) !!}
+                            {!! Form::close() !!}
                         </td>
                     </tr>
                     @empty
@@ -133,28 +137,36 @@
         <!-- END: Pagination -->
     </div>
     <!-- BEGIN: Delete Confirmation Modal -->
-    <div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog">
+    <div id="change-survey-audience-modal" class="modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" id="modalMobile" style="margin-top:20%">
             <div class="modal-content">
-                <div class="modal-body p-0">
-                    <div class="p-5 text-center">
-                        <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i> 
-                        <div class="text-3xl mt-5">Are you sure?</div>
-                        <div class="text-slate-500 mt-2">
-                            Do you really want to delete these records? 
-                            <br>
-                            This process cannot be undone.
+                <!-- BEGIN: Modal Header -->
+                <div class="modal-header bg-primary">
+                    <h2 class="font-extrabold text-white mr-auto">Change Audience</h2> 
+                </div>
+                
+                <form method="POST" action="{{ route('change-audience') }}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="col-span-12 sm:col-span-6"> 
+                            <input type="hidden" name="q_id" id="qustnnaire_id">
+                            <label for="modal-form-6" class="form-label font-extrabold">Audience</label> 
+                            <select name="audience" class="form-select">
+                                <option value="none">None</option>
+                                <option value="patient">Patients</option>
+                                <option value="counselor">Counselors</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer"> 
+                            {{-- <div id="this_patient"></div> --}}
+                            <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-20 mr-1">Cancel</button> 
+                            <button type="submit" class="btn btn-primary w-auto">Save Changes</button> 
                         </div>
                     </div>
-                    <div class="px-5 pb-8 text-center">
-                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                        <button type="button" class="btn btn-danger w-24">Delete</button>
-                    </div>
-                </div>
+                </form>
             </div>
-        </div>
-    </div>
-    <!-- END: Delete Confirmation Modal -->
+        </div> 
+    </div> 
 </div>
 <style>
     #toogle {
@@ -201,19 +213,10 @@
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-// function changeQuestionaireStatus(qid){
-//     var route = '{{ route('questionaire.status', [':id']) }}';
-//     route = route.replace(':id', qid);
-//     $.ajax({
-//             type:'GET',
-//             url:route,
-//             cache: false,
-//             processData: false,
-//         success:function(data){
-//             alert('activated');
-//         }
-//     });
-// }
+function getID(id){
+    var input = document.getElementById("qustnnaire_id");
+    input.value = id;
+}
 $(document).ready(function(){
     $('.js-switch').change(function () {
         let status = $(this).prop('checked') === true ? 1 : 0;

@@ -3,10 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Models\Billing;
+use App\Models\Payment;
+use App\Models\User;
+use App\Traits\BillingTrait;
+use App\Traits\CounselorTrait;
+use App\Traits\PaymentTrait;
+use App\Traits\SparcoTrait;
+use App\Traits\SubscriptionTrait;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
-{
+{    
+    use SubscriptionTrait, BillingTrait, CounselorTrait, PaymentTrait, SparcoTrait;
+    public $users, $payments, $plans;
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct(User $users, Payment $payments)
+    {
+        $this->plans = $this->get_subscriptions();
+        $this->payments = $payments;
+        $this->users = $users;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +34,10 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('page.payments');
+        
+        return view('page.payments',[
+            'plans' => $this->plans
+        ]);
     }
 
     /**
@@ -46,31 +69,47 @@ class PaymentController extends Controller
         ];
     }
 
-    public function invoice($type){
-       if($type == 'eyJpdiI6ImY0'){
-            if(auth()->user()->hasRole('patient')){
-                Billing::create([
-                    'user_id' => auth()->user()->id,
-                    'charge_amount' => 750,
-                    'remainder_count' => 0,
-                    'status' => 0,
-                    'desc' => 'Cash Payer'
+    public function bill($id){
+        $gateway = 'sparco';
+        try {
+            $billing = $this->create_billing($id);
+            if($billing !== false){
+                return view('page.payment-summary',[
+                    'billing' => $billing,
+                    'gateway' => $gateway
                 ]);
+            }else{
+                return redirect()->back();
             }
-       }else{
-            if(auth()->user()->hasRole('patient')){
-                Billing::create([
-                    'user_id' => auth()->user()->id,
-                    'charge_amount' => 500,
-                    'remainder_count' => 0,
-                    'balance' => 500,
-                    'status' => 0,
-                    'desc' => 'Insurance Payer'
-                ]);
-            }
-       }
+        } catch (\Throwable $th) {
+            return redirect()->back();
+        }
+    }
 
-       return redirect()->route('patient');
+    public function gateway(Request $request){
+
+        $data = $this->requestPayment($request);
+        $data = $this->getAllTransactions();
+        return $data;
+    }
+
+    public function sparco_collect(Request $request){
+        $data = $this->collect2($request->toArray());
+        if ($data !== null) {
+            return response()->json(['data' => $data->paymentUrl], 200);
+        }else{
+            return response()->json(['data' => 0], 200);
+        }
+    }
+
+    public function ticket_collect(Request $request){
+        $data = $this->collectTicket($request->toArray());
+        
+        if ($data !== null) {
+            return response()->json(['data' => $data->paymentUrl], 200);
+        }else{
+            return response()->json(['data' => 0], 200);
+        }
     }
 
     /**
@@ -79,9 +118,15 @@ class PaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // API
     public function show($id)
     {
-        //
+        try {
+            $payment = $this->payments->where('billing_id', $id)->first();
+            return response()->json(['data' => $payment], 200);
+        } catch (\Exception $ex) {
+            return response()->json(['error' => 'Payment not found'], 404);
+        }
     }
 
     /**
