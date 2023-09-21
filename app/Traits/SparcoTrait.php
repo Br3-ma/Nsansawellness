@@ -91,6 +91,7 @@ trait SparcoTrait {
 
     public function collectTicket(array $request){
         try {
+            $randomNumber = random_int(10000, 99999);
             // Create the Ticket
             $ticket = Ticket::create([
                 'fname' => $request['customerFirstName'],
@@ -99,7 +100,7 @@ trait SparcoTrait {
                 'phone' => $request['wallet'],
                 'actual_amount' => $request['amount'],
                 'status' => 'Unpaid',
-                'ticketnum' => Str::uuid(),
+                'ticketnum' => $randomNumber,
                 'for_event_on' => $request['for_event_on']
             ]);
     

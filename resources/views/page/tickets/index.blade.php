@@ -26,26 +26,22 @@
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap xl:flex-nowrap items-center mt-2">
         </div>
-        {{-- @dd($activities  == []) --}}
         <!-- BEGIN: Data List -->
         <div class="intro-y col-span-12 overflow-auto 2xl:overflow-visible">
             @if(!empty($tickets->toArray()))
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        {{-- <th class="whitespace-nowrap">
-                            <input class="form-check-input" type="checkbox">
-                        </th> --}}
-                        {{-- <th class="whitespace-nowrap">INVOICE</th> --}}
                         <th class="whitespace-nowrap">EVENT</th>
-                        <th class="whitespace-nowrap">TCIKET CODE</th>
+                        <th class="whitespace-nowrap">TCIKET#</th>
                         <th class="text-center whitespace-nowrap">CUSTOMER NAMES</th>
                         <th class="whitespace-nowrap">PHONE#</th>
-                        {{-- <th class="whitespace-nowrap">EMAIL</th> --}}
-                        <th class="whitespace-nowrap">ACTUAL AMOUNT</th>
+                        <th class="whitespace-nowrap">EMAIL</th> 
+                        <th class="whitespace-nowrap">AMOUNT SETTLED</th>
                         <th class="whitespace-nowrap">TXN FEE</th>
                         <th class="whitespace-nowrap">TXN RATE</th>
-                        <th class="whitespace-nowrap">TICKET AMOUNT</th>
+                        <th class="whitespace-nowrap">INITIAL AMOUNT</th>
+                        <th class="whitespace-nowrap"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,12 +49,12 @@
                     @forelse ($tickets as $ticket)
                     
                         <tr class="intro-x">
-                                <td class="w-40">
-                                        Restoration Festival 2023
+                                <td class="w-40 text-sm">
+                                    Serenity Festival 2023
                                 </td>
                                 <td>
                                     <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
-                                        {{ $ticket->ticketcode }}
+                                        {{ $ticket->ticketnum }}
                                     </div>
                                 </td>
                                 {{-- <td class="text-center">
@@ -74,6 +70,11 @@
                                 <td>
                                     <div class="text-primary-500 font-bold text-xs whitespace-nowrap mt-0.5">
                                         {{ $ticket->phone }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-primary-500 font-bold text-xs whitespace-nowrap mt-0.5">
+                                        {{ $ticket->email }}
                                     </div>
                                 </td>
                                 <td>
@@ -94,6 +95,11 @@
                                 <td>
                                     <div class="text-slate-500  font-bold text-xs whitespace-nowrap mt-0.5">
                                         K {{ $ticket->trans_amount }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-slate-500  font-bold text-xs whitespace-nowrap mt-0.5">
+                                        <a href="{{ route('ticket-status', $ticket->id) }}">View</a>
                                     </div>
                                 </td>
                         </tr>                        

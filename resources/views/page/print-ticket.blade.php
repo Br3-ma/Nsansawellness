@@ -87,7 +87,11 @@
     </div>
     <div>
         <p>Please check your email inbox</p>
+        @auth
+        <a href="{{ route('tickets')}}">Back</a>
+        @else
         <a href="{{ route('welcome')}}">Back Home</a>
+        @endauth
     </div>
 </body>
 </html>
