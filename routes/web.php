@@ -53,7 +53,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/ticket-callback/{uuid}', [TicketController::class, 'callback']);
+Route::get('/ticket-callback/{uuid}/{id}', [TicketController::class, 'callback']);
 Route::get('/ticket-summary/{id}', [TicketController::class, 'response_back'])->name('ticket-status');
 Route::get('/transaction-summary/{user_id}/{billing_id}/{uuid}', [PaymentCallbackController::class, 'index'])->name('transaction-summary');
 Route::get('/', function () {
@@ -140,7 +140,6 @@ Route::group(['middleware' => ['auth']], function() {
     
     Route::get('/payment-details/{id}', [PaymentController::class, 'show'])->name('payments.show');
     Route::post('/processing-your-transaction', [PaymentController::class, 'sparco_collect'])->name('pay-w-sparco');
-    Route::post('/processing-your-ticket', [PaymentController::class, 'ticket_collect'])->name('pay-ticket');
     
     Route::get('update-user-status', [UserController::class, 'updateStatus'])->name('user.status');
     Route::post('upload-files', [UserController::class, 'uploadMyFiles'])->name('user.files');
@@ -334,4 +333,5 @@ Route::resource('results', ResultsController::class);
 Route::resource('patient-results', PatientQAnswerController::class);
 Route::get('/choose-payment-method/{id}', [PaymentController::class, 'bill'])->name('bill-patient');
 Route::get('/pricing', [PaymentController::class, 'index'])->name('price');
+Route::post('/processing-your-ticket', [PaymentController::class, 'ticket_collect'])->name('pay-ticket');
 

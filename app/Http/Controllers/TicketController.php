@@ -6,6 +6,8 @@ use App\Models\Ticket;
 use App\Traits\SparcoTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TicketCreated; // Assuming you have a Mailable class for the ticket email
 
 class TicketController extends Controller
 {
@@ -15,15 +17,16 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function callback($uuid)
+    public function callback($uuid, $ticket_id)
     {
         try {
             $data = $this->verifyTransaction($uuid);
             // if($data->status == 'TXN_AUTH_SUCCESSFUL' || $data->status == 'TXN_SUCCESSFUL' || $data->status == 'TXN_PROCESSING'){
-                $ticket = Ticket::create([
-                    'fname' => $data->customerFirstName,
-                    'lname' => $data->customerLastName,
-                    // 'email' =>    $data->customerEmail,
+            $ticket = Ticket::where('id', $ticket_id)->first();
+            // dd($data);
+            
+            if ($ticket) {
+                $ticket->update([
                     'phone' => $data->customerMobileWallet,
                     'trans_amount' => $data->transactionAmount,
                     'fee_amount' => $data->feeAmount,
@@ -33,10 +36,15 @@ class TicketController extends Controller
                     'msg' => $data->message,
                     'status' => $data->status
                 ]);
+            }
             // }
-            return redirect()->route('ticket-status',  $ticket->ticketcode);
+            // Send an email to the user
+            Mail::to($ticket->email)->send(new TicketCreated($ticket));
+
+            return redirect()->route('ticket-status',  $ticket->id);
         } catch (\Throwable $th) {
-            return redirect()->back();
+            dd($th);
+            // return redirect()->back();
         }
     }
     public function index()
@@ -52,7 +60,8 @@ class TicketController extends Controller
      */
     public function response_back($id)
     {
-        $ticket = Ticket::where('ticketcode', $id)->first();
+        $ticket = Ticket::where('id', $id)->first();
+        // dd($ticket);
         return view('page.print-ticket', compact('ticket'));
     }
 

@@ -1529,14 +1529,14 @@
 											<!-- Add the select dropdown field -->
 											<div class="form-group">
 												<label for="paymentMethod">For the Event On:</label>
-												<select name="for_event_date" class="form-control">
+												<select name="for_event_on" class="form-control">
 													<option value="7th October, 2023">7th October, 2023</option>
 													<option value="8th October, 2023">8th October, 2023</option>
 													<!-- Add more payment options as needed -->
 												</select>
 											</div>
 											
-											<input type="hidden" name="callback" value="{{ 'http://localhost/nsansawellness/ticket-callback/'.$uuid.'' }}">
+											<input type="hidden" name="callback" value="{{ 'http://localhost/nsansawellness/ticket-callback/'.$uuid.'/' }}">
 											<input type="hidden" name="uuid" value="{{ $uuid }}">
 											<input type="hidden" name="amount" value="900">
 											<input type="hidden" name="billing_id" value="0">

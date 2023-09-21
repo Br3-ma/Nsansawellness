@@ -13,7 +13,6 @@ class Ticket extends Model
         'lname',
         'email',
         'phone',
-        'ticketcode',
         'trans_amount',
         'fee_amount',
         'trans_rate',
@@ -22,7 +21,6 @@ class Ticket extends Model
         'status',
         'msg',
         'ticketnum',
-        'email',
         'for_event_on'
     ];
 }

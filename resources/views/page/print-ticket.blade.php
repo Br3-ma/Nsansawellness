@@ -1,34 +1,93 @@
-<section>
-    <div class="elementor-element elementor-element-c3b3aea aleft elementor-widget elementor-widget-wgl-double-heading">
-        <div class="elementor-widget-container">
-            <div class="wgl-double-heading">
-                <div class="dblh__wrapper">
-                    <h3 class="dblh__title-wrapper"><span
-                            class="dblh__title dblh__title-1">Thank you. </span></h3>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 5%;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .ticket {
+            width: 600px; /* Increased width for a wider ticket */
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            position: relative; /* To position watermark */
+        }
+
+        .ticket-header {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+        }
+
+        .ticket-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .ticket-details p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .status {
+            color: #000;
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+            font-size: 20px;
+            border: 1px solid #938293;
+        }
+
+        /* Watermark */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.2; /* Adjust opacity as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket">
+        <!-- Watermark image -->
+        <img src="https://nsansawellness.com/uploads/sites/304/2022/06/logos.svg" alt="Watermark" class="watermark">
+
+        <div class="ticket-header">
+            Serenity Festival 2023
+        </div>
+        <div class="ticket-details">
+            <p><strong>Name:</strong> {{ $ticket->fname}} {{ $ticket->lname}}</p>
+            <p><strong>Event Date:</strong> {{ $ticket->for_event_on }}</p>
+            <p><strong>Email:</strong> {{ $ticket->email}}</p>
+            <p><strong>Event:</strong> Serenity Festival 2023</p>
+            <p><strong>Phone:</strong>  {{ $ticket->phone}}</p>
+            <!-- <p><strong>Time:</strong> 7:00 PM</p> -->
+            <p><strong>Location:</strong> T3C GARDENS, LILAYI RD, LILAY</p>
+            <p><strong>Ticket#:</strong> {{ $ticket->ticketnum }}</p>
+            <p><strong>Fee:</strong> {{ $ticket->trans_amount }}</p>
+            <p><strong>Message:</strong> {{ $ticket->msg }}</p>
+        </div>
+        <div class="status">
+        {{ $ticket->status }}
         </div>
     </div>
-
-    <div class="elementor-element elementor-element-31c058d elementor-widget__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-text-editor"
-        data-id="31c058d" data-element_type="widget"
-        data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:700}"
-        data-widget_type="text-editor.default">
-        <div class="elementor-widget-container">
-            <h3>Your Ticket Details.</h3>
-            <br>
-            <div>
-                <p>First name: {{ $ticket->fname }} </p>
-                <p>Last name:  {{ $ticket->lname }} </p>
-                <p>Ticket Code: {{ $ticket->ticketcode }}  </p>
-                <p>Amount: ZK  {{ $ticket->trans_amount }} </p>
-            </div>
-
-            <hr>
-            <br>
-            <div>
-                <span>Date: {{ $ticket->created_at->toFormattedDateString() }} </span>
-            </div>
-        </div>
+    <div>
+        <p>Please check your email inbox</p>
+        <a href="{{ route('welcome')}}">Back Home</a>
     </div>
-</section>
+</body>
+</html>

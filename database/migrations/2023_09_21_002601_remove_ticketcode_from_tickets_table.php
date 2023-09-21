@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('tickets', function (Blueprint $table) {
-            $table->string('ticketnum')->nullable();
-            $table->string('for_event_on')->nullable();
+            // Remove the 'ticketcode' column
+            $table->dropColumn('ticketcode');
         });
     }
 
@@ -26,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alter_ticket');
+        Schema::table('tickets', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -103,6 +103,7 @@ class PaymentController extends Controller
     }
 
     public function ticket_collect(Request $request){
+        
         $data = $this->collectTicket($request->toArray());
         
         if ($data !== null) {
