@@ -34,7 +34,7 @@
 										<div class="elementor-element elementor-element-c608321 elementor-widget__width-auto animated-slow elementor-widget elementor-widget-jkit_button animated fadeInUp" data-id="c608321" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:400}" data-widget_type="jkit_button.default">
 											<div class="elementor-widget-container">
 											<div class="jeg-elementor-kit jkit-button icon-position-after jeg_module_6_6_632ca69752e5a">
-												<a href="#" class="jkit-button-wrapper">Watch Video</a>
+												<a href="#" class="jkit-button-wrapper">Watch Tutorial</a>
 											</div>
 											</div>
 										</div>
