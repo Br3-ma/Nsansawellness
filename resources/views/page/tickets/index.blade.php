@@ -32,6 +32,7 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
+                        <th class="whitespace-nowrap">STATUS</th>
                         <th class="whitespace-nowrap">EVENT</th>
                         <th class="whitespace-nowrap">TCIKET#</th>
                         <th class="text-center whitespace-nowrap">CUSTOMER NAMES</th>
@@ -50,6 +51,9 @@
                     @forelse ($tickets as $ticket)
                     
                         <tr class="intro-x">
+                                <td class="w-40 text-bold badge badge-primary text-white text-sm">
+                                    {{ $ticket->status }}
+                                </td>
                                 <td class="w-40 text-sm">
                                     Serenity Festival 2023
                                 </td>
