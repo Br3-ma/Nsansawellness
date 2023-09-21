@@ -51,7 +51,7 @@
                     @forelse ($tickets as $ticket)
                     
                         <tr class="intro-x">
-                                <td class="w-40 text-bold badge badge-primary text-white text-sm">
+                                <td class="w-40 text-bold badge badge-primary text-sm">
                                     {{ $ticket->status }}
                                 </td>
                                 <td class="w-40 text-sm">
