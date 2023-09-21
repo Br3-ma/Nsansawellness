@@ -35,6 +35,7 @@
                         <th class="whitespace-nowrap">EVENT</th>
                         <th class="whitespace-nowrap">TCIKET#</th>
                         <th class="text-center whitespace-nowrap">CUSTOMER NAMES</th>
+                        <th class="text-center whitespace-nowrap">COMMING ON</th>
                         <th class="whitespace-nowrap">PHONE#</th>
                         <th class="whitespace-nowrap">EMAIL</th> 
                         <th class="whitespace-nowrap">AMOUNT SETTLED</th>
@@ -54,7 +55,7 @@
                                 </td>
                                 <td>
                                     <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
-                                        {{ $ticket->ticketnum }}
+                                        {{ $ticket->ticketnum ?? 'None' }}
                                     </div>
                                 </td>
                                 {{-- <td class="text-center">
@@ -68,6 +69,11 @@
                                     </div>
                                 </td>
                                 <td>
+                                    <div class="text-primary-500 font-extrabold text-md whitespace-nowrap mt-0.5">
+                                        {{ $ticket->for_event_on }}
+                                    </div>
+                                </td>
+                                <td>
                                     <div class="text-primary-500 font-bold text-xs whitespace-nowrap mt-0.5">
                                         {{ $ticket->phone }}
                                     </div>
@@ -78,22 +84,22 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="text-success font-extrabold text-xs whitespace-nowrap mt-0.5">
+                                    <div class="text-success font-extrabold text-sm whitespace-nowrap mt-0.5">
                                         K{{ $ticket->actual_amount }}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="text-slate-500  font-bold text-xs whitespace-nowrap mt-0.5">
+                                    <div class="text-slate-500  font-bold text-sm whitespace-nowrap mt-0.5">
                                         K{{ $ticket->fee_amount }}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="text-slate-500  font-bold text-xs whitespace-nowrap mt-0.5">
+                                    <div class="text-slate-500  font-bold text-sm whitespace-nowrap mt-0.5">
                                         %{{ $ticket->trans_rate }}
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="text-slate-500  font-bold text-xs whitespace-nowrap mt-0.5">
+                                    <div class="text-slate-500  font-bold text-sm whitespace-nowrap mt-0.5">
                                         K {{ $ticket->trans_amount }}
                                     </div>
                                 </td>
