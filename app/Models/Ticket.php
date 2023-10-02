@@ -20,6 +20,7 @@ class Ticket extends Model
         'ref',
         'status',
         'msg',
+        'qty',
         'ticketnum',
         'for_event_on'
     ];

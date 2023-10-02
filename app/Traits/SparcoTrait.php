@@ -100,6 +100,7 @@ trait SparcoTrait {
                 'phone' => $request['wallet'],
                 'actual_amount' => $request['amount'],
                 'status' => 'Unpaid',
+                'qty' => $request['qty'],
                 'ticketnum' => $randomNumber,
                 'for_event_on' => $request['for_event_on']
             ]);

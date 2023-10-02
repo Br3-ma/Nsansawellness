@@ -35,6 +35,7 @@
                         <th class="whitespace-nowrap">STATUS</th>
                         <th class="whitespace-nowrap">EVENT</th>
                         <th class="whitespace-nowrap">TCIKET#</th>
+                        <th class="whitespace-nowrap">QTY</th>
                         <th class="text-center whitespace-nowrap">CUSTOMER NAMES</th>
                         <th class="text-center whitespace-nowrap">COMMING ON</th>
                         <th class="whitespace-nowrap">PHONE#</th>
@@ -62,11 +63,11 @@
                                         {{ $ticket->ticketnum ?? 'None' }}
                                     </div>
                                 </td>
-                                {{-- <td class="text-center">
+                                <td class="text-center">
                                     <div class="flex items-center justify-center whitespace-nowrap text-info"> 
-                                        <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Completed 
+                                         {{ $ticket->qty ?? '1' }} 
                                     </div>
-                                </td> --}}
+                                </td>
                                 <td>
                                     <div class="text-primary-500 font-extrabold text-md whitespace-nowrap mt-0.5">
                                         {{ $ticket->fname.' '.$ticket->lname }}
