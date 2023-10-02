@@ -92,13 +92,14 @@ trait SparcoTrait {
     public function collectTicket(array $request){
         try {
             $randomNumber = random_int(10000, 99999);
+            $total_amount = $request['amount'] * $request['qty'];
             // Create the Ticket
             $ticket = Ticket::create([
                 'fname' => $request['customerFirstName'],
                 'lname' => $request['customerLastName'],
                 'email' => $request['customerEmail'],
                 'phone' => $request['wallet'],
-                'actual_amount' => $request['amount'],
+                'actual_amount' => $total_amount,
                 'status' => 'Unpaid',
                 'qty' => $request['qty'],
                 'ticketnum' => $randomNumber,
@@ -121,7 +122,7 @@ trait SparcoTrait {
                 CURLOPT_CUSTOMREQUEST => 'POST',
                 CURLOPT_POSTFIELDS => '{
                     "transactionName": "Event Ticket",
-                    "amount": "'.$request['amount'].'",
+                    "amount": "'.$total_amount.'",
                     "currency": "'.$request['currency'].'",
                     "chargeMe": "true",
                     "wallet":  "'.$request['wallet'].'",
