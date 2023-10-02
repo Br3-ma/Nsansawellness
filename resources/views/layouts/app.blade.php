@@ -291,14 +291,47 @@
                     right: 10px;
                     cursor: pointer;
                 }
-        </style>
+                
+        /* Modal Styles */
+        .update-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* Close button */
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Show modal when button is clicked */
+        #openModal {
+            cursor: pointer;
+        }
+    </style>
         <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
         <?php
             $paid = auth()->user()->has_paid;   
-            // var_dump($paid); 
         ?>
         <script>
             
@@ -308,11 +341,14 @@
                 var user_role = "{{ preg_replace('/[^A-Za-z0-9. -]/', '',  auth()->user()->roles->pluck('name')) }}";
                 var paid = "{{ auth()->user()->has_paid }}";
 
-                const newAssignment = tailwind.Modal.getInstance(document.querySelector("#new-assignment-modal"));
-                newAssignment.show();
+                // const newAssignment = tailwind.Modal.getInstance(document.querySelector("#new-assignment-modal"));
+                // newAssignment.show();
                         
-                const myModal = tailwind.Modal.getInstance(document.querySelector("#appointment-remainder-modal"));
-                myModal.show();
+                // const myModal = tailwind.Modal.getInstance(document.querySelector("#appointment-remainder-modal"));
+                // myModal.show();    
+
+                // const updateContactModal = tailwind.Modal.getInstance(document.querySelector("#update-contact-modal"));
+                // updateContactModal.show();
 
                 $.ajaxSetup({
                     headers: {
@@ -329,7 +365,6 @@
 
                 channel.bind('new-activity', function(data) {
                     if(data == user['id']){
-                        
                         Toastify({ 
                             node: $("#basic-non-sticky-notification-content-three").clone().removeClass("hidden")[0], 
                             duration: 9000, 
@@ -923,6 +958,38 @@
                 @include('page.common.assignment-notice')
             @endif --}}
         @endhasanyrole 
+
+        @hasanyrole(['counselor', 'patient'])
+        @if(App\Models\User::isPoneEmpty())
+        <div id="myUpdateModal" class="update-modal">
+            <div class="modal-content">
+                <span class="close-button" id="closeModal">&times;</span>
+                <h2 class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                    </svg>
+                    &nbsp;
+                    Phone Number
+                </h2>
+                <small>Please enter your phone number to receive a message on any updates</small>
+                <form class="py-4" method="post" action="{{route('user.contact')}}">
+                    @csrf
+                    <div class="w-full py-4">
+                        <input type="text" name="phone" class="form-control">
+                        <input type="hidden" value="{{ auth()->user()->id }}" name="user_id" class="form-control">
+                    </div>
+                    <button type="submit" class="flex gap-2 btn btn-sm btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-floppy" viewBox="0 0 16 16">
+                            <path d="M11 2H9v3h2V2Z"/>
+                            <path d="M1.5 0h11.586a1.5 1.5 0 0 1 1.06.44l1.415 1.414A1.5 1.5 0 0 1 16 2.914V14.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13A1.5 1.5 0 0 1 1.5 0ZM1 1.5v13a.5.5 0 0 0 .5.5H2v-4.5A1.5 1.5 0 0 1 3.5 9h9a1.5 1.5 0 0 1 1.5 1.5V15h.5a.5.5 0 0 0 .5-.5V2.914a.5.5 0 0 0-.146-.353l-1.415-1.415A.5.5 0 0 0 13.086 1H13v4.5A1.5 1.5 0 0 1 11.5 7h-7A1.5 1.5 0 0 1 3 5.5V1H1.5a.5.5 0 0 0-.5.5Zm3 4a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 .5-.5V1H4v4.5ZM3 15h10v-4.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5V15Z"/>
+                          </svg>
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+        @endif
+        @endhasanyrole 
         
     <!-- END: Dark Mode Switcher-->
     <div id="rating_preloader" class="fixed hide top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-white flex flex-col items-center justify-center">
@@ -939,38 +1006,38 @@
                     box-shadow: 2px 0 15px -2px rgba(0, 0, 0, 0.2);
                     border-radius: 15px;
                 ">
-                @csrf
-                <h1>Rate Us</h1>
-                <p>How was your experience using our application? Your rating matter!</p>
-            
-                <div class="rating">
-                    <input type="radio" name="rating" id="rating-1" value="1">
-                    <input type="radio" name="rating" id="rating-2" value="2">
-                    <input type="radio" name="rating" id="rating-3" value="3">
-                    <input type="radio" name="rating" id="rating-4" value="4">
-                    <input type="radio" name="rating" id="rating-5" value="5">
-            
-                    <div class="rating__box">
-                    <label for="rating-1" class="rating__star">&starf;</label>
-                    <label for="rating-2" class="rating__star">&starf;</label>
-                    <label for="rating-3" class="rating__star">&starf;</label>
-                    <label for="rating-4" class="rating__star">&starf;</label>
-                    <label for="rating-5" class="rating__star">&starf;</label>
-            
+                    @csrf
+                    <h1>Rate Us</h1>
+                    <p>How was your experience using our application? Your rating matter!</p>
+                
+                    <div class="rating">
+                        <input type="radio" name="rating" id="rating-1" value="1">
+                        <input type="radio" name="rating" id="rating-2" value="2">
+                        <input type="radio" name="rating" id="rating-3" value="3">
+                        <input type="radio" name="rating" id="rating-4" value="4">
+                        <input type="radio" name="rating" id="rating-5" value="5">
+                
+                        <div class="rating__box">
+                        <label for="rating-1" class="rating__star">&starf;</label>
+                        <label for="rating-2" class="rating__star">&starf;</label>
+                        <label for="rating-3" class="rating__star">&starf;</label>
+                        <label for="rating-4" class="rating__star">&starf;</label>
+                        <label for="rating-5" class="rating__star">&starf;</label>
+                
+                        </div>
                     </div>
-                </div>
-            
-                <div class="textarea-group">
-                    <label>
-                    <span>Comment : </span>
-                    <textarea id="comment-rating" placeholder="Additional feedback ..." name="feedback"></textarea>
-                    </label>
-                </div>
-            
-                <div class="action-group">
-                    <button type="button" onclick="submitRatingForm()">Submit</button>
-                    <input type="reset" onclick="closeRating()" value="Cancel">
-                </div>
+                
+                    <div class="textarea-group">
+                        <label>
+                        <span>Comment : </span>
+                        <textarea id="comment-rating" placeholder="Additional feedback ..." name="feedback"></textarea>
+                        </label>
+                    </div>
+                
+                    <div class="action-group">
+                        <button type="button" onclick="submitRatingForm()">Submit</button>
+                        <input type="reset" onclick="closeRating()" value="Cancel">
+                    </div>
                 </form>
             </main>
             <img id="showspina" src="{{ asset('public/img/1.gif') }}">
@@ -1189,6 +1256,17 @@
                 });
             });
         });
+        
+        // Get the modal
+        var modal = document.getElementById("myUpdateModal");
+
+        modal.style.display = "block";
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 
     @stack('scripts')

@@ -160,6 +160,17 @@ public function updateStatus(Request $request){
 
 }
 
+public function updatePhone(Request $request){
+    try {
+        $user = User::where('id', $request->toArray()['user_id'])->first();
+        $user->mobile_no = $request->toArray()['phone'];
+        $user->save();
+        return redirect()->back();
+    } catch (\Throwable $th) {
+        dd($th);
+    }
+}
+
 public function uploadMyFiles(Request $request){
     try {
         $data = $request->toArray();

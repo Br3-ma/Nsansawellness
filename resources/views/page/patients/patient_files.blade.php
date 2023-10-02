@@ -146,7 +146,10 @@
                 </div>
                 <div class="text-center lg:text-left p-5">
                     {{-- <div>Condition</div> --}}
-                    <a title="Send an email to {{ $file->fname.' '.$file->lname  }}" href="mailto:{{ $file->email }}" class="flex tooltip items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file->email }}</a>
+                    @if($file->mobile_no !== null)
+                    <a  href="tel:{{ $file->mobile_no }}" class="flex tooltip items-center justify-center lg:justify-start text-slate-500 mt-5"> <i data-lucide="phone" class="w-3 h-3 mr-2"></i> {{ $file->mobile_no }}</a>
+                    @endif
+                    <a title="Send an email to {{ $file->fname.' '.$file->lname  }}" href="mailto:{{ $file->email }}" class="flex tooltip items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="mail" class="w-3 h-3 mr-2"></i> {{ $file->email }}</a>
                     <div title="View counselor" class="flex tooltip items-center justify-center lg:justify-start text-slate-500 mt-1"> <i data-lucide="calendar" class=" w-3 h-3 mr-2"></i> {{ $file->created_at }} </div>
                     @hasrole('admin')
                         @if (App\Models\PatientFile::counselorAssigned($file->id) !== null)

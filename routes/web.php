@@ -142,6 +142,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/processing-your-transaction', [PaymentController::class, 'sparco_collect'])->name('pay-w-sparco');
     
     Route::get('update-user-status', [UserController::class, 'updateStatus'])->name('user.status');
+    Route::post('update-phone', [UserController::class, 'updatePhone'])->name('user.contact');
     Route::post('upload-files', [UserController::class, 'uploadMyFiles'])->name('user.files');
     Route::post('update-question-type', [QuestionaireController::class, 'updateQType'])->name('update.questiontype');
     Route::get('add-questions/{qid}', [QuestionaireController::class, 'addQuestions'])->name('questionaires.new_question');

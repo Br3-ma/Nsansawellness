@@ -121,6 +121,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return false;
     }
 
+    public static function isPoneEmpty(){
+        $data = auth()->user()->mobile_no;
+        if($data == null || $data == ''){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public static function hasNotUploaded(){
         try {
             $mf = MyFile::where('user_id', auth()->user()->id)->latest()->first()->toArray();

@@ -287,6 +287,8 @@
 @hasanyrole('patient')
 @include('page.common.make-appointment-notice')
 @endhasrole
+
+
 @endsection
 
     

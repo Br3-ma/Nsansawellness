@@ -529,7 +529,6 @@
                                                 <div class="p-5">
                                                     <div class="text-base font-medium truncate">Service Pricing</div>
                                                     <div class="text-slate-400 mt-1">20 Hours ago</div>
-                                                    {{-- <div class="text-slate-500 text-justify mt-1">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div> --}}
                                                     <div class="font-medium flex mt-5">
                                                         <button type="button" class="btn btn-secondary py-1 px-2">View Notes</button>
                                                         <button type="button" class="btn btn-outline-secondary py-1 px-2 ml-auto ml-auto">Dismiss</button>
@@ -538,7 +537,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>  --}}
 
                                 <!-- END: Important Notes -->
                                 <!-- BEGIN: Recent Activities -->
