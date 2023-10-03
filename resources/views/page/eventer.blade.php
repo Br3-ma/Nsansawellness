@@ -536,15 +536,14 @@
 												data-settings="{&quot;_position&quot;:&quot;absolute&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;,&quot;_animation_delay&quot;:850}"
 												data-widget_type="text-editor.default">
 												<div class="elementor-widget-container">
-
 													<a href="#">
-														
 														<svg style="margin-top:-2px" xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-calendar2-week" viewBox="0 0 16 16">
 															<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
 															<path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
 														  </svg>&nbsp;
-														7th and 8th October 2023
-														</a> </div>
+														7th October 2023
+													</a> 
+												</div>
 											</div>
 											<div class="elementor-element elementor-element-117cd76 elementor-widget__width-auto elementor-absolute elementor-widget-mobile__width-inherit elementor-widget elementor-widget-text-editor"
 												data-id="117cd76" data-element_type="widget"
@@ -1531,7 +1530,7 @@
 												<label for="paymentMethod">For the Event On:</label>
 												<select name="for_event_on" class="form-control">
 													<option value="7th October, 2023">7th October, 2023</option>
-													<option value="8th October, 2023">8th October, 2023</option>
+													{{-- <option value="8th October, 2023">8th October, 2023</option> --}}
 													<!-- Add more payment options as needed -->
 												</select>
 											</div>
