@@ -92,11 +92,10 @@
                                 <td>
                                     <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
                                         @forelse (App\Models\Activity::assignedPatients($act->activities->id) as $user)
-                                            @php
-                                             dd($user) ;   
-                                            @endphp
                                             @if ($user->users !== null)
                                             {{ $user->users->fname.' '.$user->users->lname }}
+                                            @else
+                                            <span class="badge badge-danger p-3">Invalid</span>
                                             @endif
                                         @empty
                                             
