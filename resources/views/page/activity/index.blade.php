@@ -92,8 +92,7 @@
                                 <td>
                                     <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">
                                         @forelse (App\Models\Activity::assignedPatients($act->activities->id) as $user)
-                                        
-                                            @if (!empty($user->users->toArray()))
+                                            @if ($user->users !== null)
                                             {{ $user->users->fname.' '.$user->users->lname }}
                                             @endif
                                         @empty
