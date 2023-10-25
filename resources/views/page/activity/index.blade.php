@@ -95,7 +95,7 @@
                                             @if ($user->users !== null)
                                             {{ $user->users->fname.' '.$user->users->lname }}
                                             @else
-                                            <span class="badge badge-danger p-3">Invalid</span>
+                                            <span class="badge badge-danger bg-red-500 p-3">Invalid</span>
                                             @endif
                                         @empty
                                             
