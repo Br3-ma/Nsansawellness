@@ -313,8 +313,7 @@ class AppointmentController extends Controller
             Session::flash('attention', "Appointment has been scheduled successfully.");
             return redirect()->route('appointment');
         } catch (\Throwable $th) {
-            dd($th);
-            Session::flash('error_msg', "Oops something went wrong. Unable to send mail");
+            Session::flash('error_msg', "Failed. See if patient is assigned to this counselor.");
             return redirect()->route('appointment');
         } 
     }
