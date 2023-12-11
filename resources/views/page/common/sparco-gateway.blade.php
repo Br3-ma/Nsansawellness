@@ -393,7 +393,7 @@ function removeClass() {
         contentType: false,
         success: function(response) {
             var link = response.data;
-
+            console.log(link);
             // Redirect the user to the external URL
             window.location.href = response.data;
 
