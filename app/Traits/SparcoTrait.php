@@ -50,7 +50,7 @@ trait SparcoTrait {
                 CURLOPT_CUSTOMREQUEST => 'POST',
                 CURLOPT_POSTFIELDS => '{
                     "transactionName": "Online Counseling Service",
-                    "amount": '.(float)$request['amount'].',
+                    "amount": 1,
                     "currency": "'.$request['currency'].'",
                     "chargeMe": "true",
                     "customerAddr": "Lusaka",
