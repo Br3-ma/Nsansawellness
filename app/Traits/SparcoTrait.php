@@ -50,7 +50,7 @@ trait SparcoTrait {
                 CURLOPT_CUSTOMREQUEST => 'POST',
                 CURLOPT_POSTFIELDS => '{
                     "transactionName": "Online Counseling Service",
-                    "amount": 1,
+                    "amount": "'.$request['amount'].'",
                     "currency": "'.$request['currency'].'",
                     "chargeMe": "true",
                     "customerAddr": "Lusaka",
@@ -69,7 +69,7 @@ trait SparcoTrait {
                 }',
                 CURLOPT_HTTPHEADER => array(
                     'Content-Type: application/json',
-                    'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5zYW5zYXdlbGxuZXNzIExpbWl0ZWQiLCJpYXQiOjE1MTYyMzkwMjJ9.W7E1kQ2zW1GwepOheYbKsV2oApUodGwoiPAUPvV4otk',
+                    'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNngiLCJpYXQiOjE3MDIyOTQwNjV9.Nr_rZOeLizmFTrTbIzf3Fc5dk9-qv-vu-qjenF-Rl3c',
                     'X-PUB-KEY; de7afd6176bb4eff99316dcf508e5be6' 
                 ),
             ));
