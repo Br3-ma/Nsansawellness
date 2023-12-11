@@ -262,7 +262,8 @@
                         <input type="hidden" name="transactionName" value="NSANSTR#".{{ $randomStr }}>
                         <input type="hidden" name="transactionReference" value="{{ $transRef }}">
                         <input type="hidden" name="chargeMe" value="true">
-                        <input type="hidden" name="{{ auth()->user()->email }}" name="customerEmail">
+                        <input type="hidden" value="{{ auth()->user()->email }}" name="customerEmail">
+                        <input type="hidden" value="{{ auth()->user()->email }}" name="email">
                         <br>
                         <button type="button" id="submitBtn">Proceed to Payments</button>
                     </form>
