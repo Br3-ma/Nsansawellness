@@ -247,7 +247,7 @@
                     @endphp 
                     <form action="{{ route('pay-w-sparco') }}" method="POST" id="airtelform">
                         @csrf
-                        <input type="tel" id="contact"  name="wallet" placeholder="Enter your mobile number">
+                        <input type="text" id="contact"  name="wallet" placeholder="Enter your mobile number">
                         {{-- <input type="hidden" id="contact" name="wallet" placeholder="Mobile number"> --}}
                     
                         <input type="hidden" name="callback" value="{{'http://localhost/nsansawellness/transaction-summary/'.auth()->user()->id.'/'.$billing->id.'/'.$uuid.''}}">
@@ -264,7 +264,7 @@
                         <input type="hidden" name="chargeMe" value="true">
                         <input type="hidden" name="{{ auth()->user()->email }}" name="customerEmail">
                         <br>
-                        <button id="submitBtn">Proceed to Payments</button>
+                        <button type="button" id="submitBtn">Proceed to Payments</button>
                     </form>
                 </div>
             </div>
