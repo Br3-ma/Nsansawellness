@@ -69,16 +69,17 @@ trait SparcoTrait {
                 }',
                 CURLOPT_HTTPHEADER => array(
                     'Content-Type: application/json',
-                    'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5MjcwNzIwOH0.Qi6KFBzFy7iST0bFylG-Vb5cpzVJ710lg1V296uRKck',
+                    'token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik5zYW5zYXdlbGxuZXNzIExpbWl0ZWQiLCJpYXQiOjE1MTYyMzkwMjJ9.W7E1kQ2zW1GwepOheYbKsV2oApUodGwoiPAUPvV4otk',
                     'X-PUB-KEY; de7afd6176bb4eff99316dcf508e5be6' 
                 ),
             ));
     
             $response = curl_exec($curl);
             $result = json_decode($response);
-            dd($result);
+           
             curl_close($curl);
-            
+            dd($result);
+            // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5MjcwNzIwOH0.Qi6KFBzFy7iST0bFylG-Vb5cpzVJ710lg1V296uRKck
             // Checkout link"customerPhone": "'.$request['wallet'].'",
                     // "wallet":  "'.$request['wallet'].'",
             // print_r($result);
