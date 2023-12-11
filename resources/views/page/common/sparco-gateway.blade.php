@@ -252,7 +252,7 @@
                     
                         <input type="hidden" name="callback" value="{{'https://nsansawellness.com/transaction-summary/'.auth()->user()->id.'/'.$billing->id.'/'.$uuid.''}}">
                         <input type="hidden" name="uuid" value="{{ $uuid }}">
-                        <input type="hidden" name="amount" value="{{ floatval($billing->charge_amount) }}">
+                        <input type="hidden" name="amount" value="{{ (float) str_replace(',', '', $billing->charge_amount) }}">
                         <input type="hidden" name="billing_id" value="{{ $billing->id }}">
                         <input type="hidden" name="currency" value="ZMW">
                         <input type="hidden" name="customerFirstName" value="{{ auth()->user()->fname }}">
