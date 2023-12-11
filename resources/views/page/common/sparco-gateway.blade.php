@@ -393,9 +393,9 @@ function removeClass() {
         contentType: false,
         success: function(response) {
             var link = response.data;
-            console.log(link);
+            console.log(response);
             // Redirect the user to the external URL
-            window.location.href = response.data;
+            // window.location.href = response.data;
 
             // Hide the preloader on success
             $('#preloader').hide();
