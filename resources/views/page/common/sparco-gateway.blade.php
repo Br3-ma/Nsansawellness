@@ -259,7 +259,7 @@
                         <input type="hidden" name="customerLastName" value="{{ auth()->user()->lname }}">
                         <input type="hidden" name="customerEmail" value="{{ auth()->user()->email }}">
                         <input type="hidden" name="merchantPublicKey" value="de7afd6176bb4eff99316dcf508e5be6">
-                        <input type="hidden" name="transactionName" value="NSANSTR#".{{ $randomStr }}>
+                        <input type="hidden" name="transactionName" value="NSANSTR#".{{ $transRef }}>
                         <input type="hidden" name="transactionReference" value="{{ $transRef }}">
                         <input type="hidden" name="chargeMe" value="true">
                         <input type="hidden" value="{{ auth()->user()->email }}" name="customerEmail">
