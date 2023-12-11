@@ -34,6 +34,7 @@ trait SparcoTrait {
 
     public function collect2(array $request){
         try {
+            dd($request);
             $curl = curl_init();
             $var = true;
     
