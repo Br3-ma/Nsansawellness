@@ -26,6 +26,6 @@ class VerifyCsrfToken extends Middleware
         '/transaction-summary/*',
         '/payment-details/*',
         'edit-question',
-        'pay-w-sparco'
+        '/processing-your-transaction'
     ];
 }
