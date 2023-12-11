@@ -250,9 +250,9 @@
                         <input type="text" id="contact" name="wallet" placeholder="Enter your mobile number">
                         {{-- <input type="hidden" id="contact" name="wallet" placeholder="Mobile number"> --}}
                     
-                        <input type="hidden" name="callback" value="{{'http://localhost/nsansawellness/transaction-summary/'.auth()->user()->id.'/'.$billing->id.'/'.$uuid.''}}">
+                        <input type="hidden" name="callback" value="{{'https://nsansawellness.com/transaction-summary/'.auth()->user()->id.'/'.$billing->id.'/'.$uuid.''}}">
                         <input type="hidden" name="uuid" value="{{ $uuid }}">
-                        <input type="hidden" name="amount" value="{{ $billing->charge_amount }}">
+                        <input type="hidden" name="amount" value="{{ (float)$billing->charge_amount }}">
                         <input type="hidden" name="billing_id" value="{{ $billing->id }}">
                         <input type="hidden" name="currency" value="ZMW">
                         <input type="hidden" name="customerFirstName" value="{{ auth()->user()->fname }}">

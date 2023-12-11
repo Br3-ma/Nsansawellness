@@ -53,8 +53,7 @@ trait SparcoTrait {
                     "amount": "'.$request['amount'].'",
                     "currency": "'.$request['currency'].'",
                     "chargeMe": "true",
-                    "wallet":  "'.$request['wallet'].'",
-                    "customerAddr": "Test",
+                    "customerAddr": "Lusaka",
                     "customerCity": "Lusaka",
                     "customerState": "Lusaka",
                     "customerCountryCode": "ZM",
@@ -63,7 +62,6 @@ trait SparcoTrait {
                     "customerFirstName": "'.$request['customerFirstName'].'",
                     "customerLastName": "'.$request['customerLastName'].'",
                     "customerEmail": "'.$request['customerEmail'].'",
-                    "customerPhone": "'.$request['wallet'].'",
                     "returnUrl": "'.$request['callback'].'",
                     "autoReturn": '.$var.',
                     "webhookUrl": "https://2150-165-58-129-124.ngrok.io/webhook?src=test",
@@ -81,7 +79,8 @@ trait SparcoTrait {
             dd($result);
             curl_close($curl);
             
-            // Checkout link
+            // Checkout link"customerPhone": "'.$request['wallet'].'",
+                    // "wallet":  "'.$request['wallet'].'",
             // print_r($result);
             // Return checkout link or json data
             // return $result;
