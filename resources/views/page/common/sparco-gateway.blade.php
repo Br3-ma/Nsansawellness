@@ -214,7 +214,7 @@
     <div class="pricing-card">
         <div class="card-header">
             <div class="card-btn-parent">
-                <button id="basic-plan" class="text-dark active">Payment Summary</button>
+                <h1 id="basic-plan" class="text-dark active">Payment Summary</h1>
                 {{-- <button id="standard-plan">MTN Money</button>
                 <button id="premium-plan">Visa</button>
                 <div class="overlay"></div> --}}
@@ -224,14 +224,14 @@
 
             <div id="card-basic-plan" class="active">
                 <div class="card-plans">
-                    <span class="plan-tag">Airtel Mobile Money</span>
+                    {{-- <span class="plan-tag">Airtel Mobile Money</span> --}}
                     <div class="card-plan">
                         <h3 class="plan-title">Total</h3>
                         <h3 class="plan-price">ZK {{ $billing->charge_amount }}</h3>
                     </div>
                 </div>
                 <div class="card-content">
-                    <p>Make an instant mobile money payment</p>
+                    <p>Make an instant mobile money & card payment</p>
                     <div class="card-lists">
                         <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Online Chat messages</div>
                         <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Video calls</div>
@@ -247,8 +247,8 @@
                     @endphp 
                     <form action="{{ route('pay-w-sparco') }}" method="POST" id="airtelform">
                         @csrf
-                            {{-- <input type="tel" id="contact" name="customerPhone" placeholder="Mobile number"> --}}
-                        <input type="hidden" id="contact" name="wallet" placeholder="Mobile number">
+                        <input type="tel" id="contact"  name="wallet" placeholder="Enter your mobile number">
+                        {{-- <input type="hidden" id="contact" name="wallet" placeholder="Mobile number"> --}}
                     
                         <input type="hidden" name="callback" value="{{'http://localhost/nsansawellness/transaction-summary/'.auth()->user()->id.'/'.$billing->id.'/'.$uuid.''}}">
                         <input type="hidden" name="uuid" value="{{ $uuid }}">
@@ -268,7 +268,7 @@
                     </form>
                 </div>
             </div>
-            <div id="card-standard-plan">
+            {{-- <div id="card-standard-plan">
                 <div class="card-plans">
                     <span class="plan-tag">MTN Mobile Money</span>
                     <div class="card-plan">
@@ -304,7 +304,7 @@
                         <button id="submitBtn">Proceed to Payments</button>
                     </form>
                 </div>
-            </div>
+            </div> --}}
             {{-- <div id="card-premium-plan">
                 <div class="card-plans">
                     <span class="plan-tag">Visa & Master Card</span>
