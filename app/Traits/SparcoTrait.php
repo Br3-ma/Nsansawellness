@@ -77,12 +77,13 @@ trait SparcoTrait {
     
             $response = curl_exec($curl);
             $result = json_decode($response);
+            dd($result);
             curl_close($curl);
-    
+            
             // Checkout link
             // print_r($result);
             // Return checkout link or json data
-            return $result;
+            // return $result;
         } catch (\Throwable $th) {
             dd($th);
         }   
