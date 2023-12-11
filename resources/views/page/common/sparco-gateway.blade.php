@@ -360,16 +360,16 @@ function removeClass() {
     });
 }
 
-client_type.onchange = () => {play()}
-const ref = () => {
-    let result = '';
-    let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let charactersLength = characters.length;
-    for ( var i = 0; i < 15; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    document.getElementById('external_ref').value = result;
-}
+    // client_type.onchange = () => {play()}
+    // const ref = () => {
+    //     let result = '';
+    //     let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    //     let charactersLength = characters.length;
+    //     for ( var i = 0; i < 15; i++ ) {
+    //         result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    //     }
+    //     document.getElementById('external_ref').value = result;
+    // }
 ref();
 </script>
 
