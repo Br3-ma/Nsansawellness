@@ -389,7 +389,7 @@ function removeClass() {
         type: 'POST',
         url: form.action,
         // data: formData,
-        data: JSON.stringify(formData),
+        data: formData,
         processData: false,
         contentType: 'application/json',
         success: function(response) {
