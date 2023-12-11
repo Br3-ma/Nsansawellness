@@ -25,6 +25,7 @@ class VerifyCsrfToken extends Middleware
         'rate-video-call',
         '/transaction-summary/*',
         '/payment-details/*',
-        'edit-question'
+        'edit-question',
+        'pay-w-sparco'
     ];
 }
