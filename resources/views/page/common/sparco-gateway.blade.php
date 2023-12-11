@@ -391,7 +391,7 @@ function removeClass() {
         // data: formData,
         data: JSON.stringify(formData),
         processData: false,
-        contentType: 'application/json',,
+        contentType: 'application/json',
         success: function(response) {
             var link = response.data;
             console.log(response);
