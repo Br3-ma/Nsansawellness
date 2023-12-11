@@ -388,9 +388,10 @@ function removeClass() {
     $.ajax({
         type: 'POST',
         url: form.action,
-        data: formData,
+        // data: formData,
+        data: JSON.stringify(formData),
         processData: false,
-        contentType: false,
+        contentType: 'application/json',,
         success: function(response) {
             var link = response.data;
             console.log(response);
