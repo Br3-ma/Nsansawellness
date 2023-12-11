@@ -373,47 +373,65 @@ function removeClass() {
 // ref();
 </script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script>
-    $(document).ready(function() {
-        $('#submitBtn').click(function(event) {
-    event.preventDefault();
+    document.addEventListener('DOMContentLoaded', function() {
+        var submitBtn = document.getElementById('submitBtn');
+        submitBtn.addEventListener('click', function(event) {
+            event.preventDefault();
 
-    // Show the preloader
-    $('#preloader').show();
+            // Show the preloader
+            document.getElementById('preloader').style.display = 'block';
 
-    const form = $('#airtelform')[0];
-    const formData = new FormData(form);
+            var form = document.getElementById('airtelform');
+            var formData = new FormData(form);
 
-    $.ajax({
-        type: 'POST',
-        url: form.action,
-        // data: formData,
-        data: formData,
-        processData: true,
-        contentType: 'application/json',
-        success: function(response) {
-            var link = response.data;
-            console.log(response);
-            // Redirect the user to the external URL
-            // window.location.href = response.data;
+            // Convert FormData to a plain object
+            var formDataObject = {};
+            formData.forEach(function(value, key) {
+                formDataObject[key] = value;
+            });
 
-            // Hide the preloader on success
-            $('#preloader').hide();
+            // Perform the AJAX request using vanilla JavaScript
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
 
-            // Handle success, e.g., redirect or display a success message
-            console.log('Payment successful!');
-        },
-        error: function(xhr, status, error) {
-            // Hide the preloader on error
-            $('#preloader').hide();
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    var link = response.data;
+                    console.log(response);
+                    // Redirect the user to the external URL
+                    // window.location.href = response.data;
 
-            // Handle error, e.g., display an error message
-            console.error('Payment failed', error);
-        }
-    });
-});
+                    // Hide the preloader on success
+                    document.getElementById('preloader').style.display = 'none';
+
+                    // Handle success, e.g., redirect or display a success message
+                    console.log('Payment successful!');
+                } else {
+                    // Hide the preloader on error
+                    document.getElementById('preloader').style.display = 'none';
+
+                    // Handle error, e.g., display an error message
+                    console.error('Payment failed', xhr.statusText);
+                }
+            };
+
+            xhr.onerror = function() {
+                // Hide the preloader on error
+                document.getElementById('preloader').style.display = 'none';
+
+                // Handle error, e.g., display an error message
+                console.error('Network error');
+            };
+
+            // Convert formDataObject to JSON and send it
+            xhr.send(JSON.stringify(formDataObject));
+        });
     });
 </script>
+
 
 </html>
