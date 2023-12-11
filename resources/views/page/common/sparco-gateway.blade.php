@@ -390,7 +390,7 @@ function removeClass() {
         url: form.action,
         // data: formData,
         data: formData,
-        processData: false,
+        processData: true,
         contentType: 'application/json',
         success: function(response) {
             var link = response.data;
