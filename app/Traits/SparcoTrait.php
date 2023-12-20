@@ -89,7 +89,7 @@ trait SparcoTrait {
             // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5MjcwNzIwOH0.Qi6KFBzFy7iST0bFylG-Vb5cpzVJ710lg1V296uRKck
             // Checkout link"customerPhone": "'.$request['wallet'].'",
                     // "wallet":  "'.$request['wallet'].'",
-            print_r($result);
+            // print_r($result);
             // Return checkout link or json data
             return $result;
         } catch (\Throwable $th) {
