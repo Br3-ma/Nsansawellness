@@ -40,7 +40,7 @@ trait SparcoTrait {
     
             curl_setopt_array($curl, array(
                 // CURLOPT_URL => 'https://live.sparco.io/gateway/api/v1/momo/debit',
-                CURLOPT_URL => 'https://checkout.sparco.io/gateway/api/v1/checkout',
+                CURLOPT_URL => 'https://checkout.broadpay.io/gateway/api/v1/checkout',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -121,7 +121,7 @@ trait SparcoTrait {
     
             curl_setopt_array($curl, array(
                 // CURLOPT_URL => 'https://live.sparco.io/gateway/api/v1/momo/debit',
-                CURLOPT_URL => 'https://checkout.sparco.io/gateway/api/v1/checkout',
+                CURLOPT_URL => 'https://checkout.broadpay.io/gateway/api/v1/checkout',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
