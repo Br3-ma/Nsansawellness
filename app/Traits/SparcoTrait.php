@@ -79,19 +79,19 @@ trait SparcoTrait {
            
             curl_close($curl);
             // Check for cURL errors
-            if ($response === false) {
-                $errorNumber = curl_errno($curl);
-                $errorMessage = curl_error($curl);
+            // if ($response === false) {
+            //     $errorNumber = curl_errno($curl);
+            //     $errorMessage = curl_error($curl);
 
-                // Output error information
-                dd("cURL Error ($errorNumber): $errorMessage");
-            }
+            //     // Output error information
+            //     dd("cURL Error ($errorNumber): $errorMessage");
+            // }
             // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwdWJLZXkiOiJkZTdhZmQ2MTc2YmI0ZWZmOTkzMTZkY2Y1MDhlNWJlNiIsImlhdCI6MTY5MjcwNzIwOH0.Qi6KFBzFy7iST0bFylG-Vb5cpzVJ710lg1V296uRKck
             // Checkout link"customerPhone": "'.$request['wallet'].'",
                     // "wallet":  "'.$request['wallet'].'",
-            // print_r($result);
+            print_r($result);
             // Return checkout link or json data
-            // return $result;
+            return $result;
         } catch (\Throwable $th) {
             dd($th);
         }   
