@@ -458,7 +458,7 @@
                     <li class="flex py-4 text-white">
                         <div class="ml-6 p-4 w-12 h-12 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
                             @if(Auth::user()->image_path == null)
-                            <div class="font-bolder text-lg text-white ml-4 w-4 h-4 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-slate-400 zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                            <div class="font-bolder text-sm text-white ml-4 w-4 h-4 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-slate-400 zoom-in tooltip" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
                                 {{ Auth::user()->fname[0].'-'.Auth::user()->lname[0] }}
                             </div>
                             @else

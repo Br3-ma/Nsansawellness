@@ -175,8 +175,8 @@
         <div class="intro-x dropdown w-8 h-8">
             <div class="dropdown-toggle w-8 h-8 rounded-full bg-white overflow-hidden shadow-lg image-fit zoom-in scale-110" role="button" aria-expanded="false" data-tw-toggle="dropdown">
                 @if(Auth::user()->image_path == null)
-                <div class="border border-white py-2 px-1 text-gray-400 font-extrabold text-xs bg-white" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
-                    {{ Auth::user()->fname[0].' '.Auth::user()->lname[0] }}
+                <div class="border border-white text-center py-2 px-1 text-gray-400 font-extrabold text-xs bg-white" title="{{ Auth::user()->fname.' '.Auth::user()->lname  }}">
+                    <small>{{ Auth::user()->fname[0].' '.Auth::user()->lname[0] }}</small>
                 </div>
                 @else
                 <img alt="Profile" src="{{ asset('public/storage/'.Auth::user()->image_path) }}">
