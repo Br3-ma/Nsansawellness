@@ -182,7 +182,8 @@
                 <img alt="Profile" src="{{ asset('public/storage/'.Auth::user()->image_path) }}">
                 @endif
             </div>
-            <div class="dropdown-menu w-56">
+            <div class="dropdown-menu w-56"
+            >
                 <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                     <li class="p-2">
                         <div class="font-medium">{{ Auth::User()->fname.' '.Auth::User()->lname }}</div>

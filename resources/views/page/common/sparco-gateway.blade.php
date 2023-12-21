@@ -407,7 +407,6 @@ function removeClass() {
                     window.location.href = response.data;
 
                     // Hide the preloader on success
-                    document.getElementById('preloader').style.display = 'none';
 
                     // Handle success, e.g., redirect or display a success message
                     console.log('Payment successful!');
