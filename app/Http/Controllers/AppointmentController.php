@@ -61,18 +61,18 @@ class AppointmentController extends Controller
         $this->mark_as_seen();
         // $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
         $appointments = $this->appointment
-                    ->with('guests')
-                    ->where('user_id', Auth::user()->id)
-                    ->whereRaw('STR_TO_DATE(end_date, "%d %b, %Y") > NOW()')
-                    ->get();
+        ->with('guests')
+        ->where('user_id', Auth::user()->id)
+        ->orderBy('created_at', 'desc')
+        ->limit(9)
+        ->get();
         $adminapps =  $this->appointment->with('guests')->orWhere('setter', 1)->orWhere('setter', 'true')->get();
         // $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')
-                    ->where('guest_id', Auth::user()->id)
-                    ->whereHas('appointment', function ($query) {
-                        $query->whereRaw('STR_TO_DATE(end_date, "%d %b, %Y") > NOW()');
-                    })
-                    ->get();
+        ->where('guest_id', Auth::user()->id)
+        ->orderBy('created_at', 'desc')
+        ->limit(9)
+        ->get();
         $patients = $this->user->role('patient')->get();
         $counselors = $this->user->role('counselor')->get();
         $my_counselor = $this->myCurrentCounselor();
