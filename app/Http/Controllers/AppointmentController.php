@@ -54,6 +54,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
+        
+        // dd('here');
         // if($this->my_role() == 'patient'){
         //     $this->autoAssign();
         // }
@@ -61,17 +63,18 @@ class AppointmentController extends Controller
         $this->mark_as_seen();
         // $appointments = $this->appointment->with('guests')->where('user_id', Auth::user()->id)->get();
         $appointments = $this->appointment
-                    ->with('guests')
-                    ->where('user_id', Auth::user()->id)
-                    ->whereRaw('STR_TO_DATE(end_date, "%d %b, %Y") > NOW()')
-                    ->get();
+        ->with('guests')
+        ->where('user_id', Auth::user()->id)
+        ->whereRaw('STR_TO_DATE(end_date, "%d %b, %Y") > NOW()')
+        ->get();
+    
         $adminapps =  $this->appointment->with('guests')->orWhere('setter', 1)->orWhere('setter', 'true')->get();
         // $incoming_appointments = UserAppointment::with('appointment')->where('guest_id', Auth::user()->id)->get();
         $incoming_appointments = UserAppointment::with('appointment')
                     ->where('guest_id', Auth::user()->id)
-                    ->whereHas('appointment', function ($query) {
-                        $query->whereRaw('STR_TO_DATE(end_date, "%d %b, %Y") > NOW()');
-                    })
+                    // ->whereHas('appointment', function ($query) {
+                    //     $query->whereRaw('STR_TO_DATE(end_date, "%d %b, %Y") > NOW()');
+                    // })
                     ->get();
         $patients = $this->user->role('patient')->get();
         $counselors = $this->user->role('counselor')->get();
@@ -91,20 +94,23 @@ class AppointmentController extends Controller
                 }
                 $calendar = $events;
             }else{
-                foreach($incoming_appointments as $a){
-                    $x = [
-                        'title' => $a->appointment->title,
-                        'start' =>$this->changeDate($a->appointment->start_date),
-                        'end' => $this->changeDate($a->appointment->end_date),
-                    ];
-                    array_push($events, $x);
+                if(!empty($incoming_appointments->toArray())){
+                    foreach($incoming_appointments as $a){
+                        // dd($a);
+                        $x = [
+                            'title' => $a->appointment->title,
+                            'start' =>$this->changeDate($a->appointment->start_date),
+                            'end' => $this->changeDate($a->appointment->end_date),
+                        ];
+                        array_push($events, $x);
+                    }
                 }
                 $calendar = $events; 
             }
             return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients', 'adminapps'));
         } catch (\Throwable $th) {
             $calendar = [];
-            return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients', 'adminapps'));
+            // return view('page.appointments.index', compact('appointments','incoming_appointments', 'calendar', 'notifications', 'av_dates', 'counselors', 'patients', 'adminapps'));
         }
     }
 
