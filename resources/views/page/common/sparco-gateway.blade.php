@@ -186,13 +186,14 @@
         width: 100%;
         height: 100%;
         background-color: rgba(255, 255, 255, 0.7);
-        display: none;
-        justify-content: center;
+        display: flex;
         align-items: center;
+        justify-content: center;
         z-index: 9999;
     }
 
     #loader {
+
         border: 4px solid #f3f3f3;
         border-top: 4px solid #3498db;
         border-radius: 50%;
@@ -269,75 +270,15 @@
                     </form>
                 </div>
             </div>
-            {{-- <div id="card-standard-plan">
-                <div class="card-plans">
-                    <span class="plan-tag">MTN Mobile Money</span>
-                    <div class="card-plan">
-                        <h3 class="plan-title">Total</h3>
-                        <h3 class="plan-price">ZK {{ $billing->charge_amount }}</h3>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <p>Make an instant mobile money payment</p>
-                    <div class="card-lists">
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Online Chat messages</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Video calls</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Access to Personalized Counseling</div>
-                    </div>
-                </div>
-                <div class="card-button">
-                    <form action="{{ route('pay-w-sparco') }}" method="POST" id="mtnform">
-                        @csrf
-                        <div class="input-container">
-                            <input type="tel" id="contact" name="wallet" placeholder="Mobile number">
-                        </div>
-                        
-                        <input type="hidden" name="amount" value="{{ $billing->charge_amount }}">
-                        <input type="hidden" name="currency" value="ZMW">
-                        <input type="hidden" name="customerFirstName" value="{{ auth()->user()->fname }}">
-                        <input type="hidden" name="customerLastName" value="{{ auth()->user()->lname }}">
-                        <input type="hidden" name="merchantPublicKey" value="de7afd6176bb4eff99316dcf508e5be6">
-                        <input type="hidden" name="transactionName" value="NSANSTR#".{{ $randomStr }}>
-                        <input type="hidden" name="transactionReference" value="{{ $transRef }}">
-                        <input type="hidden" name="chargeMe" value="true">
-                        <input type="hidden" name="{{ auth()->user()->email }}" name="customerEmail">
-                        <br>
-                        <button id="submitBtn">Proceed to Payments</button>
-                    </form>
-                </div>
-            </div> --}}
-            {{-- <div id="card-premium-plan">
-                <div class="card-plans">
-                    <span class="plan-tag">Visa & Master Card</span>
-                    <div class="card-plan">
-                        <h3 class="plan-title">Total</h3>
-                        <h3 class="plan-price">ZK {{ $billing->charge_amount }}</h3>
-                    </div>
-                </div>
-                <div class="card-content">
-                    <p>Make an instant credit card payment</p>
-                    <div class="card-lists">
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">24 hours daily support</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Chat messages</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Video calls</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Personalize Counseling</div>
-                        <div class="card-list"><img src="https://rvs-pricing-card.vercel.app/tick.svg" alt="">Home work & Activities</div>
-                    </div>
-                </div>
-                <div class="card-button">
-                    <button>Pay</button>
-                </div>
-            </div> --}}
-
         </div>
     </div>
-
 </body>
   
 <script>
 const planBtns = document.querySelectorAll(".card-btn-parent button");
 const plans = document.querySelectorAll(".card-body > div");
 
+document.getElementById('preloader').style.display = 'none';
 planBtns.forEach(planBtn => {
     planBtn.addEventListener("click", function() {
         removeClass();
@@ -361,20 +302,7 @@ function removeClass() {
     });
 }
 
-    // client_type.onchange = () => {play()}
-    // const ref = () => {
-    //     let result = '';
-    //     let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    //     let charactersLength = characters.length;
-    //     for ( var i = 0; i < 15; i++ ) {
-    //         result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    //     }
-    //     document.getElementById('external_ref').value = result;
-    // }
-// ref();
 </script>
-
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var submitBtn = document.getElementById('submitBtn');
@@ -382,7 +310,10 @@ function removeClass() {
             event.preventDefault();
 
             // Show the preloader
-            document.getElementById('preloader').style.display = 'block';
+            document.getElementById('preloader').style.display = 'flex';
+            document.getElementById('preloader').style.alignItems = 'center';
+            document.getElementById('preloader').style.justifyContent = 'center';
+
 
             var form = document.getElementById('airtelform');
             var formData = new FormData(form);
